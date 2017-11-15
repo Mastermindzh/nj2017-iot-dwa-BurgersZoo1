@@ -12,14 +12,14 @@ Alle groepsafspraken die we maken worden hieronder gedocumenteerd.
 ## Ontwikkelmethoden
 
 - Elke dag zal er s' ochtends om 9:15 een standup plaatsvinden en om 4:30 een Sitdown
-- Elke week bepalen we wat we die week opleveren. Dit lijkt op sprints.
+- Elke week bepalen we wat we die week opleveren. Dit lijkt op sprints. 
 
 ## Werktechnieken
 
 ### Git
 Er zal gebruik gemaakt worden van 1 repo met per product een map.
 De workflow:
-![Workflow](nj2017-iot-dwa-BurgersZoo1/groepsprocess/20171113_161454.jpg)
+![Workflow](nj2017-iot-dwa-BurgersZoo1/groepsprocess/20171113_161454.jpg  "Workflow")
 
 ## Deliverables
 
