@@ -4,9 +4,10 @@ Alle groepsafspraken die we maken worden hieronder gedocumenteerd.
 
 ## Uren aanwezig
 
-- 9 - 5 uur in principe aanwezig. Als het anders is dan wordt het van tevoren gecomuniceerd.
+- 9:15 - 5 uur in principe aanwezig. Als het anders is dan wordt het van tevoren gecomuniceerd.
 - Reflectie verslagen worden elke vrijdagmiddag gedaan, hier is tijd voor vrijgemaakt.
 - Onderzoeken worden gedaan, in overleg, zodra een onderwerp aangesneden wordt.
+- Pauze is rond 12 uur en duurt 45 minuten.
 
 ## Ontwikkelmethoden
 
