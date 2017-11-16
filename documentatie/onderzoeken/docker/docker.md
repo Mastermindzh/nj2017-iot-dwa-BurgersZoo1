@@ -11,13 +11,13 @@ Ik verwacht dat het werken met Docker de samenwerking op dezelfde codebase bevor
 
 Concreet levert dit de volgende vraag op:
 
-> Zal het werken met meerdere ontwikkelaars aan de zelfde code makkelijker gaan door het gebruik van Docker.
+> Zal het werken met meerdere ontwikkelaars aan de zelfde code makkelijker gaan door het gebruik van Docker?
 
-Dit is onderzocht door een aantal simpele back-ends op te zetten en deze op minimaal 2 andere laptops testen zonder dat hiervoor extra software voor te installeren. Naast het simpele back-end is er ook een database opgezet welke simpel benaderbaar dient te zijn.
+Dit is onderzocht door een aantal back-ends op te zetten en deze op minimaal 2 andere laptops testen zonder dat hiervoor extra software voor te installeren. Naast het back-end zonder al te veel functionaliteit is er ook een database opgezet welke via de host benaderbaar dient te zijn.
 
 ## Test opzet
 
-Om de hoofdvraag te kunnen beantwoorden is een simpel backend gemaakt met nodeJS dat het aantal bezoeken telt. Dit simpele backend is te vinden in de map `back-end`. De data van de database wordt alleen in-memory opgeslagen.
+Om de hoofdvraag te kunnen beantwoorden is een backend gemaakt met nodeJS dat het aantal bezoeken telt. Dit backend is te vinden in de map `back-end`. De data van de database wordt alleen in-memory opgeslagen.
 
 Er zijn in totaal 3 containers opgezet in een docker-compose bestand (docker-compose.yml).
 Deze 3 containers worden onderverdeeld in 1 database container en 2 back-end containers.
@@ -35,7 +35,7 @@ Het onderzoek is uitgevoerd op de laptop van twee collega's en op mijn eigen sys
 |-------------------|:----------------------------:|------------------------------|---------------------------------------------------|
 | Rick van Lieshout | Teller telt op na elk bezoek | Robo3t kan erbij             | Beide systemen runnen                             |
 | Sharon Franke     | Teller telt op na elk bezoek | Robo3t kan erbij             | Kibana werkt, elasticsearch niet: vmmaps te laag. |
-| Sijmen            | Teller telt op na elk bezoek | Robo3t is niet geinstalleerd | Beide systemen runnen                             |
+| Sijmen            | Teller telt op na elk bezoek | Robo3t is niet geïnstalleerd | Beide systemen runnen                             |
 
 Als we dit resultaat analyseren dan zien we dat management software zoals Robo3t wel nog los geinstalleerd moet worden maar dat de rest vrijwel direct werkt. Het probleem met elasticsearch op Sharon's laptop heeft te maken met de memory allocatie voor de jvm op haar pc en kan dus veilig genegeerd worden.
 
