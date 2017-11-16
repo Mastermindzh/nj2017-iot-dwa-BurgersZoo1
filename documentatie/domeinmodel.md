@@ -1,7 +1,9 @@
 domeinmodel
 ==
 
-Wanneer een kind voor het eerst een **pas** krijgt wordt de pas gekoppeld aan een nieuwe *Ranger*. Vanaf dat moment is het kind een ranger. Bij een ranger hoort een rangercode die het kint kan gebruiken om de volgende keer dat het kind bij burgers zoo komt verder te gaan als de zelfde ranger.
+![domeinmodel.png](domeinmodel.png)
+
+Wanneer een kind voor het eerst een pas krijgt wordt de pas gekoppeld aan een nieuwe Ranger. Vanaf dat moment is het kind een ranger. Bij een ranger hoort een rangercode die het kint kan gebruiken om de volgende keer dat het kind bij burgers zoo komt verder te gaan als de zelfde ranger.
 
 Een ranger gaat speuren naar poten. Op een saaie plek in het park staan groepjes poten waar ranges naar op zoek kunnen gaan. Een groepje van poten die dicht bij elkaar staan en allemaal het zelfde weetje afspelen heet een speurpunt.
 
