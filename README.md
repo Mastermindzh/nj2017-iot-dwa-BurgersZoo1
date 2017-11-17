@@ -105,13 +105,15 @@ Hieronder staat een tabel van projectrollen die extra duidelijkheid vereisen:
 
 ### Werkwijze
 
+![alt text](https://github.com/HANICA-MinorMulti/nj2017-iot-dwa-BurgersZoo1/blob/docs/documentatie/Werkwijze%20BurgersZoo%20IoT.png "Werkwijze")
 
-- organogram intern (visueel: hoe werken de 9 studenten (twee teams) samen? + foto's
-- welke leden hebben welke verantwoordelijkheden (IoT, web, contactpersoon, architect.... etc)
-- overlegmomenten
 - Hypothesis driven development
 
+### Overlegmomenten
 
+**Tussen de groepen**
+
+**Tussen de HAN en Burgers' Zoo
 
 ## Producten
 
