@@ -104,6 +104,7 @@ Hieronder staat een tabel van projectrollen die extra duidelijkheid vereisen:
 | Tester | Het opstellen van test-cases voor de field trial and het documenteren van testresultaten  |
 
 ### Werkwijze
+We hebben twee disciplines (embedded en software) onderverdeeld in twee groepen. In het onderstaande 
 
 ![alt text](https://github.com/HANICA-MinorMulti/nj2017-iot-dwa-BurgersZoo1/blob/docs/documentatie/Werkwijze%20BurgersZoo%20IoT.png "Werkwijze")
 
@@ -112,8 +113,10 @@ Hieronder staat een tabel van projectrollen die extra duidelijkheid vereisen:
 ### Overlegmomenten
 
 **Tussen de groepen**
+Niet nodig, ze zitten naast elkaar in het lokaal.
 
-**Tussen de HAN en Burgers' Zoo
+**Tussen de HAN en Burgers' Zoo**
+Op afspraak, elke twee of drie weken om de status van het product te bespreken.
 
 ## Producten
 
