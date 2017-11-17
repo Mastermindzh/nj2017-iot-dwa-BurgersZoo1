@@ -36,7 +36,7 @@ Rsyslog kan naast OS data bijv ook pgsql en mongodb statistieken verzenden. Dit 
 
 Elastic beats zijn in het beginsel hetzelfde als rsyslog omdat het een programma is dat logdata verzamelt, processed en opstuurt. Waar de beats verschillen, volgens de bron, is in zowel resource gebruik, de [community](https://www.elastic.co/guide/en/beats/libbeat/current/community-beats.html) en gebruiksgemak.
 
-Vooral de community is een interessante ontwikkeling, gebruikers kunnen zelf een beat ontwikkelen en deze toevoegen aan de "[comunity beats](https://www.elastic.co/guide/en/beats/libbeat/current/community-beats.html)", hiermee worden ze direct beschikbaar gemaakt voor de rest van de gebruikers.
+Vooral de community is een interessante ontwikkeling, gebruikers kunnen zelf een beat ontwikkelen en deze toevoegen aan de "[community beats](https://www.elastic.co/guide/en/beats/libbeat/current/community-beats.html)", hiermee worden ze direct beschikbaar gemaakt voor de rest van de gebruikers.
 
 ### Vergelijking
 Nu beide producten ingeleid zijn is het tijd om de claims naast elkaar te zetten in een overzichtelijke tabel en daar een conclusie uit te trekken. Voor compleetheid voeg ik ook een eigen te bouwen systeem toe.
