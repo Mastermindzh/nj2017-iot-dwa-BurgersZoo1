@@ -4,7 +4,7 @@
 Literature Study uit de categorie Library
 
 ## Hypothese:
-De Arduino zal geschikter zijn voor pootjes ivm kosten en zelfde pin IO mogelijkheden als een Raspberry Pi.
+Ik verwacht dat de Arduino zal geschikter zijn voor pootjes ivm kosten en heeft ongeveer dezelfde pin IO mogelijkheden als een Raspberry Pi.
 
 Ook zal een Arduino geschikter zijn om te prototypen omdat de overhead ontbreekt die de Raspberry Pi meegeeft.
 
@@ -17,7 +17,6 @@ Ik ga op internet bronnen zoeken en deze gebruiken om tot een resultaat te komen
 De Raspberry Pi heeft als testplatform een aantal nadelen; Stroomvoorziening. Wanneer wij een paal in Burgers Zoo willen testen is er niet per definitie een stroompunt beschikbaar. Wanneer we Raspberry Pi willen voorzien van batterijen zullen we daar extra hardware voor moeten gebruikten. Ook moeten we de Pi op tijd netjes afsluiten om systeem fouten te voorkomen [1].
 De Arduino heeft deze problemen niet, zodra het stroom wegvalt zal de code stoppen en weer doorgaan zodra er weer stroom beschikbaar is. Verder kan een simpele 9v batterij een Arduino al voorzien van stroom. De Raspberry Pi heeft een constante 5v nodig en dit komt nou eenmaal niet uit batterijen. Ook verbruikt een Raspberry Pi meer stroom waardoor batterijen niet lang mee zullen gaan. [2]
 
-Het voordeel van een Raspberry Pi heeft
 
 |  |Raspberry Pi 3 |Arduino Nano| 
 |---|---|---|
@@ -32,10 +31,10 @@ Het voordeel van een Raspberry Pi heeft
 
 ***HDMI off, LEDs off, onboard WiFi 
 
-Het daadwerkelijke stroomvebruik van de Arduino zal hoger liggen wanneer er ook hardware componenten zijn aangesloten die ook stroom verbuiken.
+Het daadwerkelijke stroomvebruik van de Arduino zal hoger liggen wanneer er ook hardware componenten zijn aangesloten die ook stroom verbuiken. Ondanks deze extra mA's is te verwachten dat een Arduino minder stroom verbruikt.
 
 ## Conclusie
-Voor de prototypes kan het beste een Arduino gebruikt worden. De hardware kan gemakkelijk aangesloten worden en er wordt weinig stroom verbuikt waardoor er een gedurende een testdag een accu gebruikt kan worden. 
+Voor de prototypes kan het beste een Arduino gebruikt worden. De hardware kan gemakkelijk aangesloten worden en er wordt weinig stroom verbuikt waardoor er gedurende een testdag een accu gebruikt kan worden. 
 
 De Raspberry Pi bied veel mogelijkheden maar is meer geschikt als gateway dan voor het aansturen en uitlezen van hardware componenten.
 
