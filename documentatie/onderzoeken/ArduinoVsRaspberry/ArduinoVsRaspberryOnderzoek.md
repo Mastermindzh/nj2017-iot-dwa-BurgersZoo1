@@ -8,6 +8,8 @@ De Arduino zal geschikter zijn voor pootjes ivm kosten en zelfde pin IO mogelijk
 
 Ook zal een Arduino geschikter zijn om te prototypen omdat de overhead ontbreekt die de Raspberry Pi meegeeft.
 
+Verder verwacht ik dat de prijs van de Arduino een stuk minder is dan die Raspberry Pi. Dit is ook belangrijk om uit te zoeken ivm het beperkte budget dat we vanuit school hebben gekregen.
+
 ## Testopzet:  
 Ik ga op internet bronnen zoeken en deze gebruiken om tot een resultaat te komen.
  
