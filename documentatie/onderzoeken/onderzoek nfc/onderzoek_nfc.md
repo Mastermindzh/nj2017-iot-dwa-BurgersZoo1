@@ -56,11 +56,6 @@ Deze opstelling is gebruikt voor beide tests.
 ### Literatuur onderzoek
 De RFID-RC522 werkt op 13.56 MHz (https://www.nxp.com/docs/en/data-sheet/MFRC522.pdf). De NFC kaarten die voor dit type RFID reader/writer te verkrijgen zijn op bijvoorbeeld Adafruit (https://www.adafruit.com/product/359) werken met 1 kilobyte intern EEPROM. Het geheugen dat in de kaart van Adafruit te vinden is kan meer dan 100.000x overschreven worden. Er is tevens een vast id van 4-bytes groot. Dit id kan gebruikt worden om NFC chips van elkaar te kunnen onderscheiden.
 
-
-Todo:
-password protection
-https://stackoverflow.com/questions/36395457/read-write-to-nfc-tag-with-password-protection
-
 ## Resultaat:
 
 Tijdens dit onderzoek was het de bedoeling om antwoorden te krijgen op twee vragen:
@@ -77,4 +72,3 @@ Verder kan er ook op een vrij eenvoudige manier data naar de NFC chip geschreven
 Met de bovenstaande methode kan er naar een blok op de NFC chip geschreven worden. Er wordt dan een buffer meegegeven waarin zich bytes bevinden. De informatie wordt naar een intern EEPROM geschreven die een beperkt aantal keer overschreven kan worden. 
 
 Een eventuele uitbereiding van het onderzoek zou kunnen naar de beveiliging van het NFC chip. Aangezien de kaart gemakkelijk uitgelezen kan worden en dus eventueel gekopieerd kan worden. 
-
