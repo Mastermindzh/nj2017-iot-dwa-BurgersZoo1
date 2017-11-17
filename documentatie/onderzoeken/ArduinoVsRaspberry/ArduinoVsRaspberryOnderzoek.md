@@ -1,10 +1,10 @@
-#Onderzoek Arduino Vs Raspberry Pi
+# Onderzoek Arduino Vs Raspberry Pi
 
 **Onderzoeksmethode (uit de cmd method pack)**
 Literature Study uit de categorie Library
 
 ## Hypothese:
-De Arduino zal geschikter zijn voor pootjes ivm kosten en zelfde pin IO  mogelijkheden als een Raspberry Pi.
+De Arduino zal geschikter zijn voor pootjes ivm kosten en zelfde pin IO mogelijkheden als een Raspberry Pi.
 
 Ook zal een Arduino geschikter zijn om te prototypen omdat de overhead ontbreekt die de Raspberry Pi meegeeft.
 
