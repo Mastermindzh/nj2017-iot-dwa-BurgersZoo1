@@ -10,11 +10,11 @@
 De verwachting is dat Elastic Beats beter zullen werken dan de ouderwetse agents / handmatig opsturen van log data.
 
 De hoofdvraag van dit onderzoek is:
-> Welk COTS product is het meest geschikt om loginformatie op te sturen naar een logstash back-end.
+> Welk (COTS) product is het meest geschikt om loginformatie op te sturen naar een logstash back-end.
 
 ## Test opzet
 
-Om te kijken welk COTS product het beste is zal er gebruik gemaakt worden van een zogeheten "comparison chart". In deze tabel worden een aantal kenmerken naast elkaar gezet en beoordeeld ten opzichte van elkaar. Deze kenmerken zullen beoordeeld worden met plusjes en minnetjes.
+Om te kijken welk (COTS) product het beste is zal er gebruik gemaakt worden van een zogeheten "comparison chart". In deze tabel worden een aantal kenmerken naast elkaar gezet en beoordeeld ten opzichte van elkaar. Deze kenmerken zullen beoordeeld worden met plusjes en minnetjes.
 
 Een voorbeeld van deze tabel is bijv. als volgt:
 
@@ -35,6 +35,8 @@ Rsyslog kan naast OS data bijv ook pgsql en mongodb statistieken verzenden. Dit 
 ![heartbeat](https://static-www.elastic.co/assets/blt4c84a68e1bf91a44/simple-heartbeat-dashboard.jpg?q=350)
 
 Elastic beats zijn in het beginsel hetzelfde als rsyslog omdat het een programma is dat logdata verzamelt, processed en opstuurt. Waar de beats verschillen, volgens de bron, is in zowel resource gebruik, de [community](https://www.elastic.co/guide/en/beats/libbeat/current/community-beats.html) en gebruiksgemak.
+
+Vooral de community is een interessante ontwikkeling, gebruikers kunnen zelf een beat ontwikkelen en deze toevoegen aan de "[comunity beats](https://www.elastic.co/guide/en/beats/libbeat/current/community-beats.html)", hiermee worden ze direct beschikbaar gemaakt voor de rest van de gebruikers.
 
 ### Vergelijking
 Nu beide producten ingeleid zijn is het tijd om de claims naast elkaar te zetten in een overzichtelijke tabel en daar een conclusie uit te trekken. Voor compleetheid voeg ik ook een eigen te bouwen systeem toe.
