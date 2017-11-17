@@ -1,4 +1,4 @@
-![](http://)# Onderzoek Generators
+# Onderzoek Generators
 
 
 
@@ -36,12 +36,10 @@ Om de bovenstaande tools te kunnen vergelijken is een lijst met criteria nodig. 
 |                           |                                               |                     |                 |                   |                          |                        |                          |
 
 Bovenstaande tabel is ingevuld met informatie die op de website of in de documentatie van de tools gevonden kan worden. Dit toont gelijk aan of de documentatie uitgebreid is of niet.
-Tijdens het onderzoeken van Apiary kwam ik er achter dat die een gratis en betaalde versie heeft. De gratis versie is erg gelimiteerd. Aangezien wij gratis volledige software een must vinden is deze niet verder uitgewerkt.
+Tijdens het onderzoeken van Apiary kwam ik er achter dat die een gratis en betaalde versie heeft. De gratis versie is erg gelimiteerd. Aangezien wij gratis volledige software een must vinden is deze niet verder uitgewerkt. Ook heb ik gemerkt dat api blueprint veel externe tools gebruikt om hetzelfde te kunnen bereiken als andere tools. Daarom lijkt deze me ook minder geschikt.
 
-De drie tools die het beste uit de literatuur test komen zijn Loopback, generator-api en api-blueprint. Deze tools ga ik zelf testen om te kijken wat nu precies de verschillen zijn en welke tool ik zelf fijner vind om te gebruiken. De tests zijn te vinden in de map code.
-
-Om de drie tools tegen elkaar te testen wil ik één endpoint opstellen die een GET en een POST heeft. De data moet uit een database gehaald worden.
 
 
 ## Resultaat
 
+Ik zou als generator Loopback of Swagger aanraden. Deze twee komen als beste uit de test. Api blueprint eindigt ook hoog, maar hier zijn veel externe tools voor nodig, wat weer zorgt voor extra afhankelijkheden van software. Dit lijkt me handiger om te voorkomen.
