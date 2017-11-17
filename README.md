@@ -104,7 +104,7 @@ Hieronder staat een tabel van projectrollen die extra duidelijkheid vereisen:
 | Tester | Het opstellen van test-cases voor de field trial and het documenteren van testresultaten  |
 
 ### Werkwijze
-We hebben twee disciplines (embedded en software) onderverdeeld in twee groepen. In het onderstaande 
+We hebben twee disciplines (embedded en software) onderverdeeld in twee groepen. In het onderstaande schema staat weergegeven hoe twee groepen samen werken aan meerdere producten.  
 
 ![alt text](https://github.com/HANICA-MinorMulti/nj2017-iot-dwa-BurgersZoo1/blob/docs/documentatie/Werkwijze%20BurgersZoo%20IoT.png "Werkwijze")
 
