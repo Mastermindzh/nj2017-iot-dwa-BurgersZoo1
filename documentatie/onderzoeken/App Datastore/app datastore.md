@@ -24,7 +24,7 @@ Daarnaast moet er gekeken worden welke informatiebehoefte er opgeslagen moet wor
 ![Data schema](./data_opslag.png)
 
 
-Volgens de bovenstaande beschrijving en de beschrijving op [deze link](https://db-engines.com/en/article/Key-value+Stores), is de key-value datastore geen geschikte oplossing.
+Volgens de bovenstaande beschrijving en de beschrijving op [deze link](https://db-engines.com/en/article/Key-value+Stores), is de key-value datastore geen geschikte oplossing. Een key-value datastore kan namelijk alleen key-values opslaan, deze simpele vorm van data opslaan is niet geschikt voor complexe situaties.
 Dan blijven een relationele database en een document store nog over als mogelijke oplossingen.
 
 [Deze link](https://developer.couchbase.com/documentation/server/3.x/developer/dev-guide-3.0/compare-docs-vs-relational.html) geeft aan wat precies het fundamentele verschil is tussen een relationele database en een document store. Een document store heeft ten opzichte van een relationele database een voordeel wanneer het nog onduidelijk is wat precies de data gaat worden die opgeslagen wordt. Ook is het handig wanneer je nog niet weet wat de onderliggende relaties zijn. Dit komt omdat bij een relationele database eerst gespecificeerd moet worden hoe het schema van jouw data er uit gaat zien. Dit hoeft niet bij een document store. Wel is het zo dat wanneer je dit van te voren duidelijk hebt, en er veel relaties onderling zijn, dat hierbij een relationele database veel krachtiger is.
@@ -32,9 +32,9 @@ Dan blijven een relationele database en een document store nog over als mogelijk
 ## Resultaat
 De huidige situatie is als volgt:
 - het is nog onduidelijk welke data er precies opgeslagen gaat worden
-- de ondeliggende relaties tussen data zijn nog niet duidelijk
+- de relaties tussen data zijn nog niet duidelijk
 
-Dit stelt dat het handig is om een aanpasbaar data opslag systeem te hebben. Daarom is het aan te raden om een document store te gebruiken.
+Dit geeft aan dat het handig is om een aanpasbaar data opslag systeem te hebben. Daarom is het aan te raden om een document store te gebruiken.
 Een kleine leercurve is handig omdat een databse opzetten niet de focus van dit project is. Nu is er tijdens de courses Mongo gebruikt, daarom is het ook aan te raden om Mongo te gebruiken tijdens het project. Mongo werkt overigens ook goed samen met de technieken die we nu aan het overwegen zijn om te gebruiken, zoals Docker, ElasticSearch en NodeJs.
 
 
