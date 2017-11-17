@@ -87,7 +87,7 @@ Deze iteratie van het project wordt uitgevoerd door negen studenten onder begele
 | Thomas Kool | Architect, Embedded software engineer | thomas.erin999@gmail.com | Groep 1 |
 | Sijmen Huizenga | Architect, Embedded software engineer | sijmenhuizenga@gmail.com | Groep 1 |
 | Wessel Hendriks | Tester, software developer | whendriks1993@hotmail.com | Groep 2 |
-| Nick van den Burg | Software developer | nickvdburg.nvdb@gmail.com | Groep 2 |
+| Nick van den Burg | Planner, Software developer | nickvdburg.nvdb@gmail.com | Groep 2 |
 | Sebastiaan Vonk | Embedded software engineer | bas-vonk@gmail.com | Groep 2 |
 | Arne Heil | Embedded software engineer | arneheil@hotmail.com | Groep 2 |
 
@@ -103,10 +103,9 @@ Hieronder staat een tabel van projectrollen die extra duidelijkheid vereisen:
 | Architect | Maakt high-level ontwerpbesluiten over het systeem en onderzoekt hoe alle sub-systemen met elkaar in verband staan en over welke protocollen ze met elkaar communiceren  |
 | Tester | Het opstellen van test-cases voor de field trial and het documenteren van testresultaten  |
 
-### Disciplines
-
-
 ### Werkwijze
+
+
 - organogram intern (visueel: hoe werken de 9 studenten (twee teams) samen? + foto's
 - welke leden hebben welke verantwoordelijkheden (IoT, web, contactpersoon, architect.... etc)
 - overlegmomenten
