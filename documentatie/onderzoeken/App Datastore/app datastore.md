@@ -4,7 +4,7 @@ Op dit moment wordt er nagedacht om verschillende applicaties te maken voor dit 
 Er is een administratie applicatie die het mogelijk maakt om verschillende scanpunten aan te maken en te configureren. Tevens is er een administratieve applicatie die inzichten geeft in statussen van de scanpunten voor monitoring en beheer. Er is een webapplicatie die door bezoekers na hun bezoek gebruikt kan worden om de ervaringen in het park te herbeleven. Dit onderzoek gaat kijken wat er het beste als datastore gebruikt kan worden voor deze applicaties.
 
 ## Onderzoeksmethode
-Dit onderzoek zal zich righten op de onderzoeksmethode *Design Pattern Search*. Het doel is om er achter te komen welke manier van data opslaan het beste te gebruiken is binnen de casus.
+Dit onderzoek zal zich righten op de onderzoeksmethode *Design Pattern Search* uit de categorie *Library*. Het doel is om er achter te komen welke manier van data opslaan het beste te gebruiken is binnen de casus.
 
 ## Hypothese
 Als ik kijk naar de data die opgeslagen moet worden en de relaties onderling, denk ik dat een relationele database de beste oplossing is voor dit probleem. Er komen een aantal tabellen die veel relaties hebben onderling. Om dit werkbaarder te maken zou ik een relationele database aanraden.
