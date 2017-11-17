@@ -28,46 +28,113 @@ De school vereist aan het einde van het project:
 Daarnaast wordt van de student per week verwacht dat hij/zij:
 - Een logboek van zijn/haar werkzaamheden maakt.
 - Een groepsplanning voor de volgende week maakt.
-- Minimaal twee onderzoeken per week
+- Minimaal twee onderzoeken per week uitvoert naar nieuwe technieken 
 
 (bron: http://cmdmethods.nl/)
 
 ## Probleemstelling en doel
 Vanuit het bedrijf:
 - Bezoekers laten zich negatief uit over de mobiliteit in het park. 
-- Bezoekers komen niet snel terug voor een volgend bezoek.
+- De heuvelachtige stukken in het park vormen een drempel voor (oudere) bezoekers met een mobiliteitsbeperking om eerder terug te komen in het park.
 
-Vanuit de HAN (t.o.v de vorige uitvoering):
--Het proof of concept kon niet veel scans aan.
--Het proof of concept moet voor langere tijd betrouwbaar zijn.
+Vanuit de HAN (t.o.v de vorige iteratie):
+-Het proof of concept was niet robuust en kon niet veel scans aan.
+-Het proof of concept moet voor langere tijd betrouwbaar zijn in verschillende klimaatomstandigheden.
 
-Het doel van de opdracht is kinderen (bezoekers) zodanig plezier aan het park laten beleven dat dat een gunstig psychologisch effect heeft op hun (oudere) begeleidende bezoeker, zodat hun mobiliteitsprobleem als minder vervelend wordt beschouwd. 
+Het doel van de opdracht is kinderen (bezoekers) zodanig plezier aan het park laten beleven dat dat een gunstig psychologisch effect heeft op hun (oudere) begeleidende bezoeker, zodat hun mobiliteitsprobleem als minder vervelend wordt beschouwd waardoor de drempel om terug te keren in het park wordt verlaagd. 
 
 ## Resultaat
+Een belangrijke vraag resteert: 'Hoe wordt gemeten dat het doel behaald is?' In deze iteratie van het project kan daar nog geen antwoord op worden gegegeven. De huidige iteratie focust zich op de technische kant van het probleem dat uit de vorige iteratie is ontstaan: het maken van een werkbaar prototype.
 
-- Overdrachtsdocumentatie (hoe zit ons prototype in elkaar, hoe werk je met ons prototype)
-- Testresultaten van de field trial.
-- Aanbevelingen gebaseerd op de testresultaten.
+Is dit werkbare prototype technisch haalbaar? Daarvoor worden de volgende resultaten door ons opgeleverd:
+
+- 6 stabiele scanpunten die informatie over dieren af kunnen spelen. Wij gaan kijken hoe zo'n scanpunt Burgers' Zoo 'overleeft.' Denk daarbij aan omgevingsfactoren zoals: stroomvoorzieningen, wifi-sterkte, GPS-verbinding, tolerantie voor temperatuur en luchtvochtigheid.
+- Een webapplicatie waarop de technische dienst meetstatistieken van de scanpunten kan bekijken en scanpunten in het park kan configureren.
+- Een webapplicatie waarop een kind zijn statistieken van zijn dag als 'ranger' terug kan vinden.
+
+## Projectgrenzen
+Waar zit precies de grens tussen wat wel en niet wordt opgeleverd en op welke vragen wel of geen antwoord wordt gegeven? Hier volgt een korte opsomming:
+
+**Wel:**
+- Alle producten genoemd in hoofdstuk 'Resultaat' worden gebouwd en gedemonstreerd tijdens een field trial.
+- Een evaluatierapport van de field trial. Wat ging goed, wat ging niet goed, hoe ervaarden de kinderen en hun begeleiders de gebruikersinteractie met de scanpunten en was het doel van de speurtoch duidelijk?
+- Overdrachtsdocumentatie van het scanpunt waarin wordt uitgelegd welke hardware gebruikt is en waarom, en met welke omgevingsfactoren rekening gehouden wordt. De overdrachtsdocumentatie bevat ook screenshots van de webapplicatie voor de technische dienst.
 
 
+**Niet:**
+- Inzicht bieden in hoeverre kinderen blij worden van het park.
+- Bijdrage aan educatieve concepten van de speurtocht.
+- Onderhoud en doorontwikkeling van opgeleverde producten na afloop van deze iteratie.
+- Een grafisch vormgegeven product dat er marketing-wise aantrekkelijk uit ziet voor bezoekers.
 
-## Projectmethode & Organisatie
+## Randvoorwaarden
+- De hardware van het scanpunt blijft in bezit van de HAN en verhuist na elk bezoek aan het park mee terug naar de HAN.
+- De source code van het scanpunt en de webapplicaties blijven in het bezit van de HAN.
+- Mocht Burgers' Zoo een realisatie van (grafische) vormgeving willen van een scanpunt of van één van de webapplicaties, bijvoorbeeld omdat dat een positieve invloed zou kunnen hebben op het resultaat van de field trial, dan dienen daar t.z.t. nieuwe afspraken voor gemaakt te worden.
 
+## Werkwijze & Organisatie
+Deze iteratie van het project wordt uitgevoerd door negen studenten onder begeleiding van één docent. Dit hoofdstuk biedt inzicht in de interne organisatie van het project, hun werkwijze en hun verantwoordelijkheden.
+
+### Contactgegevens en rolverdeling
+
+| Naam        | Rol           | Email  | Studentgroep
+| ------------- | :-------------: | ---------- | :----------: |
+| Frank Simon      | Oprachtgever | f.simon@burgerszoo.nl | x |
+| Lars Tijsma      | Docent      | l.tijsma@han.nl | x |
+| Asher de Vries | Contactpersoon, software developer | asher.devries@gmail.com | Groep 1 |
+| Sharon Franke | Planner, software developer | sharonfranke94@gmail.com | Groep 1 |
+| Rick van Lieshout | Operation manager & deployment specialist, software developer | info@rickvanlieshout.com | Groep 1 |
+| Thomas Kool | Architect, Embedded software engineer | thomas.erin999@gmail.com | Groep 1 |
+| Sijmen Huizenga | Architect, Embedded software engineer | sijmenhuizenga@gmail.com | Groep 1 |
+| Wessel Hendriks | Software developer | whendriks1993@hotmail.com | Groep 2 |
+| Nick van den Burg | Software developer | nickvdburg.nvdb@gmail.com | Groep 2 |
+| Sebastiaan Vonk | Embedded software engineer | bas-vonk@gmail.com | Groep 2 |
+| Arne Heil | Embedded software engineer | arneheil@hotmail.com | Groep 2 |
+
+### Disciplines
+
+
+### Werkwijze
 - organogram intern (visueel: hoe werken de 9 studenten (twee teams) samen? + foto's
 - welke leden hebben welke verantwoordelijkheden (IoT, web, contactpersoon, architect.... etc)
 - overlegmomenten
+- Hypothesis driven development
+
 
 
 ## Producten
 
--FO (wat zit er in)
--TO (welke onderzoeken lossen welke problemen op? --> waar worden beslissingen gedocumenteerd?)
+-FO (wat zit er in, hoe werk je met ons prototype, wat zijn de requirements?)
+-TO (welke onderzoeken lossen welke problemen op? --> waar worden beslissingen gedocumenteerd?, hoe zit ons prototype in elkaar)
 -Poot prototype
 -Overdrachtdocumentatie
 -Testrapport
 
-## Projectgrenzen
 
--- onderscheid maken tussen
+
+Tussenproduct (week 3 - groepsproduct)
+
+Functioneel ontwerp
+Design specification (stepping stones)
+Requirements list (stepping stones)
+Software guidebook
+Testplan
+Werkwijze en Planning
+Elke week (groepsproduct)
+
+Korte beschrijving van het eindproduct en de manier van testen.
+Planning en taakverdeling
+Elke week (individele producten)
+
+Nieuwe tech
+twee nieuwe libraries
+Onderzoekjes (gebaseerd op onderzoeksmethoden hieronder)
+twee korte onderzoekjes
+Reflectie
+Lijst van uitgevoerde werkzaamheden
+Relevante onderzoeksmethod
+
+
+## Planning
 
 
