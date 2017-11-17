@@ -86,10 +86,22 @@ Deze iteratie van het project wordt uitgevoerd door negen studenten onder begele
 | Rick van Lieshout | Operation manager & deployment specialist, software developer | info@rickvanlieshout.com | Groep 1 |
 | Thomas Kool | Architect, Embedded software engineer | thomas.erin999@gmail.com | Groep 1 |
 | Sijmen Huizenga | Architect, Embedded software engineer | sijmenhuizenga@gmail.com | Groep 1 |
-| Wessel Hendriks | Software developer | whendriks1993@hotmail.com | Groep 2 |
+| Wessel Hendriks | Tester, software developer | whendriks1993@hotmail.com | Groep 2 |
 | Nick van den Burg | Software developer | nickvdburg.nvdb@gmail.com | Groep 2 |
 | Sebastiaan Vonk | Embedded software engineer | bas-vonk@gmail.com | Groep 2 |
 | Arne Heil | Embedded software engineer | arneheil@hotmail.com | Groep 2 |
+
+**Rollendefinities:**
+Hieronder staat een tabel van projectrollen die extra duidelijkheid vereisen:
+
+| Rol        | Verantwoordelijkheid 
+| ------------- | :-------------: |
+| Planner | Het maken van een projectplanning en het maken van een wekelijkse planning |
+| Software developer | Ontwikkelaar die aan de server en/of webapplicatie werkt. |
+| Embedded software engineer | Ontwikkelt software die op de hardware van het scanpunt draait. Is tevens verantwoordelijk voor het feit dat deze hardware kan communiceren met de server |
+| Operation manager & deployment specialist | Het live zetten en 'in de lucht houden' van de web applicaties en de server |
+| Architect | Maakt high-level ontwerpbesluiten over het systeem en onderzoekt hoe alle sub-systemen met elkaar in verband staan en over welke protocollen ze met elkaar communiceren  |
+| Tester | Het opstellen van test-cases voor de field trial and het documenteren van testresultaten  |
 
 ### Disciplines
 
