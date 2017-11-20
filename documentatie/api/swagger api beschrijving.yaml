@@ -1,22 +1,31 @@
 openapi: 3.0.0
 info:
-  title: "Burgers Zoo Ranger: Gateway en Backend api"
+  title: 'Burgers Zoo Ranger: Gateway en Backend api'
   version: 1.0.0
   description: >-
-    API beschrijvingen van de gateway en backend van het Burgers Zoo Rangers systeem. De gateway zal primair praten naar de backend om het gebruik en de status van de poten door te geven aan de backend. De backend zal configuratie van poten versturen naar de gateway. <br/><br/>
-    In deze versie van de api specificaties is geen authorisatie of authenticatie aanwezig.
+    API beschrijvingen van de gateway en backend van het Burgers Zoo Rangers
+    systeem. De gateway zal primair praten naar de backend om het gebruik en de
+    status van de poten door te geven aan de backend. De backend zal
+    configuratie van poten versturen naar de gateway. <br/><br/> In deze versie
+    van de api specificaties is geen authorisatie of authenticatie aanwezig.
 tags:
   - name: Backend
-    description: Alle api calls die bij de backend horen. Deze wordt aangeroepen door de Gateway.
+    description: >-
+      Alle api calls die bij de backend horen. Deze wordt aangeroepen door de
+      Gateway.
   - name: Gateway
-    description: Alle api calls die bij de gateway horen. Deze wordt aangeroepen door backend.
+    description: >-
+      Alle api calls die bij de gateway horen. Deze wordt aangeroepen door
+      backend.
 paths:
   /poot:
     put:
       tags:
         - Backend
       summary: Registreren van nieuw poot.
-      description: Registreren van een nieuw poot. Response bevat het nieuw aangemaakte poot.
+      description: >-
+        Registreren van een nieuw poot. Response bevat het nieuw aangemaakte
+        poot.
       responses:
         '201':
           description: Nieuwe poot aangemaakt
@@ -55,7 +64,9 @@ paths:
       tags:
         - Backend
       summary: Verwerken van de logdata vanuit een poot.
-      description: Verzenden van log-data naar de backend vanuit de gateway. Elk request bevat de logdata vna 1 poot. 
+      description: >-
+        Verzenden van log-data naar de backend vanuit de gateway. Elk request
+        bevat de logdata vna 1 poot.
       requestBody:
         content:
           poot:
@@ -80,7 +91,10 @@ paths:
       tags:
         - Backend
       summary: Bezoek poot
-      description: Verwerken van de ranger die bij een bepaalde poot komt. Wanneer een ranger een poot scant wordt het kaartid via de gateway naar de backend gestuurd. Dit is het endpoint in de backend die dit ontvangt.
+      description: >-
+        Verwerken van de ranger die bij een bepaalde poot komt. Wanneer een
+        ranger een poot scant wordt het kaartid via de gateway naar de backend
+        gestuurd. Dit is het endpoint in de backend die dit ontvangt.
       requestBody:
         content:
           pas:
@@ -108,18 +122,16 @@ paths:
         - Gateway
       summary: Zet instellingen van een poot
       description: >-
-        Overschrijf de instellingen van een poten met nieuwe informatie.
-        Wanneer de instellingen niet anders zijn dan de instellingen die al
-        bekend zijn dan zal de gateway niks versturen naar de poot.
+        Overschrijf de instellingen van een poten met nieuwe informatie. Wanneer
+        de instellingen niet anders zijn dan de instellingen die al bekend zijn
+        dan zal de gateway niks versturen naar de poot.
       parameters:
         - name: pootid
           in: path
           required: true
           schema:
-            type: string
-          description: >-
-            Het ID van het poten waarvan de instellingen ingesteld moeten
-            worden
+            type: integer
+          description: Het ID van het poten waarvan de instellingen ingesteld moeten worden
       requestBody:
         description: Optional description in *Markdown*
         required: true
@@ -139,12 +151,53 @@ paths:
             even duren. De backend zal via voortgangs-updates op de hoogte
             worden gehouden van de voortgang. Als de upload faalt dan zal dit
             ook via deze updates worden gegeven
+          content:
+            application/json:
+              schema:
+                type: integer
+                description: >-
+                  Transactie id voor het loggen van de update voortgang. Zie
+                  response omschrijving voor meer info
         '404':
           description: 'De poot bestaat niet. '
         '503':
           description: >-
             De poot is op dit moment niet online en er zal niet geprobeerd
             worden om een transactie te starten.
+  '/poot/update/{transactieID}':
+    post:
+      tags:
+        - Backend
+      summary: Voortgang van de update transactie
+      description: >-
+        Endpoint voor het updaten van de update voortang. Dit wordt door de
+        gateway verzorgt en rekent uit hoever het versturen van de de
+        configuratie naar de gateway is.
+        Dit is alleen van toepassing op het moment dat er iets te updaten is. Niet alle update acties geven een transactie id terug.
+      parameters:
+        - name: transactieID
+          in: path
+          required: true
+          schema:
+            type: integer
+          description: Transactie id voor het updaten van de poot
+      requestBody:
+        description: Optional description in *Markdown*
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                voortgang:
+                  type: integer
+                  minimum: 0
+                  maximum: 100
+                  description: 'Voortgang status, in procenten'
+      responses:
+        '200':
+          description: Progress update ontvangen
+        '404':
+          description: Progress transactie id niet bekent
 components:
   schemas:
     Config:
@@ -157,7 +210,7 @@ components:
           items:
             type: string
             format: url
-        dierengeluid: 
+        dierengeluid:
           type: string
           format: url
     Poot:
@@ -194,3 +247,4 @@ components:
         pasid:
           type: integer
           description: id van de kaart
+
