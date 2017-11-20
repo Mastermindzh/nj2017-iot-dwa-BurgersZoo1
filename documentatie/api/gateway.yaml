@@ -1,0 +1,47 @@
+openapi: 3.0.0
+info:
+  description: 'De api van de gateway. De gateway praat weer met alle poten in Burgers Zoo. '
+  version: 1.0.0
+  title: Paaltjessysteem Gateway
+paths:
+  '/pootje/{pootid}/update':
+    post:
+      summary: Zet instellingen van een poot
+      description: >-
+        Overschrijf de instellingen van een pootje met nieuwe informatie.
+        Wanneer de instellingen niet anders zijn dan de instellingen die al
+        bekend zijn dan zal de gateway niks versturen naar de poot.
+      parameters:
+        - name: pootid
+          in: path
+          required: true
+          schema:
+            type: string
+          description: >-
+            Het ID van het pootje waarvan de instellingen ingesteld moeten
+            worden
+      requestBody:
+        description: Optional description in *Markdown*
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: 'components.json#/components/Config'
+      operationId: zet instellingen van een paaltje
+      responses:
+        '200':
+          description: >-
+            De instellingen staan goed op de poot. Er wordt geen transactie
+            gestart.
+        '202':
+          description: >-
+            De instellingen gaan naar de poot worden verzonden, maar dit kan
+            even duren. De backend zal via voortgangs-updates op de hoogte
+            worden gehouden van de voortgang. Als de upload faalt dan zal dit
+            ook via deze updates worden gegeven
+        '503':
+          description: >-
+            De poot is op dit moment niet online en er zal niet geprobeerd
+            worden om een transactie te starten.
+        '404':
+          description: 'De poot bestaat niet. '
