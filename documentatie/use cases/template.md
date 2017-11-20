@@ -4,6 +4,8 @@
 <br />
 **Scope**:
 
+Dit is de beschrijving
+
 ## Preconditie
 
 Dit is de eerste preconditie
@@ -14,11 +16,10 @@ Dit is de eerste postconditie
 
 ## Success scenario
 
-1. Item een
-    - sub task
-    - sub task
-2. Item twee
-3. Item drie
+|Gebruiker   |Systeem|
+|---|:-:|
+|1. Ik doe iets|   |
+|| 2. Ik reageer|
 
 ## Alternatieve flow(s)
 
