@@ -16,8 +16,8 @@ Dit is de eerste postconditie
 
 ## Success scenario
 
-|Gebruiker   |Systeem|
-|---|:-:|
+|Gebruiker|Systeem|
+|---|---|
 |1. Ik doe iets|   |
 || 2. Ik reageer|
 
@@ -26,5 +26,3 @@ Dit is de eerste postconditie
 1. ..
 2. ..
 3. ..
-
-## Variaties:
