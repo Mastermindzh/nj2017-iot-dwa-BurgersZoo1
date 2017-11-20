@@ -18,12 +18,8 @@ Lijst van weetjes getoond
 
 |Gebruiker   |Systeem|
 |---|---|
-|1. Vraagt lijst met weetjes op. |   |
-|| 2. |
-|3. ||
-|4. ||
-||5. |
+|1. Navigeert naar de weetjes pagina. |   |
+|| 2. Vraagt weetjes op|
+||3. Toont beschikbare weetjes op de weetjes pagina|
 
 ## Alternatieve flow(s)
-
-5. Bestanden zijn niet valide, het systeem toont welke weetjes **niet** geupload zijn.
