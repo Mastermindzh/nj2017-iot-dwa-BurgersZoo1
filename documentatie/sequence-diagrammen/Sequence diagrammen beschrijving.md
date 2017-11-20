@@ -4,16 +4,16 @@
 Link naar use case: [Link naar use case](linktousecase.nl) 
 
 ---
-Dit sequence diagram beschrijft de gebeurtenissen bij het aanmelden van een nieuwe poot. Deze poot heeft nog geen configuraties. De bedoeling is dat de poot een ID krijgt van de backend waarmee de poot identificeerbaar is. 
+Wanneer een totaal nieuwe poot in het systeem komt, moet deze aangemdeld worden binnen het systeem. Dit sequence diagram beschrijft de gebeurtenissen bij het aanmelden van een nieuwe poot. Deze poot heeft nog geen configuraties. De bedoeling is dat de poot een ID krijgt van de backend waarmee de poot identificeerbaar is. 
 ![Nieuwe poot aanmelden](nieuwe_poot_aanmelden.png) 
 
 ## Online komen poot
 Link naar use case: [Link naar use case](linktousecase.nl) 
 
 ---
-Wanneer een poot uit heeft gestaan en weer online komt nadat een poot offline is geweest (bijvoorbeeld voor onderhoud), zal deze een opstart sequence doorlopen. Wanneer een poot voor het eerst wordt opgestart zal de sequence diagram voor "*Nieuwe poot aanmelden*" doorlopen worden. 
+Wanneer een poot uit heeft gestaan en weer online komt nadat een poot offline is geweest (bijvoorbeeld voor onderhoud of bij stroomuitval), zal deze een opstart sequence doorlopen. Wanneer een poot voor het eerst wordt opgestart zal de sequence diagram voor "*Nieuwe poot aanmelden*" doorlopen worden. 
 
-Na het aanmelden bij de gateway zal de gateway aan de backend vragen naar de configuratie van de poot. De backend zal de configuratie terug sturen naar de gateway. De gateway zal dan de audio bestanden downloaden en lokaal ook opslaan. 
+Na het aanmelden bij de gateway zal de gateway aan de backend vragen naar de configuratie van de poot. De backend zal de configuratie terug sturen naar de gateway. Wanneer de confiuratie van de poot gelijk is gebleven zal de gateway geen actie ondernemen. Ander zal de gateway de audio bestanden downloaden en lokaal ook opslaan. 
 
 De audio bestanden die nog niet op de poot voorkomen zullen dan verzonden worden naar de poot en op de gateway wordt bijgewerkt welke audo files op de poot staan. Gedurende het verzenden van de audio files zal de gateway ook updates naar de backend sturen om de voortgang te melden.
 
@@ -24,7 +24,7 @@ De audio bestanden die nog niet op de poot voorkomen zullen dan verzonden worden
 Link naar use case: [Link naar use case](linktousecase.nl) 
 
 ---
-De poot verstuurd de logdata naar de gateway. De gateway zal een timestamp toevoegen en een JSON object opbouwen. Dit object wordt doorgestuurd naar de backend.
+De poot verstuurt periodiek logdata naar de gateway. De gateway zal een timestamp toevoegen en een JSON object opbouwen. Dit object wordt doorgestuurd naar de backend.
 
 ![Versutren logdata](Poot_verstuurt_Logdata.png)
 
