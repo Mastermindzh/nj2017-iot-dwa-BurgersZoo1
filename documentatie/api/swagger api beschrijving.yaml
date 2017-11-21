@@ -40,7 +40,7 @@ paths:
       tags:
         - Backend
       summary: Opvragen configuratie poot
-      description: Het opvragen van de configuratie van een specifiek poot.
+      description: Het opvragen van de configuratie van een specifieke poot.
       parameters:
         - in: path
           name: pootid
