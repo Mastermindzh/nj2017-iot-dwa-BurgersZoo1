@@ -3,7 +3,7 @@
 
 
 ## Onderzoeksmethode
-Dit onderzoek zal gedaan worden volgens de CMD Methodekaart **Comparison Chart** uit de categorie **Stepping Stones**. Het doel is om er achter te komen of er generators gebruikt kunnen worden om de projectopzet te vergemakkelijken. Als dit kan, welke zijn hier dan geschikt voor?
+Dit onderzoek zal gedaan worden volgens de CMD Methodekaart **Comparison Chart** uit de categorie **Stepping Stones**. Het doel is om er achter te komen of er generators gebruikt kunnen worden om de projectopzet te vergemakkelijken. Hierbij wordt ontwikkelsnelheid in acht genomen. Als dit kan, welke zijn hier dan geschikt voor?
 
 ## Hypothese
 Ik denk dat het zeker mogelijk is om generators te gebruiken in dit project. Wat op dit moment al duidelijk is dat er docker gebruikt gaat worden. Er zijn ideeën over welke andere tools er gebruikt gaan worden, maar hier zijn nog geen afspraken over, wel is het handig deze mee te nemen in dit onderzoek. De tools/software in overweging zijn: NodeJS, React, Mongo en Elasticsearch. Ik heb gehoord van loopback en dat dit de perfecte tool moet zijn om een API te genereren voor een project, als ik de verhalen mag geloven denk ik dat dit de beste oplossing is. Echter, ga ik op zoek naar alternatieven en ga ik kijken welke tool werkelijk handig is om te gebruiken in dit project.
