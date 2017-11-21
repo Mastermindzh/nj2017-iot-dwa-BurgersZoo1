@@ -131,7 +131,7 @@ paths:
           required: true
           schema:
             type: integer
-          description: Het ID van het poten waarvan de instellingen ingesteld moeten worden
+          description: Het ID van de poot waarvan de instellingen ingesteld moeten worden
       requestBody:
         description: Optional description in *Markdown*
         required: true
