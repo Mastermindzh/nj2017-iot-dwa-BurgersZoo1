@@ -40,7 +40,7 @@ paths:
       tags:
         - Backend
       summary: Opvragen configuratie poot
-      description: Het opvragen van de configuratie van een specifiek poot.
+      description: Het opvragen van de configuratie van een specifieke poot.
       parameters:
         - in: path
           name: pootid
@@ -66,7 +66,7 @@ paths:
       summary: Verwerken van de logdata vanuit een poot.
       description: >-
         Verzenden van log-data naar de backend vanuit de gateway. Elk request
-        bevat de logdata vna 1 poot.
+        bevat de logdata van 1 poot.
       requestBody:
         content:
           poot:
@@ -81,7 +81,7 @@ paths:
           description: poot id
       responses:
         '201':
-          description: Logging opgelsagen
+          description: Logging opgeslagen
         '404':
           description: Poot kon niet worden gevonden
         '500':
@@ -131,7 +131,7 @@ paths:
           required: true
           schema:
             type: integer
-          description: Het ID van het poten waarvan de instellingen ingesteld moeten worden
+          description: Het ID van de poot waarvan de instellingen ingesteld moeten worden
       requestBody:
         description: Optional description in *Markdown*
         required: true
