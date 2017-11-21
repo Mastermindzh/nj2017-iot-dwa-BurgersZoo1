@@ -165,7 +165,7 @@ paths:
             De poot is op dit moment niet online en er zal niet geprobeerd
             worden om een transactie te starten.
   '/poot/update/{transactieID}':
-    post:
+    put:
       tags:
         - Backend
       summary: Voortgang van de update transactie
@@ -247,4 +247,5 @@ components:
         pasid:
           type: integer
           description: id van de kaart
+
 
