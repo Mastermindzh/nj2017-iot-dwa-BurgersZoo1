@@ -5,7 +5,7 @@
 **Categorie**: Workshops <br />
 **Naam**: Proof of concept
 
-In dit onderzoek wil ik onderzoeken of we een cryptografische library kunnen gebruiken om unieke filenames te genereren.
+In dit onderzoek wil ik onderzoeken of we een cryptografische library kunnen gebruiken om unieke filenames te genereren. Dit wil ik doen omdat er bestanden geupload moeten worden met de web interface. Deze bestanden zullen opgeslagen moeten worden onder een unieke naam zodat ze gemakkelijk gekoppeld kunnen worden aan een poot.
 
 ## Hypothese
 
