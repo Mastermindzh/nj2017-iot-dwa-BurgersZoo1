@@ -19,7 +19,7 @@ tags:
       backend.
 paths:
   /poot:
-    put:
+    post:
       tags:
         - Backend
       summary: Registreren van nieuw poot.
@@ -59,7 +59,7 @@ paths:
           description: Configuratie niet gevonden
         '500':
           description: Configuratie kon niet worden opgehaald want redenen
-  '/poot/{pootid}/logging':
+  '/poot/{pootid}/logs':
     post:
       tags:
         - Backend
@@ -116,8 +116,8 @@ paths:
           description: Poot kan niet gevonden worden
         '500':
           description: Poot scan niet opgeslagen
-  '/poot/{pootid}/update':
-    post:
+  '/poot/{pootid}':
+    put:
       tags:
         - Gateway
       summary: Zet instellingen van een poot
@@ -172,8 +172,9 @@ paths:
       description: >-
         Endpoint voor het updaten van de update voortang. Dit wordt door de
         gateway verzorgt en rekent uit hoever het versturen van de de
-        configuratie naar de gateway is.
-        Dit is alleen van toepassing op het moment dat er iets te updaten is. Niet alle update acties geven een transactie id terug.
+        configuratie naar de gateway is. Dit is alleen van toepassing op het
+        moment dat er iets te updaten is. Niet alle update acties geven een
+        transactie id terug.
       parameters:
         - name: transactieID
           in: path
@@ -247,5 +248,4 @@ components:
         pasid:
           type: integer
           description: id van de kaart
-
 
