@@ -12,7 +12,7 @@ De pas welke de ranger gebruikt is geactiveerd en gebruiksklaar.
 
 ## Postconditie
 
-De pas is gescant.
+De pas is gescand.
 
 ## Success scenario
 
