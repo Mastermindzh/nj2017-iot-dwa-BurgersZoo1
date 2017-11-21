@@ -12,7 +12,7 @@ De administrator heeft toegang tot de unieke identifier van de poot en de poot w
 
 ## Postconditie
 
-Geluid op de poot is toegevoegd of gewijzigt.
+Geluid op de poot is toegevoegd of gewijzigd.
 
 ## Success scenario
 
@@ -29,5 +29,5 @@ Geluid op de poot is toegevoegd of gewijzigt.
 ## Alternatieve flow(s)
 
 7. Poot valt onder het updaten weg.
-    1. Poot zal ge-update worden zodra deze online komt.
+    1. Poot zal geüpdate worden zodra deze online komt.
 
