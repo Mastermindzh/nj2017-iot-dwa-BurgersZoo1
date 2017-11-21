@@ -8,7 +8,7 @@ De ranger wil bij thuiskomst zijn resultaten kunnen bekijken. Hierbij kan de Ran
 
 ## Preconditie
 
-De ranger heeft zijn unieke rangercode bemachtigt (danwel via een print van een dimploma of op een andere manier).
+De ranger heeft zijn unieke rangercode bemachtigt (danwel via een print van een diploma of op een andere manier).
 
 ## Postconditie
 
