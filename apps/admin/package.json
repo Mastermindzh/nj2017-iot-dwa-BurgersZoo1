@@ -29,6 +29,7 @@
   "author": "Asher de Vries",
   "license": "MIT",
   "dependencies": {
+    "material-ui": "^0.19.4",
     "object-assign": "4.1.0",
     "react": "16.0.0",
     "react-dom": "16.0.0",
