@@ -18,7 +18,7 @@ De audio bestanden die nog niet op de poot voorkomen zullen dan verzonden worden
 
 ## Poot versturen logdata
 
-De poot verstuurt periodiek logdata naar de gateway. De gateway zal een timestamp toevoegen en een JSON object opbouwen. Dit object wordt doorgestuurd naar de backend. Onder logdata valt ook informatie over dat [een ranger de poot heeft bezocht]().
+De poot verstuurt periodiek logdata naar de gateway. De gateway zal een timestamp toevoegen en een JSON object opbouwen. De timestap wordt bij de gateway toegevoegd sinds de poot geen besef van tijd heeft. Dit object wordt doorgestuurd naar de backend. Onder logdata valt ook informatie over dat een ranger de poot heeft bezocht.
 
 ![Versutren logdata](Poot_verstuurt_Logdata.png)
 
@@ -26,7 +26,6 @@ De poot verstuurt periodiek logdata naar de gateway. De gateway zal een timestam
 ## Ranger bezoekt poot
 Link naar use case: [Link naar use case](https://github.com/HANICA-MinorMulti/nj2017-iot-dwa-BurgersZoo1/blob/docs/documentatie/use%20cases/pas%20scannen/pas%20scannen.md) 
 
----
 Wanneer een ranger een poot bezoekt scant de ranger de NFC kaart. De poot verstuurt het id dat op de pas staat door naar de gateway. De gateway voegt een timestamp toe aan het het scannen van de kaart en stuurt dit door naar de backend. 
 
 ![Ranger bezoekt poot](ranger_bezoekt_poot.png)
