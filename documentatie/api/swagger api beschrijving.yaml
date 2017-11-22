@@ -18,7 +18,7 @@ tags:
       Alle api calls die bij de gateway horen. Deze wordt aangeroepen door
       backend.
 paths:
-  /poot:
+  /poten:
     post:
       tags:
         - Backend
@@ -35,7 +35,7 @@ paths:
                 $ref: '#/components/schemas/Poot'
         '500':
           description: Fout bij het aanmaken van een nieuw poot
-  '/poot/{pootid}/config':
+  '/poten/{pootid}/config':
     get:
       tags:
         - Backend
@@ -59,7 +59,7 @@ paths:
           description: Configuratie niet gevonden
         '500':
           description: Configuratie kon niet worden opgehaald want redenen
-  '/poot/{pootid}/logs':
+  '/poten/{pootid}/logs':
     post:
       tags:
         - Backend
@@ -86,7 +86,7 @@ paths:
           description: Poot kon niet worden gevonden
         '500':
           description: Logging kon niet worden opgeslagen
-  '/poot/{pootid}/scan':
+  '/poten/{pootid}/scan':
     post:
       tags:
         - Backend
@@ -116,7 +116,7 @@ paths:
           description: Poot kan niet gevonden worden
         '500':
           description: Poot scan niet opgeslagen
-  '/poot/{pootid}':
+  '/poten/{pootid}':
     put:
       tags:
         - Gateway
@@ -164,7 +164,7 @@ paths:
           description: >-
             De poot is op dit moment niet online en er zal niet geprobeerd
             worden om een transactie te starten.
-  '/poot/update/{transactieID}':
+  '/poten/update/{transactieID}':
     put:
       tags:
         - Backend
@@ -248,4 +248,3 @@ components:
         pasid:
           type: integer
           description: id van de kaart
-
