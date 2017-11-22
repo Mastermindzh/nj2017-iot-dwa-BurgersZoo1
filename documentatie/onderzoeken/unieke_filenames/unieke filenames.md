@@ -9,7 +9,7 @@ In dit onderzoek wil ik onderzoeken of we een cryptografische library kunnen geb
 
 ## Hypothese
 
-De verwachting is dat nodeJS's crpyto library middels de randomBytes of pseudoRandomBytes methode unieke bestandsnamen kan genereren.
+De verwachting is dat NodeJS's crpyto library middels de randomBytes- of pseudoRandomBytesmethode unieke bestandsnamen kan genereren.
 
 ## Test opzet
 
