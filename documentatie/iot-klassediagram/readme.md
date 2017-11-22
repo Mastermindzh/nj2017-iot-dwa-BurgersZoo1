@@ -1,5 +1,7 @@
 # Class Diagram IoT Poot
 
+![./Class diagram IoT v1.png](./Class diagram IoT v1.png)
+
 #### Poot
 De `Poot` klasse is soortvan de baas van het management van alle subsysteempjes die op de poot draaien. Zo zal deze klasse de globale business logica implementeren. De `Poot` zal vanuit de ranger-detectie module te horen krijgen dat er een ranger voor de poot staat en zal de poot module de audio module en de logging module aansturen om hierop te reageren.
 
