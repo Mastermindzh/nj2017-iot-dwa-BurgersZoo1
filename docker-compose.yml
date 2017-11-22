@@ -13,14 +13,14 @@ services:
     volumes:
       - ./apps/admin:/app
     ports:
-      - 8001:8080
+      - 8002:3000
 
   ranger:
     image: mastermindzh/generic_node
     volumes:
       - ./apps/ranger:/app
     ports:
-      - 8002:8080
+      - 8003:3002
 
   server:
     image: mastermindzh/generic_node
