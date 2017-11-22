@@ -1,0 +1,40 @@
+{
+  "_meta": {
+    "sources": [
+      "loopback/common/models",
+      "loopback/server/models",
+      "../common/models",
+      "./models"
+    ],
+    "mixins": [
+      "loopback/common/mixins",
+      "loopback/server/mixins",
+      "../common/mixins",
+      "./mixins"
+    ]
+  },
+  "ranger": {
+    "dataSource": "mongo",
+    "public": true
+  },
+  "weetje": {
+    "dataSource": "mongo",
+    "public": true
+  },
+  "dierengeluid": {
+    "dataSource": "mongo",
+    "public": true
+  },
+  "speurpunt": {
+    "dataSource": "mongo",
+    "public": true
+  },
+  "rangerHeeftBezocht": {
+    "dataSource": "mongo",
+    "public": false
+  },
+  "pas": {
+    "dataSource": "mongo",
+    "public": true
+  }
+}
