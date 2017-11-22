@@ -10,7 +10,7 @@ Tijdens het vak Client-side Web Development (CWD) hebben we geleerd om lokaal op
 in de browser. Voor het Burgers' Zoo project is dit echter niet genoeg, omdat de opdracht eist dat je een field-trial uitvoert
 waarbij gebruikers 'echt' je applicatie gebruiken. Het moet dus uiteindelijk live komen te staan. 
 
-**Doel**
+**Doel**<br />
 Dit onderzoek focust zich op tools waarmee je je code op zo'n manier op kunt zetten cq. laten generen, dat je makkelijk kunt
 deployen en kunt switchen tussen developer- en productieomgeving. Makkelijk betekent in deze zin: switchen door een
 ander 
@@ -30,7 +30,7 @@ course. De volgende punten zijn vastgesteld:
 
 ### Belangen en eisen
 Het belangrijkste belang is dat de ontwikkelaar direct aan de slag kan. Hoe meer de tool aan de onderstaande eisen voldoet, 
-hoe meer dit belang behartigd wordt:
+hoe meer dit belang behartigd wordt. De eisen staant hier als volgt geprioriteerd:
 
 1. De tool moet zodanig veel boilerplatecode generen dat er direct met React gewerkt kan worden, zonder verdere dependency
 configuratie.
@@ -38,11 +38,13 @@ configuratie.
 3. De tool ondersteunt de punten genoemd in de pre-condities.
 4. De tool installeert dependencies die geschreven code kan controleren op kwaliteit. (Denk aan property check, linting en 
 tests)
-5. De tool is open-source en is recentelijk (de afgelopen maand) nog geüpdatet. Dit geeft vertrouwen dat nieuwe versies van
+5. De structuur van de directory waarin de boilerplate code wordt gezet moet zo veel mogelijk overeen komen met de conventies
+die bij DWA en OOSE zijn gehanteerd.
+6. De tool is open-source en is recentelijk (de afgelopen maand) nog geüpdatet. Dit geeft vertrouwen dat nieuwe versies van
 dependencies regelmatig worden geïnstalleerd.
-6. De tool ondersteunt hot-reloading, zodat wijzigingen in de code direct zichtbaar zijn in de browser zonder deze handmatig
+7. De tool ondersteunt hot-reloading, zodat wijzigingen in de code direct zichtbaar zijn in de browser zonder deze handmatig
 te hoeven refreshen.
-7. De documentatie voor het gebruik van de tool is duidelijk terug te vinden op de code repository.
+8. De documentatie voor het gebruik van de tool is duidelijk terug te vinden op de code repository.
 
 
 ## Hypothese
@@ -53,7 +55,25 @@ de hypothese:
 
 "Create React App is de meest geschikte tool om client-side boilerplate code te genereren"
 
-Dit is de verwachting, omdat React en Create React App door dezelfde organisatie wordt gemaakt. Of dit uiteindelijk zo is,
+Dit is de verwachting, omdat React en Create React App door dezelfde organisatie wordt gemaakt. Of Create React App uiteindelijk de meest geschikte is,
 moet blijken uit een 'comparison chart' waarin Create React App met andere tools wordt vergeleken. De hoogste score wint.
 
-## Opzet onderzoek
+## Testopzet
+
+Er wordt een tabel gecreëerd (comparison chart) met over de verticale as eisen en over de horizontale as tools. Een tool krijg een vinkje als het aan de eis voldoet en een kruisje als hij er niet aan voldoet. Het invullen van een comparison chart gebeurt in een aantal stappen:
+
+1. Er worden 4 alternatieven voor Create React App op Google opgezocht en in de chart geplaatst.
+2. Van elke tool wordt de installatiehandleiding gevolgd.
+3. De boilerplate source code wordt bekeken en beoordeeld op de eisen uit hoofdstuk 'Belangen en eisen'.
+
+## Kandidaat tools
+
+- (Create React App, Facebook)[https://github.com/facebookincubator/create-react-app]
+- (React Boilerplate)[https://github.com/react-boilerplate/react-boilerplate]
+- (Udemy Course, Stephen Grider)[https://github.com/StephenGrider/ReduxSimpleStarter]
+- (React Slingshot, Cory House)[https://github.com/coryhouse/react-slingshot]
+- (React Start Kit, Kirasoft)[https://github.com/kriasoft/react-starter-kit]
+
+## Resultaat
+
+
