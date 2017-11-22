@@ -5,9 +5,9 @@ Dev deployment is relatief simpel en kan op twee manieren:
 
 ## Handmatig
 
-1. Zorg ervoor dat je ssh toegang hebt tot de server (klik [hier]() om te lezen hoe dat moet)
+1. Zorg ervoor dat je ssh toegang hebt tot de server (klik [hier](https://github.com/HANICA-MinorMulti/nj2017-iot-dwa-BurgersZoo1/blob/master/deployment/ssh%20access%20verkrijgen.md) om te lezen hoe dat moet)
 
-2. voer het volgende commando uit in de map `~/groep1` of `~/groep2` (vervang branch met de branch die je live wilt)
+2. voer het volgende commando uit (vervang branch / groep met de branch / groep die je live wilt)
     ```
     bash deploy.sh groep1 branch
     ```
