@@ -76,4 +76,5 @@ Er wordt een tabel gecreëerd (comparison chart) met over de verticale as eisen 
 
 ## Resultaat
 
+!(Comparison chart)[https://github.com/HANICA-MinorMulti/nj2017-iot-dwa-BurgersZoo1/blob/onderzoek/boilerplateGenerator/documentatie/onderzoeken/frontend_boilerplate/ComparisonChartBoilerplate.png]
 
