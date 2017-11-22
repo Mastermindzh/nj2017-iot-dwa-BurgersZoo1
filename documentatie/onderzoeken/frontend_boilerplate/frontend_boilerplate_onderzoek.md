@@ -68,13 +68,13 @@ Er wordt een tabel gecreëerd (comparison chart) met over de verticale as eisen 
 
 ## Kandidaat tools
 
-- (Create React App, Facebook)[https://github.com/facebookincubator/create-react-app]
-- (React Boilerplate)[https://github.com/react-boilerplate/react-boilerplate]
-- (Udemy Course, Stephen Grider)[https://github.com/StephenGrider/ReduxSimpleStarter]
-- (React Slingshot, Cory House)[https://github.com/coryhouse/react-slingshot]
-- (React Start Kit, Kirasoft)[https://github.com/kriasoft/react-starter-kit]
+- [Create React App, Facebook](https://github.com/facebookincubator/create-react-app)
+- [React Boilerplate](https://github.com/react-boilerplate/react-boilerplate)
+- [Udemy Course, Stephen Grider](https://github.com/StephenGrider/ReduxSimpleStarter)
+- [React Slingshot, Cory House](https://github.com/coryhouse/react-slingshot)
+- [React Start Kit, Kirasoft](https://github.com/kriasoft/react-starter-kit)
 
 ## Resultaat
 
-!(Comparison chart)[https://github.com/HANICA-MinorMulti/nj2017-iot-dwa-BurgersZoo1/blob/onderzoek/boilerplateGenerator/documentatie/onderzoeken/frontend_boilerplate/ComparisonChartBoilerplate.png]
+![Comparison chart](https://github.com/HANICA-MinorMulti/nj2017-iot-dwa-BurgersZoo1/blob/onderzoek/boilerplateGenerator/documentatie/onderzoeken/frontend_boilerplate/ComparisonChartBoilerplate.png)
 
