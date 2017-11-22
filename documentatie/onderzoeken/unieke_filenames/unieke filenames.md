@@ -10,6 +10,7 @@ In dit onderzoek wil ik onderzoeken of we een cryptografische library kunnen geb
 ## Hypothese
 
 De verwachting is dat NodeJS's crpyto library middels de randomBytes- of pseudoRandomBytesmethode unieke bestandsnamen kan genereren.
+Om dit te bewijzen wil ik een programma schrijven dat 1 miljoen bestanden aanmaakt met een random naam in een korte tijdspanne.
 
 ## Test opzet
 
@@ -38,9 +39,9 @@ crypto.pseudoRandomBytes(16, function (err, raw) {
 De rest van de programma code zit in het [app.js](app.js) bestand.
 
 ## Resultaat
-Het resultaat liet even op zich wachten maar na de test 3x uit te voeren is er nog geen enkel bestand aangemaakt met een naam die al bestond.
-
-Uit dit onderzoek blijkt dus dat de crypto library van nodeJS prima geschikt is om unieke bestandsnamen mee te genereren.
+Het resultaat liet even op zich wachten, een miljoen bestanden duurt wat langer als initieel verwacht.
+Hierdoor zal de timestamp die gebruikt wordt bij het genereren van de unieke naam meer veranderen dan initieel verwacht. Dit is echter geen probleem, dit is exact waarom de timestamp gebruikt wordt.
+Na de test 3x uit te voeren is er nog geen enkel bestand aangemaakt met een naam die al bestond, uit dit onderzoek blijkt dus dat de crypto library van nodeJS prima geschikt is om unieke bestandsnamen mee te genereren.
 
 ## bronnen
 1. [randombytes vs pseudorandom](https://stackoverflow.com/questions/18130254/randombytes-vs-pseudorandombytes)
