@@ -1,0 +1,23 @@
+{
+  "name": "nfc",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "pasid": {
+      "type": "number"
+    }
+  },
+  "mixins": {
+    "RemoteRouting" : {
+      "only": [
+      ]
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}
