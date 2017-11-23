@@ -1,11 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import Layout from './layout';
+import MyRangerContainer from '../containers/myRanger-container';
+
 class App extends React.Component {
   render() {
     return (
       <div>
-        <h1>Welcome to the Burgers' Zoo Ranger app</h1>
+        <Layout />
+        <MyRangerContainer />
       </div>
     );
   }
