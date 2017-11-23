@@ -204,8 +204,6 @@ components:
     Config:
       description: Poot configuratie.
       properties:
-        pootid:
-          type: integer
         weetjes:
           type: array
           items:
