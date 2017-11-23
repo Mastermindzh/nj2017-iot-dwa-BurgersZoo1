@@ -5,7 +5,7 @@
 **Categorie**: Field <br />
 **Naam**: Survey
 
-In het project zitten we nu met een klein probleem, we maken afzonderlijk onderdelen van het functioneel ontwerp maar dit moet uiteindelijk samengevoegd worden tot 1 bestand. Markdown bied standaard geen include mogelijkheden maar dit kan wel met externe software. Het onderzoek zal gebruikt worden om te kijken of de groep het preffereert om deze tools te gebruiken.
+In het project zitten we nu met een klein probleem, we maken afzonderlijk onderdelen van het functioneel ontwerp maar dit moet uiteindelijk samengevoegd worden tot 1 bestand. Markdown bied standaard geen include mogelijkheden maar dit kan wel met externe software. Het onderzoek zal gebruikt worden om te kijken of de groep het preffereert om deze tools te gebruiken. Ik doe dit met een survey omdat dit de snelste en meest concrete feedback zal opleveren.
 
 ## Hypothese
 
@@ -42,14 +42,21 @@ Uit deze survey zal een resultaat rollen dat dan als input wordt gebruikt om de 
 
 ### De proofreader
 
+De proofreader vondt de vragen prima, hij snapte ze en heeft ook antwoord gegeven om te controleren of hij de vragen echt snapte. Eerst een proofreader hebben die de vragen checkt is goed bevallen en zeker een aanrader voor volgende onderzoeken.
+
 ### Verdere feedback
 
+De tweede vraag is voornamelijk onduidelijk, dit moet ik in het vervolg aanscherpen.
 
 ### De enquete
 
+De resultaten van de enquete zijn te vinden op onderstaande foto:
+
+![surver_results](./survey_results.png)
 
 ## Conclusie
 
+Uit de survey blijkt dat vrijwel iedereen een tool zoals markdown-include wil gebruiken en het liefst een los bestand maakt met include links.
 
 ## bronnen
 1. https://goo.gl/forms/1PT2lfwKIelRG0E53
