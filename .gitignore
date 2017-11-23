@@ -67,6 +67,7 @@ dbdata
 .idea
 .idea/
 
+documentatie/onderzoeken/unieke_filenames/results
 
 # Created by https://www.gitignore.io/api/java,gradle,intellij,phpstorm+all,intellij+all
 
