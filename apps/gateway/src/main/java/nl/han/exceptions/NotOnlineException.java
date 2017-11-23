@@ -1,4 +1,4 @@
-package nl.imacbest.exceptions;
+package nl.han.exceptions;
 
 /**
  * CLASS DESCRIPTION

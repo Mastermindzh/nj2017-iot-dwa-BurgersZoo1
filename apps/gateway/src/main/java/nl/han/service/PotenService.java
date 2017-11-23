@@ -1,8 +1,8 @@
-package nl.imacbest.service;
+package nl.han.service;
 
-import nl.imacbest.exceptions.NotFoundException;
-import nl.imacbest.exceptions.NotOnlineException;
-import nl.imacbest.models.Poot;
+import nl.han.exceptions.NotFoundException;
+import nl.han.exceptions.NotOnlineException;
+import nl.han.models.Poot;
 
 /**
  * CLASS DESCRIPTION

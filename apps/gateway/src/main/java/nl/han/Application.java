@@ -1,6 +1,6 @@
-package nl.imacbest;
+package nl.han;
 
-import nl.imacbest.controller.PotenController;
+import nl.han.controller.PotenController;
 
 import static spark.Spark.*;
 import static spark.debug.DebugScreen.enableDebugScreen;

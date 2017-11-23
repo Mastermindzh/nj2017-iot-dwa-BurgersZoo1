@@ -1,4 +1,4 @@
-package nl.imacbest.util.transformers;
+package nl.han.util.transformers;
 
 import com.google.gson.Gson;
 import spark.ResponseTransformer;

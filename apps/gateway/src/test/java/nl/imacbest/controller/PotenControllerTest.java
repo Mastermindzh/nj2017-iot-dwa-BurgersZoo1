@@ -1,12 +1,10 @@
 package nl.imacbest.controller;
 
-import nl.imacbest.Application;
+import nl.han.Application;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import spark.Spark;
-
-import static org.junit.Assert.*;
 
 /**
  * CLASS DESCRIPTION

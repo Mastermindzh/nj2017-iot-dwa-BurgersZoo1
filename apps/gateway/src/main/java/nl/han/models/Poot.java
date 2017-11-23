@@ -1,4 +1,4 @@
-package nl.imacbest.models;
+package nl.han.models;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package nl.imacbest;
+package nl.han;
 
 import gnu.io.CommPortIdentifier;
 import gnu.io.SerialPort;
