@@ -13,3 +13,6 @@ Naar aanleiding van het [onderzoek](https://github.com/HANICA-MinorMulti/nj2017-
 
 ## Gateway taal
 Voor het schrijven van de gateway hebben we gekozen voor de taal Java. De mogelijkheden binnen de taal komen overeen met de eisen die gesteld worden aan de op te leveren software. Ook heeft de groep IoT'ers hier al ruime ervaring mee waardoor er risico's gemeden worden. Verder is er ook onderzoek naar gedaan: [onderzoek oplossings richtingen gateway taal](https://github.com/HANICA-MinorMulti/nj2017-iot-dwa-BurgersZoo1/tree/docs/documentatie/onderzoeken/oplossingsRichtingenGatewayTaal)
+
+## Gateway framework
+Voor het schrijven van de gateway hebben we de keuze gemaakt om met [Spark](http://sparkjava.com/) te werken. Dit is een licht framework waardoor het geschikt is voor de Raspberry Pi 3. Het volledige onderzoek is te lezen: `./documentatie/onderzoeken/gatewayFramework/`
