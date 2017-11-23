@@ -1,15 +1,15 @@
-# Elastic beats vs agents
+# Markdown-includes
 
 ## Onderzoeksmethode
 
 **Categorie**: Field <br />
 **Naam**: Survey
 
-In het project zitten we nu met een klein probleem, we maken afzonderlijk onderdelen van het functioneel ontwerp maar dit moet uiteindelijk samengevoegd worden tot 1 bestand. Markdown bied standaard geen include mogelijkheden maar dit kan wel met externe software. Het onderzoek zal gebruikt worden om te kijken of de groep het preffereert om deze tools te gebruiken. Ik doe dit met een survey omdat dit de snelste en meest concrete feedback zal opleveren.
+In het project zitten we nu met een klein probleem, we maken afzonderlijk onderdelen van het functioneel ontwerp maar dit moet uiteindelijk samengevoegd worden tot één bestand. Markdown bied standaard geen include mogelijkheden maar dit kan wel met externe software. Het onderzoek zal gebruikt worden om te kijken of de groep het prefereert om deze tools te gebruiken. Ik doe dit met een survey omdat dit de snelste en meest concrete feedback zal opleveren.
 
 ## Hypothese
 
-Ik verwacht dat de groep het automatisch includen van markdown files in een groter markdown bestand prefereert boven het opnieuw opzetten van een functioneel ontwerp.
+Ik verwacht dat de groep het automatisch includen van markdown files in een groter markdown bestand prefereert boven het opnieuw opzetten van een functioneel ontwerp eventueel in een andere tool.
 
 ## Test opzet
 
@@ -50,13 +50,13 @@ De tweede vraag is voornamelijk onduidelijk, dit moet ik in het vervolg aanscher
 
 ### De enquete
 
-De resultaten van de enquete zijn te vinden op onderstaande foto:
+De resultaten van de enquête zijn te vinden op onderstaande foto:
 
-![surver_results](./survey_results.png)
+![surver_results](./images/survey_results.png)
 
 ## Conclusie
 
-Uit de survey blijkt dat vrijwel iedereen een tool zoals markdown-include wil gebruiken en het liefst een los bestand maakt met include links.
+Uit de survey blijkt dat vrijwel iedereen een tool zoals markdown-include wil gebruiken en het liefst een los bestand maakt met include links. Dit is te zien aan het feit dat 50% van de deelnemers markdown wil gebruiken en maar liefst 83.3% aangeeft dat hij/zij het niet erg vindt een script te moeten draaien.
 
 ## bronnen
 1. https://goo.gl/forms/1PT2lfwKIelRG0E53
