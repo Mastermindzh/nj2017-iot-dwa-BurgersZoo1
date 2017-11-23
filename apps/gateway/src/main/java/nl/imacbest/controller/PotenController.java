@@ -24,6 +24,13 @@ public class PotenController {
     }
 
 
+    /**
+     * Saves the poot to the PotenService
+     *
+     * @param request
+     * @param response
+     * @return transaction id or 200
+     */
     private String savePootConfiguration(Request request, Response response) {
         Poot poot = gson.fromJson(request.body(), Poot.class);
         poot.setPootid(Long.valueOf(request.params("pootid")));

@@ -14,6 +14,10 @@ public class Application {
         get("/", (req, res) -> "Gateway api");
         new PotenController();
 
+
+        /**
+         * Add header to all responses
+         */
         after((req, res) -> {
             if(res.type() == null){
                 res.type("application/json");
