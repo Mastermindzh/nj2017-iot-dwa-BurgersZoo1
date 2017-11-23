@@ -1,0 +1,34 @@
+{
+  "name": "config",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "pootId": {
+      "type": "number",
+      "required": true
+    },
+    "weetjes": {
+      "type": [
+        "string"
+      ]
+    },
+    "dierengeluid": {
+      "type": [
+        "string"
+      ]
+    }
+  },
+  "mixins": {
+    "RemoteRouting" : {
+      "only": [
+      ]
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

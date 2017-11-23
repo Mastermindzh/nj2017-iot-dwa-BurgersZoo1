@@ -1,0 +1,61 @@
+{
+  "_meta": {
+    "sources": [
+      "loopback/common/models",
+      "loopback/server/models",
+      "../common/models",
+      "./models"
+    ],
+    "mixins": [
+      "loopback/common/mixins",
+      "loopback/server/mixins",
+      "../node_modules/loopback-remote-routing",
+      "../common/mixins",
+      "./mixins"
+    ]
+  },
+  "ranger": {
+    "dataSource": "mongo",
+    "public": true
+  },
+  "weetje": {
+    "dataSource": "mongo",
+    "public": true
+  },
+  "dierengeluid": {
+    "dataSource": "mongo",
+    "public": true
+  },
+  "speurpunt": {
+    "dataSource": "mongo",
+    "public": true
+  },
+  "rangerHeeftBezocht": {
+    "dataSource": "mongo",
+    "public": false
+  },
+  "pas": {
+    "dataSource": "mongo",
+    "public": true
+  },
+  "config": {
+    "dataSource": "mongo",
+    "public": true
+  },
+  "poot": {
+    "dataSource": "mongo",
+    "public": true
+  },
+  "logging": {
+    "dataSource": "mongo",
+    "public": true
+  },
+  "logValue": {
+    "dataSource": "mongo",
+    "public": true
+  },
+  "nfc": {
+    "dataSource": "mongo",
+    "public": true
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "name": "rangerHeeftBezocht",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "datum": {
+      "type": "number",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "ranger": {
+      "type": "hasOne",
+      "model": "ranger",
+      "foreignKey": ""
+    },
+    "speurpunt": {
+      "type": "hasOne",
+      "model": "speurpunt",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

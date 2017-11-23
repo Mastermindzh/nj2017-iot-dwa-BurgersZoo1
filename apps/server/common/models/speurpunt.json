@@ -1,0 +1,42 @@
+{
+  "name": "speurpunt",
+  "plural": "speurpunten",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "id": {
+      "type": "number",
+      "required": true
+    },
+    "pootId": {
+      "type": [
+        "number"
+      ]
+    },
+    "geolocation": {
+      "type": "geopoint"
+    },
+    "locatienaam": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "weetje": {
+      "type": "hasOne",
+      "model": "weetje",
+      "foreignKey": ""
+    },
+    "dierengeluid": {
+      "type": "hasOne",
+      "model": "dierengeluid",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}
