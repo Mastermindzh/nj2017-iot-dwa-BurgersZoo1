@@ -44,4 +44,4 @@ Een pluspunt van Spark is wel dat het resource gebruik vrij laag ligt, met ram g
 Tijdens het gebruik van dit framework kreeg ik errors bij het volgen van de tutorial op de website.
 
 ## Conclusie
-Voor dit project gaan we gebruik maken van het `XX` framework. Dit doen we omdat....
+Voor dit project gaan we gebruik maken van het `Spark` framework. Dit doen we omdat tijdens het testen van de prototypes naar voren is gekomen dat Spark aanzienelijk minder resources gebruikt. We werken met een Rapsberry Pi 3 en dan zullen we toch goed moeten kijken naar resourcegebruik. Beide frameworks konden met de seriële poort overweg, dus daardoor bleven bijde beschikbaar.
