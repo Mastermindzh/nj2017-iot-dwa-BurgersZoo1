@@ -9,13 +9,14 @@
 - Deployment
 - Boilerplate Redux app
 - Poot Software Design
-- Backend endpoints
+- Backend endpoints genereren + endpoints die iot nodig heeft handmatig toevoegen.
 
 ### Resultaten:
 - Functioneel Ontwerp
 - Plan van Aanpak
 - Deployment
 - Boilerplate Redux app
+- Endpoints voor de backend
 
 **Invividuele onderzoeken (te vinden in de map onderzoeken)**
 - Pitch voor week 3 (Asher)
@@ -25,7 +26,7 @@
 - SPI bus(Sijmen)
 - NRF storing(Sijmen)
 - unieke filenames genereren (Rick)
-- git includes (Rick)
+- markdown includes (Rick)
 - prototype loopback (Sharon)
 - Requirements onderzoek(Sharon)
 
