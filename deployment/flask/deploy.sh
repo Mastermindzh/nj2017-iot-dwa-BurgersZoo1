@@ -1,7 +1,9 @@
 #!/bin/bash
 
 cd $1
-cd repo
+
+echo "stashing changes"
+git stash
 
 echo "git checkout ...."
 
@@ -15,4 +17,4 @@ git pull origin $2
 echo "Restarting docker ...."
 
 docker-compose down
-docker-compose up
+docker-compose up -d

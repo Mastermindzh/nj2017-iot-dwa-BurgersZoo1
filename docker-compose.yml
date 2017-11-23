@@ -1,0 +1,32 @@
+version: "2"
+services:
+
+  mongo:
+    image: mongo
+    volumes:
+      - ./dbdata:/data/db
+    ports:
+      - 8009:27017
+
+  admin:
+    image: mastermindzh/generic_node
+    volumes:
+      - ./apps/admin:/app
+    ports:
+      - 8002:3000
+
+  ranger:
+    image: mastermindzh/generic_node
+    volumes:
+      - ./apps/ranger:/app
+    ports:
+      - 8003:3002
+
+  server:
+    image: mastermindzh/generic_node
+    depends_on:
+      - "mongo"
+    volumes:
+      - ./apps/server:/app
+    ports:
+      - 8001:8080
