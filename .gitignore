@@ -71,3 +71,5 @@ apps/*/jest_0
 apps/*/.v8flags*
 apps/*/.babel.json
 __pycache__
+
+.DS_Store
