@@ -23,3 +23,8 @@ Groep 2 roept de volgende url aan (vervang de branch):
 ```
 http://servers.rickvanlieshout.com:8149/groep2/branch
 ```
+
+## Portainer
+
+De docker-management interface [Portainer](https://github.com/portainer/portainer) is beschikbaar op:
+[http://servers.rickvanlieshout.com:8148](http://servers.rickvanlieshout.com:8148).
