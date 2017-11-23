@@ -1,4 +1,4 @@
-# Elastic beats vs agents
+# Markdown-includes
 
 ## Onderzoeksmethode
 
