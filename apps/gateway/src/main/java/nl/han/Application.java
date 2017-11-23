@@ -1,6 +1,7 @@
 package nl.han;
 
 import nl.han.controller.PotenController;
+import nl.han.util.GatewayProperties;
 
 import static spark.Spark.*;
 import static spark.debug.DebugScreen.enableDebugScreen;
@@ -9,8 +10,14 @@ import static spark.debug.DebugScreen.enableDebugScreen;
 public class Application {
 
     public static void main(String[] args) {
-        port(8080);
-        enableDebugScreen();
+
+        Application application = new Application();
+
+
+
+        application.setupSpark();
+        application.setupSerial();
+
         get("/", (req, res) -> "Gateway api");
         new PotenController();
 
@@ -19,20 +26,40 @@ public class Application {
          * Add header to all responses
          */
         after((req, res) -> {
-            if(res.type() == null){
+            if (res.type() == null) {
                 res.type("application/json");
             }
         });
 
-//
-//        SerialReader main = new SerialReader();
-//        main.initialize();
-//        Thread t= new Thread(() -> {
-//            //the following line will keep this app alive for 1000 seconds,
-//            //waiting for events to occur and responding to them (printing incoming messages to console).
-//            try {Thread.sleep(1000000);} catch (InterruptedException ie) {}
-//        });
-//        t.start();
-//        System.out.println("Started");
+
+    }
+
+    /**
+     * Setup Arduino gateway settings and start listening
+     */
+    private void setupSerial() {
+        if (Boolean.parseBoolean(GatewayProperties.getProperty("arduino.enabled"))) {
+            SerialReader main = new SerialReader();
+            main.initialize();
+        }
+    }
+
+    /**
+     * Setup Spark settings
+     */
+    private void setupSpark() {
+        int port = 8080;
+        if (GatewayProperties.getProperty("spark.port") == null) {
+            port = Integer.parseInt(GatewayProperties.getProperty("spark.port"));
+        }
+        port(port);
+
+        if (GatewayProperties.getProperty("spark.debug") == null) {
+            boolean debug = Boolean.parseBoolean(GatewayProperties.getProperty("spark.debug"));
+            if (debug) {
+                enableDebugScreen();
+            }
+        }
+
     }
 }
