@@ -10,4 +10,11 @@ import nl.han.spark.models.Poot;
  */
 public interface IPootDAO extends ICrudDAO<Poot> {
 
+    /**
+     * Find one Poot by it's node id
+     *
+     * @param nodeId
+     * @return instance of poot or null
+     */
+    Poot findByNodeId(Long nodeId);
 }

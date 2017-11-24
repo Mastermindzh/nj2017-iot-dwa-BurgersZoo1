@@ -12,6 +12,7 @@ public class Poot {
     @Id
     private ObjectId id;
     private Long pootid;
+    private Long nodeId;
     private List<String> weetjes;
     private String dierengeluid;
 
@@ -54,5 +55,13 @@ public class Poot {
                 ", weetjes=" + weetjes +
                 ", dierengeluid='" + dierengeluid + '\'' +
                 '}';
+    }
+
+    public void setNodeId(Long nodeId) {
+        this.nodeId = nodeId;
+    }
+
+    public Long getNodeId() {
+        return nodeId;
     }
 }

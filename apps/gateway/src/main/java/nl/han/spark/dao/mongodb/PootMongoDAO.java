@@ -7,6 +7,8 @@ import nl.han.spark.util.GatewayProperties;
 import org.mongodb.morphia.Datastore;
 import org.mongodb.morphia.Key;
 import org.mongodb.morphia.Morphia;
+import org.mongodb.morphia.query.FindOptions;
+import org.mongodb.morphia.query.Query;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.List;
@@ -55,5 +57,13 @@ public class PootMongoDAO implements IPootDAO {
     @Override
     public void delete(Poot entity) {
         this.datastore.delete(entity);
+    }
+
+    @Override
+    public Poot findByNodeId(Long nodeId) {
+        Query<Poot> query = datastore.createQuery(Poot.class);
+        query.filter("nodeId ==", nodeId);
+        query.field("nodeId").equal(nodeId);
+        return query.get();
     }
 }

@@ -59,7 +59,7 @@ public class MySensorParseService {
                                    String ack, String type, String payload) throws NotFoundException {
         MyCommand command = MyCommand.getByValue(Integer.parseInt(commandType));
         MyMessage.Builder message = MyMessage.newMyMessage()
-                .nodeId(Integer.parseInt(nodeId))
+                .nodeId(Long.valueOf(nodeId))
                 .childSensorId(Integer.parseInt(childSensor))
                 .command(command)
                 .ack(Boolean.parseBoolean(ack))

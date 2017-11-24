@@ -12,7 +12,7 @@ import nl.han.MySensor.models.MyEnums.MyType;
  * @since 0.1
  */
 public class MyMessage {
-    private final int nodeId;
+    private final Long nodeId;
     private final int childSensorId;
     private final MyCommand command;
     private final boolean ack;
@@ -52,7 +52,7 @@ public class MyMessage {
 
 
     public static final class Builder {
-        private int nodeId;
+        private Long nodeId;
         private int childSensorId;
         private MyCommand command;
         private boolean ack;
@@ -68,7 +68,7 @@ public class MyMessage {
             return new MyMessage(this);
         }
 
-        public Builder nodeId(int nodeId) {
+        public Builder nodeId(Long nodeId) {
             this.nodeId = nodeId;
             return this;
         }
@@ -118,7 +118,7 @@ public class MyMessage {
         }
     }
 
-    public int getNodeId() {
+    public Long getNodeId() {
         return nodeId;
     }
 
