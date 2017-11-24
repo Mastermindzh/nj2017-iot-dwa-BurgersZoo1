@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Layout from './layout';
-import MyRangerContainer from '../containers/myRanger-container';
+import AppRoutes from '../routes/app-routes';
 
 const styles = {
   appContainer: {
@@ -16,7 +16,7 @@ class App extends React.Component {
     return (
       <div style={styles.appContainer}>
         <Layout />
-        <MyRangerContainer />
+        <AppRoutes />
       </div>
     );
   }

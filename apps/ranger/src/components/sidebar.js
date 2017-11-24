@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Paper from 'material-ui/Paper';
 import Menu from 'material-ui/Menu';
@@ -6,6 +7,8 @@ import MenuItem from 'material-ui/MenuItem';
 import AvVolumeUp from 'material-ui/svg-icons/av/volume-up';
 import AvVolumeDown from 'material-ui/svg-icons/av/volume-down';
 import ActionPets from 'material-ui/svg-icons/action/pets';
+
+import routes from '../constants/routes';
 
 const style = {
   paper: {
@@ -19,12 +22,6 @@ const style = {
   },
 };
 
-const keys = {
-  ranger: "ranger",
-  fact: "fact",
-  sound: "sound"
-};
-
 class Sidebar extends Component {
 
   handleListItemClick() {
@@ -34,10 +31,16 @@ class Sidebar extends Component {
   render() {
     return (
       <Paper style={style.paper}>
-        <Menu onItemTouchTap={(event, item) => this.handleListItemClick(item.key)}>
-          <MenuItem key={keys.ranger} primaryText="Mijn ranger" leftIcon={<ActionPets style={style.leftIcon}/>} />
-          <MenuItem key={keys.fact} primaryText="Weetjes beluisteren" leftIcon={<AvVolumeUp style={style.leftIcon} />} />
-          <MenuItem key={keys.sound} primaryText="Dierengeluiden" leftIcon={<AvVolumeDown style={style.leftIcon} />} />
+        <Menu onClick={() => this.handleListItemClick()}>
+          <NavLink to={routes.ranger}>
+            <MenuItem key={routes.ranger} primaryText="Mijn ranger" leftIcon={<ActionPets style={style.leftIcon} />} />
+          </NavLink>
+          <NavLink to={routes.fact}>
+            <MenuItem key={routes.fact} primaryText="Weetjes beluisteren" leftIcon={<AvVolumeUp style={style.leftIcon} />} />
+          </NavLink>
+          <NavLink to={routes.sound}> 
+            <MenuItem key={routes.sound} primaryText="Dierengeluiden" leftIcon={<AvVolumeDown style={style.leftIcon} />} />
+          </NavLink>
         </Menu>
       </Paper>
     );
