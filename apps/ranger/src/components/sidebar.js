@@ -9,13 +9,13 @@ import ActionPets from 'material-ui/svg-icons/action/pets';
 
 const style = {
   paper: {
-    display: 'inline-block',
-    float: 'left',
-    margin: '16px 32px 16px 0',
+    position: 'absolute',
+    zIndex: 1,
+    margin: '16px 32px 16px 0'
   },
   leftIcon: {
     textAlign: 'center',
-    lineHeight: '24px',
+    lineHeight: '24px'
   },
 };
 
