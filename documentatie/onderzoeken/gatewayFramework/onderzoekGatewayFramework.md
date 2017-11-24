@@ -1,6 +1,7 @@
 # Onderzoek gateway framework
 Onderzoeksmethode (uit de cmd method pack):
-> Naam en categorie
+
+Comparison chart uit stepping stones
 
 ## Hypothese  
 
@@ -20,14 +21,14 @@ De top 3 die ik heb gemaakt en dus ga testen zijn de volgende frameworks:
 - [2LIGHT-REST-4J - LIGHT JAVA](https://networknt.github.io/light-rest-4j/)
  
 ## Resultaat
-Beschrijf in hoeverre de test uitsluitsel heeft gegeven over de hypothese.
-
 
 | Framework | Resource gebruik | HTTP endpoints | MySensors |
 |-----------------------------|------------------|--------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Spring Boot | ~235 mb | Ja, zijn makkelijk te schrijven middels controllers. | Is uit te lezen op een apparte thread, hierop zou dan MySensors berichten geparst kunnen worden. |
 | Spark | ~58 mb | Ja, dit zijn Java 8 Lambda's. Ook lezen de Spark methodes prettig. | Dit is op dezelfde manier als uitgelezen als bij Spring. Ook in dit framework kan er een apparte thread gestart wordten waarop de MySensors berichten geparst kunnen worden. |
 | 2LIGHT-REST-4J - LIGHT JAVA | ? | Ik kreeg errors bij het gebruik van dit framework | n.v.t. |
+
+De code die ik heb gebruik bij het vergelijken is te vinden in de map `code`.
 
 ### Spring
 Spring is makkelijk op te zetten en ik had in ongeveer 10 minuten een werkend geheel. Er was 1 endpoint die reageerde op requests en de seriële poort werd gemonitoord op MySensors berichten.
