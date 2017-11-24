@@ -67,7 +67,10 @@ dbdata
 .idea
 .idea/
 
-documentatie/onderzoeken/unieke_filenames/results
+apps/*/jest_0
+apps/*/.v8flags*
+apps/*/.babel.json
+__pycache__
 
 # Created by https://www.gitignore.io/api/java,gradle,intellij,phpstorm+all,intellij+all
 
