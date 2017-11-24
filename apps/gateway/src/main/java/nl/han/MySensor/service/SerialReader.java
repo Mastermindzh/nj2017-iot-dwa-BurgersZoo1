@@ -4,7 +4,11 @@ import gnu.io.CommPortIdentifier;
 import gnu.io.SerialPort;
 import gnu.io.SerialPortEvent;
 import gnu.io.SerialPortEventListener;
+import nl.han.MySensor.models.MyMessage;
+import nl.han.spark.exceptions.NotFoundException;
 import nl.han.spark.util.GatewayProperties;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -40,6 +44,15 @@ public class SerialReader implements SerialPortEventListener {
      * Default bits per second for COM port.
      */
     private static final int DATA_RATE = 115200;
+
+    private MySensorParseService parseService;
+    private MySensorService mySensorService;
+    private static Logger logger = LoggerFactory.getLogger(SerialReader.class.getName());
+
+    public SerialReader() {
+        this.parseService = new MySensorParseService();
+        this.mySensorService = new MySensorService();
+    }
 
     public void initialize() {
         String arduinoPort = GatewayProperties.getProperty("arduino.port");
@@ -104,9 +117,17 @@ public class SerialReader implements SerialPortEventListener {
         if (oEvent.getEventType() == SerialPortEvent.DATA_AVAILABLE) {
             try {
                 String inputLine = input.readLine();
-                System.out.println(inputLine);
+                logger.debug(String.format("NRF Message: %s", inputLine));
+                try {
+                    MyMessage message = this.parseService.parseMessage(inputLine);
+                    logger.debug("Message: " + message.toString());
+                    this.mySensorService.handleIncomingMessage(message);
+                } catch (NotFoundException e) {
+                    logger.error("Message was: " + inputLine);
+                    logger.error("No message", e);
+                }
             } catch (Exception e) {
-                System.err.println(e.toString());
+                logger.error("Error while reading serial port", e);
             }
         }
         // Ignore all the other eventTypes, but you should consider the other ones.
