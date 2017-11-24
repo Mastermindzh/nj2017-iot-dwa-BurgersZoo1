@@ -21,6 +21,8 @@ Er zal gebruik gemaakt worden van 1 repo met per product een map.
 De workflow:
 ![Workflow](nj2017-iot-dwa-BurgersZoo1/groepsprocess/20171113_161454.jpg  "Workflow")
 
+Overal wordt het woord 'poot' gebruikt voor het fisieke ding waar kinderen naar zoeken. Dus niet 'pootje' en niet 'scanpunt' en niet 'paal'.
+
 ## Deliverables
 
 In het kort de dingen die we op willen leveren:

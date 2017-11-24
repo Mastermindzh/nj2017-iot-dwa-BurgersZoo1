@@ -1,0 +1,30 @@
+{
+  "name": "pas",
+  "plural": "passen",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "id": {
+      "type": "number",
+      "required": true
+    },
+    "active": {
+      "type": "boolean",
+      "required": true,
+      "default": false
+    }
+  },
+  "validations": [],
+  "relations": {
+    "ranger": {
+      "type": "hasOne",
+      "model": "ranger",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

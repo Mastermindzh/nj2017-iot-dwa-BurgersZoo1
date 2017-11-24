@@ -252,8 +252,6 @@ gradle-app.setting
 
 # End of https://www.gitignore.io/api/java,gradle,intellij,phpstorm+all,intellij+all
 
-apps/*/jest_0
-apps/*/.v8flags*
-apps/*/.babel.json
-__pycache__
+
+.DS_Store
 
