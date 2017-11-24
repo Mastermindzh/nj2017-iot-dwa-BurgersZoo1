@@ -7,10 +7,7 @@ import org.junit.Test;
 import spark.Spark;
 
 /**
- * CLASS DESCRIPTION
- *
- * @author Thomas
- * @since 0.1
+ * todo: create tests....
  */
 public class PotenControllerTest {
 

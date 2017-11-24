@@ -8,7 +8,7 @@ import java.util.Map;
 import java.util.Properties;
 
 /**
- * CLASS DESCRIPTION
+ * Class handles the retrieving of properties from the properties file
  *
  * @author Thomas
  * @since 0.1

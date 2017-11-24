@@ -5,7 +5,7 @@ import nl.han.exceptions.NotOnlineException;
 import nl.han.models.Poot;
 
 /**
- * CLASS DESCRIPTION
+ * Poten service, this class wel provide some persistence methods
  *
  * @author Thomas
  * @since 0.1

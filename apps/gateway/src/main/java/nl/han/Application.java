@@ -48,7 +48,7 @@ public class Application {
      * Setup Spark settings
      */
     private void setupSpark() {
-        int port = 8080;
+        int port = 8080; // fallback port
         if (GatewayProperties.getProperty("spark.port") == null) {
             port = Integer.parseInt(GatewayProperties.getProperty("spark.port"));
         }

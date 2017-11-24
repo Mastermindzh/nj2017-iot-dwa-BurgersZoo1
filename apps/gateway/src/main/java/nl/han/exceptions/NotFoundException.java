@@ -1,7 +1,7 @@
 package nl.han.exceptions;
 
 /**
- * CLASS DESCRIPTION
+ * Exception can be thrown when an object cannot be found
  *
  * @author Thomas
  * @since 0.1

@@ -1,7 +1,7 @@
 package nl.han.exceptions;
 
 /**
- * CLASS DESCRIPTION
+ * Excpetion that can be thrown when a Poot is not online
  *
  * @author Thomas
  * @since 0.1
