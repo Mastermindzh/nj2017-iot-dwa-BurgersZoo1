@@ -1,10 +1,10 @@
 package nl.han.spark.controller;
 
 import com.google.gson.Gson;
+import nl.han.spark.exceptions.NotFoundException;
 import nl.han.spark.exceptions.NotOnlineException;
 import nl.han.spark.models.Poot;
 import nl.han.spark.service.PotenService;
-import nl.han.spark.exceptions.NotFoundException;
 import spark.Request;
 import spark.Response;
 
@@ -37,6 +37,7 @@ public class PotenController {
         Long transactionID;
         try {
             transactionID = this.potenService.savePootConfig(poot);
+            response.type("application/json");
         } catch (NotFoundException ex) {
             response.status(404);
             return ex.getMessage();

@@ -16,21 +16,31 @@ public class Application {
 
         application.setupSpark();
         application.setupSerial();
+        application.registerRoutes();
 
+//        /**
+//         * Add header to all responses
+//         */
+////        after((req, res) -> {
+////            if (res.type() == null && res.status() != 404) {
+////                res.type("application/json");
+////            }
+////        });
+
+
+    }
+
+    /**
+     * Register all routes and controllers within the application
+     */
+    private void registerRoutes() {
         get("/", (req, res) -> "Gateway api");
-        new PotenController();
-
-
-        /**
-         * Add header to all responses
-         */
-        after((req, res) -> {
-            if (res.type() == null) {
-                res.type("application/json");
-            }
+        post("/test/:poot", (request, response) -> {
+            System.out.println(request.params());
+            System.out.println(request.body());
+            return "";
         });
-
-
+        new PotenController();
     }
 
     /**
@@ -48,13 +58,13 @@ public class Application {
      */
     private void setupSpark() {
         int port = 8080; // fallback port
-        if (GatewayProperties.getProperty("spark.port") == null) {
-            port = Integer.parseInt(GatewayProperties.getProperty("spark.port"));
+        if (GatewayProperties.getProperty("server.port") == null) {
+            port = Integer.parseInt(GatewayProperties.getProperty("server.port"));
         }
         port(port);
 
-        if (GatewayProperties.getProperty("spark.debug") == null) {
-            boolean debug = Boolean.parseBoolean(GatewayProperties.getProperty("spark.debug"));
+        if (GatewayProperties.getProperty("server.debug") == null) {
+            boolean debug = Boolean.parseBoolean(GatewayProperties.getProperty("server.debug"));
             if (debug) {
                 enableDebugScreen();
             }
