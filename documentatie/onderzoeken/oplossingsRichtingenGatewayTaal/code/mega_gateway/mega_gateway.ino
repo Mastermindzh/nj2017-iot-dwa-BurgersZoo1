@@ -1,7 +1,7 @@
 /**
    Gateway for the Arduino Mega ADK.
 */
-//#define MY_DEBUG
+//#define MY_DEBUG/
 
 #define NODE_ID AUTO
 #define MY_RADIO_NRF24
