@@ -13,6 +13,6 @@ import nl.han.spark.dao.IPootDAO;
 public class DAOFactoryMongoImpl extends DAOFactory implements IDAOFactory {
     @Override
     public IPootDAO getPootDAO() {
-        return new PootDAO();
+        return new PootMongoDAO();
     }
 }

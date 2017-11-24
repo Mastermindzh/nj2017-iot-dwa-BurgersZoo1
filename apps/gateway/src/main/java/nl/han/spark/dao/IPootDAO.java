@@ -3,7 +3,7 @@ package nl.han.spark.dao;
 import nl.han.spark.models.Poot;
 
 /**
- * CLASS DESCRIPTION
+ * IPootDAO
  *
  * @author Thomas
  * @since 0.1
