@@ -11,9 +11,9 @@ In de development deployment worden de softwareproducten gedraaid met hun built-
 
 Dit staat ons toe om snel te schakelen tussen de verschillende producten aangezien er niks gebuild hoeft te worden.
 
-![development](./development.png)
+![development](./images/development.png)
 
 ## Productie versie
 
 
-![development](./final%20deployment.png)
+![development](./images/final%20deployment.png)

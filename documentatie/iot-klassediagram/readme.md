@@ -1,6 +1,6 @@
 # Class Diagram IoT Poot
 
-![Class%20diagram%20IoT%20v1.png](Class%20diagram%20IoT%20v1.png)
+![Class%20diagram%20IoT%20v1.png](./images/Class%20diagram%20IoT%20v1.png)
 
 #### Poot
 De `Poot` klasse is soortvan de baas van het management van alle subsysteempjes die op de poot draaien. Zo zal deze klasse de globale business logica implementeren. De `Poot` zal vanuit de ranger-detectie module te horen krijgen dat er een ranger voor de poot staat en zal de poot module de audio module en de logging module aansturen om hierop te reageren.
@@ -11,13 +11,13 @@ De `Poot` klasse zorgt ook voor registratie en aanmelden van de poot bij de gate
 Deze is verantwoordelijk voor het detecteren van welke ranger er voor de paal staat. Op dit moment wordt deze geimplementeerd door een RFID-lezer uit te lezen en de data uit de pasjes te lezen. De `RangerDetector` rapporteert terug naar `Poot` zodat de `Poot` kan besluiten wat te doen met dit event.
 
 #### GatewayLink
-Alle communicatie naar de gateway wordt gedaan door de `GatewayLink`. Zo zal de `Gatewaylink` methodes hebben waarmee de `Logging`, `RangerDetector` en `Downloader`  
+Alle communicatie naar de gateway wordt gedaan door de `GatewayLink`. Zo zal de `Gatewaylink` methodes hebben waarmee de `Logging`, `RangerDetector` en `Downloader`
 
 #### Logging
 Deze module verzamelt informatie die te maken heeft met de uitvoering en omgeving van de poot. Bijvoorbeeld temperatuur, luchtvochtigheid, stroomverbruik en communicatie-informatie. Logging geeft de verzamelde informatie door aan de `GatewayLink` die zorgt dat deze informatie bij de gateway aankomt.
 
 ##### TempSensor
-Een klasse die een fisieke thermometer beheert. Deze thermometer wordt uitgelezen door de `Logging`. 
+Een klasse die een fisieke thermometer beheert. Deze thermometer wordt uitgelezen door de `Logging`.
 
 ##### HumiditySensor
 Een klasse die een fisieke luchtvochtiheidsmeter beheert. Deze luchtvochtimeter wordt uitgelezen door de `Logging`.
