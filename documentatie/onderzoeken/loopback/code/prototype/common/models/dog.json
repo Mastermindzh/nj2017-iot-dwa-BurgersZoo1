@@ -1,0 +1,29 @@
+{
+  "name": "dog",
+  "plural": "dogs",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "age": {
+      "type": "number",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "toys": {
+      "type": "hasMany",
+      "model": "toy",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}
