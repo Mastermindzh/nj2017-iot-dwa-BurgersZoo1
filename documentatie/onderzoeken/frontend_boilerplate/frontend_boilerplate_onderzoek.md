@@ -75,7 +75,7 @@ Om geschikte kandidaat tools te vinden is er op Google gezocht naar "react redux
 ## Resultaat
 In de onderstaande tabel staan de onderzoeksbevindingen in een comparison chart:
 
-![Comparison chart](https://github.com/HANICA-MinorMulti/nj2017-iot-dwa-BurgersZoo1/blob/onderzoek/boilerplateGenerator/documentatie/onderzoeken/frontend_boilerplate/ComparisonChartBoilerplate.png)
+![Comparison chart](https://github.com/HANICA-MinorMulti/nj2017-iot-dwa-BurgersZoo1/blob/master/documentatie/onderzoeken/frontend_boilerplate/ComparisonChartBoilerplate.png)
 
 ## Conclusie
 De hypothese *'Create React App is de meest geschikte tool om client-side boilerplate code te genereren'* is niet bevestigd. De meeste geschikte tool is React Slingshot. Deze tool heeft niet alleen een 100% score, maar is ook de enige tool die positief scoort op de belangrijkste eis: direct kunnen ontwikkelen. Voor het Burgers' Zoo project wordt daarom React Slingshot gebruikt.
