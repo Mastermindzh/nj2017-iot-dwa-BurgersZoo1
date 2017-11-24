@@ -1,9 +1,10 @@
-package nl.han;
+package nl.han.MySensor.service;
 
 import gnu.io.CommPortIdentifier;
 import gnu.io.SerialPort;
 import gnu.io.SerialPortEvent;
 import gnu.io.SerialPortEventListener;
+import nl.han.spark.util.GatewayProperties;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -41,9 +42,8 @@ public class SerialReader implements SerialPortEventListener {
     private static final int DATA_RATE = 115200;
 
     public void initialize() {
-        // the next line is for Raspberry Pi and
-        // gets us into the while loop and was suggested here was suggested http://www.raspberrypi.org/phpBB3/viewtopic.php?f=81&t=32186
-        System.setProperty("gnu.io.rxtx.SerialPorts", "COM3");
+        String arduinoPort = GatewayProperties.getProperty("arduino.port");
+        System.setProperty("gnu.io.rxtx.SerialPorts", arduinoPort);
 
         CommPortIdentifier portId = null;
         Enumeration portEnum = CommPortIdentifier.getPortIdentifiers();

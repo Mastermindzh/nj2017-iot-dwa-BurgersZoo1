@@ -1,14 +1,14 @@
-package nl.han.controller;
+package nl.han.spark.controller;
 
 import com.google.gson.Gson;
-import nl.han.exceptions.NotOnlineException;
-import nl.han.models.Poot;
-import nl.han.service.PotenService;
-import nl.han.exceptions.NotFoundException;
+import nl.han.spark.exceptions.NotOnlineException;
+import nl.han.spark.models.Poot;
+import nl.han.spark.service.PotenService;
+import nl.han.spark.exceptions.NotFoundException;
 import spark.Request;
 import spark.Response;
 
-import static nl.han.util.transformers.JsonUtil.json;
+import static nl.han.spark.util.transformers.JsonUtil.json;
 import static spark.Spark.put;
 
 public class PotenController {

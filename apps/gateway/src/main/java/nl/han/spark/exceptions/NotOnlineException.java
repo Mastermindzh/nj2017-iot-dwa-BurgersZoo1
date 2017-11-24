@@ -1,4 +1,4 @@
-package nl.han.exceptions;
+package nl.han.spark.exceptions;
 
 /**
  * Excpetion that can be thrown when a Poot is not online

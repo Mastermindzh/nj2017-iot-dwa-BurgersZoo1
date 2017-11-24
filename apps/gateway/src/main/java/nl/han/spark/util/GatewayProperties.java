@@ -1,4 +1,4 @@
-package nl.han.util;
+package nl.han.spark.util;
 
 import nl.han.Application;
 

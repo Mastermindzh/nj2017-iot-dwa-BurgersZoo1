@@ -1,8 +1,8 @@
-package nl.han.service;
+package nl.han.spark.service;
 
-import nl.han.exceptions.NotFoundException;
-import nl.han.exceptions.NotOnlineException;
-import nl.han.models.Poot;
+import nl.han.spark.exceptions.NotFoundException;
+import nl.han.spark.exceptions.NotOnlineException;
+import nl.han.spark.models.Poot;
 
 /**
  * Poten service, this class wel provide some persistence methods

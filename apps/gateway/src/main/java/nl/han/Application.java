@@ -1,7 +1,8 @@
 package nl.han;
 
-import nl.han.controller.PotenController;
-import nl.han.util.GatewayProperties;
+import nl.han.MySensor.service.SerialReader;
+import nl.han.spark.controller.PotenController;
+import nl.han.spark.util.GatewayProperties;
 
 import static spark.Spark.*;
 import static spark.debug.DebugScreen.enableDebugScreen;
@@ -12,8 +13,6 @@ public class Application {
     public static void main(String[] args) {
 
         Application application = new Application();
-
-
 
         application.setupSpark();
         application.setupSerial();

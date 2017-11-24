@@ -1,4 +1,4 @@
-package nl.han.models;
+package nl.han.spark.models;
 
 import java.util.List;
 
