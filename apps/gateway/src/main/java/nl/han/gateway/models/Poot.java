@@ -1,12 +1,27 @@
-package nl.han.models;
+package nl.han.gateway.models;
+
+import org.bson.types.ObjectId;
+import org.mongodb.morphia.annotations.Entity;
+import org.mongodb.morphia.annotations.Id;
 
 import java.util.List;
 
+@Entity
 public class Poot {
 
+    @Id
+    private ObjectId id;
     private Long pootid;
     private List<String> weetjes;
     private String dierengeluid;
+
+    public ObjectId getId() {
+        return id;
+    }
+
+    public void setId(ObjectId id) {
+        this.id = id;
+    }
 
     public Long getPootid() {
         return pootid;

@@ -1,4 +1,4 @@
-package nl.han.exceptions;
+package nl.han.gateway.exceptions;
 
 /**
  * Exception can be thrown when an object cannot be found

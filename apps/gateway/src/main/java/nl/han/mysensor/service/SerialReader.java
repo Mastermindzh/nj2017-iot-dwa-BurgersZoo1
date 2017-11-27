@@ -1,9 +1,11 @@
-package nl.han;
+package nl.han.mysensor.service;
 
-import gnu.io.CommPortIdentifier;
-import gnu.io.SerialPort;
-import gnu.io.SerialPortEvent;
-import gnu.io.SerialPortEventListener;
+import gnu.io.*;
+import nl.han.mysensor.models.MyMessage;
+import nl.han.gateway.exceptions.NotFoundException;
+import nl.han.gateway.util.GatewayProperties;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -40,10 +42,19 @@ public class SerialReader implements SerialPortEventListener {
      */
     private static final int DATA_RATE = 115200;
 
+    private MySensorParseService parseService;
+    private MySensorService mySensorService;
+    private static Logger logger = LoggerFactory.getLogger(SerialReader.class.getName());
+
+    public SerialReader() {
+        this.parseService = new MySensorParseService();
+        this.mySensorService = new MySensorService();
+    }
+
     public void initialize() {
-        // the next line is for Raspberry Pi and
-        // gets us into the while loop and was suggested here was suggested http://www.raspberrypi.org/phpBB3/viewtopic.php?f=81&t=32186
-        System.setProperty("gnu.io.rxtx.SerialPorts", "COM3");
+        String arduinoPort = GatewayProperties.getProperty("arduino.port");
+        System.out.println(arduinoPort);
+        System.setProperty("gnu.io.rxtx.SerialPorts", arduinoPort);
 
         CommPortIdentifier portId = null;
         Enumeration portEnum = CommPortIdentifier.getPortIdentifiers();
@@ -104,9 +115,17 @@ public class SerialReader implements SerialPortEventListener {
         if (oEvent.getEventType() == SerialPortEvent.DATA_AVAILABLE) {
             try {
                 String inputLine = input.readLine();
-                System.out.println(inputLine);
+                logger.debug(String.format("NRF Message: %s", inputLine));
+                try {
+                    MyMessage message = this.parseService.parseMessage(inputLine);
+                    logger.debug(String.format("Message: %s", message.toString()));
+                    this.mySensorService.handleIncomingMessage(message);
+                } catch (NotFoundException e) {
+                    logger.error("Message was: " + inputLine);
+                    logger.error("No message", e);
+                }
             } catch (Exception e) {
-                System.err.println(e.toString());
+                logger.error("Error while reading serial port", e);
             }
         }
         // Ignore all the other eventTypes, but you should consider the other ones.

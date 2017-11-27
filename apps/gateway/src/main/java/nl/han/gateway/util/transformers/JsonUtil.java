@@ -1,4 +1,4 @@
-package nl.han.util.transformers;
+package nl.han.gateway.util.transformers;
 
 import com.google.gson.Gson;
 import spark.ResponseTransformer;
