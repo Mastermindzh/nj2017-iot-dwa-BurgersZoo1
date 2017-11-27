@@ -9,6 +9,7 @@ import nl.han.gateway.service.PotenService;
 import spark.Request;
 import spark.Response;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static nl.han.gateway.util.transformers.JsonUtil.json;
@@ -24,6 +25,11 @@ public class PotenController {
 
         put("/poten/:pootid", (this::savePootConfiguration), json());
         get("/poten", (this::getAllPoten), json());
+        get("/poten/:pootid", (this::getPoot), json());
+    }
+
+    private Poot getPoot(Request request, Response response) {
+        return this.potenService.getPoot(Integer.parseInt(request.params("pootid")));
     }
 
 
