@@ -1,29 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { withStyles } from 'material-ui/styles';
+import style from '../styles/style';
 
 import Layout from './layout';
-import AppRoutes from '../routes/app-routes';
-
-const styles = {
-  appContainer: {
-    display: 'flex',
-    flexDirection: 'column'
-  }
-};
 
 class App extends React.Component {
   render() {
     return (
-      <div style={styles.appContainer}>
+      <div>
         <Layout />
-        <AppRoutes />
       </div>
     );
   }
 }
 
 App.propTypes = {
-  children: PropTypes.element
+  classes: PropTypes.object.isRequired,
+  theme: PropTypes.object.isRequired,
 };
 
-export default App;
+export default withStyles(style, { withTheme: true })(App);
