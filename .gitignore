@@ -71,6 +71,7 @@ apps/*/jest_0
 apps/*/.v8flags*
 apps/*/.babel.json
 __pycache__
+documentatie/onderzoeken/unieke_filenames/results
 
 # Created by https://www.gitignore.io/api/java,gradle,intellij,phpstorm+all,intellij+all
 
@@ -131,7 +132,8 @@ fabric.properties
 ### Intellij Patch ###
 # Comment Reason: https://github.com/joeblau/gitignore.io/issues/186#issuecomment-215987721
 
-# *.iml
+
+*.iml
 # modules.xml
 # .idea/misc.xml
 # *.ipr
@@ -252,6 +254,4 @@ gradle-app.setting
 
 # End of https://www.gitignore.io/api/java,gradle,intellij,phpstorm+all,intellij+all
 
-
 .DS_Store
-
