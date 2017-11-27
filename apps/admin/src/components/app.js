@@ -1,18 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { withStyles } from 'material-ui/styles';
+import style from '../styles/style';
+
+import Layout from './layout';
 
 class App extends React.Component {
+
   render() {
+
     return (
       <div>
-        <h1>Welcome to the Burgers' Zoo admin app</h1>
+        <Layout />
       </div>
     );
   }
 }
 
 App.propTypes = {
-  children: PropTypes.element
+  classes: PropTypes.object.isRequired,
+  theme: PropTypes.object.isRequired,
 };
 
-export default App;
+export default withStyles(style, { withTheme: true })(App);
