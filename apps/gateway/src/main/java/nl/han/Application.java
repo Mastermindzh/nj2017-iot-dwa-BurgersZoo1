@@ -1,8 +1,8 @@
 package nl.han;
 
-import nl.han.MySensor.service.SerialReader;
-import nl.han.spark.controller.PotenController;
-import nl.han.spark.util.GatewayProperties;
+import nl.han.mysensor.service.SerialReader;
+import nl.han.gateway.controller.PotenController;
+import nl.han.gateway.util.GatewayProperties;
 
 import static spark.Spark.*;
 import static spark.debug.DebugScreen.enableDebugScreen;
