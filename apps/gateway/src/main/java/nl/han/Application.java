@@ -58,12 +58,12 @@ public class Application {
      */
     private void setupSpark() {
         int port = 8080; // fallback port
-        if (GatewayProperties.getProperty("server.port") == null) {
+        if (GatewayProperties.hasProperty("server.port")) {
             port = Integer.parseInt(GatewayProperties.getProperty("server.port"));
         }
         port(port);
 
-        if (GatewayProperties.getProperty("server.debug") == null) {
+        if (GatewayProperties.hasProperty("server.debug")) {
             boolean debug = Boolean.parseBoolean(GatewayProperties.getProperty("server.debug"));
             if (debug) {
                 enableDebugScreen();

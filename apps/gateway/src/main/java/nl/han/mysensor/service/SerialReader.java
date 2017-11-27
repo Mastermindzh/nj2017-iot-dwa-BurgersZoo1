@@ -76,7 +76,6 @@ public class SerialReader implements SerialPortEventListener {
 
         try {
             // open serial port, and use class name for the appName.
-//            serialPort = (SerialPort) portIdentifier.open(portIdentifier.getName(), TIME_OUT);
             serialPort = (SerialPort) portId.open(this.getClass().getName(),
                     TIME_OUT);
 

@@ -23,10 +23,25 @@ public class GatewayProperties {
      * @return property
      */
     public static String getProperty(String propertyName) {
-        if(GatewayProperties.properties == null){
+        if (GatewayProperties.properties == null) {
             GatewayProperties.loadProperties();
         }
         return GatewayProperties.properties.get(propertyName);
+    }
+
+    /**
+     * Checks if a property exists
+     *
+     * If a property exists, but doesn't have a value, this method will still return true
+     *
+     * @param propertyName Property name of the property to check
+     * @return
+     */
+    public static boolean hasProperty(String propertyName) {
+        if (GatewayProperties.properties == null) {
+            GatewayProperties.loadProperties();
+        }
+        return GatewayProperties.properties.get(propertyName) != null;
     }
 
     private static void loadProperties() {
