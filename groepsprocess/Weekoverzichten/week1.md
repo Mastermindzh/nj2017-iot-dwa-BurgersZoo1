@@ -1,5 +1,5 @@
 # Week 1
-###Wat is er gedaan:
+### Wat is er gedaan:
 - Kennismakingsgesprek
 - Verkort Plan van Aanpak opgesteld
 - Groepsafspraken gemaakt voor groep 1
@@ -8,7 +8,7 @@
 - Domeinmodel gemaakt
 - Onderzoeken
 
-###Resultaten:
+### Resultaten:
 - domeinmodel
 - architectuurschets
 - eerste opzet welke data er opgeslagen wordt voor de backend
@@ -26,7 +26,7 @@
 - Wat is er belangrijk? --> Plan van Aanpak (Asher)
 
 
-##Planning week 2:
+## Planning week 2:
 - Use Case Diagram
 - Use Cases uitwerken
 - Interface specificatie van de Gateway (welke data wordt verwacht/verzonden)
@@ -38,5 +38,5 @@
 - Database is opgezet
 - Er is een testscript met voorbeelddata
 
-###Doel week 2:
+### Doel week 2:
 Het doel dat we willen bereiken aan het einde van week 2 is dat de Gateway kan praten met de backend die op de server staat en visa versa.

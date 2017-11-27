@@ -1,7 +1,7 @@
 domeinmodel
 ==
 
-![domeinmodel.png](domeinmodel.png)
+![domeinmodel.png](./images/domeinmodel.png)
 
 Wanneer een kind voor het eerst een pas krijgt wordt de pas gekoppeld aan een nieuwe Ranger. Vanaf dat moment is het kind een ranger. Bij een ranger hoort een rangercode die het kind kan gebruiken om de volgende keer dat het kind bij burgers zoo komt verder te gaan als de zelfde ranger.
 
