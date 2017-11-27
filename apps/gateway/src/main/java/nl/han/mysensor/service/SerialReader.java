@@ -118,6 +118,7 @@ public class SerialReader implements SerialPortEventListener {
                 logger.debug(String.format("NRF Message: %s", inputLine));
                 try {
                     MyMessage message = this.parseService.parseMessage(inputLine);
+                    System.out.println(message.toString());
                     logger.debug(String.format("Message: %s", message.toString()));
                     this.mySensorService.handleIncomingMessage(message);
                 } catch (NotFoundException e) {

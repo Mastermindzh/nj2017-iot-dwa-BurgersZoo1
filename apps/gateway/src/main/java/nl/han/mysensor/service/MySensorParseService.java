@@ -3,7 +3,7 @@ package nl.han.mysensor.service;
 import nl.han.mysensor.models.myenums.MyCommand;
 import nl.han.mysensor.models.myenums.MyInternal;
 import nl.han.mysensor.models.myenums.MyPresentationType;
-import nl.han.mysensor.models.myenums.MyType;
+import nl.han.mysensor.models.myenums.MyDataTypes;
 import nl.han.mysensor.models.MyMessage;
 import nl.han.gateway.exceptions.NotFoundException;
 
@@ -19,7 +19,7 @@ import java.util.regex.Pattern;
 public class MySensorParseService {
 
     private static final String MESSAGE_PATTERN
-            = "([0-9]+);([0-9]+);([0-9]+);([0|1]);([0-9]+);([a-zA-Z0-9 ;\\->.]+)";
+            = "([0-9]+);([0-9]+);([0-9]+);([0|1]);([0-9]+);(.+)";
     private static final Pattern pattern = Pattern.compile(MESSAGE_PATTERN);
 
 
@@ -58,19 +58,22 @@ public class MySensorParseService {
     private MyMessage buildMessage(String nodeId, String childSensor, String commandType,
                                    String ack, String type, String payload) throws NotFoundException {
         MyCommand command = MyCommand.getByValue(Integer.parseInt(commandType));
-        MyMessage.Builder message = MyMessage.newMyMessage()
+        MyMessage.Builder messageBuilder = MyMessage.newMyMessage()
                 .nodeId(Long.valueOf(nodeId))
                 .childSensorId(Integer.parseInt(childSensor))
                 .command(command)
                 .ack(Boolean.parseBoolean(ack))
                 .payload(payload);
+
         if (command == MyCommand.PRESENTATION) {
-            message.presentationType(MyPresentationType.getByValue(Integer.parseInt(type)));
-        } else if (command == MyCommand.SET || command == MyCommand.REQ) {
-            message.type(MyType.getByValue(Integer.parseInt(type)));
-        }else if(command == MyCommand.INTERNAL){
-            message.internalType(MyInternal.getByValue(Integer.parseInt(type)));
+            messageBuilder.presentationType(MyPresentationType.getByValue(Integer.parseInt(type)));
+        } else if (command == MyCommand.SET) {
+            messageBuilder.setDataType(MyDataTypes.getByValue(Integer.parseInt(type)));
+        } else if (command == MyCommand.REQ) {
+            messageBuilder.reqDataType(MyDataTypes.getByValue(Integer.parseInt(type)));
+        } else if (command == MyCommand.INTERNAL) {
+            messageBuilder.internal(MyInternal.getByValue(Integer.parseInt(type)));
         }
-        return message.build();
+        return messageBuilder.build();
     }
 }

@@ -7,6 +7,7 @@ import nl.han.gateway.dao.IPootDAO;
 import nl.han.gateway.models.Poot;
 import nl.han.gateway.util.GatewayProperties;
 import nl.han.mysensor.models.MyMessage;
+import nl.han.mysensor.models.MyPresentationMessage;
 import nl.han.mysensor.models.myenums.MyCommand;
 import nl.han.mysensor.models.myenums.MyPresentationType;
 import okhttp3.*;
@@ -46,8 +47,11 @@ public class MySensorService {
     public void handleIncomingMessage(MyMessage message) {
         logger.info(String.format("new message: %s", message.toString()));
         if (message.getCommand() == MyCommand.PRESENTATION) {
-            if (message.getPresentationType() != MyPresentationType.S_ARDUINO_REPEATER_NODE) {
-                this.newNodeSubscribe(message);
+            if (message instanceof MyPresentationMessage) {
+                if (((MyPresentationMessage) message).getPresentationType()
+                        != MyPresentationType.S_ARDUINO_REPEATER_NODE) {
+                    this.newNodeSubscribe(message);
+                }
             }
         }
 //        try {
