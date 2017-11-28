@@ -140,14 +140,14 @@ module.exports = function (Poot) {
       type: 'number',
       http: {source: 'body'}
     }],
-    http: {path: '/poten/update/:transactieid', verb: 'put'},
+    http: {path: '/update/:transactieid', verb: 'put'},
     returns: {arg: 'message', type: 'string', root: true}
   });
 
   Poot.remoteMethod('getPootid', {
     description: 'Registreren van een nieuw poot. Response bevat het nieuw aangemaakte poot.',
     accepts: [],
-    http: {path: '/veryinterestingendpoint', verb: 'post'},
+    http: {path: '/:pootid/veryinterestingendpoint', verb: 'post'},
     returns: {arg: 'message', type: 'string', root: true}
   });
 
