@@ -147,7 +147,7 @@ module.exports = function (Poot) {
   Poot.remoteMethod('getPootid', {
     description: 'Registreren van een nieuw poot. Response bevat het nieuw aangemaakte poot.',
     accepts: [],
-    http: {path: '/:pootid/veryinterestingendpoint', verb: 'post'},
+    http: {path: '/:pootid/new', verb: 'post'},
     returns: {arg: 'message', type: 'string', root: true}
   });
 
