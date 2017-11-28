@@ -8,7 +8,7 @@ module.exports = function (Poot) {
       include: [{relation: 'weetje'}, {relation: 'dierengeluid'}]
     }, function (err, result) {
       if (err) cb(err, null);
-      if(!result){cb('empty result', null)}
+      if(result === undefined){cb('empty result', null)}
       var temp = result.toJSON();
       var weetjes = temp.weetje.map(function (x) {
         return x.bestandspad
@@ -53,7 +53,7 @@ module.exports = function (Poot) {
       include: {relation: 'ranger'}
     }, function (err, result) {
       if (err) cb(err, null);
-      if(!result){cb('empty result', null)}
+      if(result === undefined){cb('empty result', null)}
       rangerid = (result.toJSON()).ranger.id;
 
 //zoek het speurpunt bij het pootid uit de request
@@ -61,7 +61,7 @@ module.exports = function (Poot) {
         where: {pootid: pootid}
       }, function (err, result) {
         if (err) cb(err, null);
-        if(!result){cb('empty result', null)}
+        if(result === undefined){cb('empty result', null)}
         speurpuntid = result.toJSON().id;
         //todo datum
         result = {rangerid: rangerid, speurpuntid: speurpuntid, datum: Date.now()};
