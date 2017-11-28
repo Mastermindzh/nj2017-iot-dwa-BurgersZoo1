@@ -7,8 +7,9 @@ module.exports = function (Poot) {
       where: {pootid: pootid},
       include: [{relation: 'weetje'}, {relation: 'dierengeluid'}]
     }, function (err, result) {
-      if (err) console.log(err);
-      var temp = result.toJSON()
+      if (err) cb(err, null);
+      if(!result){cb('empty result', null)}
+      var temp = result.toJSON();
       var weetjes = temp.weetje.map(function (x) {
         return x.bestandspad
       })
@@ -35,7 +36,7 @@ module.exports = function (Poot) {
   Poot.afterRemote('sendLog', function (ctx, result, next) {
     console.log('in after remote: ' + result);
     app.models.Logging.create(result, function (err, obj) {
-      if (err) console.log(err);
+      if (err) next(err, null);
       console.log(obj)
       next(null, 'logging opgeslagen');
     })
@@ -51,14 +52,16 @@ module.exports = function (Poot) {
       where: {pasid: pasid},
       include: {relation: 'ranger'}
     }, function (err, result) {
-      if (err) console.log(err);
+      if (err) cb(err, null);
+      if(!result){cb('empty result', null)}
       rangerid = (result.toJSON()).ranger.id;
 
 //zoek het speurpunt bij het pootid uit de request
       app.models.Speurpunt.findOne({
         where: {pootid: pootid}
       }, function (err, result) {
-        if (err) console.log(err);
+        if (err) cb(err, null);
+        if(!result){cb('empty result', null)}
         speurpuntid = result.toJSON().id;
         //todo datum
         result = {rangerid: rangerid, speurpuntid: speurpuntid, datum: Date.now()};
@@ -73,7 +76,7 @@ module.exports = function (Poot) {
     console.log('in after remote scan');
     console.log('result: ' + JSON.stringify(result));
     app.models.RangerHeeftBezocht.create(result, function(err, obj){
-      if(err) console.log(err);
+      if(err) next(err, null);
       next(null, 'successful');
     })
 
@@ -85,7 +88,7 @@ module.exports = function (Poot) {
 
   Poot.getPootid = function (cb) {
     Poot.find({fields: {pootid: true, id: false}}, function (err, poten) {
-      if (err) console.log(err);
+      if (err) cb(err, null);
       var ids = poten.map(function (x) {
         return x.pootid
       });
@@ -99,7 +102,7 @@ module.exports = function (Poot) {
   };
   Poot.afterRemote('getPootid', function (ctx, result, next) {
     Poot.create(result, function (err, obj) {
-      if (err) console.log(err);
+      if (err) next(err, null);
       next();
     })
   });
@@ -108,7 +111,7 @@ module.exports = function (Poot) {
     description: 'Het opvragen van de configuratie van een specifieke poot.',
     accepts: {arg: 'pootid', type: 'number', http: {source: 'path'}},
     http: {path: '/:pootid/config', verb: 'get'},
-    returns: {arg: 'pootid', type: 'Object', root: true}
+    returns: {errorStatus: '400',arg: 'pootid', type: 'Object', root: true}
   });
 
   Poot.remoteMethod('sendLog', {
@@ -118,7 +121,7 @@ module.exports = function (Poot) {
       type: 'number',
       http: {source: 'path'}
     }],
-    http: {path: '/:pootid/logs', verb: 'post'},
+    http: {errorStatus: '400',path: '/:pootid/logs', verb: 'post'},
     returns: {arg: 'message', type: 'string', root: true}
   });
 
@@ -129,7 +132,7 @@ module.exports = function (Poot) {
       type: 'number',
       http: {source: 'path'}
     }],
-    http: {path: '/:pootid/scan', verb: 'post'},
+    http: {errorStatus: '400',path: '/:pootid/scan', verb: 'post'},
     returns: {arg: 'message', type: 'string', root: true}
   });
 
@@ -140,14 +143,14 @@ module.exports = function (Poot) {
       type: 'number',
       http: {source: 'body'}
     }],
-    http: {path: '/update/:transactieid', verb: 'put'},
+    http: {errorStatus: '400', path: '/update/:transactieid', verb: 'put'},
     returns: {arg: 'message', type: 'string', root: true}
   });
 
   Poot.remoteMethod('getPootid', {
     description: 'Registreren van een nieuw poot. Response bevat het nieuw aangemaakte poot.',
     accepts: [],
-    http: {path: '/new', verb: 'post'},
+    http: {errorStatus: '400', path: '/new', verb: 'post'},
     returns: {arg: 'message', type: 'string', root: true}
   });
 
