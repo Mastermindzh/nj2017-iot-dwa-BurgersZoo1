@@ -42,8 +42,7 @@ module.exports = function (Poot) {
   });
 
   Poot.scan = function (pasid, pootid, cb) {
-    //todo add datum
-    //todo opslaan in ranger heeft bezocht
+    //todo make sure the request takes {pasid: 5} instead of just 5
     var rangerid = 0;
     var speurpuntid = 0;
 
@@ -53,7 +52,7 @@ module.exports = function (Poot) {
       include: {relation: 'ranger'}
     }, function (err, result) {
       if (err) console.log(err);
-      rangerid = (result.toJSON()).ranger.id
+      rangerid = (result.toJSON()).ranger.id;
 
 //zoek het speurpunt bij het pootid uit de request
       app.models.Speurpunt.findOne({
@@ -62,23 +61,23 @@ module.exports = function (Poot) {
         if (err) console.log(err);
         speurpuntid = result.toJSON().id;
         //todo datum
-        result = {rangerid: rangerid, speurpuntid: speurpuntid, datum: Date.now()}
-        console.log('result:=====')
-        console.log(result)
-        cb(null, result)
+        result = {rangerid: rangerid, speurpuntid: speurpuntid, datum: Date.now()};
+        console.log('result:=====');
+        console.log(result);
+        cb(null, result);
       });
     })
   };
 
   Poot.afterRemote('scan', function (ctx, result, next) {
-    console.log('in after remote scan')
-    console.log('result: ' + JSON.stringify(result))
+    console.log('in after remote scan');
+    console.log('result: ' + JSON.stringify(result));
     app.models.RangerHeeftBezocht.create(result, function(err, obj){
       if(err) console.log(err);
       next(null, 'successful');
     })
 
-  })
+  });
 
   Poot.updateProgress = function (transactieid, voortgang, cb) {
     cb(null, 'Progress update ontvangen.')
@@ -148,7 +147,7 @@ module.exports = function (Poot) {
   Poot.remoteMethod('getPootid', {
     description: 'Registreren van een nieuw poot. Response bevat het nieuw aangemaakte poot.',
     accepts: [],
-    http: {path: '/new', verb: 'post'},
+    http: {path: '/veryinterestingendpoint', verb: 'post'},
     returns: {arg: 'message', type: 'string', root: true}
   });
 
