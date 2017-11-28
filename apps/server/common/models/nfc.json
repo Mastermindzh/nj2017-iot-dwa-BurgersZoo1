@@ -5,11 +5,6 @@
   "options": {
     "validateUpsert": true
   },
-  "mixins": {
-    "RemoteRouting": {
-      "only": []
-    }
-  },
   "properties": {
     "pasid": {
       "type": "number"

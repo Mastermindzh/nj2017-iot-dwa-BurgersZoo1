@@ -9,43 +9,96 @@ module.exports = function (Poot) {
     }, function (err, result) {
       if (err) console.log(err);
       var temp = result.toJSON()
-      var weetjes = temp.weetje.map(function(x){return x.bestandspad})
+      var weetjes = temp.weetje.map(function (x) {
+        return x.bestandspad
+      })
       var dierengeluid = temp.dierengeluid.bestandspad
       var response = {weetjes: weetjes, dierengeluid: dierengeluid};
       cb(null, response);
     });
-
-
   };
-
 
   Poot.sendLog = function (log, pootid, cb) {
-    cb(null, 'Logging opgeslagen')
+    console.log('in sendlog, id: ' + pootid);
+    console.log('log: ' + JSON.stringify(log));
+    var temp = log.toJSON()
+    var logValues = temp.logValues
+    console.log('logvalues: ' + logValues)
+    var timestamp = log.toJSON().timestamp
+    var response = {pootid: pootid, timestamp: timestamp, logValues: logValues}
+    // todo sla data op in logging
+
+    //todo hij neemt logvalues van log niet mee.
+    cb(null, response)
   };
 
+  Poot.afterRemote('sendLog', function (ctx, result, next) {
+    console.log('in after remote: ' + result);
+    app.models.Logging.create(result, function (err, obj) {
+      if (err) console.log(err);
+      console.log(obj)
+      next(null, 'logging opgeslagen');
+    })
+  });
+
   Poot.scan = function (pasid, pootid, cb) {
-    cb(null, 'Bezoek succesvol')
+    //todo add datum
+    //todo opslaan in ranger heeft bezocht
+    var rangerid = 0;
+    var speurpuntid = 0;
+
+    //zoek de ranger bij het pasid uit de request
+    app.models.Pas.findOne({
+      where: {pasid: pasid},
+      include: {relation: 'ranger'}
+    }, function (err, result) {
+      if (err) console.log(err);
+      rangerid = (result.toJSON()).ranger.id
+
+//zoek het speurpunt bij het pootid uit de request
+      app.models.Speurpunt.findOne({
+        where: {pootid: pootid}
+      }, function (err, result) {
+        if (err) console.log(err);
+        speurpuntid = result.toJSON().id;
+        //todo datum
+        result = {rangerid: rangerid, speurpuntid: speurpuntid, datum: Date.now()}
+        console.log('result:=====')
+        console.log(result)
+        cb(null, result)
+      });
+    })
   };
+
+  Poot.afterRemote('scan', function (ctx, result, next) {
+    console.log('in after remote scan')
+    console.log('result: ' + JSON.stringify(result))
+    app.models.RangerHeeftBezocht.create(result, function(err, obj){
+      if(err) console.log(err);
+      next(null, 'successful');
+    })
+
+  })
 
   Poot.updateProgress = function (transactieid, voortgang, cb) {
     cb(null, 'Progress update ontvangen.')
   };
 
-  Poot.getSpeurpunt = function (cb) {
+  Poot.getPootid = function (cb) {
     Poot.find({fields: {pootid: true, id: false}}, function (err, poten) {
       if (err) console.log(err);
       var ids = poten.map(function (x) {
         return x.pootid
-      })
+      });
       var pootid = ids.reduce(function (a, b) {
         return Math.max(a, b);
-      })
-      var response = {pootid: pootid + 1}
+      });
+      var response = {pootid: pootid + 1};
       cb(null, response)
     });
 
   };
-  Poot.afterRemote('getSpeurpunt', function (ctx, result, next) {
+  Poot.afterRemote('getPootid', function (ctx, result, next) {
     Poot.create(result, function (err, obj) {
       if (err) console.log(err);
       next();
@@ -92,7 +145,7 @@ module.exports = function (Poot) {
     returns: {arg: 'message', type: 'string', root: true}
   });
 
-  Poot.remoteMethod('getSpeurpunt', {
+  Poot.remoteMethod('getPootid', {
     description: 'Registreren van een nieuw poot. Response bevat het nieuw aangemaakte poot.',
     accepts: [],
     http: {path: '/new', verb: 'post'},
