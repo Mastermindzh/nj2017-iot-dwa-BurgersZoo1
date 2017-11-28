@@ -130,7 +130,7 @@ module.exports = function (Poot) {
       type: 'number',
       http: {source: 'path'}
     }],
-    http: {errorStatus: '400',path: '/:pootid/scan', verb: 'post'},
+    http: {errorStatus: '400',path: '/:pootid/scan', verb: 'post', status: 201},
     returns: {arg: 'message', type: 'string', root: true}
   });
 
