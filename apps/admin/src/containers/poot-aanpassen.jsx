@@ -41,7 +41,8 @@ class PootAanpassenContainer extends Component {
 
     return (
       <div>
-
+        <h1>Poot aanpassen</h1>
+        <hr />
         <TableComponent headers={headers} data={data}/>
       </div>
     );
