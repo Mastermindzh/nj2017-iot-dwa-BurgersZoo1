@@ -6,10 +6,9 @@ class AudioList extends Component {
   renderAudioPlayers() {
     return this.props.listOfKeyValuePairs.map(audio => {
       return (
-        <div>
+        <div key={audio.key}>
           <span>{audio.key}</span>
           <ReactAudioPlayer
-            key={audio.key}
             src={audio.url}
             controls
           />
