@@ -5,7 +5,7 @@ import HomeController from '../containers/home-container.jsx';
 import PootAanpassenContainer from '../containers/poot-aanpassen.jsx';
 import GeluidenBeheren from '../containers/geluiden-beheren.jsx';
 import WeetjesBeheren from '../containers/weetjes-beheren.jsx';
-
+import ScanPasComponent from '../demo/scan-pas-component.jsx';
 
 import routes from '../constants/routes';
 
@@ -18,6 +18,7 @@ class AppRoutes extends Component {
         <Route path={routes.poten} component={PootAanpassenContainer} />
         <Route path={routes.geluiden} component={GeluidenBeheren} />
         <Route path={routes.weetjes} component={WeetjesBeheren} />
+        <Route path={routes.scanPas} component={ScanPasComponent} />
       </Switch>
     );
   }

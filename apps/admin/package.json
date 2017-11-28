@@ -29,6 +29,7 @@
   "author": "Asher de Vries",
   "license": "MIT",
   "dependencies": {
+    "axios": "^0.17.1",
     "material-ui": "^1.0.0-beta.21",
     "material-ui-icons": "^1.0.0-beta.17",
     "object-assign": "4.1.0",
