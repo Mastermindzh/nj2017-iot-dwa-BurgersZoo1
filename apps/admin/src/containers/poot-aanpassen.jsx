@@ -4,6 +4,7 @@ import { withStyles } from 'material-ui/styles';
 import style from '../styles/style';
 import IconButton from 'material-ui/IconButton';
 import Icon from 'material-ui/Icon';
+// import PopupComponent from './../components/popup-component.jsx';
 
 class PootAanpassenContainer extends Component {
   render() {
@@ -53,6 +54,9 @@ class PootAanpassenContainer extends Component {
       <div>
         <h1>Poot aanpassen</h1>
         <TableComponent headers={headers} data={data} />
+
+
+        {/* <PopupComponent /> */}
       </div>
     );
   }

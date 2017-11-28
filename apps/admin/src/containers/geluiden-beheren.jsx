@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import TableComponent from './../components/table-component.jsx'
+import TableComponent from './../components/table-component.jsx';
 import { withStyles } from 'material-ui/styles';
 import IconButton from 'material-ui/IconButton';
 import Icon from 'material-ui/Icon';
@@ -7,7 +7,7 @@ import Input, { InputLabel } from 'material-ui/Input';
 import { FormControl } from 'material-ui/Form';
 import ReactAudioPlayer from 'react-audio-player';
 import Grid from 'material-ui/Grid';
-
+import PopupComponent from './../components/popup-component.jsx';
 
 const styles = theme => ({
   container: {
@@ -23,7 +23,9 @@ class GeluidenBeheren extends Component {
 
   state = {
     search: '',
+    addOpen: true,
   };
+
 
   render() {
 
@@ -83,7 +85,7 @@ class GeluidenBeheren extends Component {
                 <InputLabel htmlFor="search-simple">Search</InputLabel>
                 <Input id="search-simple" value={this.state.search} onChange={(event) => this.setState({ search: event.target.value })} />
               </FormControl>
-              <IconButton>
+              <IconButton onClick={() => this.setState({ addOpen: true })}>
                 <Icon>add_circle</Icon>
               </IconButton>
             </div>
@@ -93,6 +95,13 @@ class GeluidenBeheren extends Component {
           </Grid>
         </Grid>
 
+        {this.state.addOpen &&
+          <PopupComponent title={"Geluid toevoegen"} open={this.state.addOpen} onRequestClose={() => this.setState({ addOpen: false })}>
+            <p>
+              test
+            </p>
+          </PopupComponent>
+        }
       </div>
     );
   }
