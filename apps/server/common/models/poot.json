@@ -2,14 +2,14 @@
   "name": "poot",
   "plural": "poten",
   "base": "PersistedModel",
-  "idInjection": true,
+  "idInjection": false,
   "options": {
     "validateUpsert": true
   },
   "properties": {
     "pootid": {
-      "type": "number",
-      "required": true
+      "type": "Number",
+      "required": false
     }
   },
   "validations": [],
