@@ -27,7 +27,7 @@
   "validations": [],
   "relations": {
     "weetje": {
-      "type": "hasOne",
+      "type": "hasMany",
       "model": "weetje",
       "foreignKey": ""
     },

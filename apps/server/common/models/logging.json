@@ -5,6 +5,11 @@
   "options": {
     "validateUpsert": true
   },
+  "mixins": {
+    "RemoteRouting": {
+      "only": []
+    }
+  },
   "properties": {
     "pootid": {
       "type": "number",
@@ -13,12 +18,6 @@
     "timestamp": {
       "type": "string",
       "required": true
-    }
-  },
-  "mixins": {
-    "RemoteRouting" : {
-      "only": [
-      ]
     }
   },
   "validations": [],
