@@ -12,7 +12,7 @@ module.exports = function (Poot) {
       var temp = result.toJSON();
       var weetjes = temp.weetje.map(function (x) {
         return x.bestandspad
-      })
+      });
       var dierengeluid = temp.dierengeluid.bestandspad
       var response = {weetjes: weetjes, dierengeluid: dierengeluid};
       cb(null, response);
@@ -22,10 +22,10 @@ module.exports = function (Poot) {
   Poot.sendLog = function (log, pootid, cb) {
     console.log('in sendlog, id: ' + pootid);
     console.log('log: ' + JSON.stringify(log));
-    var temp = log.toJSON()
-    var logValues = temp.logValues
-    console.log('logvalues: ' + logValues)
-    var timestamp = log.toJSON().timestamp
+    var temp = log.toJSON();
+    var logValues = temp.logValues;
+    console.log('logvalues: ' + logValues);
+    var timestamp = log.toJSON().timestamp;
     var response = {pootid: pootid, timestamp: timestamp, logValues: logValues}
     // todo sla data op in logging
 
@@ -43,7 +43,6 @@ module.exports = function (Poot) {
   });
 
   Poot.scan = function (pasid, pootid, cb) {
-    //todo make sure the request takes {pasid: 5} instead of just 5
     var rangerid = 0;
     var speurpuntid = 0;
 
@@ -56,14 +55,13 @@ module.exports = function (Poot) {
       if(result === undefined){cb('empty result', null)}
       rangerid = (result.toJSON()).ranger.id;
 
-//zoek het speurpunt bij het pootid uit de request
+      //zoek het speurpunt bij het pootid uit de request
       app.models.Speurpunt.findOne({
         where: {pootid: pootid}
       }, function (err, result) {
         if (err) cb(err, null);
         if(result === undefined){cb('empty result', null)}
         speurpuntid = result.toJSON().id;
-        //todo datum
         result = {rangerid: rangerid, speurpuntid: speurpuntid, datum: Date.now()};
         console.log('result:=====');
         console.log(result);
@@ -150,7 +148,7 @@ module.exports = function (Poot) {
   Poot.remoteMethod('getPootid', {
     description: 'Registreren van een nieuw poot. Response bevat het nieuw aangemaakte poot.',
     accepts: [],
-    http: {errorStatus: '400', path: '/new', verb: 'post'},
+    http: {errorStatus: '400', path: '/new', verb: 'post', status: 201},
     returns: {arg: 'message', type: 'string', root: true}
   });
 
