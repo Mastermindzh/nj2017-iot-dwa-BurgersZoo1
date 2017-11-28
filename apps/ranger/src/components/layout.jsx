@@ -25,19 +25,17 @@ class Layout extends Component {
 
     return (
       <div className={classes.appFrame}>
-          <AppBarComponent open={open} handleToggle={this.handleToggle.bind(this)}/>
-          <DrawerComponent open={open} handleToggle={this.handleToggle.bind(this)}/>
+        <AppBarComponent open={open} handleToggle={this.handleToggle.bind(this)} />
+        <DrawerComponent open={open} handleToggle={this.handleToggle.bind(this)} />
 
-          <main
-            className={classNames(classes.content, classes[`content-left`], {
-              [classes.contentShift]: open,
-              [classes[`contentShift-left`]]: open,
-            })}
-          >
-            <Typography type="body1">
-              <AppRoutes />
-            </Typography>
-          </main>
+        <main
+          className={classNames(classes.content, classes[`content-left`], {
+            [classes.contentShift]: open,
+            [classes[`contentShift-left`]]: open,
+          })}
+        >
+          <AppRoutes />
+        </main>
       </div>
     );
   }

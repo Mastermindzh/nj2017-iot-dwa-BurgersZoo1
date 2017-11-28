@@ -32,7 +32,7 @@ class AppBarComponent extends Component {
           <MenuIcon />
         </IconButton>
         <Typography type="title" color="inherit" noWrap>
-          Admin app
+          Ranger App
         </Typography>
       </Toolbar>
     </AppBar>
