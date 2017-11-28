@@ -9,41 +9,50 @@ class PootAanpassenContainer extends Component {
   render() {
 
     const headers = [
-      {text: ""},
-      {text: "Poot"},
-      {text: "Pootnummer", numeric: true},
-      {text: "Dierengeluid"},
-      {text: "Weetjes"},
+      { text: "" },
+      { text: "Poot" },
+      { text: "Pootnummer", numeric: true },
+      { text: "Dierengeluid" },
+      { text: "Weetjes" },
     ];
 
 
     const data = [
-      [
-        {children: <IconButton>
+      {
+        key: 'olifantrow',
+        children: [
+          {
+            children: <IconButton>
               <Icon>mode_edit</Icon>
-            </IconButton>},
-        {children: "Poot 1", },
-        {children: "1", numeric: true},
-        {children: "Olifant", },
-        {children: "- Een olifant heeft slechts 2 knieen"}
-      ],
-      [
-        {children: <IconButton>
+            </IconButton>
+          },
+          { children: "Poot 1", },
+          { children: "1", numeric: true },
+          { children: "Olifant", },
+          { children: "- Een olifant heeft slechts 2 knieen" }
+        ]
+      },
+      {
+        key: 'lion row',
+        children: [
+          {
+            children: <IconButton>
               <Icon>mode_edit</Icon>
-            </IconButton>},
-        {children: "Poot 2", },
-        {children: "2", numeric: true},
-        {children: "Leeuwen", },
-        {children: "- Leeuwen zijn cool"}
-      ],
+            </IconButton>
+          },
+          { children: "Poot 2", },
+          { children: "2", numeric: true },
+          { children: "Leeuwen", },
+          { children: "- Leeuwen zijn cool" }
+        ]
+      },
     ];
 
 
     return (
       <div>
         <h1>Poot aanpassen</h1>
-        <hr />
-        <TableComponent headers={headers} data={data}/>
+        <TableComponent headers={headers} data={data} />
       </div>
     );
   }

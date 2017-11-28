@@ -34,9 +34,7 @@ class Layout extends Component {
               [classes[`contentShift-left`]]: open,
             })}
           >
-            <Typography type="body1">
-              <AppRoutes />
-            </Typography>
+            <AppRoutes />
           </main>
       </div>
     );
