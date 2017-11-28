@@ -2,8 +2,11 @@ package nl.han.backend.services;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
+import nl.han.gateway.models.Poot;
 import nl.han.gateway.util.GatewayProperties;
 import nl.han.mysensor.models.MyMessage;
+import nl.han.mysensor.models.MySetMessage;
 import okhttp3.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,21 +36,27 @@ public class BackendPootService {
      *
      * @return poot id
      */
-    public Long getNewPootIdFromBackend() throws IOException {
+    public Long getNewPootIdFromBackend() {
         Request request = new Request.Builder()
                 .post(RequestBody.create(null, new byte[]{}))
-                .url(this.baseUri + "/poten")
+                .url(this.baseUri + "/poten/new")
                 .build();
-        Response response = client.newCall(request).execute();
-        if (response.code() == 201) {
-            String body = response.body().string();
-            JsonObject jsonObject = (new Gson()).fromJson(body, JsonObject.class);
-            return jsonObject.get("pootid").getAsLong();
-        } else if (response.code() == 500) {
-            logger.error("Error while creating new poot");
-            return 0L;
+        try {
+            Response response = client.newCall(request).execute();
+
+            if (response.code() == 201) {
+                String body = response.body().string();
+                JsonObject jsonObject = (new Gson()).fromJson(body, JsonObject.class);
+                return jsonObject.get("pootid").getAsLong();
+            } else if (response.code() == 500) {
+                logger.error("Error while creating new poot");
+                return 0L;
+            }
+            response.close();
+        } catch (IOException e) {
+            logger.error("Could not connect with backend", e);
         }
-        throw new IllegalStateException("Error while performing http request");
+        return 0L; // todo: should not do this
     }
 
 
@@ -55,16 +64,31 @@ public class BackendPootService {
      * Send a Poot scan to the backend
      *
      * @param message
+     * @param poot
      */
-    private void sendPootScan(MyMessage message) throws IOException {
-        RequestBody body = RequestBody.create(JSON, message.getPayload());
-
+    public void sendRangerCardScanToBackend(MySetMessage message, Poot poot) {
+        RequestBody body = RequestBody.create(JSON, "{pasid:" + message.getPayload() + "}");
         Request request = new Request.Builder()
-                .url(this.baseUri + "/test/" + message.getNodeId())
+                .url(this.baseUri + "/poten/" + poot.getPootid() + "/scan")
                 .post(body)
                 .build();
-
-        Response response = client.newCall(request).execute();
-        System.out.println(response.body().string());
+        Response response;
+        try {
+            response = client.newCall(request).execute();
+            if (response.code() == 201) {
+                logger.debug("Poot scan was successfully registered at the backend");
+            } else if (response.code() == 400) {
+                logger.error("Ranger doesn't exist");
+            } else if (response.code() == 404) {
+                logger.error("Could not find poot");
+            } else if (response.code() == 500) {
+                logger.error("Ranger scan is not saved!");
+            } else {
+                logger.error("Unknown error with the backend");
+            }
+            response.close();
+        } catch (IOException e) {
+            logger.error("Could not connect to backend", e);
+        }
     }
 }

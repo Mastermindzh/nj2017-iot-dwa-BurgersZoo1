@@ -43,12 +43,12 @@ public class SerialReader implements SerialPortEventListener {
     private static final int DATA_RATE = 115200;
 
     private MySensorParseService parseService;
-    private MySensorService mySensorService;
+    private MySensorReceiveService mySensorReceiveService;
     private static Logger logger = LoggerFactory.getLogger(SerialReader.class.getName());
 
     public SerialReader() {
         this.parseService = new MySensorParseService();
-        this.mySensorService = new MySensorService();
+        this.mySensorReceiveService = new MySensorReceiveService();
     }
 
     public void initialize() {
@@ -119,7 +119,7 @@ public class SerialReader implements SerialPortEventListener {
                 try {
                     MyMessage message = this.parseService.parseMessage(inputLine);
                     logger.info(String.format("Message: %s", message.toString()));
-                    this.mySensorService.handleIncomingMessage(message);
+                    this.mySensorReceiveService.handleIncomingMessage(message);
                 } catch (NotFoundException e) {
                     logger.error("Message was: " + inputLine);
                     logger.error("No message", e);

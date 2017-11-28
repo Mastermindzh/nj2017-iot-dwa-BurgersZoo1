@@ -3,13 +3,12 @@ package nl.han.mysensor.service;
 import nl.han.backend.services.BackendPootService;
 import nl.han.gateway.dao.DAOFactory;
 import nl.han.gateway.dao.IPootDAO;
+import nl.han.gateway.exceptions.NotImplementedException;
 import nl.han.gateway.models.Poot;
 import nl.han.mysensor.models.*;
+import nl.han.mysensor.models.myenums.MyInternal;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-
-import java.io.IOException;
 
 /**
  * Handle incomming messages
@@ -17,12 +16,12 @@ import java.io.IOException;
  * @author Thomas
  * @since 0.1
  */
-public class MySensorService {
+public class MySensorReceiveService {
 
-    private static Logger logger = LoggerFactory.getLogger(MySensorService.class.getName());
+    private static Logger logger = LoggerFactory.getLogger(MySensorReceiveService.class.getName());
     private IPootDAO pootDAO;
 
-    public MySensorService() {
+    public MySensorReceiveService() {
         this.pootDAO = DAOFactory.getInstance().getPootDAO();
     }
 
@@ -76,10 +75,18 @@ public class MySensorService {
                 newNodeSubscribe(message);
                 break;
             case V_VAR2:
+                // route for handeling ranger scans
+                rangerCardScan(message);
                 break;
             default:
                 throw new NotImplementedException();
         }
+    }
+
+    private void rangerCardScan(MySetMessage message) {
+        BackendPootService backendPootService = new BackendPootService();
+        Poot poot = this.pootDAO.findByNodeId(message.getNodeId());
+        backendPootService.sendRangerCardScanToBackend(message, poot);
     }
 
     /**
@@ -94,19 +101,18 @@ public class MySensorService {
         Poot poot = this.pootDAO.findByPootId(Integer.parseInt(message.getPayload()));
         BackendPootService backendPootService = new BackendPootService();
         if (poot == null) {
-            try {
-                logger.info("Unknown poot, register node");
-                Poot newPoot = new Poot();
-                newPoot.setNodeId(message.getNodeId());
-                newPoot.setPootid(backendPootService.getNewPootIdFromBackend());
-                this.pootDAO.save(newPoot);
-            } catch (IOException e) {
-                logger.error("Could not create new poot");
-            }
+            logger.info("Unknown poot, register node");
+            Poot newPoot = new Poot();
+            newPoot.setNodeId(message.getNodeId());
+            newPoot.setPootid(backendPootService.getNewPootIdFromBackend());
+            this.pootDAO.save(newPoot);
         } else {
             poot.setNodeId(message.getNodeId());
-            poot.setPootid(500L);
             this.pootDAO.update(poot);
         }
+
+        MySensorSendService sendService = new MySensorSendService();
+        sendService.sendPootIdToNode(poot);
+
     }
 }

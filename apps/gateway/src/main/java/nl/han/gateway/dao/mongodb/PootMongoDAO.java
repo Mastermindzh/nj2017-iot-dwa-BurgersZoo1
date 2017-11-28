@@ -39,11 +39,15 @@ public class PootMongoDAO implements IPootDAO {
 
     @Override
     public Poot update(Poot entity) {
-        UpdateOperations<Poot> updateOperations = this.datastore.createUpdateOperations(Poot.class)
-                .set("pootid", entity.getPootid())
-                .set("nodeId", entity.getNodeId())
-                .set("weetjes", entity.getWeetjes())
-                .set("dierengeluid", entity.getDierengeluid());
+        UpdateOperations<Poot> updateOperations = this.datastore.createUpdateOperations(Poot.class);
+        updateOperations.set("pootid", entity.getPootid());
+        updateOperations.set("nodeId", entity.getNodeId());
+        if (entity.getWeetjes() != null) {
+            updateOperations.set("weetjes", entity.getWeetjes());
+        }
+        if (entity.getDierengeluid() != null) {
+            updateOperations.set("dierengeluid", entity.getDierengeluid());
+        }
         this.datastore.update(entity, updateOperations);
         return this.get(entity.getId());
     }

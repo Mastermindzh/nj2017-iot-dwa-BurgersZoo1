@@ -41,7 +41,7 @@ void loop() {
   if (millis() - lastSent >= randint) {
     randint = random(2, 5) * 1000;
     lastSent = millis();
-//    send(msg.set("M/essage Pongnode14-> Gateway"), true);
+    send(msg.set("25"), true);
   }
 }
 
