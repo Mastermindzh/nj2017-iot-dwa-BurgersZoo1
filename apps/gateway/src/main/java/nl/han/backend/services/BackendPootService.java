@@ -13,7 +13,7 @@ import java.io.IOException;
 public class BackendPootService {
 
     private static Logger logger = LoggerFactory.getLogger(BackendPootService.class.getName());
-    public static final MediaType JSON
+    private static final MediaType JSON
             = MediaType.parse("application/json; charset=utf-8");
 
 
@@ -29,6 +29,7 @@ public class BackendPootService {
 
     /**
      * Try to get a new poot id from the backend
+     * Fallback id will be 0L, the poot is then known to the gateway but not registered at the backend
      *
      * @return poot id
      */
