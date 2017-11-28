@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Dialog, { DialogTitle } from 'material-ui/Dialog';
+import Dialog, { DialogTitle,DialogContent } from 'material-ui/Dialog';
 import IconButton from 'material-ui/IconButton';
 import Icon from 'material-ui/Icon';
 
@@ -27,7 +27,9 @@ class PopupComponent extends React.Component {
           <Icon>close</Icon>
         </IconButton>
         <DialogTitle style={{ padding: '30px' }}>{title}</DialogTitle>
-        {children}
+        <DialogContent>
+          {children}
+        </DialogContent>
       </Dialog>
     );
   }

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import TableComponent from './../components/table-component.jsx';
 import { withStyles } from 'material-ui/styles';
 import IconButton from 'material-ui/IconButton';
@@ -8,6 +9,7 @@ import { FormControl } from 'material-ui/Form';
 import ReactAudioPlayer from 'react-audio-player';
 import Grid from 'material-ui/Grid';
 import PopupComponent from './../components/popup-component.jsx';
+import GeluidUploaden from './../containers/geluid-uploaden.jsx';
 
 const styles = theme => ({
   container: {
@@ -23,7 +25,7 @@ class GeluidenBeheren extends Component {
 
   state = {
     search: '',
-    addOpen: true,
+    addOpen: false,
   };
 
 
@@ -97,14 +99,16 @@ class GeluidenBeheren extends Component {
 
         {this.state.addOpen &&
           <PopupComponent title={"Geluid toevoegen"} open={this.state.addOpen} onRequestClose={() => this.setState({ addOpen: false })}>
-            <p>
-              test
-            </p>
+          <GeluidUploaden identifier="Geluid "/>
           </PopupComponent>
         }
       </div>
     );
   }
 }
+
+PopupComponent.propTypes = {
+  classes: PropTypes.object,
+};
 
 export default withStyles(styles, { withTheme: true })(GeluidenBeheren);
