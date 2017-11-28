@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import MyRangerComponent from '../components/myRanger/my-ranger-component';
+import MyRangerComponent from '../components/ranger/my-ranger-component';
 
 class MyRangerContainer extends Component {
   render() {
