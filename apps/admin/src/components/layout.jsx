@@ -5,8 +5,8 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Typography from 'material-ui/Typography';
 
-import DrawerComponent from './drawer-component';
-import AppBarComponent from './app-bar-component';
+import DrawerComponent from './drawer-component.jsx';
+import AppBarComponent from './app-bar-component.jsx';
 import AppRoutes from '../routes/app-routes';
 
 class Layout extends Component {

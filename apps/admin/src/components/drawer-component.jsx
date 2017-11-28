@@ -32,14 +32,17 @@ class DrawerComponent extends Component {
             </IconButton>
           </div>
 
-          <NavLink to={routes.ranger}>
-            <MenuItem value="left"><Icon color="accent">home</Icon> Poot aanpassen</MenuItem>
+          <NavLink to={routes.admin}>
+            <MenuItem value="left"><Icon>home</Icon><span className="menuText">Home</span></MenuItem>
           </NavLink>
-          <NavLink to={routes.fact}>
-            <MenuItem value="left"><Icon color="accent">home</Icon> Geluiden beheren</MenuItem>
+          <NavLink to={routes.poten}>
+            <MenuItem value="left"><Icon>mode_edit</Icon><span className="menuText">Poot aanpassen</span></MenuItem>
           </NavLink>
-          <NavLink to={routes.sound}>
-            <MenuItem value="left"><Icon color="accent">home</Icon> Weetjes beheren</MenuItem>
+          <NavLink to={routes.geluiden}>
+            <MenuItem value="left"><Icon>volume_up</Icon><span className="menuText">Geluiden beheren</span></MenuItem>
+          </NavLink>
+          <NavLink to={routes.weetjes}>
+            <MenuItem value="left"><Icon>question_answer</Icon><span className="menuText">Weetjes beheren</span></MenuItem>
           </NavLink>
         </div>
       </Drawer>

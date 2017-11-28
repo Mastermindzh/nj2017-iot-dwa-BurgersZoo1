@@ -1,5 +1,6 @@
 export default {
-  ranger: '/ranger',
-  fact: '/fact',
-  sound: '/sound'
+  admin: '/admin',
+  geluiden: '/geluiden',
+  weetjes: '/weetjes',
+  poten: '/poten'
 };
