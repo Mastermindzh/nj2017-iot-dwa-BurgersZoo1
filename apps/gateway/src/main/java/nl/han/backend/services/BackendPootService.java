@@ -12,6 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
+import java.math.BigInteger;
 
 public class BackendPootService {
 
@@ -50,15 +51,26 @@ public class BackendPootService {
                 return jsonObject.get("pootid").getAsLong();
             } else if (response.code() == 500) {
                 logger.error("Error while creating new poot");
-                return 0L;
+                return 1L;
             }
             response.close();
         } catch (IOException e) {
             logger.error("Could not connect with backend", e);
         }
-        return 0L; // todo: should not do this
+        return 1L; // todo: should not do this
     }
 
+    /**
+     * Parse a hex value to a Long
+     *
+     * @param hexValue
+     * @return long dec value of the given HEX
+     */
+    private Long parseCardIdToDec(String hexValue) {
+        hexValue = hexValue.replaceAll("\\s+", "");
+        BigInteger result = new BigInteger(hexValue, 16);
+        return result.longValueExact();
+    }
 
     /**
      * Send a Poot scan to the backend
@@ -67,7 +79,8 @@ public class BackendPootService {
      * @param poot
      */
     public void sendRangerCardScanToBackend(MySetMessage message, Poot poot) {
-        RequestBody body = RequestBody.create(JSON, "{pasid:" + message.getPayload() + "}");
+        Long cardId = parseCardIdToDec(message.getPayload());
+        RequestBody body = RequestBody.create(JSON, String.valueOf(cardId));
         Request request = new Request.Builder()
                 .url(this.baseUri + "/poten/" + poot.getPootid() + "/scan")
                 .post(body)
