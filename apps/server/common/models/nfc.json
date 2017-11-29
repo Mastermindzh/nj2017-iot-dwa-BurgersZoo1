@@ -10,12 +10,6 @@
       "type": "number"
     }
   },
-  "mixins": {
-    "RemoteRouting" : {
-      "only": [
-      ]
-    }
-  },
   "validations": [],
   "relations": {},
   "acls": [],

@@ -32,7 +32,7 @@
   },
   "rangerHeeftBezocht": {
     "dataSource": "mongo",
-    "public": false
+    "public": true
   },
   "pas": {
     "dataSource": "mongo",

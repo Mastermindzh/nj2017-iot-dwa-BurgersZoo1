@@ -87,7 +87,7 @@ Deze iteratie van het project wordt uitgevoerd door negen studenten onder begele
 | Thomas Kool | Architect, Embedded software engineer | thomas.erin999@gmail.com | Groep 1 |
 | Sijmen Huizenga | Architect, Embedded software engineer | sijmenhuizenga@gmail.com | Groep 1 |
 | Wessel Hendriks | Tester, software developer | whendriks1993@hotmail.com | Groep 2 |
-| Nick van den Burg | Software developer | nickvdburg.nvdb@gmail.com | Groep 2 |
+| Nick van den Burg | Planner, Software developer | nickvdburg.nvdb@gmail.com | Groep 2 |
 | Sebastiaan Vonk | Embedded software engineer | bas-vonk@gmail.com | Groep 2 |
 | Arne Heil | Embedded software engineer | arneheil@hotmail.com | Groep 2 |
 
@@ -103,50 +103,42 @@ Hieronder staat een tabel van projectrollen die extra duidelijkheid vereisen:
 | Architect | Maakt high-level ontwerpbesluiten over het systeem en onderzoekt hoe alle sub-systemen met elkaar in verband staan en over welke protocollen ze met elkaar communiceren  |
 | Tester | Het opstellen van test-cases voor de field trial and het documenteren van testresultaten  |
 
-### Disciplines
-
-
 ### Werkwijze
-- organogram intern (visueel: hoe werken de 9 studenten (twee teams) samen? + foto's
-- welke leden hebben welke verantwoordelijkheden (IoT, web, contactpersoon, architect.... etc)
-- overlegmomenten
-- Hypothesis driven development
+We hebben twee disciplines (embedded en software) onderverdeeld in twee groepen. In het onderstaande schema staat weergegeven hoe twee groepen samen werken aan meerdere producten.  
 
+![alt text](https://github.com/HANICA-MinorMulti/nj2017-iot-dwa-BurgersZoo1/blob/docs/documentatie/Werkwijze%20BurgersZoo%20IoT.png "Werkwijze")
 
+- Hypothesis driven development 
+
+### Overlegmomenten
+
+**Tussen de groepen**
+Niet nodig, ze zitten naast elkaar in het lokaal.
+
+**Tussen de HAN en Burgers' Zoo**
+Op afspraak, elke twee of drie weken om de status van het product te bespreken.
 
 ## Producten
 
--FO (wat zit er in, hoe werk je met ons prototype, wat zijn de requirements?)
--TO (welke onderzoeken lossen welke problemen op? --> waar worden beslissingen gedocumenteerd?, hoe zit ons prototype in elkaar)
--Poot prototype
--Overdrachtdocumentatie
--Testrapport
+De producten die in week 8 worden opgeleverd bestaan uit een aantal deelproducten. Om helder te krijgen wat precies wordt opgeleverd is een tabel opgesteld: 
 
+| Product        | Deelproducten
+| ------------- | :-------------: |
+| Functioneel Ontwerp (FO) | Requirements list, domeinmodel, use case diagram, hoe werkt het prototype op gebruikersniveau  |
+| Technisch Ontwerp | Onderzoeken naar gekozen technieken, class diagrams, sequence diagrams, architecturele beslissingen en deployment diagram  |
+| Testplan | Document waarin beschreven staat hoe alle usecases worden getest. Zowel op code niveau als op field test niveau |
 
+Voor de HAN worden per week de volgende resultaten op onze repository gezet:
 
-Tussenproduct (week 3 - groepsproduct)
-
-Functioneel ontwerp
-Design specification (stepping stones)
-Requirements list (stepping stones)
-Software guidebook
-Testplan
-Werkwijze en Planning
-Elke week (groepsproduct)
-
-Korte beschrijving van het eindproduct en de manier van testen.
-Planning en taakverdeling
-Elke week (individele producten)
-
-Nieuwe tech
-twee nieuwe libraries
-Onderzoekjes (gebaseerd op onderzoeksmethoden hieronder)
-twee korte onderzoekjes
-Reflectie
-Lijst van uitgevoerde werkzaamheden
-Relevante onderzoeksmethod
+- Korte beschrijving van het eindproduct en de manier van testen.
+- Planning en taakverdeling (voor de volgende week)
+- Elke week (individele producten)
+  - Twee nieuwe libraries
+  - Twee korte onderzoekjes
+  - Reflectie
+  - Lijst van uitgevoerde werkzaamheden
 
 
 ## Planning
-
+(staat alleen in de .docx versie van het PvA)
 
