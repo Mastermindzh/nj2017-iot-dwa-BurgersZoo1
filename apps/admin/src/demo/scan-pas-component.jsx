@@ -30,6 +30,22 @@ class ScanPasComponent extends Component {
   }
 
   handleUpdate(scans){
+    if(scans.length > this.state.passen.length){
+
+      let result = scans.slice(this.state.passen.length);
+      let items = this.state.passen.slice();
+
+      // add green color
+      result.forEach(item => {
+        item.test = true;
+        items.unshift(item);
+      });
+
+      console.log(result)
+      console.log(items);
+
+      this.setState({passen: items});
+    }
 
   }
 
@@ -55,7 +71,7 @@ class ScanPasComponent extends Component {
           {children: pas.rangerid},
           {children: pas.speurpuntid},
           {children: formattedTime}
-        ]
+        ],
       };
     });
 

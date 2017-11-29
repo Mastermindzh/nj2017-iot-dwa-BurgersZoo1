@@ -17,7 +17,6 @@ class PootAanpassenContainer extends Component {
       { text: "Weetjes" },
     ];
 
-
     const data = [
       {
         key: 'olifantrow',
