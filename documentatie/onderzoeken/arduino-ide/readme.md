@@ -1,5 +1,5 @@
 # Onderzoek alternatieven Arduino IDE
-De standaard [Arduino ide](https://www.arduino.cc/en/Main/OldSoftwareReleases) is handig voor kleine projectjes en testjes, maar voor grotere projecten missen er een aantal functionaliteiten. In dit onderzoek is uitgezocht of er een alternatief voor de Arduino IDE is die we dit project kunnen gebruiken.
+De standaard [Arduino IDE](https://www.arduino.cc/en/Main/OldSoftwareReleases) is handig voor kleine projectjes en testjes, maar voor grotere projecten missen er een aantal functionaliteiten. In dit onderzoek is uitgezocht of er een alternatief voor de Arduino IDE is die we dit project kunnen gebruiken.
 
 ## Hypothese
 Ik verwacht dat er wel alternatieven voor de Arduino IDE zijn, maar dat ze allemaal net niet perfect zijn en dat we daardoor het beste bij de Arduino IDE kunnen blijven.
@@ -46,9 +46,7 @@ Installeer PlatformIO volgens de [instructies](http://docs.platformio.org/en/lat
 
 Vervolgens is het aanmaken van een nieuw project super simpel. De code auto-complete werkt snel en correct. Ook de linter is handig. Tot slot werkt ook het compileren en uploaden.
 
-Het beheren van dependent libraries werkt door in de `platformio.ini` de url's van libraries te specificeren. Tijdens het compileren worden de libraries gedownlaod en meegenomen met de compilatie. Dit werkt 1000x beter dan het handmatig downloaden van dependencies en op je computer opslaan.
+Het beheren van dependent libraries werkt door in de `platformio.ini` de url's van libraries te specificeren. Tijdens het compileren worden de libraries gedownlaod en meegenomen met de compilatie. Dit werkt beter dan het handmatig downloaden van dependencies en op je computer opslaan.
 
 ## Conclusie
 Het gebruik van de Atom + PlatformIO maakt het ontwikkelen aan een Arduino applicatie veel prettigger! 
-
-
