@@ -2,5 +2,6 @@ export default {
   admin: '/admin',
   geluiden: '/geluiden',
   weetjes: '/weetjes',
-  poten: '/poten'
+  poten: '/poten',
+  scanPas: '/scanpas'
 };

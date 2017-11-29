@@ -4,7 +4,6 @@ import { withStyles } from 'material-ui/styles';
 import Input, { InputLabel } from 'material-ui/Input';
 import { FormControl } from 'material-ui/Form';
 import Grid from 'material-ui/Grid';
-import PopupComponent from './../components/popup-component.jsx';
 import styles from '../styles/style';
 import FileUpload from 'material-ui-icons/FileUpload';
 import Button from 'material-ui/Button';
