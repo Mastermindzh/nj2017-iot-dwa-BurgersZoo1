@@ -21,3 +21,5 @@ De library is te vinden via de volgende links:
 - Linux: ~~[http://rxtx.qbang.org](http://rxtx.qbang.org)~~ Het is alleen nodig om het volgende commando uit te voeren: `sudo apt-get install librxtx-java`. Dit kan afwijken bij verschillende Linux destributies, het commando werkt op Ubuntu 17.04
 - Windows 64 bit: [http://fizzed.com](http://fizzed.com)
 Zonder de instalatie van deze library zal er bij het bouwen van het project fouten optreden.
+
+Werken voorbeeld: https://eclipsesource.com/blogs/2012/10/17/serial-communication-in-java-with-raspberry-pi-and-rxtx/

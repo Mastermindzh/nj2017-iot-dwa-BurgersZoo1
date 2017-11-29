@@ -6,9 +6,12 @@ void setup() {
 
 unsigned long lastTime = 0;
 void loop() {
+  if(Serial.available()){
+        Serial.write(Serial.read());
+  }
   unsigned long current = millis();
   if(current - lastTime > 3000){
     lastTime = current;
-    Serial.println("test");
+    Serial.println("test2");
   }
 }

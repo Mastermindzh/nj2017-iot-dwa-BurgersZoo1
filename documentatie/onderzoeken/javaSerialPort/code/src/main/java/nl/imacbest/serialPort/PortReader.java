@@ -1,47 +1,41 @@
 package nl.imacbest.serialPort;
 
 import com.fazecast.jSerialComm.SerialPort;
-import com.fazecast.jSerialComm.SerialPortDataListener;
-import com.fazecast.jSerialComm.SerialPortEvent;
 
-import java.io.InputStream;
+import java.io.IOException;
 
 public class PortReader {
-    public static boolean wait = true;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
+        SerialListener();
+//        serialReader();
+    }
+
+    private static void serialReader() {
+        SerialReader serialReader = new SerialReader();
+        serialReader.initialize();
+    }
+
+    private static void SerialListener() throws InterruptedException {
         SerialPort comPort = SerialPort.getCommPorts()[0];
         comPort.openPort();
         comPort.setBaudRate(9600);
         comPort.setComPortTimeouts(SerialPort.TIMEOUT_NONBLOCKING, 100, 0);
-        comPort.addDataListener(new SerialPortDataListener() {
-            @Override
-            public int getListeningEvents() {
-                return SerialPort.LISTENING_EVENT_DATA_AVAILABLE;
-            }
 
-            @Override
-            public void serialEvent(SerialPortEvent event) {
-                if (event != null) {
-                    wait = false;
-                }
-                System.out.println(new String(event.getReceivedData()));
-            }
-        });
-
-        while (wait) {
-
+        SerialListener serialListener = new SerialListener(comPort);
+        (new Thread(serialListener)).start();
+        try {
+            serialListener.writeString("test");
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
-
-//        InputStream in = comPort.getInputStream();
-//        try {
-//            for (int j = 0; j < 1000; ++j)
-//                System.out.print((char) in.read());
-//            in.close();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-        comPort.closePort();
+        for (int i = 0; i < 2; i++) {
+            System.out.println(String.format("Sleep %d", i));
+            Thread.sleep(5000);
+        }
+        serialListener.stop();
+        System.exit(0); // otherwise other thread hangs on inputstream read for some reason
+//        comPort.closePort();
     }
 }
