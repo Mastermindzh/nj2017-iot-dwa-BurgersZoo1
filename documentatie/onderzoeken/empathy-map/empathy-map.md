@@ -32,7 +32,7 @@ Eerst is een [uitgebreide guide](https://www.uxpin.com/studio/blog/the-practical
 Er wordt ook bevestigd dat een empathy meer waarde heeft in het begin van het project dan later in het project. 
 
 ## Testopzet
-Op donderdag 30 november 2017 wordt een interview gehouden met een vertegenwoordiger van Burgers' Zoo. Er worden een aantal lege empathy map templates meegenomen die worden ingevuld tijdens het interview.
+Op donderdag 30 november 2017 wordt een interview gehouden met een vertegenwoordiger van Burgers' Zoo. Er worden een aantal lege empathy map [templates](https://docs.google.com/drawings/d/1Q4ZNsY1J0ZHS_vujT4IJh9I3Nk6TCsVvkZbaeiBwLkM/edit?ntd=1) meegenomen die worden ingevuld tijdens het interview.
 
 
 ## Resultaat
