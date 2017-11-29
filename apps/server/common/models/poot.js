@@ -85,6 +85,8 @@ module.exports = function (Poot) {
       var ids = poten.map(function (x) {
         return x.pootid
       });
+
+      //zoek de hoogste id van alle poten en doe +1, dit zorgt voor een unieke id.
       var pootid = ids.reduce(function (a, b) {
         return Math.max(a, b);
       });
@@ -146,5 +148,4 @@ module.exports = function (Poot) {
     http: {errorStatus: '400', path: '/new', verb: 'post', status: 201},
     returns: {arg: 'message', type: 'string', root: true}
   });
-
 };
