@@ -36,8 +36,10 @@ public class MySensorReceiveService {
         } else if (message instanceof MySetMessage) {
             handleIncomingSetMessages((MySetMessage) message);
         } else if (message instanceof MyReqMessage) {
+            logger.info(String.format("Not implemented yet, message: %s", message.toString()));
             throw new NotImplementedException();
         } else if (message instanceof MyInternalMessage) {
+            logger.info(String.format("Not implemented yet, message: %s", message.toString()));
             throw new NotImplementedException();
         } else {
             throw new IllegalStateException("Illegal message state");

@@ -2,10 +2,8 @@ package nl.han.backend.services;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 import nl.han.gateway.models.Poot;
 import nl.han.gateway.util.GatewayProperties;
-import nl.han.mysensor.models.MyMessage;
 import nl.han.mysensor.models.MySetMessage;
 import okhttp3.*;
 import org.slf4j.Logger;
@@ -99,6 +97,7 @@ public class BackendPootService {
             } else {
                 logger.error("Unknown error with the backend");
             }
+            logger.info("Ranger scan: Status code "+ response.code() + ", body: " + response.body().string() );
             response.close();
         } catch (IOException e) {
             logger.error("Could not connect to backend", e);

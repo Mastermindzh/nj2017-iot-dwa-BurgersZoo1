@@ -53,7 +53,6 @@ public class SerialReader implements SerialPortEventListener {
 
     public void initialize() {
         String arduinoPort = GatewayProperties.getProperty("arduino.port");
-        System.out.println(arduinoPort);
         System.setProperty("gnu.io.rxtx.SerialPorts", arduinoPort);
 
         CommPortIdentifier portId = null;
@@ -70,6 +69,7 @@ public class SerialReader implements SerialPortEventListener {
             }
         }
         if (portId == null) {
+            System.out.println(arduinoPort);
             System.out.println("Could not find COM port.");
             return;
         }
