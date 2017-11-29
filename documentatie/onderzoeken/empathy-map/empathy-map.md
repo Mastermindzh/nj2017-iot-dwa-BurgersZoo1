@@ -20,7 +20,7 @@ Een empathy map is een bewezen onderzoeksmethode. Daarom verwachten wij dat het 
 Die hypothese wordt getest door in week 5 van het project een demo te geven van alle applicaties en dan terug te refereren naar de empathy maps.
 
 ## Vooronderzoek
-Eerst is een [uitgebreide guide](https://www.uxpin.com/studio/blog/the-practical-guide-to-empathy-maps-creating-a-10-minute-persona/) die meer over empathy map uitlegt dan de beknopte CMD-kaart. Er wordt vooral uitgelegd wat de termen 'say', 'do', 'hear', 'think', 'feel', 'pain' en 'gain' betekenen en in een template staan wat voorbeelden:
+Eerst is een [uitgebreide guide](https://www.uxpin.com/studio/blog/the-practical-guide-to-empathy-maps-creating-a-10-minute-persona/) geraadpleegd die meer over empathy map uitlegt dan de beknopte CMD-kaart. Er wordt vooral uitgelegd wat de termen 'say', 'do', 'hear', 'think', 'feel', 'pain' en 'gain' betekenen en in een template staan wat voorbeelden:
 
 |           | Definitie                                                                      | Voorbeeld                                                                                     |
 |-----------|--------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------|
