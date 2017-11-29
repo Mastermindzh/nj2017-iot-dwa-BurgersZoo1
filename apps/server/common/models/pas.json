@@ -11,6 +11,10 @@
       "type": "number",
       "required": true
     },
+    "pasid":{
+      "type": "number",
+      "required": true
+    },
     "active": {
       "type": "boolean",
       "required": true,
