@@ -43,15 +43,19 @@ De notitievorm voor dit onderzoek zal flexibel maar uitbreidbaar zijn. Er zal ee
 
 In dit hoofdstuk komen de resultaten van het onderzoek aan bod, aan het einde wordt hier nog een uitspraak over gedaan.
 
-### Testopzet met @Sijmen Huizenga
+### Testopzet met Sijmen Huizenga
 
 | Actie                 | Voorvallen |
 |-----------------------|:----------:|
-|   |   |
-|   |   |
+| "Oh dit werkt gewoon"  | ...  |
+| "Deze blijft grijs" (pratend over geselecteerd menu item)  |.   |
+| "Oh dit werkt niet"  | ..  |
+| "Ik weet niet of mensen het hamburgermenu snappen"  | .  |
+
+### Testopzet met vertegenwoordigers
 
 ## Conclusie
 
-
 ## bronnen
+
 Bij dit onderzoek zijn geen concrete bronnen gebruikt.
