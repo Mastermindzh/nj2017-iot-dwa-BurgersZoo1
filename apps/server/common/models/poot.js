@@ -8,14 +8,17 @@ module.exports = function (Poot) {
       include: [{relation: 'weetje'}, {relation: 'dierengeluid'}]
     }, function (err, result) {
       if (err) cb(err, null);
-      if(result === undefined){cb('empty result', null)}
-      var temp = result.toJSON();
-      var weetjes = temp.weetje.map(function (x) {
-        return x.bestandspad
-      });
-      var dierengeluid = temp.dierengeluid.bestandspad
-      var response = {weetjes: weetjes, dierengeluid: dierengeluid};
-      cb(null, response);
+      if (result === undefined || result === null) {
+        cb('empty result', null)
+      } else {
+        var temp = result.toJSON();
+        var weetjes = temp.weetje.map(function (x) {
+          return x.bestandspad
+        });
+        var dierengeluid = temp.dierengeluid.bestandspad
+        var response = {weetjes: weetjes, dierengeluid: dierengeluid};
+        cb(null, response);
+      }
     });
   };
 
@@ -50,25 +53,31 @@ module.exports = function (Poot) {
       include: {relation: 'ranger'}
     }, function (err, result) {
       if (err) cb(err, null);
-      if(result === undefined){cb('empty result', null)}
-      rangerid = (result.toJSON()).ranger.id;
-
-      //zoek het speurpunt bij het pootid uit de request
-      app.models.Speurpunt.findOne({
-        where: {pootid: pootid}
-      }, function (err, result) {
-        if (err) cb(err, null);
-        if(result === undefined){cb('empty result', null)}
-        speurpuntid = result.toJSON().id;
-        result = {rangerid: rangerid, speurpuntid: speurpuntid, datum: Date.now()};
-        cb(null, result);
-      });
+      if (result === undefined || result === null) {
+        cb('empty result', null)
+      }
+      else {
+        rangerid = (result.toJSON()).ranger.id;
+        //zoek het speurpunt bij het pootid uit de request
+        app.models.Speurpunt.findOne({
+          where: {pootid: pootid}
+        }, function (err, result) {
+          if (err) cb(err, null);
+          if (result === undefined || result === null) {
+            cb('empty result', null)
+          } else {
+            speurpuntid = result.toJSON().id;
+            result = {rangerid: rangerid, speurpuntid: speurpuntid, datum: Date.now()};
+            cb(null, result);
+          }
+        });
+      }
     })
   };
 
   Poot.afterRemote('scan', function (ctx, result, next) {
-    app.models.RangerHeeftBezocht.create(result, function(err, obj){
-      if(err) next(err, null);
+    app.models.RangerHeeftBezocht.create(result, function (err, obj) {
+      if (err) next(err, null);
       next(null, 'successful');
     })
 
@@ -106,7 +115,7 @@ module.exports = function (Poot) {
     description: 'Het opvragen van de configuratie van een specifieke poot.',
     accepts: {arg: 'pootid', type: 'number', http: {source: 'path'}},
     http: {path: '/:pootid/config', verb: 'get'},
-    returns: {errorStatus: '400',arg: 'pootid', type: 'Object', root: true}
+    returns: {errorStatus: '400', arg: 'pootid', type: 'Object', root: true}
   });
 
   Poot.remoteMethod('sendLog', {
@@ -116,7 +125,7 @@ module.exports = function (Poot) {
       type: 'number',
       http: {source: 'path'}
     }],
-    http: {errorStatus: '400',path: '/:pootid/logs', verb: 'post', status: 201},
+    http: {errorStatus: '400', path: '/:pootid/logs', verb: 'post', status: 201},
     returns: {arg: 'message', type: 'string', root: true}
   });
 
@@ -127,7 +136,7 @@ module.exports = function (Poot) {
       type: 'number',
       http: {source: 'path'}
     }],
-    http: {errorStatus: '400',path: '/:pootid/scan', verb: 'post', status: 201},
+    http: {errorStatus: '400', path: '/:pootid/scan', verb: 'post', status: 201},
     returns: {arg: 'message', type: 'string', root: true}
   });
 
