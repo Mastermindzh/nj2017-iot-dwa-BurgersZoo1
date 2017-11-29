@@ -29,7 +29,10 @@ module.exports = function (Poot) {
     var response = {pootid: pootid, timestamp: timestamp, logValues: logValues}
     // todo sla data op in logging
 
-    //todo hij neemt logvalues van log niet mee.
+    // todo hij neemt logvalues van log niet mee.
+    // todo relatie van logging - logValues bekijken, die wordt niet goed overgenomen in de API explorer.
+    // todo logValues is nu niet required bij het aanmaken, dit moet wel.
+    // todo logValues mee in het object krijgen en opslaan.
     cb(null, response)
   };
 
@@ -81,6 +84,7 @@ module.exports = function (Poot) {
   });
 
   Poot.updateProgress = function (transactieid, voortgang, cb) {
+    //todo implementeer dit.
     cb(null, 'Progress update ontvangen.')
   };
 
@@ -119,7 +123,7 @@ module.exports = function (Poot) {
       type: 'number',
       http: {source: 'path'}
     }],
-    http: {errorStatus: '400',path: '/:pootid/logs', verb: 'post'},
+    http: {errorStatus: '400',path: '/:pootid/logs', verb: 'post', status: 201},
     returns: {arg: 'message', type: 'string', root: true}
   });
 
