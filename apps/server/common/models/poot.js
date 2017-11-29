@@ -20,11 +20,8 @@ module.exports = function (Poot) {
   };
 
   Poot.sendLog = function (log, pootid, cb) {
-    console.log('in sendlog, id: ' + pootid);
-    console.log('log: ' + JSON.stringify(log));
     var temp = log.toJSON();
     var logValues = temp.logValues;
-    console.log('logvalues: ' + logValues);
     var timestamp = log.toJSON().timestamp;
     var response = {pootid: pootid, timestamp: timestamp, logValues: logValues}
     // todo sla data op in logging
@@ -37,10 +34,8 @@ module.exports = function (Poot) {
   };
 
   Poot.afterRemote('sendLog', function (ctx, result, next) {
-    console.log('in after remote: ' + result);
     app.models.Logging.create(result, function (err, obj) {
       if (err) next(err, null);
-      console.log(obj)
       next(null, 'logging opgeslagen');
     })
   });
@@ -66,16 +61,12 @@ module.exports = function (Poot) {
         if(result === undefined){cb('empty result', null)}
         speurpuntid = result.toJSON().id;
         result = {rangerid: rangerid, speurpuntid: speurpuntid, datum: Date.now()};
-        console.log('result:=====');
-        console.log(result);
         cb(null, result);
       });
     })
   };
 
   Poot.afterRemote('scan', function (ctx, result, next) {
-    console.log('in after remote scan');
-    console.log('result: ' + JSON.stringify(result));
     app.models.RangerHeeftBezocht.create(result, function(err, obj){
       if(err) next(err, null);
       next(null, 'successful');
