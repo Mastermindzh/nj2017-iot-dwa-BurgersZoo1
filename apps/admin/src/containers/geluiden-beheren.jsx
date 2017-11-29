@@ -84,7 +84,7 @@ class GeluidenBeheren extends Component {
           <Grid item xs={12}>
             <div>
               <FormControl className={classes.formControl}>
-                <InputLabel htmlFor="search-simple">Search</InputLabel>
+                <InputLabel htmlFor="search-simple">Zoeken</InputLabel>
                 <Input id="search-simple" value={this.state.search} onChange={(event) => this.setState({ search: event.target.value })} />
               </FormControl>
               <IconButton onClick={() => this.setState({ addOpen: true })}>

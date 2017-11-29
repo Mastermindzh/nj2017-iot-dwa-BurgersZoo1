@@ -44,6 +44,9 @@ class DrawerComponent extends Component {
           <NavLink to={routes.weetjes}>
             <MenuItem value="left"><Icon>question_answer</Icon><span className="menuText">Weetjes beheren</span></MenuItem>
           </NavLink>
+          <NavLink to={routes.scanPas}>
+            <MenuItem value="left"><Icon>credit_card</Icon><span className="menuText">Pas scannen</span></MenuItem>
+          </NavLink>
         </div>
       </Drawer>
     );

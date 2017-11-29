@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import TableComponent from './../components/table-component.jsx'
+import TableComponent from './../components/table-component.jsx';
 import { withStyles } from 'material-ui/styles';
 import style from '../styles/style';
 import IconButton from 'material-ui/IconButton';
