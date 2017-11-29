@@ -6,7 +6,6 @@ import nl.han.gateway.dao.IPootDAO;
 import nl.han.gateway.exceptions.NotImplementedException;
 import nl.han.gateway.models.Poot;
 import nl.han.mysensor.models.*;
-import nl.han.mysensor.models.myenums.MyInternal;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

@@ -7,3 +7,8 @@ De library is te vinden via de volgende links:
 - Windows 64 bit: [http://fizzed.com](http://fizzed.com/oss/rxtx-for-java)
 
 Zonder de instalatie van deze library zal er bij het bouwen van het project fouten optreden.
+
+
+### Upload via SSH naar Raspberry Pi 3
+`sudo scp build/libs/gateway-1.0-SNAPSHOT.jar pi@IP_ADDRESS:~/gateway`
+

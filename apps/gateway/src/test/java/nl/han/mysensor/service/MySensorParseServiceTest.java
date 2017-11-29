@@ -1,18 +1,20 @@
 package nl.han.mysensor.service;
 
+import nl.han.gateway.exceptions.NotFoundException;
 import nl.han.mysensor.models.MyInternalMessage;
+import nl.han.mysensor.models.MyMessage;
 import nl.han.mysensor.models.MyPresentationMessage;
 import nl.han.mysensor.models.MySetMessage;
 import nl.han.mysensor.models.myenums.MyCommand;
+import nl.han.mysensor.models.myenums.MyDataTypes;
 import nl.han.mysensor.models.myenums.MyInternal;
 import nl.han.mysensor.models.myenums.MyPresentationType;
-import nl.han.mysensor.models.myenums.MyDataTypes;
-import nl.han.mysensor.models.MyMessage;
-import nl.han.gateway.exceptions.NotFoundException;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static junit.framework.TestCase.assertTrue;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
 /**
  * CLASS DESCRIPTION
