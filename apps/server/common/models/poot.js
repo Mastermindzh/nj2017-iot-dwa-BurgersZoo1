@@ -7,11 +7,12 @@ module.exports = function (Poot) {
       where: {pootid: pootid},
       include: [{relation: 'weetje'}, {relation: 'dierengeluid'}]
     }, function (err, result) {
-      if (err) console.log(err);
-      var temp = result.toJSON()
+      if (err) cb(err, null);
+      if(result === undefined){cb('empty result', null)}
+      var temp = result.toJSON();
       var weetjes = temp.weetje.map(function (x) {
         return x.bestandspad
-      })
+      });
       var dierengeluid = temp.dierengeluid.bestandspad
       var response = {weetjes: weetjes, dierengeluid: dierengeluid};
       cb(null, response);
@@ -21,28 +22,30 @@ module.exports = function (Poot) {
   Poot.sendLog = function (log, pootid, cb) {
     console.log('in sendlog, id: ' + pootid);
     console.log('log: ' + JSON.stringify(log));
-    var temp = log.toJSON()
-    var logValues = temp.logValues
-    console.log('logvalues: ' + logValues)
-    var timestamp = log.toJSON().timestamp
+    var temp = log.toJSON();
+    var logValues = temp.logValues;
+    console.log('logvalues: ' + logValues);
+    var timestamp = log.toJSON().timestamp;
     var response = {pootid: pootid, timestamp: timestamp, logValues: logValues}
     // todo sla data op in logging
 
-    //todo hij neemt logvalues van log niet mee.
+    // todo hij neemt logvalues van log niet mee.
+    // todo relatie van logging - logValues bekijken, die wordt niet goed overgenomen in de API explorer.
+    // todo logValues is nu niet required bij het aanmaken, dit moet wel.
+    // todo logValues mee in het object krijgen en opslaan.
     cb(null, response)
   };
 
   Poot.afterRemote('sendLog', function (ctx, result, next) {
     console.log('in after remote: ' + result);
     app.models.Logging.create(result, function (err, obj) {
-      if (err) console.log(err);
+      if (err) next(err, null);
       console.log(obj)
       next(null, 'logging opgeslagen');
     })
   });
 
   Poot.scan = function (pasid, pootid, cb) {
-    //todo make sure the request takes {pasid: 5} instead of just 5
     var rangerid = 0;
     var speurpuntid = 0;
 
@@ -51,16 +54,17 @@ module.exports = function (Poot) {
       where: {pasid: pasid},
       include: {relation: 'ranger'}
     }, function (err, result) {
-      if (err) console.log(err);
+      if (err) cb(err, null);
+      if(result === undefined){cb('empty result', null)}
       rangerid = (result.toJSON()).ranger.id;
 
-//zoek het speurpunt bij het pootid uit de request
+      //zoek het speurpunt bij het pootid uit de request
       app.models.Speurpunt.findOne({
         where: {pootid: pootid}
       }, function (err, result) {
-        if (err) console.log(err);
+        if (err) cb(err, null);
+        if(result === undefined){cb('empty result', null)}
         speurpuntid = result.toJSON().id;
-        //todo datum
         result = {rangerid: rangerid, speurpuntid: speurpuntid, datum: Date.now()};
         console.log('result:=====');
         console.log(result);
@@ -73,19 +77,20 @@ module.exports = function (Poot) {
     console.log('in after remote scan');
     console.log('result: ' + JSON.stringify(result));
     app.models.RangerHeeftBezocht.create(result, function(err, obj){
-      if(err) console.log(err);
+      if(err) next(err, null);
       next(null, 'successful');
     })
 
   });
 
   Poot.updateProgress = function (transactieid, voortgang, cb) {
+    //todo implementeer dit.
     cb(null, 'Progress update ontvangen.')
   };
 
   Poot.getPootid = function (cb) {
     Poot.find({fields: {pootid: true, id: false}}, function (err, poten) {
-      if (err) console.log(err);
+      if (err) cb(err, null);
       var ids = poten.map(function (x) {
         return x.pootid
       });
@@ -99,7 +104,7 @@ module.exports = function (Poot) {
   };
   Poot.afterRemote('getPootid', function (ctx, result, next) {
     Poot.create(result, function (err, obj) {
-      if (err) console.log(err);
+      if (err) next(err, null);
       next();
     })
   });
@@ -108,7 +113,7 @@ module.exports = function (Poot) {
     description: 'Het opvragen van de configuratie van een specifieke poot.',
     accepts: {arg: 'pootid', type: 'number', http: {source: 'path'}},
     http: {path: '/:pootid/config', verb: 'get'},
-    returns: {arg: 'pootid', type: 'Object', root: true}
+    returns: {errorStatus: '400',arg: 'pootid', type: 'Object', root: true}
   });
 
   Poot.remoteMethod('sendLog', {
@@ -118,7 +123,7 @@ module.exports = function (Poot) {
       type: 'number',
       http: {source: 'path'}
     }],
-    http: {path: '/:pootid/logs', verb: 'post'},
+    http: {errorStatus: '400',path: '/:pootid/logs', verb: 'post', status: 201},
     returns: {arg: 'message', type: 'string', root: true}
   });
 
@@ -129,7 +134,7 @@ module.exports = function (Poot) {
       type: 'number',
       http: {source: 'path'}
     }],
-    http: {path: '/:pootid/scan', verb: 'post'},
+    http: {errorStatus: '400',path: '/:pootid/scan', verb: 'post', status: 201},
     returns: {arg: 'message', type: 'string', root: true}
   });
 
@@ -140,14 +145,14 @@ module.exports = function (Poot) {
       type: 'number',
       http: {source: 'body'}
     }],
-    http: {path: '/update/:transactieid', verb: 'put'},
+    http: {errorStatus: '400', path: '/update/:transactieid', verb: 'put'},
     returns: {arg: 'message', type: 'string', root: true}
   });
 
   Poot.remoteMethod('getPootid', {
     description: 'Registreren van een nieuw poot. Response bevat het nieuw aangemaakte poot.',
     accepts: [],
-    http: {path: '/:pootid/veryinterestingendpoint', verb: 'post'},
+    http: {errorStatus: '400', path: '/new', verb: 'post', status: 201},
     returns: {arg: 'message', type: 'string', root: true}
   });
 
