@@ -6,7 +6,6 @@ import nl.han.gateway.dao.IPootDAO;
 import nl.han.gateway.exceptions.NotImplementedException;
 import nl.han.gateway.models.Poot;
 import nl.han.mysensor.models.*;
-import nl.han.mysensor.models.myenums.MyInternal;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -37,8 +36,10 @@ public class MySensorReceiveService {
         } else if (message instanceof MySetMessage) {
             handleIncomingSetMessages((MySetMessage) message);
         } else if (message instanceof MyReqMessage) {
+            logger.info(String.format("Not implemented yet, message: %s", message.toString()));
             throw new NotImplementedException();
         } else if (message instanceof MyInternalMessage) {
+            logger.info(String.format("Not implemented yet, message: %s", message.toString()));
             throw new NotImplementedException();
         } else {
             throw new IllegalStateException("Illegal message state");

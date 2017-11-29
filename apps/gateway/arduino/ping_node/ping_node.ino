@@ -9,7 +9,7 @@
 //RF24_250KBPS for 250kbs
 // RF24_1MBPS for 1Mbps
 //RF24_2MBPS for 2Mbps.
-#define MY_RF24_DATARATE RF24_2MBPS
+#define MY_RF24_DATARATE RF24_250KBPS
 
 #define MY_NODE_ID 14
 
@@ -41,7 +41,7 @@ void loop() {
   if (millis() - lastSent >= randint) {
     randint = random(2, 5) * 1000;
     lastSent = millis();
-    send(msg.set("25"), true);
+    send(msg.set("19"), true);
   }
 }
 
