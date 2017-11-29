@@ -115,7 +115,7 @@ module.exports = function (Poot) {
     description: 'Het opvragen van de configuratie van een specifieke poot.',
     accepts: {arg: 'pootid', type: 'number', http: {source: 'path'}},
     http: {path: '/:pootid/config', verb: 'get'},
-    returns: {errorStatus: '400', arg: 'pootid', type: 'Object', root: true}
+    returns: {errorStatus: '500', arg: 'pootid', type: 'Object', root: true}
   });
 
   Poot.remoteMethod('sendLog', {
@@ -125,7 +125,7 @@ module.exports = function (Poot) {
       type: 'number',
       http: {source: 'path'}
     }],
-    http: {errorStatus: '400', path: '/:pootid/logs', verb: 'post', status: 201},
+    http: {errorStatus: '500', path: '/:pootid/logs', verb: 'post', status: 201},
     returns: {arg: 'message', type: 'string', root: true}
   });
 
@@ -136,7 +136,7 @@ module.exports = function (Poot) {
       type: 'number',
       http: {source: 'path'}
     }],
-    http: {errorStatus: '400', path: '/:pootid/scan', verb: 'post', status: 201},
+    http: {errorStatus: '500', path: '/:pootid/scan', verb: 'post', status: 201},
     returns: {arg: 'message', type: 'string', root: true}
   });
 
@@ -147,14 +147,14 @@ module.exports = function (Poot) {
       type: 'number',
       http: {source: 'body'}
     }],
-    http: {errorStatus: '400', path: '/update/:transactieid', verb: 'put'},
+    http: {errorStatus: '500', path: '/update/:transactieid', verb: 'put'},
     returns: {arg: 'message', type: 'string', root: true}
   });
 
   Poot.remoteMethod('getPootid', {
     description: 'Registreren van een nieuw poot. Response bevat het nieuw aangemaakte poot.',
     accepts: [],
-    http: {errorStatus: '400', path: '/new', verb: 'post', status: 201},
+    http: {errorStatus: '500', path: '/new', verb: 'post', status: 201},
     returns: {arg: 'message', type: 'string', root: true}
   });
 };
