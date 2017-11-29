@@ -5,20 +5,19 @@
   "options": {
     "validateUpsert": true
   },
+  "mixins": {
+    "RemoteRouting": {
+      "only": []
+    }
+  },
   "properties": {
     "pootid": {
       "type": "number",
       "required": true
     },
     "timestamp": {
-      "type": "string",
+      "type": "number",
       "required": true
-    }
-  },
-  "mixins": {
-    "RemoteRouting" : {
-      "only": [
-      ]
     }
   },
   "validations": [],
