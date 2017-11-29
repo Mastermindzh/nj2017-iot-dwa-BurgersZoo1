@@ -15,11 +15,22 @@ class ScanPasComponent extends Component {
   }
 
   componentDidMount() {
-    setInterval( () => {
+
+    axios.get("http://servers.rickvanlieshout.com:8001/api/rangerHeeftBezochts").then(response => {
+      this.setState({ passen: response.data.reverse() });
+
+      setInterval( () => {
       axios.get("http://servers.rickvanlieshout.com:8001/api/rangerHeeftBezochts").then(response => {
-        this.setState({ passen: response.data.reverse() });
+        this.handleUpdate(response.data)
       }).catch(err => console.log(err));
     }, 1000);
+
+    }).catch(err => console.log(err));
+
+  }
+
+  handleUpdate(scans){
+
   }
 
   render() {
