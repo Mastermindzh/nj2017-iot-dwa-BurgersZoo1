@@ -1,13 +1,25 @@
 import React, { Component } from 'react';
 import TableComponent from './../components/table-component.jsx';
 import { withStyles } from 'material-ui/styles';
-import style from '../styles/style';
 import IconButton from 'material-ui/IconButton';
 import Icon from 'material-ui/Icon';
-// import PopupComponent from './../components/popup-component.jsx';
+import Input, { InputLabel } from 'material-ui/Input';
+import { FormControl } from 'material-ui/Form';
+import Grid from 'material-ui/Grid';
+import PopupComponent from './../components/popup-component.jsx';
+import styles from './../styles/style.js';
+
 
 class PootAanpassenContainer extends Component {
+
+  state = {
+    popupOpen: false
+  }
+
   render() {
+
+
+    const { classes } = this.props;
 
     const headers = [
       { text: "" },
@@ -22,7 +34,7 @@ class PootAanpassenContainer extends Component {
         key: 'olifantrow',
         children: [
           {
-            children: <IconButton>
+            children: <IconButton onClick={() => this.setState({ popupOpen: true })}>
               <Icon>mode_edit</Icon>
             </IconButton>
           },
@@ -36,7 +48,7 @@ class PootAanpassenContainer extends Component {
         key: 'lion row',
         children: [
           {
-            children: <IconButton>
+            children: <IconButton onClick={() => this.setState({ popupOpen: true })}>
               <Icon>mode_edit</Icon>
             </IconButton>
           },
@@ -48,12 +60,31 @@ class PootAanpassenContainer extends Component {
       },
     ];
 
-
     return (
       <div>
         <h1>Poot aanpassen</h1>
-        <TableComponent headers={headers} data={data} />
+        <Grid container spacing={24}>
+          <Grid item xs={12}>
+            <div>
+              <FormControl className={classes.formControl}>
+                <InputLabel htmlFor="search-simple">Zoeken</InputLabel>
+                <Input id="search-simple" value={this.state.search} onChange={(event) => this.setState({ search: event.target.value })} />
+              </FormControl>
+              <IconButton onClick={() => this.setState({ popupOpen: true })}>
+                <Icon>add_circle</Icon>
+              </IconButton>
+            </div>
+          </Grid>
+          <Grid item xs={12}>
+          <TableComponent headers={headers} data={data} />
+          </Grid>
+        </Grid>
 
+        {this.state.popupOpen &&
+          <PopupComponent title={"Nog niet geimplementeerd"} open={this.state.popupOpen} onRequestClose={() => this.setState({ popupOpen: false })}>
+            Tot de volgende keer!
+          </PopupComponent>
+        }
 
         {/* <PopupComponent /> */}
       </div>
@@ -61,4 +92,4 @@ class PootAanpassenContainer extends Component {
   }
 }
 
-export default withStyles(style, { withTheme: true })(PootAanpassenContainer);
+export default withStyles(styles, { withTheme: true })(PootAanpassenContainer);

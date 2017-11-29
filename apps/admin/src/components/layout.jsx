@@ -11,7 +11,7 @@ import AppRoutes from './../routes/app-routes.jsx';
 class Layout extends Component {
 
   state = {
-    open: false
+    open: true
   };
 
   handleToggle = () => {

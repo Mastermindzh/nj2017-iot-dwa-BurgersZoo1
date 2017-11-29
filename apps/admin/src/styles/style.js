@@ -89,5 +89,12 @@ export default function(theme){
     'contentShift-right': {
       marginRight: 0,
     },
+    formControl: {
+      margin: theme.spacing.unit,
+    },
+    container: {
+      display: 'flex',
+      flexWrap: 'wrap',
+    },
   };
 }

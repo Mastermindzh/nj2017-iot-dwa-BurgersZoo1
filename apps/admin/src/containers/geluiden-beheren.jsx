@@ -10,16 +10,7 @@ import ReactAudioPlayer from 'react-audio-player';
 import Grid from 'material-ui/Grid';
 import PopupComponent from './../components/popup-component.jsx';
 import GeluidUploaden from './../containers/geluid-uploaden.jsx';
-
-const styles = theme => ({
-  container: {
-    display: 'flex',
-    flexWrap: 'wrap',
-  },
-  formControl: {
-    margin: theme.spacing.unit,
-  },
-});
+import styles from './../styles/style.js';
 
 class GeluidenBeheren extends Component {
 
