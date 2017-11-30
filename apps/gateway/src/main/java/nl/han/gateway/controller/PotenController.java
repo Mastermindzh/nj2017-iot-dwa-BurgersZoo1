@@ -4,11 +4,14 @@ import com.google.gson.Gson;
 import nl.han.gateway.dao.DAOFactory;
 import nl.han.gateway.exceptions.NotFoundException;
 import nl.han.gateway.exceptions.NotOnlineException;
+import nl.han.gateway.models.AnimalSound;
 import nl.han.gateway.models.Poot;
+import nl.han.gateway.models.Weetje;
 import nl.han.gateway.service.PotenService;
 import spark.Request;
 import spark.Response;
 
+import java.awt.image.AreaAveragingScaleFilter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,9 +29,40 @@ public class PotenController {
         put("/poten/:pootid", (this::savePootConfiguration), json());
         get("/poten", (this::getAllPoten), json());
         get("/poten/:pootid", (this::getPoot), json());
+        get("/poten/:pootid/config", (this::getPootConfig), json());
     }
 
-    private Poot getPoot(Request request, Response response)  {
+
+    /**
+     * Get mocked version of poot config
+     *
+     * @param request
+     * @param response
+     * @return
+     */
+    private Poot getPootConfig(Request request, Response response) {
+        Poot poot = new Poot();
+        poot.setPootid(1L);
+        poot.setNodeId(5L);
+        poot.setDierengeluid(new AnimalSound("/dierengeluid.mp3"));
+
+        List<Weetje> weetjes = new ArrayList<>();
+        weetjes.add(new Weetje("/weetje1.mp3"));
+        weetjes.add(new Weetje("/weetje2.mp3"));
+        weetjes.add(new Weetje("/weetje3.mp3"));
+        poot.setWeetjes(weetjes);
+        return poot;
+    }
+
+
+    /**
+     * Get info of one poot
+     *
+     * @param request
+     * @param response
+     * @return
+     */
+    private Poot getPoot(Request request, Response response) {
         Poot poot = this.potenService.getPoot(Integer.parseInt(request.params("pootid")));
         if (poot == null) {
             response.status(404);

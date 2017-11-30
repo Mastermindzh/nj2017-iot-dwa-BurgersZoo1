@@ -4,7 +4,6 @@ import org.bson.types.ObjectId;
 import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Id;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -14,10 +13,10 @@ public class Poot {
     private ObjectId id;
     private Long pootid;
     private Long nodeId;
-    private List<String> weetjes;
-    private String dierengeluid;
+    private List<Weetje> weetjes;
+    private AnimalSound dierengeluid;
 
-    public Poot(ObjectId id, Long pootid, Long nodeId, List<String> weetjes, String dierengeluid) {
+    public Poot(ObjectId id, Long pootid, Long nodeId, List<Weetje> weetjes, AnimalSound dierengeluid) {
         this.id = id;
         this.pootid = pootid;
         this.nodeId = nodeId;
@@ -44,19 +43,19 @@ public class Poot {
         this.pootid = pootid;
     }
 
-    public List<String> getWeetjes() {
+    public List<Weetje> getWeetjes() {
         return weetjes;
     }
 
-    public void setWeetjes(List<String> weetjes) {
+    public void setWeetjes(List<Weetje> weetjes) {
         this.weetjes = weetjes;
     }
 
-    public String getDierengeluid() {
+    public AnimalSound getDierengeluid() {
         return dierengeluid;
     }
 
-    public void setDierengeluid(String dierengeluid) {
+    public void setDierengeluid(AnimalSound dierengeluid) {
         this.dierengeluid = dierengeluid;
     }
 
