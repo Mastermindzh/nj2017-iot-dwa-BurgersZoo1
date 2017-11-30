@@ -1,4 +1,4 @@
-## Use Case 9 - geluiden beluisteren
+### Use Case 9 - geluiden beluisteren
 
 **Primaire Actor**: Administrator
 <br />

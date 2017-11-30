@@ -50,7 +50,7 @@ Ik dit document wordt beschreven hoe het project voor Burgers' Zoo er precies ui
     + [Postconditie](#postconditie-7)
     + [Success scenario](#success-scenario-7)
     + [Alternatieve flow(s)](#alternatieve-flows-7)
-- [Use Case 9 - geluiden beluisteren](#use-case-9---geluiden-beluisteren)
+  * [Use Case 9 - geluiden beluisteren](#use-case-9---geluiden-beluisteren)
     + [Preconditie](#preconditie-8)
     + [Postconditie](#postconditie-8)
     + [Success scenario](#success-scenario-8)
@@ -337,7 +337,7 @@ Geluid op de poot is toegevoegd of gewijzigd.
 7. Poot valt onder het updaten weg.
     1. Poot zal geüpdate worden zodra deze online komt.
 
-## Use Case 9 - geluiden beluisteren
+### Use Case 9 - geluiden beluisteren
 
 **Primaire Actor**: Administrator
 <br />
