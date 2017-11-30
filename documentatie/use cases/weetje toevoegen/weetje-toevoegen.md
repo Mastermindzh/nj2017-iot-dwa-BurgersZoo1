@@ -1,4 +1,4 @@
-# Use Case 5 - geluid toevoegen
+# Use Case 5 - Weetje toevoegen
 
 **Primaire Actor**: Administrator
 <br />
