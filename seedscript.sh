@@ -1,6 +1,8 @@
 #!/bin/sh
 # Wat er nog moet gebueren:
-# - Database leeg maken aan het begin van dit script.
+
+mongo burgerszoo --eval "db.dropDatabase()" --host servers.rickvanlieshout.com:8009
+
 # Maak een paar poten aan
 POOT1=$(curl -s -S -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{"pootid": 0}' 'http://servers.rickvanlieshout.com:8001/api/poten')
 POOT2=$(curl -s -S -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' 'http://servers.rickvanlieshout.com:8001/api/poten/new')
