@@ -7,6 +7,9 @@ Ik dit document wordt beschreven hoe het project voor Burgers' Zoo er precies ui
 #include "documentatie/domein model/domeinmodel.md"
 ## Use Cases
 Onderstaande Use Cases beschrijven alle handelingen die verschillende gebruikers met het systeem kunnen doen.
+### Use Case Diagram
+In dit diagram staan alle Use Cases samen met de actoren om duidelijk te krijgen wat er gedaan kan worden met het systeem.
+#include "documentatie/use cases/usecase diagram.png"
 #include "documentatie/use cases/pas scannen/pas-scannen.md"
 #include "documentatie/use cases/resultaten inzien/resultaten-inzien.md"
 #include "documentatie/use cases/weetje beluisteren/weetje-beluisteren.md"

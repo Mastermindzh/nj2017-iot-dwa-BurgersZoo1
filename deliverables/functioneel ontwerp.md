@@ -10,6 +10,7 @@ Ik dit document wordt beschreven hoe het project voor Burgers' Zoo er precies ui
   * [Niet-functionele Requirements](#niet-functionele-requirements)
 - [Domeinmodel](#domeinmodel)
 - [Use Cases](#use-cases)
+  * [Use Case Diagram](#use-case-diagram)
   * [Use Case 1 - Pas scannen](#use-case-1---pas-scannen)
     + [Preconditie](#preconditie)
     + [Postconditie](#postconditie)
@@ -109,6 +110,9 @@ Een speurtocht staat niet in het domeinmodel omdat er geen vaste volgorde is waa
 
 ## Use Cases
 Onderstaande Use Cases beschrijven alle handelingen die verschillende gebruikers met het systeem kunnen doen.
+### Use Case Diagram
+In dit diagram staan alle Use Cases samen met de actoren om duidelijk te krijgen wat er gedaan kan worden met het systeem.
+#include "documentatie/use cases/usecase diagram.png"
 ### Use Case 1 - Pas scannen
 
 **Primaire Actor**: Ranger
