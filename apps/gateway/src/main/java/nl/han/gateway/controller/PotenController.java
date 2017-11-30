@@ -28,8 +28,12 @@ public class PotenController {
         get("/poten/:pootid", (this::getPoot), json());
     }
 
-    private Poot getPoot(Request request, Response response) {
-        return this.potenService.getPoot(Integer.parseInt(request.params("pootid")));
+    private Poot getPoot(Request request, Response response)  {
+        Poot poot = this.potenService.getPoot(Integer.parseInt(request.params("pootid")));
+        if (poot == null) {
+            response.status(404);
+        }
+        return poot;
     }
 
 
