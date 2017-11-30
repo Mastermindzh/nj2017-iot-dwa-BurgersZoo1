@@ -29,21 +29,7 @@ public class PotenController {
         put("/poten/:pootid", (this::savePootConfiguration), json());
         get("/poten", (this::getAllPoten), json());
         get("/poten/:pootid", (this::getPoot), json());
-        get("/poten/:pootid/config", (this::getPootConfig), json());
     }
-
-
-    /**
-     * Get mocked version of poot config
-     *
-     * @param request
-     * @param response
-     * @return
-     */
-    private Poot getPootConfig(Request request, Response response) {
-        return this.getPoot(request, response);
-    }
-
 
     /**
      * Get info of one poot
