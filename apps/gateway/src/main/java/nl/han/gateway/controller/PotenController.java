@@ -41,17 +41,7 @@ public class PotenController {
      * @return
      */
     private Poot getPootConfig(Request request, Response response) {
-        Poot poot = new Poot();
-        poot.setPootid(1L);
-        poot.setNodeId(5L);
-        poot.setDierengeluid(new AnimalSound("/dierengeluid.mp3"));
-
-        List<Weetje> weetjes = new ArrayList<>();
-        weetjes.add(new Weetje("/weetje1.mp3"));
-        weetjes.add(new Weetje("/weetje2.mp3"));
-        weetjes.add(new Weetje("/weetje3.mp3"));
-        poot.setWeetjes(weetjes);
-        return poot;
+        return this.getPoot(request, response);
     }
 
 
