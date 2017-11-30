@@ -88,6 +88,7 @@ public class PootMongoDAO implements IPootDAO {
     public Poot findByNodeId(Long nodeId) {
         Query<Poot> query = datastore.createQuery(Poot.class);
         query.field("nodeId").equal(nodeId);
-        return query.get();
+        Poot poot = query.get();
+        return poot;
     }
 }

@@ -1,7 +1,6 @@
 package nl.han.gateway.controller;
 
 import com.google.gson.Gson;
-import nl.han.gateway.dao.DAOFactory;
 import nl.han.gateway.exceptions.NotFoundException;
 import nl.han.gateway.exceptions.NotOnlineException;
 import nl.han.gateway.models.Poot;
@@ -9,7 +8,6 @@ import nl.han.gateway.service.PotenService;
 import spark.Request;
 import spark.Response;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static nl.han.gateway.util.transformers.JsonUtil.json;
@@ -28,7 +26,14 @@ public class PotenController {
         get("/poten/:pootid", (this::getPoot), json());
     }
 
-    private Poot getPoot(Request request, Response response)  {
+    /**
+     * Get info of one poot
+     *
+     * @param request
+     * @param response
+     * @return
+     */
+    private Poot getPoot(Request request, Response response) {
         Poot poot = this.potenService.getPoot(Integer.parseInt(request.params("pootid")));
         if (poot == null) {
             response.status(404);
