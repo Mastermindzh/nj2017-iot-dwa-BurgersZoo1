@@ -1,4 +1,4 @@
-# Use Case 6 - Lijst van weetjes inzien
+## Use Case 6 - Lijst van weetjes inzien
 
 **Primaire Actor**: Administrator
 <br />
@@ -6,15 +6,15 @@
 
 De administrator wil een lijst van weetjes zien.
 
-## Preconditie
+### Preconditie
 
 De administrator heeft het admin paneel open.
 
-## Postconditie
+### Postconditie
 
 Lijst van weetjes getoond
 
-## Success scenario
+### Success scenario
 
 |Gebruiker   |Systeem|
 |---|---|
@@ -22,4 +22,4 @@ Lijst van weetjes getoond
 || 2. Vraagt weetjes op|
 ||3. Toont beschikbare weetjes op de weetjes pagina|
 
-## Alternatieve flow(s)
+### Alternatieve flow(s)

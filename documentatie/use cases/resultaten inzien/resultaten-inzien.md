@@ -1,4 +1,4 @@
-# Use Case 2 - Resultaten inzien
+## Use Case 2 - Resultaten inzien
 
 **Primaire Actor**: Ranger
 <br />
@@ -6,15 +6,15 @@
 
 De ranger wil bij thuiskomst zijn resultaten kunnen bekijken. Hierbij kan de Ranger bijv. zien welke dieren de ranger bezocht heeft.
 
-## Preconditie
+### Preconditie
 
 De ranger heeft zijn unieke rangercode bemachtigt (danwel via een print van een diploma of op een andere manier).
 
-## Postconditie
+### Postconditie
 
 De ranger kan zijn unieke gegevens bekijken
 
-## Success scenario
+### Success scenario
 
 |Gebruiker|Systeem|
 |---|---|
@@ -23,6 +23,6 @@ De ranger kan zijn unieke gegevens bekijken
 |3. De ranger voert zijn unieke rangercode in.||
 ||4. Het systeem haalt de unieke rangergegevens op en toont deze|
 
-## Alternatieve flow(s)
+### Alternatieve flow(s)
 
 3. De ranger voert een verkeerde code in, de website zal een foutmelding geven en opnieuw de mogelijkheid geven om de code in te voeren.
