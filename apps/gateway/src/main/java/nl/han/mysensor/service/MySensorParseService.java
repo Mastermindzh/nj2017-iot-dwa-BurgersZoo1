@@ -1,11 +1,12 @@
 package nl.han.mysensor.service;
 
 import nl.han.backend.services.BackendPootService;
+import nl.han.gateway.exceptions.NotImplementedException;
+import nl.han.mysensor.models.*;
 import nl.han.mysensor.models.myenums.MyCommand;
 import nl.han.mysensor.models.myenums.MyInternal;
 import nl.han.mysensor.models.myenums.MyPresentationType;
 import nl.han.mysensor.models.myenums.MyDataTypes;
-import nl.han.mysensor.models.MyMessage;
 import nl.han.gateway.exceptions.NotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,7 +15,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Class parses lines into mysensor messages
+ * Parser for MySensor messages
  *
  * @author Thomas
  * @since 0.1
@@ -22,7 +23,7 @@ import java.util.regex.Pattern;
 public class MySensorParseService {
 
     private static final String MESSAGE_PATTERN
-            = "([0-9]+);([0-9]+);([0-9]+);([0|1]);([0-9]+);(.+)";
+            = "([0-9]+);([0-9]+);([0-9]+);([0|1]);([0-9]+);(.*)";
     private static final Pattern pattern = Pattern.compile(MESSAGE_PATTERN);
     private static Logger logger = LoggerFactory.getLogger(BackendPootService.class.getName());
 
@@ -34,7 +35,7 @@ public class MySensorParseService {
      * @return mysensor message
      * @throws NotFoundException
      */
-    public MyMessage parseMessage(String input) throws NotFoundException {
+    public MyMessage parseToObject(String input) throws NotFoundException {
         Matcher m = pattern.matcher(input);
         if (m.find()) {
             if (m.groupCount() == 6) { // six fields in mysensor messages
@@ -81,5 +82,56 @@ public class MySensorParseService {
             messageBuilder.internal(MyInternal.getByValue(Integer.parseInt(type)));
         }
         return messageBuilder.build();
+    }
+
+    /**
+     * Parse a MyMessage object to a MySensor message string.
+     *
+     * @param message
+     * @return MySensor message String
+     */
+    public String parseToMySensorMessage(MyMessage message) {
+        StringBuilder mySensorMessage = new StringBuilder();
+        mySensorMessage.append(message.getNodeId());
+        mySensorMessage.append(";");
+        mySensorMessage.append(message.getChildSensorId());
+        mySensorMessage.append(";");
+        mySensorMessage.append(message.getCommand().getValue());
+        mySensorMessage.append(";");
+        mySensorMessage.append(message.isAck() ? 1 : 0);
+        mySensorMessage.append(";");
+        appendMySensorTypeFromMessage(message, mySensorMessage);
+        mySensorMessage.append(";");
+        mySensorMessage.append(message.getPayload());
+        mySensorMessage.append("\n");
+        return mySensorMessage.toString();
+    }
+
+    /**
+     * Append the message type value from the message, depending on the implemented object
+     *
+     * @param message
+     * @param mySensorMessage
+     */
+    private void appendMySensorTypeFromMessage(MyMessage message, StringBuilder mySensorMessage) {
+        if (message instanceof MyPresentationMessage) {
+            mySensorMessage.append(
+                    ((MyPresentationMessage) message).getPresentationType().getValue()
+            );
+        } else if (message instanceof MySetMessage) {
+            mySensorMessage.append(
+                    ((MySetMessage) message).getType().getValue()
+            );
+        } else if (message instanceof MyReqMessage) {
+            mySensorMessage.append(
+                    ((MyReqMessage) message).getType().getValue()
+            );
+        } else if (message instanceof MyInternalMessage) {
+            mySensorMessage.append(
+                    ((MyInternalMessage) message).getInternalType().getValue()
+            );
+        } else {
+            throw new IllegalStateException("Illegal message parse state");
+        }
     }
 }

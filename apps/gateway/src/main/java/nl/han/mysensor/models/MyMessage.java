@@ -75,7 +75,7 @@ public abstract class MyMessage {
         private int childSensorId;
         private MyCommand command;
         private boolean ack;
-        private String payload;
+        private String payload = "";
 
         private MyPresentationType presentationType;
         private MyInternal internal;
