@@ -49,9 +49,9 @@ public class PootTest {
     public void testDierenGeluid(){
         Poot poot = new Poot();
         assertNull(poot.getDierengeluid());
-        AnimalSound animalSound = new AnimalSound("/url");
-        poot.setDierengeluid(animalSound);
-        assertEquals(animalSound, poot.getDierengeluid());
+        Dierengeluid dierengeluid = new Dierengeluid("/url");
+        poot.setDierengeluid(dierengeluid);
+        assertEquals(dierengeluid, poot.getDierengeluid());
     }
 
 }
