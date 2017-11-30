@@ -1,4 +1,4 @@
-## Use Case 4 - geluid toevoegen
+### Use Case 4 - geluid toevoegen
 
 **Primaire Actor**: Administrator
 <br />
@@ -6,15 +6,15 @@
 
 De administrator wil een nieuw dierengeluid toevoegen.
 
-### Preconditie
+#### Preconditie
 
 De administrator heeft het admin paneel open.
 
-### Postconditie
+#### Postconditie
 
 Het geluid is toegevoegd.
 
-### Success scenario
+#### Success scenario
 
 |Gebruiker   |Systeem|
 |---|---|
@@ -24,6 +24,6 @@ Het geluid is toegevoegd.
 |4. Kiest om de bestanden te versturen||
 ||5. Upload de nieuwe bestanden en stuurt een confirmatie|
 
-### Alternatieve flow(s)
+#### Alternatieve flow(s)
 
 5. Bestanden zijn niet valide, het systeem toont welke bestanden **niet** geupload zijn.

@@ -1,4 +1,4 @@
-## Use Case 10 - Activeer Pas
+### Use Case 10 - Activeer Pas
 
 **Primaire Actor**: Ranger
 <br />
@@ -6,15 +6,15 @@
 
 Een ranger wil zijn pas activeren door zijn bestaande ranger account er op te laden. Dit account is overgebleven van een vorig bezoek.
 
-### Preconditie
+#### Preconditie
 
 De ranger heeft een pas ontvangen bij de kassa.
 
-### Postconditie
+#### Postconditie
 
 Het account van de ranger is op de pas geladen.
 
-### Success scenario
+#### Success scenario
 
 |Gebruiker|Systeem|
 |---|---|
@@ -23,6 +23,6 @@ Het account van de ranger is op de pas geladen.
 |3. De ranger `voert zijn code in.||
 ||4. Het systeem herkent de code en laad de ranger gegevens op de pas.|
 
-### Alternatieve flow(s)
+#### Alternatieve flow(s)
 
 4. Het systeem herkent de code niet en geeft de ranger de optie om opnieuw de code in te voeren.

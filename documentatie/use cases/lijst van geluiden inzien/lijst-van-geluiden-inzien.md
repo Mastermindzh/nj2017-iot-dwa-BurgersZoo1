@@ -1,4 +1,4 @@
-## Use Case 7 - Lijst van geluiden inzien
+### Use Case 7 - Lijst van geluiden inzien
 
 **Primaire Actor**: Administrator
 <br />
@@ -6,15 +6,15 @@
 
 De administrator wil een lijst van geluiden zien.
 
-### Preconditie
+#### Preconditie
 
 De administrator heeft het admin paneel open.
 
-### Postconditie
+#### Postconditie
 
 Lijst van geluiden getoond
 
-### Success scenario
+#### Success scenario
 
 |Gebruiker   |Systeem|
 |---|---|
@@ -22,4 +22,4 @@ Lijst van geluiden getoond
 || 2. Vraagt geluiden op|
 ||3. Toont beschikbare geluiden op de geluiden pagina|
 
-### Alternatieve flow(s)
+#### Alternatieve flow(s)

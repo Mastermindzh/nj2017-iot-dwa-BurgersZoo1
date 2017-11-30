@@ -1,4 +1,4 @@
-## Use Case 11 - weetje aan poot toevoegen
+### Use Case 11 - weetje aan poot toevoegen
 
 **Primaire Actor**: Administrator
 <br />
@@ -6,15 +6,15 @@
 
 Een administrator wil een weetje aan een poot toevoegen.
 
-### Preconditie
+#### Preconditie
 
 De administrator heeft toegang tot de unieke identifier van de poot en de poot waar de administrator het weetje van wil aanpassen is online.
 
-### Postconditie
+#### Postconditie
 
 Weetje op de poot is toegevoegd of gewijzigd.
 
-### Success scenario
+#### Success scenario
 
 |Gebruiker|Systeem|
 |---|---|
@@ -26,7 +26,7 @@ Weetje op de poot is toegevoegd of gewijzigd.
 ||6. Slaat nieuw weetje op bij de desbetreffende paal|
 ||7. Update de poot met het nieuwe weetje |
 
-### Alternatieve flow(s)
+#### Alternatieve flow(s)
 
 7. Poot valt onder het updaten weg.
     1. Poot zal geüpdate worden zodra deze online komt.

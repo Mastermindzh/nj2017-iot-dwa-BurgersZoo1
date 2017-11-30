@@ -5,11 +5,11 @@ Ik dit document wordt beschreven hoe het project voor Burgers' Zoo er precies ui
 
 <!-- toc -->
 
-  * [Requirements](#requirements)
-    + [Functionele Requirements](#functionele-requirements)
-    + [Niet-functionele Requirements](#niet-functionele-requirements)
-  * [Domeinmodel](#domeinmodel)
-  * [Use Cases](#use-cases)
+- [Requirements](#requirements)
+  * [Functionele Requirements](#functionele-requirements)
+  * [Niet-functionele Requirements](#niet-functionele-requirements)
+- [Domeinmodel](#domeinmodel)
+- [Use Cases](#use-cases)
   * [Use Case 1 - Pas scannen](#use-case-1---pas-scannen)
     + [Preconditie](#preconditie)
     + [Postconditie](#postconditie)
@@ -65,9 +65,9 @@ Ik dit document wordt beschreven hoe het project voor Burgers' Zoo er precies ui
     + [Postconditie](#postconditie-10)
     + [Success scenario](#success-scenario-10)
     + [Alternatieve flow(s)](#alternatieve-flows-10)
-  * [Mockups](#mockups)
-    + [Ranger app](#ranger-app)
-    + [Administrator app](#administrator-app)
+- [Mockups](#mockups)
+  * [Ranger app](#ranger-app)
+  * [Administrator app](#administrator-app)
 
 <!-- tocstop -->
 
@@ -109,7 +109,7 @@ Een speurtocht staat niet in het domeinmodel omdat er geen vaste volgorde is waa
 
 ## Use Cases
 Onderstaande Use Cases beschrijven alle handelingen die verschillende gebruikers met het systeem kunnen doen.
-## Use Case 1 - Pas scannen
+### Use Case 1 - Pas scannen
 
 **Primaire Actor**: Ranger
 <br />
@@ -117,26 +117,26 @@ Onderstaande Use Cases beschrijven alle handelingen die verschillende gebruikers
 
 De ranger moet de pas op verschillende momenten scannen om een actie te voltooien.
 
-### Preconditie
+#### Preconditie
 
 De pas welke de ranger gebruikt is geactiveerd en gebruiksklaar.
 
-### Postconditie
+#### Postconditie
 
 De pas is gescand.
 
-### Success scenario
+#### Success scenario
 
 |Gebruiker   |Systeem|
 |---|---|
 |1. De ranger houdt de pas tegen de poot|   |
 ||2. De pas wordt gescant en de relevante info beschikbaar gemaat|
 
-### Alternatieve flow(s)
+#### Alternatieve flow(s)
 
 2. De pas is niet geactiveerd, het systeem laat een rood lampje branden en stopt de actieve usecase
 
-## Use Case 2 - Resultaten inzien
+### Use Case 2 - Resultaten inzien
 
 **Primaire Actor**: Ranger
 <br />
@@ -144,15 +144,15 @@ De pas is gescand.
 
 De ranger wil bij thuiskomst zijn resultaten kunnen bekijken. Hierbij kan de Ranger bijv. zien welke dieren de ranger bezocht heeft.
 
-### Preconditie
+#### Preconditie
 
 De ranger heeft zijn unieke rangercode bemachtigt (danwel via een print van een diploma of op een andere manier).
 
-### Postconditie
+#### Postconditie
 
 De ranger kan zijn unieke gegevens bekijken
 
-### Success scenario
+#### Success scenario
 
 |Gebruiker|Systeem|
 |---|---|
@@ -161,11 +161,11 @@ De ranger kan zijn unieke gegevens bekijken
 |3. De ranger voert zijn unieke rangercode in.||
 ||4. Het systeem haalt de unieke rangergegevens op en toont deze|
 
-### Alternatieve flow(s)
+#### Alternatieve flow(s)
 
 3. De ranger voert een verkeerde code in, de website zal een foutmelding geven en opnieuw de mogelijkheid geven om de code in te voeren.
 
-## Use Case 3 - Weetje beluisteren
+### Use Case 3 - Weetje beluisteren
 
 **Primaire Actor**: Ranger
 <br />
@@ -173,15 +173,15 @@ De ranger kan zijn unieke gegevens bekijken
 
 Een ranger staat bij een poot en wil een weetje horen, de ranger scant hiervoor zijn pas en krijgt een weetje te horen.
 
-### Preconditie
+#### Preconditie
 
 De pas welke de ranger gebruikt is geactiveerd en gebruiksklaar.
 
-### Postconditie
+#### Postconditie
 
 De ranger heeft het weetje gehoord
 
-### Success scenario
+#### Success scenario
 
 |Gebruiker   |Systeem|
 |---|---|
@@ -189,10 +189,10 @@ De ranger heeft het weetje gehoord
 || 2. Het systeem speelt een weetje|
 || 3. Het systeem verwerkt de informatie|
 
-### Alternatieve flow(s)
+#### Alternatieve flow(s)
 \-
 
-## Use Case 4 - geluid toevoegen
+### Use Case 4 - geluid toevoegen
 
 **Primaire Actor**: Administrator
 <br />
@@ -200,15 +200,15 @@ De ranger heeft het weetje gehoord
 
 De administrator wil een nieuw dierengeluid toevoegen.
 
-### Preconditie
+#### Preconditie
 
 De administrator heeft het admin paneel open.
 
-### Postconditie
+#### Postconditie
 
 Het geluid is toegevoegd.
 
-### Success scenario
+#### Success scenario
 
 |Gebruiker   |Systeem|
 |---|---|
@@ -218,11 +218,11 @@ Het geluid is toegevoegd.
 |4. Kiest om de bestanden te versturen||
 ||5. Upload de nieuwe bestanden en stuurt een confirmatie|
 
-### Alternatieve flow(s)
+#### Alternatieve flow(s)
 
 5. Bestanden zijn niet valide, het systeem toont welke bestanden **niet** geupload zijn.
 
-## Use Case 5 - Weetje toevoegen
+### Use Case 5 - Weetje toevoegen
 
 **Primaire Actor**: Administrator
 <br />
@@ -230,15 +230,15 @@ Het geluid is toegevoegd.
 
 De administrator wil een nieuw weetje toevoegen.
 
-### Preconditie
+#### Preconditie
 
 De administrator heeft het admin paneel open.
 
-### Postconditie
+#### Postconditie
 
 Het weetje is toegevoegd.
 
-### Success scenario
+#### Success scenario
 
 |Gebruiker   |Systeem|
 |---|---|
@@ -248,11 +248,11 @@ Het weetje is toegevoegd.
 |4. Kiest om de bestanden te versturen||
 ||5. Upload de nieuwe weetjes en stuurt een confirmatie|
 
-### Alternatieve flow(s)
+#### Alternatieve flow(s)
 
 5. Bestanden zijn niet valide, het systeem toont welke weetjes **niet** geupload zijn.
 
-## Use Case 6 - Lijst van weetjes inzien
+### Use Case 6 - Lijst van weetjes inzien
 
 **Primaire Actor**: Administrator
 <br />
@@ -260,15 +260,15 @@ Het weetje is toegevoegd.
 
 De administrator wil een lijst van weetjes zien.
 
-### Preconditie
+#### Preconditie
 
 De administrator heeft het admin paneel open.
 
-### Postconditie
+#### Postconditie
 
 Lijst van weetjes getoond
 
-### Success scenario
+#### Success scenario
 
 |Gebruiker   |Systeem|
 |---|---|
@@ -276,9 +276,9 @@ Lijst van weetjes getoond
 || 2. Vraagt weetjes op|
 ||3. Toont beschikbare weetjes op de weetjes pagina|
 
-### Alternatieve flow(s)
+#### Alternatieve flow(s)
 
-## Use Case 7 - Lijst van geluiden inzien
+### Use Case 7 - Lijst van geluiden inzien
 
 **Primaire Actor**: Administrator
 <br />
@@ -286,15 +286,15 @@ Lijst van weetjes getoond
 
 De administrator wil een lijst van geluiden zien.
 
-### Preconditie
+#### Preconditie
 
 De administrator heeft het admin paneel open.
 
-### Postconditie
+#### Postconditie
 
 Lijst van geluiden getoond
 
-### Success scenario
+#### Success scenario
 
 |Gebruiker   |Systeem|
 |---|---|
@@ -302,9 +302,9 @@ Lijst van geluiden getoond
 || 2. Vraagt geluiden op|
 ||3. Toont beschikbare geluiden op de geluiden pagina|
 
-### Alternatieve flow(s)
+#### Alternatieve flow(s)
 
-## Use Case 8 - geluid aan poot toevoegen
+### Use Case 8 - geluid aan poot toevoegen
 
 **Primaire Actor**: Administrator
 <br />
@@ -312,15 +312,15 @@ Lijst van geluiden getoond
 
 Een administrator wil een dierengeluid aan een poot toevoegen.
 
-### Preconditie
+#### Preconditie
 
 De administrator heeft toegang tot de unieke identifier van de poot en de poot waar de administrator het geluid van wil aanpassen is online.
 
-### Postconditie
+#### Postconditie
 
 Geluid op de poot is toegevoegd of gewijzigd.
 
-### Success scenario
+#### Success scenario
 
 |Gebruiker|Systeem|
 |---|---|
@@ -332,12 +332,12 @@ Geluid op de poot is toegevoegd of gewijzigd.
 ||6. Slaat nieuw dierengeluid op bij de desbetreffende paal|
 ||7. Update de poot met het nieuwe geluid |
 
-### Alternatieve flow(s)
+#### Alternatieve flow(s)
 
 7. Poot valt onder het updaten weg.
     1. Poot zal geüpdate worden zodra deze online komt.
 
-# Use Case 9 - geluiden beluisteren
+## Use Case 9 - geluiden beluisteren
 
 **Primaire Actor**: Administrator
 <br />
@@ -345,24 +345,24 @@ Geluid op de poot is toegevoegd of gewijzigd.
 
 De administrator wil een geluid beluisteren
 
-### Preconditie
+#### Preconditie
 
 De administrator heeft het admin paneel open en de lijst van weetjes/geluidjes open.
 
-### Postconditie
+#### Postconditie
 
 Het geluid wordt afgespeeld.
 
-### Success scenario
+#### Success scenario
 
 |Gebruiker   |Systeem|
 |---|---|
 |1. Kiest ervoor om het geluidje te beluisteren|   |
 || 2. Geluid wordt gespeeld|
 
-### Alternatieve flow(s)
+#### Alternatieve flow(s)
 
-## Use Case 10 - Activeer Pas
+### Use Case 10 - Activeer Pas
 
 **Primaire Actor**: Ranger
 <br />
@@ -370,15 +370,15 @@ Het geluid wordt afgespeeld.
 
 Een ranger wil zijn pas activeren door zijn bestaande ranger account er op te laden. Dit account is overgebleven van een vorig bezoek.
 
-### Preconditie
+#### Preconditie
 
 De ranger heeft een pas ontvangen bij de kassa.
 
-### Postconditie
+#### Postconditie
 
 Het account van de ranger is op de pas geladen.
 
-### Success scenario
+#### Success scenario
 
 |Gebruiker|Systeem|
 |---|---|
@@ -387,11 +387,11 @@ Het account van de ranger is op de pas geladen.
 |3. De ranger `voert zijn code in.||
 ||4. Het systeem herkent de code en laad de ranger gegevens op de pas.|
 
-### Alternatieve flow(s)
+#### Alternatieve flow(s)
 
 4. Het systeem herkent de code niet en geeft de ranger de optie om opnieuw de code in te voeren.
 
-## Use Case 11 - weetje aan poot toevoegen
+### Use Case 11 - weetje aan poot toevoegen
 
 **Primaire Actor**: Administrator
 <br />
@@ -399,15 +399,15 @@ Het account van de ranger is op de pas geladen.
 
 Een administrator wil een weetje aan een poot toevoegen.
 
-### Preconditie
+#### Preconditie
 
 De administrator heeft toegang tot de unieke identifier van de poot en de poot waar de administrator het weetje van wil aanpassen is online.
 
-### Postconditie
+#### Postconditie
 
 Weetje op de poot is toegevoegd of gewijzigd.
 
-### Success scenario
+#### Success scenario
 
 |Gebruiker|Systeem|
 |---|---|
@@ -419,7 +419,7 @@ Weetje op de poot is toegevoegd of gewijzigd.
 ||6. Slaat nieuw weetje op bij de desbetreffende paal|
 ||7. Update de poot met het nieuwe weetje |
 
-### Alternatieve flow(s)
+#### Alternatieve flow(s)
 
 7. Poot valt onder het updaten weg.
     1. Poot zal geüpdate worden zodra deze online komt.
