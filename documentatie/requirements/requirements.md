@@ -1,5 +1,3 @@
-# Requirements
-
 ## Functionele Requirements
 - Een ranger kan een rangerpas verkrijgen aan de kassa.
 - Een ranger kan deelnemen aan een speurtocht met een rangerpas.
