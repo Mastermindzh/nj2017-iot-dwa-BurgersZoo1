@@ -1,4 +1,5 @@
 # Requirements
+Om in kaart te krijgen wat de gebruiker precies moet kunnen met ons systeem, zijn de volgende requirements opgesteld. Ook is er gekeken naar andere eisen die aan het systeem gesteld worden.
 
 ## Functionele Requirements
 - Een ranger kan een rangerpas verkrijgen aan de kassa.
@@ -12,7 +13,6 @@
 - De administrator kan weetjes en geluiden aan een poot toevoegen door de webinterface te gebruiken.
 - De administrator kan een lijst van alle weetjes en geluiden zien in de webinterface.
 - De administrator kan luisteren naar bestaande weetjes en geluiden in het systeem door de webinterface te gebruiken.
-
 
 ## Niet-functionele Requirements
 - Het systeem moet meerdere requests tegelijk aankunnen.
