@@ -1,35 +1,62 @@
 package nl.han.mysensor.models;
 
 import nl.han.mysensor.models.myenums.MyCommand;
+import nl.han.mysensor.models.myenums.MyDataTypes;
 import nl.han.mysensor.models.myenums.MyInternal;
 import nl.han.mysensor.models.myenums.MyPresentationType;
-import nl.han.mysensor.models.myenums.MyType;
 
 /**
- * CLASS DESCRIPTION
+ * Abstract MySensor message
  *
  * @author Thomas
  * @since 0.1
  */
-public class MyMessage {
-    private final int nodeId;
+public abstract class MyMessage {
+    private final Long nodeId;
     private final int childSensorId;
     private final MyCommand command;
     private final boolean ack;
-    private final MyType type;
-    private final MyPresentationType presentationType;
-    private final MyInternal internalType;
     private final String payload;
+
+    public MyMessage(Long nodeId, int childSensorId, MyCommand command, boolean ack, String payload) {
+        this.nodeId = nodeId;
+        this.childSensorId = childSensorId;
+        this.command = command;
+        this.ack = ack;
+        this.payload = payload;
+    }
 
     private MyMessage(Builder builder) {
         this.nodeId = builder.nodeId;
         this.childSensorId = builder.childSensorId;
         this.command = builder.command;
         this.ack = builder.ack;
-        this.type = builder.type;
-        this.presentationType = builder.presentationType;
-        this.internalType = builder.internalType;
         this.payload = builder.payload;
+    }
+
+    public static Builder newMyMessage() {
+        return new Builder();
+    }
+
+
+    public Long getNodeId() {
+        return nodeId;
+    }
+
+    public int getChildSensorId() {
+        return childSensorId;
+    }
+
+    public MyCommand getCommand() {
+        return command;
+    }
+
+    public boolean isAck() {
+        return ack;
+    }
+
+    public String getPayload() {
+        return payload;
     }
 
     @Override
@@ -39,36 +66,39 @@ public class MyMessage {
                 ", childSensorId=" + childSensorId +
                 ", command=" + command +
                 ", ack=" + ack +
-                ", type=" + type +
-                ", presentationType=" + presentationType +
-                ", internalType=" + internalType +
                 ", payload='" + payload + '\'' +
                 '}';
     }
 
-    public static Builder newMyMessage() {
-        return new Builder();
-    }
-
-
     public static final class Builder {
-        private int nodeId;
+        private Long nodeId;
         private int childSensorId;
         private MyCommand command;
         private boolean ack;
-        private MyType type;
+        private String payload = "";
+
         private MyPresentationType presentationType;
-        private MyInternal internalType;
-        private String payload;
+        private MyInternal internal;
+        private MyDataTypes req;
+        private MyDataTypes set;
 
         private Builder() {
         }
 
         public MyMessage build() {
-            return new MyMessage(this);
+            if (this.command == MyCommand.PRESENTATION) {
+                return new MyPresentationMessage(this.nodeId, this.childSensorId, this.command, this.ack, this.payload, this.presentationType);
+            } else if (this.command == MyCommand.INTERNAL) {
+                return new MyInternalMessage(this.nodeId, this.childSensorId, this.command, this.ack, this.payload, this.internal);
+            } else if (this.command == MyCommand.REQ) {
+                return new MyReqMessage(this.nodeId, this.childSensorId, this.command, this.ack, this.payload, this.req);
+            } else if (this.command == MyCommand.SET) {
+                return new MySetMessage(this.nodeId, this.childSensorId, this.command, this.ack, this.payload, this.set);
+            }
+            throw new IllegalStateException("Could not create MyMessage object!");
         }
 
-        public Builder nodeId(int nodeId) {
+        public Builder nodeId(Long nodeId) {
             this.nodeId = nodeId;
             return this;
         }
@@ -88,65 +118,29 @@ public class MyMessage {
             return this;
         }
 
-        public Builder type(MyType type) {
-            if(this.presentationType != null || this.internalType != null){
-                throw new IllegalStateException("Message can only be of one type (REQ/RES, PRESENTATION or INTERNAL)");
-            }
-            this.type = type;
-            return this;
-        }
-
-        public Builder presentationType(MyPresentationType presentationType) {
-            if(this.type != null || this.internalType != null){
-                throw new IllegalStateException("Message can only be of one type (REQ/RES, PRESENTATION or INTERNAL)");
-            }
-            this.presentationType = presentationType;
-            return this;
-        }
-
-        public Builder internalType(MyInternal internalType) {
-            if(this.presentationType != null || this.type != null){
-                throw new IllegalStateException("Message can only be of one type (REQ/RES, PRESENTATION or INTERNAL)");
-            }
-            this.internalType = internalType;
-            return this;
-        }
-
         public Builder payload(String payload) {
             this.payload = payload;
             return this;
         }
-    }
 
-    public int getNodeId() {
-        return nodeId;
-    }
+        public Builder presentationType(MyPresentationType presentationType) {
+            this.presentationType = presentationType;
+            return this;
+        }
 
-    public int getChildSensorId() {
-        return childSensorId;
-    }
+        public Builder internal(MyInternal internal) {
+            this.internal = internal;
+            return this;
+        }
 
-    public MyCommand getCommand() {
-        return command;
-    }
+        public Builder setDataType(MyDataTypes dataTypes) {
+            this.set = dataTypes;
+            return this;
+        }
 
-    public boolean isAck() {
-        return ack;
-    }
-
-    public MyType getType() {
-        return type;
-    }
-
-    public MyPresentationType getPresentationType() {
-        return presentationType;
-    }
-
-    public MyInternal getInternalType() {
-        return internalType;
-    }
-
-    public String getPayload() {
-        return payload;
+        public Builder reqDataType(MyDataTypes dataTypes) {
+            this.req = dataTypes;
+            return this;
+        }
     }
 }

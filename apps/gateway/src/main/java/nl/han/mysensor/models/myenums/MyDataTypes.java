@@ -9,7 +9,7 @@ import nl.han.gateway.exceptions.NotFoundException;
  * @author Thomas
  * @since 0.1
  */
-public enum MyType {
+public enum MyDataTypes {
     V_TEMP(0),               // Temperature	S_TEMP, S_HEATER, S_HVAC, S_WATER_QUALITY
     V_HUM(1),                // Humidity	S_HUM
     V_STATUS(2),             // Binary status. 0=off 1=on	S_BINARY, S_DIMMER, S_SPRINKLER, S_HVAC, S_HEATER, S_WATER_QUALITY
@@ -70,7 +70,7 @@ public enum MyType {
 
     private final int value;
 
-    MyType(final int value) {
+    MyDataTypes(final int value) {
         this.value = value;
     }
 
@@ -85,8 +85,8 @@ public enum MyType {
      * @return enum
      * @throws NotFoundException
      */
-    public static MyType getByValue(int searchValue) throws NotFoundException {
-        for (MyType currentEnum : MyType.values()) {
+    public static MyDataTypes getByValue(int searchValue) throws NotFoundException {
+        for (MyDataTypes currentEnum : MyDataTypes.values()) {
             if (currentEnum.getValue() == searchValue) {
                 return currentEnum;
             }

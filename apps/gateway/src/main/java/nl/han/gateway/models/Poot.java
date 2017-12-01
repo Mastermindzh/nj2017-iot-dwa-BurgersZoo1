@@ -12,8 +12,20 @@ public class Poot {
     @Id
     private ObjectId id;
     private Long pootid;
-    private List<String> weetjes;
-    private String dierengeluid;
+    private Long nodeId;
+    private List<Weetje> weetjes;
+    private Dierengeluid dierengeluid;
+
+    public Poot(ObjectId id, Long pootid, Long nodeId, List<Weetje> weetjes, Dierengeluid dierengeluid) {
+        this.id = id;
+        this.pootid = pootid;
+        this.nodeId = nodeId;
+        this.weetjes = weetjes;
+        this.dierengeluid = dierengeluid;
+    }
+
+    public Poot() {
+    }
 
     public ObjectId getId() {
         return id;
@@ -31,19 +43,19 @@ public class Poot {
         this.pootid = pootid;
     }
 
-    public List<String> getWeetjes() {
+    public List<Weetje> getWeetjes() {
         return weetjes;
     }
 
-    public void setWeetjes(List<String> weetjes) {
+    public void setWeetjes(List<Weetje> weetjes) {
         this.weetjes = weetjes;
     }
 
-    public String getDierengeluid() {
+    public Dierengeluid getDierengeluid() {
         return dierengeluid;
     }
 
-    public void setDierengeluid(String dierengeluid) {
+    public void setDierengeluid(Dierengeluid dierengeluid) {
         this.dierengeluid = dierengeluid;
     }
 
@@ -54,5 +66,13 @@ public class Poot {
                 ", weetjes=" + weetjes +
                 ", dierengeluid='" + dierengeluid + '\'' +
                 '}';
+    }
+
+    public void setNodeId(Long nodeId) {
+        this.nodeId = nodeId;
+    }
+
+    public Long getNodeId() {
+        return nodeId;
     }
 }
