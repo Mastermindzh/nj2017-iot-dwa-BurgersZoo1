@@ -18,14 +18,14 @@ Wat belangrijk is zijn de volgende dingen:
 
 
 ## Resultaat
-Bedenk van te voren wat je wil dat er gebeurd bij een 'foute' request. Moet er dan wel een erro status code gegeven worden, of geef je een 200 status code 'ok' terug en doe je niks met de request? Dit is iets wat bijvoorbeeld Facebook toepast volgens: [Restful api design](https://apigee.com/about/blog/technology/restful-api-design-what-about-errors).
+Bedenk van te voren wat je wil dat er gebeurd bij een 'foute' request. Moet er dan wel een error status code gegeven worden, of geef je een 200 status code 'ok' terug en doe je niks met de request? Dit is iets wat bijvoorbeeld Facebook toepast volgens: [Restful api design](https://apigee.com/about/blog/technology/restful-api-design-what-about-errors).
 Gebruik HTTP status codes. (Dit leek me vrij duidelijk, je communiceert over http...., dit heb ik in het begin ook al gedaan.)
 Er zijn 3 scenario's die voor kunnen komen.
 - Alles is goed gegaan
 - De applicatie heeft iets fout gedaan
 - De API heeft iets fout gedaan
 
-Als je van bovenstaande scenario's uit gaat, kun je gemakkelijk de status code er bij verzinnen. Daarvoor kun je deze [lijst](https://httpstatuses.com/) gebruiken als hulpmiddel.
+Als je van bovenstaande scenario's uit gaat, kun je gemakkelijk de status code erbij zoeken. Daarvoor kun je deze [lijst](https://httpstatuses.com/) gebruiken als hulpmiddel.
 [Deze bron](http://blog.restcase.com/rest-api-error-codes-101/) zegt ook: Ga niet te ver in deze lijst. Kies er een aantal uit die je gaat gebruiken.
 
 Bovenstaande informatie is handig voor het uitwerken van welke errors je geeft, maar was nog niet voldoende om mijn vragen te beantwoorden. Ik wilde graag op zoek naar **hoe** je dit daadwerkelijk het beste kunt doen binnen NodeJs. Daarom heb ik mijn zoekopdracht aangepast naar ''. Hier kwam ik op een [link van stackoverflow](https://stackoverflow.com/questions/7310521/node-js-best-practice-exception-handling/23368579#23368579), met daarbij een link naar de officiële pagina's van [NodeJs](https://www.joyent.com/node-js/production/design/errors).
