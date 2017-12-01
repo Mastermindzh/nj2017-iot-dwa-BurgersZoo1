@@ -10,7 +10,7 @@ Het plan is om in één gedeelte van het park (bij voorkeur de Mangrove) zes pot
 
 Rond de plekken waar de poten zijn verstopt staan er ook leden van de projectgroep verborgen opgesteld om te observeren hoe de kinderen interactie met de poten. Met deze observaties kunnen problemen worden gevonden en kan het prototype verbeterd worden.
 
-Door Frank is voorgesteld om de Kids Club van Burgers Zoo hiervoor te gebruiken. Dit is een groep kinderen die vaak bij Burgers Zoo komen en vaker ingezet worden voor tests van nieuwe onderdelen van Burgers Zoo.
+Door Frank is voorgesteld om de Kids Club van Burgers Zoo hiervoor te gebruiken. Dit is een groep kinderen die vaak bij Burgers Zoo komen en vaker ingezet worden voor tests van nieuwe onderdelen van Burgers Zoo. Hier zullen ook mensen van de groep "educatie" als begeleider optreden, zei kunnen zich inleven in de kinderen en waarschijnlijk gerichter feedback geven.
 
 ## Beheerderstests
 Er wordt verwacht dat educatoren niet regelmatig deze applicatie zullen gebruiken (namelijk alleen eens per jaar wanneer ze nieuwe geluidjes willen uploaden), dus is het belangrijk dat het systeem makkelijk te leren is zonder handleiding. Het doel van de beheerder is daarmee dus ook uitvinden of de beheerdersapplicatie intuïtief is en 100% voor zichzelf sprekend is.
