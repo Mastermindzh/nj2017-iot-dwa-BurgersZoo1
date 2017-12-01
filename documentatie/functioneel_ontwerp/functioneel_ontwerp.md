@@ -12,22 +12,9 @@ Om al het bovenstaande te realiseren in een systeem zijn er requirements en Use 
 ## Inhoudsopgave
 <!-- toc -->
 #include "documentatie/requirements/requirements.md"
+
 #include "documentatie/domein model/domeinmodel.md"
-## Use Cases
-Onderstaande Use Cases beschrijven alle handelingen die verschillende gebruikers met het systeem kunnen doen.
-### Use Case Diagram
-In dit diagram staan alle Use Cases samen met de actoren om duidelijk te krijgen wat er gedaan kan worden met het systeem.
-![Use Case Diagram](./images/usecase&#32;diagram.png)
-#include "documentatie/use cases/usecase diagram.png"
-#include "documentatie/use cases/pas scannen/pas-scannen.md"
-#include "documentatie/use cases/resultaten inzien/resultaten-inzien.md"
-#include "documentatie/use cases/weetje beluisteren/weetje-beluisteren.md"
-#include "documentatie/use cases/geluid toevoegen/geluid-toevoegen.md"
-#include "documentatie/use cases/weetje toevoegen/weetje-toevoegen.md"
-#include "documentatie/use cases/lijst van weetjes inzien/lijst-van-weetjes-inzien.md"
-#include "documentatie/use cases/lijst van geluiden inzien/lijst-van-geluiden-inzien.md"
-#include "documentatie/use cases/geluid aan poot toevoegen/geluid-aan-poot-toevoegen.md"
-#include "documentatie/use cases/geluiden beluisteren/geluiden-beluisteren.md"
-#include "documentatie/use cases/Activeer pas/activeer-pas.md"
-#include "documentatie/use cases/weetje aan poot toevoegen/weetje-aan-poot-toevoegen.md"
+
+#include "documentatie/use cases/use-cases.md"
+
 #include "documentatie/mockups/mockups-beschrijving.md"
