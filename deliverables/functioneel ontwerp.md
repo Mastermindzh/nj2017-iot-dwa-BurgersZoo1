@@ -19,12 +19,12 @@ Om al het bovenstaande te realiseren in een systeem zijn er requirements en Use 
   * [Domeinmodel](#domeinmodel)
   * [Use Cases](#use-cases)
     + [Use Case Diagram](#use-case-diagram)
-- [Use Case - Weetje Beheren / Dierengeluid Beheren](#use-case---weetje-beheren--dierengeluid-beheren)
+- [Use Case 1 en 2 - Weetje Beheren / Dierengeluid Beheren](#use-case-1-en-2---weetje-beheren--dierengeluid-beheren)
   * [Preconditie](#preconditie)
   * [Postconditie](#postconditie)
   * [Success scenario](#success-scenario)
-  * [Alternatieve flow - Weetje verwijderen](#alternatieve-flow---weetje-verwijderen)
-  * [Alternatieve flow - Weetje beluisteren](#alternatieve-flow---weetje-beluisteren)
+  * [Alternatieve flow - Weetje/dierengeluid verwijderen](#alternatieve-flow---weetjedierengeluid-verwijderen)
+  * [Alternatieve flow - Weetje/dierengeluid beluisteren](#alternatieve-flow---weetjedierengeluid-beluisteren)
 - [Use Case 3 - Poot bezoeken](#use-case-3---poot-bezoeken)
   * [Preconditie](#preconditie-1)
   * [Postconditie](#postconditie-1)
@@ -84,43 +84,50 @@ In dit diagram staan alle Use Cases samen met de actoren om duidelijk te krijgen
 
 ![uc diagram](images/use-cases.png)
 
-# Use Case - Weetje Beheren / Dierengeluid Beheren
-** LET OP: VERVANG IN DEZE USE-CASE HET WOORD 'weetje' DOOR 'dierengeluid' EN DAN KRIJG JE DE USE-CASE dierengeluid-beheren. **
+# Use Case 1 en 2 - Weetje Beheren / Dierengeluid Beheren
 
-**Primaire Actor**: Educator  
+De onderstaande use case behandelt twee use cases:
 
-**Brief Description**  
-Een educator kan met behulp van het systeem de weetjes die op een bepaalde poot staan beluisteren en aanpassen.
+1. Weetjes beheren
+2. Dierengeluiden beheren
+
+In de use case wordt een aantal keer naar weetje/dierengeluid gerefereerd, dit om duplicatie te voorkomen.
+
+**Primaire Actor**: Educator
+
+**Brief Description**
+Een educator kan met behulp van het systeem de weetjes/dierengeluiden die op een bepaalde poot staan beluisteren en aanpassen.
 
 ## Preconditie
-* De educator heeft een audio bestand beschikbaar met het weetje.  
+* De educator heeft een audio bestand beschikbaar met het weetje/dierengeluid.
 * De educator weet welke poot hij wil aanpassen.
 
 ## Postconditie
-* De weetjes die geconfigureerd zijn in het systeem zijn te horen op het pootjes.
+* De weetjes/dierengeluiden die geconfigureerd zijn in het systeem zijn te horen op het pootjes.
 
 ## Success scenario
 
 |Gebruiker|Systeem|
 |---|---|
-|1. De educator kiest in het systeem om de weetjes van een poot aan te passen.| 2. Het systeem laat een lijst met beschikbare pootjes weergeven. |
-| 3. De educator kiest de poot waarvan hij de weetjes wil beheren.  | 4. Het systeem toont de weetjes die nu op de poot staan. |
+|1. De educator kiest in het systeem om de weetjes/dierengeluiden van een poot aan te passen.| 2. Het systeem laat een lijst met beschikbare pootjes weergeven. |
+| 3. De educator kiest de poot waarvan hij de weetjes/dierengeluiden wil beheren.  | 4. Het systeem toont de weetjes/dierengeluiden die nu op de poot staan. |
 | 5. De educator upload een nieuw audio bestand. | 6. Het systeem upload het nieuwe audio bestand stukje voor stukje naar de poot. |
-| | 7. Het systeem geeft de voortgang van de upload naar de poot weer. Einde use-case. |
+| | 7. Het systeem geeft de voortgang van de upload naar de poot weer. Einde use case. |
 
-## Alternatieve flow - Weetje verwijderen
-
-| Gebruiker | Systeem |
-| --- | --- |
-| 5a. De educator kiest ervoor om een bestaand weetje van een poot te verwijderen. | Het systeem verwijdert het weetje vanuit de poot. | 
-| | Einde use case |
-
-## Alternatieve flow - Weetje beluisteren
+## Alternatieve flow - Weetje/dierengeluid verwijderen
 
 | Gebruiker | Systeem |
 | --- | --- |
-| 5a. De educator kiest ervoor om een bestaand weetje te beluisteren. | Het systeem laat het weetje op de computer afspelen. | 
+| 5a. De educator kiest ervoor om een bestaand weetje van een poot te verwijderen. | Het systeem verwijdert het weetje vanuit de poot. |
 | | Einde use case |
+
+## Alternatieve flow - Weetje/dierengeluid beluisteren
+
+| Gebruiker | Systeem |
+| --- | --- |
+| 5a. De educator kiest ervoor om een bestaand weetje te beluisteren. | Het systeem laat het weetje op de computer afspelen. |
+| | Einde use case |
+
 
 # Use Case 3 - Poot bezoeken
 
@@ -190,3 +197,4 @@ De volgende twee schermen tonen de "geluiden beheren" en "weetjes beheren" pagin
 
 Als de administrator op het + knopje rechtsboven drukt krijgt hij/zij het volgende scherm(popup) te zien om een geluid / weetje toe te voegen.
 ![geluid toevoegen](./images/Geluid%20toevoegen.png)
+
