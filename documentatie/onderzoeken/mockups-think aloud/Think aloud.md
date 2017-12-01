@@ -1,0 +1,16 @@
+# Mockups - Thinking aloud
+Tijdens de vergadering van 30-11-2017 met de opdrachtgever Frank wil ik dit onderzoek uit gaan voeren. Het plan is om een prototype te laten zien van de applicaties die we tot nu toe gemaakt hebben. We willen Frank zelf door de applicaties heen laten klikken om te zien of ze logisch opgebouwd zijn en dat de werknemers van Burgers' Zoo hiermee kunnen werken.
+## Onderzoeksmethode
+Dit onderzoek zal zich richten op de onderzoeksmethode *Thinking Aloud* uit *Lab*.
+
+## Hypothese
+Ik denk dat we met de feedback van Frank onze applicaties kunnen verbeteren. Nu hebben we nog niet veel nagedacht over hoe de applicaties er uit moeten zien en wat de ervaring van de gebruiker is. Ik denk dat we, door Frank aan te sporen om zijn gedachten te uiten, feedback krijgen op het gebruik van de applicaties. Dit is feedback waar we iets mee kunnen. Feedback zoals 'het ziet er allemaal wel goed uit' is fijn om te horen, maar hier kunnen we niks concreets mee doen. Omdat we zoekende zijn naar hoe we precies de admin en ranger app in moeten vullen willen we hier feedback over van Frank.
+
+## Testopzet
+Tijdens de vergadering van 30-11-2017 laten we de admin en ranger applicaties aan Frank zien. De bedoeling is dat we Frank een laptop met de applicaties geven en dat hij hier doorheen kan klikken. Om hier later op terug te kunnen komen wil ik dit opnemen. Tijdens het testen zal ik Frank blijven herrinneren om zijn gedachten hardop te zeggen. Met zijn eerste reactie kunnen we veel. Dit is namelijk een reactie die geformuleerd is zonder er eerst over na te denken, dus geeft een eerlijker beeld.
+
+Je merkte tijdens de feedback dat Frank vaak stil viel en na ging denken. Op deze momenten heb ik hem aangespoord om zijn gedachten uit te spreken. Hier kwam dan vaak een vage term uit als "ziet er goed uit", of "ja, dit is logisch".
+## Resultaat
+Ik heb gemerkt dat Frank niet een heel uitgesproken mening heeft. Misschien dus niet de beste persoon om deze test te laten doen. Ik krijg het idee dat hij alles wel prima vind zolang we dit product kunnen 'verkopen' aan de verschillende teams binnen Burgers' Zoo. Wat ik uit zijn reacties kan concluderen is dat hij vind dat we goed op weg zijn.
+Wat wel een zeer belangrijk ding was is dat hij gezegd heeft dat we de verschillende teams binnen Burgers' Zoo niet helemaal duidelijk hadden. We dachten namelijk dat de Technische dienst ging zorgen voor het beheer van de poten en ook de inhoud van de poten. Dit is echter niet zo. De Technische dienst zorgt voor de fysieke poten. Team Educatie zorgt voor de inhoud van de poten. Hier moeten we dus op inspelen bij het ontwikkelen van de beheerdersapplicatie.
+Dit is het belangrijkste dat uit deze test gekomen is. In het begin dacht ik dat we niet veel aan deze test zouden hebben omdat Frank nog steeds vage termen gebruikte zoals 'prima', 'ziet er goed uit' etc. Maar, aangezien het aangetoond heeft dat er een miscommunicatie zat tussen de ontwikkelgroepen en de opdrachtgever vind ik het een zeer geslaagde test. De test heeft er voor gezorgd dat we weer op één lijn zitten.

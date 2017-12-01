@@ -1,6 +1,6 @@
-#Onderzoek naar oplossingsrichtingen gateway taal
+# Onderzoek naar oplossingsrichtingen gateway taal
 
-##Onderzoeksmethode (uit de cmd methods pack)
+## Onderzoeksmethode (uit de cmd methods pack)
 Interview uit field in combinatie met prototyping uit stepping stones
 
 ## Hypothese:

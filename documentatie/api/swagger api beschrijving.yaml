@@ -47,7 +47,9 @@ paths:
           schema:
             type: integer
           required: true
-          description: 'ID van de poot, waarvan de config wordt opgevraagd'
+          description: ->
+            ID van de poot, waarvan de config wordt opgevraagd
+            Unsigned integers (0>)
       responses:
         '200':
           description: De configuratie van de poot
@@ -78,7 +80,9 @@ paths:
           schema:
             type: integer
           required: true
-          description: poot id
+          description: ->
+            poot id
+            Unsigned integers (0>)
       responses:
         '201':
           description: Logging opgeslagen
@@ -106,7 +110,9 @@ paths:
           schema:
             type: integer
           required: true
-          description: ID van de poot die gescand is
+          description: ->
+            ID van de poot die gescand is
+            Unsigned integers (0>)
       responses:
         '201':
           description: Bezoek successvol
@@ -131,7 +137,9 @@ paths:
           required: true
           schema:
             type: integer
-          description: Het ID van de poot waarvan de instellingen ingesteld moeten worden
+          description: -> 
+            Het ID van de poot waarvan de instellingen ingesteld moeten worden
+            Unsigned integers (0>)
       requestBody:
         description: Optional description in *Markdown*
         required: true
@@ -158,6 +166,7 @@ paths:
                 description: >-
                   Transactie id voor het loggen van de update voortgang. Zie
                   response omschrijving voor meer info
+                  Unsigned integers (0>)
         '404':
           description: 'De poot bestaat niet. '
         '503':
@@ -181,7 +190,9 @@ paths:
           required: true
           schema:
             type: integer
-          description: Transactie id voor het updaten van de poot
+          description: ->
+            Transactie id voor het updaten van de poot
+            Unsigned integers (0>)
       requestBody:
         description: Optional description in *Markdown*
         required: true
@@ -193,7 +204,9 @@ paths:
                   type: integer
                   minimum: 0
                   maximum: 100
-                  description: 'Voortgang status, in procenten'
+                  description: ->
+                    Voortgang status, in procenten
+                    Unsigned integers (0>)
       responses:
         '200':
           description: Progress update ontvangen
@@ -217,7 +230,9 @@ components:
       properties:
         pootid:
           type: integer
-          description: id van de poot
+          description: ->
+            id van de poot
+            Unsigned integers (0>)
     Logging:
       description: Logging data
       properties:
@@ -230,7 +245,7 @@ components:
         timestamp:
           type: string
           format: timestamp
-          description: Timestamp of the loggin values
+          description: Unix timestamp of the loggin values Unix timestamp
     LogValue:
       description: Gemeten log values inclusief welke sensor gemeten is
       properties:
@@ -241,8 +256,9 @@ components:
           type: string
           description: 'Log value, bevat de gemeten waardes'
     NFC:
-      description: Een NFC kaart die een ranger gebruikt om de poten te scannen.
+      description: >- 
+        Een NFC kaart die een ranger gebruikt om de poten te scannen.
       properties:
         pasid:
           type: integer
-          description: id van de kaart
+          description: id van de kaart Unsigned integers (0>)
