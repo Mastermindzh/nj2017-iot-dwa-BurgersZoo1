@@ -14,7 +14,7 @@ Als de administrator een poot wil aanpassen komt hij/zij eerst op de pagina waar
 Als de administrator ervoor kiest om een poot aan te passen komt hij/zij op het volgende scherm (popup). Hier kan hij/zij onder andere de naam, het geluid, de weetjes en de positie van de poot aanpassen.
 ![Poot aanpassen details](./images/Admin%20poot%20aanpassen%20details.png)
 
-De volgende twee schermen tonen de "geluiden beheren" en "weetjes beheren" paginas. Op deze pagina's kan de administrator de weetjes/geluidjes zijn en deze afspelen.
+De volgende twee schermen tonen de "geluiden beheren" en "weetjes beheren" paginas. Op deze pagina's kan de administrator de weetjes/geluidjes zien en deze afspelen.
 ![geluiden beheren](./images/Geluiden%20beheren.png)
 ![weetjes beheren](./images/Weetjes%20beheren.png)
 

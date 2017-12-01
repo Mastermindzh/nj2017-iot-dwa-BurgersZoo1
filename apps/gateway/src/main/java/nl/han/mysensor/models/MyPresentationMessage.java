@@ -1,0 +1,26 @@
+package nl.han.mysensor.models;
+
+import nl.han.mysensor.models.myenums.MyCommand;
+import nl.han.mysensor.models.myenums.MyPresentationType;
+
+public class MyPresentationMessage extends MyMessage {
+
+    private final MyPresentationType presentationType;
+
+    public MyPresentationMessage(Long nodeId, int childSensorId, MyCommand command, boolean ack, String payload, MyPresentationType presentationType) {
+        super(nodeId, childSensorId, command, ack, payload);
+        this.presentationType = presentationType;
+    }
+
+
+    public MyPresentationType getPresentationType() {
+        return presentationType;
+    }
+
+    @Override
+    public String toString() {
+        return "MyPresentationMessage{" +
+                "presentationType=" + presentationType +
+                "}, " + super.toString();
+    }
+}

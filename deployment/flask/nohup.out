@@ -1,0 +1,27 @@
+deploy.sh: line 3: cd: groep1: No such file or directory
+stashing changes
+Saved working directory and index state WIP on deploymentfixes: 2866ee2 Merge pull request #52 from HANICA-MinorMulti/feature/api-fix
+git checkout ....
+error: pathspec 'testtext' did not match any file(s) known to git.
+Pulling ....
+There is no tracking information for the current branch.
+Please specify which branch you want to merge with.
+See git-pull(1) for details.
+
+    git pull <remote> <branch>
+
+If you wish to set tracking information for this branch you can do so with:
+
+    git branch --set-upstream-to=origin/<branch> deploymentfixes
+
+fatal: Couldn't find remote ref testtext
+Restarting docker ....
+Stopping nj2017iotdwaburgerszoo1_server_1                          ... 
+Stopping nj2017iotdwaburgerszoo1_mongo_1                           ... 
+Stopping 4dabf45ae1bf_4dabf45ae1bf_nj2017iotdwaburgerszoo1_admin_1 ... 
+Stopping nj2017iotdwaburgerszoo1_ranger_1                          ... 
+Aborting.
+nj2017iotdwaburgerszoo1_mongo_1 is up-to-date
+nj2017iotdwaburgerszoo1_ranger_1 is up-to-date
+4dabf45ae1bf_4dabf45ae1bf_nj2017iotdwaburgerszoo1_admin_1 is up-to-date
+nj2017iotdwaburgerszoo1_server_1 is up-to-date

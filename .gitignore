@@ -251,9 +251,17 @@ gradle-app.setting
 
 # # Work around https://youtrack.jetbrains.com/issue/IDEA-116898
 # gradle/wrapper/gradle-wrapper.properties
+gradle/*
 
 .DS_Store
 .pioenvs
 .piolibdeps
 .clang_complete
 .gcc-flags.json
+
+/apps/gateway/src/main/resources/gateway.properties
+/**/gateway.properties
+gateway.properties
+
+.DS_Store
+

@@ -9,21 +9,18 @@
     "datum": {
       "type": "number",
       "required": true
+    },
+    "rangerid": {
+      "type": "string",
+      "required": true
+    },
+    "speurpuntid": {
+      "type": "string",
+      "required": true
     }
   },
   "validations": [],
-  "relations": {
-    "ranger": {
-      "type": "hasOne",
-      "model": "ranger",
-      "foreignKey": ""
-    },
-    "speurpunt": {
-      "type": "hasOne",
-      "model": "speurpunt",
-      "foreignKey": ""
-    }
-  },
+  "relations": {},
   "acls": [],
   "methods": {}
 }
