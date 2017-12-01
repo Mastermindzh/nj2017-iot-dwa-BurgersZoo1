@@ -12,14 +12,14 @@ Wat ik ga doen is een prototype bouwen om te kijken welke methodes er aangeboden
 
 Ik wil ook uiteindelijk een voorbeeld hebben dat gebruik kan worden tijdens het project.
 
-Voordat het werkt moet er een programma/driver worden geinstalleerd. Er zijn verschillende manieren om de RXTX library te installeren.
+Voordat het tweede voorbeeld werkt moet er een programma/driver worden geinstalleerd. Er zijn verschillende manieren om de RXTX library te installeren.
 De library is te vinden via de volgende links:
 
 - Linux: ~~[http://rxtx.qbang.org](http://rxtx.qbang.org)~~ Het is alleen nodig om het volgende commando uit te voeren: `sudo apt-get install librxtx-java`. Dit kan afwijken bij verschillende Linux destributies, het commando werkt op Ubuntu 17.04
 - Windows 64 bit: [http://fizzed.com](http://fizzed.com)
 Zonder de instalatie van deze library zal er bij het bouwen van het project fouten optreden.
  
-## Resultaat/conclusie
+## Resultaat
 
 Ik heb meerdere voorbeelden bekeken en kleine tests mee gemaakt, waarbij er naar een Arduino gecomuniceerd kan worden. 
 Er is een oplossing die heel interessant lijkt, de [JSerialComm](http://fazecast.github.io/jSerialComm/), mede omdat er geen instalatie vereist leek te zijn van RXTX library (dit werd niet op de Github pagina aangegeven, heb ik niet getest). Hiervan lukte het om een connectie te maken met de seriële poort en ook data uit te lezen maar de serial events kreeg ik niet werkend. Deze bleven hangen of reageerden niet. Het is dus nog steeds een alternatief die toegepast kan worden in het project, maar dan moet er wel zelf een event voor het uitlezen worden gecreëerd.
