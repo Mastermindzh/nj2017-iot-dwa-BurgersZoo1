@@ -5,14 +5,14 @@
 **Categorie**: Field <br />
 **Naam**: Fly on the wall
 
-In dit onderzoek wil ik kijken hoe het front-end design opgepakt wordt door de vertegenwoordigers van burgers zoo.
+In dit onderzoek wil ik kijken hoe het front-end design opgepakt wordt door de vertegenwoordigers van Burgers' Zoo.
 Ik ga dit doen op 30 November 2017 tijdens de demo welke gegeven wordt.
 
-De fly on the wall methode is uitermate geschikt om gebruikersinteractie waar te nemen zonder hier zelf invloed op te hebben. Dit doe je door totaal geen interactie te hebben met degene die de test uitvoeren.
+De fly on the wall methode is uitermate geschikt om gebruikersinteractie waar te nemen zonder hier zelf invloed op te hebben. Dit doe je door totaal geen interactie te hebben met degenen die de test uitvoeren.
 
 ## Hypothese
 
-Ik verwacht dat de GUI helder en duidelijk zal zijn omdat de gui erg veel lijkt op het design van Google.
+Ik verwacht dat de GUI helder en duidelijk zal zijn omdat de GUI erg veel lijkt op het design van Google.
 Daarnaast zijn de [material design guidelines](https://material.io/guidelines/) in acht genomen bij de ontwikkeling van zowel de mockups als de echte componenten.
 
 ## Test opzet
@@ -26,7 +26,7 @@ De onderstaande schets gaat over de testsituatie, in deze situatie is er een lap
 De schaduwfiguur stelt de observant voor en zal zich onbereikbaar maken voor de testpersoon.
 ![test opstelling developer](images/testopstelling.png)
 
-De tweede schets toont de echte onderzoekssituatie, hier zijn een onbekend aantal mensen bij en zal in een formelere setting plaatsvinden. Hierbij dient de schaduwpersoon wederom als observant die zich afsluit van de discussie en de onderstaande notitievorm gebruikt om te observeren. De persoon(en) die de applicatie zullen gebruiken is onbekend aangezien er meerdere vertegenwoordigers zijn en het nog de vraag is welke het voortouw wil nemen.
+De tweede schets toont de echte onderzoekssituatie, hier zijn een onbekend aantal mensen bij en zal in een formelere setting plaatsvinden. Hierbij dient de schaduwpersoon wederom als observant die zich afsluit van de discussie en de onderstaande notitievorm gebruikt om te observeren. De persoon(en) die de applicatie zal gebruiken is onbekend aangezien er meerdere vertegenwoordigers zijn en het nog de vraag is welke het voortouw wil nemen.
 
 ![test opstelling developer](images/testopstelling_2.png)
 
