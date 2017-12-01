@@ -2,8 +2,8 @@
 
 ## Onderzoeksmethode
 
-**Categorie**: Field <br />
-**Naam**: Survey
+**Categorie**: Workshop <br />
+**Naam**: Storytelling
 
 ## Hypothese
 
