@@ -19,6 +19,8 @@ De library is te vinden via de volgende links:
 - Windows 64 bit: [http://fizzed.com](http://fizzed.com)
 Zonder de instalatie van deze library zal er bij het bouwen van het project fouten optreden.
  
+ De code is te vinden in de map [code](code).
+ 
 ## Resultaat
 
 Ik heb meerdere voorbeelden bekeken en kleine tests mee gemaakt, waarbij er naar een Arduino gecomuniceerd kan worden. 
