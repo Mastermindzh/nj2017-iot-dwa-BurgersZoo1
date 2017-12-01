@@ -1,4 +1,4 @@
-# Use Case 1 en 2 - Weetje Beheren / Dierengeluid Beheren
+## Use Case 1 en 2 - Weetje Beheren / Dierengeluid Beheren
 
 De onderstaande use case behandelt twee use cases:
 
@@ -12,14 +12,14 @@ In de use case wordt een aantal keer naar weetje/dierengeluid gerefereerd, dit o
 **Brief Description**
 Een educator kan met behulp van het systeem de weetjes/dierengeluiden die op een bepaalde poot staan beluisteren en aanpassen.
 
-## Preconditie
+### Preconditie
 * De educator heeft een audio bestand beschikbaar met het weetje/dierengeluid.
 * De educator weet welke poot hij wil aanpassen.
 
-## Postconditie
+### Postconditie
 * De weetjes/dierengeluiden die geconfigureerd zijn in het systeem zijn te horen op het pootjes.
 
-## Success scenario
+### Success scenario
 
 |Gebruiker|Systeem|
 |---|---|
@@ -28,14 +28,14 @@ Een educator kan met behulp van het systeem de weetjes/dierengeluiden die op een
 | 5. De educator upload een nieuw audio bestand. | 6. Het systeem upload het nieuwe audio bestand stukje voor stukje naar de poot. |
 | | 7. Het systeem geeft de voortgang van de upload naar de poot weer. Einde use case. |
 
-## Alternatieve flow - Weetje/dierengeluid verwijderen
+### Alternatieve flow - Weetje/dierengeluid verwijderen
 
 | Gebruiker | Systeem |
 | --- | --- |
 | 5a. De educator kiest ervoor om een bestaand weetje van een poot te verwijderen. | Het systeem verwijdert het weetje vanuit de poot. |
 | | Einde use case |
 
-## Alternatieve flow - Weetje/dierengeluid beluisteren
+### Alternatieve flow - Weetje/dierengeluid beluisteren
 
 | Gebruiker | Systeem |
 | --- | --- |

@@ -1,4 +1,4 @@
-## Mockups
+# Mockups
 De mockups hieronder laten zien hoe de applicaties er uit gaan zien voor de gebruikers van het systeem. Dit zijn eerste schetsen die gemaakt zijn om nog verder op te itereren.
 
 ### Ranger app

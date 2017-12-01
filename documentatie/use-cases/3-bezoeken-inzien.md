@@ -1,18 +1,18 @@
-# Use Case 4 - Bezoeken inzien
+## Use Case 4 - Bezoeken inzien
 
 **Primaire Actor**: Ranger
 
-**Brief Description**  
+**Brief Description**
 Een ranger bezoekt een website waarin hij zijn rangercode invult. Vervolgens kan hij zien welke poten hij in welke volgorde heeft bezocht. Ook kan de ranger zien welke poten hij nog niet heeft gevonden.
 
-## Preconditie
+### Preconditie
 * De ranger is in het park geweest en heeft daar een rangercode ontvangen.
 
-## Postconditie
+### Postconditie
 * De ranger heeft gezien welke poten hij heeft bezocht.
 * De ranger heeft gezien welke poten hij heeft gemist.
 
-## Success scenario
+### Success scenario
 
 |Gebruiker|Systeem|
 |---|---|
