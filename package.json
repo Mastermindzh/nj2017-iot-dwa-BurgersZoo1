@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "compile-deliverables": "npm run compile-fo && npm run compile-images",
-    "compile-images": "find . \\( -name \"*.jpg*\" -o -name \"*.png*\" \\)  -exec cp {} deliverables/images/ \\;",
+    "compile-images": "find ./documentatie \\( -name \"*.jpg*\" -o -name \"*.png*\" \\)  -exec cp {} deliverables/images/ \\;",
     "compile-fo": "./node_modules/.bin/markdown-include ./documentatie/functioneel_ontwerp/markdown.json && ./node_modules/.bin/markdown-toc -i deliverables/functioneel\\ ontwerp.md",
     "generate-pdfs": "./node_modules/.bin/markdown-pdf deliverables/functioneel\\ ontwerp.md"
   },
