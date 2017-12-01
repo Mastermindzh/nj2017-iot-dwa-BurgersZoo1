@@ -1,7 +1,7 @@
-# Requirements
+## Requirements
 Om in kaart te krijgen wat de gebruiker precies moet kunnen met ons systeem, zijn de volgende requirements opgesteld. Ook is er gekeken naar andere eisen die aan het systeem gesteld worden.
 
-## Functionele Requirements
+### Functionele Requirements
 - Een ranger kan een rangerpas verkrijgen aan de kassa.
 - Een ranger kan deelnemen aan een speurtocht met een rangerpas.
 - Door de rangerpas te scannen aan een poot, maakt de ranger vorderingen in de speurtocht.
@@ -14,7 +14,7 @@ Om in kaart te krijgen wat de gebruiker precies moet kunnen met ons systeem, zij
 - De administrator kan een lijst van alle weetjes en geluiden zien in de webinterface.
 - De administrator kan luisteren naar bestaande weetjes en geluiden in het systeem door de webinterface te gebruiken.
 
-## Niet-functionele Requirements
+### Niet-functionele Requirements
 - Het systeem moet meerdere requests tegelijk aankunnen.
 - De poot moet in een vochtige omgeving kunnen staan.
 - Het systeem moet kunnen communiceren in een omgeving zonder wifi en gps.
