@@ -54,7 +54,23 @@ In dit hoofdstuk komen de resultaten van het onderzoek aan bod, aan het einde wo
 
 ### Testopzet met vertegenwoordigers
 
+Uiteindelijk bleek dat Frank geen extra vertegenwoordigers heeft kunnen regelen, hierdoor is alleen zijn reactie geplot.
+
+| Actie               | Voorvallen |
+|---------------------|------------|
+| Instemmend knikken  | ..... ..   |
+| Mmumm, kan.         | .....      |
+| Ok                  | .          |
+| Een vraag stellen   | ..         |
+| Ja                  | ..... ...  |
+| Ziet er goed uit    | .          |
+| Ja dit is wel leuk! | .          |
+
+Over het algemeen was Frank erg positief, wat er stond vondt hij mooi/leuk en over de concepten kon hij goed meedenken. Frank heeft wel nog verduidelijking aangebracht door een aantal keer het product te corrigeren (zo gaat bijv. de technische dienst niet de app gebruiken maar de mensen van de educatie afdeling.). Negatieve gedachten heeft Frank vrijwel geen uitgesproken, zelfs nadat wij er expliciet om gevraagd hebben.
+
 ## Conclusie
+
+De applicaties waren duidelijk, dit merk je aan het resultaat van de testopzet. Frank heeft geen enkel probleem gehad bij het gebruiken van de applicatie en alle elementen waren duidelijk.
 
 ## bronnen
 
