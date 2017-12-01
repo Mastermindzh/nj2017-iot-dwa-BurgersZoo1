@@ -5,6 +5,11 @@
   "options": {
     "validateUpsert": true
   },
+  "mixins": {
+    "RemoteRouting": {
+      "only": []
+    }
+  },
   "properties": {
     "pootId": {
       "type": "number",
@@ -18,12 +23,6 @@
     "dierengeluid": {
       "type": [
         "string"
-      ]
-    }
-  },
-  "mixins": {
-    "RemoteRouting" : {
-      "only": [
       ]
     }
   },
