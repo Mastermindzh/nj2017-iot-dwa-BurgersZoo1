@@ -23,7 +23,7 @@ De workflow:
 
 Overal wordt het woord 'poot' gebruikt voor het fisieke ding waar kinderen naar zoeken. Dus niet 'pootje' en niet 'scanpunt' en niet 'paal'.
 
-Branch namen zijn altijd volledig kleine letters met het - karater om woorden te scheiden. Een van de volgende prefixes moeten gebruikt:
+Branch namen zijn altijd volledig kleine letters met het - karater om woorden te scheiden. Een van de volgende prefixes moet worden gebruikt:
 * `onderzoek/` Voor nieuwe onderzoeken.
 * `doc/` Voor nieuwe documentatie documenten. Bijvoorbeeld functioneel ontwerp en domeinmodel.
 * `feature/` Voor nieuwe functionaliteit in code.
