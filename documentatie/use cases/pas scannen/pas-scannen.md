@@ -2,7 +2,7 @@
 
 **Primaire Actor**: Ranger
 <br />
-**Scope**: Het scannen van de pas door een gebruiker
+**Scope**: Het scannen van de pas door een ranger
 
 De ranger moet de pas op verschillende momenten scannen om een actie te voltooien.
 
