@@ -5,7 +5,7 @@ De mockups hieronder laten zien hoe de applicaties er uit gaan zien voor de gebr
 
 De ranger app laat de trips zien die een ranger heeft afgelegd, ook geeft deze onderin (en via het menu) de optie om de gehoorde geluidjes nogmaals te horen.
 
-![Ranger app](./images/Ranger%20app.png)
+![Ranger app](images/Ranger%20app.png)
 
 ### Administrator app
 Als de administrator een poot wil aanpassen komt hij/zij eerst op de pagina waar alle poten weergegeven worden. Dat is de volgende pagina:
