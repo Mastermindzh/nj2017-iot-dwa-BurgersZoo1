@@ -1,4 +1,3 @@
-
 # Empathy map 
 
 ## Onderzoeksmethode
@@ -37,7 +36,21 @@ Op donderdag 30 november 2017 wordt een interview gehouden met een vertegenwoord
 
 ## Resultaat
 
-(eind week 3)
+Educatie team
+![EmpathyMapEducatie](images/educatie-emp.jpeg) <br />
+
+Technische dienst
+![EmpathyMapTechnischeDienst](images/technische-dienst-emp.jpeg) <br />
+
+Marketing
+![EmpathyMapMarketing](images/marketing-emp.jpeg) <br />
 
 ## Conclusie
-(week 5)
+De hypothese _"De empathy map helpt de ontwikkelaars van het Burgers' Zoo Ranger project om software te ontwikkelen die in lijn is met de parkbeleving van een ranger en van de technische dienst."_ is bevestigd. Sterker nog, er is meer ontdekt dan dat: een onderscheid tussen technische dienst en het educatie team van Burgers' Zoo.
+
+Vòòr het onderzoek was er de verondersteling dat de technische dienst alles beheert in het park. Van de configuratie van geluidjes, scanpunten en speurtochten tot aan het hardware-matig onderhouden van de scanpunten. Dit blijkt niet het geval, want de technische dienst is alleen met hardware bezig. Denk daarbij aan kabels trekken, netwerken aanleggen, stroomvoorzieningen aanleggen, loodgieter werk en timmermanswerk.
+
+Wat er op een scanpunt draait aan geluiden en hoe deze scanpunten samenwerken in de context van een speurtocht is een compleet andere discipline die wordt verzorgd door het educatie team. 
+
+Ook blijkt dat de marketing groep van Burgers' Zoo een aparte verantwoordelijkheid heeft. Deze valt echter buiten de scope van het project.
+
