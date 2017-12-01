@@ -8,13 +8,12 @@ Dierentuin Koninklijk Burgers' Zoo is een dierentuin gelegen te Arnhem op een mo
 |---------------------		|------	|
 | Plan van aanpak     	|[documentatie/plan-van-aanpak/](documentatie/plan-van-aanpak/plan-van-aanpak.md)|
 | Onderzoeken         	|[documentatie/onderzoeken](documentatie/onderzoeken)|
-| Api                 		|[Api beschrijving](documentatie/api)|
+| Gateway Api                 		|[Gateway beschrijving](documentatie/api)|
 | Website deployment  	|[Deployment webapplicatie](documentatie/deployment)	|
-| Domein model        	| [Domein model](documentatie/domein%20model/)     	|
-| Klasse diagram IoT  	| [Klasse diagram IoT](documentatie/iot-klassediagram/)|
+| Klasse diagram Poot  	| [Klasse diagram Poot](documentatie/iot-klassediagram/)|
 | Mockups             		|[Mockups webapplicatie](documentatie/mockups)|
 | Requirements        	|[Requirements](documentatie/requirements)|
 | Functioneel ontwerp 	|[Functioneel ontwerp](deliverables/functioneel%20ontwerp.md)|
-| Use cases           		| [Use cases](documentatie/use-cases/) 	|
+
 
 ###
