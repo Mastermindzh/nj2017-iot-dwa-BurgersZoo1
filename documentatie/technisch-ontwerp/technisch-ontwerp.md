@@ -1,8 +1,8 @@
 # Technisch ontwerp
 
-## Inleiding
-
 <!-- toc -->
+
+## Inleiding
 
 #include "documentatie/technisch-ontwerp/inleiding/inleiding.md"
 
@@ -11,6 +11,8 @@
 #include "documentatie/technisch-ontwerp/systeem-architectuur/systeem-architectuur.md"
 
 ## Software architectuur
+
+#include "documentatie/technisch-ontwerp/dwa-architectuur/dwa-architectuur.md"
 
 ## Technische realisatie
 
