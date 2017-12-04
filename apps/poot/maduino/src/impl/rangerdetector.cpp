@@ -1,6 +1,7 @@
 #include "../head/RangerDetector.h"
 
-RangerDetector::RangerDetector(GatewayLink* gatewayLink){
+RangerDetector::RangerDetector(Poot* poot){
+  this->poot = poot;
   pinMode(RST_PIN, OUTPUT);
   digitalWrite(RST_PIN, LOW);
   pinMode(SS_PIN, OUTPUT);
@@ -16,12 +17,7 @@ void RangerDetector::loop(){
 
   if (!this->mfrc522->PICC_IsNewCardPresent() || !this->mfrc522->PICC_ReadCardSerial())
     return;
-  Serial.println(F("**Card Detected:**"));
-
   String pasid = this->readPasid();
-
-  Serial.print("PASID: ");
-  Serial.println(pasid);
 
   // read authentication from card
   MFRC522::StatusCode status = this->mfrc522->PCD_Authenticate(MFRC522::PICC_CMD_MF_AUTH_KEY_A, 1, &key, &(this->mfrc522->uid));
@@ -35,11 +31,6 @@ void RangerDetector::loop(){
   if(!this->validateReadStatus(status))
     return;
 
-  Serial.print("Pas content: ")
-  for (uint8_t i = 0; i < 16; i++)
-    Serial.write(buffer[i]);
-  Serial.println();
-
   if(!this->euqlasBurgersZoo(buffer)){
     Serial.println("Pas content does not equal \"Burgers' Zoo\"");
     return;
@@ -47,6 +38,8 @@ void RangerDetector::loop(){
 
   this->mfrc522->PICC_HaltA();
   this->mfrc522->PCD_StopCrypto1();
+
+  this->poot->pasScanned(pasid);
 };
 
 MFRC522::MIFARE_Key RangerDetector::makeKey() {
