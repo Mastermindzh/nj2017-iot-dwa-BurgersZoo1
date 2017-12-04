@@ -19,9 +19,11 @@ public class MySensorReceiveService {
 
     private static Logger logger = LoggerFactory.getLogger(MySensorReceiveService.class.getName());
     private IPootDAO pootDAO;
+    private BackendPootService backendPootService;
 
     public MySensorReceiveService() {
         this.pootDAO = DAOFactory.getInstance().getPootDAO();
+        this.backendPootService = new BackendPootService();
     }
 
     /**
@@ -60,7 +62,7 @@ public class MySensorReceiveService {
                 // do repeater stuff
                 break;
             default:
-                throw new NotImplementedException();
+                logger.debug("Presentation is not yet implemented for message type: " + message.getPresentationType());
         }
     }
 
@@ -79,13 +81,47 @@ public class MySensorReceiveService {
                 // route for handeling ranger scans
                 rangerCardScan(message);
                 break;
+            case V_TEMP:
+                this.sendTemperatureValue(message);
+                break;
+            case V_HUM:
+                this.sendHumidityValue(message);
+                break;
             default:
                 throw new NotImplementedException();
         }
     }
 
+    /**
+     * Send humidity sensor values to backend
+     *
+     * @param message
+     */
+    private void sendHumidityValue(MySetMessage message) {
+        logger.debug(String.format("Sending humidity value to backend, node id #%d", message.getNodeId()));
+        logger.debug(message.toString());
+        Poot poot = this.pootDAO.findByNodeId(message.getNodeId());
+        this.backendPootService.sendHumidityLoggingToBackend(message, poot);
+    }
+
+    /**
+     * Send temperature value to backend
+     *
+     * @param message
+     */
+    private void sendTemperatureValue(MySetMessage message) {
+        logger.debug(String.format("Sending tempature value to backend, node id #%d", message.getNodeId()));
+        logger.debug(message.toString());
+        Poot poot = this.pootDAO.findByNodeId(message.getNodeId());
+        this.backendPootService.sendTemperatureLoggingToBackend(message, poot);
+    }
+
+    /**
+     * Send ranger card scan to backend
+     *
+     * @param message
+     */
     private void rangerCardScan(MySetMessage message) {
-        BackendPootService backendPootService = new BackendPootService();
         Poot poot = this.pootDAO.findByNodeId(message.getNodeId());
         backendPootService.sendRangerCardScanToBackend(message, poot);
     }
@@ -100,7 +136,6 @@ public class MySensorReceiveService {
         logger.info(String.format("Registering new node, node id: #%d pootid: #%s",
                 message.getNodeId(), message.getPayload()));
         Poot poot = this.pootDAO.findByPootId(Integer.parseInt(message.getPayload()));
-        BackendPootService backendPootService = new BackendPootService();
         if (poot == null) {
             logger.info("Unknown poot, register node");
             Poot newPoot = new Poot();

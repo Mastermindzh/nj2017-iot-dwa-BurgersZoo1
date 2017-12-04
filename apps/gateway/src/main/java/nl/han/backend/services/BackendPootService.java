@@ -21,17 +21,23 @@ public class BackendPootService {
 
     private OkHttpClient client;
     private String baseUri;
+    private String baseUriGroep2;
 
     public BackendPootService() {
         this.client = new OkHttpClient();
         this.baseUri = "http://" + GatewayProperties.getProperty("backend.ip") +
                 ":" + GatewayProperties.getProperty("backend.port")
                 + GatewayProperties.getProperty("backend.baseApiUrl");
+
+        this.baseUriGroep2 = "http://" + GatewayProperties.getProperty("backend.group2.ip") +
+                ":" + GatewayProperties.getProperty("backend.group2.port")
+                + GatewayProperties.getProperty("backend.group2.baseApiUrl");
     }
 
     /**
      * Try to get a new poot id from the backend
      * Fallback id will be 0L, the poot is then known to the gateway but not registered at the backend
+     * todo: fix mocked fallback!
      *
      * @return poot id
      */
@@ -42,7 +48,6 @@ public class BackendPootService {
                 .build();
         try {
             Response response = client.newCall(request).execute();
-
             if (response.code() == 201) {
                 String body = response.body().string();
                 JsonObject jsonObject = (new Gson()).fromJson(body, JsonObject.class);
@@ -97,8 +102,53 @@ public class BackendPootService {
             } else {
                 logger.error("Unknown error with the backend");
             }
-            logger.info("Ranger scan: Status code "+ response.code() + ", body: " + response.body().string() );
+            logger.info("Ranger scan: Status code " + response.code() + ", body: " + response.body().string());
             response.close();
+        } catch (IOException e) {
+            logger.error("Could not connect to backend", e);
+        }
+    }
+
+    /**
+     * Send humidity logging for the other group
+     * todo: finish this when api specs are clear
+     * https://github.com/HANICA-MinorMulti/nj2017-iot-dwa-BurgersZoo2/tree/master/docs/TO/API
+     *
+     * @param message
+     * @param poot
+     */
+    public void sendHumidityLoggingToBackend(MySetMessage message, Poot poot) {
+        RequestBody body = RequestBody.create(JSON, String.valueOf("{}"));
+        Request request = new Request.Builder()
+                .url(this.baseUriGroep2 + "/poten/logs")
+                .post(body)
+                .build();
+        Response response;
+        try {
+            response = client.newCall(request).execute();
+        } catch (IOException e) {
+            logger.error("Could not connect to backend", e);
+        }
+    }
+
+
+    /**
+     * Send temperature logging for other group
+     * todo: finish this when api specs are clear
+     * https://github.com/HANICA-MinorMulti/nj2017-iot-dwa-BurgersZoo2/tree/master/docs/TO/API
+     *
+     * @param message
+     * @param poot
+     */
+    public void sendTemperatureLoggingToBackend(MySetMessage message, Poot poot) {
+        RequestBody body = RequestBody.create(JSON, String.valueOf("{}"));
+        Request request = new Request.Builder()
+                .url(this.baseUriGroep2 + "/poten/logs")
+                .post(body)
+                .build();
+        Response response;
+        try {
+            response = client.newCall(request).execute();
         } catch (IOException e) {
             logger.error("Could not connect to backend", e);
         }
