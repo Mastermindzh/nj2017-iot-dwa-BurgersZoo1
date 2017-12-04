@@ -25,9 +25,9 @@ public class BackendPootService {
 
     public BackendPootService() {
         this.client = new OkHttpClient();
-        this.baseUri = "http://" + GatewayProperties.getProperty("backend.ip") +
-                ":" + GatewayProperties.getProperty("backend.port")
-                + GatewayProperties.getProperty("backend.baseApiUrl");
+        this.baseUri = "http://" + GatewayProperties.getProperty("backend.group1.ip") +
+                ":" + GatewayProperties.getProperty("backend.group1.port")
+                + GatewayProperties.getProperty("backend.group1.baseApiUrl");
 
         this.baseUriGroep2 = "http://" + GatewayProperties.getProperty("backend.group2.ip") +
                 ":" + GatewayProperties.getProperty("backend.group2.port")
