@@ -1,7 +1,6 @@
 package nl.han.mysensor.service;
 
-import nl.han.backend.services.BackendPootService;
-import nl.han.gateway.exceptions.NotImplementedException;
+import nl.han.backend.services.group2.BackendPootService;
 import nl.han.mysensor.models.*;
 import nl.han.mysensor.models.myenums.MyCommand;
 import nl.han.mysensor.models.myenums.MyInternal;
@@ -26,7 +25,6 @@ public class MySensorParseService {
             = "([0-9]+);([0-9]+);([0-9]+);([0|1]);([0-9]+);(.*)";
     private static final Pattern pattern = Pattern.compile(MESSAGE_PATTERN);
     private static Logger logger = LoggerFactory.getLogger(BackendPootService.class.getName());
-
 
     /**
      * Parse a mysensor message
@@ -100,7 +98,7 @@ public class MySensorParseService {
         mySensorMessage.append(";");
         mySensorMessage.append(message.isAck() ? 1 : 0);
         mySensorMessage.append(";");
-        appendMySensorTypeFromMessage(message, mySensorMessage);
+        mySensorMessage.append(getMySensorTypeFromMessage(message));
         mySensorMessage.append(";");
         mySensorMessage.append(message.getPayload());
         mySensorMessage.append("\n");
@@ -111,25 +109,16 @@ public class MySensorParseService {
      * Append the message type value from the message, depending on the implemented object
      *
      * @param message
-     * @param mySensorMessage
      */
-    private void appendMySensorTypeFromMessage(MyMessage message, StringBuilder mySensorMessage) {
+    private int getMySensorTypeFromMessage(MyMessage message) {
         if (message instanceof MyPresentationMessage) {
-            mySensorMessage.append(
-                    ((MyPresentationMessage) message).getPresentationType().getValue()
-            );
+            return ((MyPresentationMessage) message).getPresentationType().getValue();
         } else if (message instanceof MySetMessage) {
-            mySensorMessage.append(
-                    ((MySetMessage) message).getType().getValue()
-            );
+            return ((MySetMessage) message).getType().getValue();
         } else if (message instanceof MyReqMessage) {
-            mySensorMessage.append(
-                    ((MyReqMessage) message).getType().getValue()
-            );
+            return ((MyReqMessage) message).getType().getValue();
         } else if (message instanceof MyInternalMessage) {
-            mySensorMessage.append(
-                    ((MyInternalMessage) message).getInternalType().getValue()
-            );
+            return ((MyInternalMessage) message).getInternalType().getValue();
         } else {
             throw new IllegalStateException("Illegal message parse state");
         }
