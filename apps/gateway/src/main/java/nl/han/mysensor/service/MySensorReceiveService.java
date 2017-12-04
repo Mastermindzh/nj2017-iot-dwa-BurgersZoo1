@@ -1,6 +1,6 @@
 package nl.han.mysensor.service;
 
-import nl.han.backend.services.IBackendPootService;
+import nl.han.backend.services.BackendPootServiceBase;
 import nl.han.backend.services.group1.BackendPootService;
 import nl.han.gateway.dao.DAOFactory;
 import nl.han.gateway.dao.IPootDAO;
@@ -23,8 +23,8 @@ public class MySensorReceiveService {
 
     private static Logger logger = LoggerFactory.getLogger(MySensorReceiveService.class.getName());
     private IPootDAO pootDAO;
-    private IBackendPootService backendPootServiceGroup1;
-    private List<IBackendPootService> backendPootServiceList = new ArrayList<>();
+    private BackendPootServiceBase backendPootServiceGroup1;
+    private List<BackendPootServiceBase> backendPootServiceList = new ArrayList<>();
 
     public MySensorReceiveService() {
         this.pootDAO = DAOFactory.getInstance().getPootDAO();
