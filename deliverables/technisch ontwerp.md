@@ -1,6 +1,6 @@
 # Technisch ontwerp
 
-## Inleiding
+## Inhoudsopgave
 
 <!-- toc -->
 
@@ -28,7 +28,9 @@
 
 <!-- tocstop -->
 
-Dit is een inleiding
+## Inleiding
+
+
 
 
 ## Systeem architectuur
