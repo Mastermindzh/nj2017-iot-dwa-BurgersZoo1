@@ -17,6 +17,7 @@ private:
   Logger* logger;
   RangerDetector* rangerDetector;
   AuduinoPortal* auduinoPortal;
+  GatewayLink* gatewayLink;
 };
 
 #endif
