@@ -3,7 +3,6 @@ package nl.han.backend.services.group1;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import nl.han.backend.services.BackendPootServiceBase;
-import nl.han.backend.services.IBackendPootService;
 import nl.han.gateway.models.Poot;
 import nl.han.gateway.util.GatewayProperties;
 import nl.han.mysensor.models.MySetMessage;
@@ -17,7 +16,7 @@ import java.io.IOException;
 /**
  * Implementation for communicating with group 1 backend
  */
-public class BackendPootService extends BackendPootServiceBase implements IBackendPootService {
+public class BackendPootService extends BackendPootServiceBase {
     public BackendPootService() {
         super("http://" + GatewayProperties.getProperty("backend.group1.ip") +
                 ":" + GatewayProperties.getProperty("backend.group1.port")

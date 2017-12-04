@@ -26,7 +26,6 @@ public class MySensorParseService {
     private static final Pattern pattern = Pattern.compile(MESSAGE_PATTERN);
     private static Logger logger = LoggerFactory.getLogger(BackendPootService.class.getName());
 
-
     /**
      * Parse a mysensor message
      *

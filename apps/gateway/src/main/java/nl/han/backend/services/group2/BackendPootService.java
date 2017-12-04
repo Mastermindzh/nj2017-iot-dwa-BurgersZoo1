@@ -1,7 +1,6 @@
 package nl.han.backend.services.group2;
 
 import nl.han.backend.services.BackendPootServiceBase;
-import nl.han.backend.services.IBackendPootService;
 import nl.han.gateway.models.Poot;
 import nl.han.gateway.util.GatewayProperties;
 import nl.han.mysensor.models.MySetMessage;
@@ -14,7 +13,7 @@ import java.io.IOException;
 /**
  * Implementation for communicating with group 2 backend
  */
-public class BackendPootService extends BackendPootServiceBase implements IBackendPootService {
+public class BackendPootService extends BackendPootServiceBase {
 
     public BackendPootService() {
         super("http://" + GatewayProperties.getProperty("backend.group2.ip") +
