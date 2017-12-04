@@ -1,6 +1,6 @@
 package nl.han.mysensor.service;
 
-import nl.han.backend.services.BackendPootService;
+import nl.han.backend.services.group2.BackendPootService;
 import nl.han.mysensor.models.*;
 import nl.han.mysensor.models.myenums.MyCommand;
 import nl.han.mysensor.models.myenums.MyInternal;

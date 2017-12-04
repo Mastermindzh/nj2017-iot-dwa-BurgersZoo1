@@ -1,6 +1,7 @@
 package nl.han.mysensor.service;
 
-import nl.han.backend.services.BackendPootService;
+import nl.han.backend.services.IBackendPootService;
+import nl.han.backend.services.group1.BackendPootService;
 import nl.han.gateway.dao.DAOFactory;
 import nl.han.gateway.dao.IPootDAO;
 import nl.han.gateway.exceptions.NotImplementedException;
@@ -8,6 +9,9 @@ import nl.han.gateway.models.Poot;
 import nl.han.mysensor.models.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Handle incomming messages
@@ -19,11 +23,14 @@ public class MySensorReceiveService {
 
     private static Logger logger = LoggerFactory.getLogger(MySensorReceiveService.class.getName());
     private IPootDAO pootDAO;
-    private BackendPootService backendPootService;
+    private IBackendPootService backendPootServiceGroup1;
+    private List<IBackendPootService> backendPootServiceList = new ArrayList<>();
 
     public MySensorReceiveService() {
         this.pootDAO = DAOFactory.getInstance().getPootDAO();
-        this.backendPootService = new BackendPootService();
+        this.backendPootServiceGroup1 = new BackendPootService();
+        this.backendPootServiceList.add(backendPootServiceGroup1);
+        this.backendPootServiceList.add(new nl.han.backend.services.group2.BackendPootService());
     }
 
     /**
@@ -101,7 +108,7 @@ public class MySensorReceiveService {
         logger.debug(String.format("Sending humidity value to backend, node id #%d", message.getNodeId()));
         logger.debug(message.toString());
         Poot poot = this.pootDAO.findByNodeId(message.getNodeId());
-        this.backendPootService.sendHumidityLoggingToBackend(message, poot);
+        this.backendPootServiceList.forEach(service -> service.sendHumidityLoggingToBackend(message, poot));
     }
 
     /**
@@ -113,7 +120,7 @@ public class MySensorReceiveService {
         logger.debug(String.format("Sending tempature value to backend, node id #%d", message.getNodeId()));
         logger.debug(message.toString());
         Poot poot = this.pootDAO.findByNodeId(message.getNodeId());
-        this.backendPootService.sendTemperatureLoggingToBackend(message, poot);
+        this.backendPootServiceList.forEach(service -> service.sendTemperatureLoggingToBackend(message, poot));
     }
 
     /**
@@ -123,7 +130,7 @@ public class MySensorReceiveService {
      */
     private void rangerCardScan(MySetMessage message) {
         Poot poot = this.pootDAO.findByNodeId(message.getNodeId());
-        backendPootService.sendRangerCardScanToBackend(message, poot);
+        this.backendPootServiceList.forEach(service -> service.sendRangerCardScanToBackend(message, poot));
     }
 
     /**
@@ -140,7 +147,7 @@ public class MySensorReceiveService {
             logger.info("Unknown poot, register node");
             Poot newPoot = new Poot();
             newPoot.setNodeId(message.getNodeId());
-            newPoot.setPootid(backendPootService.getNewPootIdFromBackend());
+            newPoot.setPootid(backendPootServiceGroup1.getNewPootIdFromBackend());
             this.pootDAO.save(newPoot);
         } else {
             poot.setNodeId(message.getNodeId());
