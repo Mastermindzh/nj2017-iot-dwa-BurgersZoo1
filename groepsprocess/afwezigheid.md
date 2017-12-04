@@ -8,3 +8,5 @@
 - 24 november - Sijmen (Begravenis)
 - 24 november - Rick begrafenis neef (Maarten van Rossum)
 - 12 December (middag) - Sharon
+- 13 December - Rick (uurtje eerder weg)
+- 18 December - Sharon (uurtje eerder weg)
