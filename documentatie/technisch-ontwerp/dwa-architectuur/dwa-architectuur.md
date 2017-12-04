@@ -3,7 +3,7 @@ De architectuur m.b.t hetgeen buiten de poten om draait ziet er als volgt uit:
 ![multi-tiered-architecture](images/multi-tiered.png)
 
 ## Multi-tiered
-Bij de ontwikkeling van de architectuur is rekening gehouden met het feit dat we een prototype ontwerpen, omdat de producten in dit prototype vaak kunnen veranderen is het verstandig om te kijken naar een modulaire architectuur. Hierin is gekozen voor een "multi-tiered" aanpak. Dit wil, in het kort, zeggen dat er verschillende "lagen" worden gemaakt die ieder verantwoordelijk zijn voor één aspect van het systeem.
+Bij de ontwikkeling van de architectuur is rekening gehouden met het feit dat we een prototype ontwerpen, omdat de producten in dit prototype vaak kunnen veranderen is het verstandig om te kijken naar een modulaire architectuur. Hierin is gekozen voor een "multi-tiered" aanpak. Dit wil, in het kort, zeggen dat er verschillende "lagen" worden gemaakt die ieder verantwoordelijk zijn voor één aspect van het systeem. Deze draaien ieder op een aparte host, hetzij in een container of op een fysieke server.
 
 De verschillende "lagen" worden in de volgende hoofdstukken uitgelegd.
 
@@ -13,7 +13,8 @@ De database laag zal enkel en alleen de database bevatten, op het moment van pro
 Al deze dingen samen maken de "data" laag, hét centrale punt om data op te halen met de rest van de applicaties.
 
 ## back-end
-Het back-end betreft een REST api welke aangesproken zal worden met de verschillende front-ends. De REST api zelf spreekt de datalaag aan om zijn data op te slaan en op te halen. Deze laag kan wederom uitgebreid worden met meerdere back-ends / load balancers.
+Het back-end betreft een REST api welke wordt aangesproken met de verschillende front-ends. De REST api zelf spreekt de datalaag aan om zijn data op te slaan en op te halen. Deze laag kan wederom
+uitgebreid worden met meerdere instanties van de back-end en/of met een loadbalancer.
 
 ## front-end apps
 
