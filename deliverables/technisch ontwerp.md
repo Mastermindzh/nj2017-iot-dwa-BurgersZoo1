@@ -1,9 +1,8 @@
 # Technisch ontwerp
 
-## Inleiding
-
 <!-- toc -->
 
+  * [Inleiding](#inleiding)
   * [Systeem architectuur](#systeem-architectuur)
 - [Architectuur](#architectuur)
   * [Keuzes](#keuzes)
@@ -12,8 +11,14 @@
       - [Poot bestaande uit twee Arduino's](#poot-bestaande-uit-twee-arduinos)
       - [Losstaande client-apps's](#losstaande-client-appss)
   * [Software architectuur](#software-architectuur)
+  * [Multi-tiered](#multi-tiered)
+  * [Database](#database)
+  * [back-end](#back-end)
+  * [front-end apps](#front-end-apps)
   * [Technische realisatie](#technische-realisatie)
     + [interface](#interface)
+    + [Data opslag structuur](#data-opslag-structuur)
+  * [Database](#database-1)
     + [poot](#poot)
 - [Sequence diagrams](#sequence-diagrams)
   * [Nieuwe poot aanmelden](#nieuwe-poot-aanmelden)
@@ -27,6 +32,8 @@
   * [Productie versie](#productie-versie)
 
 <!-- tocstop -->
+
+## Inleiding
 
 Dit is een inleiding
 
@@ -68,11 +75,52 @@ Er is gekozen om de Ranger App en Admin App volledig los te maken van de backend
 
 ## Software architectuur
 
+De architectuur m.b.t hetgeen buiten de poten om draait ziet er als volgt uit:
+
+![multi-tiered-architecture](images/multi-tiered.png)
+
+## Multi-tiered
+Bij de ontwikkeling van de architectuur is rekening gehouden met het feit dat we een prototype ontwerpen, omdat de producten in dit prototype vaak kunnen veranderen is het verstandig om te kijken naar een modulaire architectuur. Hierin is gekozen voor een "multi-tiered" aanpak. Dit wil, in het kort, zeggen dat er verschillende "lagen" worden gemaakt die ieder verantwoordelijk zijn voor één aspect van het systeem. Deze draaien ieder op een aparte host, hetzij in een container of op een fysieke server.
+
+De verschillende "lagen" worden in de volgende hoofdstukken uitgelegd.
+
+## Database
+De database laag zal enkel en alleen de database bevatten, op het moment van prototyping is dit één Mongo database. Dit kan echter uitgebreid worden met meerdere instances (voor redundancy, uitbreidbaarheid) en eventueel voorzien worden van een load balancer.
+
+Al deze dingen samen maken de "data" laag, hét centrale punt om data op te halen met de rest van de applicaties.
+
+## back-end
+Het back-end betreft een REST api welke wordt aangesproken met de verschillende front-ends. De REST api zelf spreekt de datalaag aan om zijn data op te slaan en op te halen. Deze laag kan wederom
+uitgebreid worden met meerdere instanties van de back-end en/of met een loadbalancer.
+
+## front-end apps
+
+De front-end apps zijn modulair opgezet, deze apps draaien op hun eigen plekje en roepen het REST backend middels HTTP aan. Als zei data willen manipuleren zal dit dus ook via de back-end moeten verlopen.
+
+Alle front-end apps bij elkaar worden gezien als de "front-end laag", zelfs als deze op andere fysieke machines draaien. Het los koppelen van de applicaties bevordert de werkbaarheid en stabiliteit van de architectuur. Elke app kan afzonderlijk gedeployed / getest worden zonder de rest van de architectuur te beïnvloeden.
+
+
 ## Technische realisatie
 
 ### interface
 
 (wat voor programma's zijn er gebruikt, react, nodjes etc.)
+
+### Data opslag structuur
+
+## Database
+Om de data van het systeem op te slaan wordt er een Mongo database gebruikt. Deze database wordt gevuld door Loopback. Loopback werkt iets anders dan Mongo met data omdat het een model systeem gebruikt.
+
+In Loopback genereer je models met eigenschappen. Deze eigenschappen staan gelijk aan de keys uit de key-value pairs in een document in Mongo. Elk model staat ook gelijk aan een collection in Mongo. Als je een relatie maakt tussen twee modellen wordt dit door middel van links of embedded documents, afhankelijk van de relatie, verwerkt in Mongo.
+
+Een globale weergave van de data in de database is hieronder te zien. Dit bevat alleen de data van de twee webapplicaties, nog niet de data die de gateway nodig heeft.
+
+![Datamodel](./images/datamodel.png)
+
+Vanuit de API specificatie die gemaakt is voor de gateway komt er nog een andere databehoefte naar boven. Beide dataschema's samen zijn verwerkt in de API, dat levert onderstaand dataschama op. Hierin zijn de relaties tussen de verschillende modellen te zien.
+
+![Dataschema](./images/data%20schema.png)
+
 
 ### poot
 
