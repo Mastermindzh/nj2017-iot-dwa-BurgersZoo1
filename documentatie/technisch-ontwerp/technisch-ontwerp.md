@@ -16,6 +16,10 @@
 
 ## Technische realisatie
 
+### Technische keuzes
+
+#include "documentatie/technisch-ontwerp/keuzes-dwa/keuzes-dwa.md"
+
 ### interface
 
 (wat voor programma's zijn er gebruikt, react, nodjes etc.)
