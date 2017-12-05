@@ -27,6 +27,6 @@ De presentatie ging gedeeltelijk goed, alle informatie die de groep wilde delen 
 - Hebben jullie gedacht om temperatuur e.d te meten voor Burgers' zoo?
 - Hoe zorg je ervoor dat de poot blijft werken in de extreme omstandigheden?
 
-Deze vragen zijn deels toegelicht maar zullen allen later  geëvalueerd worden.
+Deze vragen zijn deels toegelicht maar zullen allen later  geëvalueerd worden. Het feit dat ze deze gerichte vragen stellen bewijst dat ze goed geinformeerd zijn.
 
 ## bronnen
