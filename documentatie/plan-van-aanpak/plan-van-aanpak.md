@@ -1,5 +1,7 @@
 # Project Burgers' Zoo 1
 
+<!-- toc -->
+
 ## Inleiding
 Dierentuin Koninklijk Burgers' Zoo is een dierentuin gelegen te Arnhem op een mooie bossige, heuvelige locatie. Burgers' Zoo kampt met een probleem: (oudere) bezoekers laten zich negatief uit over de mobiliteit in het park. Dit is te wijten aan de heuvelige locatie. Voor dit probleem wordt door een groep van vijf ICT-studenten een technische oplossing bedacht. Deze README is een verkorte versie van een plan van aanpak (PvA), waarin verteld wordt hoe het probleem wordt aangepakt en welke producten opgeleverd gaan worden.
 
@@ -28,20 +30,20 @@ De school vereist aan het einde van het project:
 Daarnaast wordt van de student per week verwacht dat hij/zij:
 - Een logboek van zijn/haar werkzaamheden maakt.
 - Een groepsplanning voor de volgende week maakt.
-- Minimaal twee onderzoeken per week uitvoert naar nieuwe technieken 
+- Minimaal twee onderzoeken per week uitvoert naar nieuwe technieken
 
 (bron: http://cmdmethods.nl/)
 
 ## Probleemstelling en doel
 Vanuit het bedrijf:
-- Bezoekers laten zich negatief uit over de mobiliteit in het park. 
+- Bezoekers laten zich negatief uit over de mobiliteit in het park.
 - De heuvelachtige stukken in het park vormen een drempel voor (oudere) bezoekers met een mobiliteitsbeperking om eerder terug te komen in het park.
 
 Vanuit de HAN (t.o.v de vorige iteratie):
 -Het proof of concept was niet robuust en kon niet veel scans aan.
 -Het proof of concept moet voor langere tijd betrouwbaar zijn in verschillende klimaatomstandigheden.
 
-Het doel van de opdracht is kinderen (bezoekers) zodanig plezier aan het park laten beleven dat dat een gunstig psychologisch effect heeft op hun (oudere) begeleidende bezoeker, zodat hun mobiliteitsprobleem als minder vervelend wordt beschouwd waardoor de drempel om terug te keren in het park wordt verlaagd. 
+Het doel van de opdracht is kinderen (bezoekers) zodanig plezier aan het park laten beleven dat dat een gunstig psychologisch effect heeft op hun (oudere) begeleidende bezoeker, zodat hun mobiliteitsprobleem als minder vervelend wordt beschouwd waardoor de drempel om terug te keren in het park wordt verlaagd.
 
 ## Resultaat
 Een belangrijke vraag resteert: 'Hoe wordt gemeten dat het doel behaald is?' In deze iteratie van het project kan daar nog geen antwoord op worden gegegeven. De huidige iteratie focust zich op de technische kant van het probleem dat uit de vorige iteratie is ontstaan: het maken van een werkbaar prototype.
@@ -94,7 +96,7 @@ Deze iteratie van het project wordt uitgevoerd door negen studenten onder begele
 **Rollendefinities:**
 Hieronder staat een tabel van projectrollen die extra duidelijkheid vereisen:
 
-| Rol        | Verantwoordelijkheid 
+| Rol        | Verantwoordelijkheid
 | ------------- | :-------------: |
 | Planner | Het maken van een projectplanning en het maken van een wekelijkse planning |
 | Software developer | Ontwikkelaar die aan de server en/of webapplicatie werkt. |
@@ -104,11 +106,11 @@ Hieronder staat een tabel van projectrollen die extra duidelijkheid vereisen:
 | Tester | Het opstellen van test-cases voor de field trial and het documenteren van testresultaten  |
 
 ### Werkwijze
-We hebben twee disciplines (embedded en software) onderverdeeld in twee groepen. In het onderstaande schema staat weergegeven hoe twee groepen samen werken aan meerdere producten.  
+We hebben twee disciplines (embedded en software) onderverdeeld in twee groepen. In het onderstaande schema staat weergegeven hoe twee groepen samen werken aan meerdere producten.
 
-![alt text](../Werkwijze%20BurgersZoo%20IoT.png "Werkwijze")
+![burgers zoo werkwijze](images/Werkwijze%20BurgersZoo%20IoT.png)
 
-- Hypothesis driven development 
+- Hypothesis driven development
 
 ### Overlegmomenten
 
@@ -120,7 +122,7 @@ Op afspraak, elke twee of drie weken om de status van het product te bespreken.
 
 ## Producten
 
-De producten die in week 8 worden opgeleverd bestaan uit een aantal deelproducten. Om helder te krijgen wat precies wordt opgeleverd is een tabel opgesteld: 
+De producten die in week 8 worden opgeleverd bestaan uit een aantal deelproducten. Om helder te krijgen wat precies wordt opgeleverd is een tabel opgesteld:
 
 | Product        | Deelproducten
 | ------------- | :-------------: |
