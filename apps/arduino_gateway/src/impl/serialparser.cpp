@@ -56,3 +56,13 @@ void SerialReader::sendMessageIfPossible(){
   send(msg, this->ack);
   this->finished = 0;
 }
+
+void SerialReader::reset(){
+  this->finished = 0;
+  this->nodeID = '\0';
+  this->childSensorID = '\0';
+  this->command = '\0';
+  this->ack = '\0';
+  this->type = '\0';
+  this->payload = "";
+}
