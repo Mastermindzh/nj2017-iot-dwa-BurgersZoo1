@@ -15,6 +15,6 @@ Om al het bovenstaande te realiseren in een systeem zijn er requirements en Use 
 
 #include "documentatie/domein model/domeinmodel.md"
 
-#include "documentatie/use cases/use-cases.md"
+#include "documentatie/use-cases/use-cases.md"
 
 #include "documentatie/mockups/mockups-beschrijving.md"

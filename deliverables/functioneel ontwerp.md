@@ -17,23 +17,23 @@ Om al het bovenstaande te realiseren in een systeem zijn er requirements en Use 
     + [Functionele Requirements](#functionele-requirements)
     + [Niet-functionele Requirements](#niet-functionele-requirements)
   * [Domeinmodel](#domeinmodel)
-  * [Use Cases](#use-cases)
-    + [Use Case Diagram](#use-case-diagram)
-- [Use Case 1 en 2 - Weetje Beheren / Dierengeluid Beheren](#use-case-1-en-2---weetje-beheren--dierengeluid-beheren)
-  * [Preconditie](#preconditie)
-  * [Postconditie](#postconditie)
-  * [Success scenario](#success-scenario)
-  * [Alternatieve flow - Weetje/dierengeluid verwijderen](#alternatieve-flow---weetjedierengeluid-verwijderen)
-  * [Alternatieve flow - Weetje/dierengeluid beluisteren](#alternatieve-flow---weetjedierengeluid-beluisteren)
-- [Use Case 3 - Poot bezoeken](#use-case-3---poot-bezoeken)
-  * [Preconditie](#preconditie-1)
-  * [Postconditie](#postconditie-1)
-  * [Success scenario](#success-scenario-1)
-- [Use Case 4 - Bezoeken inzien](#use-case-4---bezoeken-inzien)
-  * [Preconditie](#preconditie-2)
-  * [Postconditie](#postconditie-2)
-  * [Success scenario](#success-scenario-2)
-  * [Mockups](#mockups)
+- [Use Cases](#use-cases)
+  * [Use Case Diagram](#use-case-diagram)
+  * [Use Case 1 en 2 - Weetje Beheren / Dierengeluid Beheren](#use-case-1-en-2---weetje-beheren--dierengeluid-beheren)
+    + [Preconditie](#preconditie)
+    + [Postconditie](#postconditie)
+    + [Success scenario](#success-scenario)
+    + [Alternatieve flow - Weetje/dierengeluid verwijderen](#alternatieve-flow---weetjedierengeluid-verwijderen)
+    + [Alternatieve flow - Weetje/dierengeluid beluisteren](#alternatieve-flow---weetjedierengeluid-beluisteren)
+  * [Use Case 3 - Poot bezoeken](#use-case-3---poot-bezoeken)
+    + [Preconditie](#preconditie-1)
+    + [Postconditie](#postconditie-1)
+    + [Success scenario](#success-scenario-1)
+  * [Use Case 4 - Bezoeken inzien](#use-case-4---bezoeken-inzien)
+    + [Preconditie](#preconditie-2)
+    + [Postconditie](#postconditie-2)
+    + [Success scenario](#success-scenario-2)
+- [Mockups](#mockups)
     + [Ranger app](#ranger-app)
     + [Administrator app](#administrator-app)
 
@@ -77,14 +77,14 @@ Wanneer een ranger hun pas scant bij de poot dan spreekt de poot een weetje uit.
 Een speurtocht staat niet in het domeinmodel omdat er geen vaste volgorde is waarin een ranger de speurpunten moet bezoeken. Vandaar dat een 'speurtocht' concept niet bestaat.
 
 
-## Use Cases
+# Use Cases
 Onderstaande Use Cases beschrijven alle handelingen die verschillende gebruikers met het systeem kunnen doen.
-### Use Case Diagram
+## Use Case Diagram
 In dit diagram staan alle Use Cases samen met de actoren om duidelijk te krijgen wat er gedaan kan worden met het systeem.
 
 ![uc diagram](images/use-cases.png)
 
-# Use Case 1 en 2 - Weetje Beheren / Dierengeluid Beheren
+## Use Case 1 en 2 - Weetje Beheren / Dierengeluid Beheren
 
 De onderstaande use case behandelt twee use cases:
 
@@ -98,14 +98,14 @@ In de use case wordt een aantal keer naar weetje/dierengeluid gerefereerd, dit o
 **Brief Description**
 Een educator kan met behulp van het systeem de weetjes/dierengeluiden die op een bepaalde poot staan beluisteren en aanpassen.
 
-## Preconditie
+### Preconditie
 * De educator heeft een audio bestand beschikbaar met het weetje/dierengeluid.
 * De educator weet welke poot hij wil aanpassen.
 
-## Postconditie
+### Postconditie
 * De weetjes/dierengeluiden die geconfigureerd zijn in het systeem zijn te horen op het pootjes.
 
-## Success scenario
+### Success scenario
 
 |Gebruiker|Systeem|
 |---|---|
@@ -114,14 +114,14 @@ Een educator kan met behulp van het systeem de weetjes/dierengeluiden die op een
 | 5. De educator upload een nieuw audio bestand. | 6. Het systeem upload het nieuwe audio bestand stukje voor stukje naar de poot. |
 | | 7. Het systeem geeft de voortgang van de upload naar de poot weer. Einde use case. |
 
-## Alternatieve flow - Weetje/dierengeluid verwijderen
+### Alternatieve flow - Weetje/dierengeluid verwijderen
 
 | Gebruiker | Systeem |
 | --- | --- |
 | 5a. De educator kiest ervoor om een bestaand weetje van een poot te verwijderen. | Het systeem verwijdert het weetje vanuit de poot. |
 | | Einde use case |
 
-## Alternatieve flow - Weetje/dierengeluid beluisteren
+### Alternatieve flow - Weetje/dierengeluid beluisteren
 
 | Gebruiker | Systeem |
 | --- | --- |
@@ -129,23 +129,23 @@ Een educator kan met behulp van het systeem de weetjes/dierengeluiden die op een
 | | Einde use case |
 
 
-# Use Case 3 - Poot bezoeken
+## Use Case 3 - Poot bezoeken
 
 **Primaire Actor**: Ranger
 
-**Brief Description**  
+**Brief Description**
 Een ranger bezoekt een poot wanneer de ranger de pas tegen de poot aanhoud. De poot laat een weetje horen.
 
-## Preconditie
-* De poot is geconfigureerd met 1 of meerdere weetjes. 
+### Preconditie
+* De poot is geconfigureerd met 1 of meerdere weetjes.
 * De ranger heeft een pas die bekend is binnen het systeem.
 * De ranger heeft nog niet eerder deze poot bezocht
 
-## Postconditie
-* De ranger heeft het weetje gehooord. 
+### Postconditie
+* De ranger heeft het weetje gehooord.
 * Het bezoek van de ranger is terug te zien in de ranger-app.
 
-## Success scenario
+### Success scenario
 
 |Gebruiker|Systeem|
 |---|---|
@@ -154,35 +154,37 @@ Een ranger bezoekt een poot wanneer de ranger de pas tegen de poot aanhoud. De p
 | | Het systeem registreert het bezoek van deze ranger in het systeem. |
 
 
-# Use Case 4 - Bezoeken inzien
+## Use Case 4 - Bezoeken inzien
 
 **Primaire Actor**: Ranger
 
-**Brief Description**  
+**Brief Description**
 Een ranger bezoekt een website waarin hij zijn rangercode invult. Vervolgens kan hij zien welke poten hij in welke volgorde heeft bezocht. Ook kan de ranger zien welke poten hij nog niet heeft gevonden.
 
-## Preconditie
+### Preconditie
 * De ranger is in het park geweest en heeft daar een rangercode ontvangen.
 
-## Postconditie
+### Postconditie
 * De ranger heeft gezien welke poten hij heeft bezocht.
 * De ranger heeft gezien welke poten hij heeft gemist.
 
-## Success scenario
+### Success scenario
 
 |Gebruiker|Systeem|
 |---|---|
 | 1. De ranger bezoekt een website van het systeem die is meegegeven tijdens het bezoek aan de dierentuin. | 2. Het systeem laat een webpagina zien waar de ranger een rangercode kan invullen |
 | 3. De ranger vult zijn rangercode in. | 4. Het systeem laat een kaartje zien met de bezochte poten en een lijstje met poten die de ranger nog niet bezocht heeft. Einde use case. |
 
-## Mockups
+
+
+# Mockups
 De mockups hieronder laten zien hoe de applicaties er uit gaan zien voor de gebruikers van het systeem. Dit zijn eerste schetsen die gemaakt zijn om nog verder op te itereren.
 
 ### Ranger app
 
 De ranger app laat de trips zien die een ranger heeft afgelegd, ook geeft deze onderin (en via het menu) de optie om de gehoorde geluidjes nogmaals te horen.
 
-![Ranger app](./images/Ranger%20app.png)
+![Ranger app](images/Ranger%20app.png)
 
 ### Administrator app
 Als de administrator een poot wil aanpassen komt hij/zij eerst op de pagina waar alle poten weergegeven worden. Dat is de volgende pagina:
@@ -191,7 +193,7 @@ Als de administrator een poot wil aanpassen komt hij/zij eerst op de pagina waar
 Als de administrator ervoor kiest om een poot aan te passen komt hij/zij op het volgende scherm (popup). Hier kan hij/zij onder andere de naam, het geluid, de weetjes en de positie van de poot aanpassen.
 ![Poot aanpassen details](./images/Admin%20poot%20aanpassen%20details.png)
 
-De volgende twee schermen tonen de "geluiden beheren" en "weetjes beheren" paginas. Op deze pagina's kan de administrator de weetjes/geluidjes zijn en deze afspelen.
+De volgende twee schermen tonen de "geluiden beheren" en "weetjes beheren" paginas. Op deze pagina's kan de administrator de weetjes/geluidjes zien en deze afspelen.
 ![geluiden beheren](./images/Geluiden%20beheren.png)
 ![weetjes beheren](./images/Weetjes%20beheren.png)
 
