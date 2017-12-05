@@ -20,6 +20,10 @@
 
 (wat voor programma's zijn er gebruikt, react, nodjes etc.)
 
+### Data opslag structuur
+
+#include "documentatie/technisch-ontwerp/database/database.md"
+
 ### poot
 
 #include "documentatie/technisch-ontwerp/sequence-diagrammen/readme.md"
