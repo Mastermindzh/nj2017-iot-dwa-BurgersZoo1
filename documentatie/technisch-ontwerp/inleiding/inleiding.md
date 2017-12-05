@@ -4,7 +4,8 @@ Het Burgers' Zoo Ranger systeem bestaat uit tien fysieke componenten waarop sour
 - Twee back-ends
 - Twee database servers
 - Drie clients
-- Twee Arduino's
+- Een Arduino bij de Raspberry pi voor nrf24
+- Twee Arduino's (per poot)
 
 Dit document beschrijft het systeem op architectuur niveau, inclusief subsystemen, services, hardware mapping en gebruikte protocollen. Het doel is om de lezer te informeren over het systeem, zonder in de code te hoeven duiken. Naast informatie is er ook argumentatie voor de gemaakte keuzes.
 
