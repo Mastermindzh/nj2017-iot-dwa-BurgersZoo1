@@ -2,7 +2,7 @@
   "mongo": {
     "host": "",
     "port": 0,
-    "url": "mongodb://mongo:27017/burgerszoo",
+    "url": "mongodb://localhost:27017/burgerszoo",
     "database": "",
     "password": "",
     "name": "mongo",
