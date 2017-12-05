@@ -2,11 +2,6 @@
 
 RangerDetector::RangerDetector(Poot* poot){
   this->poot = poot;
-  pinMode(RST_PIN, OUTPUT);
-  digitalWrite(RST_PIN, LOW);
-  pinMode(SS_PIN, OUTPUT);
-  digitalWrite(SS_PIN, LOW);
-
   this->mfrc522 = new MFRC522(SS_PIN, RST_PIN);
   this->mfrc522->PCD_Init();
   Serial.println(F("mfrc522 initialized"));
@@ -18,29 +13,42 @@ void RangerDetector::loop(){
   if (!this->mfrc522->PICC_IsNewCardPresent() || !this->mfrc522->PICC_ReadCardSerial())
     return;
   String pasid = this->readPasid();
+  Serial.println(F("** CARD DETECTED **"));
 
   // read authentication from card
   MFRC522::StatusCode status = this->mfrc522->PCD_Authenticate(MFRC522::PICC_CMD_MF_AUTH_KEY_A, 1, &key, &(this->mfrc522->uid));
-  if(!validateAuthStatus(status))
-    return;
-
-  // read data from card
-  byte buffer[18];
-  byte len;
-  status = this->mfrc522->MIFARE_Read(1, buffer, &len);
-  if(!this->validateReadStatus(status))
-    return;
-
-  if(!this->euqlasBurgersZoo(buffer)){
-    Serial.println("Pas content does not equal \"Burgers' Zoo\"");
+  if(!validateAuthStatus(status)){
+    stopReading();
     return;
   }
+  Serial.println(F("** CARD AUTHENTICATED **"));
 
-  this->mfrc522->PICC_HaltA();
-  this->mfrc522->PCD_StopCrypto1();
+  // read data from card
+  char buffer[18];
+  byte len = sizeof(buffer);
+  status = this->mfrc522->MIFARE_Read(1, buffer, &len);
+  if(!this->validateReadStatus(status)){
+    stopReading();
+    return;
+  }
+  Serial.println(F("** CARD READ **"));
+
+  if(!this->euqlasBurgersZoo(buffer)){
+    Serial.print(F("Pas content does not equal \"Burgers' Zoo\". Content: "));
+    Serial.println(buffer);
+    stopReading();
+    return;
+  }
+  stopReading();
+  Serial.println(F("** CARD BURGERS ZOO CONTENT **"));
 
   this->poot->pasScanned(pasid);
 };
+
+void RangerDetector::stopReading(){
+  this->mfrc522->PICC_HaltA();
+  this->mfrc522->PCD_StopCrypto1();
+}
 
 MFRC522::MIFARE_Key RangerDetector::makeKey() {
   MFRC522::MIFARE_Key key;
@@ -81,4 +89,5 @@ bool RangerDetector::euqlasBurgersZoo(char* buffer){
   for (int i = 0; i < strlen(burgerszoo); i++)
     if (buffer[i] != burgerszoo[i] )
       return false;
+  return true;
 }

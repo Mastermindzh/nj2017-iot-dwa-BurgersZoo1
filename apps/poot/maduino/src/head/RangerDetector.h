@@ -22,6 +22,7 @@ class RangerDetector {
     bool validateReadStatus(MFRC522::StatusCode status);
     String readPasid();
     MFRC522::MIFARE_Key RangerDetector::makeKey();
+    void stopReading();
 };
 
 #endif
