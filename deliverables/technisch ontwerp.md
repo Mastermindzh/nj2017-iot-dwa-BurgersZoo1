@@ -1,9 +1,8 @@
 # Technisch ontwerp
 
-## Inleiding
-
 <!-- toc -->
 
+  * [Inleiding](#inleiding)
   * [Systeem architectuur](#systeem-architectuur)
 - [Architectuur](#architectuur)
   * [Keuzes](#keuzes)
@@ -12,9 +11,15 @@
       - [Poot bestaande uit twee Arduino's](#poot-bestaande-uit-twee-arduinos)
       - [Losstaande client-apps's](#losstaande-client-appss)
   * [Software architectuur](#software-architectuur)
+  * [Multi-tiered](#multi-tiered)
+  * [Database](#database)
+  * [back-end](#back-end)
+  * [front-end apps](#front-end-apps)
   * [Technische realisatie](#technische-realisatie)
     + [interface](#interface)
     + [poot](#poot)
+      - [Onderdelen poot](#onderdelen-poot)
+      - [Aansluitschema](#aansluitschema)
 - [Sequence diagrams](#sequence-diagrams)
   * [Nieuwe poot aanmelden](#nieuwe-poot-aanmelden)
   * [Online komen poot](#online-komen-poot)
@@ -27,6 +32,8 @@
   * [Productie versie](#productie-versie)
 
 <!-- tocstop -->
+
+## Inleiding
 
 Dit is een inleiding
 
@@ -68,6 +75,31 @@ Er is gekozen om de Ranger App en Admin App volledig los te maken van de backend
 
 ## Software architectuur
 
+De architectuur m.b.t hetgeen buiten de poten om draait ziet er als volgt uit:
+
+![multi-tiered-architecture](images/multi-tiered.png)
+
+## Multi-tiered
+Bij de ontwikkeling van de architectuur is rekening gehouden met het feit dat we een prototype ontwerpen, omdat de producten in dit prototype vaak kunnen veranderen is het verstandig om te kijken naar een modulaire architectuur. Hierin is gekozen voor een "multi-tiered" aanpak. Dit wil, in het kort, zeggen dat er verschillende "lagen" worden gemaakt die ieder verantwoordelijk zijn voor één aspect van het systeem. Deze draaien ieder op een aparte host, hetzij in een container of op een fysieke server.
+
+De verschillende "lagen" worden in de volgende hoofdstukken uitgelegd.
+
+## Database
+De database laag zal enkel en alleen de database bevatten, op het moment van prototyping is dit één Mongo database. Dit kan echter uitgebreid worden met meerdere instances (voor redundancy, uitbreidbaarheid) en eventueel voorzien worden van een load balancer.
+
+Al deze dingen samen maken de "data" laag, hét centrale punt om data op te halen met de rest van de applicaties.
+
+## back-end
+Het back-end betreft een REST api welke wordt aangesproken met de verschillende front-ends. De REST api zelf spreekt de datalaag aan om zijn data op te slaan en op te halen. Deze laag kan wederom
+uitgebreid worden met meerdere instanties van de back-end en/of met een loadbalancer.
+
+## front-end apps
+
+De front-end apps zijn modulair opgezet, deze apps draaien op hun eigen plekje en roepen het REST backend middels HTTP aan. Als zei data willen manipuleren zal dit dus ook via de back-end moeten verlopen.
+
+Alle front-end apps bij elkaar worden gezien als de "front-end laag", zelfs als deze op andere fysieke machines draaien. Het los koppelen van de applicaties bevordert de werkbaarheid en stabiliteit van de architectuur. Elke app kan afzonderlijk gedeployed / getest worden zonder de rest van de architectuur te beïnvloeden.
+
+
 ## Technische realisatie
 
 ### interface
@@ -76,6 +108,25 @@ Er is gekozen om de Ranger App en Admin App volledig los te maken van de backend
 
 ### poot
 
+De poot is het punt waar kinderen hun passen kunnen gaan scannen. Door ontbreken van bestaande netwerk infrastructuur hebben wij de keuze gemaakt om zelf een zelfhelend mesh netwerk op te zetten doormiddel van NRF24L01+ chips icm de [MySensor library](https://www.mysensors.org/). 
+
+De passen die gescand worden hebben een NFC chip, waarbij het unike id van deze kaart dient als identificatie nummer. Dit nummer wordt daarna verzonden via het mesh netwerk naar de backend.
+
+#### Onderdelen poot
+- 2 Arduino Nano's
+- NRF24L01+
+- SD/Micro SD kaart lezer
+- RFID lezer
+- Speaker via 3.5 mm jack
+- Vorm van voeding (voor het prototype)
+- Capacitor
+- Voltage Regulator
+
+Er is gekozen voor twee verschillende Arduino Nano's omdat er anders problemen onstaan met het afspelen van audio en ontvangen/versturen van data via de NRF24L01+. Deze twee chips maken allebei gebruik van de SPI bus en kunnen dus niet tegelijkertijd worden aangesproken. Om dit op te lossen zijn de Arduino's in een master/slave opstelling. Er is dan één Arduino verantwoordelijk voor de aansturing, ontvangen/versturen van berichten en uitlezen van RFID lezer. De andere Arduino Nano is verantwoordelijk voor het uitlezen van de SD/Micro SD kaart en het ontvangen van commando's van de master.
+
+#### Aansluitschema
+Deze communiceren met elkaar via I<sup>2</sup>C. Er is gekozen voor I<sup>2</sup> en niet voor bijvoorbeeld de seriële poort omdat we tijdens het prototypen nog gemakkelijk de Arduino's kunnen debuggen.
+![Aansluit schema poot v1](images/aansluitschema-poot-v1.jpeg)
 # Sequence diagrams
 
 ## Nieuwe poot aanmelden

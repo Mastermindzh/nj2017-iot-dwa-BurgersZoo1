@@ -21,7 +21,7 @@
 (wat voor programma's zijn er gebruikt, react, nodjes etc.)
 
 ### poot
-
+#include "documentatie/technisch-ontwerp/technische-realisatie/poot.md"
 #include "documentatie/technisch-ontwerp/sequence-diagrammen/readme.md"
 
 ## Deployment
