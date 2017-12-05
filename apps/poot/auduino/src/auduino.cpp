@@ -5,11 +5,10 @@ MaduinoPortal* portal;
 Audio* audio;
 
 void setup () {
+  Serial.begin(115200);
   audio = new Audio();
   portal = new MaduinoPortal(audio);
 }
 
 void loop() {
-    portal->loop();
-    audio->loop();
 }
