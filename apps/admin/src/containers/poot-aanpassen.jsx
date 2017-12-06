@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withStyles } from 'material-ui/styles';
 import IconButton from 'material-ui/IconButton';
@@ -6,6 +7,7 @@ import Icon from 'material-ui/Icon';
 import Input, { InputLabel } from 'material-ui/Input';
 import { FormControl } from 'material-ui/Form';
 import Grid from 'material-ui/Grid';
+import _ from 'lodash';
 
 import TableComponent from './../components/table-component.jsx';
 import PopupComponent from './../components/popup-component.jsx';
@@ -15,7 +17,8 @@ import { fetchSpeurpunten } from './../actions/speurpuntenActions';
 
 class PootAanpassenContainer extends Component {
   state = {
-    popupOpen: false
+    popupOpen: false,
+    search: ''
   }
 
   componentWillMount(){
@@ -23,7 +26,6 @@ class PootAanpassenContainer extends Component {
   }
 
   render() {
-
 
     const { classes } = this.props;
 
@@ -34,7 +36,15 @@ class PootAanpassenContainer extends Component {
       { text: "Geo Locatie" },
     ];
 
-    const data = this.props.speurpunten.map(speurpunt => {
+    let results = [];
+
+    if(this.state.search != ''){
+      results = _.filter(this.props.speurpunten, obj => obj.locatienaam.toLowerCase().startsWith(this.state.search.toLowerCase()));
+    }else{
+      results = this.props.speurpunten;
+    }
+
+    const data = _.map(results, speurpunt => {
       return {
         key: speurpunt.id,
         children: [
@@ -49,37 +59,6 @@ class PootAanpassenContainer extends Component {
         ]
       };
     });
-
-    // const data = [
-    //   {
-    //     key: 'olifantrow',
-    //     children: [
-    //       {
-    //         children: <IconButton onClick={() => this.setState({ popupOpen: true })}>
-    //           <Icon>mode_edit</Icon>
-    //         </IconButton>
-    //       },
-    //       { children: "Poot 1", },
-    //       { children: "1", numeric: true },
-    //       { children: "Olifant", },
-    //       { children: "- Een olifant heeft slechts 2 knieen" }
-    //     ]
-    //   },
-    //   {
-    //     key: 'lion row',
-    //     children: [
-    //       {
-    //         children: <IconButton onClick={() => this.setState({ popupOpen: true })}>
-    //           <Icon>mode_edit</Icon>
-    //         </IconButton>
-    //       },
-    //       { children: "Poot 2", },
-    //       { children: "2", numeric: true },
-    //       { children: "Leeuwen", },
-    //       { children: "- Leeuwen zijn cool" }
-    //     ]
-    //   },
-    // ];
 
     return (
       <div>
@@ -107,11 +86,15 @@ class PootAanpassenContainer extends Component {
           </PopupComponent>
         }
 
-        {/* <PopupComponent /> */}
       </div>
     );
   }
 }
+
+PootAanpassenContainer.propTypes = {
+  classes: PropTypes.object,
+  speurpunten: PropTypes.any
+};
 
 function mapStateToProps(state){
   return {
