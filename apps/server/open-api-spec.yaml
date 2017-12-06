@@ -3316,31 +3316,6 @@ paths:
           schema:
             type: object
       deprecated: false
-  '/poten/{pootid}/logs':
-    post:
-      tags:
-        - poot
-      summary: >-
-        Verzenden van log-data naar de backend vanuit de gateway. Elk request
-        bevat de logdata van 1 poot.
-      operationId: poot.sendLog
-      parameters:
-        - name: log
-          in: body
-          required: false
-          schema:
-            $ref: '#/definitions/logging'
-        - name: pootid
-          in: path
-          required: true
-          type: number
-          format: double
-      responses:
-        '200':
-          description: Request was successful
-          schema:
-            type: string
-      deprecated: false
   '/poten/{pootid}/scan':
     post:
       tags:
@@ -3943,20 +3918,6 @@ definitions:
         format: double
       id:
         $ref: '#/definitions/ObjectID'
-    additionalProperties: false
-  logging:
-    properties:
-      pootid:
-        type: number
-        format: double
-      timestamp:
-        type: number
-        format: double
-      id:
-        $ref: '#/definitions/ObjectID'
-    required:
-      - pootid
-      - timestamp
     additionalProperties: false
   nfc:
     properties:

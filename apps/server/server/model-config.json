@@ -46,14 +46,6 @@
     "dataSource": "mongo",
     "public": true
   },
-  "logging": {
-    "dataSource": "mongo",
-    "public": true
-  },
-  "logValue": {
-    "dataSource": "mongo",
-    "public": true
-  },
   "nfc": {
     "dataSource": "mongo",
     "public": true
