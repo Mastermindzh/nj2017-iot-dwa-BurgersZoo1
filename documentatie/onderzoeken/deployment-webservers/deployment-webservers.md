@@ -25,30 +25,62 @@ Uit verschillende bronnen ([1](https://hackernoon.com/how-to-deploy-a-live-react
 - [firebase](https://firebase.google.com/)
 - [aws](https://aws.amazon.com/s3)
 
-Naast deze opties zijn er ook de wat professionelere opties, namelijk de volledige webservers.
+Naast deze opties zijn er ook de wat professionelere opties, volledige webservers, zoals bijv. apache, nginx of zelfs express.
 
+Uit onderzoek blijkt dus dat er genoeg best/good practices te vinden zijn maar vrijwel geen van de practices wordt als "bad" beschouwt. Het vermoeden hierachter is de simpele manier waarop een React front-end werkt. Na een bundeling van de bestanden blijft er niet veel over en [Bartosz Szczeciński](https://medium.com/@baphemot/understanding-react-deployment-5a717d4378fd) vat het in één zin heel goed samen:
 
-github pages -> react client side routing -> kut
-surge -> react client side routing -> beter maar kut
-s3 -> buckets -> kan, veel werk
+> Our deployment process will at the very basic level be “put the files on the server”.
 
+Ofwel:
 
-### Comparison chart
+> "Ons deployment process is in essentie: zet de bestanden op een server".
 
-- surge -> geen CORS
+### De opties vergelijken (Comparison chart)
 
+Aangezien de deployment vrij simpel is hebben we veel keuzes. CDN tools lijken ideaal als je kijkt hoe snel een developer ermee uit de voeten kan, maar een volledige server geeft je mogelijkheden tot afscherming van de app.
+
+Om de belangrijkste aspecten makkelijk naast elkaar te zetten gebruik ik de onderzoeksmethode "comparison chart" uit de stepping stones categorie.
+
+De volgende aspecten acht ik belangrijk in het project:
+
+- Docker beschikbaarheid
+- Eigen beheer
+- Leerzaam
+- Zonder problemen na te doen door een vervolg CMD groep / docenten
+- Documentatie
+- CORS support
+- React support
+
+Als we dit dan voor de producten naast elkaar zetten krijgen we:
+
+| Standpunt                                                         | AWS hosting          | Firebase                                                           | Surge                             | Github pages | Express           | Apache            | NGINX             |
+|-------------------------------------------------------------------|----------------------|--------------------------------------------------------------------|-----------------------------------|--------------|-------------------|-------------------|-------------------|
+| Docker beschikbaarheid                                            | ❌                    | ❌                                                                  | ❌                                 | ❌            | ✓                 | ✓                 | ✓                 |
+| Eigen beheer                                                      | ❌                    | ❌                                                                  | ❌                                 | ❌            | ✓                 | ✓                 | ✓                 |
+| Leerzaam                                                          | ❌ / ✓                | ❌ / ✓                                                              | ❌ / ✓                             | ❌ / ✓        | ✓                 | ✓                 | ✓                 |
+| Zonder problemen na te doen door een vervolg CMD groep / docenten | ❌ / ✓                | ❌ / ✓                                                              | ✓                                 | ✓            | ❌ (tenzij Docker) | ❌ (tenzij Docker) | ❌ (tenzij Docker) |
+| Documentatie                                                      | ❌ / ✓                | ❌ / ✓                                                              | ✓                                 | ✓            | ❌ / ✓             | ✓                 | ✓                 |
+| Prijs                                                             | € 0,- / 0.023 per GB | € 0,- / €25 / month                                                | € 0,- / €13 / month               | € 0,-        | € 0,-             | € 0,-             | € 0,-             |
+| CORS support                                                      | ✓                    | ✓                                                                  | ❌                                 | ✓            | ✓                 | ✓                 | ✓                 |
+| React support                                                     | ✓                    | ✓ (bundle.js moet / voor (absoluut pad) om problemen te voorkomen) | ❌ (client-side routing gaat niet) |              | ✓                 | ✓                 | ✓                 |
 
 ## Resultaat
 
+Uit onderzoek is gebleken dat het hosten van een React applicatie een stuk simpeler is als verwacht
 
 
 ## Conclusie
 
 
 ## bronnen
-- [](http://www.hostingadvice.com/how-to/nginx-vs-apache/)
-- [](https://hackernoon.com/how-to-deploy-a-live-reactjs-redux-website-in-under-10-minutes-cadf73cfc75a)
-- [](https://medium.com/@baphemot/understanding-react-deployment-5a717d4378fd)
-- [](https://medium.com/@bensigo/hosting-your-react-app-with-firebase-hosting-add1fa08c214)
-- [](https://www.fullstackreact.com/articles/deploying-a-react-app-to-s3/)
-- [](https://medium.freecodecamp.org/surge-vs-github-pages-deploying-a-create-react-app-project-c0ecbf317089)
+
+- [using create react app with react router express js](https://medium.com/@patriciolpezjuri/using-create-react-app-with-react-router-express-js-8fa658bf892d)
+- [how to set up a node js application for production on ubuntu 14 04](https://www.digitalocean.com/community/tutorials/how-to-set-up-a-node-js-application-for-production-on-ubuntu-14-04)
+- [nginx vs apache](http://www.hostingadvice.com/how-to/nginx-vs-apache/)
+- [how to deploy a live reactjs redux website in under 10 minutes](https://hackernoon.com/how-to-deploy-a-live-reactjs-redux-website-in-under-10-minutes-cadf73cfc75a)
+- [understanding react deployment](https://medium.com/@baphemot/understanding-react-deployment-5a717d4378fd)
+- [hosting your react app with firebase hosting](https://medium.com/@bensigo/hosting-your-react-app-with-firebase-hosting-add1fa08c214)
+- [deploying a react app to s3](https://www.fullstackreact.com/articles/deploying-a-react-app-to-s3/)
+- [surge vs github pages deploying a create-react-app project](https://medium.freecodecamp.org/surge-vs-github-pages-deploying-a-create-react-app-project-c0ecbf317089)
+- [which is better cloud server amazon AWS or firebase](https://www.quora.com/Which-is-better-cloud-server-Amazon-AWS-or-Firebase)
+- [serverless showdown - aws lambda vs firebase google cloud](https://medium.com/@ste.grider/serverless-showdown-aws-lambda-vs-firebase-google-cloud-functions-cc7529bcfa7d)
