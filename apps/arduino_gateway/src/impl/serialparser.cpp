@@ -8,9 +8,13 @@ void addToVar(byte* targetVar, char toAdd){
 }
 
 void SerialReader::loop(){
-  while (Serial.available() > 0) {
-    byte read = Serial.read();
-    this->handleNextInputChar(read);
+  String line;
+  if(Serial.available()>0){
+    line = Serial.readString();
+  }
+  Serial.print(line);
+  for(unsigned int i = 0; i < line.length(); i++){
+    this->handleNextInputChar(line.charAt(i));
   }
 }
 
@@ -33,36 +37,44 @@ void SerialReader::handleNextInputChar(char read){
         this->readingIndex = INDX_PYALOAD; return;
     }
   }
+
   switch(this->readingIndex){
     case INDX_NODEID:         addToVar(&this->nodeID, read); break;
     case INDX_CHILDSENSORID:  addToVar(&this->childSensorID, read); break;
     case INDX_COMMAND:        addToVar(&this->command, read); break;
     case INDX_ACK:            addToVar(&this->ack, read); break;
     case INDX_TYPE:           addToVar(&this->type, read);break;
-    case INDX_PYALOAD:        this->payload.concat(read); break;
+    case INDX_PYALOAD:
+      Serial.print(read);
+      this->payload.concat(read);
+      break;
   }
 }
 
 void SerialReader::finishReading(){
-  this->finished = 1;
+    this->finished = 1;
 }
 
 void SerialReader::sendMessageIfPossible(){
-  if(!this->finished)
-    return;
-  MyMessage msg(this->nodeID, this->type);
-  msg.set(&this->payload, this->payload.length());
-  msg.setSensor(this->childSensorID);
-  send(msg, this->ack);
-  this->finished = 0;
+  if(this->finished){
+    this->payload = "test";
+    Serial.println(F("Sending message, payload: "));
+    Serial.print(this->payload);
+    MyMessage msg(this->nodeID, this->type);
+    msg.set(&this->payload, this->payload.length());
+    msg.setSensor(this->childSensorID);
+    send(msg, this->ack);
+    this->finished = 0;
+  }
+  this->reset();
 }
 
 void SerialReader::reset(){
   this->finished = 0;
-  this->nodeID = '\0';
-  this->childSensorID = '\0';
-  this->command = '\0';
-  this->ack = '\0';
-  this->type = '\0';
+  this->nodeID = 0;
+  this->childSensorID = 0;
+  this->command = 0;
+  this->ack = 0;
+  this->type = 0;
   this->payload = "";
 }
