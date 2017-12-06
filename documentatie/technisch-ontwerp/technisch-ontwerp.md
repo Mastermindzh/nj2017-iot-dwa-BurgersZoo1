@@ -25,7 +25,7 @@
 #include "documentatie/technisch-ontwerp/database/database.md"
 
 ### poot
-
+#include "documentatie/technisch-ontwerp/technische-realisatie/poot.md"
 #include "documentatie/technisch-ontwerp/sequence-diagrammen/readme.md"
 
 ## Deployment
