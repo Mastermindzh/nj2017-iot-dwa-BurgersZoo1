@@ -5,8 +5,8 @@ In dit diagram staan alle Use Cases samen met de actoren om duidelijk te krijgen
 
 ![uc diagram](images/use-cases.png)
 
-#include "documentatie/use-cases/1-weetje-beheren-en-diergengeluid-beheren.md"
+#include "documentatie/functioneel-ontwerp/use-cases/1-weetje-beheren-en-diergengeluid-beheren.md"
 
-#include "documentatie/use-cases/2-poot-bezoeken.md"
+#include "documentatie/functioneel-ontwerp/use-cases/2-poot-bezoeken.md"
 
-#include "documentatie/use-cases/3-bezoeken-inzien.md"
+#include "documentatie/functioneel-ontwerp/use-cases/3-bezoeken-inzien.md"
