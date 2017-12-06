@@ -4,30 +4,42 @@
 
 - [Inleiding](#inleiding)
 - [Architectuur](#architectuur)
-    + [Poot](#poot)
-    + [Gateway](#gateway)
-    + [Frontend apps](#frontend-apps)
-    + [Backend](#backend)
-    + [Database](#database)
+  * [Poot](#poot)
+  * [Gateway](#gateway)
+  * [Frontend apps](#frontend-apps)
+  * [Backend](#backend)
+  * [Database](#database)
   * [Keuzes](#keuzes)
     + [Gebruik gateway voor communicatie tussen poten en backend](#gebruik-gateway-voor-communicatie-tussen-poten-en-backend)
     + [Gateway bestaande uit een Arduino + Raspberry Pi](#gateway-bestaande-uit-een-arduino--raspberry-pi)
     + [Poot bestaande uit twee Arduino's](#poot-bestaande-uit-twee-arduinos)
     + [Losstaande client-apps's](#losstaande-client-appss)
-  * [Technische realisatie](#technische-realisatie)
-  * [Data Opslag](#data-opslag)
+- [Datamodel](#datamodel)
+- [Data Opslag](#data-opslag)
 - [System flow](#system-flow)
   * [Nieuwe poot aanmelden](#nieuwe-poot-aanmelden)
   * [Online komen poot](#online-komen-poot)
   * [Poot versturen logdata](#poot-versturen-logdata)
   * [Ranger bezoekt poot](#ranger-bezoekt-poot)
-    + [Poot](#poot-1)
       - [Onderdelen poot](#onderdelen-poot)
       - [Aansluitschema](#aansluitschema)
-- [deployment](#deployment)
+- [Deployment](#deployment)
   * [Beide versies](#beide-versies)
   * [Development versie](#development-versie)
   * [Productie versie](#productie-versie)
+- [Class Diagram IoT Poot](#class-diagram-iot-poot)
+      - [AuduinoPortal & MaduinoPortal](#auduinoportal--maduinoportal)
+      - [Poot](#poot-1)
+      - [RangerDetector](#rangerdetector)
+      - [GatewayLink](#gatewaylink)
+      - [Logging](#logging)
+        * [TempSensor](#tempsensor)
+        * [HumiditySensor](#humiditysensor)
+      - [Audio](#audio)
+        * [Player << TMRPMC &gt;&gt;](#player--tmrpmc-gtgt)
+        * [Downloader](#downloader)
+      - [StatusLight](#statuslight)
+        * [LED](#led)
 
 <!-- tocstop -->
 
@@ -53,7 +65,7 @@ In onderstaande afbeelding is een globale schets van de architectuur weergegeven
 
 ![Architectuur](images/architectuur.png)
 
-### Poot
+## Poot
 De architectuur van de poot is in onderstaande afbeelding in meer detail te zien.
 
 ![Architectuur Poot](images/architectuur-poot.png)
@@ -62,18 +74,18 @@ De poot bestaat uit twee Arduino's. Er is één Arduino die volledig gaat over h
 
 De Master Arduino is verantwoordelijk voor alle primaire functionaliteiten en het aansturen van de Audio Arduino. Zo zal de master Arduino een NFC-scanner hebben om passen te detecteren. Ook zal deze Master Arduino de temperatuur en luchtvochtigheid meten. De Master Arduino staat via de NRF24 chip in verbinding met de gateway en zal zo de gateway op de hoogte houden over welke passen zijn langs geweest.
 
-### Gateway
+## Gateway
 De poten zullen communiceren met de twee backends van de twee groepen via een gateway. Deze gateway bestaat uit een Arduino en een Raspberry Pi. De Arduino zal draadloos communiceren via NRF24 chips met de poten en alle informatie doorsturen naar de Raspberry Pi. De Pi zal via HTTP/JSON communiceren met de backend's. De Pi kan op zijn beurt weer de Arduino binnen de gateway aansturen om zo informatie bij de poten te krijgen.
 
-### Frontend apps
+## Frontend apps
 De gebruikers zullen werken met een van de twee client-applicaties: de Ranger App voor de rangers en de Admin App voor de administratoren. Deze twee applicaties draaien in de browser en zullen via HTTP/JSON communiceren met de Backends.
 
 De front-end apps zijn modulair opgezet, deze apps draaien op hun eigen plekje en roepen het REST backend middels HTTP aan. Als zei data willen manipuleren zal dit dus ook via de back-end moeten verlopen. Alle front-end apps bij elkaar worden gezien als de "front-end laag", zelfs als deze op andere fysieke machines draaien. Het los koppelen van de applicaties bevordert de werkbaarheid en stabiliteit van de architectuur. Elke app kan afzonderlijk gedeployed / getest worden zonder de rest van de architectuur te beïnvloeden.
 
-### Backend
+## Backend
 Het back-end betreft een REST api welke wordt aangesproken met de verschillende front-ends. De REST api zelf spreekt de datalaag aan om zijn data op te slaan en op te halen. Deze laag kan wederom uitgebreid worden met meerdere instanties van de back-end en/of met een loadbalancer.
 
-### Database
+## Database
 De database laag zal enkel en alleen de database bevatten, op het moment van prototyping is dit één Mongo database. Dit kan echter uitgebreid worden met meerdere instances (voor redundancy, uitbreidbaarheid) en eventueel voorzien worden van een load balancer.
 
 ## Keuzes
@@ -92,11 +104,13 @@ In eerste instantie was er gekozen om de poot te maken [met 1 Arduino](https://g
 Er is gekozen om de Ranger App en Admin App volledig los te maken van de backend. De client apps zullen beide met dezelfde rest api van de backend werken. De keuze is hiervoor gemaakt omdat tijdens de lessen DWA dit pattern gebruikt is.
 
 
+# Datamodel
+
+![datamodel](images/datamodel.png)
+
 TODO
 
-## Technische realisatie
-
-## Data Opslag
+# Data Opslag
 Om de data van het systeem op te slaan wordt er een Mongo database gebruikt. Deze database wordt gevuld door Loopback. Loopback werkt iets anders dan Mongo met data omdat het een model systeem gebruikt.
 
 In Loopback genereer je models met eigenschappen. Deze eigenschappen staan gelijk aan de keys uit de key-value pairs in een document in Mongo. Elk model staat ook gelijk aan een collection in Mongo. Als je een relatie maakt tussen twee modellen wordt dit door middel van links of embedded documents, afhankelijk van de relatie, verwerkt in Mongo.
@@ -143,7 +157,7 @@ Wanneer een ranger een poot bezoekt scant de ranger de NFC kaart. De poot verstu
 ![Ranger bezoekt poot](images/ranger_bezoekt_poot.png)
 
 
-### Poot
+#Poot
 
 De poot is het punt waar kinderen hun passen kunnen gaan scannen. Door ontbreken van bestaande netwerk infrastructuur hebben wij de keuze gemaakt om zelf een zelfhelend mesh netwerk op te zetten doormiddel van NRF24L01+ chips icm de [MySensor library](https://www.mysensors.org/). 
 
@@ -165,7 +179,7 @@ Er is gekozen voor twee verschillende Arduino Nano's omdat er anders problemen o
 Deze communiceren met elkaar via I<sup>2</sup>C. Er is gekozen voor I<sup>2</sup> en niet voor bijvoorbeeld de seriële poort omdat we tijdens het prototypen nog gemakkelijk de Arduino's kunnen debuggen.
 ![Aansluit schema poot v1](images/aansluitschema-poot-v1.jpeg)
 
-# deployment
+# Deployment
 
 Voor dit project wordt er gewerkt met twee deployment strategieën: deployment en productie. Het doel is om de productie build online te hebben bij de field-test, want dan simuleer je een echte situatie. We hebben echter ook een development deployment omgeving nodig om tegelijk te testen en bugs op te zoeken.
 
@@ -186,4 +200,51 @@ In de productie versie is alle code getranspileerd (gebundeld) tot één geminim
 ![development](./images/final%20deployment.png)
 
 
-#include "documentatie/technisch-ontwerp/iot-klassediagram/iot-klassediagram.md
+# Class Diagram IoT Poot
+
+![klassediagram.png](klassediagram.png)
+
+Zoals te zien is, is er een tweedeling van klasse in Maduino en Auduino. Dit is zoals beschreven in de [architectuur](https://github.com/HANICA-MinorMulti/nj2017-iot-dwa-BurgersZoo1/tree/master/documentatie/architectuur). Maduino is de naam voor de Master Arduino en Auduino is de naam voor de Audio Arduino.
+
+#### AuduinoPortal & MaduinoPortal
+Het 'AuduinoPortal' en 'MaduinoPortal' zorgen voor de communicatie tussen de Maduino en de Auduino. Ze werken beide op de I2C bus. Het AuduinoPortal stuurt dus berichtjes die worden ontvangen bij de MaduinoPortal. Andersom kan de MaduinoPortal berichten sturen naar de AuduinoPortal.
+
+Deze twee portals zijn er alleen voor communicatie naar elkaar. Beide zullen bij het ontvangen van berichtjes een klasse binnen die Arduino aanroepen die dan de actie afhandelt.
+
+Een voorbeeld: wanneer de 'RangerDetector' een ranger detecteert, wordt dit doorgegeven aan 'Poot'. Op zijn beurt zal 'Poot' op 'AuduinoPortal' de methode 'playAudio()' afroepen. Vervolgens zal 'AuduinoPortal' via de I2C bus de 'MaduinoPortal' informeren dat er audio moet worden afgespeeld. De 'MaduinoPortal' roept dan op de 'Audio' klasse 'playAudio()' aan. Zo wordt de audio afgespeeld.
+
+#### Poot
+De 'Poot' klasse is soort van de baas van het management van alle subsysteempjes die op de poot draaien. Zo zal deze klasse de globale business logica implementeren. De 'Poot' zal vanuit de ranger-detectie module te horen krijgen dat er een ranger voor de poot staat en zal de poot module de audio module en de logging module aansturen om hierop te reageren.
+
+De 'Poot' klasse zorgt ook voor registratie en aanmelden van de poot bij de gateway en het opslaan van het pootid in EEPROM.
+
+#### RangerDetector
+Deze is verantwoordelijk voor het detecteren van welke ranger er voor de paal staat. Op dit moment wordt deze geïmplementeerd door een RFID-lezer uit te lezen en de data uit de pasjes te lezen. De 'RangerDetector' rapporteert terug naar 'Poot' zodat de 'Poot' kan besluiten wat te doen met dit event.
+
+#### GatewayLink
+Alle communicatie naar de gateway wordt gedaan door de 'GatewayLink'. Zo zal de 'Gatewaylink' methodes hebben waarmee de 'Logging' en 'RangerDetector' naar kunnen praten.
+
+#### Logging
+Deze module verzamelt informatie die te maken heeft met de uitvoering en omgeving van de poot. Bijvoorbeeld temperatuur, luchtvochtigheid, stroomverbruik en communicatie-informatie. Logging geeft de verzamelde informatie door aan de 'GatewayLink' die zorgt dat deze informatie bij de gateway aankomt.
+
+##### TempSensor
+Een klasse die een fysieke thermometer beheert. Deze thermometer wordt uitgelezen door de 'Logging'.
+
+##### HumiditySensor
+Een klasse die een fysieke luchtvochtigheidsmeter beheert. Deze luchtvochtimeter wordt uitgelezen door de 'Logging'.
+
+#### Audio
+Het afspelen en beheren van alle audiogerelateerde zaken wordt geregeld door de 'Audio' module. De audio module wordt via de 'AudionoPortal' en 'MaduinoPortal' aangestuurd via de 'Poot'. De Audio module zal de audio bestanden vanuit de 'SD-Card' lezer ophalen.
+
+##### Player << TMRPMC &gt;&gt;
+De [TMRPMC](https://github.com/TMRh20/TMRpcm/wiki) library wordt gebruikt voor het afspelen van de library. Binnen het systeem wordt dit het 'Player' component genoemd.
+
+##### Downloader
+De downloader verzorgt het ontvangen van nieuwe audio-bestanden vanuit de 'Communication' module. Dit ontvangen van audio-bestanden zal een speciaal protocol vereisen. Hiervoor zorgt de downloader.
+** DE DOWNLOADER ZAL IN EEN LATER STADIUM VERDER GESPECIFICEERD WORDEN. **
+
+#### StatusLight
+Geeft door middel van een fysiek lampje feedback aan mensen die de paal onderhouden over het werk van de paal. Zo kan er een lampje zijn dat door middel van knipperen het verkeer op de communicatiekanalen aangeeft, of een lampje dat laat zien of er audio afgespeeld wordt. Het doel van de het 'StatusLight' is een visuele indicatie geven van wat er binnenin de Arduino afspeelt.
+
+##### LED
+Representeert een fysiek led lampje op een bepaalde fysieke pin op de Arduino. Kan worden aangezet of uitgezet.
