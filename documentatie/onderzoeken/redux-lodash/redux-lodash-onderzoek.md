@@ -18,7 +18,7 @@ Het onderzoek is uitgevoerd in samenwerking met Rick van Lieshout.
 Als je nog niet weet wat Redux is, helpt dit hoofdstuk je even op gang. Met Redux beheer je state op applicatieniveau. Redux bestaat
 uit een aantal onderdelen:
 
-[Redux](https://tryolabs.com/images/blog/post-images/2016-04-19-understanding-the-redux-paradigm/flux-diagram-1.png)
+![Redux](https://tryolabs.com/images/blog/post-images/2016-04-19-understanding-the-redux-paradigm/flux-diagram-1.png)
 
 
 **Doel**<br />
