@@ -16,10 +16,15 @@ Het onderzoek is uitgevoerd in samenwerking met Rick van Lieshout.
 
 ## Wat is Redux?
 Als je nog niet weet wat Redux is, helpt dit hoofdstuk je even op gang. Met Redux beheer je state op applicatieniveau. Redux bestaat
-uit een aantal onderdelen:
+uit een aantal onderdelen (behalve de ui view):
 
-![Redux](https://tryolabs.com/images/blog/post-images/2016-04-19-understanding-the-redux-paradigm/flux-diagram-1.png)
+![Redux](https://cdn-images-1.medium.com/max/1200/1*bvAMo9Ou8yI3-zzB3aoMnA.png)
 
+Het belangrijkste dat je moet onthouden is dit:
+
+- store: opslagplaats van alle data als één grote POJO
+- reducers: pure functies die de app-state bewerken op basis van binnengekregen data
+- action creators: functies die iets doen, een API benaderen of iets uitrekenen. De uitkomst geven ze door aan de reducers. Dat wordt dispatchen genoemd.
 
 **Doel**<br />
 
