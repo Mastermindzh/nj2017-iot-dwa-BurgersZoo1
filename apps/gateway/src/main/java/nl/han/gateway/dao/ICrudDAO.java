@@ -1,5 +1,7 @@
 package nl.han.gateway.dao;
 
+import org.bson.types.ObjectId;
+import org.mongodb.morphia.EntityInterceptor;
 import org.mongodb.morphia.Key;
 
 import java.util.List;
@@ -36,12 +38,12 @@ public interface ICrudDAO<T> {
     List<T> getAll();
 
     /**
-     * Get one by key
+     * Get one by entity
      *
-     * @param key
+     * @param entity
      * @return
      */
-    T getOne(Key<T> key);
+    T get(T entity);
 
     /**
      * Delete the given entity

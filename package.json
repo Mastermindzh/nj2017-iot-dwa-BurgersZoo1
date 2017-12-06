@@ -4,9 +4,10 @@
   "description": "## Inleiding Dierentuin Koninklijk Burgers' Zoo is een dierentuin gelegen te Arnhem op een mooie bossige, heuvelige locatie. Burgers' Zoo kampt met een probleem: (oudere) bezoekers laten zich negatief uit over de mobiliteit in het park. Dit is te wijten aan de heuvelige locatie. Voor dit probleem wordt door een groep van vijf ICT-studenten een technische oplossing bedacht. Deze README is een verkorte versie van een plan van aanpak (PvA), waarin verteld wordt hoe het probleem wordt aangepakt en welke producten opgeleverd gaan worden.",
   "main": "index.js",
   "scripts": {
-    "compile-deliverables": "npm run compile-fo && npm run compile-images && npm run generate-pdfs",
-    "compile-images": "find . \\( -name \"*.jpg*\" -o -name \"*.png*\" \\)  -exec cp {} deliverables/images/ \\;",
+    "compile-deliverables": "npm run compile-fo && npm run compile-to && npm run compile-images",
+    "compile-images": "find ./documentatie \\( -name \"*.jpg*\" -o -name \"*.png*\" \\)  -exec cp {} deliverables/images/ \\;",
     "compile-fo": "./node_modules/.bin/markdown-include ./documentatie/functioneel_ontwerp/markdown.json && ./node_modules/.bin/markdown-toc -i deliverables/functioneel\\ ontwerp.md",
+    "compile-to": "./node_modules/.bin/markdown-include ./documentatie/technisch-ontwerp/markdown.json && ./node_modules/.bin/markdown-toc -i deliverables/technisch\\ ontwerp.md",
     "generate-pdfs": "./node_modules/.bin/markdown-pdf deliverables/functioneel\\ ontwerp.md"
   },
   "repository": {

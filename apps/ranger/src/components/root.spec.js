@@ -1,7 +1,7 @@
 import React from 'react';
 import {shallow} from 'enzyme';
-import Root from './root';
-import App from './app';
+import Root from './root.jsx';
+import App from './app.jsx';
 
 jest.mock('react-dom');
 

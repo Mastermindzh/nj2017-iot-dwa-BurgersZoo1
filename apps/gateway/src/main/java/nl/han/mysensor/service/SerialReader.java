@@ -43,17 +43,16 @@ public class SerialReader implements SerialPortEventListener {
     private static final int DATA_RATE = 115200;
 
     private MySensorParseService parseService;
-    private MySensorService mySensorService;
+    private MySensorReceiveService mySensorReceiveService;
     private static Logger logger = LoggerFactory.getLogger(SerialReader.class.getName());
 
     public SerialReader() {
         this.parseService = new MySensorParseService();
-        this.mySensorService = new MySensorService();
+        this.mySensorReceiveService = new MySensorReceiveService();
     }
 
     public void initialize() {
         String arduinoPort = GatewayProperties.getProperty("arduino.port");
-        System.out.println(arduinoPort);
         System.setProperty("gnu.io.rxtx.SerialPorts", arduinoPort);
 
         CommPortIdentifier portId = null;
@@ -70,6 +69,7 @@ public class SerialReader implements SerialPortEventListener {
             }
         }
         if (portId == null) {
+            System.out.println(arduinoPort);
             System.out.println("Could not find COM port.");
             return;
         }
@@ -117,9 +117,9 @@ public class SerialReader implements SerialPortEventListener {
                 String inputLine = input.readLine();
                 logger.debug(String.format("NRF Message: %s", inputLine));
                 try {
-                    MyMessage message = this.parseService.parseMessage(inputLine);
-                    logger.debug(String.format("Message: %s", message.toString()));
-                    this.mySensorService.handleIncomingMessage(message);
+                    MyMessage message = this.parseService.parseToObject(inputLine);
+                    logger.info(String.format("Message: %s", message.toString()));
+                    this.mySensorReceiveService.handleIncomingMessage(message);
                 } catch (NotFoundException e) {
                     logger.error("Message was: " + inputLine);
                     logger.error("No message", e);

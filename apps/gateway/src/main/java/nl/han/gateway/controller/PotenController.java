@@ -1,7 +1,6 @@
 package nl.han.gateway.controller;
 
 import com.google.gson.Gson;
-import nl.han.gateway.dao.DAOFactory;
 import nl.han.gateway.exceptions.NotFoundException;
 import nl.han.gateway.exceptions.NotOnlineException;
 import nl.han.gateway.models.Poot;
@@ -24,6 +23,22 @@ public class PotenController {
 
         put("/poten/:pootid", (this::savePootConfiguration), json());
         get("/poten", (this::getAllPoten), json());
+        get("/poten/:pootid", (this::getPoot), json());
+    }
+
+    /**
+     * Get info of one poot
+     *
+     * @param request
+     * @param response
+     * @return
+     */
+    private Poot getPoot(Request request, Response response) {
+        Poot poot = this.potenService.getPoot(Integer.parseInt(request.params("pootid")));
+        if (poot == null) {
+            response.status(404);
+        }
+        return poot;
     }
 
 

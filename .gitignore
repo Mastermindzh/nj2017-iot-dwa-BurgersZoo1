@@ -253,7 +253,12 @@ gradle-app.setting
 # gradle/wrapper/gradle-wrapper.properties
 gradle/*
 
-# End of https://www.gitignore.io/api/java,gradle,intellij,phpstorm+all,intellij+all
+.DS_Store
+.pioenvs
+.piolibdeps
+.clang_complete
+.gcc-flags.json
+
 /apps/gateway/src/main/resources/gateway.properties
 /**/gateway.properties
 gateway.properties

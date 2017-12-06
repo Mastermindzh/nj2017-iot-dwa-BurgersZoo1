@@ -31,7 +31,7 @@ public class PotenService {
      * @return
      */
     public Long savePootConfig(Poot poot) throws NotFoundException, NotOnlineException {
-//        this.pootDAO.save(poot);
+        this.pootDAO.save(poot);
         if (poot.getPootid() == 0) {
             return 57L;
         }
@@ -51,5 +51,9 @@ public class PotenService {
      */
     public List<Poot> getAllPoten() {
         return this.pootDAO.getAll();
+    }
+
+    public Poot getPoot(int pootid) {
+        return this.pootDAO.findByPootId(pootid);
     }
 }
