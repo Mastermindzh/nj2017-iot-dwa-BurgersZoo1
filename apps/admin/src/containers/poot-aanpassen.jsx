@@ -1,19 +1,25 @@
 import React, { Component } from 'react';
-import TableComponent from './../components/table-component.jsx';
+import { connect } from 'react-redux';
 import { withStyles } from 'material-ui/styles';
 import IconButton from 'material-ui/IconButton';
 import Icon from 'material-ui/Icon';
 import Input, { InputLabel } from 'material-ui/Input';
 import { FormControl } from 'material-ui/Form';
 import Grid from 'material-ui/Grid';
+
+import TableComponent from './../components/table-component.jsx';
 import PopupComponent from './../components/popup-component.jsx';
 import styles from './../styles/style.js';
 
+import { fetchSpeurpunten } from './../actions/speurpuntenActions';
 
 class PootAanpassenContainer extends Component {
-
   state = {
     popupOpen: false
+  }
+
+  componentWillMount(){
+    this.props.fetchSpeurpunten();
   }
 
   render() {
@@ -23,42 +29,57 @@ class PootAanpassenContainer extends Component {
 
     const headers = [
       { text: "" },
-      { text: "Poot" },
-      { text: "Pootnummer", numeric: true },
-      { text: "Dierengeluid" },
-      { text: "Weetjes" },
+      { text: "ID"},
+      { text: "Locatienaam" },
+      { text: "Geo Locatie" },
     ];
 
-    const data = [
-      {
-        key: 'olifantrow',
+    const data = this.props.speurpunten.map(speurpunt => {
+      return {
+        key: speurpunt.id,
         children: [
           {
             children: <IconButton onClick={() => this.setState({ popupOpen: true })}>
               <Icon>mode_edit</Icon>
             </IconButton>
           },
-          { children: "Poot 1", },
-          { children: "1", numeric: true },
-          { children: "Olifant", },
-          { children: "- Een olifant heeft slechts 2 knieen" }
+          { children: speurpunt.pootid },
+          { children: speurpunt.locatienaam },
+          { children: JSON.stringify(speurpunt.geolocation) },
         ]
-      },
-      {
-        key: 'lion row',
-        children: [
-          {
-            children: <IconButton onClick={() => this.setState({ popupOpen: true })}>
-              <Icon>mode_edit</Icon>
-            </IconButton>
-          },
-          { children: "Poot 2", },
-          { children: "2", numeric: true },
-          { children: "Leeuwen", },
-          { children: "- Leeuwen zijn cool" }
-        ]
-      },
-    ];
+      };
+    });
+
+    // const data = [
+    //   {
+    //     key: 'olifantrow',
+    //     children: [
+    //       {
+    //         children: <IconButton onClick={() => this.setState({ popupOpen: true })}>
+    //           <Icon>mode_edit</Icon>
+    //         </IconButton>
+    //       },
+    //       { children: "Poot 1", },
+    //       { children: "1", numeric: true },
+    //       { children: "Olifant", },
+    //       { children: "- Een olifant heeft slechts 2 knieen" }
+    //     ]
+    //   },
+    //   {
+    //     key: 'lion row',
+    //     children: [
+    //       {
+    //         children: <IconButton onClick={() => this.setState({ popupOpen: true })}>
+    //           <Icon>mode_edit</Icon>
+    //         </IconButton>
+    //       },
+    //       { children: "Poot 2", },
+    //       { children: "2", numeric: true },
+    //       { children: "Leeuwen", },
+    //       { children: "- Leeuwen zijn cool" }
+    //     ]
+    //   },
+    // ];
 
     return (
       <div>
@@ -92,4 +113,10 @@ class PootAanpassenContainer extends Component {
   }
 }
 
-export default withStyles(styles, { withTheme: true })(PootAanpassenContainer);
+function mapStateToProps(state){
+  return {
+    speurpunten: state.speurpuntReducer.speurpunten
+  };
+}
+
+export default connect(mapStateToProps,{fetchSpeurpunten})(withStyles(styles, { withTheme: true })(PootAanpassenContainer));
