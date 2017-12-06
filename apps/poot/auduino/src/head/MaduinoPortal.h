@@ -3,6 +3,7 @@
 
 #include "Audio.h"
 #include <Wire.h>
+#include <Arduino.h>
 
 class MaduinoPortal {
 public:

@@ -3,15 +3,16 @@
 
 #define AUDUINO_ID 9
 
-Audio* abc;
+Audio* audioPlayer;
 
 void receiveEvent(int bytes) {
-  abc->play();
+  Serial.println("Received event");
+  audioPlayer->play();
 }
 
 MaduinoPortal::MaduinoPortal(Audio* audio){
-  abc = audio;
+  audioPlayer = audio;
   Wire.begin(AUDUINO_ID);
   Wire.onReceive(receiveEvent);
-  Serial.begin(115200);
+  Serial.println("WIRE INITIALIZED");
 };

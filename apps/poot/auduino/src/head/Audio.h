@@ -5,6 +5,7 @@
 #include <SD.h>
 
 #define SPEAKER_PIN 9
+#define SD_CS_PIN 4
 
 class Audio {
 public:

@@ -8,42 +8,37 @@ RangerDetector::RangerDetector(Poot* poot){
 };
 
 void RangerDetector::loop(){
-  MFRC522::MIFARE_Key key = this->makeKey();
-
-  if (!this->mfrc522->PICC_IsNewCardPresent() || !this->mfrc522->PICC_ReadCardSerial())
-    return;
   String pasid = this->readPasid();
-  Serial.println(F("** CARD DETECTED **"));
 
-  // read authentication from card
-  MFRC522::StatusCode status = this->mfrc522->PCD_Authenticate(MFRC522::PICC_CMD_MF_AUTH_KEY_A, 1, &key, &(this->mfrc522->uid));
-  if(!validateAuthStatus(status)){
-    stopReading();
-    return;
-  }
-  Serial.println(F("** CARD AUTHENTICATED **"));
-
-  // read data from card
-  char buffer[18];
-  byte len = sizeof(buffer);
-  status = this->mfrc522->MIFARE_Read(1, buffer, &len);
-  if(!this->validateReadStatus(status)){
-    stopReading();
-    return;
-  }
-  Serial.println(F("** CARD READ **"));
-
-  if(!this->euqlasBurgersZoo(buffer)){
-    Serial.print(F("Pas content does not equal \"Burgers' Zoo\". Content: "));
-    Serial.println(buffer);
-    stopReading();
-    return;
-  }
+  if(this->isCardAvailable() && this->isCardAuthenticated() && this->isCardContentValid())
+    this->poot->pasScanned(pasid);
   stopReading();
-  Serial.println(F("** CARD BURGERS ZOO CONTENT **"));
-
-  this->poot->pasScanned(pasid);
 };
+
+bool RangerDetector::isCardAvailable(){
+  return this->mfrc522->PICC_IsNewCardPresent() && this->mfrc522->PICC_ReadCardSerial();
+}
+
+bool RangerDetector::isCardAuthenticated(){
+  MFRC522::MIFARE_Key key = this->makeKey();
+  MFRC522::StatusCode status = this->mfrc522->PCD_Authenticate(
+      MFRC522::PICC_CMD_MF_AUTH_KEY_A, 1, &key, &(this->mfrc522->uid)
+  );
+  return this->validateAuthStatus(status);
+}
+
+bool RangerDetector::isCardContentValid(){
+  unsigned char buffer[18];
+  if(!this->readCardData(buffer))
+    return false;
+  return this->euqlasBurgersZoo(buffer);
+}
+
+bool RangerDetector::readCardData(unsigned char* buffer){
+  byte len = 18;
+  MFRC522::StatusCode status = this->mfrc522->MIFARE_Read(1, buffer, &len);
+  return this->validateReadStatus(status);
+}
 
 void RangerDetector::stopReading(){
   this->mfrc522->PICC_HaltA();
@@ -84,9 +79,9 @@ bool RangerDetector::validateReadStatus(MFRC522::StatusCode status) {
   return true;
 }
 
-bool RangerDetector::euqlasBurgersZoo(char* buffer){
-  char* burgerszoo = "Burgers' Zoo";
-  for (int i = 0; i < strlen(burgerszoo); i++)
+bool RangerDetector::euqlasBurgersZoo(unsigned char* buffer){
+  const char* burgerszoo = "Burgers' Zoo";
+  for (unsigned int i = 0; i < strlen(burgerszoo); i++)
     if (buffer[i] != burgerszoo[i] )
       return false;
   return true;

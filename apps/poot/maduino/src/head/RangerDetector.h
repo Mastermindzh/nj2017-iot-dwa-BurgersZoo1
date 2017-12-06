@@ -17,12 +17,17 @@ class RangerDetector {
   private:
     Poot* poot;
     MFRC522* mfrc522;
-    bool euqlasBurgersZoo(char* buffer);
+    bool euqlasBurgersZoo(unsigned char* buffer);
     bool validateAuthStatus(MFRC522::StatusCode status);
     bool validateReadStatus(MFRC522::StatusCode status);
     String readPasid();
-    MFRC522::MIFARE_Key RangerDetector::makeKey();
+    MFRC522::MIFARE_Key makeKey();
     void stopReading();
+
+    bool isCardAvailable();
+    bool isCardAuthenticated();
+    bool isCardContentValid();
+    bool readCardData(unsigned char* buffer);
 };
 
 #endif

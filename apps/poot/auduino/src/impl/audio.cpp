@@ -6,7 +6,7 @@ Audio::Audio(){
 
   Serial.print("Initializing SD card...");
 
-  if (!SD.begin(4)) {
+  if (!SD.begin(SD_CS_PIN)) {
     Serial.println("initialization failed!");
     return;
   }
