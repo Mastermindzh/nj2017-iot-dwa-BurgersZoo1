@@ -14,6 +14,9 @@
 
 #include "documentatie/technisch-ontwerp/system-flow/system-flow.md"
 
+### Poot
+#include "documentatie/technisch-ontwerp/technische-realisatie/poot.md"
+
 #include "documentatie/technisch-ontwerp/deployment/deployment.md"
 
 #include "documentatie/technisch-ontwerp/iot-klassediagram/iot-klassediagram.md
