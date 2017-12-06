@@ -1,3 +1,5 @@
+# Inleiding
+
 Het Burgers' Zoo Ranger systeem bestaat uit tien fysieke componenten waarop source code draait:
 
 - Een Raspberry Pi

@@ -2,32 +2,18 @@
 
 <!-- toc -->
 
-## Inleiding
-
 #include "documentatie/technisch-ontwerp/inleiding/inleiding.md"
 
-## Systeem architectuur
+#include "documentatie/technisch-ontwerp/architectuur/architectuur.md"
 
-#include "documentatie/technisch-ontwerp/systeem-architectuur/systeem-architectuur.md"
-
-## Software architectuur
-
-#include "documentatie/technisch-ontwerp/dwa-architectuur/dwa-architectuur.md"
+#include "documentatie/technisch-ontwerp/datamodel/datamodel.md"
 
 ## Technische realisatie
 
-### interface
-
-(wat voor programma's zijn er gebruikt, react, nodjes etc.)
-
-### Data opslag structuur
-
 #include "documentatie/technisch-ontwerp/database/database.md"
 
-### poot
+#include "documentatie/technisch-ontwerp/system-flow/system-flow.md"
 
-#include "documentatie/technisch-ontwerp/sequence-diagrammen/readme.md"
+#include "documentatie/technisch-ontwerp/deployment/deployment.md"
 
-## Deployment
-
-#include "documentatie/technisch-ontwerp/deployment/beschrijving.md"
+#include "documentatie/technisch-ontwerp/iot-klassediagram/iot-klassediagram.md
