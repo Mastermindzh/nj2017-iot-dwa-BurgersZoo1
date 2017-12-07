@@ -14,12 +14,16 @@
     "bestandspad": {
       "type": "string",
       "required": true
+    },
+    "beschrijving": {
+      "type": "string",
+      "required": true
     }
   },
   "validations": [],
   "relations": {
-    "speurpunt": {
-      "type": "belongsTo",
+    "speurpunten": {
+      "type": "hasAndBelongsToMany",
       "model": "speurpunt",
       "foreignKey": ""
     }

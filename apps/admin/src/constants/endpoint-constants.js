@@ -5,3 +5,7 @@ export const SPEURPUNT = {
   GET: `${SERVER}/speurpunten`
 
 };
+
+export const DIERENGELUIDEN = {
+  GET: `${SERVER}/dierengeluiden`
+};

@@ -31,8 +31,8 @@
       "model": "weetje",
       "foreignKey": ""
     },
-    "dierengeluid": {
-      "type": "hasOne",
+    "dierengeluiden": {
+      "type": "hasAndBelongsToMany",
       "model": "dierengeluid",
       "foreignKey": ""
     }
