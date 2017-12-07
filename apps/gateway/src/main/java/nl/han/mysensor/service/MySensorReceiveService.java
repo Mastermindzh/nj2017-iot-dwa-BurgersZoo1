@@ -142,15 +142,15 @@ public class MySensorReceiveService {
     private void newNodeSubscribe(MyMessage message) {
         logger.info(String.format("Registering new node, node id: #%d pootid: #%s",
                 message.getNodeId(), message.getPayload()));
-        Poot poot = this.pootDAO.findByPootId(Integer.parseInt(message.getPayload()));
+        Poot poot = this.pootDAO.findByPootId(Long.valueOf(message.getPayload()));
         if (poot == null) {
             logger.info("Unknown poot, register node");
             Poot newPoot = new Poot();
-            newPoot.setNodeId(message.getNodeId());
+            newPoot.setNodeid(message.getNodeId());
             newPoot.setPootid(backendPootServiceGroup1.getNewPootIdFromBackend());
             this.pootDAO.save(newPoot);
         } else {
-            poot.setNodeId(message.getNodeId());
+            poot.setNodeid(message.getNodeId());
             this.pootDAO.update(poot);
         }
 

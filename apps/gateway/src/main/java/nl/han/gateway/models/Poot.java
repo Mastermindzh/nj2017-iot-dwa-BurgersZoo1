@@ -12,14 +12,14 @@ public class Poot {
     @Id
     private ObjectId id;
     private Long pootid;
-    private Long nodeId;
+    private Long nodeid;
     private List<Weetje> weetjes;
     private Dierengeluid dierengeluid;
 
-    public Poot(ObjectId id, Long pootid, Long nodeId, List<Weetje> weetjes, Dierengeluid dierengeluid) {
+    public Poot(ObjectId id, Long pootid, Long nodeid, List<Weetje> weetjes, Dierengeluid dierengeluid) {
         this.id = id;
         this.pootid = pootid;
-        this.nodeId = nodeId;
+        this.nodeid = nodeid;
         this.weetjes = weetjes;
         this.dierengeluid = dierengeluid;
     }
@@ -59,20 +59,23 @@ public class Poot {
         this.dierengeluid = dierengeluid;
     }
 
+    public Long getNodeid() {
+        return nodeid;
+    }
+
+    public void setNodeid(Long nodeid) {
+        this.nodeid = nodeid;
+    }
+
+
     @Override
     public String toString() {
         return "Poot{" +
-                "pootid=" + pootid +
+                "id=" + id +
+                ", pootid=" + pootid +
+                ", nodeid=" + nodeid +
                 ", weetjes=" + weetjes +
-                ", dierengeluid='" + dierengeluid + '\'' +
+                ", dierengeluid=" + dierengeluid +
                 '}';
-    }
-
-    public void setNodeId(Long nodeId) {
-        this.nodeId = nodeId;
-    }
-
-    public Long getNodeId() {
-        return nodeId;
     }
 }

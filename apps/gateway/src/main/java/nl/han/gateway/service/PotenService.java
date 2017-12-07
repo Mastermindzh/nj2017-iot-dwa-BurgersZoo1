@@ -4,8 +4,11 @@ import nl.han.gateway.dao.DAOFactory;
 import nl.han.gateway.dao.IPootDAO;
 import nl.han.gateway.exceptions.NotFoundException;
 import nl.han.gateway.exceptions.NotOnlineException;
+import nl.han.gateway.models.Dierengeluid;
 import nl.han.gateway.models.Poot;
+import nl.han.gateway.models.Weetje;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -26,6 +29,7 @@ public class PotenService {
     /**
      * Method used for saving poot config
      * todo: implement this method, right now it's just a mock
+     * todo: this should implement the update
      *
      * @param poot
      * @return
@@ -53,7 +57,7 @@ public class PotenService {
         return this.pootDAO.getAll();
     }
 
-    public Poot getPoot(int pootid) {
+    public Poot getPoot(Long pootid) {
         return this.pootDAO.findByPootId(pootid);
     }
 }
