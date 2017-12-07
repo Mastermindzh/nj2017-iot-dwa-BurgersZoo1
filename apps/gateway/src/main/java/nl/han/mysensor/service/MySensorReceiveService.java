@@ -1,5 +1,6 @@
 package nl.han.mysensor.service;
 
+import nl.han.Application;
 import nl.han.backend.services.BackendPootServiceBase;
 import nl.han.backend.services.group1.BackendPootService;
 import nl.han.gateway.dao.DAOFactory;
@@ -48,10 +49,22 @@ public class MySensorReceiveService {
             logger.info(String.format("Not implemented yet, message: %s", message.toString()));
             throw new NotImplementedException();
         } else if (message instanceof MyInternalMessage) {
-            logger.info(String.format("Not implemented yet, message: %s", message.toString()));
-            throw new NotImplementedException();
+            handleIncomingInternalMessages((MyInternalMessage) message);
         } else {
             throw new IllegalStateException("Illegal message state");
+        }
+    }
+
+    private void handleIncomingInternalMessages(MyInternalMessage message) {
+        switch (message.getInternalType()) {
+            case I_ID_REQUEST:
+                logger.info(String.format("Requesting id, message: %s", message.toString()));
+                break;
+            case I_LOG_MESSAGE:
+                logger.debug(String.format("Not implemented yet, message: %s", message.toString()));
+                break;
+            default:
+                logger.info(String.format("Not implemented yet, message: %s", message.toString()));
         }
     }
 
