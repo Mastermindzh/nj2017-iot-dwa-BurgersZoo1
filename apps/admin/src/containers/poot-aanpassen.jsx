@@ -10,15 +10,26 @@ import Grid from 'material-ui/Grid';
 import _ from 'lodash';
 
 import TableComponent from './../components/table-component.jsx';
-import PopupComponent from './../components/popup-component.jsx';
+
 import styles from './../styles/style.js';
+import PootToevoegenContainer from './poot-toevoegen.jsx';
+import PootAanpassenPopupContainer from './poot-aanpassen-popup.jsx';
 
 import { fetchSpeurpunten } from './../actions/speurpuntenActions';
 
 class PootAanpassenContainer extends Component {
-  state = {
-    popupOpen: false,
-    search: ''
+
+  constructor(props){
+    super(props);
+
+    this.state = {
+      popupOpen: false,
+      search: '',
+      type: '',
+    };
+
+    this.ADD = 'ADD';
+    this.EDIT= 'EDIT';
   }
 
   componentWillMount(){
@@ -49,7 +60,7 @@ class PootAanpassenContainer extends Component {
         key: speurpunt.id,
         children: [
           {
-            children: <IconButton onClick={() => this.setState({ popupOpen: true })}>
+            children: <IconButton onClick={() => this.setState({ popupOpen: true, type: this.EDIT })}>
               <Icon>mode_edit</Icon>
             </IconButton>
           },
@@ -70,7 +81,7 @@ class PootAanpassenContainer extends Component {
                 <InputLabel htmlFor="search-simple">Zoeken</InputLabel>
                 <Input id="search-simple" value={this.state.search} onChange={(event) => this.setState({ search: event.target.value })} />
               </FormControl>
-              <IconButton onClick={() => this.setState({ popupOpen: true })}>
+              <IconButton onClick={() => this.setState({ popupOpen: true, type: this.ADD })}>
                 <Icon>add_circle</Icon>
               </IconButton>
             </div>
@@ -80,12 +91,13 @@ class PootAanpassenContainer extends Component {
           </Grid>
         </Grid>
 
-        {this.state.popupOpen &&
-          <PopupComponent title={"Nog niet geimplementeerd"} open={this.state.popupOpen} onRequestClose={() => this.setState({ popupOpen: false })}>
-            Tot de volgende keer!
-          </PopupComponent>
+        { this.state.type === this.ADD && this.state.popupOpen &&
+          <PootToevoegenContainer open={this.state.popupOpen} />
         }
 
+        { this.state.type === this.EDIT && this.state.popupOpen &&
+          <PootAanpassenPopupContainer open={this.state.popupOpen} />
+        }
       </div>
     );
   }
