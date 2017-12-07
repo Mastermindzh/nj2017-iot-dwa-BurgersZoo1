@@ -32,7 +32,7 @@ class AppBarComponent extends Component {
           <MenuIcon />
         </IconButton>
         <Typography type="title" color="inherit" noWrap>
-          Admin app
+          Configuratie applicatie voor het educatieteam
         </Typography>
       </Toolbar>
     </AppBar>
