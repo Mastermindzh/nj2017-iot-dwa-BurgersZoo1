@@ -18,7 +18,7 @@ Ik verwacht dat NGINX de meest geschike webserver zal zijn door zijn `performanc
 
 ## Test opzet
 
-Uit verschillende bronnen ([1](https://hackernoon.com/how-to-deploy-a-live-reactjs-redux-website-in-under-10-minutes-cadf73cfc75a),[2](https://medium.com/@bensigo/hosting-your-react-app-with-firebase-hosting-add1fa08c214),[3](https://www.fullstackreact.com/articles/deploying-a-react-app-to-s3/) ) komt naar voren dat het hosten van een react app simpel te regelen zou zijn met een CDN netwerk. Dit wordt vooral gepreisd voor kleinere apps zonder al te veel traffic. Uit de bronnen komen veel gratis oplossingen, een aantal van deze staan hieronder opgesomt:
+Uit verschillende bronnen ([1](https://hackernoon.com/how-to-deploy-a-live-reactjs-redux-website-in-under-10-minutes-cadf73cfc75a),[2](https://medium.com/@bensigo/hosting-your-react-app-with-firebase-hosting-add1fa08c214),[3](https://www.fullstackreact.com/articles/deploying-a-react-app-to-s3/) ) komt naar voren dat het hosten van een react app simpel te regelen zou zijn met een CDN netwerk. Dit wordt vooral geprijsd voor kleinere apps zonder al te veel traffic. Uit de bronnen komen veel gratis oplossingen, een aantal van deze staan hieronder opgesomt:
 
 - [surge](https://surge.sh/pricing)
 - [github pages](https://pages.github.com/)
@@ -27,7 +27,7 @@ Uit verschillende bronnen ([1](https://hackernoon.com/how-to-deploy-a-live-react
 
 Naast deze opties zijn er ook de wat professionelere opties, volledige webservers, zoals bijv. apache, nginx of zelfs express.
 
-Uit onderzoek blijkt dus dat er genoeg best/good practices te vinden zijn maar vrijwel geen van de practices wordt als "bad" beschouwt. Het vermoeden hierachter is de simpele manier waarop een React front-end werkt. Na een bundeling van de bestanden blijft er niet veel over en [Bartosz Szczeciński](https://medium.com/@baphemot/understanding-react-deployment-5a717d4378fd) vat het in één zin heel goed samen:
+Uit onderzoek blijkt dus dat er genoeg best/good practices te vinden zijn maar vrijwel geen van de practices wordt als "bad" beschouwd. Het vermoeden hierachter is de simpele manier waarop een React front-end werkt. Na een bundeling van de bestanden blijft er niet veel over en [Bartosz Szczeciński](https://medium.com/@baphemot/understanding-react-deployment-5a717d4378fd) vat het in één zin heel goed samen:
 
 > Our deployment process will at the very basic level be “put the files on the server”.
 
