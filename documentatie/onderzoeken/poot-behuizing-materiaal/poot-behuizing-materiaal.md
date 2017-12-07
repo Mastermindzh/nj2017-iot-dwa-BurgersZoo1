@@ -4,7 +4,7 @@ Dit onderzoek is geschreven in samenwerking tussen Sebastiaan en Sijmen.
 ## Aanleiding van het onderzoek    
 De hardware van de poten moeten in elk gebied van de dierentuin kunnen werken. Dat wil zeggen dat het tegen alle omstandigheden zo goed mogelijk beschermd moet worden. In de Bush is het bijvoorbeeld warm en vochtig, terwijl het in de desert droog is. Poten die buiten staan moeten tegen alle weersomstandigheden kunnen zoals regen, sneeuw en zon.
  
-De poten die we maken moeten bij het scannen niet staan wiebelen, of moeten niet kapot gaan mochten ze (om)vallen. De behuizing van de poten moet dus van een stevig materiaal gemaakt worden. Ook mag er geen kortsluiting ontstaan op het moment dat het regent, of de lucht te vochtig is. De behuizing moet dus nat kunnen worden, en zo luchtdicht mogelijk zijn.
+De poten die we maken moeten bij het scannen niet staan wiebelen, of moeten niet kapot gaan mochten ze (om)vallen. De behuizing van de poten moet dus van een stevig materiaal gemaakt worden. Ook mag er geen kortsluiting ontstaan op het moment dat het regent, of de lucht te vochtig is. De behuizing moet dus nat kunnen worden en zo luchtdicht mogelijk zijn.
  
 Door onderzoek te doen naar mogelijke materialen en specificaties, kan er in beeld gebracht worden welke behuizingen voor nu, maar ook voor in de toekomst, de hardware kunnen beschermen.
 
@@ -42,7 +42,7 @@ Voor nu is het zo dat een behuizing van kunststof of een behuizing van hout voor
 ## Resultaten praktijkonderzoek
 Het volgende punt waarnaar gekeken is, is of er door het materiaal nfc passen doorheen gescand kunnen worden. Als de scanner de pas niet kan vinden dan is het materiaal onbruikbaar.
 
-Voor het onderzoeken of kunststof nfc signaal doorlaat hoeft geen onderzoek gedaan te worden. In de eerste weken van dit project is steeds een kunststof bakje gebruikt om de hardware in te beschermen tijdens de tests bij burgers’ zoo. Tijdens deze tests heeft de sensor altijd gewerkt. Dit bewijst dat kunsttof het nfc signiaal niet verstoort.
+Voor het onderzoeken of kunststof nfc signaal doorlaat hoeft geen onderzoek gedaan te worden. In de eerste weken van dit project is steeds een kunststof bakje gebruikt om de hardware in te beschermen tijdens de tests bij Burgers’ Zoo. Tijdens deze tests heeft de sensor altijd gewerkt. Dit bewijst dat kunsttof het nfc signiaal niet verstoort.
 
 
 Om de doorlaatbaarheid van hout te testen is allereerst in de bouwmarkt gezocht naar plaatmateriaal dat betaalbaar is én geschikt is om in vochtige ruimtes (zoals badkamers) te gebruiken. Hierbij is ondervonden dat hardhout multiplex de beste optie is. Wanneer dit type hout juist bewerkt wordt voldoet dit aan al onze eisen. Voor het experiment zijn de volgende diktes hardhout multiplex bekeken:
