@@ -10,7 +10,10 @@
 class Audio {
 public:
   Audio();
-  void loop();
+
+  /**
+   * Play the audio!
+   */
   void play();
 private:
   TMRpcm* tmrpcm;

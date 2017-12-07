@@ -12,8 +12,20 @@ class RangerDetector;
 class Poot {
 public:
   Poot();
+
+  /**
+   * Update the poot. This will update timers and execute actions that are time based.
+   */
   void loop();
+
+  /**
+   * Get the current pootid.
+   */
   byte getPootid();
+
+  /**
+   * Event listener for when passes are scanned.
+   */
   void pasScanned(String pasid);
 private:
   StatusLights* statusLights;

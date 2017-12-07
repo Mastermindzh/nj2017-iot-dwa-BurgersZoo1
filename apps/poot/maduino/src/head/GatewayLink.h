@@ -7,8 +7,20 @@
 class GatewayLink {
   public:
     GatewayLink();
+
+    /**
+     * Inform the gateway that a card is scanned.
+     */
     void sendCard(String cardid);
+
+    /**
+     * Inform the gateway of new log data.
+     */
     void sendLog(char* logs, int buffersize);
+
+    /**
+     * Inform the gateway that this poot is finished starting up.
+     */
     void sendStartup(byte pootid);
   private:
     MyMessage* msg;
