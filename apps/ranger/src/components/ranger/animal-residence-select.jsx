@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import Input, { InputLabel } from 'material-ui/Input';
 import { MenuItem } from 'material-ui/Menu';
-import { FormControl, FormHelperText } from 'material-ui/Form';
+import { FormControl } from 'material-ui/Form';
 import Select from 'material-ui/Select';
 
 const styles = theme => ({
@@ -31,7 +31,7 @@ class AnimalResidenceSelect extends Component {
 
   handleChange = name => event => {
     this.setState({ selectedResidence: event.target.value });
-    this.props.onResidenceSelect(event.target.value);
+    this.props.onResidenceSelect(event.target.value, name);
   };
 
   render() {
@@ -47,7 +47,7 @@ class AnimalResidenceSelect extends Component {
             input={<Input id="residence-simple" />}
           >
             {this.props.residences.map(residence => {
-              return <MenuItem key={residence} value={residence}>{residence}</MenuItem>
+              return <MenuItem key={residence} value={residence}>{residence}</MenuItem>;
             })}
           </Select>
         </FormControl>
@@ -58,6 +58,8 @@ class AnimalResidenceSelect extends Component {
 
 AnimalResidenceSelect.propTypes = {
   classes: PropTypes.object.isRequired,
+  onResidenceSelect: PropTypes.func.isRequired,
+  residences: PropTypes.arrayOf.object
 };
 
 export default withStyles(styles)(AnimalResidenceSelect);

@@ -3,11 +3,10 @@ import { withStyles } from 'material-ui/styles';
 import style from '../styles/style';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import Typography from 'material-ui/Typography';
 
-import DrawerComponent from './drawer-component';
-import AppBarComponent from './app-bar-component';
-import AppRoutes from '../routes/app-routes';
+import DrawerComponent from './drawer-component.jsx';
+import AppBarComponent from './app-bar-component.jsx';
+import AppRoutes from '../routes/app-routes.jsx';
 
 class Layout extends Component {
 

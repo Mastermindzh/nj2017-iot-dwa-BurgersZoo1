@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
+import PropTypes from 'prop-types';
 
 const mapOptions = {
   scrollwheel: false,
@@ -37,5 +38,11 @@ class ParkMapComponent extends Component {
     );
   }
 }
+
+ParkMapComponent.propTypes = {
+  center: PropTypes.object,
+  zoom: PropTypes.number,
+  children: PropTypes.arrayOf.children
+};
 
 export default ParkMapComponent;
