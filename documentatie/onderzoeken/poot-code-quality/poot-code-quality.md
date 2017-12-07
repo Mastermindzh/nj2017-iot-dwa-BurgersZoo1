@@ -28,7 +28,7 @@ Testpersoon A is een student software ontwikkeling zonder ervaring met C++. Deze
 Testpersoon B zit in de projectgroep van burgerszoo, heef wél ervaring met C++, maar heeft nog nooit iets van de poot-code gezien. Bij deze testpersoon is het interesant om te zien of de verwachtingen geschept uit de rest van project overeen komen met de code voor de poot.
 
 ## Testresultaten
-Beide testpersonen konden zonder aanwijzingen de opdrachten uitvoeren. Wel waren er een heel aantal kleine onduidelijkheden;
+Beide testpersonen konden zonder aanwijzingen de opdrachten uitvoeren. Wel waren er een heel aantal kleine onduidelijkheden:
 
 * **Wat betekent `TMRpcm`?** (in `audio.cpp`) Dit is de naam van de library die gebruikt wordt om audio af te spelen.
 * **Wat betekent `SD.begin(4)`** (in `audio.cpp`) Dit is de initializatie van de sd-kaart. 
