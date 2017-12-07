@@ -1,7 +1,7 @@
 #include "../head/Poot.h"
 
 Poot::Poot(){
-  this->gatewayLink = new GatewayLink();
+  this->gatewayLink = new GatewayLink(this);
   this->rangerDetector = new RangerDetector(this);
   this->auduinoPortal = new AuduinoPortal();
 

@@ -12,6 +12,8 @@
 #define EEPROM_POOTID_DEFAULT_CODE 0xFF
 
 class RangerDetector;
+class Logger;
+class GatewayLink;
 
 class Poot {
 public:

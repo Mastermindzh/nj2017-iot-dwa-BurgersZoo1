@@ -4,7 +4,8 @@
 #define MY_CHILD_ID 66
 #define GATEWAY_ID 0
 
-GatewayLink::GatewayLink(){
+GatewayLink::GatewayLink(Poot *poot){
+    this->poot = poot;
     this->msg = new MyMessage(MY_CHILD_ID, V_VAR2);
 };
 void GatewayLink::sendCard(String cardid){
@@ -22,6 +23,9 @@ void GatewayLink::sendStartup(byte pootid){
  };
 
 void GatewayLink::receive(const MyMessage &message){
-  Serial.println(F("Received message"));
-  Serial.println(message.getString());
+  if(message.type == V_VAR3){ // received pootid
+    this->poot->setPootid(message.getByte());
+  }
+  // Serial.println(F("Received message"));
+  // Serial.println(message.getString());
 }

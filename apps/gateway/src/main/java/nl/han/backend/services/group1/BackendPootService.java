@@ -67,7 +67,7 @@ public class BackendPootService extends BackendPootServiceBase {
                 return jsonObject.get("pootid").getAsLong();
             } else if (response.code() == 500) {
                 super.logger.error("Error while creating new poot");
-                return 1L;
+                return null;
             }
             response.close();
         } catch (IOException e) {

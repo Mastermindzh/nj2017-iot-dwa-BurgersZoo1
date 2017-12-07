@@ -101,6 +101,8 @@ public class MySensorReceiveService {
                 // route for handeling ranger scans
                 rangerCardScan(message);
                 break;
+            case V_VAR3: // used for sending to nodes
+                break;
             case V_TEMP:
                 this.sendTemperatureValue(message);
                 break;
@@ -148,7 +150,6 @@ public class MySensorReceiveService {
 
     /**
      * Function that maps the newly online nodes to poot id's.
-     * todo: Deze methode werkt nog niet zoals het aanmelden zou moeten werken!
      *
      * @param message
      */
@@ -156,9 +157,7 @@ public class MySensorReceiveService {
         logger.info(String.format("Registering new node, node id: #%d pootid: #%s",
                 message.getNodeId(), message.getPayload()));
         Poot poot = null;
-        if (Long.valueOf(message.getPayload()) == 255) {
-            poot = this.pootDAO.findByPootId(Long.valueOf(message.getPayload()));
-        }
+        poot = this.pootDAO.findByPootId(Long.valueOf(message.getPayload()));
         if (poot == null) {
             logger.info("Unknown poot, register node");
             Poot newPoot = new Poot();

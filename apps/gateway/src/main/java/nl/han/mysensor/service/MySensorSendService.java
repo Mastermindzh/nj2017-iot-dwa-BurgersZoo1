@@ -30,7 +30,7 @@ public class MySensorSendService {
                 .ack(true)
                 .command(MyCommand.SET)
                 .childSensorId(1)
-                .setDataType(MyDataTypes.V_VAR3) // todo document this
+                .setDataType(MyDataTypes.V_VAR3)
                 .nodeId(poot.getNodeid()).build();
         String messageString = parseService.parseToMySensorMessage(message);
         Application.serialCommunication.sendSerial(messageString);
