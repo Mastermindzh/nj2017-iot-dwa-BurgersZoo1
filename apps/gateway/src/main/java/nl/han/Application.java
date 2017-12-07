@@ -1,22 +1,24 @@
 package nl.han;
 
-import nl.han.mysensor.service.SerialReader;
 import nl.han.gateway.controller.PotenController;
 import nl.han.gateway.util.GatewayProperties;
+import nl.han.mysensor.service.serial.SerialCommunication;
 
 import static spark.Spark.*;
 import static spark.debug.DebugScreen.enableDebugScreen;
 
 
 public class Application {
+    public static SerialCommunication serialCommunication;
 
     public static void main(String[] args) {
-
+//
         Application application = new Application();
-
+//
         application.setupSpark();
         application.setupSerial();
         application.registerRoutes();
+
 
 //        /**
 //         * Add header to all responses
@@ -48,8 +50,7 @@ public class Application {
      */
     private void setupSerial() {
         if (Boolean.parseBoolean(GatewayProperties.getProperty("arduino.enabled"))) {
-            SerialReader main = new SerialReader();
-            main.initialize();
+            serialCommunication = new SerialCommunication();
         }
     }
 

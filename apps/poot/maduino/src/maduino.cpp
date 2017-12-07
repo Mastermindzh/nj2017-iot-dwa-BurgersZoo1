@@ -5,6 +5,8 @@
 #define MY_RADIO_NRF24
 #define MY_NODE_ID 55
 #define MY_CHILD_ID 66
+#define MY_PARENT_NODE_ID 0
+#define MY_PARENT_NODE_IS_STATIC
 
 //todo: remove this duplicate code
 #define RST_PIN 7
@@ -33,4 +35,8 @@ void loop() {
 
 void presentation() {
   present(MY_CHILD_ID, S_CUSTOM);
+}
+
+void receive(const MyMessage &message) {
+  poot->receive(message);
 }
