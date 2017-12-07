@@ -1,9 +1,9 @@
-# Front-end boilerplate generator
+# Readable code met React Redux en lodash
 
 ## Onderzoeksmethode
 
-**Categorie**: Proof of concept <br />
-**Naam**: Readable code met React Redux en lodash
+**Categorie**: Workshop <br />
+**Naam**: Proof of concept
 
 ## Inleiding
 Alle React webapplicaties van het Burgers' Zoo Ranger project zijn geschreven in React en maken gebruik van Redux, een library voor
@@ -110,5 +110,42 @@ export default function speurpuntReducer(state = initialState, action) {
 }
 ```
 
-## Conclusie
+We zijn er nog niet, want hoe zorgt dit nu voor minder code? Stel je voor dat we van een speurpunt willen updaten of verwijderen. Dan kan met op deze manier:
 
+```
+...
+      
+  case SPEURPUNT_ACTION_TYPES.UPDATE_SPEURPUNT:
+    return {...state, [action.payload.id]: action.payload}; //Kan dankzij _.mapKeys() van Lodash!
+  
+  case SPEURPUNT_ACTION_TYPES.DELETE_SPEURPUNT:
+    return _.omit(state, action.payload.id);     //Lodash!
+
+...
+
+//in plaats van 
+
+...
+
+  case SPEURPUNT_ACTION_TYPES.UPDATE_SPEURPUNT:
+    const newSpeurpuntState = state.speurpunten.map( speurpunt => {
+      if (speurpunt.id === action.payload.speurpunt.id) {
+        return action.payload.speurpunt;
+      }
+      return speurpunt;
+    });
+    return {...state,  speurpunten: newSpeurpuntState}
+    
+   
+  case SPEURPUNT_ACTION_TYPES.DELETE_SPEURPUNT:
+    const newSpeurpuntState = state.speurpunten.filter( speurpunt => {
+      return speurpunt.id !== action.payload.id }
+    );
+    return {...state, speurpunten: newSpeurpuntState};
+
+...
+
+```
+
+## Conclusie
+Dankzij Lodash is de code in reducers veel leesbaarder en bewerkbaarder geworden. Het aantal lines of code is teruggebracht van 13 naar 4 voor een simpel UPDATE en DELETE statement. De hypothese is dus bevestigd. 
