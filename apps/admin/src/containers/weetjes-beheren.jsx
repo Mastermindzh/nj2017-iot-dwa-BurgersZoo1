@@ -38,86 +38,40 @@ class WeetjesBeheren extends Component {
 
   render() {
 
-    // const { classes } = this.props;
-
-    // const headers = [
-    //   { text: 'Weetje' },
-    //   { text: 'Afspelen' }
-    // ];
-
-    // const data = [
-    //   {
-    //     key: 'knieen weetje',
-    //     children: [
-    //       {
-    //         children:
-    //         "Een olifant heeft slechts 2 knieen",
-    //         key: 'olifant'
-    //       },
-    //       {
-    //         children:
-    //         <ReactAudioPlayer
-    //           src="http://www.wavsource.com/snds_2017-09-17_1751672946049674/animals/elephant.wav"
-    //           controls
-    //         />,
-    //         key: 'unique key'
-    //       }
-    //     ]
-    //   },
-    //   {
-    //     key: 'lion row',
-    //     children: [
-    //       {
-    //         children:
-    //         "Leeuwen zijn cool!",
-    //         key: 'lion'
-    //       },
-    //       {
-    //         children:
-    //         <ReactAudioPlayer
-    //           src="http://www.wavsource.com/snds_2017-09-17_1751672946049674/animals/lion_roar.wav"
-    //           controls
-    //         />,
-    //         key: 'lion player'
-    //       }
-    //     ]
-    //   },
-    // ];
-
     const { classes } = this.props;
 
-        const headers = [
-          { text: "ID"},
-          { text: "Beschrijving" },
-          { text: "Player" },
-        ];
+    const headers = [
+      { text: "ID"},
+      { text: "Beschrijving" },
+      { text: "Player" },
+    ];
 
-        let results = [];
+    let results = [];
 
-        if(this.state.search != ''){
-          results = _.filter(this.props.weetjes, obj => obj.beschrijving.toLowerCase().includes(this.state.search.toLowerCase()));
-        }else{
-          results = this.props.weetjes;
-        }
+    if(this.state.search != ''){
+      results = _.filter(this.props.weetjes, obj => obj.beschrijving.toLowerCase().includes(this.state.search.toLowerCase()));
+    }else{
+      results = this.props.weetjes;
+    }
 
-        const data = _.map(results, weetje => {
-          return {
-            key: weetje.id,
-            children: [
+    const data = _.map(results, weetje => {
+      return {
+        key: weetje.id,
+        children: [
 
-              { children: weetje.id },
-              { children: weetje.beschrijving },
-              {
-                children:
-                <ReactAudioPlayer
-                  src={`${weetje.bestandspad}`}
-                  controls
-                />,
-                key: `${weetje.id} player`
-              }
-            ]
-          };
-        });
+          { children: weetje.id },
+          { children: weetje.beschrijving },
+          {
+            children:
+            <ReactAudioPlayer
+              src={`${weetje.bestandspad}`}
+              controls
+            />,
+            key: `${weetje.id} player`
+          }
+        ]
+      };
+    });
 
     return (
       <div>
