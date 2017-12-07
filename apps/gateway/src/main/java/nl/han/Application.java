@@ -11,24 +11,13 @@ import static spark.debug.DebugScreen.enableDebugScreen;
 public class Application {
     public static SerialCommunication serialCommunication;
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
 //
         Application application = new Application();
 //
         application.setupSpark();
         application.setupSerial();
         application.registerRoutes();
-
-        new Thread(() -> {
-            while (true) {
-                Application.serialCommunication.sendSerial("55;1;1;1;24;test\n");
-                try {
-                    Thread.sleep(3000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        }).run();
 
 
 //        /**

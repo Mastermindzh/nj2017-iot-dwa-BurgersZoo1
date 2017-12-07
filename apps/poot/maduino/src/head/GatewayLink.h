@@ -22,6 +22,11 @@ class GatewayLink {
      * Inform the gateway that this poot is finished starting up.
      */
     void sendStartup(byte pootid);
+
+    /**
+    * Receive MySensors messages
+    */
+    void receive(const MyMessage &message);
   private:
     MyMessage* msg;
 };

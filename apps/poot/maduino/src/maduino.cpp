@@ -36,3 +36,7 @@ void loop() {
 void presentation() {
   present(MY_CHILD_ID, S_CUSTOM);
 }
+
+void receive(const MyMessage &message) {
+  poot->receive(message);
+}

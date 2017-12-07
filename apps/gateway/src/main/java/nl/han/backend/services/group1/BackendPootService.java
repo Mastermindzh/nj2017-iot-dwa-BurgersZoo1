@@ -73,7 +73,7 @@ public class BackendPootService extends BackendPootServiceBase {
         } catch (IOException e) {
             super.logger.error("Could not connect with backend", e);
         }
-        return 1L; // todo: should not do this
+        return null; // todo: should not do this
 
     }
 

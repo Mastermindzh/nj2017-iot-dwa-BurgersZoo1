@@ -58,7 +58,7 @@ public class MySensorReceiveService {
     private void handleIncomingInternalMessages(MyInternalMessage message) {
         switch (message.getInternalType()) {
             case I_ID_REQUEST:
-                logger.info(String.format("Requesting id, message: %s", message.toString()));
+                logger.debug(String.format("Requesting id, message: %s", message.toString()));
                 break;
             case I_LOG_MESSAGE:
                 logger.debug(String.format("Not implemented yet, message: %s", message.toString()));
@@ -155,16 +155,19 @@ public class MySensorReceiveService {
     private void newNodeSubscribe(MyMessage message) {
         logger.info(String.format("Registering new node, node id: #%d pootid: #%s",
                 message.getNodeId(), message.getPayload()));
-        Poot poot = this.pootDAO.findByPootId(Long.valueOf(message.getPayload()));
+        Poot poot = null;
+        if (Long.valueOf(message.getPayload()) == 255) {
+            poot = this.pootDAO.findByPootId(Long.valueOf(message.getPayload()));
+        }
         if (poot == null) {
             logger.info("Unknown poot, register node");
             Poot newPoot = new Poot();
             newPoot.setNodeid(message.getNodeId());
             newPoot.setPootid(backendPootServiceGroup1.getNewPootIdFromBackend());
-            this.pootDAO.save(newPoot);
+            poot = this.pootDAO.save(newPoot);
         } else {
             poot.setNodeid(message.getNodeId());
-            this.pootDAO.update(poot);
+            poot = this.pootDAO.update(poot);
         }
 
         MySensorSendService sendService = new MySensorSendService();

@@ -72,6 +72,11 @@ public class SerialCommunication implements SerialPortEventListener {
         }
     }
 
+    /**
+     * Send a message to the gateway
+     *
+     * @param message
+     */
     public void sendSerial(String message) {
         this.writer.sendMessage(message);
     }
@@ -81,7 +86,7 @@ public class SerialCommunication implements SerialPortEventListener {
         if (serialPortEvent.getEventType() == SerialPortEvent.DATA_AVAILABLE) {
             try {
                 String inputLine = input.readLine();
-                logger.info(String.format("NRF Message: %s", inputLine));
+                logger.debug(String.format("NRF Message: %s", inputLine));
                 try {
                     MyMessage message = this.parseService.parseToObject(inputLine);
                     logger.info(String.format("Message: %s", message.toString()));
