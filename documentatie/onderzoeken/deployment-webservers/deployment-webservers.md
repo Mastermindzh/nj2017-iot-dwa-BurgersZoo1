@@ -27,7 +27,7 @@ Uit verschillende bronnen ([1](https://hackernoon.com/how-to-deploy-a-live-react
 
 Naast deze opties zijn er ook de wat professionelere opties, volledige webservers, zoals bijv. apache, nginx of zelfs express.
 
-Uit onderzoek blijkt dus dat er genoeg best/good practices te vinden zijn maar vrijwel geen van de practices wordt als "bad" beschouwd. Het vermoeden hierachter is de simpele manier waarop een React front-end werkt. Na een bundeling van de bestanden blijft er niet veel over en [Bartosz Szczeciński](https://medium.com/@baphemot/understanding-react-deployment-5a717d4378fd) vat het in één zin heel goed samen:
+Uit onderzoek blijkt dus dat er genoeg best/good practices te vinden zijn maar vrijwel geen "bad" practices. Het vermoeden hierachter is de simpele manier waarop een React front-end werkt. Na een bundeling van de bestanden blijft er niet veel over en [Bartosz Szczeciński](https://medium.com/@baphemot/understanding-react-deployment-5a717d4378fd) vat het in één zin heel goed samen:
 
 > Our deployment process will at the very basic level be “put the files on the server”.
 
@@ -72,7 +72,7 @@ Uit onderzoek is gebleken dat het hosten van een React applicatie een stuk simpe
 
 Het onderzoek wijst eigenlijk uit dat het vrijwel alle geboden opties geschikt zijn om een react front-end op te deployen. De meest uitgebreide opties zijn Apache en NGINX maar die zijn, zonder Docker, lastig door een vervolggroep op te pakken. Iets wat wel goed opgepakt kan worden is het hosten bij AWS, al heb je dan minder opties.
 
-De eindconclusie is dus niet eenduidig, er zal echt gekeken moeten worden naar de belangrijke factoren voor de betreffende situatie.
+De eindconclusie is dus niet eenduidig, er zal echt gekeken moeten worden naar de belangrijke factoren voor de betreffende situatie. In ons geval zal het hoogstwaarschijnlijk Apache/NGINX op Docker worden.
 
 ## bronnen
 
