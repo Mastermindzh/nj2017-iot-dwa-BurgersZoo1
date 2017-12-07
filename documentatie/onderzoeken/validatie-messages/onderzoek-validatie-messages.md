@@ -10,7 +10,7 @@ De code die `3f ca b5 89` was opeens `3f ca l5 89`.
 Dit komt doordat de b (binair '01101100') naar een l (binair '01100100') was veranderd. Het verschil is 1 bit waardoor de overgekomen data niet meer valide was.
 
 ## Testopzet
-Ik een literatuur studie doen, waarbij ik ga kijken welke methodes er zijn en welke (naar mijn mening) relatief makkelijk te implementeren zijn waarbij weinig overhead nodig is. Er kunnen maar 32 bytes in een MySensors bericht verstuurd worden dus de overheid mag eigenlijk niet groter zijn dan 1 of 2 bytes.
+Ik ga een literatuur studie doen, waarbij ik ga kijken welke methodes er zijn en welke (naar mijn mening) relatief makkelijk te implementeren zijn waarbij weinig overhead nodig is. Er kunnen maar 32 bytes in een MySensors bericht verstuurd worden dus de overheid mag eigenlijk niet groter zijn dan 1 of 2 bytes.
 
 Als voorbeeld gebruik ik de volgende nummers:
 
@@ -37,4 +37,6 @@ Bij het tellen van alle bits binnen het bericht en dit aantal dan aan het einde 
 Er wordt afgesproken om alle 1'tjes te tellen maar die blijven in deze situatie hetzelfde waardoor door de controle dus faalt.
 
 ##Conclusie
-Aan de hand van dit onderzoek zou ik zeggen dat de Two's complement oplossing of de modulo oplossing het beste. Van deze twee lijkt de modulo weer het simpelst om te implementeren, omdat dat een standaard berekening is en dus niet een aparte methode in verschillende talen geïmplementeerd hoeft te worden.
+Aan de hand van dit onderzoek kan ik zeggen dat de Two's complement oplossing of de modulo oplossing het beste is. Van deze twee lijkt de modulo weer het simpelst om te implementeren, omdat dat een standaard berekening is en dus niet een aparte methode in verschillende talen geïmplementeerd hoeft te worden.
+
+Het valt ook tegen hoeveel er op het internet te vinden is over checksums, er wordt al snel verwezen naar hash functies ([wiki: checksums](https://en.wikipedia.org/wiki/Checksum#See_also)). Dit is alleen niet haalbaar op een Arduino omdat zulke berekeningen te veel tijd vergen.
