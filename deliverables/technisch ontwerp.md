@@ -2,32 +2,33 @@
 
 <!-- toc -->
 
-  * [Inleiding](#inleiding)
-  * [Systeem architectuur](#systeem-architectuur)
+- [Inleiding](#inleiding)
+- [Systeem architectuur](#systeem-architectuur)
 - [Architectuur](#architectuur)
   * [Keuzes](#keuzes)
       - [Gebruik gateway voor communicatie tussen poten en backend](#gebruik-gateway-voor-communicatie-tussen-poten-en-backend)
       - [Gateway bestaande uit een Arduino + Raspberry Pi](#gateway-bestaande-uit-een-arduino--raspberry-pi)
       - [Poot bestaande uit twee Arduino's](#poot-bestaande-uit-twee-arduinos)
       - [Losstaande client-apps's](#losstaande-client-appss)
-  * [Software architectuur](#software-architectuur)
+- [Software architectuur](#software-architectuur)
   * [Multi-tiered](#multi-tiered)
   * [Database](#database)
   * [back-end](#back-end)
   * [front-end apps](#front-end-apps)
-  * [Technische realisatie](#technische-realisatie)
-    + [Technische keuzes](#technische-keuzes)
-  * [De back-end](#de-back-end)
-    + [interface](#interface)
-    + [Data opslag structuur](#data-opslag-structuur)
+- [Technische realisatie](#technische-realisatie)
+    + [De datastorage](#de-datastorage)
+    + [De back-end](#de-back-end)
+    + [De front-ends](#de-front-ends)
+    + [De ontwikkelomgeving](#de-ontwikkelomgeving)
+  * [Data opslag structuur](#data-opslag-structuur)
   * [Database](#database-1)
-    + [poot](#poot)
+  * [poot](#poot)
 - [Sequence diagrams](#sequence-diagrams)
   * [Nieuwe poot aanmelden](#nieuwe-poot-aanmelden)
   * [Online komen poot](#online-komen-poot)
   * [Poot versturen logdata](#poot-versturen-logdata)
   * [Ranger bezoekt poot](#ranger-bezoekt-poot)
-  * [Deployment](#deployment)
+- [Deployment](#deployment)
 - [deployment](#deployment)
   * [Beide versies](#beide-versies)
   * [Development versie](#development-versie)
@@ -35,12 +36,12 @@
 
 <!-- tocstop -->
 
-## Inleiding
+# Inleiding
 
 Dit is een inleiding
 
 
-## Systeem architectuur
+# Systeem architectuur
 
 # Architectuur
 In onderstaande afbeelding is een globale schets van de architectuur weergegeven.
@@ -75,7 +76,7 @@ In eerste instantie was er gekozen om de poot te maken [met 1 Arduino](https://g
 Er is gekozen om de Ranger App en Admin App volledig los te maken van de backend. De client apps zullen beide met dezelfde rest api van de backend werken. De keuze is hiervoor gemaakt omdat tijdens de lessen DWA dit pattern gebruikt is.
 
 
-## Software architectuur
+# Software architectuur
 
 De architectuur m.b.t hetgeen buiten de poten om draait ziet er als volgt uit:
 
@@ -102,27 +103,30 @@ De front-end apps zijn modulair opgezet, deze apps draaien op hun eigen plekje e
 Alle front-end apps bij elkaar worden gezien als de "front-end laag", zelfs als deze op andere fysieke machines draaien. Het los koppelen van de applicaties bevordert de werkbaarheid en stabiliteit van de architectuur. Elke app kan afzonderlijk gedeployed / getest worden zonder de rest van de architectuur te beïnvloeden.
 
 
-## Technische realisatie
-
-### Technische keuzes
-
-#
+# Technische realisatie
 
 Tijdens het ontwikkelingsprocess worden er verschillende keuzes gemaakt, voor sommige keuzes is uitgebreid onderzoek gedaan en sommige zijn wat sneller gemaakt door de omstandigheden. De keuzes m.b.t de web software (de back-end en de react apps) worden hieronder uitgelegd.
 
-## De back-end
+### De datastorage
+
+Als datastorage is er gekozen voor MongoDB. De belangrijkste argumenten hiervoor waren ontwikkelsnelheid en de kans dat datastructuur gaat veranderen. In een document store is dit makkelijker te ondervangen dan in een relationele database. Verder heeft Loopback, het programma dat gebruikt wordt om de backend te maken, een prima ondersteuning voor MongoDB. Het onderzoek hiernaar is [hier](https://github.com/HANICA-MinorMulti/nj2017-iot-dwa-BurgersZoo1/blob/master/documentatie/onderzoeken/app-datastore/app%20datastore.md) te lezen.
+
+### De back-end
 
 De belangrijkste beweegreden bij het opzetten van de back-end is "het moet snel kunnen veranderen", dit omdat er gebruik wordt gemaakt van een snel veranderende omgeving waarin veel prototypes gebouwt worden.
 
 Mede door deze rede is er gekozen om een model based framework toe te passen, dit zou ervoor zorgen dat een groot gedeelte van de back-end gegenereerd kan worden. Naar deze generators is onderzoek gedaan en daar is [Loopback of Swagger](https://github.com/HANICA-MinorMulti/nj2017-iot-dwa-BurgersZoo1/blob/master/documentatie/onderzoeken/generators/generators.md) uitgekomen. Later is besloten om nog een [onderzoek te doen naar Loopback](https://github.com/HANICA-MinorMulti/nj2017-iot-dwa-BurgersZoo1/blob/master/documentatie/onderzoeken/loopback/loopbackOnderzoek.md) om te kijken hoe hier een api mee te genereren, dit omdat swagger generatie bij de groep al bekend was.
 
+### De front-ends
+
+Om de front-ends snel met een goede basis op te zetten is [React slingshot](https://github.com/coryhouse/react-slingshot) gebruikt. Uit [onderzoek](https://github.com/HANICA-MinorMulti/nj2017-iot-dwa-BurgersZoo1/blob/master/documentatie/onderzoeken/frontend-design-pattern/onderzoek-frontend-design-pattern.md) is verder nog gebleken dat de [material-ui-next](https://material-ui-next.com/) library het meest geschikt was om snel een intuïtieve applicatie op te zetten.
+
+### De ontwikkelomgeving
+
+Om met meerdere developers makkelijk te kunnen werken en om ervoor te zorgen dat een vervolggroep gemakkelijk alles kan laten starten moet er een ontwikkelomgeving komen. Er is hier gekozen voor [Docker](https://www.docker.com/), uit [onderzoek](https://github.com/HANICA-MinorMulti/nj2017-iot-dwa-BurgersZoo1/blob/master/documentatie/onderzoeken/docker/docker.md) bleek dat dit de beste optie was omdat het zo simpel werkt. Met Docker kunnen we ook garanderen dat het op iedere machine hetzelfde werkt en in de toekomst gemakkelijk schalen.
 
 
-### interface
-
-(wat voor programma's zijn er gebruikt, react, nodjes etc.)
-
-### Data opslag structuur
+## Data opslag structuur
 
 ## Database
 Om de data van het systeem op te slaan wordt er een Mongo database gebruikt. Deze database wordt gevuld door Loopback. Loopback werkt iets anders dan Mongo met data omdat het een model systeem gebruikt.
@@ -138,7 +142,7 @@ Vanuit de API specificatie die gemaakt is voor de gateway komt er nog een andere
 ![Dataschema](./images/data%20schema.png)
 
 
-### poot
+## poot
 
 # Sequence diagrams
 
@@ -173,7 +177,7 @@ Wanneer een ranger een poot bezoekt scant de ranger de NFC kaart. De poot verstu
 ![Ranger bezoekt poot](images/ranger_bezoekt_poot.png)
 
 
-## Deployment
+# Deployment
 
 # deployment
 

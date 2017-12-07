@@ -2,36 +2,30 @@
 
 <!-- toc -->
 
-## Inleiding
+# Inleiding
 
 #include "documentatie/technisch-ontwerp/inleiding/inleiding.md"
 
-## Systeem architectuur
+# Systeem architectuur
 
 #include "documentatie/technisch-ontwerp/systeem-architectuur/systeem-architectuur.md"
 
-## Software architectuur
+# Software architectuur
 
 #include "documentatie/technisch-ontwerp/dwa-architectuur/dwa-architectuur.md"
 
-## Technische realisatie
-
-### Technische keuzes
+# Technische realisatie
 
 #include "documentatie/technisch-ontwerp/keuzes-dwa/keuzes-dwa.md"
 
-### interface
-
-(wat voor programma's zijn er gebruikt, react, nodjes etc.)
-
-### Data opslag structuur
+## Data opslag structuur
 
 #include "documentatie/technisch-ontwerp/database/database.md"
 
-### poot
+## poot
 
 #include "documentatie/technisch-ontwerp/sequence-diagrammen/readme.md"
 
-## Deployment
+# Deployment
 
 #include "documentatie/technisch-ontwerp/deployment/beschrijving.md"
