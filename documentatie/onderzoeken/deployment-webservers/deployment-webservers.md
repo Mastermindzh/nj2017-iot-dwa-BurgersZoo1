@@ -1,10 +1,10 @@
 # Onderzoek 2 - deployment-webservers
 
-De deployment gebeurt vooralsnog met development versies, dit is erg makkelijk om mee te werken aangezien alle debugmogelijkheden meegeleverd wordt.
+De deployment gebeurt vooralsnog met development versies, dit is erg makkelijk om mee te werken aangezien alle debugmogelijkheden meegeleverd worden.
 
 ## Onderzoeksmethode
 
-De onderzoeksmethode voor dit onderzoek is tweeledig, allereerst zal er gekeken worden naar "best, good, and bad practices" (Library) en daarna zal er , met de behaalde resultaten, een comparison chart opgesteld worden.
+De onderzoeksmethode voor dit onderzoek is tweeledig, allereerst zal er gekeken worden naar "best, good, and bad practices" (Library) en daarna zal er, met de behaalde resultaten, een comparison chart opgesteld worden.
 
 **Categorie**: Library <br />
 **Naam**: Best, good and bad practices
