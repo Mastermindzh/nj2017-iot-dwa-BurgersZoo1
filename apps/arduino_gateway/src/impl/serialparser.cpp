@@ -11,11 +11,12 @@ void SerialReader::loop(){
   String line;
   if(Serial.available()>0){
     line = Serial.readString();
+    Serial.print(line);
+    for(unsigned int i = 0; i < line.length(); i++){
+      this->handleNextInputChar(line.charAt(i));
+    }
   }
-  Serial.print(line);
-  for(unsigned int i = 0; i < line.length(); i++){
-    this->handleNextInputChar(line.charAt(i));
-  }
+  this->sendMessageIfPossible();
 }
 
 void SerialReader::handleNextInputChar(char read){
@@ -59,9 +60,9 @@ void SerialReader::sendMessageIfPossible(){
   if(this->finished){
     this->payload = "test";
     Serial.println(F("Sending message, payload: "));
-    Serial.print(this->payload);
+    Serial.println(this->payload);
     MyMessage msg(this->nodeID, this->type);
-    msg.set(&this->payload, this->payload.length());
+    msg.set(this->payload);
     msg.setSensor(this->childSensorID);
     send(msg, this->ack);
     this->finished = 0;

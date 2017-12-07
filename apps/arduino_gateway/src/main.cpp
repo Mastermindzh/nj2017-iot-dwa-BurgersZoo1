@@ -32,7 +32,6 @@
 
     void loop(){
       reader->loop();
-      reader->sendMessageIfPossible();
     }
 
     void presentation(){}

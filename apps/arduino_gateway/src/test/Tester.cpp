@@ -1,5 +1,5 @@
 #include <Arduino.h>
-#include "tester.h"
+#include "Tester.h"
 
 #include "../head/SerialReader.h"
 
