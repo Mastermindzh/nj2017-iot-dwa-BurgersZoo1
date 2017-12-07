@@ -57,7 +57,7 @@ De test is uitgevoerd door de Arduino met de scanner en ledjes aan de ene kant v
 
 Op onderstaande afbeelding is de testopstelling te zien bij een 18 mm dik stuk hout. De pas wordt tegen de onderkant van het hout aangehouden, terwijl de scanner aan de bovenkant van het hout merkt dat er contact is. De Arduino laat vervolgens de groene feedback Led branden.
 
-![](images/opstelling.png)
+![](images/opstelling.jpg)
 
 Het resultaat van deze tests is dat alle diktes hout het nfc signaal goed doorlaten. Er is geen verschil te merken tussen de verschillende diktes en houttypen op het gebied van scanbaarheid.
 
