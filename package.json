@@ -7,7 +7,7 @@
     "compile-deliverables": "npm run compile-pva && npm run compile-fo && npm run compile-to && npm run compile-images && npm run generate-pdfs",
     "compile-images": "find ./documentatie \\( -name \"*.jpg*\" -o -name \"*.png*\" \\)  -exec cp {} deliverables/images/ \\;",
     "compile-pva": "cp ./documentatie/plan-van-aanpak/plan-van-aanpak.md ./deliverables/plan\\ van\\ aanpak.md && ./node_modules/.bin/markdown-toc -i deliverables/plan\\ van\\ aanpak.md",
-    "compile-fo": "./node_modules/.bin/markdown-include ./documentatie/functioneel_ontwerp/markdown.json && ./node_modules/.bin/markdown-toc -i deliverables/functioneel\\ ontwerp.md",
+    "compile-fo": "./node_modules/.bin/markdown-include ./documentatie/functioneel-ontwerp/markdown.json && ./node_modules/.bin/markdown-toc -i deliverables/functioneel\\ ontwerp.md",
     "compile-to": "./node_modules/.bin/markdown-include ./documentatie/technisch-ontwerp/markdown.json && ./node_modules/.bin/markdown-toc -i deliverables/technisch\\ ontwerp.md",
     "generate-pdfs": "node generate-pdf.js 'plan van aanpak' && node generate-pdf.js 'functioneel ontwerp' && node generate-pdf.js 'technisch ontwerp'"
   },

@@ -2,30 +2,20 @@
 
 <!-- toc -->
 
-# Inleiding
-
 #include "documentatie/technisch-ontwerp/inleiding/inleiding.md"
 
-# Systeem architectuur
-
-#include "documentatie/technisch-ontwerp/systeem-architectuur/systeem-architectuur.md"
-
-# Software architectuur
-
-#include "documentatie/technisch-ontwerp/dwa-architectuur/dwa-architectuur.md"
-
-# Technische realisatie
+#include "documentatie/technisch-ontwerp/architectuur/architectuur.md"
 
 #include "documentatie/technisch-ontwerp/keuzes-dwa/keuzes-dwa.md"
 
-## Data opslag structuur
+#include "documentatie/technisch-ontwerp/datamodel/datamodel.md"
 
 #include "documentatie/technisch-ontwerp/database/database.md"
 
-## poot
+#include "documentatie/technisch-ontwerp/system-flow/system-flow.md"
 
-#include "documentatie/technisch-ontwerp/sequence-diagrammen/readme.md"
+#include "documentatie/technisch-ontwerp/technische-realisatie/poot.md"
 
-# Deployment
+#include "documentatie/technisch-ontwerp/deployment/deployment.md"
 
-#include "documentatie/technisch-ontwerp/deployment/beschrijving.md"
+#include "documentatie/technisch-ontwerp/iot-klassediagram/iot-klassediagram.md"

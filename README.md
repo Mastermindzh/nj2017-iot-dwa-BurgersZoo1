@@ -10,11 +10,7 @@ Dierentuin Koninklijk Burgers' Zoo is een dierentuin gelegen te Arnhem op een mo
 |---------------------|------|
 | Plan van aanpak     |[Plan van aanpak](deliverables/plan%20van%20aanpak.md)|
 | Functioneel ontwerp |[Functioneel ontwerp](deliverables/functioneel%20ontwerp.md)|
-| Technisch ontwerp |[Technisch ontwerp](deliverables/functioneel%20ontwerp.md)|
-| Opleverdocument |nog niet linkbaar|
-| Requirements        |[Requirements](documentatie/requirements)|
+| Technisch ontwerp |[Technisch ontwerp](deliverables/technisch%20ontwerp.md)|
+| Opleverdocument |nog niet beschikbaar|
 | Onderzoeken         |[documentatie/onderzoeken](documentatie/onderzoeken)|
-| Gateway Api                 |[Gateway beschrijving](documentatie/api)|
-| Website deployment  |[Deployment webapplicatie](documentatie/deployment)|
-| Klasse diagram Poot  | [Klasse diagram Poot](documentatie/iot-klassediagram/)|
-| Mockups             |[Mockups webapplicatie](documentatie/mockups)|
+| Gateway Api                 |[Gateway apibeschrijving](documentatie/api)|
