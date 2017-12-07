@@ -41,7 +41,7 @@ public class PootMongoDAO implements IPootDAO {
     public Poot update(Poot entity) {
         UpdateOperations<Poot> updateOperations = this.datastore.createUpdateOperations(Poot.class);
         updateOperations.set("pootid", entity.getPootid());
-        updateOperations.set("nodeId", entity.getNodeId());
+        updateOperations.set("nodeid", entity.getNodeid());
         if (entity.getWeetjes() != null) {
             updateOperations.set("weetjes", entity.getWeetjes());
         }
@@ -73,7 +73,7 @@ public class PootMongoDAO implements IPootDAO {
     }
 
     @Override
-    public Poot findByPootId(int pootid) {
+    public Poot findByPootId(Long pootid) {
         Query<Poot> query = datastore.createQuery(Poot.class);
         query.field("pootid").equal(pootid);
         return query.get();
@@ -87,7 +87,7 @@ public class PootMongoDAO implements IPootDAO {
     @Override
     public Poot findByNodeId(Long nodeId) {
         Query<Poot> query = datastore.createQuery(Poot.class);
-        query.field("nodeId").equal(nodeId);
+        query.field("nodeid").equal(nodeId);
         Poot poot = query.get();
         return poot;
     }

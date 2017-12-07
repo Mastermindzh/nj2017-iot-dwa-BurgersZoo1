@@ -34,7 +34,7 @@ public class PotenController {
      * @return
      */
     private Poot getPoot(Request request, Response response) {
-        Poot poot = this.potenService.getPoot(Integer.parseInt(request.params("pootid")));
+        Poot poot = this.potenService.getPoot(Long.valueOf(request.params("pootid")));
         if (poot == null) {
             response.status(404);
         }
