@@ -7,22 +7,22 @@
 
 ## Inleiding
 Alle React webapplicaties van het Burgers' Zoo Ranger project zijn geschreven in React en maken gebruik van Redux, een library voor
-app-state management. Met state wordt bedoeld: een set van mutable data, opgeslagen in wat een 'redux store' wordt genoemd.
-Om data in de de store op te slaan schrijf je functies die inkomende data in het goede stukje van de store plaats. Dit worden 'reducers'
-genoemd. Deze reducers kunnen naar verloop van tijd groot en moeilijk leesbaar worden. Doormiddel van een proof of concept wordt
-onderzocht of lodash in combinatie met Redux kan zorgen voor leesbare (en daarmee bewerkbare) code.
+app-state management. Met state wordt bedoeld: een set van mutable data, opgeslagen in wat een 'Redux store' wordt genoemd.
+Om data in de de store op te slaan schrijf je functies die inkomende data in het goede stukje van de store plaatst. Deze functies worden 'reducers'
+genoemd. Deze reducers kunnen naar verloop van tijd groot en moeilijk leesbaar worden. Door middel van een proof of concept wordt
+onderzocht of Lodash, een utility library voor JavaScript, in combinatie met Redux kan zorgen voor leesbare (en daarmee bewerkbare) code.
 
 Het onderzoek is uitgevoerd in samenwerking met Rick van Lieshout.
 
 ## Wat is Redux?
 Als je nog niet weet wat Redux is, helpt dit hoofdstuk je even op gang. Met Redux beheer je state op applicatieniveau. Redux bestaat
-uit een aantal onderdelen (behalve de ui view):
+uit een aantal onderdelen (behalve de ui view uit de onderstaande afbeelding):
 
 ![Redux](https://cdn-images-1.medium.com/max/1200/1*bvAMo9Ou8yI3-zzB3aoMnA.png)
 
 Het belangrijkste dat je moet onthouden is wat de onderdelen doen:
 
-- __store__: opslagplaats van alle data als één grote POJO
+- __store__: opslagplaats van alle data als één groot object (POJO).
 - __reducers__: pure functies die de app-state bewerken op basis van binnengekregen data uit zgn. action creators.
 - __action creators__: functies die iets doen, bijvoorbeeld een API benaderen of iets uitrekenen. De uitkomst geven ze door aan de reducers. Dat doorgeven wordt 'dispatchen' genoemd.
 
@@ -62,7 +62,7 @@ Lodash is een utility library voor JavaScript. Het haalt de spreekwoordelijke an
 _'Er wordt verwacht dat Lodash zorgt voor minder lines of code in Redux reducers, waardoor reducers leesbaarder en onderhoudbaarder worden.'_
 
 ## Testopzet
-De Burgers' Zoo admin app wordt gekoppeld aan de back-end (API). Als dat toch sowieso moet gebeuren volgens de projectplanning, kan dit gelijk worden gebruikt als testopzet. Er wordt gelinkt naar commits waarin reducers zijn gemaakt. 
+De Burgers' Zoo admin app wordt gekoppeld aan de back-end (API). Als dat toch sowieso moet gebeuren volgens de projectplanning, kan dit gelijk worden gebruikt als testopzet. Er wordt gelinkt naar een pullrequest waarin een reducer zonder Lodash is gemaakt, en vervolgens gerefactored is naar Lodash.
 
 ## Resultaat
 Een array met objecten kun je met Lodash veranderen in een object, met id's als key's. Hier is een voorbeeld:
@@ -110,7 +110,7 @@ export default function speurpuntReducer(state = initialState, action) {
 }
 ```
 
-We zijn er nog niet, want hoe zorgt dit nu voor minder code? Stel je voor dat we van een speurpunt willen updaten of verwijderen. Dan kan met op deze manier:
+We zijn er nog niet, want hoe zorgt dit nu voor minder code? Stel je voor dat we een speurpunt willen updaten of verwijderen. Dan kan dankzij Lodash op deze manier:
 
 ```
 ...
