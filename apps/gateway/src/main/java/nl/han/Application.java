@@ -19,16 +19,16 @@ public class Application {
         application.setupSerial();
         application.registerRoutes();
 
-//        new Thread(() -> {
-//            while (true) {
-//                Application.serialCommunication.sendSerial("55;1;1;1;24;test\n");
-//                try {
-//                    Thread.sleep(3000);
-//                } catch (InterruptedException e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//        }).run();
+        new Thread(() -> {
+            while (true) {
+                Application.serialCommunication.sendSerial("55;1;1;1;24;test\n");
+                try {
+                    Thread.sleep(3000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).run();
 
 
 //        /**

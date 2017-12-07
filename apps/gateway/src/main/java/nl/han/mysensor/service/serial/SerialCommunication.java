@@ -19,7 +19,7 @@ import java.util.TooManyListenersException;
  * @since 0.1
  */
 
-public class SerialCommunication  {
+public class SerialCommunication implements SerialPortEventListener {
     private final String portName;
     private final MySensorParseService parseService;
     private SerialWriter writer;
@@ -34,14 +34,8 @@ public class SerialCommunication  {
         this.mySensorReceiveService = new MySensorReceiveService();
         try {
             this.connect();
-        } catch (NoSuchPortException e) {
-            e.printStackTrace();
-        } catch (PortInUseException e) {
-            e.printStackTrace();
-        } catch (UnsupportedCommOperationException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (NoSuchPortException | UnsupportedCommOperationException | IOException | PortInUseException e) {
+            logger.error("Error while connecting with port", e);
         }
     }
 
@@ -49,7 +43,7 @@ public class SerialCommunication  {
         System.setProperty("gnu.io.rxtx.SerialPorts", this.portName);
         CommPortIdentifier portIdentifier = CommPortIdentifier.getPortIdentifier(this.portName);
         if (portIdentifier.isCurrentlyOwned()) {
-            System.out.println("Error: Port is currently in use");
+            logger.error("Error: Port is currently in use");
         } else {
             int timeout = 2000;
             CommPort commPort = portIdentifier.open(this.getClass().getName(), timeout);
@@ -62,17 +56,15 @@ public class SerialCommunication  {
                         SerialPort.PARITY_NONE);
 
                 InputStream in = serialPort.getInputStream();
-//                this.input = new BufferedReader(new InputStreamReader(in));
+                this.input = new BufferedReader(new InputStreamReader(in));
                 this.writer = new SerialWriter(serialPort.getOutputStream());
 
-                (new Thread(new SerialReader(in, this))).start();
-
-
-//                try {
-//                    serialPort.addEventListener(this);
-//                } catch (TooManyListenersException e) {
-//                    e.printStackTrace();
-//                }
+                try {
+                    serialPort.addEventListener(this);
+                    serialPort.notifyOnDataAvailable(true);
+                } catch (TooManyListenersException e) {
+                    logger.error("Error while registering event listener", e);
+                }
 
             } else {
                 logger.error("Error: Only serial ports are handled by this example.");
@@ -80,47 +72,29 @@ public class SerialCommunication  {
         }
     }
 
-    public void receiveEvent(String inputLine) {
-        try {
-            logger.info(String.format("NRF Message: %s", inputLine));
-            try {
-                MyMessage message = this.parseService.parseToObject(inputLine);
-                logger.info(String.format("Message: %s", message.toString()));
-                this.mySensorReceiveService.handleIncomingMessage(message);
-            } catch (NotFoundException e) {
-                logger.error("Message was: " + inputLine);
-                logger.error("No message", e);
-            }
-        } catch (Exception e) {
-            logger.error("Error while reading serial port", e);
-        }
-    }
-
     public void sendSerial(String message) {
         this.writer.sendMessage(message);
     }
 
-//    @Override
-//    public void serialEvent(SerialPortEvent serialPortEvent) {
-//        logger.info("im here");
-//        if (serialPortEvent.getEventType() == SerialPortEvent.DATA_AVAILABLE) {
-//            try {
-//                String inputLine = input.readLine();
-//                logger.info(String.format("NRF Message: %s", inputLine));
-//                try {
-//                    MyMessage message = this.parseService.parseToObject(inputLine);
-//                    logger.info(String.format("Message: %s", message.toString()));
-//                    this.mySensorReceiveService.handleIncomingMessage(message);
-//                } catch (NotFoundException e) {
-//                    logger.error("Message was: " + inputLine);
-//                    logger.error("No message", e);
-//                }
-//            } catch (Exception e) {
-//                logger.error("Error while reading serial port", e);
-//            }
-//        }
-//        System.out.println(serialPortEvent.getEventType());
-//        // Ignore all the other eventTypes, but you should consider the other ones.
-//
-//    }
+    @Override
+    public void serialEvent(SerialPortEvent serialPortEvent) {
+        if (serialPortEvent.getEventType() == SerialPortEvent.DATA_AVAILABLE) {
+            try {
+                String inputLine = input.readLine();
+                logger.info(String.format("NRF Message: %s", inputLine));
+                try {
+                    MyMessage message = this.parseService.parseToObject(inputLine);
+                    logger.info(String.format("Message: %s", message.toString()));
+                    this.mySensorReceiveService.handleIncomingMessage(message);
+                } catch (NotFoundException e) {
+                    logger.error("Message was: " + inputLine);
+                    logger.error("No message", e);
+                }
+            } catch (Exception e) {
+                logger.error("Error while reading serial port", e);
+            }
+        }
+        // Ignore all the other eventTypes, but you should consider the other ones.
+
+    }
 }

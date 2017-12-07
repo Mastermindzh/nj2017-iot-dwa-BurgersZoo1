@@ -93,6 +93,7 @@
 //
 //            // add event listeners
 //            serialPort.addEventListener(this);
+//
 //            serialPort.notifyOnDataAvailable(true);
 //        } catch (Exception e) {
 //            System.err.println(e.toString());
