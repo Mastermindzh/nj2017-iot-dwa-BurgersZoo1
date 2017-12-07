@@ -1,6 +1,6 @@
 # Class Diagram IoT Poot
 
-![klassediagram.png](klassediagram.png)
+![klassediagram.png](images/klassediagram.png)
 
 Zoals te zien is, is er een tweedeling van klasse in Maduino en Auduino. Dit is zoals beschreven in de [architectuur](https://github.com/HANICA-MinorMulti/nj2017-iot-dwa-BurgersZoo1/tree/master/documentatie/architectuur). Maduino is de naam voor de Master Arduino en Auduino is de naam voor de Audio Arduino.
 
