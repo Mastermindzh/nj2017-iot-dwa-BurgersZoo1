@@ -28,7 +28,13 @@ Allereerst is er tijdens dit onderzoek nagedacht over verschillende soorten mate
  
 Met deze lijst van punten is gezocht naar materialen en zijn deze beoordeeld of deze nuttig kunnen zijn voor ons bij de demo of mogelijk in de toekomst als de palen in de dierentuin komen te staan. Dit geeft onderstaande tabel als uitkomst.
  
-[INSERT TABLE]
+| Materiaal | Geschikt  | Indien niet geschikt: waarom niet? |
+|-----------|-----------|-----------------------------------|
+| Kunsstof  | Ja   	 |    	                           |
+| Glas      | Nee 	  | Breekbaar, duur                   |
+| Metaal	| Nee   	| Zwaar, duur, lastig te vormen	 |
+| Karton	| Nee       | Kan niet nat worden  	         |
+| Hout      | Ja	    |	                               |
 
 
 Voor nu is het zo dat een behuizing van kunststof of een behuizing van hout voor ons van toepassing is. Beide materialen zijn stevig en kunnen een klap opvangen. Daarnaast kunnen beide materialen vochtig worden, mits er goede voorbereidingen getroffen worden.
