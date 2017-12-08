@@ -1,0 +1,28 @@
+{
+  "name": "verblijf",
+  "plural": "verblijven",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "naam": {
+      "type": "string",
+      "required": true
+    },
+    "geolocatie": {
+      "type": "geopoint"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "speurpunten": {
+      "type": "hasMany",
+      "model": "speurpunt",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}
