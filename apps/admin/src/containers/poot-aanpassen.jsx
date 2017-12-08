@@ -39,7 +39,7 @@ class PootAanpassenContainer extends Component {
     let results = [];
 
     if(this.state.search != ''){
-      results = _.filter(this.props.speurpunten, obj => obj.locatienaam.toLowerCase().startsWith(this.state.search.toLowerCase()));
+      results = _.filter(this.props.speurpunten, obj => obj.locatienaam.toLowerCase().includes(this.state.search.toLowerCase()));
     }else{
       results = this.props.speurpunten;
     }
@@ -93,7 +93,8 @@ class PootAanpassenContainer extends Component {
 
 PootAanpassenContainer.propTypes = {
   classes: PropTypes.object,
-  speurpunten: PropTypes.any
+  speurpunten: PropTypes.arrayOf.object,
+  fetchSpeurpunten: PropTypes.func
 };
 
 function mapStateToProps(state){
