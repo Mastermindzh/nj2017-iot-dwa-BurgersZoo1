@@ -5,6 +5,10 @@
 #include "HumidSensor.h"
 #include "GatewayLink.h"
 
+class GatewayLink;
+class TempSensor;
+class HumidSensor;
+
 class Logger {
   public:
     Logger(GatewayLink* gateway);

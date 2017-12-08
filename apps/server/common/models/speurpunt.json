@@ -26,14 +26,14 @@
   },
   "validations": [],
   "relations": {
-    "weetje": {
-      "type": "hasMany",
-      "model": "weetje",
+    "dierengeluid": {
+      "type": "hasOne",
+      "model": "dierengeluid",
       "foreignKey": ""
     },
-    "dierengeluiden": {
+    "weetjes": {
       "type": "hasAndBelongsToMany",
-      "model": "dierengeluid",
+      "model": "weetje",
       "foreignKey": ""
     }
   },

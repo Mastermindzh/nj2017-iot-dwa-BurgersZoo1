@@ -73,3 +73,21 @@ curl -s -S -X POST --header 'Content-Type: application/json' --header 'Accept: a
    "bestandspad": "http://www.wavsource.com/snds_2017-12-04_8268401740269038/animals/coyote_howl.wav", \
    "beschrijving": "Howling" \
 }' 'http://localhost:8001/api/dierengeluiden' >> /dev/null
+
+
+curl -s -S -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{ \
+   "bestandspad": "./", \
+   "beschrijving": "Het enige materiaal op de wereld waar een zuignap van een octopus niet aan blijft kleven is het lichaam van de octopus zelf." \
+}' 'http://localhost:8001/api/weetjes' >> /dev/null
+
+curl -s -S -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{ \
+   "bestandspad": "./", \
+   "beschrijving": "Een olifant heeft slechts 2 knieën, de voorpoten buigen bij de elleboog." \
+}' 'http://localhost:8001/api/weetjes' >> /dev/null
+
+curl -s -S -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{ \
+   "bestandspad": "./", \
+   "beschrijving": "Duizenpoten laten hun poten uitvallen als ze achtervolgt worden door een jager" \
+}' 'http://localhost:8001/api/weetjes' >> /dev/null
+
+echo "Weetjes toegevoegd"
