@@ -10,7 +10,7 @@ import { FormControl } from 'material-ui/Form';
 import ReactAudioPlayer from 'react-audio-player';
 import Grid from 'material-ui/Grid';
 import PopupComponent from './../components/popup-component.jsx';
-import GeluidUploaden from './../containers/geluid-uploaden.jsx';
+import GeluidUploaden from './../components/geluid-uploaden.jsx';
 import _ from 'lodash';
 
 import { fetchWeetjes } from './../actions/weetjesActions';

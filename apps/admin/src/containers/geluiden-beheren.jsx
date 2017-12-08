@@ -9,7 +9,7 @@ import { FormControl } from 'material-ui/Form';
 import ReactAudioPlayer from 'react-audio-player';
 import Grid from 'material-ui/Grid';
 import PopupComponent from './../components/popup-component.jsx';
-import GeluidUploaden from './../containers/geluid-uploaden.jsx';
+import GeluidUploaden from './../components/geluid-uploaden.jsx';
 import styles from './../styles/style';
 import { connect } from 'react-redux';
 import _ from 'lodash';
@@ -95,7 +95,7 @@ class GeluidenBeheren extends Component {
 
 GeluidenBeheren.propTypes = {
   classes: PropTypes.object,
-  dierengeluiden: PropTypes.arrayOf.object,
+  dierengeluiden: PropTypes.any,
   fetchDierengeluiden: PropTypes.func
 };
 
