@@ -82,7 +82,7 @@ class PootAanpassenContainer extends Component {
           <Grid item xs={12}>
             <div>
               <FormControl className={classes.formControl}>
-                <InputLabel htmlFor="search-simple">Zoeken</InputLabel>
+                <InputLabel htmlFor="search-simple">Locatienaam zoeken</InputLabel>
                 <Input id="search-simple" value={this.state.search} onChange={(event) => this.setState({ search: event.target.value })} />
               </FormControl>
               <IconButton onClick={() => this.setState({ popupOpen: true, type: this.ADD })}>
