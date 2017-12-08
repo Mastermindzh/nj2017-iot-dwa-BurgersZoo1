@@ -42,5 +42,5 @@ public interface IPootDAO extends ICrudDAO<Poot> {
      * @param pootid
      * @return
      */
-    Poot findByPootId(int pootid);
+    Poot findByPootId(Long pootid);
 }

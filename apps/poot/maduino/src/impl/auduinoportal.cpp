@@ -5,7 +5,6 @@
 AuduinoPortal::AuduinoPortal() {
    Wire.begin();
 }
-void AuduinoPortal::loop(){}
 void AuduinoPortal::playAudio() {
   Wire.beginTransmission(AUDUINO_ID);
   Wire.write("playaudio");

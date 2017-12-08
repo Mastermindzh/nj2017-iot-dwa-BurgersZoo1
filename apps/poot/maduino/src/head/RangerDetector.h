@@ -13,6 +13,10 @@ class Poot;
 class RangerDetector {
   public:
     RangerDetector(Poot* poot);
+
+    /**
+     * Checks if a new ranger is read and executes the events that are listened.
+     */
     void loop();
   private:
     Poot* poot;

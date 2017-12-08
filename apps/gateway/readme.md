@@ -12,3 +12,9 @@ Zonder de instalatie van deze library zal er bij het bouwen van het project fout
 ### Upload via SSH naar Raspberry Pi 3
 `sudo scp build/libs/gateway-1.0-SNAPSHOT.jar pi@IP_ADDRESS:~/gateway`
 
+
+## Afspraken MySensors protecol
+
+- `V_VAR1` wordt gebruikt om van de node naar de gateway zijn poot id te presenteren.
+- `V_VAR2` wordt gebruikt om een pas id van een node naar de gateway te sturen.
+- `V_VAR3` wordt gebruikt om vanaf de gateway naar een node een poot id te sturen.
