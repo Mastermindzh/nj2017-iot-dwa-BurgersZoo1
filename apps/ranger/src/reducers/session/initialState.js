@@ -1,7 +1,7 @@
 export default {
   session: {
     isLoggedIn: false,
-    token: "",
-    userId: ""
+    availableUsers: [],
+    loggedInUser: {}
   }
 };
