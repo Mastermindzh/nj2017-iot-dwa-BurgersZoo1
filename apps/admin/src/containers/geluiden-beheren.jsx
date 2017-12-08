@@ -19,7 +19,6 @@ class GeluidenBeheren extends Component {
     addOpen: false,
   };
 
-
   render() {
 
     const { classes } = this.props;

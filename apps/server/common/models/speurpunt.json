@@ -35,6 +35,11 @@
       "type": "hasOne",
       "model": "dierengeluid",
       "foreignKey": ""
+    },
+    "verblijf": {
+      "type": "belongsTo",
+      "model": "verblijf",
+      "foreignKey": ""
     }
   },
   "acls": [],

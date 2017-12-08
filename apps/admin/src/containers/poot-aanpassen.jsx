@@ -36,6 +36,10 @@ class PootAanpassenContainer extends Component {
     this.props.fetchSpeurpunten();
   }
 
+  onRequestClose(){
+    this.setState({ popupOpen: false })
+  }
+
   render() {
 
     const { classes } = this.props;
@@ -92,7 +96,7 @@ class PootAanpassenContainer extends Component {
         </Grid>
 
         { this.state.type === this.ADD && this.state.popupOpen &&
-          <PootToevoegenContainer open={this.state.popupOpen} />
+          <PootToevoegenContainer open={this.state.popupOpen} onRequestClose={this.onRequestClose.bind(this)}/>
         }
 
         { this.state.type === this.EDIT && this.state.popupOpen &&

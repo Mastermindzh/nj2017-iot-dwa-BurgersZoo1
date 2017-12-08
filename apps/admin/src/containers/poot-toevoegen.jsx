@@ -1,33 +1,33 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { connect } from "react-redux";
 import { withStyles } from "material-ui/styles";
-import IconButton from "material-ui/IconButton";
-import Icon from "material-ui/Icon";
-import Grid from 'material-ui/Grid';
-import FileUpload from 'material-ui-icons/FileUpload';
-import Button from 'material-ui/Button';
+import Grid from "material-ui/Grid";
+import Button from "material-ui/Button";
 import Input, { InputLabel } from "material-ui/Input";
 import { FormControl } from "material-ui/Form";
+
 import _ from "lodash";
 import PopupComponent from "./../components/popup-component.jsx";
 import styles from "./../styles/style.js";
+import TextField from "material-ui/TextField";
+import Select from "material-ui/Select";
+import { MenuItem } from "material-ui/Menu";
 
 class PootToevoegenContainer extends Component {
   state = {
-    name: ""
+    name: "",
+    verblijf: "",
+    poot: ""
   };
 
-  // {
-  //   "pootid": [
-  //     0
-  //   ],
-  //   "geolocation": {
-  //     "lat": 0,
-  //     "lng": 0
-  //   },
-  //   "locatienaam": "string"
-  // }
+  /**
+   * change state on keypress
+   * @param {input} field name of the state key to change
+   * @param {*} event
+   */
+  handleChange(field, event) {
+    this.setState({ [field]: event.target.value });
+  }
 
   render() {
     const { classes } = this.props;
@@ -36,7 +36,7 @@ class PootToevoegenContainer extends Component {
       <PopupComponent
         title={"Een poot toevoegen"}
         open={this.props.open}
-        onRequestClose={() => this.setState({ popupOpen: false })}
+        onRequestClose={this.props.onRequestClose}
       >
         <Grid container spacing={24}>
           <Grid item xs={12}>
@@ -44,37 +44,59 @@ class PootToevoegenContainer extends Component {
               className={classes.formControl}
               style={{ width: "100%" }}
             >
-              <InputLabel htmlFor="geluid-naam"></InputLabel>
-              <Input
-                id="geluid-naam"
+              <TextField
+                id="locatie-naam"
+                label="Locatie"
+                className={classes.textField}
                 value={this.state.name}
                 onChange={event => this.setState({ name: event.target.value })}
+                margin="normal"
               />
             </FormControl>
           </Grid>
           <Grid item xs={12}>
-            <input
-              style={{ display: "none" }}
-              accept="image/*"
-              className={classes.input}
-              id="icon-button-file"
-              type="file"
-            />
-            <label htmlFor="icon-button-file">
-              <Button
-                color="default"
-                className={classes.button}
-                raised
-                component="span"
+            <FormControl
+              className={classes.formControl}
+              style={{ minWidth: "200px" }}
+            >
+              <InputLabel htmlFor="verblijf">Verblijf</InputLabel>
+              <Select
+                value={this.state.verblijf}
+                onChange={this.handleChange.bind(this, "verblijf")}
+                input={<Input name="verblijf" id="verblijf" />}
+                fullWidth
               >
-                Selecteer uw bestand
-                <FileUpload />
-              </Button>
-            </label>
+                <MenuItem value={10}>Ten</MenuItem>
+                <MenuItem value={20}>Twenty</MenuItem>
+                <MenuItem value={30}>
+                  ThirtyThirtyThirtyThirtyThirtyThirtyThirtyThirty
+                </MenuItem>
+              </Select>
+            </FormControl>
+          </Grid>
+          <Grid item xs={12}>
+            <FormControl
+              className={classes.formControl}
+              style={{ minWidth: "200px" }}
+            >
+              <InputLabel htmlFor="poot">Poot</InputLabel>
+              <Select
+                value={this.state.poot}
+                onChange={this.handleChange.bind(this, "poot")}
+                input={<Input name="poot" id="poot" />}
+                fullWidth
+              >
+                <MenuItem value={10}>Ten</MenuItem>
+                <MenuItem value={20}>Twenty</MenuItem>
+                <MenuItem value={30}>
+                  ThirtyThirtyThirtyThirtyThirtyThirtyThirtyThirty
+                </MenuItem>
+              </Select>
+            </FormControl>
           </Grid>
           <Grid item xs={12}>
             <Button className={classes.button} raised color="primary">
-               opslaan
+              opslaan
             </Button>
           </Grid>
         </Grid>
@@ -85,7 +107,8 @@ class PootToevoegenContainer extends Component {
 
 PootToevoegenContainer.propTypes = {
   classes: PropTypes.object,
-  open: PropTypes.bool
+  open: PropTypes.bool,
+  onRequestClose: PropTypes.func
 };
 
 export default withStyles(styles, { withTheme: true })(PootToevoegenContainer);
