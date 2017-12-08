@@ -4,6 +4,7 @@
 - Voor de Admin en Ranger App is het verwijderen van mockdata en koppelen aan de backend grotendeels af
 - De backend kan audio converteren naar een formaat dat de arduino kan afspelen
 - Technisch Ontwerp
+- Gateway kan berichten versturen naar de poten en nieuwe poten kunnen zichzelf aanmelden bij de backend.
 
 ### Resultaten:
 - Technisch Ontwerp
@@ -13,7 +14,7 @@
 - React redux lodash (Asher)
 - Deployment webservers (Rick)
 - Audio converteren (Sharon)
-- 
+- Validatie binnenkomende gegevens (Thomas)
 - 
 
 ## Planning week 3:
