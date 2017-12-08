@@ -10,7 +10,11 @@ import ReactAudioPlayer from 'react-audio-player';
 import Grid from 'material-ui/Grid';
 import PopupComponent from './../components/popup-component.jsx';
 import GeluidUploaden from './../containers/geluid-uploaden.jsx';
-import styles from './../styles/style.js';
+import styles from './../styles/style';
+import { connect } from 'react-redux';
+import _ from 'lodash';
+
+import { fetchDierengeluiden } from './../actions/dierengeluidenActions';
 
 class GeluidenBeheren extends Component {
 
@@ -19,53 +23,45 @@ class GeluidenBeheren extends Component {
     addOpen: false,
   };
 
+  componentWillMount() {
+    this.props.fetchDierengeluiden();
+  }
+
   render() {
 
     const { classes } = this.props;
 
     const headers = [
-      { text: 'Geluidsnaam' },
-      { text: 'Afspelen' }
+      { text: "ID" },
+      { text: "Beschrijving" },
+      { text: "Geluid" },
     ];
 
-    const data = [
-      {
-        key: 'gorilla row',
+    let results = [];
+
+    if (this.state.search != '') {
+      results = _.filter(this.props.dierengeluiden, obj => obj.beschrijving.toLowerCase().includes(this.state.search.toLowerCase()));
+    } else {
+      results = this.props.dierengeluiden;
+    }
+
+    const data = _.map(results, dierengeluid => {
+      return {
+        key: dierengeluid.id,
         children: [
-          {
-            children:
-            "Western lowland gorilla",
-            key: 'gorilla'
-          },
+          { children: dierengeluid.id },
+          { children: dierengeluid.beschrijving },
           {
             children:
             <ReactAudioPlayer
-              src="http://www.wavsource.com/snds_2017-09-17_1751672946049674/animals/monkey2.wav"
+              src={dierengeluid.bestandspad}
               controls
             />,
-            key: 'unique key'
+            key: `${dierengeluid.id} player`
           }
         ]
-      },
-      {
-        key: 'lion row',
-        children: [
-          {
-            children:
-            "Lion",
-            key: 'lion'
-          },
-          {
-            children:
-            <ReactAudioPlayer
-              src="http://www.wavsource.com/snds_2017-09-17_1751672946049674/animals/lion_roar.wav"
-              controls
-            />,
-            key: 'lion player'
-          }
-        ]
-      },
-    ];
+      };
+    });
 
     return (
       <div>
@@ -89,7 +85,7 @@ class GeluidenBeheren extends Component {
 
         {this.state.addOpen &&
           <PopupComponent title={"Geluid toevoegen"} open={this.state.addOpen} onRequestClose={() => this.setState({ addOpen: false })}>
-          <GeluidUploaden identifier="Geluid "/>
+            <GeluidUploaden identifier="Geluid " />
           </PopupComponent>
         }
       </div>
@@ -97,8 +93,16 @@ class GeluidenBeheren extends Component {
   }
 }
 
-PopupComponent.propTypes = {
+GeluidenBeheren.propTypes = {
   classes: PropTypes.object,
+  dierengeluiden: PropTypes.arrayOf.object,
+  fetchDierengeluiden: PropTypes.func
 };
 
-export default withStyles(styles, { withTheme: true })(GeluidenBeheren);
+function mapStateToProps(state) {
+  return {
+    dierengeluiden: state.dierengeluidenReducer.dierengeluiden
+  };
+}
+
+export default connect(mapStateToProps, { fetchDierengeluiden })(withStyles(styles, { withTheme: true })(GeluidenBeheren));

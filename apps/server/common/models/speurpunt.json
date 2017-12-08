@@ -26,11 +26,6 @@
   },
   "validations": [],
   "relations": {
-    "weetje": {
-      "type": "hasMany",
-      "model": "weetje",
-      "foreignKey": ""
-    },
     "dierengeluid": {
       "type": "hasOne",
       "model": "dierengeluid",
@@ -39,6 +34,11 @@
     "verblijf": {
       "type": "belongsTo",
       "model": "verblijf",
+      "foreignKey": ""
+    },
+    "weetjes": {
+      "type": "hasAndBelongsToMany",
+      "model": "weetje",
       "foreignKey": ""
     }
   },

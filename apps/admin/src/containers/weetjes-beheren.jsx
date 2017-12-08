@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import TableComponent from './../components/table-component.jsx';
+import { connect } from 'react-redux';
 import { withStyles } from 'material-ui/styles';
 import IconButton from 'material-ui/IconButton';
 import Icon from 'material-ui/Icon';
@@ -10,6 +11,9 @@ import ReactAudioPlayer from 'react-audio-player';
 import Grid from 'material-ui/Grid';
 import PopupComponent from './../components/popup-component.jsx';
 import GeluidUploaden from './../containers/geluid-uploaden.jsx';
+import _ from 'lodash';
+
+import { fetchWeetjes } from './../actions/weetjesActions';
 
 const styles = theme => ({
   container: {
@@ -28,58 +32,51 @@ class WeetjesBeheren extends Component {
     addOpen: false,
   };
 
+  componentWillMount(){
+    this.props.fetchWeetjes();
+  }
 
   render() {
 
     const { classes } = this.props;
 
     const headers = [
-      { text: 'Weetje' },
-      { text: 'Afspelen' }
+      { text: "ID"},
+      { text: "Beschrijving" },
+      { text: "Player" },
     ];
 
-    const data = [
-      {
-        key: 'knieen weetje',
+    let results = [];
+
+    if(this.state.search != ''){
+      results = _.filter(this.props.weetjes, obj => obj.beschrijving.toLowerCase().includes(this.state.search.toLowerCase()));
+    }else{
+      results = this.props.weetjes;
+    }
+
+    const data = _.map(results, weetje => {
+      return {
+        key: weetje.id,
         children: [
-          {
-            children:
-            "Een olifant heeft slechts 2 knieen",
-            key: 'olifant'
-          },
+
+          { children: weetje.id },
+          { children: weetje.beschrijving },
           {
             children:
             <ReactAudioPlayer
-              src="http://www.wavsource.com/snds_2017-09-17_1751672946049674/animals/elephant.wav"
+              src={`${weetje.bestandspad}`}
               controls
             />,
-            key: 'unique key'
+            key: `${weetje.id} player`
           }
         ]
-      },
-      {
-        key: 'lion row',
-        children: [
-          {
-            children:
-            "Leeuwen zijn cool!",
-            key: 'lion'
-          },
-          {
-            children:
-            <ReactAudioPlayer
-              src="http://www.wavsource.com/snds_2017-09-17_1751672946049674/animals/lion_roar.wav"
-              controls
-            />,
-            key: 'lion player'
-          }
-        ]
-      },
-    ];
+      };
+    });
 
     return (
       <div>
         <h1>Weetjes beheren</h1>
+
         <Grid container spacing={24}>
           <Grid item xs={12}>
             <div>
@@ -107,10 +104,19 @@ class WeetjesBeheren extends Component {
   }
 }
 
-PopupComponent.propTypes = {
+WeetjesBeheren.propTypes = {
   classes: PropTypes.object,
+  weetjes: PropTypes.arrayOf.object,
+  fetchWeetjes: PropTypes.func
 };
 
-export default withStyles(styles, { withTheme: true })(WeetjesBeheren);
+
+function mapStateToProps(state){
+  return {
+    weetjes: state.weetjesReducer.weetjes
+  };
+}
+
+export default connect(mapStateToProps,{fetchWeetjes})(withStyles(styles, { withTheme: true })(WeetjesBeheren));
 
 
