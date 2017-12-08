@@ -10,5 +10,5 @@ export function fetchWeetjes(){
     }).catch(err => {
       console.log(err);
     });
-  }
+  };
 }

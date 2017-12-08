@@ -10,5 +10,5 @@ export function fetchSpeurpunten(){
     }).catch(err => {
       console.log(err);
     });
-  }
+  };
 }
