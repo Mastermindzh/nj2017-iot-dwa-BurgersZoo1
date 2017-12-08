@@ -8,7 +8,7 @@ import { Route, Redirect, withRouter, Switch } from 'react-router-dom';
 import Layout from '../components/layout.jsx';
 import Login from '../components/login-component.jsx';
 import { login, fetchUsers } from '../actions/loginActions';
-import PrivateRoute from '../routes/private-route';
+import PrivateRoute from '../routes/private-route.jsx';
 
 class App extends React.Component {
 
