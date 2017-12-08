@@ -5,6 +5,7 @@
 - De backend kan audio converteren naar een formaat dat de arduino kan afspelen
 - Technisch Ontwerp
 - Gateway kan berichten versturen naar de poten en nieuwe poten kunnen zichzelf aanmelden bij de backend.
+- Poot code van groep 2 is gerefactort naar onze mooie OO structuur 
 
 ### Resultaten:
 - Technisch Ontwerp
@@ -15,14 +16,16 @@
 - Deployment webservers (Rick)
 - Audio converteren (Sharon)
 - Validatie binnenkomende gegevens (Thomas)
-- 
+- Poot Code Quality (Sijmen)
+- Materiaal Poot Behuizing (Sijmen)
+- NFC vs The Worl d(Sijmen)
 
-## Planning week 3:
+## Planning week 5:
 - Gateway Development versie 0.2
   - poot configuratie ontvangen en opslaan
 - Arduino Development versie 0.2
   - Onderzoek NRF24 Data transfer
-  - Poot Design
+  - Poot behuizing design
   - Poot behuizing modeleren en bouwen
 - Backend Development versie 0.2
   - endpoint om alle geluiden te downloaden
@@ -34,5 +37,5 @@
   - datum visits kiezen
 - Testplan
 
-### Doel week 3:
+### Doel week 5:
 Van veel onderdelen is versie 0.2 af. Komende week is het dus features knallen!! :)
