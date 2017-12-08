@@ -1,5 +1,6 @@
 package nl.han.mysensor.models;
 
+import com.google.gson.annotations.SerializedName;
 import nl.han.mysensor.models.myenums.MyCommand;
 import nl.han.mysensor.models.myenums.MyDataTypes;
 import nl.han.mysensor.models.myenums.MyInternal;
@@ -18,6 +19,7 @@ import org.mongodb.morphia.annotations.Id;
 public abstract class MyMessage {
 
     @Id
+    @SerializedName("_id")
     private ObjectId id;
 
     private Long nodeId;

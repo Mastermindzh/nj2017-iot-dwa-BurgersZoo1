@@ -10,7 +10,7 @@ import java.util.Map;
 
 public class CorsFilter {
 
-    private static final Map<String, String> corsHeaders = new HashMap<String, String>();
+    private static final Map<String, String> corsHeaders = new HashMap<>();
 
     static {
         corsHeaders.put("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,OPTIONS");

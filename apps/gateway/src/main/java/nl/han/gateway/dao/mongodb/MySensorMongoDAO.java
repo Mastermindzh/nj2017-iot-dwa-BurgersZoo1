@@ -1,39 +1,50 @@
 package nl.han.gateway.dao.mongodb;
 
+import com.google.gson.Gson;
+import com.mongodb.BasicDBObject;
+import com.mongodb.Block;
 import com.mongodb.MongoClient;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+import com.sun.org.apache.xpath.internal.SourceTree;
 import nl.han.gateway.dao.IMyMessagesDAO;
 import nl.han.gateway.util.GatewayProperties;
 import nl.han.mysensor.models.*;
+import nl.han.mysensor.service.MySensorReceiveService;
+import org.bson.Document;
 import org.bson.types.ObjectId;
 import org.mongodb.morphia.Datastore;
 import org.mongodb.morphia.Key;
 import org.mongodb.morphia.Morphia;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 
 public class MySensorMongoDAO implements IMyMessagesDAO {
 
     private final MongoClient client;
-    private final Datastore datastore;
+    private MongoCollection<Document> collection;
+    private Gson gson = new Gson();
+    private static Logger logger = LoggerFactory.getLogger(MySensorReceiveService.class.getName());
+
 
     public MySensorMongoDAO() {
         this.client = new MongoClient(GatewayProperties.getProperty("server.database.host")
                 , Integer.parseInt(GatewayProperties.getProperty("server.database.port")));
-        this.datastore = new Morphia()
-                .map(MyMessage.class)
-                .map(MyInternalMessage.class)
-                .map(MyPresentationMessage.class)
-                .map(MyReqMessage.class)
-                .map(MySetMessage.class)
-                .createDatastore(this.client, "mymessages");
+        MongoDatabase database = this.client.getDatabase("mymessages");
+        this.collection = database.getCollection("mymessages");
     }
 
     @Override
     public MyMessage save(MyMessage entity) {
-        Key<MyMessage> messageKey = this.datastore.save(entity);
-
-        return this.get(messageKey);
+        Document doc = Document.parse(gson.toJson(entity));
+        doc.append("class", entity.getClass().getCanonicalName());
+        this.collection.insertOne(doc);
+        return this.get((ObjectId) doc.get("_id"));
     }
 
     @Override
@@ -43,21 +54,17 @@ public class MySensorMongoDAO implements IMyMessagesDAO {
 
     @Override
     public List<MyMessage> getAll() {
-        List<MyMessage> resultList = new ArrayList<>();
-        resultList.addAll(this.datastore.find(MyInternalMessage.class).asList());
-        resultList.addAll(this.datastore.find(MyPresentationMessage.class).asList());
-        resultList.addAll(this.datastore.find(MyReqMessage.class).asList());
-        resultList.addAll(this.datastore.find(MySetMessage.class).asList());
-        resultList.sort((message1, message2) -> {
-            if (message1.getId().getTimestamp() > message2.getId().getTimestamp()) {
-                return 1;
-            } else if (message1.getId().getTimestamp() == message2.getId().getTimestamp()) {
-                return 0;
+        List<MyMessage> messageList = new ArrayList<>();
+        this.collection.find().forEach((Consumer<? super Document>) document -> {
+            MyMessage message = null;
+            try {
+                message = (MyMessage) gson.fromJson(document.toJson(), Class.forName(String.valueOf(document.get("class"))));
+            } catch (ClassNotFoundException e) {
+                logger.error("Could not cast given document to object", e);
             }
-            return -1;
+            messageList.add(message);
         });
-
-        return resultList;
+        return messageList;
     }
 
     @Override
@@ -67,12 +74,14 @@ public class MySensorMongoDAO implements IMyMessagesDAO {
 
     @Override
     public MyMessage get(ObjectId objectId) {
-        return this.datastore.get(MyMessage.class, objectId);
+        return null;
+//        return this.datastore.get(MyMessage.class, objectId);
     }
 
     @Override
     public MyMessage get(Key<MyMessage> key) {
-        return this.datastore.get(key.getType(), key.getId());
+        return null;
+//        return this.datastore.get(key.getType(), key.getId());
     }
 
 
@@ -80,4 +89,6 @@ public class MySensorMongoDAO implements IMyMessagesDAO {
     public void delete(MyMessage entity) {
 
     }
+
+
 }
