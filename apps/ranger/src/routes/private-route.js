@@ -6,7 +6,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
   return (
     <Route {...rest} render={props => (
       rest.isLoggedIn ? (
-        <Component {...props}/>
+        <Component {...props} user={rest.user}/>
       ) : (
         <Redirect to={{
           pathname: '/login',
@@ -18,7 +18,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
 };
 
 PrivateRoute.propTypes = {
-  component: PropTypes.object,
+  component: PropTypes.func,
   location: PropTypes.string
 };
 

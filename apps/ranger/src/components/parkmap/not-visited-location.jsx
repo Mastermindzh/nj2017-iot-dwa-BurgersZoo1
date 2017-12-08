@@ -34,7 +34,7 @@ class NotVisitedLocation extends Component {
 NotVisitedLocation.propTypes = {
   text: PropTypes.string,
   zoom: PropTypes.number,
-  children: PropTypes.arrayOf.children
+  children: PropTypes.arrayOf(PropTypes.children)
 };
 
 export default NotVisitedLocation;

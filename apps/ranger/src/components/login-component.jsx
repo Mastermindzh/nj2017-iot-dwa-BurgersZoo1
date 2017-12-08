@@ -55,7 +55,7 @@ class Login extends Component {
             input={<Input id="user-simple" />}
           >
             {availableUsers && availableUsers.map(user => {
-              return <MenuItem key={user} value={user}>{user}</MenuItem>
+              return <MenuItem key={user.id} value={user}>{`${user.id} (pas_id: ${user.pasid})`}</MenuItem>
             })}
           </Select>
         </FormControl>
@@ -67,8 +67,8 @@ class Login extends Component {
 Login.propTypes = {
   availableUsers: PropTypes.array.isRequired,
   onUserSelect: PropTypes.func.isRequired,
-  classes: PropTypes.array.isRequired,
-  location: PropTypes.string.isRequired,
+  classes: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired,
   redirectToReferrer: PropTypes.bool.isRequired
 };
 

@@ -3,15 +3,15 @@ import axios from 'axios';
 import { LOGIN_ACTIONS } from '../constants/actionTypes';
 import { PASSEN } from '../constants/endpoint-constants';
 
-export const login = (id) => {
+export const login = (user) => {
   return (dispatch) => {
     dispatch({
       type: LOGIN_ACTIONS.SET_LOGIN_FLAG,
       payload: true
     });
     dispatch({
-      type: LOGIN_ACTIONS.SET_LOGGED_IN_USER_ID,
-      payload: id
+      type: LOGIN_ACTIONS.SET_LOGGED_IN_USER,
+      payload: user
     });
   };
 };

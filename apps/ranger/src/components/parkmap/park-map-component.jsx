@@ -42,7 +42,7 @@ class ParkMapComponent extends Component {
 ParkMapComponent.propTypes = {
   center: PropTypes.object,
   zoom: PropTypes.number,
-  children: PropTypes.arrayOf.children
+  children: PropTypes.arrayOf(PropTypes.object)
 };
 
 export default ParkMapComponent;

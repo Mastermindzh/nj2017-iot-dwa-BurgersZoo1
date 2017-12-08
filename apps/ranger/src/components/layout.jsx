@@ -19,12 +19,11 @@ class Layout extends Component {
   }
 
   render() {
-    const { classes } = this.props;
+    const { classes, user } = this.props;
     const { open } = this.state;
-
     return (
       <div className={classes.appFrame}>
-        <AppBarComponent open={open} handleToggle={this.handleToggle.bind(this)} />
+        <AppBarComponent user={user} open={open} handleToggle={this.handleToggle.bind(this)} />
         <DrawerComponent open={open} handleToggle={this.handleToggle.bind(this)} />
 
         <main
@@ -43,6 +42,7 @@ class Layout extends Component {
 Layout.propTypes = {
   classes: PropTypes.object.isRequired,
   theme: PropTypes.object.isRequired,
+  user: PropTypes.object.isRequired
 };
 
 export default withStyles(style, { withTheme: true })(Layout);

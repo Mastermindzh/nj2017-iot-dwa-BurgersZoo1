@@ -38,12 +38,12 @@ class App extends React.Component {
           () => (
             <Login 
               availableUsers={this.props.session.availableUsers}
-              onUserSelect={(id) => this.props.login(id)}
+              onUserSelect={(user) => this.props.login(user)}
               redirectToReferrer={this.state.redirectToReferrer}
             />
           )}
         />
-        <PrivateRoute path="/home" component={Layout} isLoggedIn={this.props.session.isLoggedIn} />
+        <PrivateRoute path="/home" component={Layout} user={this.props.session.loggedInUser} isLoggedIn={this.props.session.isLoggedIn} />
       </div>
     );
   }
@@ -57,7 +57,7 @@ function mapStateToProps(state){
 
 App.propTypes = {
   classes: PropTypes.object.isRequired,
-  session: PropTypes.array.isRequired,
+  session: PropTypes.object.isRequired,
   theme: PropTypes.object.isRequired,
   fetchUsers: PropTypes.func.isRequired,
   login: PropTypes.func.isRequired

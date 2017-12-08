@@ -59,7 +59,7 @@ class AnimalResidenceSelect extends Component {
 AnimalResidenceSelect.propTypes = {
   classes: PropTypes.object.isRequired,
   onResidenceSelect: PropTypes.func.isRequired,
-  residences: PropTypes.arrayOf.object
+  residences: PropTypes.arrayOf(PropTypes.string)
 };
 
 export default withStyles(styles)(AnimalResidenceSelect);
