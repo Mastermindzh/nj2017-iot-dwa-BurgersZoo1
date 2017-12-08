@@ -1,8 +1,8 @@
 import React from 'react';
 
-import ParkMapComponent from '../parkmap/park-map-component.jsx';
-import AnimalResidenceLocation from '../parkmap/animal-residence-location.jsx';
-import NotVisitedLocation from '../parkmap/not-visited-location.jsx';
+import ParkMapComponent from './park-map-component.jsx';
+import AnimalResidenceLocation from './animal-residence-location.jsx';
+import NotVisitedLocation from './not-visited-location.jsx';
 
 const ParkOverviewComponent = () => {
   return (
