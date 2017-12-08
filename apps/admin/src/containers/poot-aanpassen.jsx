@@ -100,7 +100,7 @@ class PootAanpassenContainer extends Component {
         }
 
         { this.state.type === this.EDIT && this.state.popupOpen &&
-          <PootAanpassenPopupContainer open={this.state.popupOpen} />
+          <PootAanpassenPopupContainer open={this.state.popupOpen} onRequestClose={this.onRequestClose.bind(this)}/>
         }
       </div>
     );

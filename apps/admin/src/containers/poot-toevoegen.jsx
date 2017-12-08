@@ -6,7 +6,6 @@ import Button from "material-ui/Button";
 import Input, { InputLabel } from "material-ui/Input";
 import { FormControl } from "material-ui/Form";
 
-import _ from "lodash";
 import PopupComponent from "./../components/popup-component.jsx";
 import styles from "./../styles/style.js";
 import TextField from "material-ui/TextField";
@@ -66,11 +65,9 @@ class PootToevoegenContainer extends Component {
                 input={<Input name="verblijf" id="verblijf" />}
                 fullWidth
               >
-                <MenuItem value={10}>Ten</MenuItem>
-                <MenuItem value={20}>Twenty</MenuItem>
-                <MenuItem value={30}>
-                  ThirtyThirtyThirtyThirtyThirtyThirtyThirtyThirty
-                </MenuItem>
+                <MenuItem value={10}>Apenverblijf</MenuItem>
+                <MenuItem value={20}>Olifantenverblijf</MenuItem>
+                <MenuItem value={30}>De maki's</MenuItem>
               </Select>
             </FormControl>
           </Grid>
@@ -86,11 +83,9 @@ class PootToevoegenContainer extends Component {
                 input={<Input name="poot" id="poot" />}
                 fullWidth
               >
-                <MenuItem value={10}>Ten</MenuItem>
-                <MenuItem value={20}>Twenty</MenuItem>
-                <MenuItem value={30}>
-                  ThirtyThirtyThirtyThirtyThirtyThirtyThirtyThirty
-                </MenuItem>
+                <MenuItem value={10}>Poot nummer 1</MenuItem>
+                <MenuItem value={20}>Poot nummer 2</MenuItem>
+                <MenuItem value={30}>Poot nummer 3</MenuItem>
               </Select>
             </FormControl>
           </Grid>
