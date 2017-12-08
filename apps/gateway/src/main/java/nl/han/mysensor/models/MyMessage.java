@@ -4,6 +4,9 @@ import nl.han.mysensor.models.myenums.MyCommand;
 import nl.han.mysensor.models.myenums.MyDataTypes;
 import nl.han.mysensor.models.myenums.MyInternal;
 import nl.han.mysensor.models.myenums.MyPresentationType;
+import org.bson.types.ObjectId;
+import org.mongodb.morphia.annotations.Entity;
+import org.mongodb.morphia.annotations.Id;
 
 /**
  * Abstract MySensor message
@@ -11,12 +14,17 @@ import nl.han.mysensor.models.myenums.MyPresentationType;
  * @author Thomas
  * @since 0.1
  */
+@Entity
 public abstract class MyMessage {
-    private final Long nodeId;
-    private final int childSensorId;
-    private final MyCommand command;
-    private final boolean ack;
-    private final String payload;
+
+    @Id
+    private ObjectId id;
+
+    private Long nodeId;
+    private int childSensorId;
+    private MyCommand command;
+    private boolean ack;
+    private String payload;
 
     public MyMessage(Long nodeId, int childSensorId, MyCommand command, boolean ack, String payload) {
         this.nodeId = nodeId;
@@ -24,6 +32,9 @@ public abstract class MyMessage {
         this.command = command;
         this.ack = ack;
         this.payload = payload;
+    }
+
+    public MyMessage() {
     }
 
     private MyMessage(Builder builder) {
@@ -38,6 +49,14 @@ public abstract class MyMessage {
         return new Builder();
     }
 
+
+    public ObjectId getId() {
+        return id;
+    }
+
+    public void setId(ObjectId id) {
+        this.id = id;
+    }
 
     public Long getNodeId() {
         return nodeId;
