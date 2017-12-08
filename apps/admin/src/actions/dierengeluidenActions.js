@@ -10,5 +10,5 @@ export function fetchDierengeluiden(){
     }).catch(err => {
       console.log(err);
     });
-  }
+  };
 }
