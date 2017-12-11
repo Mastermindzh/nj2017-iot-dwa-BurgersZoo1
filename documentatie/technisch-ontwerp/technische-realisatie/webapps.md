@@ -13,7 +13,7 @@ de DWA-course onderwezen is.
 ## Redux
 
 Het maken van een applicatie in React kan snel uit de hand lopen als je applicatie groter wordt. Om structuur in de applicatie
-aan te brengen is gekozen Redux.
+aan te brengen is gekozen voor Redux.
 
 Met Redux beheer je state op applicatieniveau. Redux bestaat
 uit een aantal onderdelen (behalve de ui view uit de onderstaande afbeelding):
@@ -65,6 +65,13 @@ Webpack is een module bundler om grote JavaScript producten te bouwen. De core v
 - __Output:__ Vertelt webpack waar hij gemaakte bundles neer moet zetten en hoe ze genoemd moeten worden.
 - __Loaders:__ Zorgen er voor dat webpack meer kan verwerken dan alleen JavaScript files. (webpack zelf verstaat alleen JavaScript) Loaders geven je de mogelijkheid om allerlei soorten files te converteren naar modules. Zoals SCSS files naar CSS modules.
 - __Plugins:__ Terwijl loaders worden gebruikt voor transformatie, kunnen plugins een scala aan functionaliteiten leveren zoals optimalisatie, minificatie van files en het definiëren van environment-variables. Dat is bijvoorbeeld super handig om in je code onderscheid te maken tussen dev- en productie. Bij dev heb je Hot Module Replacement nodig, maar in productie weer niet. In je code kan je environment variables gebruiken.
+
+## React Slingshot
+
+![reactslingshot](https://cloud.githubusercontent.com/assets/3129129/22811426/bb69dc06-ef0c-11e6-8092-a0bea9060b35.png)
+
+Webpack is niet zelf geconfigureerd, maar gegenereerd met behulp van [React Slingshot](https://github.com/coryhouse/react-slingshot). Een starter-kit om snel een react-applicatie neer te zetten zonder zelf te hoeven configureren.
+
 
 
 ## Middleware
