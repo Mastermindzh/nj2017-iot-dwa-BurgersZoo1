@@ -84,9 +84,9 @@ Teamcity checkt de volledige repo uit (dat is ook het Git path dat je opgeeft) e
 Uiteindelijk is dan de laatste succesvolle build artifact te downloaden via:
 `http://192.168.178.17:8111/guestAuth/repository/download/Nj2017IotDwaBurgersZoo1_GatewayBuild/.lastSuccessful/gateway-1.0-SNAPSHOT.jar`.
 
-Wat ook super handig is, is de testcoverage die inzichtelijk gemaakt wordt, direct in de build resultaten. Hierdoor is snel te zien hoe het met de tests zit (en dus een stukje code kwaliteit). ![Test coverage resultaten](/testcoverage-teamcity.PNG)
+Wat ook super handig is, is de testcoverage die inzichtelijk gemaakt wordt, direct in de build resultaten. Hierdoor is snel te zien hoe het met de tests zit (en dus een stukje code kwaliteit). ![Test coverage resultaten](testcoverage-teamcity.PNG)
 
-Het is ook mogenlijk om verschillende branches te bouwen, iets wat dus handig kan zijn om snel een artifact te creeëren voor een feature branch. ![Bouwen verschillende feature branches](/teamcity-branch-checkout.PNG)
+Het is ook mogenlijk om verschillende branches te bouwen, iets wat dus handig kan zijn om snel een artifact te creeëren voor een feature branch. ![Bouwen verschillende feature branches](teamcity-branch-checkout.PNG)
  
 ## Resultaat
 Het is vrij gemakkelijk om een build server op te zetten, ik heb hier niet meer dan een dag over gedaan om twee nieuwe build servers te onderzoeken, op te zetten en build taken op te zetten om artifacts te produceren voor de Raspberry Pi. 
