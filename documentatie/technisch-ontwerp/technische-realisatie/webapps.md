@@ -79,7 +79,7 @@ Aan React Redux kun je middleware toevoegen zodat het deel uitmaakt van de Redux
 ### Redux Thunk
 
 **Het probleem:**<br />
-Normaal gesproken returnen action creators een actie waarnaar Redux luistert. Dit brengt een probleem met zich mee als je asynchrone API calls maakt, want dan krijg je onafgehandelde promises in je redux app state. Vervolgens wordt er niet meer genotificeerd wanneer de promise afgehandeld (resolved is), dus weet Redux niet dat alle react componenten re-rendered moeten worden. Redux Thunk biedt hiervoor een oplossing.
+Normaal gesproken returnen action creators een actie waarnaar Redux luistert. Dit brengt een probleem met zich mee als je asynchrone API calls maakt, want dan krijg je onafgehandelde promises in je redux app state. Vervolgens wordt er niet meer genotificeerd wanneer de promise afgehandeld (resolved) is, dus weet Redux niet of er react componenten re-rendered moeten worden. Redux Thunk biedt hiervoor een oplossing.
 
 **De oplossing:**<br />
 Redux Thunk middleware geeft je de mogelijkheid om action creators te schrijven die een functie returnen in plaats van een actie. De middleware 'injecteert' alle functies van de Redux Store (zoals``` dispatch()``` en ```getState()```). Zo heb je als ontwikkelaar volledig de controle over het moment waarop je acties wil dispatchen. Bijvoorbeeld in een ```Promise.then()```, of onder een bepaalde conditie.
