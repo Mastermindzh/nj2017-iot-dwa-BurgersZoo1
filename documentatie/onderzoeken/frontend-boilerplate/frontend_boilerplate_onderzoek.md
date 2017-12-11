@@ -76,7 +76,7 @@ Om geschikte kandidaat tools te vinden is er op Google gezocht naar "react redux
 In de onderstaande tabel staan de onderzoeksbevindingen in een comparison chart:
 
 
-![Comparison chart](./images/ComparisonChartBoilerplate.png)
+![Comparison chart](./ComparisonChartBoilerplate.png)
 
 
 ## Conclusie
