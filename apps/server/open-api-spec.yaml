@@ -1,0 +1,3938 @@
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: BurgersZoo
+basePath: /api
+paths:
+  /rangers:
+    post:
+      tags:
+        - ranger
+      summary: Create a new instance of the model and persist it into the data source.
+      operationId: ranger.create
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/ranger'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/ranger'
+      deprecated: false
+    patch:
+      tags:
+        - ranger
+      summary: >-
+        Patch an existing model instance or insert a new one into the data
+        source.
+      operationId: ranger.patchOrCreate
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/ranger'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/ranger'
+      deprecated: false
+    put:
+      tags:
+        - ranger
+      summary: >-
+        Replace an existing model instance or insert a new one into the data
+        source.
+      operationId: ranger.replaceOrCreate__put_rangers
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/ranger'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/ranger'
+      deprecated: false
+    get:
+      tags:
+        - ranger
+      summary: Find all instances of the model matched by filter from the data source.
+      operationId: ranger.find
+      parameters:
+        - name: filter
+          in: query
+          description: >-
+            Filter defining fields, where, include, order, offset, and limit -
+            must be a JSON-encoded string ({"something":"value"})
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ranger'
+      deprecated: false
+  /rangers/replaceOrCreate:
+    post:
+      tags:
+        - ranger
+      summary: >-
+        Replace an existing model instance or insert a new one into the data
+        source.
+      operationId: ranger.replaceOrCreate__post_rangers_replaceOrCreate
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/ranger'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/ranger'
+      deprecated: false
+  /rangers/upsertWithWhere:
+    post:
+      tags:
+        - ranger
+      summary: >-
+        Update an existing model instance or insert a new one into the data
+        source based on the where criteria.
+      operationId: ranger.upsertWithWhere
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            description: An object of model property name/value pairs
+            $ref: '#/definitions/ranger'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/ranger'
+      deprecated: false
+  '/rangers/{id}/exists':
+    get:
+      tags:
+        - ranger
+      summary: Check whether a model instance exists in the data source.
+      operationId: 'ranger.exists__get_rangers_{id}_exists'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              exists:
+                type: boolean
+      deprecated: false
+  '/rangers/{id}':
+    head:
+      tags:
+        - ranger
+      summary: Check whether a model instance exists in the data source.
+      operationId: 'ranger.exists__head_rangers_{id}'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              exists:
+                type: boolean
+      deprecated: false
+    get:
+      tags:
+        - ranger
+      summary: 'Find a model instance by {{id}} from the data source.'
+      operationId: ranger.findById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+        - name: filter
+          in: query
+          description: >-
+            Filter defining fields and include - must be a JSON-encoded string
+            ({"something":"value"})
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/ranger'
+      deprecated: false
+    put:
+      tags:
+        - ranger
+      summary: >-
+        Replace attributes for a model instance and persist it into the data
+        source.
+      operationId: 'ranger.replaceById__put_rangers_{id}'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/ranger'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/ranger'
+      deprecated: false
+    delete:
+      tags:
+        - ranger
+      summary: 'Delete a model instance by {{id}} from the data source.'
+      operationId: ranger.deleteById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+      deprecated: false
+    patch:
+      tags:
+        - ranger
+      summary: >-
+        Patch attributes for a model instance and persist it into the data
+        source.
+      operationId: ranger.prototype.patchAttributes
+      parameters:
+        - name: id
+          in: path
+          description: ranger id
+          required: true
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            description: An object of model property name/value pairs
+            $ref: '#/definitions/ranger'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/ranger'
+      deprecated: false
+  '/rangers/{id}/replace':
+    post:
+      tags:
+        - ranger
+      summary: >-
+        Replace attributes for a model instance and persist it into the data
+        source.
+      operationId: 'ranger.replaceById__post_rangers_{id}_replace'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/ranger'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/ranger'
+      deprecated: false
+  /rangers/findOne:
+    get:
+      tags:
+        - ranger
+      summary: Find first instance of the model matched by filter from the data source.
+      operationId: ranger.findOne
+      parameters:
+        - name: filter
+          in: query
+          description: >-
+            Filter defining fields, where, include, order, offset, and limit -
+            must be a JSON-encoded string ({"something":"value"})
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/ranger'
+      deprecated: false
+  /rangers/update:
+    post:
+      tags:
+        - ranger
+      summary: 'Update instances of the model matched by {{where}} from the data source.'
+      operationId: ranger.updateAll
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            description: An object of model property name/value pairs
+            $ref: '#/definitions/ranger'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            description: Information related to the outcome of the operation
+            type: object
+            properties:
+              count:
+                description: The number of instances updated
+                type: number
+                format: double
+      deprecated: false
+  /rangers/count:
+    get:
+      tags:
+        - ranger
+      summary: Count instances of the model matched by where from the data source.
+      operationId: ranger.count
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              count:
+                type: number
+                format: double
+      deprecated: false
+  /rangers/change-stream:
+    post:
+      tags:
+        - ranger
+      summary: Create a change stream.
+      operationId: ranger.createChangeStream__post_rangers_change-stream
+      parameters:
+        - name: options
+          in: formData
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: file
+      deprecated: false
+    get:
+      tags:
+        - ranger
+      summary: Create a change stream.
+      operationId: ranger.createChangeStream__get_rangers_change-stream
+      parameters:
+        - name: options
+          in: query
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: file
+      deprecated: false
+  '/weetjes/{id}/speurpunt':
+    get:
+      tags:
+        - weetje
+      summary: Fetches belongsTo relation speurpunt.
+      operationId: weetje.prototype.__get__speurpunt
+      parameters:
+        - name: id
+          in: path
+          description: weetje id
+          required: true
+          type: string
+          format: JSON
+        - name: refresh
+          in: query
+          required: false
+          type: boolean
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/speurpunt'
+      deprecated: false
+  /weetjes:
+    post:
+      tags:
+        - weetje
+      summary: Create a new instance of the model and persist it into the data source.
+      operationId: weetje.create
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/weetje'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/weetje'
+      deprecated: false
+    patch:
+      tags:
+        - weetje
+      summary: >-
+        Patch an existing model instance or insert a new one into the data
+        source.
+      operationId: weetje.patchOrCreate
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/weetje'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/weetje'
+      deprecated: false
+    put:
+      tags:
+        - weetje
+      summary: >-
+        Replace an existing model instance or insert a new one into the data
+        source.
+      operationId: weetje.replaceOrCreate__put_weetjes
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/weetje'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/weetje'
+      deprecated: false
+    get:
+      tags:
+        - weetje
+      summary: Find all instances of the model matched by filter from the data source.
+      operationId: weetje.find
+      parameters:
+        - name: filter
+          in: query
+          description: >-
+            Filter defining fields, where, include, order, offset, and limit -
+            must be a JSON-encoded string ({"something":"value"})
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/weetje'
+      deprecated: false
+  /weetjes/replaceOrCreate:
+    post:
+      tags:
+        - weetje
+      summary: >-
+        Replace an existing model instance or insert a new one into the data
+        source.
+      operationId: weetje.replaceOrCreate__post_weetjes_replaceOrCreate
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/weetje'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/weetje'
+      deprecated: false
+  /weetjes/upsertWithWhere:
+    post:
+      tags:
+        - weetje
+      summary: >-
+        Update an existing model instance or insert a new one into the data
+        source based on the where criteria.
+      operationId: weetje.upsertWithWhere
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            description: An object of model property name/value pairs
+            $ref: '#/definitions/weetje'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/weetje'
+      deprecated: false
+  '/weetjes/{id}/exists':
+    get:
+      tags:
+        - weetje
+      summary: Check whether a model instance exists in the data source.
+      operationId: 'weetje.exists__get_weetjes_{id}_exists'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              exists:
+                type: boolean
+      deprecated: false
+  '/weetjes/{id}':
+    head:
+      tags:
+        - weetje
+      summary: Check whether a model instance exists in the data source.
+      operationId: 'weetje.exists__head_weetjes_{id}'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              exists:
+                type: boolean
+      deprecated: false
+    get:
+      tags:
+        - weetje
+      summary: 'Find a model instance by {{id}} from the data source.'
+      operationId: weetje.findById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+        - name: filter
+          in: query
+          description: >-
+            Filter defining fields and include - must be a JSON-encoded string
+            ({"something":"value"})
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/weetje'
+      deprecated: false
+    put:
+      tags:
+        - weetje
+      summary: >-
+        Replace attributes for a model instance and persist it into the data
+        source.
+      operationId: 'weetje.replaceById__put_weetjes_{id}'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/weetje'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/weetje'
+      deprecated: false
+    delete:
+      tags:
+        - weetje
+      summary: 'Delete a model instance by {{id}} from the data source.'
+      operationId: weetje.deleteById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+      deprecated: false
+    patch:
+      tags:
+        - weetje
+      summary: >-
+        Patch attributes for a model instance and persist it into the data
+        source.
+      operationId: weetje.prototype.patchAttributes
+      parameters:
+        - name: id
+          in: path
+          description: weetje id
+          required: true
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            description: An object of model property name/value pairs
+            $ref: '#/definitions/weetje'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/weetje'
+      deprecated: false
+  '/weetjes/{id}/replace':
+    post:
+      tags:
+        - weetje
+      summary: >-
+        Replace attributes for a model instance and persist it into the data
+        source.
+      operationId: 'weetje.replaceById__post_weetjes_{id}_replace'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/weetje'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/weetje'
+      deprecated: false
+  /weetjes/findOne:
+    get:
+      tags:
+        - weetje
+      summary: Find first instance of the model matched by filter from the data source.
+      operationId: weetje.findOne
+      parameters:
+        - name: filter
+          in: query
+          description: >-
+            Filter defining fields, where, include, order, offset, and limit -
+            must be a JSON-encoded string ({"something":"value"})
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/weetje'
+      deprecated: false
+  /weetjes/update:
+    post:
+      tags:
+        - weetje
+      summary: 'Update instances of the model matched by {{where}} from the data source.'
+      operationId: weetje.updateAll
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            description: An object of model property name/value pairs
+            $ref: '#/definitions/weetje'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            description: Information related to the outcome of the operation
+            type: object
+            properties:
+              count:
+                description: The number of instances updated
+                type: number
+                format: double
+      deprecated: false
+  /weetjes/count:
+    get:
+      tags:
+        - weetje
+      summary: Count instances of the model matched by where from the data source.
+      operationId: weetje.count
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              count:
+                type: number
+                format: double
+      deprecated: false
+  /weetjes/change-stream:
+    post:
+      tags:
+        - weetje
+      summary: Create a change stream.
+      operationId: weetje.createChangeStream__post_weetjes_change-stream
+      parameters:
+        - name: options
+          in: formData
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: file
+      deprecated: false
+    get:
+      tags:
+        - weetje
+      summary: Create a change stream.
+      operationId: weetje.createChangeStream__get_weetjes_change-stream
+      parameters:
+        - name: options
+          in: query
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: file
+      deprecated: false
+  '/dierengeluiden/{id}/speurpunt':
+    get:
+      tags:
+        - dierengeluid
+      summary: Fetches belongsTo relation speurpunt.
+      operationId: dierengeluid.prototype.__get__speurpunt
+      parameters:
+        - name: id
+          in: path
+          description: dierengeluid id
+          required: true
+          type: string
+          format: JSON
+        - name: refresh
+          in: query
+          required: false
+          type: boolean
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/speurpunt'
+      deprecated: false
+  /dierengeluiden:
+    post:
+      tags:
+        - dierengeluid
+      summary: Create a new instance of the model and persist it into the data source.
+      operationId: dierengeluid.create
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/dierengeluid'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/dierengeluid'
+      deprecated: false
+    patch:
+      tags:
+        - dierengeluid
+      summary: >-
+        Patch an existing model instance or insert a new one into the data
+        source.
+      operationId: dierengeluid.patchOrCreate
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/dierengeluid'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/dierengeluid'
+      deprecated: false
+    put:
+      tags:
+        - dierengeluid
+      summary: >-
+        Replace an existing model instance or insert a new one into the data
+        source.
+      operationId: dierengeluid.replaceOrCreate__put_dierengeluiden
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/dierengeluid'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/dierengeluid'
+      deprecated: false
+    get:
+      tags:
+        - dierengeluid
+      summary: Find all instances of the model matched by filter from the data source.
+      operationId: dierengeluid.find
+      parameters:
+        - name: filter
+          in: query
+          description: >-
+            Filter defining fields, where, include, order, offset, and limit -
+            must be a JSON-encoded string ({"something":"value"})
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/dierengeluid'
+      deprecated: false
+  /dierengeluiden/replaceOrCreate:
+    post:
+      tags:
+        - dierengeluid
+      summary: >-
+        Replace an existing model instance or insert a new one into the data
+        source.
+      operationId: dierengeluid.replaceOrCreate__post_dierengeluiden_replaceOrCreate
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/dierengeluid'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/dierengeluid'
+      deprecated: false
+  /dierengeluiden/upsertWithWhere:
+    post:
+      tags:
+        - dierengeluid
+      summary: >-
+        Update an existing model instance or insert a new one into the data
+        source based on the where criteria.
+      operationId: dierengeluid.upsertWithWhere
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            description: An object of model property name/value pairs
+            $ref: '#/definitions/dierengeluid'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/dierengeluid'
+      deprecated: false
+  '/dierengeluiden/{id}/exists':
+    get:
+      tags:
+        - dierengeluid
+      summary: Check whether a model instance exists in the data source.
+      operationId: 'dierengeluid.exists__get_dierengeluiden_{id}_exists'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              exists:
+                type: boolean
+      deprecated: false
+  '/dierengeluiden/{id}':
+    head:
+      tags:
+        - dierengeluid
+      summary: Check whether a model instance exists in the data source.
+      operationId: 'dierengeluid.exists__head_dierengeluiden_{id}'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              exists:
+                type: boolean
+      deprecated: false
+    get:
+      tags:
+        - dierengeluid
+      summary: 'Find a model instance by {{id}} from the data source.'
+      operationId: dierengeluid.findById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+        - name: filter
+          in: query
+          description: >-
+            Filter defining fields and include - must be a JSON-encoded string
+            ({"something":"value"})
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/dierengeluid'
+      deprecated: false
+    put:
+      tags:
+        - dierengeluid
+      summary: >-
+        Replace attributes for a model instance and persist it into the data
+        source.
+      operationId: 'dierengeluid.replaceById__put_dierengeluiden_{id}'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/dierengeluid'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/dierengeluid'
+      deprecated: false
+    delete:
+      tags:
+        - dierengeluid
+      summary: 'Delete a model instance by {{id}} from the data source.'
+      operationId: dierengeluid.deleteById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+      deprecated: false
+    patch:
+      tags:
+        - dierengeluid
+      summary: >-
+        Patch attributes for a model instance and persist it into the data
+        source.
+      operationId: dierengeluid.prototype.patchAttributes
+      parameters:
+        - name: id
+          in: path
+          description: dierengeluid id
+          required: true
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            description: An object of model property name/value pairs
+            $ref: '#/definitions/dierengeluid'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/dierengeluid'
+      deprecated: false
+  '/dierengeluiden/{id}/replace':
+    post:
+      tags:
+        - dierengeluid
+      summary: >-
+        Replace attributes for a model instance and persist it into the data
+        source.
+      operationId: 'dierengeluid.replaceById__post_dierengeluiden_{id}_replace'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/dierengeluid'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/dierengeluid'
+      deprecated: false
+  /dierengeluiden/findOne:
+    get:
+      tags:
+        - dierengeluid
+      summary: Find first instance of the model matched by filter from the data source.
+      operationId: dierengeluid.findOne
+      parameters:
+        - name: filter
+          in: query
+          description: >-
+            Filter defining fields, where, include, order, offset, and limit -
+            must be a JSON-encoded string ({"something":"value"})
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/dierengeluid'
+      deprecated: false
+  /dierengeluiden/update:
+    post:
+      tags:
+        - dierengeluid
+      summary: 'Update instances of the model matched by {{where}} from the data source.'
+      operationId: dierengeluid.updateAll
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            description: An object of model property name/value pairs
+            $ref: '#/definitions/dierengeluid'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            description: Information related to the outcome of the operation
+            type: object
+            properties:
+              count:
+                description: The number of instances updated
+                type: number
+                format: double
+      deprecated: false
+  /dierengeluiden/count:
+    get:
+      tags:
+        - dierengeluid
+      summary: Count instances of the model matched by where from the data source.
+      operationId: dierengeluid.count
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              count:
+                type: number
+                format: double
+      deprecated: false
+  /dierengeluiden/change-stream:
+    post:
+      tags:
+        - dierengeluid
+      summary: Create a change stream.
+      operationId: dierengeluid.createChangeStream__post_dierengeluiden_change-stream
+      parameters:
+        - name: options
+          in: formData
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: file
+      deprecated: false
+    get:
+      tags:
+        - dierengeluid
+      summary: Create a change stream.
+      operationId: dierengeluid.createChangeStream__get_dierengeluiden_change-stream
+      parameters:
+        - name: options
+          in: query
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: file
+      deprecated: false
+  '/speurpunten/{id}/weetje/{fk}':
+    get:
+      tags:
+        - speurpunt
+      summary: Find a related item by id for weetje.
+      operationId: speurpunt.prototype.__findById__weetje
+      parameters:
+        - name: id
+          in: path
+          description: speurpunt id
+          required: true
+          type: string
+          format: JSON
+        - name: fk
+          in: path
+          description: Foreign key for weetje
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/weetje'
+      deprecated: false
+    delete:
+      tags:
+        - speurpunt
+      summary: Delete a related item by id for weetje.
+      operationId: speurpunt.prototype.__destroyById__weetje
+      parameters:
+        - name: id
+          in: path
+          description: speurpunt id
+          required: true
+          type: string
+          format: JSON
+        - name: fk
+          in: path
+          description: Foreign key for weetje
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '204':
+          description: Request was successful
+      deprecated: false
+    put:
+      tags:
+        - speurpunt
+      summary: Update a related item by id for weetje.
+      operationId: speurpunt.prototype.__updateById__weetje
+      parameters:
+        - name: id
+          in: path
+          description: speurpunt id
+          required: true
+          type: string
+          format: JSON
+        - name: fk
+          in: path
+          description: Foreign key for weetje
+          required: true
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          required: false
+          schema:
+            $ref: '#/definitions/weetje'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/weetje'
+      deprecated: false
+  '/speurpunten/{id}/dierengeluid':
+    get:
+      tags:
+        - speurpunt
+      summary: Fetches hasOne relation dierengeluid.
+      operationId: speurpunt.prototype.__get__dierengeluid
+      parameters:
+        - name: id
+          in: path
+          description: speurpunt id
+          required: true
+          type: string
+          format: JSON
+        - name: refresh
+          in: query
+          required: false
+          type: boolean
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/dierengeluid'
+      deprecated: false
+    post:
+      tags:
+        - speurpunt
+      summary: Creates a new instance in dierengeluid of this model.
+      operationId: speurpunt.prototype.__create__dierengeluid
+      parameters:
+        - name: id
+          in: path
+          description: speurpunt id
+          required: true
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          required: false
+          schema:
+            $ref: '#/definitions/dierengeluid'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/dierengeluid'
+      deprecated: false
+    put:
+      tags:
+        - speurpunt
+      summary: Update dierengeluid of this model.
+      operationId: speurpunt.prototype.__update__dierengeluid
+      parameters:
+        - name: id
+          in: path
+          description: speurpunt id
+          required: true
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          required: false
+          schema:
+            $ref: '#/definitions/dierengeluid'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/dierengeluid'
+      deprecated: false
+    delete:
+      tags:
+        - speurpunt
+      summary: Deletes dierengeluid of this model.
+      operationId: speurpunt.prototype.__destroy__dierengeluid
+      parameters:
+        - name: id
+          in: path
+          description: speurpunt id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '204':
+          description: Request was successful
+      deprecated: false
+  '/speurpunten/{id}/weetje':
+    get:
+      tags:
+        - speurpunt
+      summary: Queries weetje of speurpunt.
+      operationId: speurpunt.prototype.__get__weetje
+      parameters:
+        - name: id
+          in: path
+          description: speurpunt id
+          required: true
+          type: string
+          format: JSON
+        - name: filter
+          in: query
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/weetje'
+      deprecated: false
+    post:
+      tags:
+        - speurpunt
+      summary: Creates a new instance in weetje of this model.
+      operationId: speurpunt.prototype.__create__weetje
+      parameters:
+        - name: id
+          in: path
+          description: speurpunt id
+          required: true
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          required: false
+          schema:
+            $ref: '#/definitions/weetje'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/weetje'
+      deprecated: false
+    delete:
+      tags:
+        - speurpunt
+      summary: Deletes all weetje of this model.
+      operationId: speurpunt.prototype.__delete__weetje
+      parameters:
+        - name: id
+          in: path
+          description: speurpunt id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '204':
+          description: Request was successful
+      deprecated: false
+  '/speurpunten/{id}/weetje/count':
+    get:
+      tags:
+        - speurpunt
+      summary: Counts weetje of speurpunt.
+      operationId: speurpunt.prototype.__count__weetje
+      parameters:
+        - name: id
+          in: path
+          description: speurpunt id
+          required: true
+          type: string
+          format: JSON
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              count:
+                type: number
+                format: double
+      deprecated: false
+  /speurpunten:
+    post:
+      tags:
+        - speurpunt
+      summary: Create a new instance of the model and persist it into the data source.
+      operationId: speurpunt.create
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/speurpunt'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/speurpunt'
+      deprecated: false
+    patch:
+      tags:
+        - speurpunt
+      summary: >-
+        Patch an existing model instance or insert a new one into the data
+        source.
+      operationId: speurpunt.patchOrCreate
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/speurpunt'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/speurpunt'
+      deprecated: false
+    put:
+      tags:
+        - speurpunt
+      summary: >-
+        Replace an existing model instance or insert a new one into the data
+        source.
+      operationId: speurpunt.replaceOrCreate__put_speurpunten
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/speurpunt'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/speurpunt'
+      deprecated: false
+    get:
+      tags:
+        - speurpunt
+      summary: Find all instances of the model matched by filter from the data source.
+      operationId: speurpunt.find
+      parameters:
+        - name: filter
+          in: query
+          description: >-
+            Filter defining fields, where, include, order, offset, and limit -
+            must be a JSON-encoded string ({"something":"value"})
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/speurpunt'
+      deprecated: false
+  /speurpunten/replaceOrCreate:
+    post:
+      tags:
+        - speurpunt
+      summary: >-
+        Replace an existing model instance or insert a new one into the data
+        source.
+      operationId: speurpunt.replaceOrCreate__post_speurpunten_replaceOrCreate
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/speurpunt'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/speurpunt'
+      deprecated: false
+  /speurpunten/upsertWithWhere:
+    post:
+      tags:
+        - speurpunt
+      summary: >-
+        Update an existing model instance or insert a new one into the data
+        source based on the where criteria.
+      operationId: speurpunt.upsertWithWhere
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            description: An object of model property name/value pairs
+            $ref: '#/definitions/speurpunt'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/speurpunt'
+      deprecated: false
+  '/speurpunten/{id}/exists':
+    get:
+      tags:
+        - speurpunt
+      summary: Check whether a model instance exists in the data source.
+      operationId: 'speurpunt.exists__get_speurpunten_{id}_exists'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              exists:
+                type: boolean
+      deprecated: false
+  '/speurpunten/{id}':
+    head:
+      tags:
+        - speurpunt
+      summary: Check whether a model instance exists in the data source.
+      operationId: 'speurpunt.exists__head_speurpunten_{id}'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              exists:
+                type: boolean
+      deprecated: false
+    get:
+      tags:
+        - speurpunt
+      summary: 'Find a model instance by {{id}} from the data source.'
+      operationId: speurpunt.findById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+        - name: filter
+          in: query
+          description: >-
+            Filter defining fields and include - must be a JSON-encoded string
+            ({"something":"value"})
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/speurpunt'
+      deprecated: false
+    put:
+      tags:
+        - speurpunt
+      summary: >-
+        Replace attributes for a model instance and persist it into the data
+        source.
+      operationId: 'speurpunt.replaceById__put_speurpunten_{id}'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/speurpunt'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/speurpunt'
+      deprecated: false
+    delete:
+      tags:
+        - speurpunt
+      summary: 'Delete a model instance by {{id}} from the data source.'
+      operationId: speurpunt.deleteById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+      deprecated: false
+    patch:
+      tags:
+        - speurpunt
+      summary: >-
+        Patch attributes for a model instance and persist it into the data
+        source.
+      operationId: speurpunt.prototype.patchAttributes
+      parameters:
+        - name: id
+          in: path
+          description: speurpunt id
+          required: true
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            description: An object of model property name/value pairs
+            $ref: '#/definitions/speurpunt'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/speurpunt'
+      deprecated: false
+  '/speurpunten/{id}/replace':
+    post:
+      tags:
+        - speurpunt
+      summary: >-
+        Replace attributes for a model instance and persist it into the data
+        source.
+      operationId: 'speurpunt.replaceById__post_speurpunten_{id}_replace'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/speurpunt'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/speurpunt'
+      deprecated: false
+  /speurpunten/findOne:
+    get:
+      tags:
+        - speurpunt
+      summary: Find first instance of the model matched by filter from the data source.
+      operationId: speurpunt.findOne
+      parameters:
+        - name: filter
+          in: query
+          description: >-
+            Filter defining fields, where, include, order, offset, and limit -
+            must be a JSON-encoded string ({"something":"value"})
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/speurpunt'
+      deprecated: false
+  /speurpunten/update:
+    post:
+      tags:
+        - speurpunt
+      summary: 'Update instances of the model matched by {{where}} from the data source.'
+      operationId: speurpunt.updateAll
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            description: An object of model property name/value pairs
+            $ref: '#/definitions/speurpunt'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            description: Information related to the outcome of the operation
+            type: object
+            properties:
+              count:
+                description: The number of instances updated
+                type: number
+                format: double
+      deprecated: false
+  /speurpunten/count:
+    get:
+      tags:
+        - speurpunt
+      summary: Count instances of the model matched by where from the data source.
+      operationId: speurpunt.count
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              count:
+                type: number
+                format: double
+      deprecated: false
+  /speurpunten/change-stream:
+    post:
+      tags:
+        - speurpunt
+      summary: Create a change stream.
+      operationId: speurpunt.createChangeStream__post_speurpunten_change-stream
+      parameters:
+        - name: options
+          in: formData
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: file
+      deprecated: false
+    get:
+      tags:
+        - speurpunt
+      summary: Create a change stream.
+      operationId: speurpunt.createChangeStream__get_speurpunten_change-stream
+      parameters:
+        - name: options
+          in: query
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: file
+      deprecated: false
+  /rangerHeeftBezochts:
+    post:
+      tags:
+        - rangerHeeftBezocht
+      summary: Create a new instance of the model and persist it into the data source.
+      operationId: rangerHeeftBezocht.create
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/rangerHeeftBezocht'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/rangerHeeftBezocht'
+      deprecated: false
+    patch:
+      tags:
+        - rangerHeeftBezocht
+      summary: >-
+        Patch an existing model instance or insert a new one into the data
+        source.
+      operationId: rangerHeeftBezocht.patchOrCreate
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/rangerHeeftBezocht'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/rangerHeeftBezocht'
+      deprecated: false
+    put:
+      tags:
+        - rangerHeeftBezocht
+      summary: >-
+        Replace an existing model instance or insert a new one into the data
+        source.
+      operationId: rangerHeeftBezocht.replaceOrCreate__put_rangerHeeftBezochts
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/rangerHeeftBezocht'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/rangerHeeftBezocht'
+      deprecated: false
+    get:
+      tags:
+        - rangerHeeftBezocht
+      summary: Find all instances of the model matched by filter from the data source.
+      operationId: rangerHeeftBezocht.find
+      parameters:
+        - name: filter
+          in: query
+          description: >-
+            Filter defining fields, where, include, order, offset, and limit -
+            must be a JSON-encoded string ({"something":"value"})
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/rangerHeeftBezocht'
+      deprecated: false
+  /rangerHeeftBezochts/replaceOrCreate:
+    post:
+      tags:
+        - rangerHeeftBezocht
+      summary: >-
+        Replace an existing model instance or insert a new one into the data
+        source.
+      operationId: >-
+        rangerHeeftBezocht.replaceOrCreate__post_rangerHeeftBezochts_replaceOrCreate
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/rangerHeeftBezocht'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/rangerHeeftBezocht'
+      deprecated: false
+  /rangerHeeftBezochts/upsertWithWhere:
+    post:
+      tags:
+        - rangerHeeftBezocht
+      summary: >-
+        Update an existing model instance or insert a new one into the data
+        source based on the where criteria.
+      operationId: rangerHeeftBezocht.upsertWithWhere
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            description: An object of model property name/value pairs
+            $ref: '#/definitions/rangerHeeftBezocht'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/rangerHeeftBezocht'
+      deprecated: false
+  '/rangerHeeftBezochts/{id}/exists':
+    get:
+      tags:
+        - rangerHeeftBezocht
+      summary: Check whether a model instance exists in the data source.
+      operationId: 'rangerHeeftBezocht.exists__get_rangerHeeftBezochts_{id}_exists'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              exists:
+                type: boolean
+      deprecated: false
+  '/rangerHeeftBezochts/{id}':
+    head:
+      tags:
+        - rangerHeeftBezocht
+      summary: Check whether a model instance exists in the data source.
+      operationId: 'rangerHeeftBezocht.exists__head_rangerHeeftBezochts_{id}'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              exists:
+                type: boolean
+      deprecated: false
+    get:
+      tags:
+        - rangerHeeftBezocht
+      summary: 'Find a model instance by {{id}} from the data source.'
+      operationId: rangerHeeftBezocht.findById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+        - name: filter
+          in: query
+          description: >-
+            Filter defining fields and include - must be a JSON-encoded string
+            ({"something":"value"})
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/rangerHeeftBezocht'
+      deprecated: false
+    put:
+      tags:
+        - rangerHeeftBezocht
+      summary: >-
+        Replace attributes for a model instance and persist it into the data
+        source.
+      operationId: 'rangerHeeftBezocht.replaceById__put_rangerHeeftBezochts_{id}'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/rangerHeeftBezocht'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/rangerHeeftBezocht'
+      deprecated: false
+    delete:
+      tags:
+        - rangerHeeftBezocht
+      summary: 'Delete a model instance by {{id}} from the data source.'
+      operationId: rangerHeeftBezocht.deleteById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+      deprecated: false
+    patch:
+      tags:
+        - rangerHeeftBezocht
+      summary: >-
+        Patch attributes for a model instance and persist it into the data
+        source.
+      operationId: rangerHeeftBezocht.prototype.patchAttributes
+      parameters:
+        - name: id
+          in: path
+          description: rangerHeeftBezocht id
+          required: true
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            description: An object of model property name/value pairs
+            $ref: '#/definitions/rangerHeeftBezocht'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/rangerHeeftBezocht'
+      deprecated: false
+  '/rangerHeeftBezochts/{id}/replace':
+    post:
+      tags:
+        - rangerHeeftBezocht
+      summary: >-
+        Replace attributes for a model instance and persist it into the data
+        source.
+      operationId: 'rangerHeeftBezocht.replaceById__post_rangerHeeftBezochts_{id}_replace'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/rangerHeeftBezocht'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/rangerHeeftBezocht'
+      deprecated: false
+  /rangerHeeftBezochts/findOne:
+    get:
+      tags:
+        - rangerHeeftBezocht
+      summary: Find first instance of the model matched by filter from the data source.
+      operationId: rangerHeeftBezocht.findOne
+      parameters:
+        - name: filter
+          in: query
+          description: >-
+            Filter defining fields, where, include, order, offset, and limit -
+            must be a JSON-encoded string ({"something":"value"})
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/rangerHeeftBezocht'
+      deprecated: false
+  /rangerHeeftBezochts/update:
+    post:
+      tags:
+        - rangerHeeftBezocht
+      summary: 'Update instances of the model matched by {{where}} from the data source.'
+      operationId: rangerHeeftBezocht.updateAll
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            description: An object of model property name/value pairs
+            $ref: '#/definitions/rangerHeeftBezocht'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            description: Information related to the outcome of the operation
+            type: object
+            properties:
+              count:
+                description: The number of instances updated
+                type: number
+                format: double
+      deprecated: false
+  /rangerHeeftBezochts/count:
+    get:
+      tags:
+        - rangerHeeftBezocht
+      summary: Count instances of the model matched by where from the data source.
+      operationId: rangerHeeftBezocht.count
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              count:
+                type: number
+                format: double
+      deprecated: false
+  /rangerHeeftBezochts/change-stream:
+    post:
+      tags:
+        - rangerHeeftBezocht
+      summary: Create a change stream.
+      operationId: >-
+        rangerHeeftBezocht.createChangeStream__post_rangerHeeftBezochts_change-stream
+      parameters:
+        - name: options
+          in: formData
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: file
+      deprecated: false
+    get:
+      tags:
+        - rangerHeeftBezocht
+      summary: Create a change stream.
+      operationId: >-
+        rangerHeeftBezocht.createChangeStream__get_rangerHeeftBezochts_change-stream
+      parameters:
+        - name: options
+          in: query
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: file
+      deprecated: false
+  '/passen/{id}/ranger':
+    get:
+      tags:
+        - pas
+      summary: Fetches hasOne relation ranger.
+      operationId: pas.prototype.__get__ranger
+      parameters:
+        - name: id
+          in: path
+          description: pas id
+          required: true
+          type: string
+          format: JSON
+        - name: refresh
+          in: query
+          required: false
+          type: boolean
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/ranger'
+      deprecated: false
+    post:
+      tags:
+        - pas
+      summary: Creates a new instance in ranger of this model.
+      operationId: pas.prototype.__create__ranger
+      parameters:
+        - name: id
+          in: path
+          description: pas id
+          required: true
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          required: false
+          schema:
+            $ref: '#/definitions/ranger'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/ranger'
+      deprecated: false
+    put:
+      tags:
+        - pas
+      summary: Update ranger of this model.
+      operationId: pas.prototype.__update__ranger
+      parameters:
+        - name: id
+          in: path
+          description: pas id
+          required: true
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          required: false
+          schema:
+            $ref: '#/definitions/ranger'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/ranger'
+      deprecated: false
+    delete:
+      tags:
+        - pas
+      summary: Deletes ranger of this model.
+      operationId: pas.prototype.__destroy__ranger
+      parameters:
+        - name: id
+          in: path
+          description: pas id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '204':
+          description: Request was successful
+      deprecated: false
+  /passen:
+    post:
+      tags:
+        - pas
+      summary: Create a new instance of the model and persist it into the data source.
+      operationId: pas.create
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/pas'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/pas'
+      deprecated: false
+    patch:
+      tags:
+        - pas
+      summary: >-
+        Patch an existing model instance or insert a new one into the data
+        source.
+      operationId: pas.patchOrCreate
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/pas'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/pas'
+      deprecated: false
+    put:
+      tags:
+        - pas
+      summary: >-
+        Replace an existing model instance or insert a new one into the data
+        source.
+      operationId: pas.replaceOrCreate__put_passen
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/pas'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/pas'
+      deprecated: false
+    get:
+      tags:
+        - pas
+      summary: Find all instances of the model matched by filter from the data source.
+      operationId: pas.find
+      parameters:
+        - name: filter
+          in: query
+          description: >-
+            Filter defining fields, where, include, order, offset, and limit -
+            must be a JSON-encoded string ({"something":"value"})
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/pas'
+      deprecated: false
+  /passen/replaceOrCreate:
+    post:
+      tags:
+        - pas
+      summary: >-
+        Replace an existing model instance or insert a new one into the data
+        source.
+      operationId: pas.replaceOrCreate__post_passen_replaceOrCreate
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/pas'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/pas'
+      deprecated: false
+  /passen/upsertWithWhere:
+    post:
+      tags:
+        - pas
+      summary: >-
+        Update an existing model instance or insert a new one into the data
+        source based on the where criteria.
+      operationId: pas.upsertWithWhere
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            description: An object of model property name/value pairs
+            $ref: '#/definitions/pas'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/pas'
+      deprecated: false
+  '/passen/{id}/exists':
+    get:
+      tags:
+        - pas
+      summary: Check whether a model instance exists in the data source.
+      operationId: 'pas.exists__get_passen_{id}_exists'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              exists:
+                type: boolean
+      deprecated: false
+  '/passen/{id}':
+    head:
+      tags:
+        - pas
+      summary: Check whether a model instance exists in the data source.
+      operationId: 'pas.exists__head_passen_{id}'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              exists:
+                type: boolean
+      deprecated: false
+    get:
+      tags:
+        - pas
+      summary: 'Find a model instance by {{id}} from the data source.'
+      operationId: pas.findById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+        - name: filter
+          in: query
+          description: >-
+            Filter defining fields and include - must be a JSON-encoded string
+            ({"something":"value"})
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/pas'
+      deprecated: false
+    put:
+      tags:
+        - pas
+      summary: >-
+        Replace attributes for a model instance and persist it into the data
+        source.
+      operationId: 'pas.replaceById__put_passen_{id}'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/pas'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/pas'
+      deprecated: false
+    delete:
+      tags:
+        - pas
+      summary: 'Delete a model instance by {{id}} from the data source.'
+      operationId: pas.deleteById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+      deprecated: false
+    patch:
+      tags:
+        - pas
+      summary: >-
+        Patch attributes for a model instance and persist it into the data
+        source.
+      operationId: pas.prototype.patchAttributes
+      parameters:
+        - name: id
+          in: path
+          description: pas id
+          required: true
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            description: An object of model property name/value pairs
+            $ref: '#/definitions/pas'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/pas'
+      deprecated: false
+  '/passen/{id}/replace':
+    post:
+      tags:
+        - pas
+      summary: >-
+        Replace attributes for a model instance and persist it into the data
+        source.
+      operationId: 'pas.replaceById__post_passen_{id}_replace'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/pas'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/pas'
+      deprecated: false
+  /passen/findOne:
+    get:
+      tags:
+        - pas
+      summary: Find first instance of the model matched by filter from the data source.
+      operationId: pas.findOne
+      parameters:
+        - name: filter
+          in: query
+          description: >-
+            Filter defining fields, where, include, order, offset, and limit -
+            must be a JSON-encoded string ({"something":"value"})
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/pas'
+      deprecated: false
+  /passen/update:
+    post:
+      tags:
+        - pas
+      summary: 'Update instances of the model matched by {{where}} from the data source.'
+      operationId: pas.updateAll
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            description: An object of model property name/value pairs
+            $ref: '#/definitions/pas'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            description: Information related to the outcome of the operation
+            type: object
+            properties:
+              count:
+                description: The number of instances updated
+                type: number
+                format: double
+      deprecated: false
+  /passen/count:
+    get:
+      tags:
+        - pas
+      summary: Count instances of the model matched by where from the data source.
+      operationId: pas.count
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              count:
+                type: number
+                format: double
+      deprecated: false
+  /passen/change-stream:
+    post:
+      tags:
+        - pas
+      summary: Create a change stream.
+      operationId: pas.createChangeStream__post_passen_change-stream
+      parameters:
+        - name: options
+          in: formData
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: file
+      deprecated: false
+    get:
+      tags:
+        - pas
+      summary: Create a change stream.
+      operationId: pas.createChangeStream__get_passen_change-stream
+      parameters:
+        - name: options
+          in: query
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: file
+      deprecated: false
+  /poten:
+    post:
+      tags:
+        - poot
+      summary: Create a new instance of the model and persist it into the data source.
+      operationId: poot.create
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/poot'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/poot'
+      deprecated: false
+    patch:
+      tags:
+        - poot
+      summary: >-
+        Patch an existing model instance or insert a new one into the data
+        source.
+      operationId: poot.patchOrCreate
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/poot'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/poot'
+      deprecated: false
+    put:
+      tags:
+        - poot
+      summary: >-
+        Replace an existing model instance or insert a new one into the data
+        source.
+      operationId: poot.replaceOrCreate__put_poten
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/poot'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/poot'
+      deprecated: false
+    get:
+      tags:
+        - poot
+      summary: Find all instances of the model matched by filter from the data source.
+      operationId: poot.find
+      parameters:
+        - name: filter
+          in: query
+          description: >-
+            Filter defining fields, where, include, order, offset, and limit -
+            must be a JSON-encoded string ({"something":"value"})
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/poot'
+      deprecated: false
+  /poten/replaceOrCreate:
+    post:
+      tags:
+        - poot
+      summary: >-
+        Replace an existing model instance or insert a new one into the data
+        source.
+      operationId: poot.replaceOrCreate__post_poten_replaceOrCreate
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/poot'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/poot'
+      deprecated: false
+  /poten/upsertWithWhere:
+    post:
+      tags:
+        - poot
+      summary: >-
+        Update an existing model instance or insert a new one into the data
+        source based on the where criteria.
+      operationId: poot.upsertWithWhere
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            description: An object of model property name/value pairs
+            $ref: '#/definitions/poot'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/poot'
+      deprecated: false
+  '/poten/{id}/exists':
+    get:
+      tags:
+        - poot
+      summary: Check whether a model instance exists in the data source.
+      operationId: 'poot.exists__get_poten_{id}_exists'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              exists:
+                type: boolean
+      deprecated: false
+  '/poten/{id}':
+    head:
+      tags:
+        - poot
+      summary: Check whether a model instance exists in the data source.
+      operationId: 'poot.exists__head_poten_{id}'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              exists:
+                type: boolean
+      deprecated: false
+    get:
+      tags:
+        - poot
+      summary: 'Find a model instance by {{id}} from the data source.'
+      operationId: poot.findById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+        - name: filter
+          in: query
+          description: >-
+            Filter defining fields and include - must be a JSON-encoded string
+            ({"something":"value"})
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/poot'
+      deprecated: false
+    put:
+      tags:
+        - poot
+      summary: >-
+        Replace attributes for a model instance and persist it into the data
+        source.
+      operationId: 'poot.replaceById__put_poten_{id}'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/poot'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/poot'
+      deprecated: false
+    delete:
+      tags:
+        - poot
+      summary: 'Delete a model instance by {{id}} from the data source.'
+      operationId: poot.deleteById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+      deprecated: false
+    patch:
+      tags:
+        - poot
+      summary: >-
+        Patch attributes for a model instance and persist it into the data
+        source.
+      operationId: poot.prototype.patchAttributes
+      parameters:
+        - name: id
+          in: path
+          description: poot id
+          required: true
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            description: An object of model property name/value pairs
+            $ref: '#/definitions/poot'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/poot'
+      deprecated: false
+  '/poten/{id}/replace':
+    post:
+      tags:
+        - poot
+      summary: >-
+        Replace attributes for a model instance and persist it into the data
+        source.
+      operationId: 'poot.replaceById__post_poten_{id}_replace'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/poot'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/poot'
+      deprecated: false
+  /poten/findOne:
+    get:
+      tags:
+        - poot
+      summary: Find first instance of the model matched by filter from the data source.
+      operationId: poot.findOne
+      parameters:
+        - name: filter
+          in: query
+          description: >-
+            Filter defining fields, where, include, order, offset, and limit -
+            must be a JSON-encoded string ({"something":"value"})
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/poot'
+      deprecated: false
+  /poten/update:
+    post:
+      tags:
+        - poot
+      summary: 'Update instances of the model matched by {{where}} from the data source.'
+      operationId: poot.updateAll
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            description: An object of model property name/value pairs
+            $ref: '#/definitions/poot'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            description: Information related to the outcome of the operation
+            type: object
+            properties:
+              count:
+                description: The number of instances updated
+                type: number
+                format: double
+      deprecated: false
+  /poten/count:
+    get:
+      tags:
+        - poot
+      summary: Count instances of the model matched by where from the data source.
+      operationId: poot.count
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              count:
+                type: number
+                format: double
+      deprecated: false
+  /poten/change-stream:
+    post:
+      tags:
+        - poot
+      summary: Create a change stream.
+      operationId: poot.createChangeStream__post_poten_change-stream
+      parameters:
+        - name: options
+          in: formData
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: file
+      deprecated: false
+    get:
+      tags:
+        - poot
+      summary: Create a change stream.
+      operationId: poot.createChangeStream__get_poten_change-stream
+      parameters:
+        - name: options
+          in: query
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: file
+      deprecated: false
+  '/poten/{pootid}/config':
+    get:
+      tags:
+        - poot
+      summary: Het opvragen van de configuratie van een specifieke poot.
+      operationId: poot.getconfig
+      parameters:
+        - name: pootid
+          in: path
+          required: true
+          type: number
+          format: double
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+      deprecated: false
+  '/poten/{pootid}/scan':
+    post:
+      tags:
+        - poot
+      summary: >-
+        Verwerken van de ranger die bij een bepaalde poot komt. Wanneer een
+        ranger een poot scant wordt het kaartid via de gateway naar de backend
+        gestuurd. Dit is het endpoint in de backend die dit ontvangt.
+      operationId: poot.scan
+      parameters:
+        - name: pasid
+          in: body
+          required: false
+          schema:
+            type: number
+            format: double
+        - name: pootid
+          in: path
+          required: true
+          type: number
+          format: double
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: string
+      deprecated: false
+  '/poten/update/{transactieid}':
+    put:
+      tags:
+        - poot
+      summary: >-
+        Endpoint voor het updaten van de update voortang. Dit wordt door de
+        gateway verzorgt en rekent uit hoever het versturen van de de
+        configuratie naar de gateway is. Dit is alleen van toepassing op het
+        moment dat er iets te updaten is. Niet alle update acties geven een
+        transactie id terug.
+      operationId: poot.updateProgress
+      parameters:
+        - name: transactieid
+          in: path
+          required: true
+          type: number
+          format: double
+        - name: voortgang
+          in: body
+          required: false
+          schema:
+            type: number
+            format: double
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: string
+      deprecated: false
+  /poten/new:
+    post:
+      tags:
+        - poot
+      summary: >-
+        Registreren van een nieuw poot. Response bevat het nieuw aangemaakte
+        poot.
+      operationId: poot.getPootid
+      parameters: []
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: string
+      deprecated: false
+  /nfcs:
+    post:
+      tags:
+        - nfc
+      summary: Create a new instance of the model and persist it into the data source.
+      operationId: nfc.create
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/nfc'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/nfc'
+      deprecated: false
+    patch:
+      tags:
+        - nfc
+      summary: >-
+        Patch an existing model instance or insert a new one into the data
+        source.
+      operationId: nfc.patchOrCreate
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/nfc'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/nfc'
+      deprecated: false
+    put:
+      tags:
+        - nfc
+      summary: >-
+        Replace an existing model instance or insert a new one into the data
+        source.
+      operationId: nfc.replaceOrCreate__put_nfcs
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/nfc'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/nfc'
+      deprecated: false
+    get:
+      tags:
+        - nfc
+      summary: Find all instances of the model matched by filter from the data source.
+      operationId: nfc.find
+      parameters:
+        - name: filter
+          in: query
+          description: >-
+            Filter defining fields, where, include, order, offset, and limit -
+            must be a JSON-encoded string ({"something":"value"})
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/nfc'
+      deprecated: false
+  /nfcs/replaceOrCreate:
+    post:
+      tags:
+        - nfc
+      summary: >-
+        Replace an existing model instance or insert a new one into the data
+        source.
+      operationId: nfc.replaceOrCreate__post_nfcs_replaceOrCreate
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/nfc'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/nfc'
+      deprecated: false
+  /nfcs/upsertWithWhere:
+    post:
+      tags:
+        - nfc
+      summary: >-
+        Update an existing model instance or insert a new one into the data
+        source based on the where criteria.
+      operationId: nfc.upsertWithWhere
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            description: An object of model property name/value pairs
+            $ref: '#/definitions/nfc'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/nfc'
+      deprecated: false
+  '/nfcs/{id}/exists':
+    get:
+      tags:
+        - nfc
+      summary: Check whether a model instance exists in the data source.
+      operationId: 'nfc.exists__get_nfcs_{id}_exists'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              exists:
+                type: boolean
+      deprecated: false
+  '/nfcs/{id}':
+    head:
+      tags:
+        - nfc
+      summary: Check whether a model instance exists in the data source.
+      operationId: 'nfc.exists__head_nfcs_{id}'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              exists:
+                type: boolean
+      deprecated: false
+    get:
+      tags:
+        - nfc
+      summary: 'Find a model instance by {{id}} from the data source.'
+      operationId: nfc.findById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+        - name: filter
+          in: query
+          description: >-
+            Filter defining fields and include - must be a JSON-encoded string
+            ({"something":"value"})
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/nfc'
+      deprecated: false
+    put:
+      tags:
+        - nfc
+      summary: >-
+        Replace attributes for a model instance and persist it into the data
+        source.
+      operationId: 'nfc.replaceById__put_nfcs_{id}'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/nfc'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/nfc'
+      deprecated: false
+    delete:
+      tags:
+        - nfc
+      summary: 'Delete a model instance by {{id}} from the data source.'
+      operationId: nfc.deleteById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+      deprecated: false
+    patch:
+      tags:
+        - nfc
+      summary: >-
+        Patch attributes for a model instance and persist it into the data
+        source.
+      operationId: nfc.prototype.patchAttributes
+      parameters:
+        - name: id
+          in: path
+          description: nfc id
+          required: true
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            description: An object of model property name/value pairs
+            $ref: '#/definitions/nfc'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/nfc'
+      deprecated: false
+  '/nfcs/{id}/replace':
+    post:
+      tags:
+        - nfc
+      summary: >-
+        Replace attributes for a model instance and persist it into the data
+        source.
+      operationId: 'nfc.replaceById__post_nfcs_{id}_replace'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/nfc'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/nfc'
+      deprecated: false
+  /nfcs/findOne:
+    get:
+      tags:
+        - nfc
+      summary: Find first instance of the model matched by filter from the data source.
+      operationId: nfc.findOne
+      parameters:
+        - name: filter
+          in: query
+          description: >-
+            Filter defining fields, where, include, order, offset, and limit -
+            must be a JSON-encoded string ({"something":"value"})
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/nfc'
+      deprecated: false
+  /nfcs/update:
+    post:
+      tags:
+        - nfc
+      summary: 'Update instances of the model matched by {{where}} from the data source.'
+      operationId: nfc.updateAll
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            description: An object of model property name/value pairs
+            $ref: '#/definitions/nfc'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            description: Information related to the outcome of the operation
+            type: object
+            properties:
+              count:
+                description: The number of instances updated
+                type: number
+                format: double
+      deprecated: false
+  /nfcs/count:
+    get:
+      tags:
+        - nfc
+      summary: Count instances of the model matched by where from the data source.
+      operationId: nfc.count
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              count:
+                type: number
+                format: double
+      deprecated: false
+  /nfcs/change-stream:
+    post:
+      tags:
+        - nfc
+      summary: Create a change stream.
+      operationId: nfc.createChangeStream__post_nfcs_change-stream
+      parameters:
+        - name: options
+          in: formData
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: file
+      deprecated: false
+    get:
+      tags:
+        - nfc
+      summary: Create a change stream.
+      operationId: nfc.createChangeStream__get_nfcs_change-stream
+      parameters:
+        - name: options
+          in: query
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: file
+      deprecated: false
+tags:
+  - name: ranger
+  - name: weetje
+  - name: dierengeluid
+  - name: speurpunt
+  - name: rangerHeeftBezocht
+  - name: pas
+  - name: poot
+  - name: nfc
+consumes:
+  - application/json
+  - application/x-www-form-urlencoded
+  - application/xml
+  - text/xml
+produces:
+  - application/json
+  - application/xml
+  - text/xml
+  - application/javascript
+  - text/javascript
+definitions:
+  ranger:
+    properties:
+      id:
+        $ref: '#/definitions/ObjectID'
+      naam:
+        type: string
+      email:
+        type: string
+      rewardGiven:
+        default: false
+        type: boolean
+      pasId:
+        $ref: '#/definitions/ObjectID'
+    required:
+      - naam
+      - email
+      - rewardGiven
+    additionalProperties: false
+  x-any:
+    properties: {}
+  speurpunt:
+    properties:
+      id:
+        $ref: '#/definitions/ObjectID'
+      pootid:
+        type: array
+        items:
+          type: number
+          format: double
+      geolocation:
+        $ref: '#/definitions/GeoPoint'
+      locatienaam:
+        type: string
+    required:
+      - locatienaam
+    additionalProperties: false
+  weetje:
+    properties:
+      id:
+        $ref: '#/definitions/ObjectID'
+      bestandspad:
+        type: string
+      speurpuntId:
+        $ref: '#/definitions/ObjectID'
+    required:
+      - bestandspad
+    additionalProperties: false
+  dierengeluid:
+    properties:
+      id:
+        $ref: '#/definitions/ObjectID'
+      bestandspad:
+        type: string
+      speurpuntId:
+        $ref: '#/definitions/ObjectID'
+    required:
+      - bestandspad
+    additionalProperties: false
+  rangerHeeftBezocht:
+    properties:
+      datum:
+        type: number
+        format: double
+      rangerid:
+        type: string
+      speurpuntid:
+        type: string
+      id:
+        $ref: '#/definitions/ObjectID'
+    required:
+      - datum
+      - rangerid
+      - speurpuntid
+    additionalProperties: false
+  pas:
+    properties:
+      id:
+        $ref: '#/definitions/ObjectID'
+      pasid:
+        type: number
+        format: double
+      active:
+        default: false
+        type: boolean
+    required:
+      - pasid
+      - active
+    additionalProperties: false
+  poot:
+    properties:
+      pootid:
+        type: number
+        format: double
+      id:
+        $ref: '#/definitions/ObjectID'
+    additionalProperties: false
+  nfc:
+    properties:
+      pasid:
+        type: number
+        format: double
+      id:
+        $ref: '#/definitions/ObjectID'
+    additionalProperties: false
+  ObjectID:
+    type: string
+    pattern: '^[a-fA-F\d]{24}$'
+  GeoPoint:
+    properties:
+      lat:
+        type: number
+      lng:
+        type: number
