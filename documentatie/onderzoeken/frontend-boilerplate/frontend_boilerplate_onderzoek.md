@@ -76,9 +76,7 @@ Om geschikte kandidaat tools te vinden is er op Google gezocht naar "react redux
 In de onderstaande tabel staan de onderzoeksbevindingen in een comparison chart:
 
 
-![Comparison chart](https://github.com/HANICA-MinorMulti/nj2017-iot-dwa-BurgersZoo1/blob/onderzoek/boilerplateGenerator/documentatie/onderzoeken/frontend_boilerplate/ComparisonChartBoilerplate.png)
-
-![Comparison chart](https://github.com/HANICA-MinorMulti/nj2017-iot-dwa-BurgersZoo1/blob/master/documentatie/onderzoeken/frontend_boilerplate/ComparisonChartBoilerplate.png)
+![Comparison chart](./images/ComparisonChartBoilerplate.png)
 
 
 ## Conclusie
