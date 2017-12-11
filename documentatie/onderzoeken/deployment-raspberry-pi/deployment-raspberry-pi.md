@@ -6,7 +6,7 @@ Omdat voor dit onderzoek weinig/geen code beschikbaar is, heb ik geprobeerd om m
 Prototyping uit stepping stones
 
 ## Hypothese/probleemstelling
-Voor Burgers' Zoo gaan we o.a. een gateway opleveren die wij vrij veel bewerken en testen. Om dit probleem gedeeltelijk op te lossen testen wij dit natuurlijk lokaal, op onze eigen laptops. Om ook gemakkelijk de code op de Raspberry Pi 3 te krijgen is het dus handig als we een oplossing/script hebben die er voor zorgt dat de nieuwste code gedownload wordt en de gateway gestart wordt met de goede parameters.
+Voor Burgers' Zoo gaan we o.a. een gateway opleveren die wij vrij veel bewerken en testen. Om ook gemakkelijk de code op de Raspberry Pi 3 te krijgen is het dus handig als we een oplossing/script hebben die er voor zorgt dat de nieuwste code gedownload wordt en de gateway gestart wordt met de goede parameters.
 
 Ik verwacht dan ook dat een buildtool zoals Jenkins of Teamcity hier een oplossing voor bied, waardoor code niet gecompileerd hoeft te worden op een Raspberry Pi 3 en dat een gebouwde jar gemakkelijk gedeployed kan worden op de Raspberry Pi 3.
 
