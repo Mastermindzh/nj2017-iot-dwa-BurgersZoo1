@@ -13,7 +13,7 @@ class AppBarComponent extends Component {
 
   render() {
 
-    const {classes, open, handleToggle} = this.props;
+    const {classes, open, handleToggle, user} = this.props;
 
     return (
       <AppBar
@@ -32,7 +32,7 @@ class AppBarComponent extends Component {
           <MenuIcon />
         </IconButton>
         <Typography type="title" color="inherit" noWrap>
-          Ranger App
+          Ranger App {`${user.id} (pas_id: ${user.pasid} )`}
         </Typography>
       </Toolbar>
     </AppBar>
@@ -43,7 +43,8 @@ class AppBarComponent extends Component {
 AppBarComponent.propTypes = {
   classes: PropTypes.object.isRequired,
   open: PropTypes.bool.isRequired,
-  handleToggle: PropTypes.func.isRequired
+  handleToggle: PropTypes.func.isRequired,
+  user: PropTypes.object.isRequired
 };
 
 export default withStyles(style, { withTheme: true })(AppBarComponent);

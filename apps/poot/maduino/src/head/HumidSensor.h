@@ -5,6 +5,10 @@
 
 class HumidSensor {
   public:
+
+    /**
+     * Get the last known humidity measurement from the humidity sensor
+     */
     byte getHumidity();
   private:
 };

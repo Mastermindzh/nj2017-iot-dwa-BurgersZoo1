@@ -1,5 +1,6 @@
 package nl.han.mysensor.service;
 
+import nl.han.Application;
 import nl.han.backend.services.BackendPootServiceBase;
 import nl.han.backend.services.group1.BackendPootService;
 import nl.han.gateway.dao.DAOFactory;
@@ -48,10 +49,22 @@ public class MySensorReceiveService {
             logger.info(String.format("Not implemented yet, message: %s", message.toString()));
             throw new NotImplementedException();
         } else if (message instanceof MyInternalMessage) {
-            logger.info(String.format("Not implemented yet, message: %s", message.toString()));
-            throw new NotImplementedException();
+            handleIncomingInternalMessages((MyInternalMessage) message);
         } else {
             throw new IllegalStateException("Illegal message state");
+        }
+    }
+
+    private void handleIncomingInternalMessages(MyInternalMessage message) {
+        switch (message.getInternalType()) {
+            case I_ID_REQUEST:
+                logger.debug(String.format("Requesting id, message: %s", message.toString()));
+                break;
+            case I_LOG_MESSAGE:
+                logger.debug(String.format("Not implemented yet, message: %s", message.toString()));
+                break;
+            default:
+                logger.info(String.format("Not implemented yet, message: %s", message.toString()));
         }
     }
 
@@ -87,6 +100,8 @@ public class MySensorReceiveService {
             case V_VAR2:
                 // route for handeling ranger scans
                 rangerCardScan(message);
+                break;
+            case V_VAR3: // used for sending to nodes
                 break;
             case V_TEMP:
                 this.sendTemperatureValue(message);
@@ -135,23 +150,23 @@ public class MySensorReceiveService {
 
     /**
      * Function that maps the newly online nodes to poot id's.
-     * todo: Deze methode werkt nog niet zoals het aanmelden zou moeten werken!
      *
      * @param message
      */
     private void newNodeSubscribe(MyMessage message) {
         logger.info(String.format("Registering new node, node id: #%d pootid: #%s",
                 message.getNodeId(), message.getPayload()));
-        Poot poot = this.pootDAO.findByPootId(Integer.parseInt(message.getPayload()));
+        Poot poot = null;
+        poot = this.pootDAO.findByPootId(Long.valueOf(message.getPayload()));
         if (poot == null) {
             logger.info("Unknown poot, register node");
             Poot newPoot = new Poot();
-            newPoot.setNodeId(message.getNodeId());
+            newPoot.setNodeid(message.getNodeId());
             newPoot.setPootid(backendPootServiceGroup1.getNewPootIdFromBackend());
-            this.pootDAO.save(newPoot);
+            poot = this.pootDAO.save(newPoot);
         } else {
-            poot.setNodeId(message.getNodeId());
-            this.pootDAO.update(poot);
+            poot.setNodeid(message.getNodeId());
+            poot = this.pootDAO.update(poot);
         }
 
         MySensorSendService sendService = new MySensorSendService();

@@ -3,6 +3,7 @@
 #define NODE_ID AUTO
 #define MY_RADIO_NRF24
 #define MY_RF24_CHANNEL 69
+#define MY_DEBUG
 
 #define MY_RF24_PA_LEVEL RF24_PA_MAX
 #define MY_RF24_DATARATE RF24_250KBPS
@@ -19,33 +20,11 @@
   #define MY_SOFT_SPI_MOSI_PIN 51
 #endif
 
-#ifndef TEST
-    #include <MySensors.h>
+  #include <MySensors.h>
 
-    #include "./head/SerialReader.h"
+  void setup(){}
 
-    SerialReader* reader;
+  void loop(){}
 
-    void setup(){
-        reader = new SerialReader();
-    }
-
-    void loop(){
-      reader->loop();
-      reader->sendMessageIfPossible();
-    }
-
-    void presentation(){}
-    void receive(const MyMessage &message){}
-#else
-    #include "test/Tester.h"
-
-    void setup(){
-      Serial.begin(115200);
-      while (!Serial) {  ;  }
-      Tester* tester = new Tester();
-      tester->runAllTests();
-    }
-
-    void loop(){}
-#endif
+  void presentation(){}
+  void receive(const MyMessage &message){}
