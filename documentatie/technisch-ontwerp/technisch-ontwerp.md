@@ -6,6 +6,8 @@
 
 #include "documentatie/technisch-ontwerp/architectuur/architectuur.md"
 
+#include "documentatie/technisch-ontwerp/keuzes-dwa/keuzes-dwa.md"
+
 #include "documentatie/technisch-ontwerp/datamodel/datamodel.md"
 
 #include "documentatie/technisch-ontwerp/database/database.md"
