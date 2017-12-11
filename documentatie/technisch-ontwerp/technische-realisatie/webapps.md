@@ -1,7 +1,7 @@
 # Webapps
 
 De web applicaties zijn drie [React](https://reactjs.org/) applicaties, geschreven in Ecmascript 6. Deze applicaties maken
-gebruik van een aantal technieken en tools die in hoofdstuk beschreven staan.
+gebruik van een aantal technieken en tools die in dit hoofdstuk beschreven staan.
 
 ## React
 
