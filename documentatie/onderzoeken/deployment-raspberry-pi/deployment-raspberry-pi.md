@@ -8,7 +8,7 @@ Prototyping uit stepping stones
 ## Hypothese/probleemstelling
 Voor Burgers' Zoo gaan we o.a. een gateway opleveren die wij vrij veel bewerken en testen. Om dit probleem gedeeltelijk op te lossen testen wij dit natuurlijk lokaal, op onze eigen laptops. Om ook gemakkelijk de code op de Raspberry Pi 3 te krijgen is het dus handig als we een oplossing/script hebben die er voor zorgt dat de nieuwste code gedownload wordt en de gateway gestart wordt met de goede parameters.
 
-Ik verwacht dan ook dat een buildtool zoals Jenkins of Teamcity hier een oplossing voor bied, waardoor code niet gecompileerd hoeft te worden op een Raspberry Pi 3. 
+Ik verwacht dan ook dat een buildtool zoals Jenkins of Teamcity hier een oplossing voor bied, waardoor code niet gecompileerd hoeft te worden op een Raspberry Pi 3 en dat een gebouwde jar gemakkelijk gedeployed kan worden op de Raspberry Pi 3.
 
 ## Testopzet
 Om dit te testen ga ik een testopzet maken met [Jenkins](https://jenkins-ci.org/) en [Teamcity](https://www.jetbrains.com). Hierna kan ik vergelijken hoe deze systemen werken en vooral ook welke beter werkt/makkelijker mee op te gaan is. 
@@ -61,12 +61,6 @@ sudo docker run -it --name teamcity-server-instance  \
 ``` 
 Vervolgens kan ik naar de webpagina gaan om de server instantie te installeren. Omdat dit een test is gebruik ik gewoon een interne database, wat niet aan te raden is bij productie omgevingen. In de commandline is nu het wachtwoord zichtbaar om als super-user in te loggen en de server draait. 
 
-Om de bijbehoorende agent te starten voer ik het volgende uit:
-``` bash
-sudo docker run -it -e SERVER_URL="192.168.178.17:8111"  \
-    -v ~/HAN/minor/teamcity/agent_1/conf:/data/teamcity_agent/conf  \      
-    teamcity-agent-gradle
-``` 
 Ik kwam er achter dat bij deze standaard Docker image geen Gradle zit. Dit is wel vereist om ons project te bouwen. Ik heb de Dockerfile dus moeten aanpassen om Gradle hieraan toe te voegen. Deze is te vinden in de code map. Na deze aanpassing werkt het wel met dezelfde aanroep. 
 
 Om deze Dockerfile te bouwen moet het volgende worden uitgevoerd:
@@ -74,12 +68,20 @@ Om deze Dockerfile te bouwen moet het volgende worden uitgevoerd:
 sudo docker build . -t teamcity-agent-gradle
 ```
 
-Hierbij is het belangrijk om het volledige ip addres op te geven, ondanks dat het beide op de zelfde machine draait. `localhost:8111` of `127.0.0.1:8111` werken dus niet.
+
+Om de bijbehoorende agent te starten voer ik het volgende uit:
+``` bash
+sudo docker run -it -e SERVER_URL="192.168.178.17:8111"  \
+    -v ~/HAN/minor/teamcity/agent_1/conf:/data/teamcity_agent/conf  \      
+    teamcity-agent-gradle
+``` 
+
+Om de teamcity agent te laten connecten met de server moet er een SERVER_URL opgegeven wroden. Hierbij is het belangrijk om het volledige ip addres op te geven, ondanks dat het beide op de zelfde machine draait. `localhost:8111` of `127.0.0.1:8111` werken dus niet.
 
 Vervolgens is het een kwestie van server instellingen goed zetten, ssh key toevoegen voor GitHub etc. Normaal gesproken kun je op dit moment ook GitHub hooks regelen, zodat Teamcity hierop kan reageren als er bijvoorbeeld iets gepushed is op een project. Omdat ik lokaal werk en is deze callback niet mogelijk (ik ga geen porten in mijn router open zetten voor deze test).
 
 #### Gebruik
-Het instellen van de buildtaak is vrij gemakkelijk in te stellen. Er kan simpel een build.gradle geselecteerd worden, waar ook de `clean build test jar` taken als paramaters aan meegegeven kunnen worden. Hoe ik  precies de goede artifacts exporteer was iets meer uitzoekwerk, omdat dit weer anders werkt dan in Jenkins. 
+Het instellen van de buildtaak is vrij gemakkelijk in te stellen. Er kan simpel een build.gradle geselecteerd worden, waar ook de `clean build test jar` taken als paramaters aan meegegeven kunnen worden. Hoe ik precies de goede artifacts exporteer was iets meer uitzoekwerk, omdat dit weer anders werkt dan in Jenkins. 
 Teamcity checkt de volledige repo uit (dat is ook het Git path dat je opgeeft) en vervolgens moet het volledige path opgegeven worden naar de build directory.
 Uiteindelijk is dan de laatste succesvolle build artifact te downloaden via:
 `http://192.168.178.17:8111/guestAuth/repository/download/Nj2017IotDwaBurgersZoo1_GatewayBuild/.lastSuccessful/gateway-1.0-SNAPSHOT.jar`.
@@ -94,4 +96,4 @@ Van de twee ziet Teamcity er professioneler uit en werkt naar mijn mening makkel
 
 Verder werken zowel Teamcity als Jenkins goed met het aanroepen van het Gralde script (waar de bouwtaken van de gateway in staan). Ze leveren beiden een artifact die gedeployed kan worden op de Raspberry Pi waardoor het gemakkelijker is om met de Pi Te werken. Er hoeft immers alleen maar een deploy script uitgevoerd te worden en de nieuwe versie draait. 
 
-Voor het schoolproject hoeven we maar een enkele bouwtaak te configureren waardoor teamcity een goede optie is. Het is gemakkelijk in gebruik en configuratie. 
+Jenkins voldoet tijdens dit project aan onze eisen en ik zou dan ook aanraden om dit te gebruiken, wel met de JaCoCo plugin om test coverage te genereren.  

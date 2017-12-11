@@ -1,7 +1,5 @@
 FROM jetbrains/teamcity-minimal-agent:latest
 
-MAINTAINER Kateryna Shlyakhovetska <shkate@jetbrains.com>
-
 ARG GRADLE_VERSION=4.4
 
 LABEL dockerImage.teamcity.version="latest" \
