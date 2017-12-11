@@ -16,6 +16,7 @@ public:
   void handleNextInputChar(char c);
   void finishReading();
   void sendMessageIfPossible();
+  void reset();
 
   String payload;
   byte nodeID;
