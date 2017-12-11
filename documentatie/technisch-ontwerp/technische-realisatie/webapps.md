@@ -70,8 +70,23 @@ Webpack is een module bundler om grote JavaScript producten te bouwen. De core v
 
 ![reactslingshot](https://cloud.githubusercontent.com/assets/3129129/22811426/bb69dc06-ef0c-11e6-8092-a0bea9060b35.png)
 
-Webpack is niet zelf geconfigureerd, maar gegenereerd met behulp van [React Slingshot](https://github.com/coryhouse/react-slingshot). Een starter-kit om snel een react-applicatie neer te zetten zonder zelf te hoeven configureren.
-
-
+Webpack is niet zelf geconfigureerd, maar gegenereerd met behulp van [React Slingshot](https://github.com/coryhouse/react-slingshot), een starter-kit om snel een react-applicatie neer te zetten zonder zelf te hoeven configureren. React Slingshot is vergeleken met vier alternatieven in [een onderzoek](https://github.com/HANICA-MinorMulti/nj2017-iot-dwa-BurgersZoo1/blob/master/documentatie/onderzoeken/frontend-boilerplate/frontend_boilerplate_onderzoek.md) naar front-end boilerplate generators. React Slingshot kwam als beste naar voren, omdat het een 100% score haalde op de belangrijkste eis: *direct kunnen ontwikkelen*.
 
 ## Middleware
+
+Aan React Redux kun je middleware toevoegen zodat het deel uitmaakt van de Redux chain. Alle webapplicaties maken gebruiken van Redux Thunk en Redux Dev Tools.
+
+### Redux Thunk
+
+**Het probleem:**<br />
+Normaal gesproken returnen action creators een actie waarnaar Redux luistert. Dit brengt een probleem met zich mee als je asynchrone API calls maakt, want dan krijg je onafgehandelde promises in je redux app state. Vervolgens wordt er niet meer genotificeerd wanneer de promise afgehandeld (resolved is), dus weet Redux niet dat alle react componenten re-rendered moeten worden. Redux Thunk biedt hiervoor een oplossing.
+
+**De oplossing:**<br />
+Redux Thunk middleware geeft je de mogelijkheid om action creators te schrijven die een functie returnen in plaats van een actie. De middleware 'injecteert' alle functies van de Redux Store (zoals``` dispatch()``` en ```getState()```). Zo heb je als ontwikkelaar volledig de controle over het moment waarop je acties wil dispatchen. Bijvoorbeeld in een ```Promise.then()```, of onder een bepaalde conditie.
+
+### Redux Dev Tools
+
+Om je Redux applicatie te kunnen debuggen in de browser, moet je wel aangeven waar de browser naar kan luisteren. Vervolgens download je de [Google Chrome extensie](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en) om te zien wat er in je state gebeurt:
+
+![dev tools](https://d33wubrfki0l68.cloudfront.net/595e2922eee1bf85b801cdc86b8f7e135cc46ee0/0fd92/images/angular/store-devtools/store-devtools-screen.jpg)
+
