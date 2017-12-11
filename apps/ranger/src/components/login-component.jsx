@@ -11,14 +11,12 @@ const styles = theme => ({
   container: {
     display: 'flex',
     flexWrap: 'wrap',
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   formControl: {
     margin: theme.spacing.unit,
-    align: 'center',
-    width: '50%',
-  },
-  selectEmpty: {
-    marginTop: theme.spacing.unit * 2,
+    width: '50%'
   },
 });
 
@@ -30,10 +28,10 @@ class Login extends Component {
     };
   }
 
-  handleChange = name => event => {
+  handleChange(event) {
     this.setState({ selectedUser: event.target.value });
-    this.props.onUserSelect(event.target.value, name);
-  };
+    this.props.onUserSelect(event.target.value);
+  }
 
   render() {
     const { classes, availableUsers, redirectToReferrer } = this.props;
@@ -41,25 +39,30 @@ class Login extends Component {
 
     if (redirectToReferrer) {
       return (
-        <Redirect to={from}/>
+        <Redirect to={from} />
       );
     }
 
     return (
-      <form className={classes.container} autoComplete="off">
+      <div className={classes.container}>
         <FormControl className={classes.formControl}>
-          <InputLabel htmlFor="user-simple">Selecteer je pas: </InputLabel>
+          <InputLabel htmlFor="user">Selecteer een pas</InputLabel>
           <Select
             value={this.state.selectedUser}
-            onChange={this.handleChange()}
-            input={<Input id="user-simple" />}
+            onChange={this.handleChange.bind(this)}
+            input={<Input id="user" />}
           >
-            {availableUsers && availableUsers.map(user => {
-              return <MenuItem key={user.id} value={user}>{`${user.id} (pas_id: ${user.pasid})`}</MenuItem>
-            })}
+            {availableUsers.map(user => (
+              <MenuItem
+                key={user.id}
+                value={user}
+              >
+                {`${user.id} (pas_id: ${user.pasid})`}
+              </MenuItem>
+            ))}
           </Select>
         </FormControl>
-      </form>
+      </div>
     );
   }
 }
@@ -74,6 +77,6 @@ Login.propTypes = {
 
 Login.defaultProps = {
   availableUsers: []
-}
+};
 
 export default withRouter(withStyles(styles)(Login));
