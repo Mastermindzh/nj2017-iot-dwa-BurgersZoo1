@@ -15,8 +15,8 @@ class FactWidgetComponent extends Component {
         'Mangrove'
       ],
       selectedResidence: ''
-    }
-  };
+    };
+  }
 
   renderAudioList() {
     if (this.state.selectedResidence === 'Safari') {

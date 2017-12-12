@@ -10,8 +10,26 @@ import { fetchParkHistory } from '../actions/parkHistoryActions';
 
 class MyRangerContainer extends Component {
 
-  componentWillMount(){
+  state = {
+    dates: [],
+    selectedVisitHistory: {}
+  }
+
+  componentWillMount() {
     this.props.fetchParkHistory();
+  }
+
+  componentDidMount() {
+    this.setState({
+      dates: stripDatesFromVisitHistory(this.props.parkHistory)
+    });
+  }
+
+  handleDateSelect(data) {
+    const date = data.value;
+    this.setState({
+      selectedVisitHistory: stripSingleHistoryFromProps(this.props.parkHistory, date)
+    });
   }
 
   render() {
@@ -19,7 +37,7 @@ class MyRangerContainer extends Component {
       <div>
         <Grid container spacing={24}>
           <Grid item xs={12} sm={6}>
-            <RangerVisitDate />
+            <RangerVisitDate handleDateSelect={(event, data) => this.handleDateSelect(data)} />
           </Grid>
           <Grid item xs={12} sm={6}>
             <FactWidgetComponent />
@@ -33,14 +51,24 @@ class MyRangerContainer extends Component {
   }
 }
 
-function mapStateToProps(state){
+const mapStateToProps = state => {
   return {
-    state: state
+    parkHistory: state.parkHistoryReducer
   };
 }
 
+const stripDatesFromVisitHistory = parkHistory => {
+  return [];
+};
+
+const stripSingleHistoryFromProps = (parkHistory, date) => {
+  return {};
+};
+
 MyRangerContainer.propTypes = {
   fetchParkHistory: PropTypes.func.isRequired,
+  parkHistory: PropTypes.object
 };
 
 export default connect(mapStateToProps, {fetchParkHistory})(MyRangerContainer);
+
