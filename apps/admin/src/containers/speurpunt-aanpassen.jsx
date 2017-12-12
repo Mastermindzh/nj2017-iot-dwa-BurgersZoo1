@@ -12,7 +12,7 @@ import TextField from "material-ui/TextField";
 import Select from "material-ui/Select";
 import { MenuItem } from "material-ui/Menu";
 
-class PootAanpassenPopupContainer extends Component {
+class SpeurpuntAanpassenContainer extends Component {
   state = {
     name: "",
     verblijf: "",
@@ -33,7 +33,7 @@ class PootAanpassenPopupContainer extends Component {
 
     return (
       <PopupComponent
-        title={"Een poot aanpassen"}
+        title={"Een speurpunt aanpassen"}
         open={this.props.open}
         onRequestClose={this.props.onRequestClose}
       >
@@ -76,7 +76,7 @@ class PootAanpassenPopupContainer extends Component {
               className={classes.formControl}
               style={{ minWidth: "200px" }}
             >
-              <InputLabel htmlFor="poot">Poot</InputLabel>
+              <InputLabel htmlFor="poot">Poten</InputLabel>
               <Select
                 value={this.state.poot}
                 onChange={this.handleChange.bind(this, "poot")}
@@ -100,10 +100,10 @@ class PootAanpassenPopupContainer extends Component {
   }
 }
 
-PootAanpassenPopupContainer.propTypes = {
+SpeurpuntAanpassenContainer.propTypes = {
   classes: PropTypes.object,
   open: PropTypes.bool,
   onRequestClose: PropTypes.func
 };
 
-export default withStyles(styles, { withTheme: true })(PootAanpassenPopupContainer);
+export default withStyles(styles, { withTheme: true })(SpeurpuntAanpassenContainer);

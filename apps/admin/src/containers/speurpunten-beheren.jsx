@@ -12,12 +12,15 @@ import _ from 'lodash';
 import TableComponent from './../components/table-component.jsx';
 
 import styles from './../styles/style.js';
-import PootToevoegenContainer from './poot-toevoegen.jsx';
-import PootAanpassenPopupContainer from './poot-aanpassen-popup.jsx';
+import SpeurpuntToevoegenContainer from './speurpunt-toevoegen.jsx';
+import SpeurpuntAanpassenContainer from './speurpunt-aanpassen.jsx';
+
+import Snackbar from 'material-ui/Snackbar';
+import CloseIcon from 'material-ui-icons/Close';
 
 import { fetchSpeurpunten } from './../actions/speurpuntenActions';
 
-class PootAanpassenContainer extends Component {
+class SpeurpuntenBeherenContainer extends Component {
 
   constructor(props){
     super(props);
@@ -25,7 +28,7 @@ class PootAanpassenContainer extends Component {
     this.state = {
       popupOpen: false,
       search: '',
-      type: '',
+      type: ''
     };
 
     this.ADD = 'ADD';
@@ -38,6 +41,22 @@ class PootAanpassenContainer extends Component {
 
   onRequestClose(){
     this.setState({ popupOpen: false })
+  }
+
+  componentWillReceiveProps(nextProps){
+    if(this.state.popupOpen && ((_.size(nextProps.speurpunten) - _.size(this.state.speurpunten)) > 0)){
+      console.log('nextprops');
+      this.onRequestClose();
+      this.showSnackBar();
+    }
+  }
+
+  showSnackBar(){
+    this.setState({snackbar: true});
+  }
+
+  snackbarClose(){
+    this.setState({snackbar: false});
   }
 
   render() {
@@ -77,7 +96,7 @@ class PootAanpassenContainer extends Component {
 
     return (
       <div>
-        <h1>Poot aanpassen</h1>
+        <h1>Speurpunten beheren</h1>
         <Grid container spacing={24}>
           <Grid item xs={12}>
             <div>
@@ -96,20 +115,46 @@ class PootAanpassenContainer extends Component {
         </Grid>
 
         { this.state.type === this.ADD && this.state.popupOpen &&
-          <PootToevoegenContainer open={this.state.popupOpen} onRequestClose={this.onRequestClose.bind(this)}/>
+          <SpeurpuntToevoegenContainer open={this.state.popupOpen} onRequestClose={this.onRequestClose.bind(this)}/>
         }
 
         { this.state.type === this.EDIT && this.state.popupOpen &&
-          <PootAanpassenPopupContainer open={this.state.popupOpen} onRequestClose={this.onRequestClose.bind(this)}/>
+          <SpeurpuntAanpassenContainer open={this.state.popupOpen} onRequestClose={this.onRequestClose.bind(this)}/>
         }
+
+        <Snackbar
+          anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'left',
+          }}
+          open={this.state.snackbar}
+          autoHideDuration={2000}
+          onRequestClose={this.snackbarClose.bind(this)}
+          SnackbarContentProps={{
+            'aria-describedby': 'message-id',
+          }}
+          message={<span id="message-id">Actie verwerkt</span>}
+          action={[
+            <IconButton
+              key="close"
+              aria-label="Close"
+              color="inherit"
+              className={classes.close}
+              onClick={this.snackbarClose.bind(this)}
+            >
+              <CloseIcon />
+            </IconButton>,
+          ]}
+        />
+
       </div>
     );
   }
 }
 
-PootAanpassenContainer.propTypes = {
+SpeurpuntenBeherenContainer.propTypes = {
   classes: PropTypes.object,
-  speurpunten: PropTypes.arrayOf.object,
+  speurpunten: PropTypes.object,
   fetchSpeurpunten: PropTypes.func
 };
 
@@ -119,4 +164,4 @@ function mapStateToProps(state){
   };
 }
 
-export default connect(mapStateToProps,{fetchSpeurpunten})(withStyles(styles, { withTheme: true })(PootAanpassenContainer));
+export default connect(mapStateToProps,{fetchSpeurpunten})(withStyles(styles, { withTheme: true })(SpeurpuntenBeherenContainer));

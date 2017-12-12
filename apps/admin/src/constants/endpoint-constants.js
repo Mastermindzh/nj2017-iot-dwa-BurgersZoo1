@@ -1,11 +1,20 @@
 const SERVER = "http://localhost:8001/api";
+const SPEURPUNTEN = "/speurpunten";
+
 
 export const SPEURPUNT = {
-  GET: `${SERVER}/speurpunten`
+  GET: `${SERVER}${SPEURPUNTEN}`,
+  POST: `${SERVER}${SPEURPUNTEN}`
 };
 export const DIERENGELUIDEN = {
   GET: `${SERVER}/dierengeluiden`
 };
 export const WEETJES = {
   GET: `${SERVER}/weetjes`
+};
+export const POTEN = {
+  GET: `${SERVER}/poten`
+};
+export const VERBLIJVEN = {
+  GET: `${SERVER}/verblijven`
 };

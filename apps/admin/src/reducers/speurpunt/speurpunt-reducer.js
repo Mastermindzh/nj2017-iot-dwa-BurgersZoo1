@@ -9,6 +9,9 @@ export default function speurpuntReducer(state = initialState, action) {
     case SPEURPUNT_ACTION_TYPES.FETCH_SPEURPUNTEN:
       return {...state, speurpunten: _.mapKeys(action.payload, "id")};
 
+    case SPEURPUNT_ACTION_TYPES.ADD_SPEURPUNT:
+      return {...state, speurpunten: {...state.speurpunten, [action.payload.id]: action.payload}};
+
     default:
       return state;
 
