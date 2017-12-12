@@ -8,7 +8,7 @@ Om een afbeelding op een stuk hout te branden is ten eerste een lijntekening nod
 
 ## Stap 1: Afbeelding -> Lijntekening
 In dit onderzoek wordt de volgende afbeelding gebruikt als voorbeeld:
-![images/origineel.png](images/origineel.png)
+![images/origineel.jpg](images/origineel.jpg)
 
 Ten eerste is geprobeerd een handmatige overtrek te maken van de afbeelding gebruik makend van [Inkscape](https://inkscape.org). Dit proces kost veel tijd. Het onderstaande voorbeeld is de rechter vleugel van de vlinder en kostte 35 minuten om over te tekenen.   
 ![images/overtrek-handmatig-inkscape.png](images/overtrek-handmatig-inkscape.svg)  
@@ -18,7 +18,7 @@ Ook biedt inkscape de mogelijkheid om automatisch een overtrek te maken van een 
 ![images/overtrek-automatisch-inkscape-incbackground.svg](images/overtrek-automatisch-inkscape-incbackground.svg)  
 Te zien is dat de achtergrond ook wordt overgetrokken met grote donkere vlakken. De vlinder zelf heeft weinig detail. 
 
-Om in volgende tests niet meer de achtergrond mee te nemen in het overtrekproces is met [Paint.NET](https://www.getpaint.net/) een transparante variant gemaakt van de vlinder foto. Het resultaat is als volgt:
+Om in volgende tests niet meer de achtergrond mee te nemen in het overtrekproces is met [Paint.NET](https://www.getpaint.net/) een transparante variant gemaakt van de vlinder foto. Het resultaat is als volgt:  
 ![images/transparant.png](images/transparant.png)  
 
 Vervolgens zijn met verschillende overtrektools deze transparante vlinderafbeelding overgetrokken. Hieronder zijn de resultaten te zien.
