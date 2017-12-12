@@ -74,11 +74,15 @@ module.exports = function (Poot) {
       var ids = poten.map(function (x) {
         return x.pootid
       });
-
       //zoek de hoogste id van alle poten en doe +1, dit zorgt voor een unieke id.
-      var pootid = ids.reduce(function (a, b) {
-        return Math.max(a, b);
-      });
+      var pootid;
+      if (ids.length <1) {
+        pootid = 0;
+      } else {
+        pootid = ids.reduce(function (a, b) {
+          return Math.max(a, b);
+        });
+      }
       var response = {pootid: pootid + 1};
       cb(null, response)
     });
