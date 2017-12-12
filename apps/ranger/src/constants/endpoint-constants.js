@@ -5,5 +5,5 @@ export const PASSEN = {
 };
 
 export const RANGER_VISITED = {
-  GET_MULTIPLE_VISIT_DATES: `${ROOT}/rangerHeeftBezochts` 
-}
+  GET_MULTIPLE_VISITS: `${ROOT}/rangerHeeftBezochts` 
+};

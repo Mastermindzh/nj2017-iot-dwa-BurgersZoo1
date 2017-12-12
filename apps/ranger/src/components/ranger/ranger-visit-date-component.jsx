@@ -7,6 +7,6 @@ const RangerVisitDate = () => {
         <h1>9 November 2017</h1>
       </div>
     );
-}
+};
 
 export default RangerVisitDate;
