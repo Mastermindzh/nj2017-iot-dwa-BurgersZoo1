@@ -11,11 +11,13 @@ import nl.han.mysensor.models.myenums.MyDataTypes;
 public class MySensorSendService {
 
     private final MySensorParseService parseService;
-    private IPootDAO pootDAO;
 
-    public MySensorSendService() {
-        this.pootDAO = DAOFactory.getInstance().getPootDAO();
+    MySensorSendService() {
         this.parseService = new MySensorParseService();
+    }
+
+    MySensorSendService(MySensorParseService parseService) {
+        this.parseService = parseService;
     }
 
     /**

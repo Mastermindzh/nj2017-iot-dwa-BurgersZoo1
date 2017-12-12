@@ -3,7 +3,6 @@ package nl.han.gateway.service;
 import nl.han.gateway.dao.DAOFactory;
 import nl.han.gateway.dao.IPootDAO;
 import nl.han.gateway.exceptions.NotFoundException;
-import nl.han.gateway.exceptions.NotOnlineException;
 import nl.han.gateway.models.Poot;
 
 import java.util.List;
@@ -25,14 +24,15 @@ public class PotenService {
 
     /**
      * Method used for saving poot config
-     * todo: implement this method, right now it's just a mock
-     * todo: this should implement the update
      *
      * @param poot
      * @return
      */
-    public void savePootConfig(Poot poot) throws NotFoundException, NotOnlineException {
-        this.pootDAO.update(poot);
+    public void savePootConfig(Poot poot) throws NotFoundException {
+        Poot returnPoot = this.pootDAO.update(poot);
+        if (returnPoot == null) {
+            throw new NotFoundException("Could not find Poot in database");
+        }
     }
 
     /**

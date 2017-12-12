@@ -2,7 +2,6 @@ package nl.han.gateway.controller;
 
 import com.google.gson.Gson;
 import nl.han.gateway.exceptions.NotFoundException;
-import nl.han.gateway.exceptions.NotOnlineException;
 import nl.han.gateway.models.Poot;
 import nl.han.gateway.service.PotenService;
 import spark.Request;
@@ -61,9 +60,6 @@ public class PotenController {
         } catch (NotFoundException ex) {
             response.status(404);
             return ex.getMessage();
-        } catch (NotOnlineException e) {
-            response.status(503);
-            return e.getMessage();
         }
         response.status(200);
         return "";

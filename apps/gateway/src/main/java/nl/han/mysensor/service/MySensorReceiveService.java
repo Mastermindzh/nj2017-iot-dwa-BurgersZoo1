@@ -27,6 +27,7 @@ public class MySensorReceiveService {
     private IPootDAO pootDAO;
     private BackendPootServiceBase backendPootServiceGroup1;
     private List<BackendPootServiceBase> backendPootServiceList = new ArrayList<>();
+    private MySensorSendService sendService;
 
     public MySensorReceiveService() {
         this.pootDAO = DAOFactory.getInstance().getPootDAO();
@@ -34,6 +35,17 @@ public class MySensorReceiveService {
         this.backendPootServiceGroup1 = new BackendPootService();
         this.backendPootServiceList.add(backendPootServiceGroup1);
         this.backendPootServiceList.add(new nl.han.backend.services.group2.BackendPootService());
+        this.sendService = new MySensorSendService();
+    }
+
+    MySensorReceiveService(BackendPootServiceBase backendPootServiceGroup1,
+                           List<BackendPootServiceBase> backendPootServiceList,
+                           MySensorSendService sendService) {
+        this.pootDAO = DAOFactory.getInstance().getPootDAO();
+        this.myMessageDAO = DAOFactory.getInstance().getMyMessageDAO();
+        this.backendPootServiceGroup1 = backendPootServiceGroup1;
+        this.backendPootServiceList = backendPootServiceList;
+        this.sendService = sendService;
     }
 
     /**
@@ -136,7 +148,6 @@ public class MySensorReceiveService {
      */
     private void sendTemperatureValue(MySetMessage message) {
         logger.debug(String.format("Sending tempature value to backend, node id #%d", message.getNodeId()));
-        logger.debug(message.toString());
         Poot poot = this.pootDAO.findByNodeId(message.getNodeId());
         this.backendPootServiceList.forEach(service -> service.sendTemperatureLoggingToBackend(message, poot));
     }
@@ -148,7 +159,9 @@ public class MySensorReceiveService {
      */
     private void rangerCardScan(MySetMessage message) {
         Poot poot = this.pootDAO.findByNodeId(message.getNodeId());
-        this.backendPootServiceList.forEach(service -> service.sendRangerCardScanToBackend(message, poot));
+        this.backendPootServiceList.forEach(service ->
+                service.sendRangerCardScanToBackend(message, poot)
+        );
     }
 
     /**
@@ -159,8 +172,7 @@ public class MySensorReceiveService {
     private void newNodeSubscribe(MyMessage message) {
         logger.info(String.format("Registering new node, node id: #%d pootid: #%s",
                 message.getNodeId(), message.getPayload()));
-        Poot poot = null;
-        poot = this.pootDAO.findByPootId(Long.valueOf(message.getPayload()));
+        Poot poot = this.pootDAO.findByPootId(Long.valueOf(message.getPayload()));
         if (poot == null) {
             logger.info("Unknown poot, register node");
             Poot newPoot = new Poot();
@@ -171,9 +183,6 @@ public class MySensorReceiveService {
             poot.setNodeid(message.getNodeId());
             poot = this.pootDAO.update(poot);
         }
-
-        MySensorSendService sendService = new MySensorSendService();
         sendService.sendPootIdToNode(poot);
-
     }
 }
