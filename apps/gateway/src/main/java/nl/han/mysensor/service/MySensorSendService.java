@@ -5,18 +5,19 @@ import nl.han.gateway.dao.DAOFactory;
 import nl.han.gateway.dao.IPootDAO;
 import nl.han.gateway.models.Poot;
 import nl.han.mysensor.models.MyMessage;
-import nl.han.mysensor.models.MySetMessage;
 import nl.han.mysensor.models.myenums.MyCommand;
 import nl.han.mysensor.models.myenums.MyDataTypes;
 
 public class MySensorSendService {
 
     private final MySensorParseService parseService;
-    private IPootDAO pootDAO;
 
-    public MySensorSendService() {
-        this.pootDAO = DAOFactory.getInstance().getPootDAO();
+    MySensorSendService() {
         this.parseService = new MySensorParseService();
+    }
+
+    MySensorSendService(MySensorParseService parseService) {
+        this.parseService = parseService;
     }
 
     /**

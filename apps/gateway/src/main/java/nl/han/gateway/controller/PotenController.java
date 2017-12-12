@@ -2,7 +2,6 @@ package nl.han.gateway.controller;
 
 import com.google.gson.Gson;
 import nl.han.gateway.exceptions.NotFoundException;
-import nl.han.gateway.exceptions.NotOnlineException;
 import nl.han.gateway.models.Poot;
 import nl.han.gateway.service.PotenService;
 import spark.Request;
@@ -47,25 +46,20 @@ public class PotenController {
      *
      * @param request
      * @param response
-     * @return transaction id or 200
      */
     private String savePootConfiguration(Request request, Response response) {
-        Poot poot = gson.fromJson(request.body(), Poot.class);
-        poot.setPootid(Long.valueOf(request.params("pootid")));
-        Long transactionID;
+        Poot incommingConfig = gson.fromJson(request.body(), Poot.class);
+        Poot poot = potenService.getPoot(Long.valueOf(request.params("pootid")));
+
+        poot.setWeetjes(incommingConfig.getWeetjes());
+        poot.setDierengeluid(incommingConfig.getDierengeluid());
+
         try {
-            transactionID = this.potenService.savePootConfig(poot);
+            this.potenService.savePootConfig(poot);
             response.type("application/json");
         } catch (NotFoundException ex) {
             response.status(404);
             return ex.getMessage();
-        } catch (NotOnlineException e) {
-            response.status(503);
-            return e.getMessage();
-        }
-        if (transactionID != null) {
-            response.status(202);
-            return String.valueOf(transactionID);
         }
         response.status(200);
         return "";
