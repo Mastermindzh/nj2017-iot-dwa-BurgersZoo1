@@ -6,6 +6,4 @@ import org.mongodb.morphia.Key;
 
 public interface IMyMessagesDAO extends ICrudDAO<MyMessage> {
     MyMessage get(ObjectId objectId);
-
-    MyMessage get(Key<MyMessage> key);
 }

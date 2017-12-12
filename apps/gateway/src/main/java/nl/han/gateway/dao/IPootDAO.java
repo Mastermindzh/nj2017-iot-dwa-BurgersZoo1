@@ -29,14 +29,6 @@ public interface IPootDAO extends ICrudDAO<Poot> {
     Poot get(ObjectId objectId);
 
     /**
-     * Get one by key
-     *
-     * @param key
-     * @return
-     */
-    Poot get(Key<Poot> key);
-
-    /**
      * Find one poot by poot id
      *
      * @param pootid

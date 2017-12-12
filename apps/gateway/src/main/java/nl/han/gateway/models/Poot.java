@@ -1,5 +1,6 @@
 package nl.han.gateway.models;
 
+import com.google.gson.annotations.SerializedName;
 import org.bson.types.ObjectId;
 import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Id;
@@ -10,6 +11,7 @@ import java.util.List;
 public class Poot {
 
     @Id
+    @SerializedName("_id")
     private ObjectId id;
     private Long pootid;
     private Long nodeid;

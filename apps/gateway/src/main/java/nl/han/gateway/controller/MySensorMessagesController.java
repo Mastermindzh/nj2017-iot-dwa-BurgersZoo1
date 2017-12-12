@@ -15,8 +15,6 @@ public class MySensorMessagesController {
     public MySensorMessagesController() {
         this.mySensorService = new MyMessageService();
 
-        get("/messages", (request, response) -> {
-            return this.mySensorService.getAllMessages();
-        }, json());
+        get("/messages", (request, response) -> this.mySensorService.getAllMessages(), json());
     }
 }

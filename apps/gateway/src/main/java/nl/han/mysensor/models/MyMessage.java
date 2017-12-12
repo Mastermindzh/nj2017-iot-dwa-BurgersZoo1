@@ -28,6 +28,10 @@ public abstract class MyMessage {
     private boolean ack;
     private String payload;
 
+    public void setAck(boolean ack) {
+        this.ack = ack;
+    }
+
     public MyMessage(Long nodeId, int childSensorId, MyCommand command, boolean ack, String payload) {
         this.nodeId = nodeId;
         this.childSensorId = childSensorId;
@@ -83,7 +87,8 @@ public abstract class MyMessage {
     @Override
     public String toString() {
         return "MyMessage{" +
-                "nodeId=" + nodeId +
+                "id=" + id +
+                ", nodeId=" + nodeId +
                 ", childSensorId=" + childSensorId +
                 ", command=" + command +
                 ", ack=" + ack +
