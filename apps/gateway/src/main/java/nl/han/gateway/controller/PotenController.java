@@ -1,18 +1,13 @@
 package nl.han.gateway.controller;
 
 import com.google.gson.Gson;
-import nl.han.gateway.dao.mongodb.PootMongoDAO;
 import nl.han.gateway.exceptions.NotFoundException;
 import nl.han.gateway.exceptions.NotOnlineException;
-import nl.han.gateway.models.Dierengeluid;
 import nl.han.gateway.models.Poot;
-import nl.han.gateway.models.Weetje;
 import nl.han.gateway.service.PotenService;
 import spark.Request;
 import spark.Response;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import static nl.han.gateway.util.transformers.JsonUtil.json;

@@ -2,7 +2,6 @@ package nl.han.gateway.controller;
 
 import com.google.gson.Gson;
 import nl.han.gateway.service.MyMessageService;
-import nl.han.gateway.service.PotenService;
 
 import static nl.han.gateway.util.transformers.JsonUtil.json;
 import static spark.Spark.get;

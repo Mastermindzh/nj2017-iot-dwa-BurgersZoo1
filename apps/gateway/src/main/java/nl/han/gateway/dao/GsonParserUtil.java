@@ -16,7 +16,7 @@ public class GsonParserUtil {
                             return null;
                         } else {
                             JsonObject jo = new JsonObject();
-                            jo.addProperty("$oid", src.toString() );
+                            jo.addProperty("$oid", src.toString());
                             return jo;
                         }
                     })

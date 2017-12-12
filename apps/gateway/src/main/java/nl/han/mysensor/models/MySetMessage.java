@@ -4,7 +4,7 @@ import nl.han.mysensor.models.myenums.MyCommand;
 import nl.han.mysensor.models.myenums.MyDataTypes;
 
 public class MySetMessage extends MyMessage {
-    private  MyDataTypes type;
+    private MyDataTypes type;
 
     public MySetMessage(Long nodeId, int childSensorId, MyCommand command, boolean ack, String payload, MyDataTypes type) {
         super(nodeId, childSensorId, command, ack, payload);

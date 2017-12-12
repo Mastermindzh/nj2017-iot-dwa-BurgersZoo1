@@ -14,11 +14,11 @@ public class MyMessageService {
         this.myMessageDAO = DAOFactory.getInstance().getMyMessageDAO();
     }
 
-    public List<MyMessage> getAllMessages(){
+    public List<MyMessage> getAllMessages() {
         return this.myMessageDAO.getAll();
     }
 
-    public MyMessage save(MyMessage message){
+    public MyMessage save(MyMessage message) {
         return this.myMessageDAO.save(message);
     }
 }

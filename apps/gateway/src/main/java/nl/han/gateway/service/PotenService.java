@@ -4,11 +4,8 @@ import nl.han.gateway.dao.DAOFactory;
 import nl.han.gateway.dao.IPootDAO;
 import nl.han.gateway.exceptions.NotFoundException;
 import nl.han.gateway.exceptions.NotOnlineException;
-import nl.han.gateway.models.Dierengeluid;
 import nl.han.gateway.models.Poot;
-import nl.han.gateway.models.Weetje;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**

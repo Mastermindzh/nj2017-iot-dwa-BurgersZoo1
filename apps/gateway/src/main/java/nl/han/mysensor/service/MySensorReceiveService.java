@@ -1,6 +1,5 @@
 package nl.han.mysensor.service;
 
-import nl.han.Application;
 import nl.han.backend.services.BackendPootServiceBase;
 import nl.han.backend.services.group1.BackendPootService;
 import nl.han.gateway.dao.DAOFactory;

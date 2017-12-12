@@ -5,7 +5,6 @@ import nl.han.gateway.dao.DAOFactory;
 import nl.han.gateway.dao.IPootDAO;
 import nl.han.gateway.models.Poot;
 import nl.han.mysensor.models.MyMessage;
-import nl.han.mysensor.models.MySetMessage;
 import nl.han.mysensor.models.myenums.MyCommand;
 import nl.han.mysensor.models.myenums.MyDataTypes;
 
