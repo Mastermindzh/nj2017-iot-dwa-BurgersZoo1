@@ -43,4 +43,4 @@ Dit resultaat is zeer opvallend. adm-zip faalt simpelweg om een zip te maken, zo
 
 ## Conclusie
 
-
+Uit het onderzoek blijkt dat "[archiver.js](https://archiverjs.com)" het beste werkt. Archiver.js maakt een zip met dezelfde bestandsgrootte als de andere twee tools maar maakt de zip **veel** sneller. De community is ook wat groter als bij de competitie. Het enige nadeel (een aantal extra regels) is niet groot genoeg om de voordelen te niet te doen.
