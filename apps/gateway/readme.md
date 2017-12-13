@@ -12,6 +12,9 @@ Zonder de instalatie van deze library zal er bij het bouwen van het project fout
 ### Upload via SSH naar Raspberry Pi 3
 `sudo scp build/libs/gateway-1.0-SNAPSHOT.jar pi@IP_ADDRESS:~/gateway`
 
+sudo apt-get install librxtx-java
+
+
 
 ## Afspraken MySensors protecol
 

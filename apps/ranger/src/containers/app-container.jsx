@@ -7,7 +7,7 @@ import { Route, Redirect, withRouter, Switch } from 'react-router-dom';
 
 import Layout from '../components/layout.jsx';
 import Login from '../components/login-component.jsx';
-import { login, fetchUsers } from '../actions/loginActions';
+import { login, logout, fetchUsers } from '../actions/loginActions';
 import PrivateRoute from '../routes/private-route.jsx';
 
 class App extends React.Component {
@@ -26,6 +26,11 @@ class App extends React.Component {
     if (nextProps.session.isLoggedIn) {
       this.setState({
         redirectToReferrer: true
+      });
+    }
+    else {
+      this.setState({
+        redirectToReferrer: false
       });
     }
   }
@@ -51,6 +56,7 @@ class App extends React.Component {
             component={Layout}
             user={this.props.session.loggedInUser}
             isLoggedIn={this.props.session.isLoggedIn}
+            logout={this.props.logout}
           />
         </Switch>
       </div>
@@ -71,7 +77,8 @@ App.propTypes = {
   theme: PropTypes.object.isRequired,
   fetchUsers: PropTypes.func.isRequired,
   login: PropTypes.func.isRequired,
+  logout: PropTypes.func.isRequired,
   history: PropTypes.object.isRequired
 };
 
-export default withRouter(connect(mapStateToProps, { login, fetchUsers })(withStyles(style, { withTheme: true })(App)));
+export default withRouter(connect(mapStateToProps, { login, logout, fetchUsers })(withStyles(style, { withTheme: true })(App)));

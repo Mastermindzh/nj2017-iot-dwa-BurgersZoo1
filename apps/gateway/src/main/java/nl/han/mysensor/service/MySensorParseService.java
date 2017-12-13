@@ -1,12 +1,12 @@
 package nl.han.mysensor.service;
 
 import nl.han.backend.services.group2.BackendPootService;
+import nl.han.gateway.exceptions.NotFoundException;
 import nl.han.mysensor.models.*;
 import nl.han.mysensor.models.myenums.MyCommand;
+import nl.han.mysensor.models.myenums.MyDataTypes;
 import nl.han.mysensor.models.myenums.MyInternal;
 import nl.han.mysensor.models.myenums.MyPresentationType;
-import nl.han.mysensor.models.myenums.MyDataTypes;
-import nl.han.gateway.exceptions.NotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
