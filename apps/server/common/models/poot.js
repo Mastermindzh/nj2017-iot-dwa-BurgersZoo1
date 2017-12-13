@@ -22,26 +22,26 @@ module.exports = function (Poot) {
     });
   };
 
-  Poot.sendLog = function (log, pootid, cb) {
-    var temp = log.toJSON();
-    var logValues = temp.logValues;
-    var timestamp = log.toJSON().timestamp;
-    var response = {pootid: pootid, timestamp: timestamp, logValues: logValues}
-    // todo sla data op in logging
-
-    // todo hij neemt logvalues van log niet mee.
-    // todo relatie van logging - logValues bekijken, die wordt niet goed overgenomen in de API explorer.
-    // todo logValues is nu niet required bij het aanmaken, dit moet wel.
-    // todo logValues mee in het object krijgen en opslaan.
-    cb(null, response)
-  };
-
-  Poot.afterRemote('sendLog', function (ctx, result, next) {
-    app.models.Logging.create(result, function (err, obj) {
-      if (err) next(err, null);
-      next(null, 'logging opgeslagen');
-    })
-  });
+  // Poot.sendLog = function (log, pootid, cb) {
+  //   var temp = log.toJSON();
+  //   var logValues = temp.logValues;
+  //   var timestamp = log.toJSON().timestamp;
+  //   var response = {pootid: pootid, timestamp: timestamp, logValues: logValues}
+  //   // todo sla data op in logging
+  //
+  //   // todo hij neemt logvalues van log niet mee.
+  //   // todo relatie van logging - logValues bekijken, die wordt niet goed overgenomen in de API explorer.
+  //   // todo logValues is nu niet required bij het aanmaken, dit moet wel.
+  //   // todo logValues mee in het object krijgen en opslaan.
+  //   cb(null, response)
+  // };
+  //
+  // Poot.afterRemote('sendLog', function (ctx, result, next) {
+  //   app.models.Logging.create(result, function (err, obj) {
+  //     if (err) next(err, null);
+  //     next(null, 'logging opgeslagen');
+  //   })
+  // });
 
   Poot.scan = function (pasid, pootid, cb) {
     var rangerid = 0;
@@ -118,16 +118,16 @@ module.exports = function (Poot) {
     returns: {errorStatus: '400', arg: 'pootid', type: 'Object', root: true}
   });
 
-  Poot.remoteMethod('sendLog', {
-    description: 'Verzenden van log-data naar de backend vanuit de gateway. Elk request bevat de logdata van 1 poot.',
-    accepts: [{arg: 'log', type: 'logging', http: {source: 'body'}}, {
-      arg: 'pootid',
-      type: 'number',
-      http: {source: 'path'}
-    }],
-    http: {errorStatus: '400', path: '/:pootid/logs', verb: 'post', status: 201},
-    returns: {arg: 'message', type: 'string', root: true}
-  });
+  // Poot.remoteMethod('sendLog', {
+  //   description: 'Verzenden van log-data naar de backend vanuit de gateway. Elk request bevat de logdata van 1 poot.',
+  //   accepts: [{arg: 'log', type: 'logging', http: {source: 'body'}}, {
+  //     arg: 'pootid',
+  //     type: 'number',
+  //     http: {source: 'path'}
+  //   }],
+  //   http: {errorStatus: '400', path: '/:pootid/logs', verb: 'post', status: 201},
+  //   returns: {arg: 'message', type: 'string', root: true}
+  // });
 
   Poot.remoteMethod('scan', {
     description: 'Verwerken van de ranger die bij een bepaalde poot komt. Wanneer een ranger een poot scant wordt het kaartid via de gateway naar de backend gestuurd. Dit is het endpoint in de backend die dit ontvangt.',

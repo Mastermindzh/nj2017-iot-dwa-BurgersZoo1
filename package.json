@@ -4,11 +4,12 @@
   "description": "## Inleiding Dierentuin Koninklijk Burgers' Zoo is een dierentuin gelegen te Arnhem op een mooie bossige, heuvelige locatie. Burgers' Zoo kampt met een probleem: (oudere) bezoekers laten zich negatief uit over de mobiliteit in het park. Dit is te wijten aan de heuvelige locatie. Voor dit probleem wordt door een groep van vijf ICT-studenten een technische oplossing bedacht. Deze README is een verkorte versie van een plan van aanpak (PvA), waarin verteld wordt hoe het probleem wordt aangepakt en welke producten opgeleverd gaan worden.",
   "main": "index.js",
   "scripts": {
-    "compile-deliverables": "npm run compile-fo && npm run compile-to && npm run compile-images",
+    "compile-deliverables": "npm run compile-pva && npm run compile-fo && npm run compile-to && npm run compile-images && npm run generate-pdfs",
     "compile-images": "find ./documentatie \\( -name \"*.jpg*\" -o -name \"*.png*\" \\)  -exec cp {} deliverables/images/ \\;",
-    "compile-fo": "./node_modules/.bin/markdown-include ./documentatie/functioneel_ontwerp/markdown.json && ./node_modules/.bin/markdown-toc -i deliverables/functioneel\\ ontwerp.md",
+    "compile-pva": "cp ./documentatie/plan-van-aanpak/plan-van-aanpak.md ./deliverables/plan\\ van\\ aanpak.md && ./node_modules/.bin/markdown-toc -i deliverables/plan\\ van\\ aanpak.md",
+    "compile-fo": "./node_modules/.bin/markdown-include ./documentatie/functioneel-ontwerp/markdown.json && ./node_modules/.bin/markdown-toc -i deliverables/functioneel\\ ontwerp.md",
     "compile-to": "./node_modules/.bin/markdown-include ./documentatie/technisch-ontwerp/markdown.json && ./node_modules/.bin/markdown-toc -i deliverables/technisch\\ ontwerp.md",
-    "generate-pdfs": "./node_modules/.bin/markdown-pdf deliverables/functioneel\\ ontwerp.md"
+    "generate-pdfs": "node generate-pdf.js 'plan van aanpak' && node generate-pdf.js 'functioneel ontwerp' && node generate-pdf.js 'technisch ontwerp'"
   },
   "repository": {
     "type": "git",
@@ -21,8 +22,12 @@
   },
   "homepage": "https://github.com/HANICA-MinorMulti/nj2017-iot-dwa-BurgersZoo1#readme",
   "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
+    "duplexer": "^0.1.1",
     "markdown-include": "^0.4.3",
     "markdown-pdf": "^8.0.0",
-    "markdown-toc": "^1.2.0"
+    "markdown-toc": "^1.2.0",
+    "split": "^1.0.1",
+    "through": "^2.3.8"
   }
 }
