@@ -32,12 +32,14 @@ De libraries welke onderzocht worden zijn:
 
 | Library                              | Archiver | Node-zip | adm-zip |
 |--------------------------------------|----------|----------|---------|
-| Regels code                          |          |    6      |    7     |
-| Regels code bij het maken van 2 zips |          |    7      |    10     |
-| Compressieresultaat                  |          |    Geslaagd / 3.4MB      |  Gefaald / 3.7MB       |
-| Executie tijd                        |          |     666.778ms     |   1665.972ms      |
-| Community                            |          |     Vrijwel geen     | Geen |
-| Async                                |          |     Yep, gebruikt FS in het voorbeeld dus het kan Async     | Yep, callback bij het schrijven |
+| Regels code                          |     9    |    6      |    7     |
+| Regels code bij het maken van 2 zips |     17   |    7      |    10     |
+| Compressieresultaat                  |  Geslaagd / 3.4MB   |    Geslaagd / 3.4MB      |  Gefaald / 3.7MB       |
+| Executie tijd                        |   6.960ms  |     666.778ms     |   1665.972ms      |
+| Community                            |   Redelijk       |     Vrijwel geen     | Geen |
+| Async                                |    Yep, gebruikt FS in het voorbeeld dus het kan Async      |     Yep, gebruikt FS in het voorbeeld dus het kan Async     | Yep, callback bij het schrijven |
+
+Dit resultaat is zeer opvallend. adm-zip faalt simpelweg om een zip te maken, zowel met het Github als met het voorbeeld zoals te vinden in [archiver.js](./code/archiver.js).
 
 ## Conclusie
 
