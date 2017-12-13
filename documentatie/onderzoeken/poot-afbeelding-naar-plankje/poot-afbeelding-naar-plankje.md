@@ -2,7 +2,7 @@
 
 In dit onderzoek is onderzocht hoe een afbeelding het beste kan worden weergegeven op een plakje. Het plan is om een vlinder afbeelding te laser-branden op een stuk hout. Dit is geïnspireerd naar de volgende sleutelhanger:
 
-![images/voorbeeld.jpg]
+![images/voorbeeld.jpg](images/voorbeeld.jpg)
 
 Om een afbeelding op een stuk hout te branden is ten eerste een lijntekening nodig. Vervolgens moet deze lijntekening op hout gebrand worden. Hiervoor moet getest worden welk type hout en welke instellingen nodig zijn. 
 
