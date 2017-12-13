@@ -4,13 +4,16 @@ class Speurpunt {
   geolocation;
   locatienaam;
   verblijfId;
+  id;
 
-  constructor(pootid, geolocation, locatienaam, verblijfId) {
+  constructor(pootid, geolocation, locatienaam, verblijfId, id = "") {
     this.pootid = pootid;
     this.geolocation = geolocation;
     this.locatienaam = locatienaam;
     this.verblijfId  = verblijfId;
+    this.id = id;
   }
+
 }
 
 export default Speurpunt;

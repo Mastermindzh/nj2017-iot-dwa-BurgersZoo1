@@ -4,7 +4,8 @@ const SPEURPUNTEN = "/speurpunten";
 
 export const SPEURPUNT = {
   GET: `${SERVER}${SPEURPUNTEN}`,
-  POST: `${SERVER}${SPEURPUNTEN}`
+  POST: `${SERVER}${SPEURPUNTEN}`,
+  PATCH: `${SERVER}${SPEURPUNTEN}`
 };
 export const DIERENGELUIDEN = {
   GET: `${SERVER}/dierengeluiden`
