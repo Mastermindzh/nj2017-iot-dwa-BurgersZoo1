@@ -5,11 +5,11 @@ Om de gateway werkend te krijgen zijn er een aantal vereisten:
 
 - Raspberry Pi 3.
 - Arduino Nano, Mega of Uno met een aangesloten NRF24L01+.
-- Er is een werkende versie van `RASPBIAN STRETCH WITH DESKTOP` geinstalleerd.
+- Er is een werkende versie van `RASPBIAN STRETCH WITH DESKTOP` geïnstalleerd.
 - Er is toegang via SSH of direct op de Raspberry Pi 3 terminal toegang.
 
 ## MongoDB
-Omdat er het een en ander wordt opgeslagen op de Raspberry Pi 3 moet er een database geinstalleerd worden, in dit geval MongoDB.
+Omdat er het een en ander wordt opgeslagen op de Raspberry Pi 3 moet er een database geïnstalleerd worden, in dit geval MongoDB.
 
 Dit kan op de Raspberry Pi 3 gedaan worden met de volgende commando's in de terminal:
 
@@ -20,7 +20,7 @@ $ sudo apt-get install mongodb-server
 ```
 *Het upgrade process kan een tijdje duren.*
 
-Als de MongoDB server succesvol geinstalleerd is, kan deze service gestart worden door: 
+Als de MongoDB server succesvol geïnstalleerd is, kan deze service gestart worden door: 
 ``` bash
 $ sudo service mongodb start
 ```
