@@ -1,4 +1,4 @@
-# Docker gebruiken voor dev. deployment
+# Bestanden zippen met nodeJS
 
 ## Onderzoeksmethode
 
