@@ -1,4 +1,6 @@
-class Speurpunt {
+import BaseModel from './base-model';
+
+class Speurpunt extends BaseModel{
 
   poten;
   geolocation;
@@ -7,6 +9,7 @@ class Speurpunt {
   id;
 
   constructor(pootid, geolocation, locatienaam, verblijfId, id = "") {
+    super();
     this.pootid = pootid;
     this.geolocation = geolocation;
     this.locatienaam = locatienaam;

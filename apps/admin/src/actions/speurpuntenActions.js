@@ -26,7 +26,7 @@ export function addSpeurpunt(speurpunt){
 
 export function updateSpeurpunt(speurpunt){
   return (dispatch) => {
-    axios.patch(ENDPOINTS.SPEURPUNT.PATCH, speurpunt).then(result => {
+    axios.patch(ENDPOINTS.SPEURPUNT.PATCH, speurpunt.getPatchObject()).then(result => {
       dispatch({type: SPEURPUNT_ACTION_TYPES.UPDATE_SPEURPUNT , payload: result.data});
     }).catch(err => {
       console.log(err);
