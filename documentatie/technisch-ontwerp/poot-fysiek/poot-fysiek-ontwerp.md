@@ -19,4 +19,4 @@ Achteraanzicht:
 Rechter zijaanzicht:  
 ![images/zij.png](images/zij.png)
 
-Een pdf variant van deze technische tekeningen zijn [hier](TODOhttps://github.com/HANICA-MinorMulti/nj2017-iot-dwa-BurgersZoo1/blob/master/documentatie/onderzoeken/poot-afbeelding-naar-plankje) te vinden. De orginele AutoCAD ontwerpen zijn [hier](TODO) te downloaden.
+Een pdf variant van deze technische tekeningen zijn [hier](https://github.com/HANICA-MinorMulti/nj2017-iot-dwa-BurgersZoo1/blob/master/documentatie/technisch-ontwerp/poot-fysiek/poot.pdf) te vinden. De orginele AutoCAD ontwerpen zijn [hier](https://github.com/HANICA-MinorMulti/nj2017-iot-dwa-BurgersZoo1/blob/master/documentatie/technisch-ontwerp/poot-fysiek/poot.dwg) te downloaden.
