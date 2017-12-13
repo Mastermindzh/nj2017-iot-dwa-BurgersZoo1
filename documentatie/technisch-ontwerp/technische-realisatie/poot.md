@@ -22,10 +22,10 @@ Deze communiceren met elkaar via I<sup>2</sup>C. Er is gekozen voor I<sup>2</sup
 
 #### Initialisatiesequentie
 Wanneer de maduino opstart worden de volgende acties gedaan:
-1. Pinnen RFID uitschakelen
-2. MySensors initialisatie inculsief NRF initialisatie. (deze stap halt het initializatieproces totdat er verbinding is met de gateway)
-3. RFID initialisatie
-4. Connectie naar auduino initialiseren.
+1. Pinnen RFID uitschakelen. 
+2. MySensors initialisatie inculsief NRF initialisatie. (Dit is de initialisatie voor de draadloze verbinding) Deze stap halt het initializatieproces totdat er verbinding is met de gateway.
+3. RFID initialisatie (Dit is de initialisatie van het pas-scan-detectie gedeelte)
+4. Connectie naar auduino initialiseren. (Dit is de verbinding naar de andere arduino die de audio afspeelt)
 
 Dit betekent dat er pas passen gescand kunnen worden wanneer de poot verbinding heeft met de gateway. Dit is niet gewenst sinds nu alle poten stoppen met werken wanneer de gateway offline gaat. Helaas is dit niet op te lossen omdat de MySensors initialisatie alleen werkt wanneer de pinnen naar de RFID sensor die óók op SPI zit helemaal uit staan. Wanneer éérst de RFID wordt ingeschakeld moet daarna de pinnen naar die RFID weer uitgezet worden, waardoor de initialisatie van de RFID ongedaan wordt. Het is niet gelukt een andere manier van initialisatie te vinen die dit probleem oplost. 
 
