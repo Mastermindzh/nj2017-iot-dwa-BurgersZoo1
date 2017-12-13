@@ -26,7 +26,7 @@ $ sudo service mongodb start
 ```
 
 ## Java
-De gateway draait in een de JVM en het is dus nodig om de juiste Java installatie te installeren. 
+De gateway draait in een JVM en het is dus nodig om de juiste Java installatie te installeren. 
 
 ``` bash
 sudo su
@@ -52,7 +52,7 @@ sudo apt-get install librxtx-java
 ![Aansluitschema Arduino Nano met een NRF24L01+](images/Arduino_Nano_NRF24_bb.png)
 *Aansluitschema Arduino Nano met een NRF24L01+*
 
-De Arduino verbind vervolgens via een USB kabel aan de Raspberry Pi 3.
+De Arduino moet vervolgens verbonden worden via een USB kabel met de Raspberry Pi 3.
 
 ## Start gateway
 Om de gateway te starten moet eerst de MongoDB aan staan. Dat kan met het eerste commando.
