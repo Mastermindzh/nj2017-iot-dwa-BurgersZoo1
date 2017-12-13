@@ -28,9 +28,6 @@ public abstract class MyMessage {
     private boolean ack;
     private String payload;
 
-    public void setAck(boolean ack) {
-        this.ack = ack;
-    }
 
     public MyMessage(Long nodeId, int childSensorId, MyCommand command, boolean ack, String payload) {
         this.nodeId = nodeId;
