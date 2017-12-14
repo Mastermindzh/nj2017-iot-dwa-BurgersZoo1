@@ -8,7 +8,7 @@ mainClassName = 'nl.han.Application'
 
 defaultTasks 'run'
 
-sourceCompatibility = 1.8
+sourceCompatibility = 1.9
 
 repositories {
     mavenCentral()
@@ -16,9 +16,10 @@ repositories {
 
 dependencies {
     testCompile 'junit:junit:4.12'
-    testCompile 'org.powermock:powermock-core:1.6.1'
-    testCompile 'org.powermock:powermock-module-junit4:1.6.1'
-    testCompile 'org.powermock:powermock-api-mockito:1.6.1'
+    testCompile group: 'org.powermock', name: 'powermock-module-junit4', version: '2.0.0-beta.5'
+    testCompile group: 'org.powermock', name: 'powermock-api-mockito2', version: '2.0.0-beta.5'
+    testCompile group: 'org.mockito', name: 'mockito-core', version: '2.13.0'
+
 
     compile "com.sparkjava:spark-core:2.7.1"
     compile group: 'com.sparkjava', name: 'spark-debug-tools', version: '0.5'
