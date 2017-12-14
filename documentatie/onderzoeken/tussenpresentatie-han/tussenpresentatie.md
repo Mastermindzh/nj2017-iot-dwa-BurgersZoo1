@@ -16,17 +16,17 @@ Om de opdracht in te leiden zal er een korte presentatie gehouden worden over de
 
 Aan het einde zal er enthousiast gevraagd worden of de andere groepen ideeën / opmerkingen hebben die ons verder kunnen helpen.
 
-De presentatie: [presentatie.pptx](./tussenpresentatie.pptx)
+De presentatie: [presentatie.pptx](./../../../groepsprocess/tussenpresentatie.pptx) <br />
+De presentatie: [presentatie.pdf](./../../../groepsprocess/tussenpresentatie.pdf)
 
-De presentatie als foto's:
-![presentatie image](images/presentatie.png)
+## Resultaat & Conclusie
 
-## Resultaat
+De presentatie ging gedeeltelijk goed, alle informatie die de groep wilde delen is gedeeld en ook het verhaal was helder. Er zijn enkele goede vragen geweest waaronder:
 
-Het resultaat kan ik pas maandag meten.
-Voorbereiden is essentieel.
+- Waarom Docker en niet Ansible?
+- Hebben jullie gedacht om temperatuur e.d te meten voor Burgers' zoo?
+- Hoe zorg je ervoor dat de poot blijft werken in de extreme omstandigheden?
 
-## Conclusie
-Deze komt volgende week
+Deze vragen zijn deels toegelicht maar zullen allen later  geëvalueerd worden. Het feit dat ze deze gerichte vragen stellen bewijst dat ze goed geinformeerd zijn.
 
 ## bronnen
