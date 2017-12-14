@@ -13,6 +13,7 @@
   "dependencies": {
     "compression": "^1.0.3",
     "cors": "^2.5.2",
+    "crypto": "^1.0.1",
     "helmet": "^1.3.0",
     "loopback": "^3.0.0",
     "loopback-boot": "^2.6.5",
@@ -20,8 +21,10 @@
     "loopback-component-visualizer": "^1.2.1",
     "loopback-connector-mongodb": "^1.18.1",
     "loopback-remote-routing": "^1.5.2",
+    "mime": "^2.0.3",
     "multer": "^1.3.0",
     "serve-favicon": "^2.0.1",
+    "sox-audio": "^0.3.0",
     "strong-error-handler": "^2.0.0"
   },
   "devDependencies": {
