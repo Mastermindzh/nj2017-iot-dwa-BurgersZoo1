@@ -60,6 +60,7 @@ apps/*/node_modules
 # container npms
 apps/*/.config
 apps/*/.npm
+apps/*/.node-gyp
 
 dbdata
 
@@ -266,3 +267,6 @@ gateway.properties
 .DS_Store
 
 *.bak
+
+apps/server/audio/*
+!apps/server/audio/.gitinclude
