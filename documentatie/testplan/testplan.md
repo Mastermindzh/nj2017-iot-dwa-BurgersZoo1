@@ -20,3 +20,21 @@ Bij de beheerderstest worden doelen gegeven aan een educator van burgers zoo. De
 Tijdens de test zal met behulp van meettools (bijvoorbeeld mouse-tracking, pagina volging) worden bijgehouden hoe de gebruiker de applicatie gebruikt. Ook zal de educator achteraf een aantal vragen moeten beantwoorden over het gebruik van het systeem. Hierbij kan de gebruiker feedback geven over de gebruikerservaring.
 
 Door deze observaties kunnen problemen in het applicaties ontwerp worden gevonden. Hierdoor kan de applicatie weer verbeterd worden.
+
+
+[Link](https://view.officeapps.live.com/op/view.aspx?src=http://www.tmap.net/sites/default/files/Sjabloon_Testplan_Systeem_en_Acceptatietesten_TMap_NEXT_0.doc)
+## Inleiding
+## Opdrachtformulering
+## Teststrategie
+## Aanpak
+## Infrastructuur
+## Beheer - wie doet wat
+## Begroting en PLANNING
+
+- Requirements -> vergeet dit niet
+- Hypothese??
+- Hoe weten we dat het geslaagd is
+- problemen?
+- uitwijkstrategie?
+
+Zorg dat het duidelijk is dat we verschillende tests doen met verschillende doelen en doelgroepen.
