@@ -3,11 +3,10 @@ import { withStyles } from 'material-ui/styles';
 import style from '../styles/style';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import Typography from 'material-ui/Typography';
 
-import DrawerComponent from './drawer-component';
-import AppBarComponent from './app-bar-component';
-import AppRoutes from '../routes/app-routes';
+import DrawerComponent from './drawer-component.jsx';
+import AppBarComponent from './app-bar-component.jsx';
+import AppRoutes from '../routes/app-routes.jsx';
 
 class Layout extends Component {
 
@@ -20,12 +19,11 @@ class Layout extends Component {
   }
 
   render() {
-    const { classes } = this.props;
+    const { classes, user } = this.props;
     const { open } = this.state;
-
     return (
       <div className={classes.appFrame}>
-        <AppBarComponent open={open} handleToggle={this.handleToggle.bind(this)} />
+        <AppBarComponent logout={this.props.logout} user={user} open={open} handleToggle={this.handleToggle.bind(this)} />
         <DrawerComponent open={open} handleToggle={this.handleToggle.bind(this)} />
 
         <main
@@ -44,6 +42,8 @@ class Layout extends Component {
 Layout.propTypes = {
   classes: PropTypes.object.isRequired,
   theme: PropTypes.object.isRequired,
+  user: PropTypes.object.isRequired,
+  logout: PropTypes.func.isRequired
 };
 
 export default withStyles(style, { withTheme: true })(Layout);

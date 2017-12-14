@@ -1,6 +1,6 @@
 import React from 'react';
 
-const RangerVisitDate = (props) => {
+const RangerVisitDate = () => {
   return (
       <div>
         <h2>Jouw ranger points van je bezoek op:</h2>

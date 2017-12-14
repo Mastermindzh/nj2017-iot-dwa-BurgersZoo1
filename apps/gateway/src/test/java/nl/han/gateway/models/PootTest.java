@@ -21,9 +21,9 @@ public class PootTest {
     @Test
     public void testNodeId() {
         Poot poot = new Poot();
-        assertNull(poot.getNodeId());
-        poot.setNodeId(5L);
-        assertEquals(new Long(5L), poot.getNodeId());
+        assertNull(poot.getNodeid());
+        poot.setNodeid(5L);
+        assertEquals(new Long(5L), poot.getNodeid());
     }
 
     @Test

@@ -31,7 +31,7 @@ public class GatewayProperties {
 
     /**
      * Checks if a property exists
-     *
+     * <p>
      * If a property exists, but doesn't have a value, this method will still return true
      *
      * @param propertyName Property name of the property to check

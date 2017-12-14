@@ -35,7 +35,7 @@ public class SerialWriter {
             try {
                 this.out.close();
             } catch (IOException e) {
-               logger.error("Error while closing stream", e);
+                logger.error("Error while closing stream", e);
             }
         }
     }
