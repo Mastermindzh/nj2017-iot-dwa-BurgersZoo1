@@ -1,19 +1,19 @@
 'use strict';
 
-var loopback = require('loopback');
-var boot = require('loopback-boot');
-var fs = require('fs-extra')
-var app = module.exports = loopback();
-var express = require('express');
-var multer = require('multer');
-var mime = require('mime-types');
-var audiopath = './audio';
-var tempPath = './temp';
-var SoxCommand = require('sox-audio');
-var crypto = require('crypto'), // used to generate unique filenames
+let loopback = require('loopback');
+let boot = require('loopback-boot');
+let fs = require('fs-extra')
+let app = module.exports = loopback();
+let express = require('express');
+let multer = require('multer');
+let mime = require('mime-types');
+let audiopath = './audio';
+let tempPath = './temp';
+let SoxCommand = require('sox-audio');
+let crypto = require('crypto'), // used to generate unique filenames
   algorithm = 'aes-256-ctr',
   password = 'd6F3Efeq';
-var storage = multer.diskStorage({
+let storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, tempPath);
   },
@@ -22,16 +22,16 @@ var storage = multer.diskStorage({
   }
 });
 
-var upload = multer({storage: storage});
+let upload = multer({storage: storage});
 
 app.start = function () {
   // start the web server
   return app.listen(function () {
     app.emit('started');
-    var baseUrl = app.get('url').replace(/\/$/, '');
+    let baseUrl = app.get('url').replace(/\/$/, '');
     console.log('Web server listening at: %s', baseUrl);
     if (app.get('loopback-component-explorer')) {
-      var explorerPath = app.get('loopback-component-explorer').mountPath;
+      let explorerPath = app.get('loopback-component-explorer').mountPath;
       console.log('Browse your REST API at %s%s', baseUrl, explorerPath);
     }
   });
@@ -75,9 +75,9 @@ boot(app, __dirname, function (err) {
 });
 
 // convert file to .wav with specific requirements for playing audio on the arduino.
-var convertFile = function (input, output) {
+function convertFile (input, output) {
   return new Promise((fulfill, reject) => {
-    var command = SoxCommand(input)
+    let command = SoxCommand(input)
       .inputEncoding('unsigned-integer')
       .output(output)
       .outputFileType('wav')
@@ -92,7 +92,6 @@ var convertFile = function (input, output) {
       reject(error)
     })
   })
-
-};
+}
 
 
