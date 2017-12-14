@@ -266,3 +266,6 @@ gateway.properties
 .DS_Store
 
 *.bak
+
+apps/server/audio/*
+!apps/server/audio/.gitinclude
