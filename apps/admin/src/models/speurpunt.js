@@ -7,15 +7,18 @@ class Speurpunt extends BaseModel{
   locatienaam;
   verblijfId;
   id;
+  dierengeluid;
 
-  constructor(pootid, geolocation, locatienaam, verblijfId, id = "") {
+  constructor(pootid, geolocation, locatienaam, verblijfId, id = null, dierengeluid = null ) {
     super();
     this.pootid = pootid;
     this.geolocation = geolocation;
     this.locatienaam = locatienaam;
     this.verblijfId  = verblijfId;
     this.id = id;
+    this.dierengeluid = dierengeluid;
   }
+
 
 }
 

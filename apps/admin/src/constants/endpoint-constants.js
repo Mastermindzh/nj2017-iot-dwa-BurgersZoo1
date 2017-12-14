@@ -3,7 +3,7 @@ const SPEURPUNTEN = "/speurpunten";
 
 
 export const SPEURPUNT = {
-  GET: `${SERVER}${SPEURPUNTEN}`,
+  GET: `${SERVER}${SPEURPUNTEN}?filter=%7B%22include%22%3A%20%5B%22dierengeluid%22%2C%22verblijf%22%2C%20%22weetjes%22%5D%7D`,
   POST: `${SERVER}${SPEURPUNTEN}`,
   PATCH: `${SERVER}${SPEURPUNTEN}`
 };
