@@ -7,7 +7,7 @@ De techniek van de poot wordt beschermd door een [plastic bakje](https://www.act
 
 ![images/bakje.png](images/bakje.png)
 
-De voorkant van de poot bestaat uit hardhout multiplex zoals is geconcludeerd uit [dit](https://github.com/HANICA-MinorMulti/nj2017-iot-dwa-BurgersZoo1/blob/master/documentatie/onderzoeken/poot-behuizing-materiaal/poot-behuizing-materiaal.md) onderzoek. De houten voorkant wordt gelijmd op de onderkant van het plastic bakje. Om de poot te kunnen ophangen tijdens de live tests worden twee haakjes bevestigd aan de voorplaat. 
+De voorkant van de poot bestaat uit hardhout multiplex zoals is geconcludeerd uit [dit](https://github.com/HANICA-MinorMulti/nj2017-iot-dwa-BurgersZoo1/blob/master/documentatie/onderzoeken/poot-behuizing-materiaal/poot-behuizing-materiaal.md) onderzoek. De houten voorkant wordt gelijmd op de onderkant van het plastic bakje. Om de poot te kunnen ophangen tijdens de live tests worden twee haakjes bevestigd aan achterkant van de voorplaat. Verder worden er twee gaatjes geboord door de voorplaat en bakje heen om twee status-ledjes te monteren.
 
 Op de houten voorplaat zal een vlinder worden [gebrand](https://www.youtube.com/watch?v=B1A19DLW7PM). Hoe dit in zijn werk zal gaan is te lezen in [dit](https://github.com/HANICA-MinorMulti/nj2017-iot-dwa-BurgersZoo1/blob/master/documentatie/onderzoeken/poot-afbeelding-naar-plankje) onderzoek.
 
@@ -18,5 +18,8 @@ Achteraanzicht:
 
 Rechter zijaanzicht:  
 ![images/zij.png](images/zij.png)
+
+Vooraanzicht:  
+![images/voor.png](images/voor.png)
 
 Een pdf variant van deze technische tekeningen zijn [hier](https://github.com/HANICA-MinorMulti/nj2017-iot-dwa-BurgersZoo1/blob/master/documentatie/technisch-ontwerp/poot-fysiek/poot.pdf) te vinden. De orginele AutoCAD ontwerpen zijn [hier](https://github.com/HANICA-MinorMulti/nj2017-iot-dwa-BurgersZoo1/blob/master/documentatie/technisch-ontwerp/poot-fysiek/poot.dwg) te downloaden.
