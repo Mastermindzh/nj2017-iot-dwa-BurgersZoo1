@@ -184,7 +184,13 @@ function mapSpeurpuntenToRows(speurpunten, onClick) {
 SpeurpuntenBeherenContainer.propTypes = {
   classes: PropTypes.object,
   speurpunten: PropTypes.object,
-  fetchSpeurpunten: PropTypes.func
+  fetchSpeurpunten: PropTypes.func,
+  fetchPoten: PropTypes.func,
+  fetchVerblijven: PropTypes.func,
+  poten: PropTypes.arrayOf(PropTypes.object),
+  verblijven: PropTypes.arrayOf(PropTypes.object),
+  addSpeurpunt: PropTypes.func,
+  updateSpeurpunt: PropTypes.func,
 };
 
 function mapStateToProps(state) {
