@@ -12,7 +12,7 @@ import { Header } from "semantic-ui-react";
 import TableComponent from "./../components/table-component.jsx";
 
 import styles from "./../styles/style.js";
-import SpeurpuntBeherenPopupContainer from "./speurpunt-beheren-popup.jsx";
+import SpeurpuntBeherenPopupComponent from "./../components/popups/speurpunt-beheren-popup.jsx";
 
 import InputTextFieldComponent from "./../components/form-components/input-text-field-component.jsx";
 import {
@@ -32,7 +32,8 @@ class SpeurpuntenBeherenContainer extends Component {
       search: "",
       type: "",
       snackbar: false,
-      snackbarMessage: "Aktie voltooid."
+      snackbarMessage: "Aktie voltooid.",
+      currentObject: undefined
     };
 
     this.closeSnackbar.bind(this);
@@ -52,7 +53,7 @@ class SpeurpuntenBeherenContainer extends Component {
       _.size(nextProps.speurpunten) - _.size(this.state.speurpunten) > 0
     ) {
       this.setState({
-        currentObject: false,
+        currentObject: undefined,
         snackbarMessage: "Poot successvol toegevoegd."
       });
       this.onRequestClose();
@@ -92,15 +93,13 @@ class SpeurpuntenBeherenContainer extends Component {
       results = this.props.speurpunten;
     }
 
-    const data = mapSpeurpuntenToRows(results, speurpunt =>{
+    const data = mapSpeurpuntenToRows(results, speurpunt => {
       this.setState({
         popupOpen: true,
         currentObject: speurpunt,
         snackbarMessage: "Poot successvol geupdate"
-      })
-    }
-
-    );
+      });
+    });
 
     return (
       <div>
@@ -132,14 +131,14 @@ class SpeurpuntenBeherenContainer extends Component {
         </Grid>
 
         {this.state.popupOpen && (
-          <SpeurpuntBeherenPopupContainer
+          <SpeurpuntBeherenPopupComponent
             data={this.state.currentObject}
             open={this.state.popupOpen}
             onRequestClose={this.onRequestClose.bind(this)}
             poten={this.props.poten}
             verblijven={this.props.verblijven}
-            addSpeurpunt={this.props.addSpeurpunt}
-            updateSpeurpunt={this.props.updateSpeurpunt}
+            onSubmit={this.state.currentObject !== undefined ? (this.props.updateSpeurpunt) : this.props.addSpeurpunt}
+            identifier={this.state.currentObject !== undefined ? "aanpassen" : "toevoegen"}
           />
         )}
 
