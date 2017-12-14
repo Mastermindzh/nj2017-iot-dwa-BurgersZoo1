@@ -4,45 +4,37 @@ import { withStyles } from "material-ui/styles";
 import Grid from "material-ui/Grid";
 import Button from "material-ui/Button";
 import { FormControl } from "material-ui/Form";
-import { connect } from "react-redux";
 
 import PopupComponent from "./../components/popup-component.jsx";
 import styles from "./../styles/style.js";
 import TextField from "material-ui/TextField";
 import Speurpunt from "./../models/speurpunt";
-import { addSpeurpunt, updateSpeurpunt } from "./../actions/speurpuntenActions";
-import { fetchPoten } from "./../actions/potenActions";
-import { fetchVerblijven } from "./../actions/verblijfActions";
 import _ from "lodash";
 
 import { Dropdown } from "semantic-ui-react";
 
 class SpeurpuntBeherenPopupContainer extends Component {
+
   constructor(props) {
     super(props);
 
-    this.state = {
+    let state = {
       name: "",
       verblijf: "",
-      poot: []
+      poot: [],
+      id: ""
     };
 
-    this.stateToSpeurpunt = this.stateToSpeurpunt.bind(this);
-  }
-
-  componentWillMount() {
-    this.props.fetchPoten();
-    this.props.fetchVerblijven();
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.data !== undefined) {
-      this.setState({
-        name: nextProps.data.locatienaam,
-        verblijf: nextProps.data.verblijfId,
-        poot: nextProps.data.pootid
-      });
+    if(props.data !== undefined){
+      state.name = props.data.locatienaam;
+      state.verblijf = props.data.verblijfId;
+      state.poot = props.data.pootid;
+      state.id = props.data.id;
     }
+
+    this.state = state;
+
+    this.stateToSpeurpunt = this.stateToSpeurpunt.bind(this);
   }
 
   /**
@@ -55,15 +47,15 @@ class SpeurpuntBeherenPopupContainer extends Component {
   }
 
   stateToSpeurpunt() {
+
     return new Speurpunt(
       this.state.poot === null ? [] : this.state.poot,
       null,
       this.state.name,
       this.state.verblijf,
-      this.props.data.id
+      this.state.id
     );
   }
-
 
   /**
    * Add a speurpunt
@@ -89,6 +81,7 @@ class SpeurpuntBeherenPopupContainer extends Component {
 
     const identifier = data === undefined ? "toevoegen" : "aanpassen";
     let buttonAction = data === undefined ? this.addSpeurpunt : this.updateSpeurpunt;
+
 
     const poten = _.map(this.props.poten, poot => {
       return { key: poot.id, text: poot.pootid, value: poot.pootid };
@@ -175,16 +168,4 @@ SpeurpuntBeherenPopupContainer.propTypes = {
   updateSpeurpunt: PropTypes.func
 };
 
-function mapStateToProps(state) {
-  return {
-    poten: state.potenReducer.poten,
-    verblijven: state.verblijvenReducer.verblijven
-  };
-}
-
-export default connect(mapStateToProps, {
-  addSpeurpunt,
-  fetchPoten,
-  fetchVerblijven,
-  updateSpeurpunt
-})(withStyles(styles, { withTheme: true })(SpeurpuntBeherenPopupContainer));
+export default withStyles(styles, { withTheme: true })(SpeurpuntBeherenPopupContainer);

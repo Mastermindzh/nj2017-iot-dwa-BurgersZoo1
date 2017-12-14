@@ -42,6 +42,8 @@ class SpeurpuntenBeherenContainer extends Component {
 
   componentWillMount() {
     this.props.fetchSpeurpunten();
+    this.props.fetchPoten();
+    this.props.fetchVerblijven();
   }
 
   componentWillReceiveProps(nextProps) {
@@ -90,12 +92,14 @@ class SpeurpuntenBeherenContainer extends Component {
       results = this.props.speurpunten;
     }
 
-    const data = mapSpeurpuntenToRows(results, speurpunt =>
+    const data = mapSpeurpuntenToRows(results, speurpunt =>{
       this.setState({
         popupOpen: true,
         currentObject: speurpunt,
         snackbarMessage: "Poot successvol geupdate"
       })
+    }
+
     );
 
     return (
@@ -132,6 +136,10 @@ class SpeurpuntenBeherenContainer extends Component {
             data={this.state.currentObject}
             open={this.state.popupOpen}
             onRequestClose={this.onRequestClose.bind(this)}
+            poten={this.props.poten}
+            verblijven={this.props.verblijven}
+            addSpeurpunt={this.props.addSpeurpunt}
+            updateSpeurpunt={this.props.updateSpeurpunt}
           />
         )}
 
@@ -182,7 +190,9 @@ SpeurpuntenBeherenContainer.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    speurpunten: state.speurpuntReducer.speurpunten
+    speurpunten: state.speurpuntReducer.speurpunten,
+    poten: state.potenReducer.poten,
+    verblijven: state.verblijvenReducer.verblijven
   };
 }
 
