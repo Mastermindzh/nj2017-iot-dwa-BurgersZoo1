@@ -13,6 +13,7 @@ import static spark.debug.DebugScreen.enableDebugScreen;
 public class Application {
     public static SerialCommunication serialCommunication;
 
+
     public static void main(String[] args) {
 //
         Application application = new Application();
@@ -21,15 +22,16 @@ public class Application {
         application.setupSerial();
         application.registerRoutes();
 
+        CorsFilter.apply();
 
 //        /**
 //         * Add header to all responses
 //         */
-////        after((req, res) -> {
-////            if (res.type() == null && res.status() != 404) {
-////                res.type("application/json");
-////            }
-////        });
+//        after((req, res) -> {
+//            if (res.type() == null && res.status() != 404) {
+//                res.type("application/json");
+//            }
+//        });
 
 
     }
@@ -74,6 +76,5 @@ public class Application {
             }
         }
 
-        CorsFilter.apply();
     }
 }

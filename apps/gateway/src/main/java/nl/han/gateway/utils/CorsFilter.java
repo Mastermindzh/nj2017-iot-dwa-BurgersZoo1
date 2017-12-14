@@ -1,7 +1,6 @@
 package nl.han.gateway.utils;
 
 import spark.Filter;
-import spark.Spark;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -17,8 +16,8 @@ public class CorsFilter {
         corsHeaders.put("Access-Control-Allow-Credentials", "true");
     }
 
-    public final static void apply() {
+    public static void apply() {
         Filter filter = (request, response) -> corsHeaders.forEach(response::header);
-        Spark.after(filter);
+        spark.Spark.after(filter);
     }
 }
