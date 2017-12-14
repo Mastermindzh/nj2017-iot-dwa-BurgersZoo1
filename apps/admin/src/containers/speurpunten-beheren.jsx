@@ -4,18 +4,24 @@ import { connect } from "react-redux";
 import { withStyles } from "material-ui/styles";
 import IconButton from "material-ui/IconButton";
 import Icon from "material-ui/Icon";
-import Input, { InputLabel } from "material-ui/Input";
-import { FormControl } from "material-ui/Form";
 import Grid from "material-ui/Grid";
 import _ from "lodash";
 import SnackbarComponent from "./../components/snackbar-component.jsx";
+import { Header } from "semantic-ui-react";
 
 import TableComponent from "./../components/table-component.jsx";
 
 import styles from "./../styles/style.js";
 import SpeurpuntBeherenPopupContainer from "./speurpunt-beheren-popup.jsx";
 
-import { fetchSpeurpunten } from "./../actions/speurpuntenActions";
+import InputTextFieldComponent from "./../components/form-components/input-text-field-component.jsx";
+import {
+  addSpeurpunt,
+  updateSpeurpunt,
+  fetchSpeurpunten
+} from "./../actions/speurpuntenActions";
+import { fetchPoten } from "./../actions/potenActions";
+import { fetchVerblijven } from "./../actions/verblijfActions";
 
 class SpeurpuntenBeherenContainer extends Component {
   constructor(props) {
@@ -26,7 +32,7 @@ class SpeurpuntenBeherenContainer extends Component {
       search: "",
       type: "",
       snackbar: false,
-      snackbarMessage: 'Aktie voltooid.'
+      snackbarMessage: "Aktie voltooid."
     };
 
     this.closeSnackbar.bind(this);
@@ -84,50 +90,29 @@ class SpeurpuntenBeherenContainer extends Component {
       results = this.props.speurpunten;
     }
 
-    const data = _.map(results, speurpunt => {
-      return {
-        key: speurpunt.id,
-        children: [
-          {
-            children: (
-              <IconButton
-                onClick={() =>
-                  this.setState({
-                    popupOpen: true,
-                    currentObject: speurpunt,
-                    snackbarMessage: "Poot successvol geupdate"
-                  })
-                }
-              >
-                <Icon>mode_edit</Icon>
-              </IconButton>
-            )
-          },
-          { children: JSON.stringify(speurpunt.pootid) },
-          { children: speurpunt.locatienaam },
-          { children: JSON.stringify(speurpunt.geolocation) }
-        ]
-      };
-    });
+    const data = mapSpeurpuntenToRows(results, speurpunt =>
+      this.setState({
+        popupOpen: true,
+        currentObject: speurpunt,
+        snackbarMessage: "Poot successvol geupdate"
+      })
+    );
 
     return (
       <div>
-        <h1>Speurpunten beheren</h1>
+        <Header size="huge">Speurpunten beheren</Header>
         <Grid container spacing={24}>
           <Grid item xs={12}>
             <div>
-              <FormControl className={classes.formControl}>
-                <InputLabel htmlFor="search-simple">
-                  Locatienaam zoeken
-                </InputLabel>
-                <Input
-                  id="search-simple"
-                  value={this.state.search}
-                  onChange={event =>
-                    this.setState({ search: event.target.value })
-                  }
-                />
-              </FormControl>
+              <InputTextFieldComponent
+                className={classes.formControl}
+                id={"search-simple"}
+                text={"Locatienaam zoeken"}
+                value={this.state.search}
+                onChange={event =>
+                  this.setState({ search: event.target.value })
+                }
+              />
               <IconButton
                 onClick={() =>
                   this.setState({ popupOpen: true, currentObject: undefined })
@@ -161,6 +146,34 @@ class SpeurpuntenBeherenContainer extends Component {
   }
 }
 
+/**
+ * Map speurpunten to table rows
+ * @param {*} speurpunten array of speurpunten from backend
+ */
+function mapSpeurpuntenToRows(speurpunten, onClick) {
+  return _.map(speurpunten, speurpunt => {
+    return {
+      key: speurpunt.id,
+      children: [
+        {
+          children: (
+            <IconButton
+              onClick={() => {
+                onClick(speurpunt);
+              }}
+            >
+              <Icon>mode_edit</Icon>
+            </IconButton>
+          )
+        },
+        { children: JSON.stringify(speurpunt.pootid) },
+        { children: speurpunt.locatienaam },
+        { children: JSON.stringify(speurpunt.geolocation) }
+      ]
+    };
+  });
+}
+
 SpeurpuntenBeherenContainer.propTypes = {
   classes: PropTypes.object,
   speurpunten: PropTypes.object,
@@ -173,6 +186,10 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { fetchSpeurpunten })(
-  withStyles(styles, { withTheme: true })(SpeurpuntenBeherenContainer)
-);
+export default connect(mapStateToProps, {
+  fetchSpeurpunten,
+  addSpeurpunt,
+  fetchPoten,
+  fetchVerblijven,
+  updateSpeurpunt
+})(withStyles(styles, { withTheme: true })(SpeurpuntenBeherenContainer));

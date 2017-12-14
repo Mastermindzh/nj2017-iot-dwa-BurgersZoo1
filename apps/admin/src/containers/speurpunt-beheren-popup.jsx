@@ -90,7 +90,6 @@ class SpeurpuntBeherenPopupContainer extends Component {
     const identifier = data === undefined ? "toevoegen" : "aanpassen";
     let buttonAction = data === undefined ? this.addSpeurpunt : this.updateSpeurpunt;
 
-
     const poten = _.map(this.props.poten, poot => {
       return { key: poot.id, text: poot.pootid, value: poot.pootid };
     });
