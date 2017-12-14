@@ -1,6 +1,6 @@
 #!/bin/sh
 DB_HOST=localhost:8009
-DIR=./assets/seed-data
+DIR=./assets/seed-data/burgerszoo
 
 while getopts h: option
 do
@@ -10,4 +10,4 @@ do
  esac
 done
 
-mongorestore --host ${DB_HOST} --db burgerszoo --drop ./assets/seed-data
+mongorestore --host ${DB_HOST} --db burgerszoo --drop ${DIR} 
