@@ -9,21 +9,21 @@ services:
       - 8009:27017
 
   admin:
-    image: mastermindzh/generic_node
+    image: burgerszoo/node
     volumes:
       - ./apps/admin:/app
     ports:
       - 8002:3000
 
   ranger:
-    image: mastermindzh/generic_node
+    image: burgerszoo/node
     volumes:
       - ./apps/ranger:/app
     ports:
       - 8003:3002
 
   server:
-    image: mastermindzh/generic_node
+    image: burgerszoo/node
     depends_on:
       - "mongo"
     volumes:
