@@ -60,6 +60,7 @@ apps/*/node_modules
 # container npms
 apps/*/.config
 apps/*/.npm
+apps/*/.node-gyp
 
 dbdata
 
