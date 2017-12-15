@@ -25,11 +25,13 @@
 - Gateway
   - Versturen audio naar poot
   - Reset berichten versturen naar poot
+  - Meetgegevens doorsturen naar groep 2
 - Poot
   - Temperatuur en Vochtigheidsmetingen in de poot (Samen met andere groep)
   - Statuslampjes maken
   - Poten bouwen
   - Audiobestanden ontvangen en wegschrijven (Samen met andere groep)
+  - Reset berichtjes ontvangen vanuit de gateway.
 - Ranger app af
 - Admin app af
   - Onderzoek naar productie build
