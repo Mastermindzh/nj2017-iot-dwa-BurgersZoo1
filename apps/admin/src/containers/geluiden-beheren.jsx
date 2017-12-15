@@ -95,7 +95,7 @@ class GeluidenBeheren extends Component {
 
 GeluidenBeheren.propTypes = {
   classes: PropTypes.object,
-  dierengeluiden: PropTypes.arrayOf.object,
+  dierengeluiden: PropTypes.object,
   fetchDierengeluiden: PropTypes.func
 };
 

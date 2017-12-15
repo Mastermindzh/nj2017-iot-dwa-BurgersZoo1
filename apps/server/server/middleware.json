@@ -40,7 +40,15 @@
       ]
     }
   },
-  "files": {},
+  "files": {
+    "loopback#static": [
+      {
+        "name": "audio",
+        "paths": ["/audio"],
+        "params": "$!../audio"
+      }
+    ]
+  },
   "final": {
     "loopback#urlNotFound": {}
   },
