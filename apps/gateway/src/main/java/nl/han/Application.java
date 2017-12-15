@@ -41,11 +41,6 @@ public class Application {
      */
     private void registerRoutes() {
         get("/", (req, res) -> "Gateway api");
-        post("/test/:poot", (request, response) -> {
-            System.out.println(request.params());
-            System.out.println(request.body());
-            return "";
-        });
         new PotenController();
         new MySensorMessagesController();
     }
