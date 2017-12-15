@@ -1,7 +1,18 @@
 #include "../head/MaduinoPortal.h"
 #include "../head/Audio.h"
 
+#define AUDUINO_ID 9
+
+Audio* audioPlayer;
+
+void receiveEvent(int bytes) {
+  Serial.println("Received event");
+  audioPlayer->play();
+}
+
 MaduinoPortal::MaduinoPortal(Audio* audio){
-  this->audio = audio;
+  audioPlayer = audio;
+  Wire.begin(AUDUINO_ID);
+  Wire.onReceive(receiveEvent);
+  Serial.println("WIRE INITIALIZED");
 };
-void MaduinoPortal::loop(){ };

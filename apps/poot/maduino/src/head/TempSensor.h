@@ -6,6 +6,10 @@
 class TempSensor {
   public:
     TempSensor(byte pin);
+
+    /**
+     * Get the last measrued temperature.
+     */
     byte getTemperature();
   private:
     byte pin;

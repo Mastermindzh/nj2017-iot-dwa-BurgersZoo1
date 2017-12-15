@@ -1,9 +1,5 @@
 package nl.han.gateway.dao;
 
-import org.bson.types.ObjectId;
-import org.mongodb.morphia.EntityInterceptor;
-import org.mongodb.morphia.Key;
-
 import java.util.List;
 
 /**

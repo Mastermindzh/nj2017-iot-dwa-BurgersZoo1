@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ReactAudioPlayer from 'react-audio-player';
+import PropTypes from 'prop-types';
 
 class AudioList extends Component {
 
@@ -14,7 +15,7 @@ class AudioList extends Component {
           />
         </div>
       );
-    })
+    });
   }
 
   render() {
@@ -23,5 +24,10 @@ class AudioList extends Component {
     );
   }
 }
+
+AudioList.PropTypes = {
+  listOfKeyValuePairs: PropTypes.arrayOf.object
+};
+
 
 export default AudioList;

@@ -35,8 +35,8 @@ class DrawerComponent extends Component {
           <NavLink to={routes.admin}>
             <MenuItem value="left"><Icon>home</Icon><span className="menuText">Home</span></MenuItem>
           </NavLink>
-          <NavLink to={routes.poten}>
-            <MenuItem value="left"><Icon>mode_edit</Icon><span className="menuText">Poot aanpassen</span></MenuItem>
+          <NavLink to={routes.speurpunten}>
+            <MenuItem value="left"><Icon>mode_edit</Icon><span className="menuText">Speurpunten beheren</span></MenuItem>
           </NavLink>
           <NavLink to={routes.geluiden}>
             <MenuItem value="left"><Icon>volume_up</Icon><span className="menuText">Geluiden beheren</span></MenuItem>

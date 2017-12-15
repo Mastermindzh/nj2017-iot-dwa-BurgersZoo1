@@ -49,5 +49,9 @@
   "nfc": {
     "dataSource": "mongo",
     "public": true
+  },
+  "verblijf": {
+    "dataSource": "mongo",
+    "public": true
   }
 }
