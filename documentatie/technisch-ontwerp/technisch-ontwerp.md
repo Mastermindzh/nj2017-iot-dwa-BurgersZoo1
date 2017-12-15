@@ -16,6 +16,8 @@
 
 #include "documentatie/technisch-ontwerp/technische-realisatie/poot.md"
 
+#include "documentatie/technisch-ontwerp/technische-realisatie/webapps.md"
+
 #include "documentatie/technisch-ontwerp/deployment/deployment.md"
 
 #include "documentatie/technisch-ontwerp/iot-klassediagram/iot-klassediagram.md"
