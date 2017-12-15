@@ -6,7 +6,7 @@ package nl.han.gateway.exceptions;
  * @author Thomas
  * @since 0.1
  */
-public class NotFoundException extends Throwable{
+public class NotFoundException extends Throwable {
 
     public NotFoundException() {
         super();

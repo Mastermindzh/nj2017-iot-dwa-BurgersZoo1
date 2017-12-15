@@ -26,7 +26,12 @@
   },
   "validations": [],
   "relations": {
-    "weetje": {
+    "verblijf": {
+      "type": "belongsTo",
+      "model": "verblijf",
+      "foreignKey": ""
+    },
+    "weetjes": {
       "type": "hasMany",
       "model": "weetje",
       "foreignKey": ""

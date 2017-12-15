@@ -15,3 +15,4 @@ Dierentuin Koninklijk Burgers' Zoo is een dierentuin gelegen te Arnhem op een mo
 | Opleverdocument |nog niet beschikbaar|
 | Onderzoeken         |[documentatie/onderzoeken](documentatie/onderzoeken)|
 | Gateway Api                 |[Gateway apibeschrijving](documentatie/api)|
+

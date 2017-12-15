@@ -6,8 +6,8 @@
     "compression": {},
     "cors": {
       "params": {
-        "origin": true,
-        "credentials": true,
+        "origin": "*",
+        "credentials": false,
         "maxAge": 86400
       }
     },
@@ -40,7 +40,15 @@
       ]
     }
   },
-  "files": {},
+  "files": {
+    "loopback#static": [
+      {
+        "name": "audio",
+        "paths": ["/audio"],
+        "params": "$!../audio"
+      }
+    ]
+  },
   "final": {
     "loopback#urlNotFound": {}
   },

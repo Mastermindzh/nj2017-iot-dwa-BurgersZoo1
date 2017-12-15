@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Icon from 'material-ui/Icon';
 import Chip from 'material-ui/Chip';
+import PropTypes from 'prop-types';
 
 class NotVisitedLocation extends Component {
   state = {
@@ -29,5 +30,11 @@ class NotVisitedLocation extends Component {
     );
   }
 }
+
+NotVisitedLocation.propTypes = {
+  text: PropTypes.string,
+  zoom: PropTypes.number,
+  children: PropTypes.arrayOf(PropTypes.children)
+};
 
 export default NotVisitedLocation;

@@ -26,8 +26,8 @@ class TableComponent extends Component {
             {data.map(n => {
               return (
                 <TableRow key={n.key}>
-                  {n.children.map(item => {
-                    return <TableCell key={item.key} numeric={item.numeric}>{item.children}</TableCell>;
+                  {n.children.map((item,index) => {
+                    return <TableCell key={index} numeric={item.numeric}>{item.children}</TableCell>;
                   })
                   }
                 </TableRow>

@@ -32,13 +32,6 @@ class DrawerComponent extends Component {
           <NavLink to={routes.ranger}>
             <MenuItem value="left"><Icon>pets</Icon><span className="menuText">Mijn Ranger</span></MenuItem>
           </NavLink>
-
-          {/* <NavLink to={routes.fact}>
-            <MenuItem value="left"><Icon color="accent">volume_up</Icon> Weetjes </MenuItem>
-          </NavLink>
-          <NavLink to={routes.sound}>
-            <MenuItem value="left"><Icon color="accent">volume_down</Icon> Dierengeluiden </MenuItem>
-          </NavLink> */}
         </div>
       </Drawer>
     );

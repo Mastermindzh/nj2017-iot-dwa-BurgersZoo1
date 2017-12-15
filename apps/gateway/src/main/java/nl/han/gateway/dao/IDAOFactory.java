@@ -9,4 +9,6 @@ package nl.han.gateway.dao;
 public interface IDAOFactory {
 
     IPootDAO getPootDAO();
+
+    IMyMessagesDAO getMyMessageDAO();
 }

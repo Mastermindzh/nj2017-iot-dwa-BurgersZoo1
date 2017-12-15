@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import Grid from 'material-ui/Grid';
 
-import AudioList from '../shared/audio-list-component';
-import AnimalResidenceSelect from './animal-residence-select';
+import AudioList from '../shared/audio-list-component.jsx';
+import AnimalResidenceSelect from './animal-residence-select.jsx';
 
 class FactWidgetComponent extends Component {
   constructor(props) {

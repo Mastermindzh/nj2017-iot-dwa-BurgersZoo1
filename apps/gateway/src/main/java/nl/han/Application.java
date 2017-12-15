@@ -1,31 +1,37 @@
 package nl.han;
 
-import nl.han.mysensor.service.SerialReader;
+import nl.han.gateway.controller.MySensorMessagesController;
 import nl.han.gateway.controller.PotenController;
 import nl.han.gateway.util.GatewayProperties;
+import nl.han.gateway.utils.CorsFilter;
+import nl.han.mysensor.service.serial.SerialCommunication;
 
 import static spark.Spark.*;
 import static spark.debug.DebugScreen.enableDebugScreen;
 
 
 public class Application {
+    public static SerialCommunication serialCommunication;
+
 
     public static void main(String[] args) {
-
+//
         Application application = new Application();
-
+//
         application.setupSpark();
         application.setupSerial();
         application.registerRoutes();
 
+        CorsFilter.apply();
+
 //        /**
 //         * Add header to all responses
 //         */
-////        after((req, res) -> {
-////            if (res.type() == null && res.status() != 404) {
-////                res.type("application/json");
-////            }
-////        });
+//        after((req, res) -> {
+//            if (res.type() == null && res.status() != 404) {
+//                res.type("application/json");
+//            }
+//        });
 
 
     }
@@ -41,6 +47,7 @@ public class Application {
             return "";
         });
         new PotenController();
+        new MySensorMessagesController();
     }
 
     /**
@@ -48,8 +55,7 @@ public class Application {
      */
     private void setupSerial() {
         if (Boolean.parseBoolean(GatewayProperties.getProperty("arduino.enabled"))) {
-            SerialReader main = new SerialReader();
-            main.initialize();
+            serialCommunication = new SerialCommunication();
         }
     }
 
