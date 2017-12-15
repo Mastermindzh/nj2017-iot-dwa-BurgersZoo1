@@ -29,10 +29,7 @@ public class PootMongoDAO implements IPootDAO {
     private Gson gson;
 
     public PootMongoDAO() {
-        MongoClient client = new MongoClient(GatewayProperties.getProperty("server.database.host")
-                , Integer.parseInt(GatewayProperties.getProperty("server.database.port")));
-        MongoDatabase database = client.getDatabase("poten");
-        this.collection = database.getCollection("poten");
+        this.collection = MongodbConnector.instance().getDatabase().getCollection("poten");
         this.gson = GsonParserUtil.gson;
     }
 
