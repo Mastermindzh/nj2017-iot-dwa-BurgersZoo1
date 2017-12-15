@@ -24,7 +24,9 @@ class SpeurpuntBeherenPopupComponent extends Component {
       poot: [],
       id: null,
       poten: [],
-      verblijven: []
+      verblijven: [],
+      dierengeluid: "",
+      dierengeluiden: []
     };
 
     if(props.data !== undefined){
@@ -123,6 +125,19 @@ class SpeurpuntBeherenPopupComponent extends Component {
               options={this.state.poten}
               onChange={this.handleDropDownChange.bind(this)}
               value={this.state.poot}
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <h3>Dierengeluid:</h3>
+            <Dropdown
+              placeholder="Dierengeluid"
+              fluid
+              multiple
+              search
+              selection
+              options={this.state.dierengeluiden}
+              onChange={this.handleChange.bind(this, "dierengeluid")}
+              value={this.state.dierengeluiden}
             />
           </Grid>
           <Grid item xs={12}>
