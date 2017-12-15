@@ -64,7 +64,7 @@ public class PotenServiceTest {
     }
 
     @Test
-    public void testGetPoot() {
+    public void testGetPoot() throws NotFoundException {
         Poot pootMock = mock(Poot.class);
         when(this.iPootDAOmock.findByPootId(5L)).thenReturn(pootMock);
         assertEquals(pootMock, this.potenService.getPoot(5L));
