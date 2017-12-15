@@ -35,6 +35,7 @@
 - Ranger app af
 - Admin app af
 - Onderzoek naar productie build voor webapps
+- Opleveringsdocumentatie
 
 
 ### Doel week 5:
