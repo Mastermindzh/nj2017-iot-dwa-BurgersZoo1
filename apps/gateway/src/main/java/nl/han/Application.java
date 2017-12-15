@@ -3,7 +3,7 @@ package nl.han;
 import nl.han.gateway.controller.MySensorMessagesController;
 import nl.han.gateway.controller.PotenController;
 import nl.han.gateway.util.GatewayProperties;
-import nl.han.gateway.utils.CorsFilter;
+import nl.han.gateway.util.CorsFilter;
 import nl.han.mysensor.service.serial.SerialCommunication;
 
 import static spark.Spark.*;

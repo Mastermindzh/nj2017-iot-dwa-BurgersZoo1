@@ -5,6 +5,7 @@ import nl.han.backend.services.group1.BackendPootService;
 import nl.han.gateway.dao.DAOFactory;
 import nl.han.gateway.dao.IMyMessagesDAO;
 import nl.han.gateway.dao.IPootDAO;
+import nl.han.gateway.exceptions.NotFoundException;
 import nl.han.gateway.exceptions.NotImplementedException;
 import nl.han.gateway.models.Poot;
 import nl.han.mysensor.models.*;
@@ -172,16 +173,17 @@ public class MySensorReceiveService {
     private void newNodeSubscribe(MyMessage message) {
         logger.info(String.format("Registering new node, node id: #%d pootid: #%s",
                 message.getNodeId(), message.getPayload()));
-        Poot poot = this.pootDAO.findByPootId(Long.valueOf(message.getPayload()));
-        if (poot == null) {
+        Poot poot;
+        try {
+            poot = this.pootDAO.findByPootId(Long.valueOf(message.getPayload()));
+            poot.setNodeid(message.getNodeId());
+            poot = this.pootDAO.update(poot);
+        } catch (NotFoundException e) {
             logger.info("Unknown poot, register node");
             Poot newPoot = new Poot();
             newPoot.setNodeid(message.getNodeId());
             newPoot.setPootid(backendPootServiceGroup1.getNewPootIdFromBackend());
             poot = this.pootDAO.save(newPoot);
-        } else {
-            poot.setNodeid(message.getNodeId());
-            poot = this.pootDAO.update(poot);
         }
         sendService.sendPootIdToNode(poot);
     }
