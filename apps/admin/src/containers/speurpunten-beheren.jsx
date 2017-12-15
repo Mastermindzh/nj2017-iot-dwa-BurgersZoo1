@@ -154,6 +154,7 @@ class SpeurpuntenBeherenContainer extends Component {
             identifier={
               this.state.currentObject !== undefined ? "aanpassen" : "toevoegen"
             }
+            dierengeluiden={this.props.dierengeluiden}
           />
         )}
 
@@ -214,7 +215,8 @@ SpeurpuntenBeherenContainer.propTypes = {
   verblijven: PropTypes.object,
   addSpeurpunt: PropTypes.func,
   updateSpeurpunt: PropTypes.func,
-  fetchDierengeluiden: PropTypes.func
+  fetchDierengeluiden: PropTypes.func,
+  dierengeluiden: PropTypes.object,
 };
 
 function mapStateToProps(state) {
