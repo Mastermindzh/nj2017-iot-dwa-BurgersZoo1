@@ -10,7 +10,7 @@ export const fetchParkHistory = () => {
       axios.get(`${RANGER_VISITED.GET_MULTIPLE_VISITS}&rangerid=${result.data.id}`).then(result => {
         dispatch({
           type: VISIT_HISTORY_ACTIONS.FETCH_VISIT_HISTORY,
-          payload: result.data
+          payload: result.data.reverse()
         });
       });
     });
