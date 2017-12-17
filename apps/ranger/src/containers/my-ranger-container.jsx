@@ -42,6 +42,7 @@ class MyRangerContainer extends Component {
 
   render() {
     const {parkHistory} = this.props;
+    const {selectedParkHistory} = this.state;
     return (
       <div>
         <Grid container spacing={24}>
@@ -55,7 +56,7 @@ class MyRangerContainer extends Component {
             <FactWidgetComponent />
           </Grid>
           <Grid item xs={12}>
-            <ParkOverviewComponent />
+            <ParkOverviewComponent speurpunten={selectedParkHistory.map(day => day.speurpunt)}/>
           </Grid>
         </Grid>
       </div>

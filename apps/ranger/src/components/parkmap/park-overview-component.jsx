@@ -1,39 +1,26 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import ParkMapComponent from './park-map-component.jsx';
 import AnimalResidenceLocation from './animal-residence-location.jsx';
-import NotVisitedLocation from './not-visited-location.jsx';
 
-const ParkOverviewComponent = () => {
+const ParkOverviewComponent = (props) => {
   return (
     <ParkMapComponent>
-      <AnimalResidenceLocation
-        lat={52.012633}
-        lng={5.899803}
-        text={'Leeuwen'}
-      />
-      <AnimalResidenceLocation
-        lat={52.008136}
-        lng={5.899099}
-        text={'Olifanten'}
-      />
-      <AnimalResidenceLocation
-        lat={52.009311}
-        lng={5.901423}
-        text={'Apen'}
-      />
-      <AnimalResidenceLocation
-        lat={52.008037}
-        lng={5.903515}
-        text={'Vogels'}
-      />
-      <NotVisitedLocation
-        lat={52.008307}
-        lng={5.900270}
-        text={'Je bent nog niet in de dessert geweest!'}
-      />
+      {props.speurpunten.map(speurpunt =>
+        <AnimalResidenceLocation
+          key={speurpunt.id}
+          lat={speurpunt.verblijf.geolocatie.lat}
+          lng={speurpunt.verblijf.geolocatie.lng}
+          text={speurpunt.verblijf.naam}
+        />)}
     </ParkMapComponent>
   );
-}
+};
+
+ParkOverviewComponent.propTypes = {
+  speurpunten: PropTypes.array
+};
+
 
 export default ParkOverviewComponent;
