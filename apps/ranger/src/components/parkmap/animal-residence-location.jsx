@@ -30,7 +30,6 @@ class AnimalResidenceLocation extends Component {
     return (
       <Transition visible={this.state.detailsVisible} animation="scale" duration={500}>
         <Card
-          image="/assets/vieroogvissen.jpg"
           raised={true}
           style={{zIndex: 2}}
           header={speurpunt.verblijf.naam}
