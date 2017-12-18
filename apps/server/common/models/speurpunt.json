@@ -33,7 +33,7 @@
       "foreignKey": ""
     },
     "weetjes": {
-      "type": "hasAndBelongsToMany",
+      "type": "hasMany",
       "model": "weetje",
       "foreignKey": ""
     },

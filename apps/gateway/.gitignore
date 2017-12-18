@@ -1,0 +1,6 @@
+/src/main/resources/gateway.properties
+/build/
+/out/
+/.idea/
+/.gradle/
+*.iml

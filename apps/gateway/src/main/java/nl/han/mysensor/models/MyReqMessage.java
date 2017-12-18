@@ -5,11 +5,14 @@ import nl.han.mysensor.models.myenums.MyDataTypes;
 
 public class MyReqMessage extends MyMessage {
 
-    private final MyDataTypes type;
+    private MyDataTypes type;
 
-    public MyReqMessage(Long nodeId, int childSensorId, MyCommand command, boolean ack, String payload, MyDataTypes type) {
+    public MyReqMessage(Long nodeId, Long childSensorId, MyCommand command, boolean ack, String payload, MyDataTypes type) {
         super(nodeId, childSensorId, command, ack, payload);
         this.type = type;
+    }
+
+    public MyReqMessage() {
     }
 
     public MyDataTypes getType() {

@@ -5,13 +5,15 @@ import nl.han.mysensor.models.myenums.MyPresentationType;
 
 public class MyPresentationMessage extends MyMessage {
 
-    private final MyPresentationType presentationType;
+    private MyPresentationType presentationType;
 
-    public MyPresentationMessage(Long nodeId, int childSensorId, MyCommand command, boolean ack, String payload, MyPresentationType presentationType) {
+    public MyPresentationMessage(Long nodeId, Long childSensorId, MyCommand command, boolean ack, String payload, MyPresentationType presentationType) {
         super(nodeId, childSensorId, command, ack, payload);
         this.presentationType = presentationType;
     }
 
+    public MyPresentationMessage() {
+    }
 
     public MyPresentationType getPresentationType() {
         return presentationType;

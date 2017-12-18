@@ -2,7 +2,6 @@ package nl.han.gateway.controller;
 
 import com.google.gson.Gson;
 import nl.han.gateway.exceptions.NotFoundException;
-import nl.han.gateway.exceptions.NotOnlineException;
 import nl.han.gateway.models.Poot;
 import nl.han.gateway.service.PotenService;
 import spark.Request;
@@ -11,8 +10,7 @@ import spark.Response;
 import java.util.List;
 
 import static nl.han.gateway.util.transformers.JsonUtil.json;
-import static spark.Spark.get;
-import static spark.Spark.put;
+import static spark.Spark.*;
 
 public class PotenController {
     private Gson gson = new Gson();
@@ -24,6 +22,27 @@ public class PotenController {
         put("/poten/:pootid", (this::savePootConfiguration), json());
         get("/poten", (this::getAllPoten), json());
         get("/poten/:pootid", (this::getPoot), json());
+        delete("/poten/:pootid", (this::deletePoot));
+    }
+
+    /**
+     * Removes a Poot and resets the EEPROM of the poot
+     *
+     * @param request
+     * @param response
+     * @return void
+     */
+    private String deletePoot(Request request, Response response) {
+        Poot poot;
+        try {
+            poot = this.potenService.getPoot(Long.valueOf(request.params("pootid")));
+            potenService.resetPoot(poot);
+            response.status(200);
+        } catch (NotFoundException e) {
+            response.status(404);
+            return e.getMessage();
+        }
+        return "Ok";
     }
 
     /**
@@ -34,8 +53,10 @@ public class PotenController {
      * @return
      */
     private Poot getPoot(Request request, Response response) {
-        Poot poot = this.potenService.getPoot(Long.valueOf(request.params("pootid")));
-        if (poot == null) {
+        Poot poot = null;
+        try {
+            poot = this.potenService.getPoot(Long.valueOf(request.params("pootid")));
+        } catch (NotFoundException e) {
             response.status(404);
         }
         return poot;
@@ -47,25 +68,20 @@ public class PotenController {
      *
      * @param request
      * @param response
-     * @return transaction id or 200
      */
     private String savePootConfiguration(Request request, Response response) {
-        Poot poot = gson.fromJson(request.body(), Poot.class);
-        poot.setPootid(Long.valueOf(request.params("pootid")));
-        Long transactionID;
+        Poot incommingConfig = gson.fromJson(request.body(), Poot.class);
+        Poot poot = null;
+
         try {
-            transactionID = this.potenService.savePootConfig(poot);
+            poot = potenService.getPoot(Long.valueOf(request.params("pootid")));
+            poot.setWeetjes(incommingConfig.getWeetjes());
+            poot.setDierengeluid(incommingConfig.getDierengeluid());
+            this.potenService.savePootConfig(poot);
             response.type("application/json");
-        } catch (NotFoundException ex) {
+        } catch (NotFoundException e) {
             response.status(404);
-            return ex.getMessage();
-        } catch (NotOnlineException e) {
-            response.status(503);
             return e.getMessage();
-        }
-        if (transactionID != null) {
-            response.status(202);
-            return String.valueOf(transactionID);
         }
         response.status(200);
         return "";

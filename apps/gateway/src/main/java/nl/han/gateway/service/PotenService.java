@@ -3,12 +3,12 @@ package nl.han.gateway.service;
 import nl.han.gateway.dao.DAOFactory;
 import nl.han.gateway.dao.IPootDAO;
 import nl.han.gateway.exceptions.NotFoundException;
-import nl.han.gateway.exceptions.NotOnlineException;
-import nl.han.gateway.models.Dierengeluid;
 import nl.han.gateway.models.Poot;
-import nl.han.gateway.models.Weetje;
+import nl.han.mysensor.models.MyMessage;
+import nl.han.mysensor.models.myenums.MyCommand;
+import nl.han.mysensor.models.myenums.MyDataTypes;
+import nl.han.mysensor.service.MySensorSendService;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -20,32 +20,25 @@ import java.util.List;
 public class PotenService {
 
 
-    private IPootDAO pootDAO;
+    private final IPootDAO pootDAO;
+    private final MySensorSendService sensorSendService;
 
     public PotenService() {
         this.pootDAO = DAOFactory.getInstance().getPootDAO();
+        sensorSendService = new MySensorSendService();
     }
 
     /**
      * Method used for saving poot config
-     * todo: implement this method, right now it's just a mock
-     * todo: this should implement the update
      *
      * @param poot
      * @return
      */
-    public Long savePootConfig(Poot poot) throws NotFoundException, NotOnlineException {
-        this.pootDAO.save(poot);
-        if (poot.getPootid() == 0) {
-            return 57L;
+    public void savePootConfig(Poot poot) throws NotFoundException {
+        Poot returnPoot = this.pootDAO.update(poot);
+        if (returnPoot == null) {
+            throw new NotFoundException("Could not find Poot in database");
         }
-        if (poot.getPootid() == 1) {
-            throw new NotFoundException("De poot bestaat niet");
-        }
-        if (poot.getPootid() == 2) {
-            throw new NotOnlineException("De poot is op dit moment niet online en er zal niet geprobeerd worden om een transactie te starten.\n");
-        }
-        return null;
     }
 
     /**
@@ -57,7 +50,26 @@ public class PotenService {
         return this.pootDAO.getAll();
     }
 
-    public Poot getPoot(Long pootid) {
+    public Poot getPoot(Long pootid) throws NotFoundException {
         return this.pootDAO.findByPootId(pootid);
+    }
+
+    /**
+     * Resets a Poot
+     * This will delete the poot in the database and send a reset message to the Poot.
+     *
+     * @param poot
+     */
+    public void resetPoot(Poot poot) {
+        MyMessage message = MyMessage.newMyMessage()
+                .nodeId(poot.getNodeid())
+                .childSensorId(1L)
+                .command(MyCommand.SET)
+                .payload("RESET")
+                .ack(true)
+                .setDataType(MyDataTypes.V_VAR5)
+                .build();
+        this.sensorSendService.sendMessage(message);
+        this.pootDAO.delete(poot);
     }
 }

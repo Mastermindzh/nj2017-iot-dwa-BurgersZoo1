@@ -5,12 +5,15 @@ import nl.han.mysensor.models.myenums.MyInternal;
 
 public class MyInternalMessage extends MyMessage {
 
-    private final MyInternal internalType;
+    private MyInternal internalType;
 
 
-    public MyInternalMessage(Long nodeId, int childSensorId, MyCommand command, boolean ack, String payload, MyInternal internalType) {
+    public MyInternalMessage(Long nodeId, Long childSensorId, MyCommand command, boolean ack, String payload, MyInternal internalType) {
         super(nodeId, childSensorId, command, ack, payload);
         this.internalType = internalType;
+    }
+
+    public MyInternalMessage() {
     }
 
     public MyInternal getInternalType() {

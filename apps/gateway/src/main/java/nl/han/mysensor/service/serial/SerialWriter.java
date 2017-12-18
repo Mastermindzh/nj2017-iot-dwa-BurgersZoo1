@@ -28,14 +28,13 @@ public class SerialWriter {
         try {
             this.out.write((message + "\r\n").getBytes());
             this.out.flush();
-
         } catch (IOException e) {
-            e.printStackTrace();
+           logger.error("Error while writing to serial port", e);
         } finally {
             try {
                 this.out.close();
             } catch (IOException e) {
-               logger.error("Error while closing stream", e);
+                logger.error("Error while closing stream", e);
             }
         }
     }

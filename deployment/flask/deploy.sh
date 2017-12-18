@@ -14,6 +14,9 @@ echo "Pulling ...."
 git pull
 git pull origin $2
 
+echo "Installing"
+npm install
+
 echo "Restarting docker ...."
 
 docker-compose down

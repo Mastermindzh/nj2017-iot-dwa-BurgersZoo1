@@ -1,9 +1,13 @@
 package nl.han.mysensor.models;
 
+import com.google.gson.annotations.SerializedName;
 import nl.han.mysensor.models.myenums.MyCommand;
 import nl.han.mysensor.models.myenums.MyDataTypes;
 import nl.han.mysensor.models.myenums.MyInternal;
 import nl.han.mysensor.models.myenums.MyPresentationType;
+import org.bson.types.ObjectId;
+import org.mongodb.morphia.annotations.Entity;
+import org.mongodb.morphia.annotations.Id;
 
 /**
  * Abstract MySensor message
@@ -11,19 +15,29 @@ import nl.han.mysensor.models.myenums.MyPresentationType;
  * @author Thomas
  * @since 0.1
  */
+@Entity
 public abstract class MyMessage {
-    private final Long nodeId;
-    private final int childSensorId;
-    private final MyCommand command;
-    private final boolean ack;
-    private final String payload;
 
-    public MyMessage(Long nodeId, int childSensorId, MyCommand command, boolean ack, String payload) {
+    @Id
+    @SerializedName("_id")
+    private ObjectId id;
+
+    private Long nodeId;
+    private Long childSensorId;
+    private MyCommand command;
+    private boolean ack;
+    private String payload;
+
+
+    public MyMessage(Long nodeId, Long childSensorId, MyCommand command, boolean ack, String payload) {
         this.nodeId = nodeId;
         this.childSensorId = childSensorId;
         this.command = command;
         this.ack = ack;
         this.payload = payload;
+    }
+
+    public MyMessage() {
     }
 
     private MyMessage(Builder builder) {
@@ -39,11 +53,19 @@ public abstract class MyMessage {
     }
 
 
+    public ObjectId getId() {
+        return id;
+    }
+
+    public void setId(ObjectId id) {
+        this.id = id;
+    }
+
     public Long getNodeId() {
         return nodeId;
     }
 
-    public int getChildSensorId() {
+    public Long getChildSensorId() {
         return childSensorId;
     }
 
@@ -62,7 +84,8 @@ public abstract class MyMessage {
     @Override
     public String toString() {
         return "MyMessage{" +
-                "nodeId=" + nodeId +
+                "id=" + id +
+                ", nodeId=" + nodeId +
                 ", childSensorId=" + childSensorId +
                 ", command=" + command +
                 ", ack=" + ack +
@@ -72,7 +95,7 @@ public abstract class MyMessage {
 
     public static final class Builder {
         private Long nodeId;
-        private int childSensorId;
+        private Long childSensorId;
         private MyCommand command;
         private boolean ack;
         private String payload = "";
@@ -103,7 +126,7 @@ public abstract class MyMessage {
             return this;
         }
 
-        public Builder childSensorId(int childSensorId) {
+        public Builder childSensorId(Long childSensorId) {
             this.childSensorId = childSensorId;
             return this;
         }
