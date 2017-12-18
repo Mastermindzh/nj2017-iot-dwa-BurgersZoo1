@@ -27,9 +27,9 @@ class MyRangerContainer extends Component {
     const {parkHistory} = this.props.parkHistory;
     const receivingParkHistoryForTheFirstTime = !parkHistory && nextProps.parkHistory.length > 0;
     if (receivingParkHistoryForTheFirstTime) {
+      const date = convertUnixTimestampToCalendarDate(nextProps.parkHistory[0].datum);
       this.setState({
-        selectedParkHistory: createHistoryPerDate(nextProps.parkHistory,
-           convertUnixTimestampToCalendarDate(nextProps.parkHistory[0].datum))
+        selectedParkHistory: createHistoryPerDate(nextProps.parkHistory, date)
       });
     }
   }
