@@ -86,22 +86,29 @@ Tegelijk zullen een aantal IoT leden van de projectgroep het systeem digitaal in
 Op deze manier kan advies gegeven worden op de vraag of de huidige techniek stabiel genoeg is om in praktijk te gebruiken.
 
 ### Scenario 3: Observatie kind
-TODO
-
-
-## Aanpak, beheer en verantwoordelijkheden
-Een dag voorafgaand aan de Field Trial zal een gedeelte van de projectgroep in Burgers’ Zoo aanwezig zijn. Zij zullen deze dag gebruiken ter voorbereiding. Zo zal op deze dag alles in orde worden gemaakt om tijdens de testdag zonder problemen te kunnen testen. Denk hierbij aan het opzetten en testen van alle hardware in de dierentuin.
 
 De educatiemedewerkers van Burgers’ Zoo zijn verantwoordelijk voor de kinderen tijdens de speurtocht. Het is aan deze medewerkers om invulling te geven aan de begeleiding van de kinderen. De kinderen krijgen van de educatie medewerkers een pasje die ze kunnen gebruiken tijdens de speurtocht. De projectgroep zorgt dat deze tijdig terecht komen bij de medewerkers van Burgers’ Zoo. De educatie medewerkers zijn tijdens de dag verantwoordelijk voor het uitdelen en terug ontvangen van de pasjes.
 
+
+## Verantwoordelijkheden
+
+### IoT
 De verantwoordelijkheid van IoT is het opzetten, monitoren en analyseren van de werking van de poten. Hierbij wordt bedoeld de hardware en de software die daarop draait. Ook valt de onderlinge communicatie hieronder. Ook dient IoT technische ondersteuning te geven als er gedurende de dag iets mis gaat met de poten of de gateway.
 
-Voor de test van de beheerders app zullen de medewerkers van educatie met de applicatie werken. Hierbij kijkt, minimaal één lid van DWA mee om ook technische ondersteuning te bieden. Omdat wij geen usability testen is het nodig dat er een projectlid naast zit de testpersoon zit om ondersteuning te bieden zodat de juiste functionele eisen getest worden.
+### DWA
+De projectgroep is hierbij verantwoordelijk dat de applicatie op een testserver draait. Voor de test van de beheerders app zullen de medewerkers van educatie met de applicatie werken. Hierbij kijkt, minimaal één lid van DWA mee om ook technische ondersteuning te bieden. 
 
-De projectgroep is hierbij verantwoordelijk dat de applicatie op een testserver draait. Burgers’ Zoo is zal hierbij een laptop met internetverbinding verzorgen.
+### Eductieve medewerker
+
+### Technische dienst
+ Burgers’ Zoo is zal hierbij een laptop met internetverbinding verzorgen.
+
+
+
+
 
 
-#### Verantwoordelijkheden
+### Dagschema
 De verantwoordelijkheden op de dag zelf ziet er als volgd uit:
 
 |  	| Dag 1 	| Dag 2 	|
