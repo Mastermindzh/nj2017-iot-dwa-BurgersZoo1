@@ -26,7 +26,6 @@ void before() {
 }
 
 void setup () {
-  MCUSR = 0;
   poot = new Poot();
 }
 
