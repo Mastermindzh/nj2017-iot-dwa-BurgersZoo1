@@ -54,7 +54,7 @@ We zetten zelf een dag van te voren de speurtocht klaar met de juiste geluidscon
 
 ## Testscenario's
 
-### Educatoren test
+### Scenario 1: Educatoren test
 
 Om de administratie app te testen gaan de DWA’ers met minimaal één educatiemedewerker zitten om een extra speurpunt aan het systeem toe te voegen. Tijdens deze test zal een medewerker van de educatie de 6de poot configureren, als dit lukt dan heeft de speurtocht 6 actieve punten i.p.v 5.
 
@@ -70,7 +70,7 @@ De volgende regels worden als ondersteuning op een blaadje ernaast gehouden:
 - U mag zelf kiezen welke weetjes u toevoegt, u moet minimaal 1 weetje toevoegen en maximaal 3.
 - Om te testen of bovenstaande educatorentest geslaagd is zal een IOTer of DWAer zich voordoen als technische dienst en de zip downloaden om op de poot te zetten.
 
-### Techniek Test
+### Scenario 2: Techniek Test
 Het plan om de techniek te testen is als volgt:
 
 1) In de Mangrove worden zes poten geplaatst.
@@ -85,6 +85,8 @@ Tegelijk zullen een aantal IoT leden van de projectgroep het systeem digitaal in
 
 Op deze manier kan advies gegeven worden op de vraag of de huidige techniek stabiel genoeg is om in praktijk te gebruiken.
 
+### Scenario 3: Observatie kind
+TODO
 
 
 ## Aanpak, beheer en verantwoordelijkheden
