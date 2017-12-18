@@ -30,7 +30,12 @@ public class PotenService {
         this.pootDAO = DAOFactory.getInstance().getPootDAO();
         sensorSendService = new MySensorSendService();
         this.backendPootService = new BackendPootService();
+    }
 
+    public PotenService(IPootDAO pootDAO, MySensorSendService sensorSendService, BackendPootService backendPootService) {
+        this.pootDAO = pootDAO;
+        this.sensorSendService = sensorSendService;
+        this.backendPootService = backendPootService;
     }
 
     /**
