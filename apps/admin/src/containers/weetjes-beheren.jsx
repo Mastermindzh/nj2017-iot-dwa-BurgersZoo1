@@ -12,6 +12,8 @@ import Grid from 'material-ui/Grid';
 import PopupComponent from './../components/popup-component.jsx';
 import GeluidUploaden from './../containers/geluid-uploaden.jsx';
 import _ from 'lodash';
+import {BASE_URL} from './../constants/endpoint-constants.js';
+
 
 import { fetchWeetjes } from './../actions/weetjesActions';
 
@@ -64,7 +66,7 @@ class WeetjesBeheren extends Component {
           {
             children:
             <ReactAudioPlayer
-              src={`${weetje.bestandspad}`}
+              src={`${BASE_URL}${weetje.bestandspad}`}
               controls
             />,
             key: `${weetje.id} player`

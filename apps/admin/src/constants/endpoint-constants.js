@@ -1,4 +1,5 @@
-const SERVER = "http://localhost:8001/api";
+export const BASE_URL = "http://localhost:8001";
+const SERVER = `${BASE_URL}/api`;
 const SPEURPUNTEN = "/speurpunten";
 
 
