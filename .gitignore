@@ -270,3 +270,5 @@ gateway.properties
 
 apps/server/audio/*
 !apps/server/audio/.gitinclude
+apps/server/temp/*
+!apps/server/temp/.gitinclude

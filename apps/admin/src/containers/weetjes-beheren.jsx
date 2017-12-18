@@ -12,6 +12,7 @@ import Grid from 'material-ui/Grid';
 import PopupComponent from './../components/popup-component.jsx';
 import GeluidUploaden from './../components/geluid-uploaden.jsx';
 import _ from 'lodash';
+import * as ENDPOINTS from './../constants/endpoint-constants';
 
 import { fetchWeetjes } from './../actions/weetjesActions';
 
@@ -34,6 +35,10 @@ class WeetjesBeheren extends Component {
 
   componentWillMount(){
     this.props.fetchWeetjes();
+  }
+
+  onUploadSuccess(){
+    this.setState({addOpen: false})
   }
 
   render() {
@@ -64,7 +69,7 @@ class WeetjesBeheren extends Component {
           {
             children:
             <ReactAudioPlayer
-              src={`${weetje.bestandspad}`}
+              src={`${ENDPOINTS.BASE.GET+weetje.bestandspad}`}
               controls
             />,
             key: `${weetje.id} player`
@@ -95,8 +100,8 @@ class WeetjesBeheren extends Component {
         </Grid>
 
         {this.state.addOpen &&
-          <PopupComponent title={"Weetje toevoegen"} open={this.state.addOpen} onRequestClose={() => this.setState({ addOpen: false })}>
-            <GeluidUploaden identifier="Weetje "/>
+          <PopupComponent title={"Weetje toevoegen"} open={this.state.addOpen} onRequestClose={() => {this.setState({ addOpen: false })}}>
+            <GeluidUploaden identifier="Weetje" onUploadSuccess={this.onUploadSuccess.bind(this)}/>
           </PopupComponent>
         }
       </div>

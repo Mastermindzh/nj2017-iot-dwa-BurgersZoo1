@@ -85,7 +85,7 @@ class GeluidenBeheren extends Component {
 
         {this.state.addOpen &&
           <PopupComponent title={"Geluid toevoegen"} open={this.state.addOpen} onRequestClose={() => this.setState({ addOpen: false })}>
-            <GeluidUploaden identifier="Geluid " />
+            <GeluidUploaden identifier="Geluid" />
           </PopupComponent>
         }
       </div>
