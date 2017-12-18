@@ -13,6 +13,7 @@ import GeluidUploaden from './../components/geluid-uploaden.jsx';
 import styles from './../styles/style';
 import { connect } from 'react-redux';
 import _ from 'lodash';
+import * as ENDPOINTS from './../constants/endpoint-constants';
 
 import { fetchDierengeluiden } from './../actions/dierengeluidenActions';
 
@@ -25,6 +26,10 @@ class GeluidenBeheren extends Component {
 
   componentWillMount() {
     this.props.fetchDierengeluiden();
+  }
+
+  onUploadSuccess(){
+    this.setState({addOpen: false})
   }
 
   render() {
@@ -54,7 +59,7 @@ class GeluidenBeheren extends Component {
           {
             children:
             <ReactAudioPlayer
-              src={dierengeluid.bestandspad}
+              src={`${ENDPOINTS.BASE.GET+dierengeluid.bestandspad}`}
               controls
             />,
             key: `${dierengeluid.id} player`
@@ -84,8 +89,8 @@ class GeluidenBeheren extends Component {
         </Grid>
 
         {this.state.addOpen &&
-          <PopupComponent title={"Geluid toevoegen"} open={this.state.addOpen} onRequestClose={() => this.setState({ addOpen: false })}>
-            <GeluidUploaden identifier="Geluid" />
+          <PopupComponent title={"Geluid toevoegen"} open={this.state.addOpen}>
+            <GeluidUploaden identifier="Geluid" onUploadSuccess={this.onUploadSuccess.bind(this)}/>
           </PopupComponent>
         }
       </div>
@@ -95,7 +100,6 @@ class GeluidenBeheren extends Component {
 
 GeluidenBeheren.propTypes = {
   classes: PropTypes.object,
-  dierengeluiden: PropTypes.any,
   dierengeluiden: PropTypes.object,
   fetchDierengeluiden: PropTypes.func
 };

@@ -100,7 +100,7 @@ class WeetjesBeheren extends Component {
         </Grid>
 
         {this.state.addOpen &&
-          <PopupComponent title={"Weetje toevoegen"} open={this.state.addOpen} onRequestClose={() => {this.setState({ addOpen: false })}}>
+          <PopupComponent title={"Weetje toevoegen"} open={this.state.addOpen}>
             <GeluidUploaden identifier="Weetje" onUploadSuccess={this.onUploadSuccess.bind(this)}/>
           </PopupComponent>
         }

@@ -9,25 +9,28 @@ import FileUpload from "material-ui-icons/FileUpload";
 import Button from "material-ui/Button";
 import {uploadSound} from "./../actions/uploadGeluidActions";
 import {uploadWeetje} from "./../actions/weetjesActions";
+import {uploadDierengeluid} from "./../actions/dierengeluidenActions"
 
 class GeluidUploaden extends Component {
   state = {
-    name: "",
+    beschrijving: "",
     audioFile: ""
   };
 
+  //todo page laten reloaden - > (automatisch ivm this.setState????  ..  nope
+
   handleSubmit(e) {
     e.preventDefault();
-    uploadSound(this.state.name, this.state.audioFile).then(result => {
-      console.log(this.props.identifier);
-      console.log(result.data[0])
-      this.setState({audioFile: result});//??
-      //todo maak if statements
-      uploadWeetje(this.state.name, result.data[0])
-      //todo name refactoren naar beschrijving
-      //todo scherm closen on uploadsucces?
-      //todo page laten reloaden - > (automatisch ivm this.setState????
-      console.log(this.props)
+    uploadSound(this.state.beschrijving, this.state.audioFile).then(result => {
+      this.setState({audioFile: result});
+      switch (this.props.identifier) {
+        case "Weetje":
+          uploadWeetje(this.state.beschrijving, result.data[0]);
+          break;
+        case "Geluid":
+          uploadDierengeluid(this.state.beschrijving, result.data[0]);
+          break;
+      }
       this.props.onUploadSuccess();
     }).catch(err => {
       console.log('upload failed');
@@ -66,8 +69,8 @@ class GeluidUploaden extends Component {
               <InputLabel htmlFor="geluid-naam">{identifier}</InputLabel>
               <Input
                 id="geluid-naam"
-                value={this.state.name}
-                onChange={event => this.setState({name: event.target.value})}
+                value={this.state.beschrijving}
+                onChange={event => this.setState({beschrijving: event.target.value})}
               />
             </FormControl>
           </Grid>

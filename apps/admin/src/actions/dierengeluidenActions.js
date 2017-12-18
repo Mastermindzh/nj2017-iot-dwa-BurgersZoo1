@@ -12,3 +12,10 @@ export function fetchDierengeluiden(){
     });
   };
 }
+
+export function uploadDierengeluid(beschrijving, bestandspad) {
+  return axios.post(ENDPOINTS.DIERENGELUIDEN.POST, {
+    bestandspad: bestandspad,
+    beschrijving: beschrijving
+  });
+}

@@ -14,8 +14,6 @@ export function fetchWeetjes() {
 }
 
 export function uploadWeetje(beschrijving, bestandspad) {
-  console.log("uploadWeetje: "+beschrijving+' bestandspad: '+bestandspad);
-  //todo dit upload endpoint geeft error, wss een object te weinig mee gegeven.
   return axios.post(ENDPOINTS.WEETJES.POST, {
     bestandspad: bestandspad,
     beschrijving: beschrijving

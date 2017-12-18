@@ -1,6 +1,6 @@
 const SERVER = "http://localhost:8001/api";
 const SPEURPUNTEN = "/speurpunten";
-const SERVERBASE = "http://localhost:8001/";
+const SERVERBASE = "http://localhost:8001";
 
 export const SPEURPUNT = {
   GET: `${SERVER}${SPEURPUNTEN}`,
@@ -8,14 +8,15 @@ export const SPEURPUNT = {
   PATCH: `${SERVER}${SPEURPUNTEN}`
 };
 export const DIERENGELUIDEN = {
-  GET: `${SERVER}/dierengeluiden`
+  GET: `${SERVER}/dierengeluiden`,
+  POST: `${SERVER}/dierengeluiden`
 };
 export const WEETJES = {
   GET: `${SERVER}/weetjes`,
   POST: `${SERVER}/weetjes`
 };
 export const UPLOAD = {
-  POST: `${SERVER}/upload`
+  POST: `${SERVERBASE}/upload`
 };
 export const BASE = {
   GET: `${SERVERBASE}`
