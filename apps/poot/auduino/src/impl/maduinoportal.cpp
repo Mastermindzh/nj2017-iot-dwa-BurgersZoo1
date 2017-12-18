@@ -7,6 +7,8 @@ Audio* audioPlayer;
 
 void receiveEvent(int bytes) {
   Serial.println("Received event");
+  while(Wire.available())
+    Wire.read();
   audioPlayer->play();
 }
 

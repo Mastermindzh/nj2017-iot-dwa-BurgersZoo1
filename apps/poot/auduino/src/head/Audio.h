@@ -15,8 +15,10 @@ public:
    * Play the audio!
    */
   void play();
+
 private:
   TMRpcm* tmrpcm;
+  unsigned int soundCounter;
 };
 
 #endif
