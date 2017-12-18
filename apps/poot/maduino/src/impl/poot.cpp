@@ -1,11 +1,14 @@
 #include "../head/Poot.h"
 
-Poot::Poot(){
+Poot::Poot(StatusLights* lights){
+  this->lights = lights;
+  this->lights->turnLightsOff();
   this->gatewayLink = new GatewayLink(this);
   this->rangerDetector = new RangerDetector(this);
   this->auduinoPortal = new AuduinoPortal();
 
   this->gatewayLink->sendStartup(this->getPootid());
+
 }
 void Poot::loop(){
   this->rangerDetector->loop();
@@ -13,7 +16,9 @@ void Poot::loop(){
 
 void Poot::pasScanned(String pasid){
   Serial.println("Pas gescand met id: " + pasid);
+  lights->auduinoStartTalking();
   this->auduinoPortal->playAudio();
+  lights->auduinoStopTalking();
   this->gatewayLink->sendCard(pasid);
 }
 

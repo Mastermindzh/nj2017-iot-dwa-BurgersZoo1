@@ -17,7 +17,7 @@ class GatewayLink;
 
 class Poot {
 public:
-  Poot();
+  Poot(StatusLights* lights);
 
   /**
    * Update the poot. This will update timers and execute actions that are time based.
@@ -44,7 +44,7 @@ public:
   */
   void receive(const MyMessage &message);
 private:
-  StatusLights* statusLights;
+  StatusLights* lights;
   Logger* logger;
   RangerDetector* rangerDetector;
   AuduinoPortal* auduinoPortal;

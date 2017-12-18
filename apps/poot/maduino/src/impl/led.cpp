@@ -1,5 +1,13 @@
 #include "../head/Led.h"
 
-Led::Led(char pin){ };
-void Led::on(){ };
-void Led::off(){ };
+Led::Led(byte pin){
+  this->pin = pin;
+  pinMode(this->pin, OUTPUT);
+};
+
+void Led::on(){
+  digitalWrite(this->pin, HIGH);
+};
+void Led::off(){
+  digitalWrite(this->pin, LOW);
+};

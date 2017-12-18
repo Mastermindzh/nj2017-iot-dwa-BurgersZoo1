@@ -1,9 +1,11 @@
 #ifndef LED
 #define LED
 
+#include <Arduino.h>
+
 class Led {
   public:
-    Led(char pin);
+    Led(byte pin);
 
     /**
      * Turn a led on
@@ -15,7 +17,7 @@ class Led {
      */
     void off();
   private:
-    char pin;
+    byte pin;
 };
 
 #endif
