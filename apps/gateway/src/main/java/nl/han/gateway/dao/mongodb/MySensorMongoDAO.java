@@ -1,7 +1,10 @@
 package nl.han.gateway.dao.mongodb;
 
 import com.google.gson.Gson;
+import com.mongodb.AuthenticationMechanism;
 import com.mongodb.MongoClient;
+import com.mongodb.MongoCredential;
+import com.mongodb.ServerAddress;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import nl.han.gateway.dao.GsonParserUtil;
@@ -14,11 +17,12 @@ import org.bson.types.ObjectId;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 import java.util.function.Consumer;
 
 import static com.mongodb.client.model.Filters.eq;
+import static nl.han.gateway.util.GatewayProperties.getProperty;
+import static nl.han.gateway.util.GatewayProperties.hasProperty;
 
 public class MySensorMongoDAO implements IMyMessagesDAO {
 
@@ -26,12 +30,30 @@ public class MySensorMongoDAO implements IMyMessagesDAO {
     private Gson gson;
     private static Logger logger = LoggerFactory.getLogger(MySensorReceiveService.class.getName());
 
-
     MySensorMongoDAO() {
-        MongoClient client = new MongoClient(GatewayProperties.getProperty("server.database.host")
-                , Integer.parseInt(GatewayProperties.getProperty("server.database.port")));
-        MongoDatabase database = client.getDatabase("mymessages");
-        this.collection = database.getCollection("mymessages");
+        MongoClient client;
+        if(hasProperty("server.database.user")){
+            client = new MongoClient(
+                    getProperty("server.database.host"),
+                    Integer.parseInt(getProperty("server.database.port"))
+            );
+        }else{
+            client = new MongoClient(
+                    new ServerAddress(
+                            getProperty("server.database.host"),
+                            Integer.parseInt(getProperty("server.database.port"))
+                    ),
+                    Collections.singletonList(
+                            MongoCredential.createCredential(
+                                    getProperty("server.database.user"),
+                                    getProperty("server.database.name"),
+                                    getProperty("server.database.pass").toCharArray()
+                            )
+                    ));
+        }
+
+        MongoDatabase database = client.getDatabase(getProperty("server.database.name"));
+        this.collection = database.getCollection(getProperty("server.database.collection"));
 
         this.gson = GsonParserUtil.gson;
     }
