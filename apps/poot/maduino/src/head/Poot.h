@@ -7,6 +7,8 @@
 #include "Logger.h"
 #include "RangerDetector.h"
 #include "AuduinoPortal.h"
+#include <avr/wdt.h>
+
 
 #define EEPROM_POOTID_ADDRESS 0x25
 #define EEPROM_POOTID_DEFAULT_CODE 0xFF
@@ -43,12 +45,19 @@ public:
   * Receive MySensors messages
   */
   void receive(const MyMessage &message);
+
+  /**
+  * Reset the EEPROM
+  */
+  void resetEEPROM();
+
 private:
   StatusLights* statusLights;
   Logger* logger;
   RangerDetector* rangerDetector;
   AuduinoPortal* auduinoPortal;
   GatewayLink* gatewayLink;
+
 };
 
 #endif
