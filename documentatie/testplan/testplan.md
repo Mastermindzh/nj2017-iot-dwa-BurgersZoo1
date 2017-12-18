@@ -1,11 +1,14 @@
 # Testplan
 ## Inleiding
-Om de technische haalbaarheid van het project te testen wordt er een zogeheten Field Trial gedaan in de week van 10 januari. Tijdens deze Field Trial zal er gebruik gemaakt worden van een groep werknemers en vrijwilligers van Burgers’ Zoo om het gemaakte systeem te testen. In dit document wordt beschreven wat het doel van de tests zijn, wat er getest gaat worden, hoe dit getest gaat worden en andere details die van belang zijn op de testdag.
+In november 2017 kreeg een groep ict-studenten van de Hogeschool Arnhem en Nijmegen de opdracht om een speurtochtsysteem voor Burgers’ Zoo als technisch concept uit te werken. Dit speurtochtsysteem is bedoeld voor kinderen die de dierentuin bezoeken. Het concept is dat kinderen “Ranger” kunnen worden als ze de speurtocht succesvol afronden. Het systeem moet antwoord geven op de vraag in hoeverre het technisch haalbaar is om in Burgers Zoo een speurtochtnetwerk te zetten. 
+
+Het systeem wordt in de week van 10 januari 2018 getest tijdens een field trial in Burgers' Zoo. Medewerkers en vrijwilligers van Burgers' Zoo gaan dan echt met het systeem aan de slag. In dit document wordt beschreven wat de verwachtingen zijn van deze trial, hoe dit getest gaat worden en hoe de resultaten worden vastgelegd.
 
 <!-- toc -->
 
 ## Context
-In november 2017 kreeg een groep studenten van de Hogeschool Arnhem en Nijmegen de opdracht om een speurtocht systeem voor Burgers’ Zoo als concept uit te werken. Dit speurtocht systeem is bedoeld voor kinderen die de dierentuin bezoeken. Het concept is dat kinderen “Ranger” worden en ze naar dieren moeten speuren. Om dit te doen worden de kinderen voorzien van een pasje waarmee de voortgang wordt bijgehouden. Terwijl de kinderen de dierentuin bezoeken kunnen ze zoeken naar dieren ‘poten’. Deze poten zijn paaltjes met daarop wat hardware in de vorm van een dierenpoot. Wanneer een kind een poot vindt, en de pas tegen de poot aan houdt, wordt de pas gescand en wordt het bezoek geregistreerd. Na afloop van het bezoek kunnen kinderen online zien welke poten ze gevonden hebben en welke poten ze nog gemist hebben.
+Het speurtochtsysteem bestaat uit een MESH-netwerk van 6 poten die elk een onderdeel van de speurtocht vertegenwoordigen. Een ranger kan een poot scannen met een verkregen rangerpas. Dit gebeurt d.m.v. NFC.
+
 
 Educatoren van Burgers’ Zoo kunnen online de speurpunten beheren, dit houdt kortgezegd in dat ze voor de speurpunten een aantal gegevens (naam, verblijf, dierengeluid, etc.) in kunnen voeren en weetjes aan een speurpunt toe kunnen voegen. Zo kan de inhoud en vormgeving van de speurtocht aangepast worden.
 
@@ -22,13 +25,24 @@ Educatoren van Burgers’ Zoo kunnen online de speurpunten beheren, dit houdt ko
 | Speurpunt             | Een volledig geconfigureerde poot welke in een speurtocht staat.                                                                                                |
 
 ## Doel
-Het doel van de test is tweeledig. Aan de ene kant is het doel van de test om de techniek te testen. Hiermee wordt antwoord gegeven op de vraag of de gekozen oplossingsrichting in de techniek ook in praktijk goed werkt. Uit de bevindingen vloeit een advies hoe in de toekomst verder ontwikkeld kan worden aan de techniek van de poot.
-Aan de andere kant is het doel om te zien of de functionaliteiten die gebouwd zijn voor de educatoren aansluiten bij de verwachtingen van de educatoren. Door te onderzoeken in hoeverre de applicatie aansluit bij de verwachtingen van de educatoren kan een advies worden gegeven over de doorontwikkeling van de beheerders applicatie.
+Het doel van de test is tweeledig. Aan de ene kant is het doel van de test om de techniek te testen: werkt het? Aan de andere kant is het doel om te zien of de functionaliteiten die gebouwd zijn voor de educatoren aansluiten bij de verwachtingen van de educatoren.
+
+### Hypothese 1
+Hiermee wordt antwoord gegeven op de vraag of de gekozen oplossingsrichting in de techniek ook in praktijk goed werkt. Uit de bevindingen vloeit een advies hoe in de toekomst verder ontwikkeld kan worden aan de techniek van de poot.
+
+> Wij geloven dat een meshnetwerk van zes poten in de Mangrove, gebruikmakend van NRF-communicatie zal resulteren in een stabiel speurtocht Ranger systeem dat verbonden staat met de cloud. We weten dat we succesvol zijn als de educatoren van Burgers' Zoo een speurtocht kunnen configureren, en de resultaten van diezelfde speurtocht terug kunnen zien, in een web applicatie die de data uit de verbonden cloud toont.
+
+
+ 
+### Hytpothese 2
+Door te onderzoeken in hoeverre de applicatie aansluit bij de verwachtingen van de educatoren kan een advies worden gegeven over de doorontwikkeling van de beheerders applicatie.
+
+
+## Out of scope
 
 Het doel van deze test is niet om het concept van een ranger-speurtocht te testen. Dit is namelijk door een vorige projectgroep gedaan. Het testen of de speurtocht aanslaat bij kinderen valt buiten de scope van deze test. Verder is het ook niet het doel om de usability van de beheerder applicatie te testen. In hoeverre educatoren het design van de applicatie aanslaat en in hoeverre de educatoren zelf hun weg kunnen vinden door de applicatie valt buiten de scope van deze test.
 
 De gebouwde ranger applicatie is niet onderdeel van het doel van de test. Zoals te lezen is in de teststrategie wordt deze ranger applicatie mogelijk wel ingezet, maar het gebruik van en de reactie op de ranger applicatie zal niet worden geanalyseerd.
-
 
 
 ## Teststrategie
