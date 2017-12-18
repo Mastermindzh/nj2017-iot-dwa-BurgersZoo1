@@ -1,18 +1,28 @@
-const SERVER = "http://localhost:8001";
+const SERVER = "http://localhost:8001/api";
+const SPEURPUNTEN = "/speurpunten";
+const SERVERBASE = "http://localhost:8001/";
 
 export const SPEURPUNT = {
-  GET: `${SERVER}/api/speurpunten`
+  GET: `${SERVER}${SPEURPUNTEN}`,
+  POST: `${SERVER}${SPEURPUNTEN}`,
+  PATCH: `${SERVER}${SPEURPUNTEN}`
 };
 export const DIERENGELUIDEN = {
-  GET: `${SERVER}/api/dierengeluiden`
+  GET: `${SERVER}/dierengeluiden`
 };
 export const WEETJES = {
-  GET: `${SERVER}/api/weetjes`,
-  POST: `${SERVER}/api/weetjes`
+  GET: `${SERVER}/weetjes`,
+  POST: `${SERVER}/weetjes`
 };
 export const UPLOAD = {
   POST: `${SERVER}/upload`
 };
 export const BASE = {
-  GET: `${SERVER}`
+  GET: `${SERVERBASE}`
+};
+export const POTEN = {
+  GET: `${SERVER}/poten`
+};
+export const VERBLIJVEN = {
+  GET: `${SERVER}/verblijven`
 };

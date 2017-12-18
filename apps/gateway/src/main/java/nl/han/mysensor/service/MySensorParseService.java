@@ -65,7 +65,7 @@ public class MySensorParseService {
         MyCommand command = MyCommand.getByValue(Integer.parseInt(commandType));
         MyMessage.Builder messageBuilder = MyMessage.newMyMessage()
                 .nodeId(Long.valueOf(nodeId))
-                .childSensorId(Integer.parseInt(childSensor))
+                .childSensorId(Long.valueOf(childSensor))
                 .command(command)
                 .ack(Boolean.parseBoolean(ack))
                 .payload(payload);

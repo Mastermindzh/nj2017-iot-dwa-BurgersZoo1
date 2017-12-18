@@ -7,7 +7,7 @@ public class MyPresentationMessage extends MyMessage {
 
     private MyPresentationType presentationType;
 
-    public MyPresentationMessage(Long nodeId, int childSensorId, MyCommand command, boolean ack, String payload, MyPresentationType presentationType) {
+    public MyPresentationMessage(Long nodeId, Long childSensorId, MyCommand command, boolean ack, String payload, MyPresentationType presentationType) {
         super(nodeId, childSensorId, command, ack, payload);
         this.presentationType = presentationType;
     }

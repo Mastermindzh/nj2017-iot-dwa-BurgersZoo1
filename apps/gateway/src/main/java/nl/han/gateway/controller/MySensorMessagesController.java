@@ -14,6 +14,20 @@ public class MySensorMessagesController {
     public MySensorMessagesController() {
         this.mySensorService = new MyMessageService();
 
-        get("/messages", (request, response) -> this.mySensorService.getAllMessages(), json());
+        get("/messages", (request, response) -> {
+            System.out.println(request.queryMap().toMap());
+            if (request.queryMap().toMap() != null) {
+                request.queryMap().toMap().forEach((key, val) -> {
+                    System.out.println(key + ": " + val[0]);
+                });
+            }
+            return this.mySensorService.getAllMessages();
+
+        }, json());
     }
+
+//            '?search=' + encodeURI(filter) +
+//            '&page=' + (currentPageIndex - 1) +
+//            '&size=' + pageSize +
+//            '&sort=' + sortName + ',' + sortOrder)
 }

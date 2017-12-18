@@ -13,14 +13,16 @@
     "rangerid": {
       "type": "string",
       "required": true
-    },
-    "speurpuntid": {
-      "type": "string",
-      "required": true
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "speurpunt": {
+      "type": "belongsTo",
+      "model": "speurpunt",
+      "foreignKey": ""
+    }
+  },
   "acls": [],
   "methods": {}
 }
