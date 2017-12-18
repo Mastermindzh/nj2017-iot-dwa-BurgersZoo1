@@ -6,6 +6,9 @@ StatusLights::StatusLights(){
   this->green = new Led(2);
 };
 void StatusLights::loop(){
+  this->red->loop();
+  this->yellow->loop();
+  this->green->loop();
 };
 void StatusLights::turnLightsOff(){
   this->red->off();
@@ -24,4 +27,12 @@ void StatusLights::auduinoStartTalking(){
 
 void StatusLights::auduinoStopTalking(){
   this->yellow->off();
+}
+
+void StatusLights::wrongPas(unsigned int blinkLength){
+  this->red->onFor(blinkLength);
+}
+
+void StatusLights::pas(){
+  this->green->onFor(1000);
 }

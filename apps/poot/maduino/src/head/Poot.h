@@ -43,6 +43,14 @@ public:
   * Receive MySensors messages
   */
   void receive(const MyMessage &message);
+
+  /**
+   * Event for when a wrong pas is scanned. The error codes are as following:
+   *  1  =  Card could not be authenticated
+   *  2  =  Card does not contain the correct content
+   *  3  =  
+   */
+  void wrongPasScanned(byte errorCode);
 private:
   StatusLights* lights;
   Logger* logger;

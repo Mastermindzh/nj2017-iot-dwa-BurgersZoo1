@@ -12,14 +12,22 @@ Poot::Poot(StatusLights* lights){
 }
 void Poot::loop(){
   this->rangerDetector->loop();
+  this->lights->loop();
 }
 
 void Poot::pasScanned(String pasid){
   Serial.println("Pas gescand met id: " + pasid);
   lights->auduinoStartTalking();
+  lights->pas();
   this->auduinoPortal->playAudio();
   lights->auduinoStopTalking();
   this->gatewayLink->sendCard(pasid);
+}
+
+void Poot::wrongPasScanned(byte errorCode){
+  /// unauthenticated = 500ms blink
+  /// wrong content = 1000ms blink
+  lights->wrongPas(errorCode == 1 ? 500 : 1000);
 }
 
 byte Poot::getPootid(){

@@ -7,17 +7,16 @@ class Led {
   public:
     Led(byte pin);
 
-    /**
-     * Turn a led on
-     */
     void on();
-
-    /**
-     * Turn a led off
-     */
     void off();
+    void onFor(unsigned int time);
+    void offFor(unsigned int time);
+
+    void loop();
   private:
     byte pin;
+    bool isOn;
+    unsigned long switchMoment;
 };
 
 #endif

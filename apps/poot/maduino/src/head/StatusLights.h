@@ -11,6 +11,8 @@ class StatusLights {
     void turnLightsOn();
     void auduinoStartTalking();
     void auduinoStopTalking();
+    void pas();
+    void wrongPas(unsigned int blinkLength);
   private:
     Led* red;
     Led* yellow;
