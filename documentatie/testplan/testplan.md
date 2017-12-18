@@ -7,7 +7,7 @@ Het systeem wordt in de week van 10 januari 2018 getest tijdens een field trial 
 <!-- toc -->
 
 ## Technische context
-Het speurtochtsysteem bestaat uit een MESH-netwerk van 6 devices die elk een onderdeel van de speurtocht vertegenwoordigen. Een ranger kan zo'n device, ook wel een 'poot', 'speurpunt' of 'scanpunt' genoemd, scannen met een verkregen rangerpas. Dit gebeurt d.m.v. NFC. Alle scanacties van een ranger worden online in de cloud opgeslagen. Deze cloud is ook onderdeel van het systeem.
+Het speurtochtsysteem bestaat uit een MESH-netwerk van 6 devices die elk een onderdeel van de speurtocht vertegenwoordigt. Een ranger kan zo'n device, ook wel een 'poot', 'speurpunt' of 'scanpunt' genoemd, scannen met een verkregen rangerpas. Dit gebeurt d.m.v. NFC. Alle scanacties van een ranger worden online in de cloud opgeslagen. Deze cloud is ook onderdeel van het systeem.
 
 Educatoren van Burgers’ Zoo kunnen online de speurpunten beheren, dit houdt kortgezegd in dat ze voor de speurpunten een aantal gegevens (naam, verblijf, dierengeluid, etc.) in kunnen voeren en weetjes aan een speurpunt toe kunnen voegen. Zo kan de inhoud en vormgeving van de speurtocht aangepast worden.
 
@@ -40,21 +40,19 @@ Het doel van deze test is niet om het concept van een speurtocht te testen. Dit 
 De gebouwde ranger applicatie is niet onderdeel van het doel van de test. Zoals te lezen is in de teststrategie wordt deze ranger applicatie mogelijk wel ingezet, maar het gebruik van en de reactie op de ranger applicatie zal niet worden geanalyseerd.
 
 
-## Teststrategie
-### Techniek Test
-Het plan om de techniek te testen is als volgt:
+## Testopzet
 
-1) In de Mangrove worden zes poten geplaatst.
-2) Kinderen krijgen van de educatie medewerker een pasje met de opdracht om op zoek te gaan naar poten. 
-3) Wanneer de kinderen bij de uitgang komen worden de pasjes weer ingenomen. <!--Een beloning voor de kinderen kan worden verzorgd door de educatieve medewerkers, maar dit is niet aan de projectgroep. -->
+De testopzet bestaat uit:
 
-Door Frank is voorgesteld om de Kids Club van Burgers’ Zoo hiervoor te gebruiken. Dit is een groep kinderen die vaak bij Burgers’ Zoo komen en vaker ingezet worden voor tests van nieuwe onderdelen van Burgers’ Zoo.
+- 1 gedeployde webapplicatie voor de educatiemedewerker
+- 1 gedeployde webapplicatie voor de ranger
+- 1 gedeployde cloud
+- 5 voorgeconfigureerde poten
+- 1 niet-geconfigureerde poot
 
-Rond de plekken waar de poten zijn verstopt staan leden van de projectgroep opgesteld om te observeren hoe de kinderen omgaan met de poten. Op deze manier kan worden onderzocht of de poten naar behoren werken.
+We zetten zelf een dag van te voren de speurtocht klaar met de juiste geluidsconfiguratie. Eén poot laten we niet-geconfigureerd staan, omdat het toevoegen van een poot aan een speurtocht een testscenario is.
 
-Tegelijk zullen een aantal IoT leden van de projectgroep het systeem digitaal in de gaten houden. Zo zal continu worden geobserveerd of de onderdelen van het systeem verbonden blijven en correct blijven functioneren met écht gebruik.
-
-Op deze manier kan advies gegeven worden op de vraag of de huidige techniek stabiel genoeg is om in praktijk te gebruiken.
+## Testscenario's
 
 ### Educatoren test
 
@@ -71,6 +69,21 @@ De volgende regels worden als ondersteuning op een blaadje ernaast gehouden:
 - U mag zelf kiezen welk dierengeluid u aan het speurpunt toevoegt.
 - U mag zelf kiezen welke weetjes u toevoegt, u moet minimaal 1 weetje toevoegen en maximaal 3.
 - Om te testen of bovenstaande educatorentest geslaagd is zal een IOTer of DWAer zich voordoen als technische dienst en de zip downloaden om op de poot te zetten.
+
+### Techniek Test
+Het plan om de techniek te testen is als volgt:
+
+1) In de Mangrove worden zes poten geplaatst.
+2) Kinderen krijgen van de educatie medewerker een pasje met de opdracht om op zoek te gaan naar poten. 
+3) Wanneer de kinderen bij de uitgang komen worden de pasjes weer ingenomen. <!--Een beloning voor de kinderen kan worden verzorgd door de educatieve medewerkers, maar dit is niet aan de projectgroep. -->
+
+Door Frank is voorgesteld om de Kids Club van Burgers’ Zoo hiervoor te gebruiken. Dit is een groep kinderen die vaak bij Burgers’ Zoo komen en vaker ingezet worden voor tests van nieuwe onderdelen van Burgers’ Zoo.
+
+Rond de plekken waar de poten zijn verstopt staan leden van de projectgroep opgesteld om te observeren hoe de kinderen omgaan met de poten. Op deze manier kan worden onderzocht of de poten naar behoren werken.
+
+Tegelijk zullen een aantal IoT leden van de projectgroep het systeem digitaal in de gaten houden. Zo zal continu worden geobserveerd of de onderdelen van het systeem verbonden blijven en correct blijven functioneren met écht gebruik.
+
+Op deze manier kan advies gegeven worden op de vraag of de huidige techniek stabiel genoeg is om in praktijk te gebruiken.
 
 
 
