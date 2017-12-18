@@ -86,4 +86,20 @@ public class BackendPootService extends BackendPootServiceBase {
     public void sendHumidityLoggingToBackend(MySetMessage message, Poot poot) {
         logger.info("Humidity  logging is not enabled for group 1");
     }
+
+    @Override
+    public void removePootFromBackend(Poot poot) {
+        RequestBody requestBody = RequestBody.create(JSON, "{}");
+        Request request = new Request.Builder()
+                .delete(requestBody)
+                .url(this.baseUri + "/poten/" + poot.getPootid())
+                .build();
+        try (Response response = super.client.newCall(request).execute()) {
+            if (response.code() != 200) {
+                logger.warn("Unexpected response code while deleting poot from backend 1: " + response.code());
+            }
+        } catch (IOException e) {
+            logger.error("Error while deleting Poot", e);
+        }
+    }
 }

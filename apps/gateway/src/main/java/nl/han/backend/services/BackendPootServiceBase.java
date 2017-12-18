@@ -73,4 +73,11 @@ public abstract class BackendPootServiceBase {
      * @param poot
      */
     public abstract void sendHumidityLoggingToBackend(MySetMessage message, Poot poot);
+
+    /**
+     * Sends a request to the backend for removal of a Poot
+     *
+     * @param poot
+     */
+    public abstract void removePootFromBackend(Poot poot);
 }

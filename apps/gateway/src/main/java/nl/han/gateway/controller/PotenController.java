@@ -42,6 +42,7 @@ public class PotenController {
             response.status(404);
             return e.getMessage();
         }
+
         return "Ok";
     }
 
