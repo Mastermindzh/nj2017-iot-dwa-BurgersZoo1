@@ -53,7 +53,7 @@ class MyRangerContainer extends Component {
             />
           </Grid>
           <Grid item xs={12} sm={6}>
-            <FactWidgetComponent />
+            <FactWidgetComponent animalResidences={ _.uniqBy(selectedParkHistory.map(day => day.speurpunt.locatienaam), 'locatienaam' ) } />
           </Grid>
           <Grid item xs={12}>
             <ParkOverviewComponent speurpunten={selectedParkHistory.map(day => day.speurpunt)}/>

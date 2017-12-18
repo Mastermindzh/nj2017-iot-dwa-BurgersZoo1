@@ -13,6 +13,7 @@ const ParkOverviewComponent = (props) => {
           lat={speurpunt.verblijf.geolocatie.lat}
           lng={speurpunt.verblijf.geolocatie.lng}
           text={speurpunt.verblijf.naam}
+          speurpunt={speurpunt}
         />)}
     </ParkMapComponent>
   );
