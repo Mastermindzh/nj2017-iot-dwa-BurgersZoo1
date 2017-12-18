@@ -43,7 +43,7 @@ export function updateSpeurpunt(speurpunt) {
     axios
       .patch(ENDPOINTS.SPEURPUNT.PATCH, speurpunt.getPatchObject())
       .then(() => {
-        // returns with ID's, we gotta grab the details
+        // returns with IDs, we gotta grab the details
         getSingleSpeurpunt(speurpunt).then(result => {
           dispatch({
             type: SPEURPUNT_ACTION_TYPES.UPDATE_SPEURPUNT,

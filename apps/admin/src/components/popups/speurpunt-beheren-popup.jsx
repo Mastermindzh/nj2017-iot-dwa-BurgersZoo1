@@ -29,13 +29,13 @@ class SpeurpuntBeherenPopupComponent extends Component {
       dierengeluiden: []
     };
 
-    if(props.data !== undefined){
+    if(!_.isEmpty(props.data)){
       state.name = props.data.locatienaam;
       state.verblijf = props.data.verblijfId;
       state.poot = props.data.pootid;
       state.id = props.data.id;
 
-      if(props.data.dierengeluid !== undefined){
+      if(!_.isEmpty(props.data.dierengeluid)){
         state.dierengeluid = props.data.dierengeluid.id;
       }
 
@@ -58,21 +58,12 @@ class SpeurpuntBeherenPopupComponent extends Component {
     this.stateToSpeurpunt = this.stateToSpeurpunt.bind(this);
   }
 
-  /**
-   * change state on keypress
-   * @param {input} field name of the state key to change
-   * @param {*} event
-   */
-  handleChange(field, event) {
-    this.setState({ [field]: event.target.value });
-  }
-
   handleDierenGeluidChange(event,data){
     this.setState({dierengeluid: data.value})
   }
 
   stateToSpeurpunt() {
-    let test = new Speurpunt(
+    return new Speurpunt(
       this.state.poot === null ? [] : this.state.poot,
       null,
       this.state.name,
@@ -80,8 +71,6 @@ class SpeurpuntBeherenPopupComponent extends Component {
       this.state.id,
       this.state.dierengeluid
     );
-
-    return test;
   }
 
   handleDropDownChange(event, data) {
