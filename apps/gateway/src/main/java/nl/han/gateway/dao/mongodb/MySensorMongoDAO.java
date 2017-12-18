@@ -1,28 +1,24 @@
 package nl.han.gateway.dao.mongodb;
 
 import com.google.gson.Gson;
-import com.mongodb.AuthenticationMechanism;
-import com.mongodb.MongoClient;
-import com.mongodb.MongoCredential;
-import com.mongodb.ServerAddress;
 import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoDatabase;
 import nl.han.gateway.dao.GsonParserUtil;
 import nl.han.gateway.dao.IMyMessagesDAO;
-import nl.han.gateway.util.GatewayProperties;
+import nl.han.gateway.exceptions.NotImplementedException;
 import nl.han.mysensor.models.MyMessage;
 import nl.han.mysensor.service.MySensorReceiveService;
 import org.bson.Document;
+import org.bson.conversions.Bson;
 import org.bson.types.ObjectId;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.function.Consumer;
 
 import static com.mongodb.client.model.Filters.eq;
-import static nl.han.gateway.util.GatewayProperties.getProperty;
-import static nl.han.gateway.util.GatewayProperties.hasProperty;
 
 public class MySensorMongoDAO implements IMyMessagesDAO {
 
@@ -77,6 +73,28 @@ public class MySensorMongoDAO implements IMyMessagesDAO {
     @Override
     public MyMessage get(ObjectId objectId) {
         return this.getMyMessageFromDocument(this.collection.find(eq("_id", objectId)).first());
+    }
+
+    @Override
+    public List<MyMessage> getAllFiltered(String[] searchParams, int page, int size, String order) {
+        throw new NotImplementedException("Not yet implemented");
+//        Sort sort = null;
+//        if ("DESC".equals(order)) {
+//            sort = Sort.descending("$oid");
+//
+//        } else if ("ASC".equals(order)) {
+//            sort = Sort.ascending("");
+//        }
+//        Document filter = new Document();
+//        filter.append("")
+//        this.collection.find();
+//
+//        Arrays.stream(searchParams)
+//                .map(s -> s.split(":")).forEach(s -> {
+//            eq(s[0], s[1]);
+//        });
+//        Bson filter = eq("", "");
+//        return null;
     }
 
 

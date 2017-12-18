@@ -15,11 +15,43 @@ public class MySensorMessagesController {
         this.mySensorService = new MyMessageService();
 
         get("/messages", (request, response) -> {
-            System.out.println(request.queryMap().toMap());
+            response.type("application/json");
             if (request.queryMap().toMap() != null) {
                 request.queryMap().toMap().forEach((key, val) -> {
-                    System.out.println(key + ": " + val[0]);
+                    for (int i = 0; i < val.length; i++) {
+                        System.out.println(key + ": " + val[i]);
+                    }
                 });
+                String[] searchParams = request.queryMap()
+                        .toMap()
+                        .getOrDefault("search", null);
+                int size = 50;
+                if (request.queryMap()
+                        .toMap()
+                        .getOrDefault("size", null) != null) {
+                    size = Integer.parseInt(request.queryMap()
+                            .toMap()
+                            .get("size")[0]);
+                }
+                int page = 0;
+                if (request.queryMap()
+                        .toMap()
+                        .getOrDefault("page", null) != null) {
+                    page = Integer.parseInt(request.queryMap()
+                            .toMap()
+                            .get("page")[0]);
+                }
+                String order = "DESC";
+                if (request.queryMap()
+                        .toMap()
+                        .getOrDefault("sort", null) == null) {
+                    order = request.queryMap()
+                            .toMap()
+                            .get("sort")[0];
+                }
+
+
+                return this.mySensorService.getAllMessages(searchParams, page, size, order);
             }
             return this.mySensorService.getAllMessages();
 
