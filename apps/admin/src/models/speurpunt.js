@@ -16,9 +16,8 @@ class Speurpunt extends BaseModel{
     this.locatienaam = locatienaam;
     this.verblijfId  = verblijfId;
     this.id = id;
-    this.dierengeluid = dierengeluid;
+    this.dierengeluidId = dierengeluid;
   }
-
 
 }
 

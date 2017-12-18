@@ -7,10 +7,6 @@
     "validateUpsert": true
   },
   "properties": {
-    "id": {
-      "type": "number",
-      "required": true
-    },
     "bestandspad": {
       "type": "string",
       "required": true
@@ -23,7 +19,7 @@
   "validations": [],
   "relations": {
     "speurpunten": {
-      "type": "hasAndBelongsToMany",
+      "type": "hasMany",
       "model": "speurpunt",
       "foreignKey": ""
     }

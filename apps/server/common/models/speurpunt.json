@@ -6,6 +6,7 @@
   "options": {
     "validateUpsert": true
   },
+  "forceId": false,
   "properties": {
     "id": {
       "type": "number",
@@ -26,11 +27,6 @@
   },
   "validations": [],
   "relations": {
-    "dierengeluid": {
-      "type": "hasOne",
-      "model": "dierengeluid",
-      "foreignKey": ""
-    },
     "verblijf": {
       "type": "belongsTo",
       "model": "verblijf",
@@ -39,6 +35,11 @@
     "weetjes": {
       "type": "hasAndBelongsToMany",
       "model": "weetje",
+      "foreignKey": ""
+    },
+    "dierengeluid": {
+      "type": "belongsTo",
+      "model": "dierengeluid",
       "foreignKey": ""
     }
   },

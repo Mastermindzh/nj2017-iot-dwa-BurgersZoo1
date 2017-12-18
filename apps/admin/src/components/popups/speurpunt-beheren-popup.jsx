@@ -30,7 +30,6 @@ class SpeurpuntBeherenPopupComponent extends Component {
     };
 
     if(props.data !== undefined){
-      alert(JSON.stringify(props.data));
       state.name = props.data.locatienaam;
       state.verblijf = props.data.verblijfId;
       state.poot = props.data.pootid;
@@ -82,7 +81,6 @@ class SpeurpuntBeherenPopupComponent extends Component {
       this.state.dierengeluid
     );
 
-    alert(JSON.stringify(test));
     return test;
   }
 
