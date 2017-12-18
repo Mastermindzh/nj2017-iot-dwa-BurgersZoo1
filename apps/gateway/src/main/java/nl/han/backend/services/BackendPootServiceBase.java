@@ -1,6 +1,7 @@
 package nl.han.backend.services;
 
 import nl.han.backend.services.group2.BackendPootService;
+import nl.han.gateway.exceptions.NotFoundException;
 import nl.han.gateway.models.Poot;
 import nl.han.mysensor.models.MySetMessage;
 import okhttp3.MediaType;
@@ -79,5 +80,5 @@ public abstract class BackendPootServiceBase {
      *
      * @param poot
      */
-    public abstract void removePootFromBackend(Poot poot);
+    public abstract void removePootFromBackend(Poot poot) throws NotFoundException;
 }

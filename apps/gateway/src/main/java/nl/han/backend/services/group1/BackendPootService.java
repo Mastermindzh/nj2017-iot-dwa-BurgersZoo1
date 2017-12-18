@@ -3,12 +3,15 @@ package nl.han.backend.services.group1;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import nl.han.backend.services.BackendPootServiceBase;
+import nl.han.gateway.dao.GsonParserUtil;
+import nl.han.gateway.exceptions.NotFoundException;
 import nl.han.gateway.models.Poot;
 import nl.han.gateway.util.GatewayProperties;
 import nl.han.mysensor.models.MySetMessage;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
+import org.bson.types.ObjectId;
 
 import java.io.IOException;
 
@@ -88,11 +91,12 @@ public class BackendPootService extends BackendPootServiceBase {
     }
 
     @Override
-    public void removePootFromBackend(Poot poot) {
+    public void removePootFromBackend(Poot poot) throws NotFoundException {
+        ObjectId pootMongoId = this.getMongoIdFromBackend(poot);
         RequestBody requestBody = RequestBody.create(JSON, "{}");
         Request request = new Request.Builder()
                 .delete(requestBody)
-                .url(this.baseUri + "/poten/" + poot.getPootid())
+                .url(this.baseUri + "/poten/" + pootMongoId.toHexString())
                 .build();
         try (Response response = super.client.newCall(request).execute()) {
             if (response.code() != 200) {
@@ -101,5 +105,30 @@ public class BackendPootService extends BackendPootServiceBase {
         } catch (IOException e) {
             logger.error("Error while deleting Poot", e);
         }
+    }
+
+    private ObjectId getMongoIdFromBackend(Poot poot) throws NotFoundException {
+        String filter = "{\"where\":{\"pootid\":" + poot.getPootid() + "}}";
+        Request request = new Request.Builder()
+                .url(this.baseUri + "/poten/findOne?filter=" +
+                        filter)
+                .build();
+        try (Response response = this.client.newCall(request).execute()) {
+            if (response.code() == 200) {
+                if (response.body() != null) {
+                    String responseBody = response.body().string();
+                    JsonObject jsonObject = GsonParserUtil.gson.fromJson(responseBody, JsonObject.class);
+                    String id = jsonObject.get("id").toString().replaceAll("\"", "");
+                    return new ObjectId(id);
+                } else {
+                    throw new NotFoundException("Could not find backend id");
+                }
+            } else {
+                logger.warn("Unexpected response code while fetching poot from backend 1: " + response.code());
+            }
+        } catch (IOException e) {
+            logger.error("Error while fetching mongoid from backend Poot", e);
+        }
+        return null;
     }
 }
