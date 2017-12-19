@@ -6,6 +6,7 @@
   "options": {
     "validateUpsert": true
   },
+  "forceId": false,
   "properties": {
     "id": {
       "type": "number",
@@ -37,7 +38,7 @@
       "foreignKey": ""
     },
     "dierengeluid": {
-      "type": "hasOne",
+      "type": "belongsTo",
       "model": "dierengeluid",
       "foreignKey": ""
     }

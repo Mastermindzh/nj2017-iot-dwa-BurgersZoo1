@@ -14,6 +14,7 @@ class InputTextFieldComponent extends Component {
           id={this.props.id}
           value={this.props.value}
           onChange={this.props.onChange}
+          {...this.props}
         />
       </FormControl>
     );

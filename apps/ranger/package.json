@@ -34,6 +34,7 @@
     "lodash": "^4.17.4",
     "material-ui": "^1.0.0-beta.21",
     "material-ui-icons": "^1.0.0-beta.17",
+    "moment": "^2.20.0",
     "object-assign": "4.1.0",
     "react": "16.0.0",
     "react-audio-player": "^0.6.4",
@@ -42,7 +43,8 @@
     "react-router-dom": "4.2.2",
     "react-router-redux": "5.0.0-alpha.6",
     "redux": "3.6.0",
-    "redux-thunk": "2.1.0"
+    "redux-thunk": "2.1.0",
+    "semantic-ui-react": "^0.77.1"
   },
   "devDependencies": {
     "autoprefixer": "7.1.4",

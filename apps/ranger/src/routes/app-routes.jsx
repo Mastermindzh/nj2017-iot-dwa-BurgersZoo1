@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
 
-import MyRangerContainer from '../containers/myRanger-container.jsx';
+import MyRangerContainer from '../containers/my-ranger-container.jsx';
 import FactContainer from '../containers/fact-container.jsx';
 import SoundContainer from '../containers/sound-container.jsx';
 

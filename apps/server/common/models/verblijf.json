@@ -13,6 +13,9 @@
     },
     "geolocatie": {
       "type": "geopoint"
+    },
+    "beschrijving": {
+      "type": "string"
     }
   },
   "validations": [],
