@@ -11,10 +11,13 @@ import styles from "../styles/style";
 
 
 class GeluidUploaden extends Component {
+
   state = {
     beschrijving: "",
     audioFile: ""
   };
+
+  reader = new FileReader();
 
   handleSubmit(e) {
     e.preventDefault();
@@ -24,17 +27,17 @@ class GeluidUploaden extends Component {
   handleAudioChange(e) {
     e.preventDefault();
 
-    let reader = new FileReader();
+
     let file = e.target.files[0];
 
-    reader.onloadend = () => {
+    this.reader.onloadend = () => {
       this.setState({
         audioFile: file
       });
     };
 
     if (file != undefined) {
-      reader.readAsDataURL(file);
+      this.reader.readAsDataURL(file);
     }
   }
 
