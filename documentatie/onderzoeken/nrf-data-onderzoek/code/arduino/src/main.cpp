@@ -2,11 +2,11 @@
 
 #include <SPI.h>
 #include <SD.h>
+//
+// File myFile;
+// const int SD_CS = 4;
 
-File myFile;
-const int SD_CS = 4;
-
-#define MY_DEBUG
+// #define MY_DEBUG
 
 #define NODE_ID 44
 #define MY_RADIO_NRF24
@@ -23,14 +23,14 @@ void setup() {
     ; // wait for serial port to connect. Needed for native USB port only
   }
 
-
-  Serial.print("Initializing SD card...");
-
-  if (!SD.begin(SD_CS)) {
-    Serial.println("initialization failed!");
-    return;
-  }
-  Serial.println("initialization done.");
+  //
+  // Serial.print("Initializing SD card...");
+  //
+  // if (!SD.begin(SD_CS)) {
+  //   Serial.println("initialization failed!");
+  //   return;
+  // }
+  // Serial.println("initialization done.");
 
 }
 
@@ -38,8 +38,8 @@ void loop() {
   // nothing happens after setup
 }
 
-void receive(MyMessage &message){
-  Serial.println(message.getByte());
+void receive(const MyMessage &message){
+  Serial.print(message.getString());
 }
 
 

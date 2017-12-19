@@ -23,6 +23,7 @@ public class Application {
                     e.printStackTrace();
                 }
                 WavReader reader = new WavReader();
+                serialCommunication.addSubscriber(reader);
                 File wavFile = new File("./../../", "audio.wav");
                 reader.readFile(wavFile);
             }

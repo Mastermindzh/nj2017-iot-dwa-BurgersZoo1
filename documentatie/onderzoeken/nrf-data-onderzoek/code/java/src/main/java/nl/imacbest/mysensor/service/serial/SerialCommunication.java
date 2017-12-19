@@ -12,6 +12,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.TooManyListenersException;
 
 /**
@@ -28,6 +30,7 @@ public class SerialCommunication implements SerialPortEventListener {
     private static Logger logger = LoggerFactory.getLogger(SerialCommunication.class.getName());
     private MySensorReceiveService mySensorReceiveService;
     private BufferedReader input;
+    private List<IStreamSubscriber> subscriberList = new ArrayList<>();
 
 
     public SerialCommunication() {
@@ -91,6 +94,7 @@ public class SerialCommunication implements SerialPortEventListener {
                 logger.debug(String.format("NRF Message: %s", inputLine));
                 try {
                     MyMessage message = this.parseService.parseToObject(inputLine);
+                    this.sendMesssageToSubscribers(message);
                     logger.info(String.format("Message: %s", message.toString()));
                 } catch (NotFoundException e) {
                     logger.error("Message was: " + inputLine);
@@ -102,5 +106,13 @@ public class SerialCommunication implements SerialPortEventListener {
         }
         // Ignore all the other eventTypes, but you should consider the other ones.
 
+    }
+
+    private void sendMesssageToSubscribers(MyMessage message) {
+        this.subscriberList.forEach(sub -> sub.onMessageEvent(message));
+    }
+
+    public void addSubscriber(IStreamSubscriber streamSubscriber) {
+        this.subscriberList.add(streamSubscriber);
     }
 }
