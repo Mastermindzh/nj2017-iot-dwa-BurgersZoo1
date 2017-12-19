@@ -10,6 +10,8 @@ import ParkOverviewComponent from '../components/parkmap/park-overview-component
 import RangerVisitDate from '../components/ranger/ranger-visit-date-component.jsx';
 import { fetchParkHistory } from '../actions/parkHistoryActions';
 
+moment.locale('nl');
+
 class MyRangerContainer extends Component {
 
   constructor(props) {
@@ -71,7 +73,6 @@ const mapStateToProps = state => {
 };
 
 const stripDatesFromParkHistory = parkHistory => {
-  moment.locale('nl');
   if(parkHistory) {
     return _.uniqBy(parkHistory.map(day => {
       const formattedDate = convertUnixTimestampToCalendarDate(day.datum);

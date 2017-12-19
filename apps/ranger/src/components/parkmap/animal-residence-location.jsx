@@ -61,7 +61,8 @@ class AnimalResidenceLocation extends Component {
 }
 
 AnimalResidenceLocation.propTypes = {
-  text: PropTypes.string
+  text: PropTypes.string,
+  speurpunt: PropTypes.object.isRequired
 };
 
 export default AnimalResidenceLocation;

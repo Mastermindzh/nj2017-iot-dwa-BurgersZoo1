@@ -7,14 +7,19 @@ import AnimalResidenceLocation from './animal-residence-location.jsx';
 const ParkOverviewComponent = (props) => {
   return (
     <ParkMapComponent>
-      {props.speurpunten.map(speurpunt =>
-        <AnimalResidenceLocation
-          key={speurpunt.id}
-          lat={speurpunt.verblijf.geolocatie.lat}
-          lng={speurpunt.verblijf.geolocatie.lng}
-          text={speurpunt.verblijf.naam}
-          speurpunt={speurpunt}
-        />)}
+      {
+        props.speurpunten.map(speurpunt => { 
+          return (
+            <AnimalResidenceLocation
+              key={speurpunt.id}
+              lat={speurpunt.verblijf.geolocatie.lat}
+              lng={speurpunt.verblijf.geolocatie.lng}
+              text={speurpunt.verblijf.naam}
+              speurpunt={speurpunt}
+            />
+          );
+        })
+      }
     </ParkMapComponent>
   );
 };
