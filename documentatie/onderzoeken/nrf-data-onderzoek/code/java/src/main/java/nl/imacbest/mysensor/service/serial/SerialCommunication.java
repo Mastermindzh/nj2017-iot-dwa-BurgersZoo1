@@ -31,7 +31,7 @@ public class SerialCommunication implements SerialPortEventListener {
 
 
     public SerialCommunication() {
-        this.portName = "/dev/ttyACM0";
+        this.portName = "COM3";
         this.parseService = new MySensorParseService();
         this.mySensorReceiveService = new MySensorReceiveService();
         try {
