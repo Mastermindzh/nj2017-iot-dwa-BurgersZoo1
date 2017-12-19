@@ -14,7 +14,7 @@ import styles from './../styles/style';
 import {connect} from 'react-redux';
 import _ from 'lodash';
 import * as ENDPOINTS from './../constants/endpoint-constants';
-
+import {FILEUPLOAD_ACTION_TYPES} from "../constants/actionTypes";
 import {fetchDierengeluiden, addDierengeluid} from './../actions/dierengeluidenActions';
 import {uploadSound, setUploadStateEmpty} from "./../actions/uploadGeluidActions";
 
@@ -29,7 +29,15 @@ class GeluidenBeheren extends Component {
     this.props.fetchDierengeluiden();
   }
 
-  onUploadSuccess() {
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.uploads.files && nextProps.uploads.files.files.length > this.props.uploads.files.files.length && nextProps.uploads.uploadStatus === FILEUPLOAD_ACTION_TYPES.UPLOAD_STATUS_SUCCESS) {
+      this.props.addDierengeluid(nextProps.uploads.files.beschrijving, nextProps.uploads.files.files[0]);
+      this.props.setUploadStateEmpty();
+      this.setState({addOpen: false})
+    }
+  }
+
+  onRequestClose(){
     this.setState({addOpen: false})
   }
 
@@ -90,13 +98,11 @@ class GeluidenBeheren extends Component {
           </Grid>
         </Grid>
 
-        {this.state.addOpen &&
+        {this.props.uploads.uploadStatus === FILEUPLOAD_ACTION_TYPES.UPLOAD_STATUS_IDLE && this.state.addOpen &&
         <PopupComponent title={"Geluid toevoegen"} open={this.state.addOpen}>
           <GeluidUploaden
             identifier="Geluid "
-            onUploadSuccess={this.onUploadSuccess.bind(this)}
             uploadSound={this.props.uploadSound}
-            addDierengeluid={this.props.addDierengeluid}
           />
         </PopupComponent>
         }
@@ -110,17 +116,20 @@ GeluidenBeheren.propTypes = {
   dierengeluiden: PropTypes.object,
   fetchDierengeluiden: PropTypes.func,
   addDierengeluid: PropTypes.func,
-  uploadSound: PropTypes.func
+  uploadSound: PropTypes.func,
+  setUploadStateEmpty: PropTypes.func
 };
 
 function mapStateToProps(state) {
   return {
-    dierengeluiden: state.dierengeluidenReducer.dierengeluiden
+    dierengeluiden: state.dierengeluidenReducer.dierengeluiden,
+    uploads: state.fileUploadReducer
   };
 }
 
 export default connect(mapStateToProps, {
   fetchDierengeluiden,
   addDierengeluid,
-  uploadSound
+  uploadSound,
+  setUploadStateEmpty
 })(withStyles(styles, {withTheme: true})(GeluidenBeheren));

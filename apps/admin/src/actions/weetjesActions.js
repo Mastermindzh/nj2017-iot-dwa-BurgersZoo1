@@ -24,5 +24,4 @@ export function addWeetje(beschrijving, bestandspad) {
       console.log(error)
     });
   };
-
 }

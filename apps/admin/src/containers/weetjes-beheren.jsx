@@ -14,19 +14,9 @@ import GeluidUploaden from './../components/geluid-uploaden.jsx';
 import _ from 'lodash';
 import * as ENDPOINTS from './../constants/endpoint-constants';
 import {FILEUPLOAD_ACTION_TYPES} from "../constants/actionTypes";
-
+import styles from './../styles/style';
 import {fetchWeetjes, addWeetje} from './../actions/weetjesActions';
 import {uploadSound, setUploadStateEmpty} from "./../actions/uploadGeluidActions";
-
-const styles = theme => ({
-  container: {
-    display: 'flex',
-    flexWrap: 'wrap',
-  },
-  formControl: {
-    margin: theme.spacing.unit,
-  },
-});
 
 class WeetjesBeheren extends Component {
 
@@ -49,8 +39,8 @@ class WeetjesBeheren extends Component {
 
   onRequestClose(){
     this.setState({addOpen: false})
-
   }
+
   render() {
 
     const {classes} = this.props;

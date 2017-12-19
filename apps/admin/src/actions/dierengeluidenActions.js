@@ -20,6 +20,8 @@ export function addDierengeluid(beschrijving, bestandspad) {
       beschrijving: beschrijving
     }).then(result => {
       dispatch({type: DIERENGELUIDEN_ACTION_TYPES.ADD_DIERENGELUID, payload: result.data});
+    }).catch(error =>{
+      console.log(error);
     });
   };
 }
