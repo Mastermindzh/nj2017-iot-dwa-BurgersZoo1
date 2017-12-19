@@ -1,5 +1,6 @@
-import initialState from './initialState';
 import _ from 'lodash';
+
+import initialState from './initialState';
 import { DIERENGELUIDEN_ACTION_TYPES } from './../../constants/actionTypes';
 
 

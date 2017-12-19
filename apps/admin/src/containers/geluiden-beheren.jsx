@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import TableComponent from './../components/table-component.jsx';
 import {withStyles} from 'material-ui/styles';
 import IconButton from 'material-ui/IconButton';
 import Icon from 'material-ui/Icon';
@@ -8,11 +7,13 @@ import Input, {InputLabel} from 'material-ui/Input';
 import {FormControl} from 'material-ui/Form';
 import ReactAudioPlayer from 'react-audio-player';
 import Grid from 'material-ui/Grid';
-import PopupComponent from './../components/popup-component.jsx';
-import GeluidUploaden from './../components/geluid-uploaden.jsx';
-import styles from './../styles/style';
 import {connect} from 'react-redux';
 import _ from 'lodash';
+
+import TableComponent from './../components/table-component.jsx';
+import styles from './../styles/style';
+import PopupComponent from './../components/popup-component.jsx';
+import GeluidUploaden from './../components/geluid-uploaden.jsx';
 import * as ENDPOINTS from './../constants/endpoint-constants';
 import {FILEUPLOAD_ACTION_TYPES} from "../constants/actionTypes";
 import {fetchDierengeluiden, addDierengeluid} from './../actions/dierengeluidenActions';

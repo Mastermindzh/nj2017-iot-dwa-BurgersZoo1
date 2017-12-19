@@ -4,9 +4,10 @@ import {withStyles} from "material-ui/styles";
 import Input, {InputLabel} from "material-ui/Input";
 import {FormControl} from "material-ui/Form";
 import Grid from "material-ui/Grid";
-import styles from "../styles/style";
 import FileUpload from "material-ui-icons/FileUpload";
 import Button from "material-ui/Button";
+
+import styles from "../styles/style";
 
 
 class GeluidUploaden extends Component {

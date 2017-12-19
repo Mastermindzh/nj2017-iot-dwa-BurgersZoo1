@@ -9,9 +9,10 @@ import Input, {InputLabel} from 'material-ui/Input';
 import {FormControl} from 'material-ui/Form';
 import ReactAudioPlayer from 'react-audio-player';
 import Grid from 'material-ui/Grid';
+import _ from 'lodash';
+
 import PopupComponent from './../components/popup-component.jsx';
 import GeluidUploaden from './../components/geluid-uploaden.jsx';
-import _ from 'lodash';
 import * as ENDPOINTS from './../constants/endpoint-constants';
 import {FILEUPLOAD_ACTION_TYPES} from "../constants/actionTypes";
 import styles from './../styles/style';
