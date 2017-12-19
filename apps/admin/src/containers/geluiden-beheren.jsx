@@ -1,21 +1,22 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import TableComponent from './../components/table-component.jsx';
-import { withStyles } from 'material-ui/styles';
+import {withStyles} from 'material-ui/styles';
 import IconButton from 'material-ui/IconButton';
 import Icon from 'material-ui/Icon';
-import Input, { InputLabel } from 'material-ui/Input';
-import { FormControl } from 'material-ui/Form';
+import Input, {InputLabel} from 'material-ui/Input';
+import {FormControl} from 'material-ui/Form';
 import ReactAudioPlayer from 'react-audio-player';
 import Grid from 'material-ui/Grid';
 import PopupComponent from './../components/popup-component.jsx';
 import GeluidUploaden from './../components/geluid-uploaden.jsx';
 import styles from './../styles/style';
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 import _ from 'lodash';
 import * as ENDPOINTS from './../constants/endpoint-constants';
 
-import { fetchDierengeluiden } from './../actions/dierengeluidenActions';
+import {fetchDierengeluiden, addDierengeluid} from './../actions/dierengeluidenActions';
+import {uploadSound, setUploadStateEmpty} from "./../actions/uploadGeluidActions";
 
 class GeluidenBeheren extends Component {
 
@@ -28,18 +29,18 @@ class GeluidenBeheren extends Component {
     this.props.fetchDierengeluiden();
   }
 
-  onUploadSuccess(){
+  onUploadSuccess() {
     this.setState({addOpen: false})
   }
 
   render() {
 
-    const { classes } = this.props;
+    const {classes} = this.props;
 
     const headers = [
-      { text: "ID" },
-      { text: "Beschrijving" },
-      { text: "Geluid" },
+      {text: "ID"},
+      {text: "Beschrijving"},
+      {text: "Geluid"},
     ];
 
     let results = [];
@@ -54,14 +55,14 @@ class GeluidenBeheren extends Component {
       return {
         key: dierengeluid.id,
         children: [
-          { children: dierengeluid.id },
-          { children: dierengeluid.beschrijving },
+          {children: dierengeluid.id},
+          {children: dierengeluid.beschrijving},
           {
             children:
-            <ReactAudioPlayer
-              src={`${ENDPOINTS.BASE.GET+dierengeluid.bestandspad}`}
-              controls
-            />,
+              <ReactAudioPlayer
+                src={`${ENDPOINTS.BASE.GET + dierengeluid.bestandspad}`}
+                controls
+              />,
             key: `${dierengeluid.id} player`
           }
         ]
@@ -76,22 +77,28 @@ class GeluidenBeheren extends Component {
             <div>
               <FormControl className={classes.formControl}>
                 <InputLabel htmlFor="search-simple">Zoeken</InputLabel>
-                <Input id="search-simple" value={this.state.search} onChange={(event) => this.setState({ search: event.target.value })} />
+                <Input id="search-simple" value={this.state.search}
+                       onChange={(event) => this.setState({search: event.target.value})}/>
               </FormControl>
-              <IconButton onClick={() => this.setState({ addOpen: true })}>
+              <IconButton onClick={() => this.setState({addOpen: true})}>
                 <Icon>add_circle</Icon>
               </IconButton>
             </div>
           </Grid>
           <Grid item xs={12}>
-            <TableComponent data={data} headers={headers} />
+            <TableComponent data={data} headers={headers}/>
           </Grid>
         </Grid>
 
         {this.state.addOpen &&
-          <PopupComponent title={"Geluid toevoegen"} open={this.state.addOpen}>
-            <GeluidUploaden identifier="Geluid" onUploadSuccess={this.onUploadSuccess.bind(this)}/>
-          </PopupComponent>
+        <PopupComponent title={"Geluid toevoegen"} open={this.state.addOpen}>
+          <GeluidUploaden
+            identifier="Geluid "
+            onUploadSuccess={this.onUploadSuccess.bind(this)}
+            uploadSound={this.props.uploadSound}
+            addDierengeluid={this.props.addDierengeluid}
+          />
+        </PopupComponent>
         }
       </div>
     );
@@ -101,7 +108,9 @@ class GeluidenBeheren extends Component {
 GeluidenBeheren.propTypes = {
   classes: PropTypes.object,
   dierengeluiden: PropTypes.object,
-  fetchDierengeluiden: PropTypes.func
+  fetchDierengeluiden: PropTypes.func,
+  addDierengeluid: PropTypes.func,
+  uploadSound: PropTypes.func
 };
 
 function mapStateToProps(state) {
@@ -110,4 +119,8 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { fetchDierengeluiden })(withStyles(styles, { withTheme: true })(GeluidenBeheren));
+export default connect(mapStateToProps, {
+  fetchDierengeluiden,
+  addDierengeluid,
+  uploadSound
+})(withStyles(styles, {withTheme: true})(GeluidenBeheren));

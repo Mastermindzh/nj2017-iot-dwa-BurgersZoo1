@@ -7,9 +7,7 @@ import Grid from "material-ui/Grid";
 import styles from "../styles/style";
 import FileUpload from "material-ui-icons/FileUpload";
 import Button from "material-ui/Button";
-import {uploadSound} from "./../actions/uploadGeluidActions";
-import {uploadWeetje} from "./../actions/weetjesActions";
-import {uploadDierengeluid} from "./../actions/dierengeluidenActions"
+
 
 class GeluidUploaden extends Component {
   state = {
@@ -17,25 +15,9 @@ class GeluidUploaden extends Component {
     audioFile: ""
   };
 
-  //todo page laten reloaden - > (automatisch ivm this.setState????  ..  nope
-
   handleSubmit(e) {
     e.preventDefault();
-    uploadSound(this.state.beschrijving, this.state.audioFile).then(result => {
-      this.setState({audioFile: result});
-      switch (this.props.identifier) {
-        case "Weetje":
-          uploadWeetje(this.state.beschrijving, result.data[0]);
-          break;
-        case "Geluid":
-          uploadDierengeluid(this.state.beschrijving, result.data[0]);
-          break;
-      }
-      this.props.onUploadSuccess();
-    }).catch(err => {
-      console.log('upload failed');
-      console.log(err);
-    });
+    this.props.uploadSound(this.state.beschrijving, this.state.audioFile)
   }
 
   handleAudioChange(e) {

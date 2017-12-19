@@ -13,9 +13,16 @@ export function fetchWeetjes() {
   };
 }
 
-export function uploadWeetje(beschrijving, bestandspad) {
-  return axios.post(ENDPOINTS.WEETJES.POST, {
-    bestandspad: bestandspad,
-    beschrijving: beschrijving
-  });
+export function addWeetje(beschrijving, bestandspad) {
+  return (dispatch) => {
+    axios.post(ENDPOINTS.WEETJES.POST, {
+      bestandspad: bestandspad,
+      beschrijving: beschrijving
+    }).then(result => {
+      dispatch({type: WEETJES_ACTION_TYPES.ADD_WEETJE, payload: result.data});
+    }).catch(error =>{
+      console.log(error)
+    });
+  };
+
 }

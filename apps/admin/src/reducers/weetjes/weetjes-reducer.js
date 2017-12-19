@@ -9,6 +9,9 @@ export default function weetjesReducer(state = initialState, action) {
     case WEETJES_ACTION_TYPES.FETCH_WEETJES:
       return {...state, weetjes: _.mapKeys(action.payload, "id")};
 
+    case WEETJES_ACTION_TYPES.ADD_WEETJE:
+      return {...state, weetjes: {...state.weetjes, [action.payload.id]: action.payload}};
+
     default:
       return state;
 
