@@ -14,10 +14,7 @@ void Led::off(){
   this->isOn = 0;
 };
 void Led::toggle(){
-  if(this->isOn == 1)
-    this->off();
-  else
-    this->on();
+  this->isOn == 1 ? this->off() : this->on();
 }
 
 void Led::loop(){

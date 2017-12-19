@@ -28,9 +28,6 @@ void Led::loop(){
   if(this->switchMoment == 0)
     return;
   if(this->switchMoment < millis()){
-    if(this->isOn)
-      this->off();
-    else
-      this->on();
+    this->isOn ? this->off() : this->on();
   }
 }
