@@ -9,6 +9,7 @@ import ReactAudioPlayer from 'react-audio-player';
 import Grid from 'material-ui/Grid';
 import {connect} from 'react-redux';
 import _ from 'lodash';
+import {BASE_URL} from './../constants/endpoint-constants.js';
 
 import TableComponent from './../components/table-component.jsx';
 import styles from './../styles/style';
@@ -68,10 +69,10 @@ class GeluidenBeheren extends Component {
           {children: dierengeluid.beschrijving},
           {
             children:
-              <ReactAudioPlayer
-                src={`${ENDPOINTS.BASE.GET + dierengeluid.bestandspad}`}
-                controls
-              />,
+            <ReactAudioPlayer
+              src={`${BASE_URL}${dierengeluid.bestandspad}`}
+              controls
+            />,
             key: `${dierengeluid.id} player`
           }
         ]

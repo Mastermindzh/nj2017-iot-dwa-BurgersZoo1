@@ -1,5 +1,5 @@
-const SERVERBASE = "http://localhost:8001";
-const SERVER = `${SERVERBASE}/api`;
+export const BASE_URL = "http://localhost:8001";
+const SERVER = `${BASE_URL}/api`;
 const SPEURPUNTEN = "/speurpunten";
 
 export const FILTER = {
@@ -24,10 +24,10 @@ export const WEETJES = {
   POST: `${SERVER}/weetjes`
 };
 export const UPLOAD = {
-  POST: `${SERVERBASE}/upload`
+  POST: `${BASE_URL}/upload`
 };
 export const BASE = {
-  GET: `${SERVERBASE}`
+  GET: `${BASE_URL}`
 };
 export const POTEN = {
   GET: `${SERVER}/poten`

@@ -10,6 +10,8 @@ import {FormControl} from 'material-ui/Form';
 import ReactAudioPlayer from 'react-audio-player';
 import Grid from 'material-ui/Grid';
 import _ from 'lodash';
+import {BASE_URL} from './../constants/endpoint-constants.js';
+
 
 import PopupComponent from './../components/popup-component.jsx';
 import GeluidUploaden from './../components/geluid-uploaden.jsx';
@@ -69,10 +71,10 @@ class WeetjesBeheren extends Component {
           {children: weetje.beschrijving},
           {
             children:
-              <ReactAudioPlayer
-                src={`${ENDPOINTS.BASE.GET + weetje.bestandspad}`}
-                controls
-              />,
+            <ReactAudioPlayer
+              src={`${BASE_URL}${weetje.bestandspad}`}
+              controls
+            />,
             key: `${weetje.id} player`
           }
         ]
