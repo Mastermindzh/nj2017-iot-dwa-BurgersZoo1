@@ -1,9 +1,11 @@
 #include "../head/Audio.h"
 
 Audio::Audio(){
-  this->tmrpcm = new TMRpcm();
-  this->tmrpcm->speakerPin = SPEAKER_PIN;
-  this->soundCounter = 0;
+  this-> tmrpcm = new TMRpcm();
+  this-> tmrpcm->speakerPin = SPEAKER_PIN;
+  this-> soundCounter = 0;
+  this-> dierenGeluid = (char*) "dier.wav";
+
   Serial.print(F("Initializing SD card..."));
 
   if (!SD.begin(SD_CS_PIN)) {
@@ -13,48 +15,40 @@ Audio::Audio(){
   Serial.println(F("initialization SD card done."));
 };
 
-void Audio::play(){
-  char* animalSound = (char*) "dier.wav";
+bool Audio::isWeetjeGeluidAanwezig(){
 
-  while(! tmrpcm -> isPlaying()){
-    String tempString;
-    tempString.concat(soundCounter);
-    tempString.concat(".wav");
-    char audioFact [tempString.length() + 1];
-    tempString.toCharArray(audioFact,sizeof(audioFact));
-    if(SD.exists(audioFact)){
-      Serial.println("weetje");
-      tmrpcm->play(audioFact);
-      soundCounter++;
-    }
-    else{
-      soundCounter = 0;
-      Serial.println(F("geluid niet aanwezig"));
-    }
+  this -> buf = "";
+  this -> buf.concat(soundCounter);
+  this -> buf.concat(".wav");
 
+  char weetjeAudioBestandsnaam[sizeof(this->buf+1)];
+  this->  buf.toCharArray(weetjeAudioBestandsnaam,sizeof(weetjeAudioBestandsnaam));
+
+  if(SD.exists(weetjeAudioBestandsnaam)){
+    return  true;
+  }else{
+    this -> soundCounter = 0;
+    weetjeAudioBestandsnaam[0]='0';
+    this -> buf[0]='0';
+    return SD.exists(weetjeAudioBestandsnaam);
   }
+};
 
-  // pause here until playing sound is finished }
-  while(tmrpcm -> isPlaying()){
-    Serial.println(F("wacht weetje"));
+bool Audio::isDierenGeluidAanwezig(){
+  return SD.exists(this->dierenGeluid);
+}
 
-  }
+void Audio::speelWeetje(){
+  char weetjeAudioBestandsnaam[sizeof(this->buf+1)];
+  this->  buf.toCharArray(weetjeAudioBestandsnaam,sizeof(weetjeAudioBestandsnaam));
+  tmrpcm -> play(weetjeAudioBestandsnaam);
+  this -> soundCounter ++;
+}
 
-  if(SD.exists(animalSound)){
-    Serial.println(F("dier"));
-    tmrpcm->play(animalSound);
-  }
-  else{
+void Audio::speelDierengeluid(){
+  tmrpcm -> play(this->dierenGeluid);
+}
 
-    Serial.println(F("dier niet hier"));
-
-  }
-  while(tmrpcm -> isPlaying()){
-    Serial.println(F("wacht op dier"));
-
-  }
-  tmrpcm -> stopPlayback();
-  Serial.println(F("klaar"));
-
-
+bool Audio::isPlaying(){
+  return tmrpcm -> isPlaying();
 };
