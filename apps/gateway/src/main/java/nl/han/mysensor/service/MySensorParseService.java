@@ -24,7 +24,7 @@ public class MySensorParseService {
     private static final String MESSAGE_PATTERN
             = "([0-9]+);([0-9]+);([0-9]+);([0|1]);([0-9]+);(.*)";
     private static final Pattern pattern = Pattern.compile(MESSAGE_PATTERN);
-    private static Logger logger = LoggerFactory.getLogger(BackendPootService.class.getName());
+    private static Logger logger = LoggerFactory.getLogger(MySensorParseService.class.getName());
 
     /**
      * Parse a mysensor message
