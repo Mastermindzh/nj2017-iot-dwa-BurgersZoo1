@@ -7,6 +7,8 @@
 #include "Logger.h"
 #include "RangerDetector.h"
 #include "AuduinoPortal.h"
+#include <avr/wdt.h>
+
 
 #define EEPROM_POOTID_ADDRESS 0x25
 #define EEPROM_POOTID_DEFAULT_CODE 0xFF
@@ -17,7 +19,7 @@ class GatewayLink;
 
 class Poot {
 public:
-  Poot();
+  Poot(StatusLights* lights);
 
   /**
    * Update the poot. This will update timers and execute actions that are time based.
@@ -43,12 +45,27 @@ public:
   * Receive MySensors messages
   */
   void receive(const MyMessage &message);
+
+  /**
+   * Event for when a wrong pas is scanned. The error codes are as following:
+   *  1  =  Card could not be authenticated
+   *  2  =  Card does not contain the correct content
+   *  3  =  
+   */
+  void wrongPasScanned(byte errorCode);
+  
+ /**
+  * Reset the EEPROM
+  */
+  void resetEEPROM();
+
 private:
-  StatusLights* statusLights;
+  StatusLights* lights;
   Logger* logger;
   RangerDetector* rangerDetector;
   AuduinoPortal* auduinoPortal;
   GatewayLink* gatewayLink;
+
 };
 
 #endif

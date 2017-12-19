@@ -1,5 +1,6 @@
 #include <Arduino.h>
 #include "./head/MaduinoPortal.h"
+#include "./head/Led.h"
 
 MaduinoPortal* portal;
 Audio* audio;
@@ -13,7 +14,6 @@ void setup () {
 }
 
 void loop() {
-
   switch (audio -> state) {
     case IDLE:
     return;
@@ -77,4 +77,5 @@ void loop() {
       return;
     }
   }
+  audio->loop();
 }

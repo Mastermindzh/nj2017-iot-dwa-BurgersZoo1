@@ -6,6 +6,9 @@ Audio::Audio(){
   this-> soundCounter = 0;
   this-> dierenGeluid = (char*) "dier.wav";
 
+  this->statusled = new Led(2);
+
+
   Serial.print(F("Initializing SD card..."));
 
   if (!SD.begin(SD_CS_PIN)) {
@@ -51,4 +54,20 @@ void Audio::speelDierengeluid(){
 
 bool Audio::isPlaying(){
   return tmrpcm -> isPlaying();
+}
+void Audio::play(){
+  if(!this->inited)
+    return;
+  tmrpcm->play("audio.wav");
 };
+void Audio::loop(){
+  this->statusled->loop();
+  if(!this->inited)
+    return;
+
+  //todo: integrate with Arne's state machine
+  if(tmrpcm->isPlaying())
+    statusled->on();
+  else
+    statusled->off();
+}

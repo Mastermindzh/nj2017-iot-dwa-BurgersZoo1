@@ -1,21 +1,22 @@
 #ifndef LED
 #define LED
 
+#include <Arduino.h>
+
 class Led {
   public:
-    Led(char pin);
+    Led(byte pin);
 
-    /**
-     * Turn a led on
-     */
     void on();
-
-    /**
-     * Turn a led off
-     */
     void off();
+    void onFor(unsigned int time);
+    void offFor(unsigned int time);
+
+    void loop();
   private:
-    char pin;
+    byte pin;
+    bool isOn;
+    unsigned long switchMoment;
 };
 
 #endif
