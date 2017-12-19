@@ -4,11 +4,9 @@ import com.google.gson.Gson;
 import com.mongodb.client.MongoCollection;
 import nl.han.gateway.dao.GsonParserUtil;
 import nl.han.gateway.dao.IMyMessagesDAO;
-import nl.han.gateway.exceptions.NotImplementedException;
 import nl.han.mysensor.models.MyMessage;
 import nl.han.mysensor.service.MySensorReceiveService;
 import org.bson.Document;
-import org.bson.conversions.Bson;
 import org.bson.types.ObjectId;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,6 +15,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Consumer;
+import java.util.stream.Collectors;
 
 import static com.mongodb.client.model.Filters.eq;
 
@@ -77,24 +76,51 @@ public class MySensorMongoDAO implements IMyMessagesDAO {
 
     @Override
     public List<MyMessage> getAllFiltered(String[] searchParams, int page, int size, String order) {
-        throw new NotImplementedException("Not yet implemented");
-//        Sort sort = null;
-//        if ("DESC".equals(order)) {
-//            sort = Sort.descending("$oid");
-//
-//        } else if ("ASC".equals(order)) {
-//            sort = Sort.ascending("");
-//        }
-//        Document filter = new Document();
-//        filter.append("")
-//        this.collection.find();
-//
-//        Arrays.stream(searchParams)
-//                .map(s -> s.split(":")).forEach(s -> {
-//            eq(s[0], s[1]);
-//        });
-//        Bson filter = eq("", "");
-//        return null;
+        Document searchQuery = new Document();
+        List<Document> searchParamsDocumentList = getFilteredMessageSearchParamsToDocument(searchParams);
+        if (!searchParamsDocumentList.isEmpty()) {
+            searchQuery.append("$or", searchParamsDocumentList);
+        }
+        List<Document> resultDocuments = this.collection
+                .find(searchQuery)
+                .sort(getFilteredMessageOrder(order))
+                .limit(size)
+                .skip(size * page)
+                .into(new ArrayList<>());
+        return resultDocuments
+                .stream()
+                .map(this::getMyMessageFromDocument)
+                .collect(Collectors.toList());
+    }
+
+    /**
+     * Get the order in witch documents has to be sorted
+     *
+     * @param order
+     * @return
+     */
+    private Document getFilteredMessageOrder(String order) {
+        if ("ASC".equals(order)) {
+            return new Document("$oid", 1);
+        } else {
+            return new Document("$oid", -1);
+        }
+    }
+
+    /**
+     * Get params to an OR query filter.
+     *
+     * @param searchParams
+     * @return
+     */
+    private List<Document> getFilteredMessageSearchParamsToDocument(String[] searchParams) {
+        List<Document> searchParamsDocumentList = new ArrayList<>();
+        if (searchParams != null) {
+            Arrays.stream(searchParams)
+                    .map(s -> s.split(":"))
+                    .forEach(s -> searchParamsDocumentList.add(new Document(s[0], s[1])));
+        }
+        return searchParamsDocumentList;
     }
 
 

@@ -2,6 +2,10 @@ package nl.han.gateway.controller;
 
 import com.google.gson.Gson;
 import nl.han.gateway.service.MyMessageService;
+import spark.Request;
+import spark.Response;
+
+import java.util.Map;
 
 import static nl.han.gateway.util.transformers.JsonUtil.json;
 import static spark.Spark.get;
@@ -14,48 +18,36 @@ public class MySensorMessagesController {
     public MySensorMessagesController() {
         this.mySensorService = new MyMessageService();
 
-        get("/messages", (request, response) -> {
-            response.type("application/json");
-            if (request.queryMap().toMap() != null) {
-                request.queryMap().toMap().forEach((key, val) -> {
-                    for (int i = 0; i < val.length; i++) {
-                        System.out.println(key + ": " + val[i]);
-                    }
-                });
-                String[] searchParams = request.queryMap()
-                        .toMap()
-                        .getOrDefault("search", null);
-                int size = 50;
-                if (request.queryMap()
-                        .toMap()
-                        .getOrDefault("size", null) != null) {
-                    size = Integer.parseInt(request.queryMap()
-                            .toMap()
-                            .get("size")[0]);
-                }
-                int page = 0;
-                if (request.queryMap()
-                        .toMap()
-                        .getOrDefault("page", null) != null) {
-                    page = Integer.parseInt(request.queryMap()
-                            .toMap()
-                            .get("page")[0]);
-                }
-                String order = "DESC";
-                if (request.queryMap()
-                        .toMap()
-                        .getOrDefault("sort", null) == null) {
-                    order = request.queryMap()
-                            .toMap()
-                            .get("sort")[0];
-                }
+        get("/messages", this::getAllMySensorMessages, json());
+    }
 
-
-                return this.mySensorService.getAllMessages(searchParams, page, size, order);
+    private Object getAllMySensorMessages(Request request, Response response) {
+        response.type("application/json");
+        Map<String, String[]> queryMap = request.queryMap().toMap();
+        if (queryMap != null) {
+            String[] searchParams = queryMap
+                    .getOrDefault("search", null);
+            int size = 50;
+            if (queryMap
+                    .getOrDefault("size", null) != null) {
+                size = Integer.parseInt(queryMap
+                        .get("size")[0]);
             }
-            return this.mySensorService.getAllMessages();
-
-        }, json());
+            int page = 0;
+            if (queryMap
+                    .getOrDefault("page", null) != null) {
+                page = Integer.parseInt(queryMap
+                        .get("page")[0]);
+            }
+            String order = "DESC";
+            if (queryMap
+                    .getOrDefault("sort", null) != null) {
+                order = queryMap
+                        .get("sort")[0];
+            }
+            return this.mySensorService.getAllMessages(searchParams, page, size, order);
+        }
+        return this.mySensorService.getAllMessages();
     }
 
 //            '?search=' + encodeURI(filter) +
