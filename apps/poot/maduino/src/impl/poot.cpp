@@ -43,3 +43,17 @@ void Poot::setPootid(byte code){
 void Poot::receive(const MyMessage &message){
   this->gatewayLink->receive(message);
 }
+
+/**
+* software reset for Arduino
+*/
+void(* resetFunc) (void) = 0;
+
+void Poot::resetEEPROM(){
+  Serial.println(F("Reset EEPROM"));
+  for (int i = 0 ; i < EEPROM.length() ; i++) {
+      EEPROM.write(i, 0xFF);
+  }
+  Serial.println(F("Reset EEPROM done!"));
+  resetFunc();
+}
