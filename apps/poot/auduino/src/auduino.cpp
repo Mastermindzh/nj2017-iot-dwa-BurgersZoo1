@@ -1,5 +1,6 @@
 #include <Arduino.h>
 #include "./head/MaduinoPortal.h"
+#include "./head/Led.h"
 
 MaduinoPortal* portal;
 Audio* audio;
@@ -13,4 +14,5 @@ void setup () {
 }
 
 void loop() {
+  audio->loop();
 }
