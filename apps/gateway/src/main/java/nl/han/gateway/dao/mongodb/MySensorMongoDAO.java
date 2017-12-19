@@ -31,30 +31,7 @@ public class MySensorMongoDAO implements IMyMessagesDAO {
     private static Logger logger = LoggerFactory.getLogger(MySensorReceiveService.class.getName());
 
     MySensorMongoDAO() {
-        MongoClient client;
-        if(hasProperty("server.database.user")){
-            client = new MongoClient(
-                    getProperty("server.database.host"),
-                    Integer.parseInt(getProperty("server.database.port"))
-            );
-        }else{
-            client = new MongoClient(
-                    new ServerAddress(
-                            getProperty("server.database.host"),
-                            Integer.parseInt(getProperty("server.database.port"))
-                    ),
-                    Collections.singletonList(
-                            MongoCredential.createCredential(
-                                    getProperty("server.database.user"),
-                                    getProperty("server.database.name"),
-                                    getProperty("server.database.pass").toCharArray()
-                            )
-                    ));
-        }
-
-        MongoDatabase database = client.getDatabase(getProperty("server.database.name"));
-        this.collection = database.getCollection(getProperty("server.database.collection"));
-
+        this.collection = MongodbConnector.instance().getDatabase().getCollection("mymessages");
         this.gson = GsonParserUtil.gson;
     }
 

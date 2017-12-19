@@ -23,12 +23,14 @@ public class BackendPootService extends BackendPootServiceBase {
 
     @Override
     public Long getNewPootIdFromBackend() {
+        // not yet implemented
         return 0L;
     }
 
 
     @Override
     public void sendRangerCardScanToBackend(MySetMessage message, Poot poot) {
+        // not yet implemented
     }
 
     @Override
@@ -44,6 +46,11 @@ public class BackendPootService extends BackendPootServiceBase {
         } catch (IOException e) {
             logger.error("Could not connect to backend", e);
         }
+    }
+
+    @Override
+    public void removePootFromBackend(Poot poot) {
+        // not yet implemented
     }
 
 

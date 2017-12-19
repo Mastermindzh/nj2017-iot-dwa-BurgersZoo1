@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Grid from 'material-ui/Grid';
 
 import FactWidgetComponent from './fact-widget-component.jsx';
-import ParkOverviewComponent from './park-overview-component.jsx';
+import ParkOverviewComponent from '../parkmap/park-overview-component.jsx';
 import RangerVisitDate from './ranger-visit-date-component.jsx';
 
 class MyRangerComponent extends Component {
