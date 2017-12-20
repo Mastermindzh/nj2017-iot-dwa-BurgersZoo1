@@ -46,5 +46,11 @@ def parse_groep2_request():
     p = subprocess.Popen(cmd)
     return "deployed :D"
 
+@app.route('/groep1/build', methods=['POST'])
+def parse_groep1_build_request():
+    cmd = ["nohup","bash", "build.sh" , "groep1", request.data]
+    p = subprocess.Popen(cmd)
+    return "build deployed :D"
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8149)
