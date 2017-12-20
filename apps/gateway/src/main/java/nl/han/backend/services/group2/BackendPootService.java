@@ -69,4 +69,29 @@ public class BackendPootService extends BackendPootServiceBase {
         }
     }
 
+<<<<<<< Updated upstream
+=======
+    public void sendHeartbeat() {
+        DateTime dt = new DateTime();
+        DateTimeFormatter dateTimeFormatter = DateTimeFormat.forPattern("y-M-d'T'H:m:s");
+        String date = dateTimeFormatter.print(dt);
+        RequestBody body = RequestBody.create(JSON,
+                "{ \"id\": \"GAT01\", \"connectionStatus\" : \"UP\", " +
+                        "\"timestamp\": \"'\"" + date + "\"'\" }");
+        Request request = new Request.Builder()
+                .url(this.baseUri + "/alert/gateway")
+                .post(body)
+                .build();
+        try (Response response = client.newCall(request).execute()) {
+            if (response.code() != 201) {
+                logger.warn("Heartbeat is not saved");
+            } else {
+                logger.info("Backend group 2 is OK");
+            }
+
+        } catch (IOException e) {
+            logger.error("Error while sending heartbeat to group 2");
+        }
+    }
+>>>>>>> Stashed changes
 }
