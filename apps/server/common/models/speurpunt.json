@@ -32,11 +32,6 @@
       "model": "verblijf",
       "foreignKey": ""
     },
-    "weetjes": {
-      "type": "hasMany",
-      "model": "weetje",
-      "foreignKey": ""
-    },
     "dierengeluid": {
       "type": "belongsTo",
       "model": "dierengeluid",

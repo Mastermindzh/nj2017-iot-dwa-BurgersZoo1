@@ -22,11 +22,6 @@
   },
   "validations": [],
   "relations": {
-    "speurpunten": {
-      "type": "hasAndBelongsToMany",
-      "model": "speurpunt",
-      "foreignKey": ""
-    }
   },
   "acls": [],
   "methods": {}
