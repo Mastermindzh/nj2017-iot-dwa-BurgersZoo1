@@ -1,5 +1,6 @@
 import endpoints from './external-variables/endpoints.json';
 
+export const BASE_URL = endpoints.serverUrl.slice(0,-4);
 const SERVER = endpoints.serverUrl;
 const SPEURPUNTEN = "/speurpunten";
 
