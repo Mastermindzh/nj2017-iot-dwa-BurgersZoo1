@@ -22,9 +22,8 @@ public:
 
 private:
   TMRpcm* tmrpcm;
-  unsigned int soundCounter;
+  unsigned int soundCounter = 0;
   char* dierenGeluid;
-  String buf;
   Led* statusled;
   bool inited = 0;
 
@@ -37,6 +36,9 @@ private:
   void speelWeetje();
   void speelDierengeluid();
   void idle();
+
+  String getCurrentAudioFilename();
+  char* getCurrentAudioFilenameChars();
 };
 
 

@@ -19,22 +19,75 @@ Audio::Audio(){
   this->inited = 1;
 };
 
-bool Audio::isWeetjeGeluidAanwezig(){
-  this->buf = "";
-  this->buf.concat(soundCounter);
-  this->buf.concat(".wav");
-
-  char weetjeAudioBestandsnaam[sizeof(this->buf+1)];
-  this->buf.toCharArray(weetjeAudioBestandsnaam,sizeof(weetjeAudioBestandsnaam));
-
-  if(SD.exists(weetjeAudioBestandsnaam)){
-    return true;
-  }else{
-    this->soundCounter = 0;
-    weetjeAudioBestandsnaam[0]='0';
-    this->buf[0]='0';
-    return SD.exists(weetjeAudioBestandsnaam);
+void Audio::play(){
+  if(!this->inited){
+    Serial.println(F("Niet inited"));
+    return; //todo: try to re-init?
   }
+  if(this->state != IDLE){
+    Serial.println(F("already playing"));
+    return;
+  }
+  if(this->isWeetjeGeluidAanwezig()){
+    this->speelWeetje();
+  }else if(this->isDierenGeluidAanwezig()){
+    Serial.println(F("Direct diergeluid want weetje niet aanwezig"));
+    this->speelDierengeluid();
+  }else{
+    Serial.println(F("weetje en dierengeluid niet aanwezig."));
+  }
+};
+
+void Audio::loop(){
+  this->statusled->loop();
+  if(!this->inited)
+    return;
+
+  switch (this->state) {
+    case WEETJE_AFSPELEN:
+      if(!tmrpcm->isPlaying()){
+        this->isDierenGeluidAanwezig() ? this->speelDierengeluid() : this->idle();
+      }
+      break;
+    case DIERENGELUID_AFSPELEN:
+      if(!this->isPlaying())
+        this->idle();
+      break;
+    default:
+      break;
+  }
+}
+
+void Audio::speelWeetje(){
+  this->statusled->on();
+
+  String filenamestr = this->getCurrentAudioFilename();
+  char filename[filenamestr.length()+1];
+  filenamestr.toCharArray(filename, sizeof(filename));
+
+  tmrpcm->play(filename);
+  this->state = WEETJE_AFSPELEN;
+
+  Serial.print(F("Started speel weetje nummer "));
+  Serial.println(this->soundCounter);
+
+  this->soundCounter++;
+  if(!this->isWeetjeGeluidAanwezig())
+    this->soundCounter = 0;
+}
+
+void Audio::speelDierengeluid(){
+  Serial.println(F("Start speel dierengeluid"));
+  this->statusled->on();
+  tmrpcm->play(this->dierenGeluid);
+  this->state = DIERENGELUID_AFSPELEN;
+}
+
+bool Audio::isWeetjeGeluidAanwezig(){
+  String filenamestr = this->getCurrentAudioFilename();
+  char filename[filenamestr.length()+1];
+  filenamestr.toCharArray(filename, sizeof(filename));
+  return SD.exists(filename);
 };
 
 bool Audio::isDierenGeluidAanwezig(){
@@ -44,61 +97,16 @@ bool Audio::isDierenGeluidAanwezig(){
 bool Audio::isPlaying(){
   return tmrpcm->isPlaying();
 }
-void Audio::play(){
-  if(!this->inited){
-    Serial.println(F("Niet inited"));
-    return; //todo: try to re-init?
-  }
-  if(this->isWeetjeGeluidAanwezig()){
-    this->speelWeetje();
-  }else if(this->isDierenGeluidAanwezig())
-    this->speelDierengeluid();
-  else{
-    Serial.println(F("weetje en dierengeluid niet aanwezig."));
-  }
-};
 
-void Audio::speelWeetje(){
-  Serial.println(F("Start speel weetje"));
-  this->statusled->on();
-  char weetjeAudioBestandsnaam[sizeof(this->buf+1)];
-  this->buf.toCharArray(weetjeAudioBestandsnaam,sizeof(weetjeAudioBestandsnaam));
-  tmrpcm->play(weetjeAudioBestandsnaam);
-  this->soundCounter++;
-  this->state = WEETJE_AFSPELEN;
+String Audio::getCurrentAudioFilename(){
+  String filename = "";
+  filename.concat(this->soundCounter);
+  filename.concat(".wav");
+  return filename;
 }
 
-void Audio::speelDierengeluid(){
-  Serial.println(F("Start speel dierengeluid"));
-  this->statusled->on();
-  tmrpcm->play(this->dierenGeluid);
-  this->state = DIERENGELUID_AFSPELEN;
-}
 void Audio::idle(){
   this->statusled->off();
   this->state = IDLE;
-}
-
-void Audio::loop(){
-  this->statusled->loop();
-  if(!this->inited)
-    return;
-
-  switch (this->state) {
-    case WEETJE_AFSPELEN:
-      if(!this->isPlaying())
-        this->isDierenGeluidAanwezig() ? this->speelDierengeluid() : this->idle();
-      break;
-    case DIERENGELUID_AFSPELEN:
-      if(!this->isPlaying())
-        this->idle();
-      break;
-    default:
-      break;
-  }
-  //todo: integrate with Arne's state machine
-  if(tmrpcm->isPlaying())
-    statusled->on();
-  else
-    statusled->off();
+  Serial.println(F("Back to IDLE"));
 }
