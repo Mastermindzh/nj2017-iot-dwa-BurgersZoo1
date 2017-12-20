@@ -1,6 +1,6 @@
 import endpoints from './external-variables/endpoints.json';
 
-const SERVER = endpoints['server-url'];
+const SERVER = endpoints.serverUrl;
 const SPEURPUNTEN = "/speurpunten";
 
 

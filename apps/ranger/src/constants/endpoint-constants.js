@@ -1,6 +1,6 @@
 import endpoints from './external-variables/endpoints.json';
 
-const ROOT = endpoints['server-url'];
+const ROOT = endpoints.serverUrl;
  
 export const PASSEN = {
   GET_MULTIPLE: `${ROOT}/passen`,
