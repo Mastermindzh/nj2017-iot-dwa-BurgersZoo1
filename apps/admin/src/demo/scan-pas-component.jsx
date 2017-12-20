@@ -16,11 +16,11 @@ class ScanPasComponent extends Component {
 
   componentDidMount() {
 
-    axios.get("http://servers.rickvanlieshout.com:8001/api/rangerHeeftBezochts").then(response => {
+    axios.get("http://localhost:8001/api/rangerHeeftBezochts").then(response => {
       this.setState({ passen: response.data.reverse() });
 
       setInterval( () => {
-      axios.get("http://servers.rickvanlieshout.com:8001/api/rangerHeeftBezochts").then(response => {
+      axios.get("http://localhost:8001/api/rangerHeeftBezochts").then(response => {
         this.handleUpdate(response.data)
       }).catch(err => console.log(err));
     }, 1000);
@@ -69,7 +69,7 @@ class ScanPasComponent extends Component {
         key: pas.datum,
         children:[
           {children: pas.rangerid},
-          {children: pas.speurpuntid},
+          {children: pas.speurpuntId},
           {children: formattedTime}
         ],
       };
