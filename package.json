@@ -15,6 +15,7 @@
     "compile-fo": "./node_modules/.bin/markdown-include ./documentatie/functioneel-ontwerp/markdown.json && ./node_modules/.bin/markdown-toc -i deliverables/functioneel\\ ontwerp.md",
     "compile-to": "./node_modules/.bin/markdown-include ./documentatie/technisch-ontwerp/markdown.json && ./node_modules/.bin/markdown-toc -i deliverables/technisch\\ ontwerp.md",
     "generate-pdfs": "node generate-pdf.js 'plan van aanpak' && node generate-pdf.js 'functioneel ontwerp' && node generate-pdf.js 'technisch ontwerp'",
+    "copy-endpoints": "cp endpoints.json ./apps/admin/src/constants/external-variables && cp endpoints.json ./apps/ranger/src/constants/external-variables",
     "postinstall": "npm run build-docker"
   },
   "repository": {

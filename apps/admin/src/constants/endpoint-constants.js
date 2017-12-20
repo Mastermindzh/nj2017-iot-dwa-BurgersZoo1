@@ -1,4 +1,6 @@
-const SERVER = "http://localhost:8001/api";
+import endpoints from './external-variables/endpoints.json';
+
+const SERVER = endpoints['server-url'];
 const SPEURPUNTEN = "/speurpunten";
 
 
