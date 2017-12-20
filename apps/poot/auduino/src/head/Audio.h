@@ -3,24 +3,23 @@
 
 #include <TMRpcm.h>
 #include <SD.h>
-#include "./head/States.h"
 #include "Led.h"
 
 #define SPEAKER_PIN 9
 #define SD_CS_PIN 4
 
+enum AudioStates {
+  IDLE
+  , DIERENGELUID_AFSPELEN   // Er wordt nu een dierengeluid afgespeeld
+  , WEETJE_AFSPELEN         // Er wordt nu een weetje afgespeeld
+};
+
 class Audio {
 public:
   Audio();
-  States state = IDLE;
+  void loop();
+  void play();
 
-  bool isWeetjeGeluidAanwezig();
-  bool isDierenGeluidAanwezig();
-  bool isPlaying();
-
-  void speelWeetje();
-  void speelDierengeluid();
-  
 private:
   TMRpcm* tmrpcm;
   unsigned int soundCounter;
@@ -28,6 +27,17 @@ private:
   String buf;
   Led* statusled;
   bool inited = 0;
+
+  AudioStates state = IDLE;
+
+  bool isWeetjeGeluidAanwezig();
+  bool isDierenGeluidAanwezig();
+  bool isPlaying();
+
+  void speelWeetje();
+  void speelDierengeluid();
+  void idle();
 };
+
 
 #endif

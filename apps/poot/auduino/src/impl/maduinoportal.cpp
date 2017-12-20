@@ -7,10 +7,9 @@ Audio* audioPlayer;
 
 void receiveEvent(int bytes) {
   Serial.println("Received event");
-  while(Wire.available()){
+  while(Wire.available())
     Wire.read();
-    audioPlayer-> state = START;
-  }
+  audioPlayer->play();
 }
 
 MaduinoPortal::MaduinoPortal(Audio* audio){
