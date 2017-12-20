@@ -13,6 +13,7 @@ import GeluidUploaden from './../containers/geluid-uploaden.jsx';
 import styles from './../styles/style';
 import { connect } from 'react-redux';
 import _ from 'lodash';
+import {BASE_URL} from './../constants/endpoint-constants.js';
 
 import { fetchDierengeluiden } from './../actions/dierengeluidenActions';
 
@@ -54,7 +55,7 @@ class GeluidenBeheren extends Component {
           {
             children:
             <ReactAudioPlayer
-              src={dierengeluid.bestandspad}
+              src={`${BASE_URL}${dierengeluid.bestandspad}`}
               controls
             />,
             key: `${dierengeluid.id} player`

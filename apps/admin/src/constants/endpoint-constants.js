@@ -3,7 +3,6 @@ import endpoints from './external-variables/endpoints.json';
 const SERVER = endpoints.serverUrl;
 const SPEURPUNTEN = "/speurpunten";
 
-
 export const FILTER = {
   ALL: `?filter=%7B%22include%22%3A%20%5B%22dierengeluid%22%2C%22verblijf%22%2C%20%22weetjes%22%5D%7D`
 };
