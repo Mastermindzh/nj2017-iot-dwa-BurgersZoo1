@@ -4,12 +4,6 @@ from flask import Flask, request
 import subprocess
 app = Flask(__name__)
 
-@app.route('/groep1/dev', methods=['POST'])
-def parse_request():
-    cmd = ["nohup","bash", "deploy.sh" , "groep1", request.data, "dev"]
-    p = subprocess.Popen(cmd)
-    return "development build deployed :D"
-
 @app.route('/groep1/prod', methods=['POST'])
 def parse_groep1_build_request():
     cmd = ["nohup","bash", "deploy.sh" , "groep1", request.data, "prod"]

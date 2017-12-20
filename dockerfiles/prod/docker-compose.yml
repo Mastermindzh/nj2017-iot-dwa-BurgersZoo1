@@ -4,7 +4,7 @@ services:
   mongo:
     image: mongo
     volumes:
-      - ../../dbdata:/data/db
+      - ../../dbdata-prod:/data/db
     ports:
       - 8019:27017
 
