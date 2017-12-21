@@ -1,5 +1,6 @@
 package nl.han.gateway.service;
 
+import nl.han.backend.services.group1.BackendPootService;
 import nl.han.gateway.dao.DAOFactory;
 import nl.han.gateway.dao.IPootDAO;
 import nl.han.gateway.exceptions.NotFoundException;
@@ -22,10 +23,19 @@ public class PotenService {
 
     private final IPootDAO pootDAO;
     private final MySensorSendService sensorSendService;
+    private final BackendPootService backendPootService;
+
 
     public PotenService() {
         this.pootDAO = DAOFactory.getInstance().getPootDAO();
         sensorSendService = new MySensorSendService();
+        this.backendPootService = new BackendPootService();
+    }
+
+    public PotenService(IPootDAO pootDAO, MySensorSendService sensorSendService, BackendPootService backendPootService) {
+        this.pootDAO = pootDAO;
+        this.sensorSendService = sensorSendService;
+        this.backendPootService = backendPootService;
     }
 
     /**
@@ -60,7 +70,8 @@ public class PotenService {
      *
      * @param poot
      */
-    public void resetPoot(Poot poot) {
+    public void resetPoot(Poot poot) throws NotFoundException {
+        this.backendPootService.removePootFromBackend(poot);
         MyMessage message = MyMessage.newMyMessage()
                 .nodeId(poot.getNodeid())
                 .childSensorId(1L)
@@ -69,6 +80,7 @@ public class PotenService {
                 .ack(true)
                 .setDataType(MyDataTypes.V_VAR5)
                 .build();
+
         this.sensorSendService.sendMessage(message);
         this.pootDAO.delete(poot);
     }

@@ -1,6 +1,6 @@
 package nl.han.backend.services;
 
-import nl.han.backend.services.group2.BackendPootService;
+import nl.han.gateway.exceptions.NotFoundException;
 import nl.han.gateway.models.Poot;
 import nl.han.mysensor.models.MySetMessage;
 import okhttp3.MediaType;
@@ -12,7 +12,7 @@ import java.math.BigInteger;
 
 public abstract class BackendPootServiceBase {
 
-    protected static Logger logger = LoggerFactory.getLogger(BackendPootService.class.getName());
+    protected static Logger logger = LoggerFactory.getLogger(BackendPootServiceBase.class.getName());
     protected static final MediaType JSON
             = MediaType.parse("application/json; charset=utf-8");
 
@@ -73,4 +73,11 @@ public abstract class BackendPootServiceBase {
      * @param poot
      */
     public abstract void sendHumidityLoggingToBackend(MySetMessage message, Poot poot);
+
+    /**
+     * Sends a request to the backend for removal of a Poot
+     *
+     * @param poot
+     */
+    public abstract void removePootFromBackend(Poot poot) throws NotFoundException;
 }

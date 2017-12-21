@@ -16,17 +16,23 @@
 
 #include "./head/Poot.h"
 
+StatusLights* lights;
 Poot* poot;
+
+void preHwInit(){
+  lights = new StatusLights();
+}
 
 void before() {
   pinMode(RST_PIN, OUTPUT);
   digitalWrite(RST_PIN, LOW);
   pinMode(SS_PIN, OUTPUT);
   digitalWrite(SS_PIN, LOW);
+  lights->turnLightsOn();
 }
 
 void setup () {
-  poot = new Poot();
+  poot = new Poot(lights);
 }
 
 void loop() {

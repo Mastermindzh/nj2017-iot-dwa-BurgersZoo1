@@ -23,10 +23,16 @@ void GatewayLink::sendStartup(byte pootid){
 };
 
 void GatewayLink::receive(const MyMessage &message){
-  if(message.type == V_VAR3){ // received pootid
-    this->poot->setPootid(message.getByte());
+  switch(message.type){
+    case V_VAR3: // received pootid
+      this->poot->setPootid(message.getByte());
+      break;
+    case V_VAR5:
+        this->poot->resetEEPROM();
+      break;
+    default:
+      break;
   }
-
 }
 void GatewayLink::sendTemperature(float temperature){
   MyMessage msgTemp(MY_CHILD_ID, V_TEMP);

@@ -8,7 +8,9 @@
 class MaduinoPortal {
 public:
   MaduinoPortal(Audio* audio);
+  void loop();
 private:
+  Audio* audioPlayer;
 };
 
 #endif

@@ -24,14 +24,21 @@ class SpeurpuntBeherenPopupComponent extends Component {
       poot: [],
       id: null,
       poten: [],
-      verblijven: []
+      verblijven: [],
+      dierengeluid: "",
+      dierengeluiden: []
     };
 
-    if(props.data !== undefined){
+    if(!_.isEmpty(props.data)){
       state.name = props.data.locatienaam;
       state.verblijf = props.data.verblijfId;
       state.poot = props.data.pootid;
       state.id = props.data.id;
+
+      if(!_.isEmpty(props.data.dierengeluid)){
+        state.dierengeluid = props.data.dierengeluid.id;
+      }
+
     }
 
     state.poten = _.map(this.props.poten, poot => {
@@ -42,18 +49,17 @@ class SpeurpuntBeherenPopupComponent extends Component {
       return { key: verblijf.id, text: verblijf.naam, value: verblijf.id };
     });
 
+    state.dierengeluiden = _.map(this.props.dierengeluiden, dierengeluid => {
+      return { key: dierengeluid.id, text: dierengeluid.beschrijving, value: dierengeluid.id };
+    });
+
     this.state = state;
 
     this.stateToSpeurpunt = this.stateToSpeurpunt.bind(this);
   }
 
-  /**
-   * change state on keypress
-   * @param {input} field name of the state key to change
-   * @param {*} event
-   */
-  handleChange(field, event) {
-    this.setState({ [field]: event.target.value });
+  handleDierenGeluidChange(event,data){
+    this.setState({dierengeluid: data.value})
   }
 
   stateToSpeurpunt() {
@@ -62,7 +68,8 @@ class SpeurpuntBeherenPopupComponent extends Component {
       null,
       this.state.name,
       this.state.verblijf,
-      this.state.id
+      this.state.id,
+      this.state.dierengeluid
     );
   }
 
@@ -126,6 +133,18 @@ class SpeurpuntBeherenPopupComponent extends Component {
             />
           </Grid>
           <Grid item xs={12}>
+            <h3>Dierengeluid:</h3>
+            <Dropdown
+              placeholder="Dierengeluid"
+              fluid
+              search
+              selection
+              options={this.state.dierengeluiden}
+              onChange={this.handleDierenGeluidChange.bind(this)}
+              value={this.state.dierengeluid}
+            />
+          </Grid>
+          <Grid item xs={12}>
             <Button
               className={classes.button}
               onClick={() => {onSubmit(this.stateToSpeurpunt());}}
@@ -147,6 +166,7 @@ SpeurpuntBeherenPopupComponent.propTypes = {
   onRequestClose: PropTypes.func,
   poten: PropTypes.object,
   verblijven: PropTypes.object,
+  dierengeluiden: PropTypes.object,
   data: PropTypes.object,
   identifier: PropTypes.string,
   onSubmit: PropTypes.func
