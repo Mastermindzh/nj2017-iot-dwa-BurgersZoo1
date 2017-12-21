@@ -40,7 +40,7 @@ public class MySensorParseServiceTest {
         MyMessage message = sensorParseService.parseToObject(input);
         assertEquals(message.getNodeId(), new Long(102L));
         assertEquals(message.getPayload(), "Message Pongnode102  -> G");
-        assertEquals(message.getChildSensorId(), 1);
+        assertEquals(message.getChildSensorId(), new Long(1L));
         assertEquals(MyCommand.SET, message.getCommand());
         assertTrue(message instanceof MySetMessage);
         assertEquals(MyDataTypes.V_VAR1, ((MySetMessage) message).getType());
@@ -54,7 +54,7 @@ public class MySensorParseServiceTest {
         MyMessage message = sensorParseService.parseToObject(input);
         assertEquals(message.getNodeId(), new Long(0L));
         assertEquals(message.getPayload(), "Gateway startup complete.");
-        assertEquals(message.getChildSensorId(), 255);
+        assertEquals(message.getChildSensorId(), new Long(255L));
         assertEquals(MyCommand.INTERNAL, message.getCommand());
         assertTrue(message instanceof MyInternalMessage);
         assertEquals(MyInternal.I_GATEWAY_READY, ((MyInternalMessage) message).getInternalType());
@@ -69,7 +69,7 @@ public class MySensorParseServiceTest {
 
         assertEquals(message.getNodeId(), new Long(0L));
         assertEquals(message.getPayload(), "2.1.1");
-        assertEquals(message.getChildSensorId(), 255);
+        assertEquals(message.getChildSensorId(), new Long(255L));
         assertEquals(MyCommand.PRESENTATION, message.getCommand());
 
         assertTrue(message instanceof MyPresentationMessage);
@@ -85,7 +85,7 @@ public class MySensorParseServiceTest {
 
         assertEquals(message.getNodeId(), new Long(55L));
         assertEquals("", message.getPayload());
-        assertEquals(message.getChildSensorId(), 66);
+        assertEquals(message.getChildSensorId(), new Long(66L));
         assertEquals(MyCommand.PRESENTATION, message.getCommand());
 
         assertTrue(message instanceof MyPresentationMessage);
@@ -97,7 +97,7 @@ public class MySensorParseServiceTest {
     public void testParseMessageToMySensorStringVar1() {
         MyMessage message = MyMessage.newMyMessage()
                 .nodeId(0L)
-                .childSensorId(255)
+                .childSensorId(255L)
                 .command(MyCommand.INTERNAL)
                 .ack(true)
                 .internal(MyInternal.I_GATEWAY_READY)
@@ -112,7 +112,7 @@ public class MySensorParseServiceTest {
     public void testParseMessageWithEmptyPayload() {
         MyMessage message = MyMessage.newMyMessage()
                 .nodeId(55L)
-                .childSensorId(66)
+                .childSensorId(66L)
                 .command(MyCommand.PRESENTATION)
                 .ack(false)
                 .presentationType(MyPresentationType.S_CUSTOM)
@@ -126,7 +126,7 @@ public class MySensorParseServiceTest {
     public void testArduinoRepeaterNodeToMySensorMessage() {
         MyMessage message = MyMessage.newMyMessage()
                 .nodeId(0L)
-                .childSensorId(255)
+                .childSensorId(255L)
                 .command(MyCommand.PRESENTATION)
                 .ack(false)
                 .presentationType(MyPresentationType.S_ARDUINO_REPEATER_NODE)
@@ -141,7 +141,7 @@ public class MySensorParseServiceTest {
     public void testCustomMessageToMySensorMessage() {
         MyMessage message = MyMessage.newMyMessage()
                 .nodeId(102L)
-                .childSensorId(1)
+                .childSensorId(1L)
                 .command(MyCommand.SET)
                 .ack(true)
                 .setDataType(MyDataTypes.V_VAR1)

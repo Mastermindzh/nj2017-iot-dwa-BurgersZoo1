@@ -6,6 +6,7 @@ import nl.han.gateway.dao.DAOFactory;
 import nl.han.gateway.dao.IDAOFactory;
 import nl.han.gateway.dao.IMyMessagesDAO;
 import nl.han.gateway.dao.IPootDAO;
+import nl.han.gateway.exceptions.NotFoundException;
 import nl.han.gateway.exceptions.NotImplementedException;
 import nl.han.gateway.models.Poot;
 import nl.han.mysensor.models.MySetMessage;
@@ -58,7 +59,7 @@ public class MySensorReceiveServiceTest {
     }
 
     @Test
-    public void testNewNodeSubscribeWithKnownPoot() {
+    public void testNewNodeSubscribeWithKnownPoot() throws NotFoundException {
         MySetMessage mySetMessage = mock(MySetMessage.class);
         when(mySetMessage.getType()).thenReturn(MyDataTypes.V_VAR1);
         when(mySetMessage.getPayload()).thenReturn("15");
@@ -73,19 +74,20 @@ public class MySensorReceiveServiceTest {
     }
 
     @Test
-    public void testNewNodeSubscribeWithUnKnownPoot() {
+    public void testNewNodeSubscribeWithUnKnownPoot() throws NotFoundException {
         MySetMessage mySetMessage = mock(MySetMessage.class);
         when(mySetMessage.getType()).thenReturn(MyDataTypes.V_VAR1);
         when(mySetMessage.getPayload()).thenReturn("255");
         when(mySetMessage.getNodeId()).thenReturn(1L);
 
         when(this.backendPootServiceMock.getNewPootIdFromBackend()).thenReturn(5L);
-        when(this.iPootDAOmock.findByPootId(anyLong())).thenReturn(null);
+        when(this.iPootDAOmock.findByPootId(anyLong())).thenThrow(NotFoundException.class);
+        when(this.iPootDAOmock.save(any(Poot.class))).thenReturn(mock(Poot.class));
 
         this.mySensorsReceiverService.handleIncomingMessage(mySetMessage);
-        verify(this.iPootDAOmock).save(anyObject());
+        verify(this.iPootDAOmock).save(any(Poot.class));
         verify(this.backendPootServiceMock).getNewPootIdFromBackend();
-        verify(this.sendService).sendPootIdToNode(anyObject());
+        verify(this.sendService).sendPootIdToNode(any(Poot.class));
     }
 
     @Test

@@ -15,8 +15,8 @@ class FactWidgetComponent extends Component {
         'Mangrove'
       ],
       selectedResidence: ''
-    }
-  };
+    };
+  }
 
   renderAudioList() {
     if (this.state.selectedResidence === 'Safari') {
@@ -57,7 +57,10 @@ class FactWidgetComponent extends Component {
     return (
       <div>
         <Grid item xs={12}>
-          <AnimalResidenceSelect residences={this.state.animalResidences} onResidenceSelect={this.onResidenceSelectHandler.bind(this)} />
+          <AnimalResidenceSelect
+            residences={this.props.animalResidences}
+            onResidenceSelect={this.onResidenceSelectHandler.bind(this)} 
+          />
         </Grid>
         {this.renderAudioList()}
       </div>

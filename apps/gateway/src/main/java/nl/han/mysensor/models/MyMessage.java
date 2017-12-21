@@ -23,16 +23,13 @@ public abstract class MyMessage {
     private ObjectId id;
 
     private Long nodeId;
-    private int childSensorId;
+    private Long childSensorId;
     private MyCommand command;
     private boolean ack;
     private String payload;
 
-    public void setAck(boolean ack) {
-        this.ack = ack;
-    }
 
-    public MyMessage(Long nodeId, int childSensorId, MyCommand command, boolean ack, String payload) {
+    public MyMessage(Long nodeId, Long childSensorId, MyCommand command, boolean ack, String payload) {
         this.nodeId = nodeId;
         this.childSensorId = childSensorId;
         this.command = command;
@@ -68,7 +65,7 @@ public abstract class MyMessage {
         return nodeId;
     }
 
-    public int getChildSensorId() {
+    public Long getChildSensorId() {
         return childSensorId;
     }
 
@@ -98,7 +95,7 @@ public abstract class MyMessage {
 
     public static final class Builder {
         private Long nodeId;
-        private int childSensorId;
+        private Long childSensorId;
         private MyCommand command;
         private boolean ack;
         private String payload = "";
@@ -129,7 +126,7 @@ public abstract class MyMessage {
             return this;
         }
 
-        public Builder childSensorId(int childSensorId) {
+        public Builder childSensorId(Long childSensorId) {
             this.childSensorId = childSensorId;
             return this;
         }

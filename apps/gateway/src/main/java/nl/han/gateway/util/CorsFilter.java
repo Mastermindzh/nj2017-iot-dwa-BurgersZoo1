@@ -1,4 +1,4 @@
-package nl.han.gateway.utils;
+package nl.han.gateway.util;
 
 import spark.Filter;
 
