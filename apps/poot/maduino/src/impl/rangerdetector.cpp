@@ -10,7 +10,14 @@ RangerDetector::RangerDetector(Poot* poot){
 void RangerDetector::loop(){
   String pasid = this->readPasid();
 
-  if(this->isCardAvailable() && this->isCardAuthenticated() && this->isCardContentValid())
+  if(!this->isCardAvailable())
+    return;
+
+  if(!this->isCardAuthenticated())
+    this->poot->wrongPasScanned(1);
+  else if(!this->isCardContentValid())
+    this->poot->wrongPasScanned(2);
+  else
     this->poot->pasScanned(pasid);
   stopReading();
 };
