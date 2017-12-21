@@ -6,14 +6,17 @@ TODO: WELKE ONDERDELEN ZIJN NODIG?
 TODO: EEPROM MOET LEEG ZIJN
 
 ## 2. Behuizing
+De behuizing van de poot bestaat uit een houten voorplaat met op de achterkant een plastic bakje met daarin alle electronica. Hieronder een sfeerimpressie van de behuizing.
 
-TODO: FOTO' + TECHINSCHE TEKENING VAN BEHUIZING + LINK NAAR EXACTE DESIGN
+![images/impressie.png](images/impressie.png)
+
+Een gedetailieërd ontwerp voor de behuizing is [hier](https://github.com/HANICA-MinorMulti/nj2017-iot-dwa-BurgersZoo1/blob/master/documentatie/technisch-ontwerp/poot-fysiek/poot-fysiek-ontwerp.md) te vinden.
 
 ## 3. Aansluiting
 
-TODO: FRITZING SCHEMA
+Sluit de twee arduino's aan volgens het onderstaande aansluitschema of gebruik de aansluittabellen daaronder om de verbindingen tussen componenten en Arduino's te maken.
 
-Als aanvulling van bovenstaande aansluitschema zijn hieronder alle aansluitingen in twee tabellen weergegeven.
+![images/aansluitschema.png](images/aansluitschema.png)
 
 **Auduino** 
 | Component | Pin op Component | Pin op Arduino |
@@ -66,6 +69,23 @@ TODO: LINK NAAR BUILT HEX FILES + UITLEG OVER HOE JE DEZE UPLOAD
 
 TODO: HOE SD KAART FORMATTEREN?
 TODO: NAAMGEVING VAN BESTANDEN OP SD KAART
+TODO: UITLEG CONVERSIE AUDIO NAAR JUISTE FORMAAT
 
 ## 6. Aanzetten
+Nadat alle bovenstaande stappen doorlopen zijn kunnen de twee Arduino's op stroom worden gezet. Vervolgens gaan de twee Arduino's initialiseren. Om te kunnen zien of onderdelen goed worden geinitialiseerd moet worden gekeken naar de statuslampjes. Per Arduino is hieronder te vinden wat de statuslampjes betekeken. 
+
+# Maduino
+Als alles goed gaat dan gaan er 3 lampjes branden zodra de Maduino wordt opgestart. Wanneer het initialiseren compleet is gaan de drie lampjes uit. Verder zijn er een aantal abnormale lampcodes. Deze zijn hieronder uitgewerkt.
+
+| Alle lampjes blijven aan staan. | Bezig met opstart sequence. Zoalang de Arduino nog niet verbonden is met een gateway worden deze lampjes laten zien. Als dit lang zo blijft staan dan is er waarschijnlijk iets mis met de NRF24L01+ óf kan de gateway niet worden gevonden. | 
+| Geel lampje continu aan | Er kan niet worden verbonden met de auduino. Er is iets mis met het verzenden naar de Auduino met I2C. |
+| Geel lampje kort knipper | Er wordt verzonden naar de Auduino. Wanneer je een hele korte gele knipper ziet dan wordt er een signiaaltje verzonden naar de Auduino. |
+| Rood lampje 0.5 seconde knipper | De gescande pas kon niet worden geauthenticeerd. |
+| Rood lampje 1 seconde knipper | De gescande heeft niet de inhoud `Burgers Zoo`. |
+| Groen lampje 1 seconde aan | Er is een valide pas gescant. |
+
+# Auduino
+De Auduino laat geen led branden als er hij niks aan het doen is. De volgende statussen kunnen worden afgelezen van de blauwe status led:
+| Blauwe led knippert snel | De SD kaart lezer kon niet worden geinitialiseerd. | 
+| Blauwe led brand continu | Er wordt een geluidje afgespeeld |
 
