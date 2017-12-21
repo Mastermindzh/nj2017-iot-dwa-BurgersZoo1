@@ -10,4 +10,4 @@ do
  esac
 done
 
-mongorestore --host ${DB_HOST} --db burgerszoo --drop ${DIR} 
+mongorestore --host http://servers.rickvanlieshout.com:8019 --db burgerszoo --drop ./assets/seed-data/burgerszoo

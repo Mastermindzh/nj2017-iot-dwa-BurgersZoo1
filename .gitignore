@@ -62,7 +62,9 @@ apps/*/.config
 apps/*/.npm
 apps/*/.node-gyp
 
+#db data
 dbdata
+dbdata-prod
 
 # idea
 .idea

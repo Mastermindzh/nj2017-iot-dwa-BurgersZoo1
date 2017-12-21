@@ -19,5 +19,9 @@ npm install
 
 echo "Restarting docker ...."
 
-docker-compose down
-docker-compose up -d
+if [ "$3" = "dev" ]; then
+  npm start
+elif [ "$3" = "prod" ]; then
+  npm run build
+fi
+

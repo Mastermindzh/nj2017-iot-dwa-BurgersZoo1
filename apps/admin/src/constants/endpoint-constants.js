@@ -1,5 +1,7 @@
-export const BASE_URL = "http://localhost:8001";
-const SERVER = `${BASE_URL}/api`;
+import endpoints from './external-variables/endpoints.json';
+
+export const BASE_URL = endpoints.serverUrl.slice(0,-4);
+const SERVER = endpoints.serverUrl;
 const SPEURPUNTEN = "/speurpunten";
 
 export const FILTER = {
