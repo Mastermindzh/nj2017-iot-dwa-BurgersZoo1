@@ -2,8 +2,12 @@
 
 ## Inleiding
 
-
 ## Inhoudsopgave
+
+## Techniek
+
+### Een demo starten
+### Technische werking
 <!-- toc -->
 #include "documentatie/opleverdocumentatie/arduino/arduino.md"
 
@@ -16,3 +20,9 @@
 #include "documentatie/opleverdocumentatie/admin/admin-app.md"
 
 #include "documentatie/opleverdocumentatie/ranger/ranger-app.md"
+
+
+## Hoe nu verder <-- renamen
+
+## Aanbevelingen
+
