@@ -77,15 +77,16 @@ public class BackendPootService extends BackendPootServiceBase {
         DateTime dt = new DateTime();
         DateTimeFormatter dateTimeFormatter = DateTimeFormat.forPattern("y-M-d'T'H:m:s");
         String date = dateTimeFormatter.print(dt);
-        RequestBody body = RequestBody.create(JSON,
-                "{ \"id\": \"GAT01\", \"connectionStatus\" : \"UP\", " +
-                        "\"timestamp\": \"'\"" + date + "\"'\" }");
+        String bodyString = "{ \"id\": \"GAT01\", \"connectionStatus\" : \"UP\", " +
+                "\"timestamp\": \"" + date + "\" }";
+        RequestBody body = RequestBody.create(JSON, bodyString);
         Request request = new Request.Builder()
                 .url(this.baseUri + "/alert/gateway")
                 .post(body)
                 .build();
         try (Response response = client.newCall(request).execute()) {
-            if (response.code() != 201) {
+            logger.info("Code: " + response.code() + ", body: " + response.body().string());
+            if (response.code() != 201 || response.code() != 200) {
                 logger.warn("Heartbeat is not saved");
             } else {
                 logger.info("Backend group 2 is OK");

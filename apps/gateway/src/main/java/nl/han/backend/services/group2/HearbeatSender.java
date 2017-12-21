@@ -9,7 +9,7 @@ public class HearbeatSender implements Runnable {
     public void run() {
         while (sendHearbeat) {
             try {
-                Thread.sleep(10_000);
+                Thread.sleep(5_000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
