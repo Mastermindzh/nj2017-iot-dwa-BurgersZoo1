@@ -1,5 +1,3 @@
-## Repo commands
-
 In dit hoofdstuk wordt uitgelegd wat de "repo commando's" inhouden.
 Een "repo commando" is één van de scripts die in de package.json staan.
 

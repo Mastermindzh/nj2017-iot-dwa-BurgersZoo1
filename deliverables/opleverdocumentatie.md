@@ -11,33 +11,34 @@ In dit rapport wordt allereerst het concept beschreven, gevolgd door een beschri
 
 <!-- toc -->
 
-  * [Concept](#concept)
-  * [Techniek](#techniek)
-    + [Een demo starten](#een-demo-starten)
+  * [Systeemoverview (hoe werkt dit systeem globaal?)](#systeemoverview-hoe-werkt-dit-systeem-globaal)
+  * [Opzethandleiding (hoe start ik het systeem?)](#opzethandleiding-hoe-start-ik-het-systeem)
+    + [Backend + Ranger app + Admin app](#backend--ranger-app--admin-app)
 - [Het starten van de applicaties](#het-starten-van-de-applicaties)
   * [randvoorwaarden](#randvoorwaarden)
   * [Het starten van de web applicaties en de database](#het-starten-van-de-web-applicaties-en-de-database)
-  * [Development applicaties](#development-applicaties)
-  * [productie builds (minified)](#productie-builds-minified)
-  * [De applicaties bezoeken](#de-applicaties-bezoeken)
-- [Technische werking](#technische-werking)
+    + [Development applicaties](#development-applicaties)
+    + [productie builds (minified)](#productie-builds-minified)
+    + [De applicaties bezoeken](#de-applicaties-bezoeken)
 - [Installatie Gateway](#installatie-gateway)
   * [MongoDB](#mongodb)
   * [Java](#java)
   * [RXTX](#rxtx)
   * [Aansluiting Arduino](#aansluiting-arduino)
   * [Start gateway](#start-gateway)
+    + [Poot](#poot)
+    + [Repo commando's](#repo-commandos)
+  * [Ontwikkelhandleiding (hoe ontwikkel ik?)](#ontwikkelhandleiding-hoe-ontwikkel-ik)
+- [Bijlagen](#bijlagen)
 - [Software lijst](#software-lijst)
-  * [Hoe nu verder <-- renamen](#hoe-nu-verder----renamen)
-  * [Aanbevelingen](#aanbevelingen)
 
 <!-- tocstop -->
 
-## Concept
+## Systeemoverview (hoe werkt dit systeem globaal?)
 
-## Techniek
+## Opzethandleiding (hoe start ik het systeem?)
 
-### Een demo starten
+### Backend + Ranger app + Admin app
 
 # Het starten van de applicaties
 Dit hoofdstuk zal beschrijven hoe alle webapplicaties, de backend en de database opgestart moeten worden. Ook zal dit hoofdstuk beschrijven hoe de database gevuld kan worden met het seedscript zodat er wat testdata in de apps staat.
@@ -61,7 +62,7 @@ Het volgende hoofdstuk zal uitleggen hoe de applicaties gestart kunnen worden in
 
 > ***NOTE!  de commando's zijn bedacht voor Linux en Mac OS X, hieronder wordt beschreven hoe het werkt voor alle drie de systemen al is het zeer aan te raden om een Linux Virtual machine op te zetten. (klik [hier](https://www.storagecraft.com/blog/the-dead-simple-guide-to-installing-a-linux-virtual-machine-on-windows/) voor uitleg)***
 
-## Development applicaties
+### Development applicaties
 
 Om de applicaties in development modus te starten (in Docker) moet het volgende commando worden uitgevoerd:
 
@@ -86,7 +87,7 @@ Het commando "copy-endpoint-dev" gaat echter **fout** op een Windows systeem omd
 3. Draai het `docker-compose up` commando
 
 
-## productie builds (minified)
+### productie builds (minified)
 
 Om de applicaties in productie modus te starten (in Docker) moet het volgende commando worden uitgevoerd:
 
@@ -113,7 +114,7 @@ Het commando "copy-endpoint-dev" gaat echter **fout** op een Windows systeem omd
 3. Draai het `docker-compose up` commando
 4. Draai het `bash seedscript.sh SERVERURL` bestand. (op Windows heb je hier de [bash shell voor Windows](https://www.howtogeek.com/249966/how-to-install-and-use-the-linux-bash-shell-on-windows-10/) voor nodig.)
 
-## De applicaties bezoeken
+### De applicaties bezoeken
 
 Om de applicaties te bezoeken, en ze te gebruiken, ga je naar de volgende web adressen:
 
@@ -122,11 +123,15 @@ Om de applicaties te bezoeken, en ze te gebruiken, ga je naar de volgende web ad
 | Back-end api                | http://localhost:8001                         | http://localhost:8011                         |
 | Admin / educatie applicatie | http://localhost:8002                         | http://localhost:8012                         |
 | Ranger applicatie           | http://localhost:8003                         | http://localhost:8013                         |
-| De database                 | http://localhost:8009  mongo://localhost:8009 | http://localhost:8019  mongo://localhost:8009 |
+| De database                 | http://localhost:8009  mongo://localhost:8009 | http://localhost:8009  mongo://localhost:8009 |
 
 
 
-# Technische werking
+
+
+
+
+
 
 
 
@@ -152,13 +157,13 @@ $ sudo apt-get install mongodb-server
 ```
 *Het upgrade process kan een tijdje duren.*
 
-Als de MongoDB server succesvol geïnstalleerd is, kan deze service gestart worden door:
+Als de MongoDB server succesvol geïnstalleerd is, kan deze service gestart worden door: 
 ``` bash
 $ sudo service mongodb start
 ```
 
 ## Java
-De gateway draait in een JVM en het is dus nodig om de juiste Java installatie te installeren.
+De gateway draait in een JVM en het is dus nodig om de juiste Java installatie te installeren. 
 
 ``` bash
 sudo su
@@ -188,7 +193,7 @@ De Arduino moet vervolgens verbonden worden via een USB kabel met de Raspberry P
 
 ## Start gateway
 Om de gateway te starten moet eerst de MongoDB aan staan. Dat kan met het eerste commando.
-Als deze draait kan daarna de gateway zelf gestart worden.
+Als deze draait kan daarna de gateway zelf gestart worden. 
 ``` bash
 sudo service mongodb start #starts mongo service
 
@@ -197,13 +202,40 @@ java -Djava.library.path=/usr/lib/jni -jar gateway.jar #gateway.jar is te vervan
 Bij het tweede gedeelte, om Java te starten, is het belangrijk dat de volgende regel voor de -jar komt: `-Djava.library.path=/usr/lib/jni `. Anders wordt de RXTX library niet goed geladen.
 
 
+### Poot
 
 
+### Repo commando's
+In dit hoofdstuk wordt uitgelegd wat de "repo commando's" inhouden.
+Een "repo commando" is één van de scripts die in de package.json staan.
+
+Dat levert de volgende items op:
 
 
+| Commando                    | resultaat                                                                                              | Notities                                  |
+|-----------------------------|--------------------------------------------------------------------------------------------------------|-------------------------------------------|
+| start                       | Start de apps in development modus                                                                     |                                           |
+| build                       | Start de apps in productie modus (en bouwt productie files)                                            |                                           |
+| build-docker                | Bouwt zowel de dev als de productie docker images.                                                     |                                           |
+| build-docker-dev            | Bouwt de dev docker image.                                                                             |                                           |
+| build-docker-prod           | Bouwt de productie docker image                                                                        |                                           |
+| compile-deliverables        | Bouwt alle documentatie                                                                                |                                           |
+| compile-images              | Verzamelt alle images in de deliverables/images map zodat ze gebruikt kunnen worden in de documentatie | ! werkt niet op Windows                   |
+| compile-pva                 | Bouwt het Plan van Aanpak                                                                              | Wordt gebouwt in de deliverables map      |
+| compile-fo                  | Bouwt het Functioneel ontwerp                                                                          | Wordt gebouwt in de deliverables map      |
+| compile-to                  | Bouwt het technisch ontwerp                                                                            | Wordt gebouwt in de deliverables map      |
+| compile-testplan            | Bouwt het testplan                                                                                     | Wordt gebouwt in de deliverables map      |
+| compile-opleverdocumentatie | Bouwt de opleverdocumentatie                                                                           | Wordt gebouwt in de deliverables map      |
+| generate-pdfs               | Zet alle gebouwde bestanden om naar een .pdf                                                           | Wordt gebouwt in de deliverables/pdfs map |
+| copy-endpoint-prod          |  Dit kopieërd alle development instellingen naar de apps                                                                                                     | ! werkt niet op Windows                   |
+| copy-endpoint-dev           |  Dit kopieërd alle development instellingen naar de apps                                                   | ! werkt niet op Windows                   |
+| postinstall                 | Dit script draait NA een npm install en zal de "build-docker" taak uitvoeren                           |                                           |
 
 
+## Ontwikkelhandleiding (hoe ontwikkel ik?)
 
+
+# Bijlagen
 
 # Software lijst
 In deze lijst vindt je voor de meeste software links naar installatiehandleidingen.
@@ -224,9 +256,4 @@ In deze lijst vindt je voor de meeste software links naar installatiehandleiding
 -->
 
 
-
-
-## Hoe nu verder <-- renamen
-
-## Aanbevelingen
 

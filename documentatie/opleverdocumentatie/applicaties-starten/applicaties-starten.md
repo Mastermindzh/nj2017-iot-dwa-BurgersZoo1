@@ -20,7 +20,7 @@ Het volgende hoofdstuk zal uitleggen hoe de applicaties gestart kunnen worden in
 
 > ***NOTE!  de commando's zijn bedacht voor Linux en Mac OS X, hieronder wordt beschreven hoe het werkt voor alle drie de systemen al is het zeer aan te raden om een Linux Virtual machine op te zetten. (klik [hier](https://www.storagecraft.com/blog/the-dead-simple-guide-to-installing-a-linux-virtual-machine-on-windows/) voor uitleg)***
 
-## Development applicaties
+### Development applicaties
 
 Om de applicaties in development modus te starten (in Docker) moet het volgende commando worden uitgevoerd:
 
@@ -45,7 +45,7 @@ Het commando "copy-endpoint-dev" gaat echter **fout** op een Windows systeem omd
 3. Draai het `docker-compose up` commando
 
 
-## productie builds (minified)
+### productie builds (minified)
 
 Om de applicaties in productie modus te starten (in Docker) moet het volgende commando worden uitgevoerd:
 
@@ -72,7 +72,7 @@ Het commando "copy-endpoint-dev" gaat echter **fout** op een Windows systeem omd
 3. Draai het `docker-compose up` commando
 4. Draai het `bash seedscript.sh SERVERURL` bestand. (op Windows heb je hier de [bash shell voor Windows](https://www.howtogeek.com/249966/how-to-install-and-use-the-linux-bash-shell-on-windows-10/) voor nodig.)
 
-## De applicaties bezoeken
+### De applicaties bezoeken
 
 Om de applicaties te bezoeken, en ze te gebruiken, ga je naar de volgende web adressen:
 

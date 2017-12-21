@@ -10,19 +10,13 @@ In dit rapport wordt allereerst het concept beschreven, gevolgd door een beschri
 ## Inhoudsopgave
 <!-- toc -->
 
-## Concept
+## Systeemoverview (hoe werkt dit systeem globaal?)
 
-## Techniek
+## Opzethandleiding (hoe start ik het systeem?)
 
-### Een demo starten
+### Backend + Ranger app + Admin app
 
 #include "documentatie/opleverdocumentatie/applicaties-starten/applicaties-starten.md"
-
-# Technische werking
-
-#include "documentatie/opleverdocumentatie/arduino/arduino.md"
-
-#include "documentatie/opleverdocumentatie/gateway/installatie-handleiding-gateway.md"
 
 #include "documentatie/opleverdocumentatie/backend/deployment.md"
 
@@ -32,10 +26,18 @@ In dit rapport wordt allereerst het concept beschreven, gevolgd door een beschri
 
 #include "documentatie/opleverdocumentatie/ranger/ranger-app.md"
 
+#include "documentatie/opleverdocumentatie/gateway/installatie-handleiding-gateway.md"
+
+### Poot
+#include "documentatie/opleverdocumentatie/arduino/arduino.md"
+
+### Repo commando's
+#include "documentatie/opleverdocumentatie/repo-commands/repo-commands.md"
+
+## Ontwikkelhandleiding (hoe ontwikkel ik?)
+
+
+# Bijlagen
+
 #include "documentatie/opleverdocumentatie/softwarelijst/softwarelijst.md"
-
-
-## Hoe nu verder <-- renamen
-
-## Aanbevelingen
 
