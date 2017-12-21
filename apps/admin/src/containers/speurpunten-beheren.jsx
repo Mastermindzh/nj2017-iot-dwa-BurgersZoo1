@@ -34,7 +34,7 @@ class SpeurpuntenBeherenContainer extends Component {
       search: "",
       type: "",
       snackbar: false,
-      snackbarMessage: "Aktie voltooid.",
+      snackbarMessage: "Actie voltooid.",
       currentObject: undefined
     };
 

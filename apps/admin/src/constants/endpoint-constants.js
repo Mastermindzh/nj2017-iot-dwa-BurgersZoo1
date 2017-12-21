@@ -1,5 +1,6 @@
 import endpoints from './external-variables/endpoints.json';
 
+export const BASE_URL = endpoints.serverUrl.slice(0,-4);
 const SERVER = endpoints.serverUrl;
 const SPEURPUNTEN = "/speurpunten";
 
@@ -17,10 +18,18 @@ export const SPEURPUNT = {
   FILTER: ``
 };
 export const DIERENGELUIDEN = {
-  GET: `${SERVER}/dierengeluiden`
+  GET: `${SERVER}/dierengeluiden`,
+  POST: `${SERVER}/dierengeluiden`
 };
 export const WEETJES = {
-  GET: `${SERVER}/weetjes`
+  GET: `${SERVER}/weetjes`,
+  POST: `${SERVER}/weetjes`
+};
+export const UPLOAD = {
+  POST: `${BASE_URL}/upload`
+};
+export const BASE = {
+  GET: `${BASE_URL}`
 };
 export const POTEN = {
   GET: `${SERVER}/poten`

@@ -8,15 +8,38 @@
 #define SPEAKER_PIN 9
 #define SD_CS_PIN 4
 
+enum AudioStates {
+  IDLE
+  , DIERENGELUID_AFSPELEN   // Er wordt nu een dierengeluid afgespeeld
+  , WEETJE_AFSPELEN         // Er wordt nu een weetje afgespeeld
+};
+
 class Audio {
 public:
   Audio();
-  void play();
   void loop();
+  void play();
+
 private:
   TMRpcm* tmrpcm;
+  unsigned int soundCounter = 0;
+  char* dierenGeluid;
   Led* statusled;
   bool inited = 0;
+
+  AudioStates state = IDLE;
+
+  bool isWeetjeGeluidAanwezig();
+  bool isDierenGeluidAanwezig();
+  bool isPlaying();
+
+  void speelWeetje();
+  void speelDierengeluid();
+  void idle();
+
+  String getCurrentAudioFilename();
+  char* getCurrentAudioFilenameChars();
 };
+
 
 #endif

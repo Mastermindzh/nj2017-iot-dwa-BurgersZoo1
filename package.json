@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "npm run copy-endpoint-dev && docker-compose down && docker-compose up && bash seedscript.sh",
-    "build": "npm run copy-endpoint-prod && docker-compose -f ./dockerfiles/prod/docker-compose.yml down && docker-compose -f ./dockerfiles/prod/docker-compose.yml up && bash seedscript.sh -h http://servers.rickvanlieshout.com:8019",
+    "build": "npm run copy-endpoint-prod && docker-compose -f ./dockerfiles/prod/docker-compose.yml down && docker-compose -f ./dockerfiles/prod/docker-compose.yml up && bash seedscript.sh -h servers.rickvanlieshout.com:8019",
     "build-docker": "npm run build-docker-dev && npm run build-docker-prod",
     "build-docker-dev": "docker build -t burgerszoo/node -f dockerfiles/node/Dockerfile dockerfiles/node/",
     "build-docker-prod": "docker build -t burgerszoo/prod -f dockerfiles/prod/Dockerfile dockerfiles/prod/",
