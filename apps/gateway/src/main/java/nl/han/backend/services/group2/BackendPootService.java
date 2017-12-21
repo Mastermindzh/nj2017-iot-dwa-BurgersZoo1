@@ -86,10 +86,10 @@ public class BackendPootService extends BackendPootServiceBase {
                 .build();
         try (Response response = client.newCall(request).execute()) {
             logger.info("Code: " + response.code() + ", body: " + response.body().string());
-            if (response.code() != 201 || response.code() != 200) {
-                logger.warn("Heartbeat is not saved");
-            } else {
+            if (response.code() == 201 || response.code() == 200) {
                 logger.info("Backend group 2 is OK");
+            } else {
+                logger.warn("Heartbeat is not saved");
             }
 
         } catch (IOException e) {
