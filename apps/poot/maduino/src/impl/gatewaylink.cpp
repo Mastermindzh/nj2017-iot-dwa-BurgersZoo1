@@ -35,7 +35,6 @@ void GatewayLink::sendTemperature(float temperature){
 };
 
 void GatewayLink::sendHumidity(float humidity){
-  Serial.println(humidity);
   MyMessage msgHum(MY_CHILD_ID, V_HUM);
   msgHum.setDestination(GATEWAY_ID);
   send(msgHum.setSensor(2).set(humidity,1));
