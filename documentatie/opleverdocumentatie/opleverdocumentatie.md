@@ -9,11 +9,15 @@ In dit rapport wordt allereerst het concept beschreven, gevolgd door een beschri
 
 ## Inhoudsopgave
 <!-- toc -->
-## Concept
+
+#include "documentatie/opleverdocumentatie/concept/concept.md"
+
+### Hypothese
 
 ## Techniek
 
 ### Een demo starten
+
 
 ### Technische werking
 
