@@ -7,6 +7,7 @@ import weetjesReducer from './weetjes/weetjes-reducer';
 import potenReducer from './poten/poten-reducer';
 import verblijvenReducer from './verblijven/verblijven-reducer';
 import { routerReducer } from 'react-router-redux';
+import fileUploadReducer from './fileupload/fileupload-reducer';
 
 
 const rootReducer = combineReducers({
@@ -16,7 +17,8 @@ const rootReducer = combineReducers({
   dierengeluidenReducer,
   weetjesReducer,
   potenReducer,
-  verblijvenReducer
+  verblijvenReducer,
+  fileUploadReducer
 });
 
 export default rootReducer;

@@ -2,6 +2,7 @@
 #define ARDUINOPORTAL
 
 #include <Wire.h>
+#include <Arduino.h>
 
 class AuduinoPortal {
 public:

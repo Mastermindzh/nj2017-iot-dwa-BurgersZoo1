@@ -1,12 +1,14 @@
 package nl.han;
 
+import nl.han.backend.services.group2.HearbeatSender;
 import nl.han.gateway.controller.MySensorMessagesController;
 import nl.han.gateway.controller.PotenController;
+import nl.han.gateway.util.CorsFilter;
 import nl.han.gateway.util.GatewayProperties;
-import nl.han.gateway.utils.CorsFilter;
 import nl.han.mysensor.service.serial.SerialCommunication;
 
-import static spark.Spark.*;
+import static spark.Spark.get;
+import static spark.Spark.port;
 import static spark.debug.DebugScreen.enableDebugScreen;
 
 
@@ -24,16 +26,16 @@ public class Application {
 
         CorsFilter.apply();
 
-//        /**
-//         * Add header to all responses
-//         */
-//        after((req, res) -> {
-//            if (res.type() == null && res.status() != 404) {
-//                res.type("application/json");
-//            }
-//        });
+        application.setupHeartbeat();
+    }
 
 
+    private void setupHeartbeat() {
+        if (GatewayProperties.hasProperty("backend.group2.heartbeat")) {
+            if (Boolean.valueOf(GatewayProperties.getProperty("backend.group2.heartbeat"))) {
+                (new Thread(new HearbeatSender())).run();
+            }
+        }
     }
 
     /**
@@ -41,11 +43,6 @@ public class Application {
      */
     private void registerRoutes() {
         get("/", (req, res) -> "Gateway api");
-        post("/test/:poot", (request, response) -> {
-            System.out.println(request.params());
-            System.out.println(request.body());
-            return "";
-        });
         new PotenController();
         new MySensorMessagesController();
     }

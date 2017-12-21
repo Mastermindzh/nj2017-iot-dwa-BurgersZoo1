@@ -1,10 +1,13 @@
 package nl.han.gateway.service;
 
+import nl.han.backend.services.group1.BackendPootService;
 import nl.han.gateway.dao.DAOFactory;
 import nl.han.gateway.dao.IDAOFactory;
 import nl.han.gateway.dao.IPootDAO;
 import nl.han.gateway.exceptions.NotFoundException;
 import nl.han.gateway.models.Poot;
+import nl.han.mysensor.models.MyMessage;
+import nl.han.mysensor.service.MySensorSendService;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -28,13 +31,17 @@ public class PotenServiceTest {
     @Mock
     private IPootDAO iPootDAOmock;
     private PotenService potenService;
+    @Mock
+    private MySensorSendService sensorSendServiceMock;
+    @Mock
+    private BackendPootService backendPootServiceMock;
 
     @Before
     public void setup() {
         mockStatic(DAOFactory.class);
         when(DAOFactory.getInstance()).thenReturn(idaoFactoryMock);
         when(idaoFactoryMock.getPootDAO()).thenReturn(iPootDAOmock);
-        this.potenService = new PotenService();
+        this.potenService = new PotenService(this.iPootDAOmock, this.sensorSendServiceMock, this.backendPootServiceMock);
     }
 
     @Test
@@ -64,10 +71,26 @@ public class PotenServiceTest {
     }
 
     @Test
-    public void testGetPoot() {
+    public void testGetPoot() throws NotFoundException {
         Poot pootMock = mock(Poot.class);
         when(this.iPootDAOmock.findByPootId(5L)).thenReturn(pootMock);
         assertEquals(pootMock, this.potenService.getPoot(5L));
     }
 
+    @Test(expected = NotFoundException.class)
+    public void testResetPootNotFound() throws NotFoundException {
+        doThrow(NotFoundException.class)
+                .when(this.backendPootServiceMock)
+                .removePootFromBackend(any(Poot.class));
+        this.potenService.resetPoot(mock(Poot.class));
+    }
+
+    @Test
+    public void resetPootTestSuccesfully() throws NotFoundException {
+        Poot pootMock = mock(Poot.class);
+        this.potenService.resetPoot(pootMock);
+        verify(this.backendPootServiceMock).removePootFromBackend(pootMock);
+        verify(this.sensorSendServiceMock).sendMessage(any(MyMessage.class));
+        verify(this.iPootDAOmock).delete(pootMock);
+    }
 }

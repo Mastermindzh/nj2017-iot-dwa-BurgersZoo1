@@ -21,4 +21,8 @@ public class MyMessageService {
     public MyMessage save(MyMessage message) {
         return this.myMessageDAO.save(message);
     }
+
+    public List<MyMessage> getAllMessages(String[] searchParams, int page, int size, String order) {
+        return this.myMessageDAO.getAllFiltered(searchParams, page, size, order);
+    }
 }
