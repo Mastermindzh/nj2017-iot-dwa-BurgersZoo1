@@ -272,6 +272,8 @@ gateway.properties
 
 apps/server/audio/*
 !apps/server/audio/.gitinclude
+apps/server/temp/*
+!apps/server/temp/.gitinclude
 !apps/server/audio/beer.wav
 !apps/server/audio/default.wav
 !apps/server/audio/dolphin.wav
