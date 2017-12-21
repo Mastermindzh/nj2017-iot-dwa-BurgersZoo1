@@ -8,8 +8,6 @@
 
 #include "documentatie/technisch-ontwerp/keuzes-dwa/keuzes-dwa.md"
 
-#include "documentatie/technisch-ontwerp/datamodel/datamodel.md"
-
 #include "documentatie/technisch-ontwerp/database/database.md"
 
 #include "documentatie/technisch-ontwerp/system-flow/system-flow.md"
