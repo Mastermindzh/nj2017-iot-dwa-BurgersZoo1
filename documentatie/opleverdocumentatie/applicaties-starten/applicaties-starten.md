@@ -1,7 +1,7 @@
-# Het starten van de applicaties
+### Het starten van de applicaties
 Dit hoofdstuk zal beschrijven hoe alle webapplicaties, de backend en de database opgestart moeten worden. Ook zal dit hoofdstuk beschrijven hoe de database gevuld kan worden met het seedscript zodat er wat testdata in de apps staat.
 
-## randvoorwaarden
+#### randvoorwaarden
 
 Om alle applicaties te draaien moeten er een aantal dingen geregeld worden op de pc/laptop.
 De tabel hieronder geeft aan welke stukken software benodigd zijn en zal, waar mogelijk, een link worden geven naar de officiele website.
@@ -14,13 +14,13 @@ De tabel hieronder geeft aan welke stukken software benodigd zijn en zal, waar m
 
 Als alle bovenstaande software geinstalleerd is dan kunnen alle apps gestart worden, om de database te vullen is er echter nog een extra stukje software nodig. De software heet `mongorestore` en komt , ten tijde van schrijven, mee geinstalleerd met het mongo pakket (Op Windows met [mongotools](https://github.com/mongodb/mongo-tools)). Bekijk [deze website](https://docs.mongodb.com/manual/reference/program/mongorestore/) voor meer informatie.
 
-## Het starten van de web applicaties en de database
+#### Het starten van de web applicaties en de database
 
 Het volgende hoofdstuk zal uitleggen hoe de applicaties gestart kunnen worden in zowel development modus als productie modus. Voor het testen is alleen de development modus meer als genoeg.
 
 > ***NOTE!  de commando's zijn bedacht voor Linux en Mac OS X, hieronder wordt beschreven hoe het werkt voor alle drie de systemen al is het zeer aan te raden om een Linux Virtual machine op te zetten. (klik [hier](https://www.storagecraft.com/blog/the-dead-simple-guide-to-installing-a-linux-virtual-machine-on-windows/) voor uitleg)***
 
-### Development applicaties
+##### Development applicaties
 
 Om de applicaties in development modus te starten (in Docker) moet het volgende commando worden uitgevoerd:
 
@@ -45,7 +45,7 @@ Het commando "copy-endpoint-dev" gaat echter **fout** op een Windows systeem omd
 3. Draai het `docker-compose up` commando
 
 
-### productie builds (minified)
+##### productie builds (minified)
 
 Om de applicaties in productie modus te starten (in Docker) moet het volgende commando worden uitgevoerd:
 
@@ -72,7 +72,7 @@ Het commando "copy-endpoint-dev" gaat echter **fout** op een Windows systeem omd
 3. Draai het `docker-compose up` commando
 4. Draai het `bash seedscript.sh SERVERURL` bestand. (op Windows heb je hier de [bash shell voor Windows](https://www.howtogeek.com/249966/how-to-install-and-use-the-linux-bash-shell-on-windows-10/) voor nodig.)
 
-### De applicaties bezoeken
+##### De applicaties bezoeken
 
 Om de applicaties te bezoeken, en ze te gebruiken, ga je naar de volgende web adressen:
 

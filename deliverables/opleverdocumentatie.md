@@ -11,25 +11,34 @@ In dit rapport wordt allereerst het concept beschreven, gevolgd door een beschri
 
 <!-- toc -->
 
+  * [Concept](#concept)
   * [Systeemoverview (hoe werkt dit systeem globaal?)](#systeemoverview-hoe-werkt-dit-systeem-globaal)
   * [Opzethandleiding (hoe start ik het systeem?)](#opzethandleiding-hoe-start-ik-het-systeem)
-- [Het starten van de applicaties](#het-starten-van-de-applicaties)
-  * [randvoorwaarden](#randvoorwaarden)
-  * [Het starten van de web applicaties en de database](#het-starten-van-de-web-applicaties-en-de-database)
-    + [Development applicaties](#development-applicaties)
-    + [productie builds (minified)](#productie-builds-minified)
-    + [De applicaties bezoeken](#de-applicaties-bezoeken)
-- [Front-end](#front-end)
-  * [Redux](#redux)
-  * [Folderindeling (package structuur)](#folderindeling-package-structuur)
-- [Installatie Gateway](#installatie-gateway)
-  * [MongoDB](#mongodb)
-  * [Java](#java)
-  * [RXTX](#rxtx)
-  * [Aansluiting Arduino](#aansluiting-arduino)
-  * [Start gateway](#start-gateway)
+    + [Repo commando's](#repo-commandos)
+    + [Het starten van de applicaties](#het-starten-van-de-applicaties)
+      - [randvoorwaarden](#randvoorwaarden)
+      - [Het starten van de web applicaties en de database](#het-starten-van-de-web-applicaties-en-de-database)
+        * [Development applicaties](#development-applicaties)
+        * [productie builds (minified)](#productie-builds-minified)
+        * [De applicaties bezoeken](#de-applicaties-bezoeken)
+    + [De front-end applicaties](#de-front-end-applicaties)
+      - [Redux](#redux)
+      - [Folderindeling (package structuur)](#folderindeling-package-structuur)
+    + [Installatie Gateway](#installatie-gateway)
+      - [MongoDB](#mongodb)
+      - [Java](#java)
+      - [RXTX](#rxtx)
+      - [Aansluiting Arduino](#aansluiting-arduino)
+      - [Start gateway](#start-gateway)
     + [Poot](#poot)
-  * [Repo commando's](#repo-commandos)
+      - [1. Onderdelen](#1-onderdelen)
+      - [2. Behuizing](#2-behuizing)
+      - [3. Aansluiting](#3-aansluiting)
+      - [4. Code uploaden](#4-code-uploaden)
+      - [5. SD kaart](#5-sd-kaart)
+      - [6. Aanzetten](#6-aanzetten)
+        * [Maduino](#maduino)
+        * [Auduino](#auduino)
   * [Ontwikkelhandleiding (hoe ontwikkel ik?)](#ontwikkelhandleiding-hoe-ontwikkel-ik)
 - [Bijlagen](#bijlagen)
 - [Begrippenlijst](#begrippenlijst)
@@ -37,14 +46,56 @@ In dit rapport wordt allereerst het concept beschreven, gevolgd door een beschri
 
 <!-- tocstop -->
 
+## Concept
+In het park van Burgers' Zoo wordt een speurtocht uitgezet om zo het mobiliteitsprobleem te verminderen door afleiding voor de kinderen.
+
+Veel voorkomende bezoekers in Burgers' Zoo zijn kinderen met hun (groot)ouders. Kinderen zitten vol met energie en zijn enthousiast dus rennen door het park heen. Tegelijkertijd lopen de ouders hier achteraan en moeten ze de kinderen in de gaten houden. Door het heuvelachtige landschap waarop Burgers' Zoo gebouwd is kan dit heel vermoeiend zijn. Een speurtocht geeft de kinderen afleiding en zorgt er voor dat de kinderen bij een punt in de speurtocht stil blijven staan.
+In het park staan bij elk dierenverblijf borden met informatie over de dieren of planten die daar te vinden zijn. Dit zijn vaak lange stukken tekst die de kinderen zelf niet kunnen lezen. Dit zorgt er voor dat de ouders dit moeten voorlezen. Dit brengt dus extra last met zich mee voor de ouders. Dit wordt opgelost met de speurtocht doordat er weetjes afgespeeld worden in kindertaal.
+
+De speurtocht is bedoeld voor kinderen om een ranger te spelen. De kinderen krijgen bij binnenkomst een NFC pas, hun rangerpas, die ze kunnen gebruiken om mee te doen aan de speurtocht. Door het park heen staan speurpunten, in de vorm van een dierenpoot, verspreid. Wanneer een ranger zijn rangerpas scant bij een poot krijgt hij een dierenweetje te horen samen met een dierengeluid. Het doel is om alle dierenpoten te vinden en te scannen. Als de ranger de dierentuin verlaat krijgt hij een ranger certificaat. Op dit certificaat staat een unieke ranger code die hij kan gebruiken om thuis in te loggen op de ranger app.
+
+In de ranger app kan een ranger kijken wat hij allemaal gedaan heeft tijdens zijn bezoek aan Burgers' Zoo. Hier is te vinden welke poten hij wanneer gescand heeft. Hier is te zien welk weetje en dierengeluid er bij hoort, zodat dit nogmaals geluisterd kan worden. De app geeft ook aan welke punten nog niet gescand zijn. Dit kan een aanleiding zijn om het park nog een keer te bezoeken, om zo alle punten van de speurtocht te vinden. Hier kunnen beloningen aan gekoppeld worden in de vorm van korting of een gift. Medewerkers van Burgers' Zoo kunnen de poten en de speurtocht beheren door hier andere dierengeluidjes of weetjes aan toe te voegen.
+
+
 ## Systeemoverview (hoe werkt dit systeem globaal?)
 
 ## Opzethandleiding (hoe start ik het systeem?)
 
-# Het starten van de applicaties
+Opzet handleiding index text
+
+
+### Repo commando's
+
+In dit hoofdstuk wordt uitgelegd wat de "repo commando's" inhouden.
+Een "repo commando" is één van de scripts die in de package.json staan.
+
+Dat levert de volgende items op:
+
+
+| Commando                    | resultaat                                                                                              | Notities                                  |
+|-----------------------------|--------------------------------------------------------------------------------------------------------|-------------------------------------------|
+| start                       | Start de apps in development modus                                                                     |                                           |
+| build                       | Start de apps in productie modus (en bouwt productie files)                                            |                                           |
+| build-docker                | Bouwt zowel de dev als de productie docker images.                                                     |                                           |
+| build-docker-dev            | Bouwt de dev docker image.                                                                             |                                           |
+| build-docker-prod           | Bouwt de productie docker image                                                                        |                                           |
+| compile-deliverables        | Bouwt alle documentatie                                                                                |                                           |
+| compile-images              | Verzamelt alle images in de deliverables/images map zodat ze gebruikt kunnen worden in de documentatie | ! werkt niet op Windows                   |
+| compile-pva                 | Bouwt het Plan van Aanpak                                                                              | Wordt gebouwt in de deliverables map      |
+| compile-fo                  | Bouwt het Functioneel ontwerp                                                                          | Wordt gebouwt in de deliverables map      |
+| compile-to                  | Bouwt het technisch ontwerp                                                                            | Wordt gebouwt in de deliverables map      |
+| compile-testplan            | Bouwt het testplan                                                                                     | Wordt gebouwt in de deliverables map      |
+| compile-opleverdocumentatie | Bouwt de opleverdocumentatie                                                                           | Wordt gebouwt in de deliverables map      |
+| generate-pdfs               | Zet alle gebouwde bestanden om naar een .pdf                                                           | Wordt gebouwt in de deliverables/pdfs map |
+| copy-endpoint-prod          |  Dit kopieërd alle development instellingen naar de apps                                                                                                     | ! werkt niet op Windows                   |
+| copy-endpoint-dev           |  Dit kopieërd alle development instellingen naar de apps                                                   | ! werkt niet op Windows                   |
+| postinstall                 | Dit script draait NA een npm install en zal de "build-docker" taak uitvoeren                           |                                           |
+
+
+### Het starten van de applicaties
 Dit hoofdstuk zal beschrijven hoe alle webapplicaties, de backend en de database opgestart moeten worden. Ook zal dit hoofdstuk beschrijven hoe de database gevuld kan worden met het seedscript zodat er wat testdata in de apps staat.
 
-## randvoorwaarden
+#### randvoorwaarden
 
 Om alle applicaties te draaien moeten er een aantal dingen geregeld worden op de pc/laptop.
 De tabel hieronder geeft aan welke stukken software benodigd zijn en zal, waar mogelijk, een link worden geven naar de officiele website.
@@ -57,13 +108,13 @@ De tabel hieronder geeft aan welke stukken software benodigd zijn en zal, waar m
 
 Als alle bovenstaande software geinstalleerd is dan kunnen alle apps gestart worden, om de database te vullen is er echter nog een extra stukje software nodig. De software heet `mongorestore` en komt , ten tijde van schrijven, mee geinstalleerd met het mongo pakket (Op Windows met [mongotools](https://github.com/mongodb/mongo-tools)). Bekijk [deze website](https://docs.mongodb.com/manual/reference/program/mongorestore/) voor meer informatie.
 
-## Het starten van de web applicaties en de database
+#### Het starten van de web applicaties en de database
 
 Het volgende hoofdstuk zal uitleggen hoe de applicaties gestart kunnen worden in zowel development modus als productie modus. Voor het testen is alleen de development modus meer als genoeg.
 
 > ***NOTE!  de commando's zijn bedacht voor Linux en Mac OS X, hieronder wordt beschreven hoe het werkt voor alle drie de systemen al is het zeer aan te raden om een Linux Virtual machine op te zetten. (klik [hier](https://www.storagecraft.com/blog/the-dead-simple-guide-to-installing-a-linux-virtual-machine-on-windows/) voor uitleg)***
 
-### Development applicaties
+##### Development applicaties
 
 Om de applicaties in development modus te starten (in Docker) moet het volgende commando worden uitgevoerd:
 
@@ -88,7 +139,7 @@ Het commando "copy-endpoint-dev" gaat echter **fout** op een Windows systeem omd
 3. Draai het `docker-compose up` commando
 
 
-### productie builds (minified)
+##### productie builds (minified)
 
 Om de applicaties in productie modus te starten (in Docker) moet het volgende commando worden uitgevoerd:
 
@@ -115,7 +166,7 @@ Het commando "copy-endpoint-dev" gaat echter **fout** op een Windows systeem omd
 3. Draai het `docker-compose up` commando
 4. Draai het `bash seedscript.sh SERVERURL` bestand. (op Windows heb je hier de [bash shell voor Windows](https://www.howtogeek.com/249966/how-to-install-and-use-the-linux-bash-shell-on-windows-10/) voor nodig.)
 
-### De applicaties bezoeken
+##### De applicaties bezoeken
 
 Om de applicaties te bezoeken, en ze te gebruiken, ga je naar de volgende web adressen:
 
@@ -132,11 +183,11 @@ Om de applicaties te bezoeken, en ze te gebruiken, ga je naar de volgende web ad
 
 
 
-# Front-end
+### De front-end applicaties
 
 De front-end applicaties zijn opgebouwd met een React seed van [Corey House](https://github.com/coryhouse), namelijk [react-slingshot](https://github.com/coryhouse/react-slingshot). Corey heeft op zijn Github repository een [uitgebreide uitleg](https://github.com/coryhouse/react-slingshot/blob/master/README.md#get-started) staan over het werken met zijn slingshot seed. De gekozen bundler voor dit project is [Webpack](https://webpack.js.org/).
 
-## Redux
+#### Redux
 
 Het maken van een applicatie in React kan snel uit de hand lopen als je applicatie groter wordt. Om structuur in de applicatie
 aan te brengen is gekozen om Redux te gebruiken.
@@ -149,7 +200,7 @@ uit een aantal onderdelen maar het belangrijkste dat je moet onthouden zijn de v
 - **action creators**: functies die iets doen, bijvoorbeeld een API benaderen of iets uitrekenen. De uitkomst geven ze door aan de reducers. Dat doorgeven wordt ***'dispatchen'*** genoemd.
 
 
-## Folderindeling (package structuur)
+#### Folderindeling (package structuur)
 
 De folderindeling hanteert de naamgevingen van Redux, zodat iedereen die weet wat Redux is meteen snapt waar files moeten komen te staan.
 
@@ -175,8 +226,8 @@ De folderindeling hanteert de naamgevingen van Redux, zodat iedereen die weet wa
 
 
 
-Installatie Gateway
-============
+### Installatie Gateway
+
 
 Om de gateway werkend te krijgen zijn er een aantal vereisten:
 
@@ -185,7 +236,7 @@ Om de gateway werkend te krijgen zijn er een aantal vereisten:
 - Er is een werkende versie van `RASPBIAN STRETCH WITH DESKTOP` geïnstalleerd.
 - Er is toegang via SSH of direct op de Raspberry Pi 3 terminal toegang.
 
-## MongoDB
+#### MongoDB
 Omdat er het een en ander wordt opgeslagen op de Raspberry Pi 3 moet er een database geïnstalleerd worden, in dit geval MongoDB.
 
 Dit kan op de Raspberry Pi 3 gedaan worden met de volgende commando's in de terminal:
@@ -197,13 +248,13 @@ $ sudo apt-get install mongodb-server
 ```
 *Het upgrade process kan een tijdje duren.*
 
-Als de MongoDB server succesvol geïnstalleerd is, kan deze service gestart worden door: 
+Als de MongoDB server succesvol geïnstalleerd is, kan deze service gestart worden door:
 ``` bash
 $ sudo service mongodb start
 ```
 
-## Java
-De gateway draait in een JVM en het is dus nodig om de juiste Java installatie te installeren. 
+#### Java
+De gateway draait in een JVM en het is dus nodig om de juiste Java installatie te installeren.
 
 ``` bash
 sudo su
@@ -219,21 +270,21 @@ sudo apt-get update
 sudo apt-get install oracle-java8-installer
 ```
 
-## RXTX
+#### RXTX
 
 ``` bash
 sudo apt-get install librxtx-java
 ```
 
-## Aansluiting Arduino
+#### Aansluiting Arduino
 ![Aansluitschema Arduino Nano met een NRF24L01+](images/Arduino_Nano_NRF24_bb.png)
 *Aansluitschema Arduino Nano met een NRF24L01+*
 
 De Arduino moet vervolgens verbonden worden via een USB kabel met de Raspberry Pi 3.
 
-## Start gateway
+#### Start gateway
 Om de gateway te starten moet eerst de MongoDB aan staan. Dat kan met het eerste commando.
-Als deze draait kan daarna de gateway zelf gestart worden. 
+Als deze draait kan daarna de gateway zelf gestart worden.
 ``` bash
 sudo service mongodb start #starts mongo service
 
@@ -243,33 +294,108 @@ Bij het tweede gedeelte, om Java te starten, is het belangrijk dat de volgende r
 
 
 ### Poot
+In dit hoofdstuk wordt beschreven hoe een fysieke poot kan worden gebouwd.
+
+#### 1. Onderdelen
+
+TODO: WELKE ONDERDELEN ZIJN NODIG?
+TODO: EEPROM MOET LEEG ZIJN  (vraag aan Arne)
+Dit doet Sebastiaan
+
+#### 2. Behuizing
+De behuizing van de poot bestaat uit een houten voorplaat met op de achterkant een plastic bakje met daarin alle electronica. Hieronder een sfeerimpressie van de behuizing.
+
+![images/impressie.png](images/impressie.png)
+
+Een gedetailieërd ontwerp voor de behuizing is [hier](https://github.com/HANICA-MinorMulti/nj2017-iot-dwa-BurgersZoo1/blob/master/documentatie/technisch-ontwerp/poot-fysiek/poot-fysiek-ontwerp.md) te vinden.
+
+#### 3. Aansluiting
+
+Sluit de twee arduino's aan volgens het onderstaande aansluitschema of gebruik de aansluittabellen daaronder om de verbindingen tussen componenten en Arduino's te maken.
+
+![images/aansluitschema.png](images/aansluitschema.png)
+
+**Auduino**
+
+| Component  | Pin op Component | Pin op Arduino |
+|------------|------------------|----------------|
+| Blauwe LED | +                | D2             |
+| Blauwe LED | -                | GND            |
+| Speaker    | +                | D9             |
+| Speaker    | -                | GND            |
+| SD-reader  | SCK              | D13            |
+| SD-reader  | CS               | D4             |
+| SD-reader  | MOSI             | D11            |
+| SD-reader  | MISO             | D12            |
+| SD-reader  | VCC              | 5V             |
+| SD-reader  | GND              | GND            |
+| Maduino    | A4               | A4             |
+| Maduino    | A5               | A5             |
+| Maduino    | GND              | GND            |
+
+**Maduino**
+
+| Component  | Pin op Component | Pin op Maduino   |
+|------------|------------------|------------------|
+| Groene LED | +                | D2               |
+| Groene LED | -                | GND              |
+| Oranje LED | +                | D3               |
+| Oranje LED | -                | GND              |
+| Rode LED   | +                | D4               |
+| Rode LED   | -                | GRND             |
+| NRF        | VCC              | 3.3V             |
+| NRF        | GND              | GND              |
+| NRF        | CE               | D10              |
+| NRF        | CSN / CS         | D9               |
+| NRF        | CSK              | D13              |
+| NRF        | MOSI             | D11              |
+| NRF        | MISO             | D12              |
+| NRF        | IRQ              | NIET AANGESLOTEN |
+| RFID       | VCC              | 3.3V             |
+| RFID       | RST              | D7               |
+| RFID       | GND              | GND              |
+| RFID       | MISO             | D12              |
+| RFID       | MOSI             | D11              |
+| RFID       | SCK              | D13              |
+| RFID       | NSS              | D8               |
+| RFID       | IRQ              | NIET AANGESLOTEN |
 
 
-## Repo commando's
-In dit hoofdstuk wordt uitgelegd wat de "repo commando's" inhouden.
-Een "repo commando" is één van de scripts die in de package.json staan.
+#### 4. Code uploaden
 
-Dat levert de volgende items op:
+TODO: LINK NAAR BUILT HEX FILES + UITLEG OVER HOE JE DEZE UPLOAD
+Dit doet Sijmen
 
+#### 5. SD kaart
 
-| Commando                    | resultaat                                                                                              | Notities                                  |
-|-----------------------------|--------------------------------------------------------------------------------------------------------|-------------------------------------------|
-| start                       | Start de apps in development modus                                                                     |                                           |
-| build                       | Start de apps in productie modus (en bouwt productie files)                                            |                                           |
-| build-docker                | Bouwt zowel de dev als de productie docker images.                                                     |                                           |
-| build-docker-dev            | Bouwt de dev docker image.                                                                             |                                           |
-| build-docker-prod           | Bouwt de productie docker image                                                                        |                                           |
-| compile-deliverables        | Bouwt alle documentatie                                                                                |                                           |
-| compile-images              | Verzamelt alle images in de deliverables/images map zodat ze gebruikt kunnen worden in de documentatie | ! werkt niet op Windows                   |
-| compile-pva                 | Bouwt het Plan van Aanpak                                                                              | Wordt gebouwt in de deliverables map      |
-| compile-fo                  | Bouwt het Functioneel ontwerp                                                                          | Wordt gebouwt in de deliverables map      |
-| compile-to                  | Bouwt het technisch ontwerp                                                                            | Wordt gebouwt in de deliverables map      |
-| compile-testplan            | Bouwt het testplan                                                                                     | Wordt gebouwt in de deliverables map      |
-| compile-opleverdocumentatie | Bouwt de opleverdocumentatie                                                                           | Wordt gebouwt in de deliverables map      |
-| generate-pdfs               | Zet alle gebouwde bestanden om naar een .pdf                                                           | Wordt gebouwt in de deliverables/pdfs map |
-| copy-endpoint-prod          |  Dit kopieërd alle development instellingen naar de apps                                                                                                     | ! werkt niet op Windows                   |
-| copy-endpoint-dev           |  Dit kopieërd alle development instellingen naar de apps                                                   | ! werkt niet op Windows                   |
-| postinstall                 | Dit script draait NA een npm install en zal de "build-docker" taak uitvoeren                           |                                           |
+TODO: HOE SD KAART FORMATTEREN?
+TODO: NAAMGEVING VAN BESTANDEN OP SD KAART
+TODO: UITLEG CONVERSIE AUDIO NAAR JUISTE FORMAAT
+Dit doet Thomas
+
+#### 6. Aanzetten
+Nadat alle bovenstaande stappen doorlopen zijn kunnen de twee Arduino's op stroom worden gezet. Vervolgens gaan de twee Arduino's initialiseren. Om te kunnen zien of onderdelen goed worden geinitialiseerd moet worden gekeken naar de statuslampjes. Per Arduino is hieronder te vinden wat de statuslampjes betekeken.
+
+##### Maduino
+Als alles goed gaat dan gaan er 3 lampjes branden zodra de Maduino wordt opgestart. Wanneer het initialiseren compleet is gaan de drie lampjes uit. Verder zijn er een aantal abnormale lampcodes. Deze zijn hieronder uitgewerkt.
+
+| Gedrag | Betekenis |
+| --- | --- |
+| Alle lampjes blijven aan staan. | Bezig met opstart sequence. Zoalang de Arduino nog niet verbonden is met een gateway worden deze lampjes laten zien. Als dit lang zo blijft staan dan is er waarschijnlijk iets mis met de NRF24L01+ óf kan de gateway niet worden gevonden. |
+| Geel lampje continu aan | Er kan niet worden verbonden met de auduino. Er is iets mis met het verzenden naar de Auduino met I2C. |
+| Geel lampje kort knipper | Er wordt verzonden naar de Auduino. Wanneer je een hele korte gele knipper ziet dan wordt er een signiaaltje verzonden naar de Auduino. |
+| Rood lampje 0.5 seconde knipper | De gescande pas kon niet worden geauthenticeerd. |
+| Rood lampje 1 seconde knipper | De gescande heeft niet de inhoud `Burgers Zoo`. |
+| Groen lampje 1 seconde aan | Er is een valide pas gescant. |
+
+##### Auduino
+De Auduino laat geen led branden als er hij niks aan het doen is. De volgende statussen kunnen worden afgelezen van de blauwe status led:
+
+| Gedrag | Betekenis |
+| --- | --- |
+| Blauwe led knippert snel | De SD kaart lezer kon niet worden geinitialiseerd. |
+| Blauwe led brand continu | Er wordt een geluidje afgespeeld |
+
 
 
 ## Ontwikkelhandleiding (hoe ontwikkel ik?)

@@ -1,5 +1,5 @@
-Installatie Gateway
-============
+### Installatie Gateway
+
 
 Om de gateway werkend te krijgen zijn er een aantal vereisten:
 
@@ -8,7 +8,7 @@ Om de gateway werkend te krijgen zijn er een aantal vereisten:
 - Er is een werkende versie van `RASPBIAN STRETCH WITH DESKTOP` geïnstalleerd.
 - Er is toegang via SSH of direct op de Raspberry Pi 3 terminal toegang.
 
-## MongoDB
+#### MongoDB
 Omdat er het een en ander wordt opgeslagen op de Raspberry Pi 3 moet er een database geïnstalleerd worden, in dit geval MongoDB.
 
 Dit kan op de Raspberry Pi 3 gedaan worden met de volgende commando's in de terminal:
@@ -20,13 +20,13 @@ $ sudo apt-get install mongodb-server
 ```
 *Het upgrade process kan een tijdje duren.*
 
-Als de MongoDB server succesvol geïnstalleerd is, kan deze service gestart worden door: 
+Als de MongoDB server succesvol geïnstalleerd is, kan deze service gestart worden door:
 ``` bash
 $ sudo service mongodb start
 ```
 
-## Java
-De gateway draait in een JVM en het is dus nodig om de juiste Java installatie te installeren. 
+#### Java
+De gateway draait in een JVM en het is dus nodig om de juiste Java installatie te installeren.
 
 ``` bash
 sudo su
@@ -42,21 +42,21 @@ sudo apt-get update
 sudo apt-get install oracle-java8-installer
 ```
 
-## RXTX
+#### RXTX
 
 ``` bash
 sudo apt-get install librxtx-java
 ```
 
-## Aansluiting Arduino
+#### Aansluiting Arduino
 ![Aansluitschema Arduino Nano met een NRF24L01+](images/Arduino_Nano_NRF24_bb.png)
 *Aansluitschema Arduino Nano met een NRF24L01+*
 
 De Arduino moet vervolgens verbonden worden via een USB kabel met de Raspberry Pi 3.
 
-## Start gateway
+#### Start gateway
 Om de gateway te starten moet eerst de MongoDB aan staan. Dat kan met het eerste commando.
-Als deze draait kan daarna de gateway zelf gestart worden. 
+Als deze draait kan daarna de gateway zelf gestart worden.
 ``` bash
 sudo service mongodb start #starts mongo service
 

@@ -12,11 +12,14 @@ In dit rapport wordt allereerst het concept beschreven, gevolgd door een beschri
 
 #include "documentatie/opleverdocumentatie/concept/concept.md"
 
-## Hypothese
-
 ## Systeemoverview (hoe werkt dit systeem globaal?)
 
 ## Opzethandleiding (hoe start ik het systeem?)
+
+Opzet handleiding index text
+
+
+#include "documentatie/opleverdocumentatie/repo-commands/repo-commands.md"
 
 #include "documentatie/opleverdocumentatie/applicaties-starten/applicaties-starten.md"
 
@@ -26,14 +29,9 @@ In dit rapport wordt allereerst het concept beschreven, gevolgd door een beschri
 
 #include "documentatie/opleverdocumentatie/front-end/front-end.md"
 
-### Gateway
 #include "documentatie/opleverdocumentatie/gateway/installatie-handleiding-gateway.md"
 
-### Poot
-#include "documentatie/opleverdocumentatie/arduino/arduino.md"
-
-## Repo commando's
-#include "documentatie/opleverdocumentatie/repo-commands/repo-commands.md"
+#include "documentatie/opleverdocumentatie/poot/opzethandleiding.md"
 
 ## Ontwikkelhandleiding (hoe ontwikkel ik?)
 

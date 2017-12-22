@@ -1,8 +1,8 @@
-# Front-end
+### De front-end applicaties
 
 De front-end applicaties zijn opgebouwd met een React seed van [Corey House](https://github.com/coryhouse), namelijk [react-slingshot](https://github.com/coryhouse/react-slingshot). Corey heeft op zijn Github repository een [uitgebreide uitleg](https://github.com/coryhouse/react-slingshot/blob/master/README.md#get-started) staan over het werken met zijn slingshot seed. De gekozen bundler voor dit project is [Webpack](https://webpack.js.org/).
 
-## Redux
+#### Redux
 
 Het maken van een applicatie in React kan snel uit de hand lopen als je applicatie groter wordt. Om structuur in de applicatie
 aan te brengen is gekozen om Redux te gebruiken.
@@ -15,7 +15,7 @@ uit een aantal onderdelen maar het belangrijkste dat je moet onthouden zijn de v
 - **action creators**: functies die iets doen, bijvoorbeeld een API benaderen of iets uitrekenen. De uitkomst geven ze door aan de reducers. Dat doorgeven wordt ***'dispatchen'*** genoemd.
 
 
-## Folderindeling (package structuur)
+#### Folderindeling (package structuur)
 
 De folderindeling hanteert de naamgevingen van Redux, zodat iedereen die weet wat Redux is meteen snapt waar files moeten komen te staan.
 
