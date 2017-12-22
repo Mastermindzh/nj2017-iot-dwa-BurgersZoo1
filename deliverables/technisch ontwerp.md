@@ -18,7 +18,6 @@
     + [De back-end](#de-back-end)
     + [De front-ends](#de-front-ends)
     + [De ontwikkelomgeving](#de-ontwikkelomgeving)
-- [Datamodel](#datamodel)
 - [Data Opslag](#data-opslag)
 - [System flow](#system-flow)
   * [Nieuwe poot aanmelden](#nieuwe-poot-aanmelden)
@@ -140,12 +139,6 @@ Om de front-ends snel met een goede basis op te zetten is [React slingshot](http
 Om met meerdere developers makkelijk te kunnen werken en om ervoor te zorgen dat een vervolggroep gemakkelijk alles kan laten starten moet er een ontwikkelomgeving komen. Er is hier gekozen voor [Docker](https://www.docker.com/), uit [onderzoek](https://github.com/HANICA-MinorMulti/nj2017-iot-dwa-BurgersZoo1/blob/master/documentatie/onderzoeken/docker/docker.md) bleek dat dit de beste optie was omdat het zo simpel werkt. Met Docker kunnen we ook garanderen dat het op iedere machine hetzelfde werkt en in de toekomst gemakkelijk schalen.
 
 
-# Datamodel
-
-![datamodel](images/datamodel.png)
-
-TODO
-
 # Data Opslag
 Om de data van het systeem op te slaan wordt er een Mongo database gebruikt. Deze database wordt gevuld door Loopback. Loopback werkt iets anders dan Mongo met data omdat het een model systeem gebruikt.
 
@@ -154,6 +147,8 @@ In Loopback genereer je models met eigenschappen. Deze eigenschappen staan gelij
 Een globale weergave van de data in de database is hieronder te zien. Dit bevat alleen de data van de twee webapplicaties, nog niet de data die de gateway nodig heeft.
 
 ![Datamodel](./images/datamodel.png)
+Een ranger kan met zijn pas mee doen aan de speurtocht. De locaties die een ranger bezocht heeft zijn te vinden in 'ranger heeft bezocht'.
+De plekken die een ranger bezoekt zijn Speurpunten. Die staan in een verblijf. Weetjes en een dierengeluid worden op het speurpunt geladen zodat deze afgespeeld kunnen worden voor de rangers. Uiteindelijk wordt een speurpunt op een fysieke poot geladen zodat hij klaar is voor gebruik.
 
 Vanuit de API specificatie die gemaakt is voor de gateway komt er nog een andere databehoefte naar boven. Beide dataschema's samen zijn verwerkt in de API, dat levert onderstaand dataschama op. Hierin zijn de relaties tussen de verschillende modellen te zien.
 

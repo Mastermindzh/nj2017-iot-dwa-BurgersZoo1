@@ -2,17 +2,20 @@
 #define TEMPSENSOR
 
 #include <Arduino.h>
+#include <SimpleDHT.h>
 
 class TempSensor {
-  public:
-    TempSensor(byte pin);
+public:
+  TempSensor(int pin);
 
-    /**
-     * Get the last measrued temperature.
-     */
-    byte getTemperature();
-  private:
-    byte pin;
+  /**
+  * Get the last measrued temperature.
+  */
+  float getTemperature();
+private:
+  int pin;
+  SimpleDHT11 dht;
+
 };
 
 #endif

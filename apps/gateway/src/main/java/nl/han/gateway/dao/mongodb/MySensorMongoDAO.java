@@ -20,8 +20,6 @@ import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
 import static com.mongodb.client.model.Filters.eq;
-import static nl.han.gateway.util.GatewayProperties.getProperty;
-import static nl.han.gateway.util.GatewayProperties.hasProperty;
 
 public class MySensorMongoDAO implements IMyMessagesDAO {
 
