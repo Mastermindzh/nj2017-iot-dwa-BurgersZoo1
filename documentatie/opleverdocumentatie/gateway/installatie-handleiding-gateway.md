@@ -4,7 +4,7 @@ Om de gateway werkend te krijgen zijn er een aantal vereisten:
 
 - Raspberry Pi 3.
 - Arduino Nano, Mega of Uno met een aangesloten NRF24L01+.
-- Er is een werkende versie van `RASPBIAN STRETCH WITH DESKTOP` geïnstalleerd. Mogenlijk werkt het ook met de minimale versie, echter is dit (nog) niet getest.
+- Er is een werkende versie van `RASPBIAN STRETCH WITH DESKTOP` geïnstalleerd. Mogenlijk werkt het ook met de minimale versie, echter is dit (nog) niet getest. [Download](https://www.raspberrypi.org/downloads/raspbian/)
 - Er is toegang via SSH of direct op de Raspberry Pi 3 terminal toegang.
 
 #### MongoDB
