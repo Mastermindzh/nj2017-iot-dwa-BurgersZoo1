@@ -4,6 +4,21 @@ Om de technische haalbaarheid van het project te testen wordt er een zogeheten F
 
 <!-- toc -->
 
+- [Context](#context)
+- [Begrippenlijst](#begrippenlijst)
+- [Doel](#doel)
+- [Teststrategie](#teststrategie)
+  * [Techniek Test](#techniek-test)
+  * [Educatoren test](#educatoren-test)
+- [Aanpak, beheer en verantwoordelijkheden](#aanpak-beheer-en-verantwoordelijkheden)
+    + [Verantwoordelijkheden](#verantwoordelijkheden)
+- [Infrastructuur](#infrastructuur)
+- [Randvoorwaarden](#randvoorwaarden)
+- [Risico’s en Uitwijkstrategie](#risicos-en-uitwijkstrategie)
+- [Planning](#planning)
+
+<!-- tocstop -->
+
 ## Context
 In november 2017 kreeg een groep studenten van de Hogeschool Arnhem en Nijmegen de opdracht om een speurtocht systeem voor Burgers’ Zoo als concept uit te werken. Dit speurtocht systeem is bedoeld voor kinderen die de dierentuin bezoeken. Het concept is dat kinderen “Ranger” worden en ze naar dieren moeten speuren. Om dit te doen worden de kinderen voorzien van een pasje waarmee de voortgang wordt bijgehouden. Terwijl de kinderen de dierentuin bezoeken kunnen ze zoeken naar dieren ‘poten’. Deze poten zijn paaltjes met daarop wat hardware in de vorm van een dierenpoot. Wanneer een kind een poot vindt, en de pas tegen de poot aan houdt, wordt de pas gescand en wordt het bezoek geregistreerd. Na afloop van het bezoek kunnen kinderen online zien welke poten ze gevonden hebben en welke poten ze nog gemist hebben.
 
@@ -110,4 +125,3 @@ Mocht er geen NRF verbinding op te zetten zijn kan de code op de poten aangepast
 ## Planning
 - Wanneer gaan we testen?
 - Hoe ziet de test op die dag eruit?
-
