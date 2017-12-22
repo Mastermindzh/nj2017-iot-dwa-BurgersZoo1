@@ -11,39 +11,95 @@ In dit rapport wordt allereerst het concept beschreven, gevolgd door een beschri
 
 <!-- toc -->
 
-  * [Systeemoverview (hoe werkt dit systeem globaal?)](#systeemoverview-hoe-werkt-dit-systeem-globaal)
-  * [Opzethandleiding (hoe start ik het systeem?)](#opzethandleiding-hoe-start-ik-het-systeem)
-    + [Backend + Ranger app + Admin app](#backend--ranger-app--admin-app)
-- [Het starten van de applicaties](#het-starten-van-de-applicaties)
-  * [randvoorwaarden](#randvoorwaarden)
-  * [Het starten van de web applicaties en de database](#het-starten-van-de-web-applicaties-en-de-database)
-    + [Development applicaties](#development-applicaties)
-    + [productie builds (minified)](#productie-builds-minified)
-    + [De applicaties bezoeken](#de-applicaties-bezoeken)
-- [Installatie Gateway](#installatie-gateway)
-  * [MongoDB](#mongodb)
-  * [Java](#java)
-  * [RXTX](#rxtx)
-  * [Aansluiting Arduino](#aansluiting-arduino)
-  * [Start gateway](#start-gateway)
-    + [Poot](#poot)
-    + [Repo commando's](#repo-commandos)
-  * [Ontwikkelhandleiding (hoe ontwikkel ik?)](#ontwikkelhandleiding-hoe-ontwikkel-ik)
+- [Concept](#concept)
+- [Systeemoverview](#systeemoverview)
+  * [Gateway](#gateway)
+  * [Frontend apps](#frontend-apps)
+  * [Backend](#backend)
+  * [Database](#database)
+- [Opzethandleiding](#opzethandleiding)
+  * [Starten Backend + Web Apps](#starten-backend--web-apps)
+    + [randvoorwaarden](#randvoorwaarden)
+    + [Het starten van de web applicaties en de database](#het-starten-van-de-web-applicaties-en-de-database)
+      - [Installeren van de dependencies](#installeren-van-de-dependencies)
+      - [Development applicaties](#development-applicaties)
+      - [productie builds (minified)](#productie-builds-minified)
+      - [De applicaties bezoeken](#de-applicaties-bezoeken)
+  * [Installatie Gateway](#installatie-gateway)
+    + [MongoDB](#mongodb)
+    + [Java](#java)
+    + [RXTX](#rxtx)
+    + [Aansluiting Arduino](#aansluiting-arduino)
+    + [Start gateway](#start-gateway)
+  * [Poot](#poot)
+    + [1. Onderdelen](#1-onderdelen)
+    + [2. Behuizing](#2-behuizing)
+    + [3. Aansluiting](#3-aansluiting)
+    + [4. Code uploaden](#4-code-uploaden)
+    + [5. SD kaart](#5-sd-kaart)
+    + [6. Aanzetten](#6-aanzetten)
+      - [Maduino](#maduino)
+      - [Auduino](#auduino)
+- [Ontwikkelhandleiding](#ontwikkelhandleiding)
+  * [Ontwikkeling front-end applicaties](#ontwikkeling-front-end-applicaties)
+    + [Redux](#redux)
+    + [Folderindeling (package structuur)](#folderindeling-package-structuur)
+    + [Tips](#tips)
+  * [Ontwikkeling Backend](#ontwikkeling-backend)
+  * [Ontwikkeling Gateway](#ontwikkeling-gateway)
+- [Eisen](#eisen)
+- [Werking Gradle](#werking-gradle)
+- [Folder structiuur](#folder-structiuur)
+- [Seriële communicatie](#seriele-communicatie)
+- [Uitvoeren op de Raspberry Pi 3](#uitvoeren-op-de-raspberry-pi-3)
+- [Afspraken MySensors protecol](#afspraken-mysensors-protecol)
+  * [Ontwikkeling Poot](#ontwikkeling-poot)
 - [Bijlagen](#bijlagen)
-- [Software lijst](#software-lijst)
+  * [Repo commando's](#repo-commandos)
+  * [Begrippenlijst](#begrippenlijst)
+  * [Software lijst](#software-lijst)
 
 <!-- tocstop -->
 
-## Systeemoverview (hoe werkt dit systeem globaal?)
+## Concept
+In het park van Burgers' Zoo wordt een speurtocht uitgezet om zo het mobiliteitsprobleem te verminderen door afleiding voor de kinderen.
 
-## Opzethandleiding (hoe start ik het systeem?)
+Veel voorkomende bezoekers in Burgers' Zoo zijn kinderen met hun (groot)ouders. Kinderen zitten vol met energie en zijn enthousiast dus rennen door het park heen. Tegelijkertijd lopen de ouders hier achteraan en moeten ze de kinderen in de gaten houden. Door het heuvelachtige landschap waarop Burgers' Zoo gebouwd is kan dit heel vermoeiend zijn. Een speurtocht geeft de kinderen afleiding en zorgt er voor dat de kinderen bij een punt in de speurtocht stil blijven staan.
+In het park staan bij elk dierenverblijf borden met informatie over de dieren of planten die daar te vinden zijn. Dit zijn vaak lange stukken tekst die de kinderen zelf niet kunnen lezen. Dit zorgt er voor dat de ouders dit moeten voorlezen. Dit brengt dus extra last met zich mee voor de ouders. Dit wordt opgelost met de speurtocht doordat er weetjes afgespeeld worden in kindertaal.
 
-### Backend + Ranger app + Admin app
+De speurtocht is bedoeld voor kinderen om een ranger te spelen. De kinderen krijgen bij binnenkomst een NFC pas, hun rangerpas, die ze kunnen gebruiken om mee te doen aan de speurtocht. Door het park heen staan speurpunten, in de vorm van een dierenpoot, verspreid. Wanneer een ranger zijn rangerpas scant bij een poot krijgt hij een dierenweetje te horen samen met een dierengeluid. Het doel is om alle dierenpoten te vinden en te scannen. Als de ranger de dierentuin verlaat krijgt hij een ranger certificaat. Op dit certificaat staat een unieke ranger code die hij kan gebruiken om thuis in te loggen op de ranger app.
 
-# Het starten van de applicaties
+In de ranger app kan een ranger kijken wat hij allemaal gedaan heeft tijdens zijn bezoek aan Burgers' Zoo. Hier is te vinden welke poten hij wanneer gescand heeft. Hier is te zien welk weetje en dierengeluid er bij hoort, zodat dit nogmaals geluisterd kan worden. De app geeft ook aan welke punten nog niet gescand zijn. Dit kan een aanleiding zijn om het park nog een keer te bezoeken, om zo alle punten van de speurtocht te vinden. Hier kunnen beloningen aan gekoppeld worden in de vorm van korting of een gift. Medewerkers van Burgers' Zoo kunnen de poten en de speurtocht beheren door hier andere dierengeluidjes of weetjes aan toe te voegen.
+
+
+## Systeemoverview
+
+De poot bestaat uit twee Arduino's. Er is één Arduino die volledig gaat over het afspelen van audio. In een later stadium zou deze Arduino ook verantwoordelijk worden voor het opslaan van nieuw ontvangen audiobestanden. De Audio Arduino wordt aangestuurd door de Master Arduino.
+
+De Master Arduino (genaamd Maduino) is verantwoordelijk voor alle primaire functionaliteiten en het aansturen van de Audio Arduino (genaamd Auduino). Zo zal de master Arduino een NFC-scanner hebben om passen te detecteren. Ook zal deze Master Arduino de temperatuur en luchtvochtigheid meten. De Master Arduino staat via de NRF24 chip in verbinding met de gateway en zal zo de gateway op de hoogte houden over welke passen zijn langs geweest.
+
+### Gateway
+De poten zullen communiceren met de twee backends van de twee groepen via een gateway. Deze gateway bestaat uit een Arduino en een Raspberry Pi. De Arduino zal draadloos communiceren via NRF24 chips met de poten en alle informatie doorsturen naar de Raspberry Pi. De Pi zal via HTTP/JSON communiceren met de backend's. De Pi kan op zijn beurt weer de Arduino binnen de gateway aansturen om zo informatie bij de poten te krijgen.
+
+### Frontend apps
+De gebruikers zullen werken met een van de twee client-applicaties: de Ranger App voor de rangers en de Admin App voor de administratoren. Deze twee applicaties draaien in de browser en zullen via HTTP/JSON communiceren met de Backends.
+
+De front-end apps zijn modulair opgezet, deze apps draaien op hun eigen plekje en roepen het REST backend middels HTTP aan. Als zei data willen manipuleren zal dit dus ook via de back-end moeten verlopen. Alle front-end apps bij elkaar worden gezien als de "front-end laag", zelfs als deze op andere fysieke machines draaien. Het los koppelen van de applicaties bevordert de werkbaarheid en stabiliteit van de architectuur. Elke app kan afzonderlijk gedeployed / getest worden zonder de rest van de architectuur te beïnvloeden.
+
+### Backend
+Het back-end betreft een REST api welke wordt aangesproken met de verschillende front-ends. De REST api zelf spreekt de datalaag aan om zijn data op te slaan en op te halen. Deze laag kan wederom uitgebreid worden met meerdere instanties van de back-end en/of met een loadbalancer.
+
+### Database
+De database laag zal enkel en alleen de database bevatten, op het moment van prototyping is dit één Mongo database. Dit kan echter uitgebreid worden met meerdere instances (voor redundancy, uitbreidbaarheid) en eventueel voorzien worden van een load balancer.
+
+
+## Opzethandleiding
+Om het systeem in zijn geheel op te zetten zijn drie onderdelen nodig: Web-Backend + Webapps, Gateway en Poot. In onderstaande drie koppen wordt uitgelegd hoe deze drie onderdelen in te stellen. Wanneer alle drie de onderdelen opgezet zijn kan het systeem gebruikt worden. 
+
+### Starten Backend + Web Apps
 Dit hoofdstuk zal beschrijven hoe alle webapplicaties, de backend en de database opgestart moeten worden. Ook zal dit hoofdstuk beschrijven hoe de database gevuld kan worden met het seedscript zodat er wat testdata in de apps staat.
 
-## randvoorwaarden
+#### randvoorwaarden
 
 Om alle applicaties te draaien moeten er een aantal dingen geregeld worden op de pc/laptop.
 De tabel hieronder geeft aan welke stukken software benodigd zijn en zal, waar mogelijk, een link worden geven naar de officiele website.
@@ -56,13 +112,29 @@ De tabel hieronder geeft aan welke stukken software benodigd zijn en zal, waar m
 
 Als alle bovenstaande software geinstalleerd is dan kunnen alle apps gestart worden, om de database te vullen is er echter nog een extra stukje software nodig. De software heet `mongorestore` en komt , ten tijde van schrijven, mee geinstalleerd met het mongo pakket (Op Windows met [mongotools](https://github.com/mongodb/mongo-tools)). Bekijk [deze website](https://docs.mongodb.com/manual/reference/program/mongorestore/) voor meer informatie.
 
-## Het starten van de web applicaties en de database
+#### Het starten van de web applicaties en de database
 
 Het volgende hoofdstuk zal uitleggen hoe de applicaties gestart kunnen worden in zowel development modus als productie modus. Voor het testen is alleen de development modus meer als genoeg.
 
 > ***NOTE!  de commando's zijn bedacht voor Linux en Mac OS X, hieronder wordt beschreven hoe het werkt voor alle drie de systemen al is het zeer aan te raden om een Linux Virtual machine op te zetten. (klik [hier](https://www.storagecraft.com/blog/the-dead-simple-guide-to-installing-a-linux-virtual-machine-on-windows/) voor uitleg)***
 
-### Development applicaties
+##### Installeren van de dependencies
+Om de benodigde NPM software te installeren moet het volgende commando gedraaid worden:
+
+```js
+npm install
+```
+
+Dit zal tegelijkertijd de docker containers die nodig zijn voor het draaien van de software aanmaken.
+Om te controleren of het installeren goed is gegaan kan je in de opdrachtprompt zien hoe lang het geduurd heeft.
+
+Dit ziet er als volgt uit:
+
+```
+up to date in 2.16s
+```
+
+##### Development applicaties
 
 Om de applicaties in development modus te starten (in Docker) moet het volgende commando worden uitgevoerd:
 
@@ -87,7 +159,7 @@ Het commando "copy-endpoint-dev" gaat echter **fout** op een Windows systeem omd
 3. Draai het `docker-compose up` commando
 
 
-### productie builds (minified)
+##### productie builds (minified)
 
 Om de applicaties in productie modus te starten (in Docker) moet het volgende commando worden uitgevoerd:
 
@@ -114,7 +186,7 @@ Het commando "copy-endpoint-dev" gaat echter **fout** op een Windows systeem omd
 3. Draai het `docker-compose up` commando
 4. Draai het `bash seedscript.sh SERVERURL` bestand. (op Windows heb je hier de [bash shell voor Windows](https://www.howtogeek.com/249966/how-to-install-and-use-the-linux-bash-shell-on-windows-10/) voor nodig.)
 
-### De applicaties bezoeken
+##### De applicaties bezoeken
 
 Om de applicaties te bezoeken, en ze te gebruiken, ga je naar de volgende web adressen:
 
@@ -127,25 +199,16 @@ Om de applicaties te bezoeken, en ze te gebruiken, ga je naar de volgende web ad
 
 
 
-
-
-
-
-
-
-
-
-Installatie Gateway
-============
+### Installatie Gateway
 
 Om de gateway werkend te krijgen zijn er een aantal vereisten:
 
 - Raspberry Pi 3.
 - Arduino Nano, Mega of Uno met een aangesloten NRF24L01+.
-- Er is een werkende versie van `RASPBIAN STRETCH WITH DESKTOP` geïnstalleerd.
+- Er is een werkende versie van `RASPBIAN STRETCH WITH DESKTOP` geïnstalleerd. Mogenlijk werkt het ook met de minimale versie, echter is dit (nog) niet getest. [Download](https://www.raspberrypi.org/downloads/raspbian/)
 - Er is toegang via SSH of direct op de Raspberry Pi 3 terminal toegang.
 
-## MongoDB
+#### MongoDB
 Omdat er het een en ander wordt opgeslagen op de Raspberry Pi 3 moet er een database geïnstalleerd worden, in dit geval MongoDB.
 
 Dit kan op de Raspberry Pi 3 gedaan worden met de volgende commando's in de terminal:
@@ -153,47 +216,50 @@ Dit kan op de Raspberry Pi 3 gedaan worden met de volgende commando's in de term
 ``` bash
 $ sudo apt-get update
 $ sudo apt-get upgrade
-$ sudo apt-get install mongodb-server
+$ sudo apt-get install mongodb-server -y
 ```
 *Het upgrade process kan een tijdje duren.*
 
-Als de MongoDB server succesvol geïnstalleerd is, kan deze service gestart worden door: 
+Als de MongoDB server succesvol geïnstalleerd is, kan deze service gestart worden door:
 ``` bash
 $ sudo service mongodb start
 ```
+Deze service zal geen console uitput geven aangezien dit in de achtergrond draait.
 
-## Java
-De gateway draait in een JVM en het is dus nodig om de juiste Java installatie te installeren. 
+#### Java
+De gateway draait in een JVM en het is dus nodig om de juiste Java installatie te installeren.
 
 ``` bash
 sudo su
+# Het kan zijn dat je op dit moment een wachtwoord moet invullen, dit is om het root account te gebruiken
 echo "deb http://ppa.launchpad.net/webupd8team/java/ubuntu xenial main" | tee /etc/apt/sources.list.d/webupd8team-java.list
-apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys EEA14886
+apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys EEA14886 -y
 ```
 Mocht bij het uitvoeren van het bovenstaande een error naar voren komen over het ontbreken van `dirmngr` dan kan dat gefixed worden door dit te installeren:
 ``` bash
-sudo apt-get install dirmngr
+sudo apt-get install dirmngr -y
 ```
+Tijdens het installeren van Java 8 is het gebruikelijk dat er gebruikersvoorwaarden geaccepteerd moeten worden, deze moeten geaccepteerd worden.
 ``` bash
 sudo apt-get update
-sudo apt-get install oracle-java8-installer
+sudo apt-get install oracle-java8-installer -y
 ```
 
-## RXTX
+#### RXTX
 
 ``` bash
-sudo apt-get install librxtx-java
+sudo apt-get install librxtx-java -y
 ```
 
-## Aansluiting Arduino
+#### Aansluiting Arduino
 ![Aansluitschema Arduino Nano met een NRF24L01+](images/Arduino_Nano_NRF24_bb.png)
 *Aansluitschema Arduino Nano met een NRF24L01+*
 
 De Arduino moet vervolgens verbonden worden via een USB kabel met de Raspberry Pi 3.
 
-## Start gateway
+#### Start gateway
 Om de gateway te starten moet eerst de MongoDB aan staan. Dat kan met het eerste commando.
-Als deze draait kan daarna de gateway zelf gestart worden. 
+Als deze draait kan daarna de gateway zelf gestart worden.
 ``` bash
 sudo service mongodb start #starts mongo service
 
@@ -203,10 +269,261 @@ Bij het tweede gedeelte, om Java te starten, is het belangrijk dat de volgende r
 
 
 ### Poot
+In dit hoofdstuk wordt beschreven hoe een fysieke poot kan worden gebouwd.
 
+#### 1. Onderdelen
+
+TODO: WELKE ONDERDELEN ZIJN NODIG?
+TODO: EEPROM MOET LEEG ZIJN  (vraag aan Arne)
+Dit doet Sebastiaan
+
+#### 2. Behuizing
+De behuizing van de poot bestaat uit een houten voorplaat met op de achterkant een plastic bakje met daarin alle electronica. Hieronder een sfeerimpressie van de behuizing.
+
+![images/impressie.png](images/impressie.png)
+
+Een gedetailieërd ontwerp voor de behuizing is [hier](https://github.com/HANICA-MinorMulti/nj2017-iot-dwa-BurgersZoo1/blob/master/documentatie/technisch-ontwerp/poot-fysiek/poot-fysiek-ontwerp.md) te vinden.
+
+#### 3. Aansluiting
+
+Sluit de twee arduino's aan volgens het onderstaande aansluitschema of gebruik de aansluittabellen daaronder om de verbindingen tussen componenten en Arduino's te maken.
+
+![images/aansluitschema.png](images/aansluitschema.png)
+
+**Auduino**
+
+| Component  | Pin op Component | Pin op Arduino |
+|------------|------------------|----------------|
+| Blauwe LED | +                | D2             |
+| Blauwe LED | -                | GND            |
+| Speaker    | +                | D9             |
+| Speaker    | -                | GND            |
+| SD-reader  | SCK              | D13            |
+| SD-reader  | CS               | D4             |
+| SD-reader  | MOSI             | D11            |
+| SD-reader  | MISO             | D12            |
+| SD-reader  | VCC              | 5V             |
+| SD-reader  | GND              | GND            |
+| Maduino    | A4               | A4             |
+| Maduino    | A5               | A5             |
+| Maduino    | GND              | GND            |
+
+**Maduino**
+
+| Component  | Pin op Component | Pin op Maduino   |
+|------------|------------------|------------------|
+| Groene LED | +                | D2               |
+| Groene LED | -                | GND              |
+| Oranje LED | +                | D3               |
+| Oranje LED | -                | GND              |
+| Rode LED   | +                | D4               |
+| Rode LED   | -                | GRND             |
+| NRF        | VCC              | 3.3V             |
+| NRF        | GND              | GND              |
+| NRF        | CE               | D10              |
+| NRF        | CSN / CS         | D9               |
+| NRF        | CSK              | D13              |
+| NRF        | MOSI             | D11              |
+| NRF        | MISO             | D12              |
+| NRF        | IRQ              | NIET AANGESLOTEN |
+| RFID       | VCC              | 3.3V             |
+| RFID       | RST              | D7               |
+| RFID       | GND              | GND              |
+| RFID       | MISO             | D12              |
+| RFID       | MOSI             | D11              |
+| RFID       | SCK              | D13              |
+| RFID       | NSS              | D8               |
+| RFID       | IRQ              | NIET AANGESLOTEN |
+
+
+#### 4. Code uploaden
+De volgende stap is om de code te uploaden naar de Arduino's. 
+
+1. Download hier de gecompileerde hex bestanden. 
+2. Installeer [XLoader](http://www.hobbytronics.co.uk/arduino-xloader) of [Arduino Uno Uploader Tool](http://rlangoy.github.io/Arduino-Uno-Uploader-Tool/)
+3. Gebruik deze tool om de gedownloade hex files naar de juiste Arduino te uploaden.
+
+Een alternatief is het handmatig compileren en uploaden van de code. Lees hiervoor de uitleg in het hoofdstuk ontwikkelhandleiding.
+
+#### 5. SD kaart
+De poot maakt gebruik van een MicroSD kaart waarop de weetjes en en dierengeluiden op staan. Deze MicroSD kaart kan maximaal 32GB zijn en moet geformateerd zijn in FAT32.
+
+Op de MicroSD kaart moeten de audio bestanden volgens de volgende naamgeving:
+
+- Een diergeluid in de root: dier.wav
+- Weetjes genummerd, beginnend vanaf 0.  
+Dus 0.wav, 1.wav, 2.wav etc.
+
+De inhoud van de MicroSD kaart zal er als volgt uit zien:
+```
+/dier.wav
+/0.wav
+/1.wav
+/2.wav
+/3.wav
+/[0...+].wav
+```
+
+Wanneer een wav bestandje op de MicroSD gezet moet worden, zal deze geconverteerd worden naar de goede settings. 
+** todo: uitleggen hoe de wav bestanden geconverteerd moeten worden, dit komt in week 7 & 8. **
+
+#### 6. Aanzetten
+Nadat alle bovenstaande stappen doorlopen zijn kunnen de twee Arduino's op stroom worden gezet. Vervolgens gaan de twee Arduino's initialiseren. Om te kunnen zien of onderdelen goed worden geinitialiseerd moet worden gekeken naar de statuslampjes. Per Arduino is hieronder te vinden wat de statuslampjes betekeken.
+
+##### Maduino
+Als alles goed gaat dan gaan er 3 lampjes branden zodra de Maduino wordt opgestart. Wanneer het initialiseren compleet is gaan de drie lampjes uit. Verder zijn er een aantal abnormale lampcodes. Deze zijn hieronder uitgewerkt.
+
+| Gedrag | Betekenis |
+| --- | --- |
+| Alle lampjes blijven aan staan. | Bezig met opstart sequence. Zoalang de Arduino nog niet verbonden is met een gateway worden deze lampjes laten zien. Als dit lang zo blijft staan dan is er waarschijnlijk iets mis met de NRF24L01+ óf kan de gateway niet worden gevonden. |
+| Geel lampje continu aan | Er kan niet worden verbonden met de auduino. Er is iets mis met het verzenden naar de Auduino met I2C. |
+| Geel lampje kort knipper | Er wordt verzonden naar de Auduino. Wanneer je een hele korte gele knipper ziet dan wordt er een signiaaltje verzonden naar de Auduino. |
+| Rood lampje 0.5 seconde knipper | De gescande pas kon niet worden geauthenticeerd. |
+| Rood lampje 1 seconde knipper | De gescande heeft niet de inhoud `Burgers Zoo`. |
+| Groen lampje 1 seconde aan | Er is een valide pas gescant. |
+
+##### Auduino
+De Auduino laat geen led branden als er hij niks aan het doen is. De volgende statussen kunnen worden afgelezen van de blauwe status led:
+
+| Gedrag | Betekenis |
+| --- | --- |
+| Blauwe led knippert snel | De SD kaart lezer kon niet worden geinitialiseerd. |
+| Blauwe led brand continu | Er wordt een geluidje afgespeeld |
+
+
+
+## Ontwikkelhandleiding
+Om verder aan het systeem te kunnen ontwikkelen is dit hoofdstuk in het leven geroepen. Hieronder wordt uitgelegd hoe de ontwikkelomgevingen in te stellen en wat er nodig is om de code te kunnen begrijpen. 
+
+### Ontwikkeling front-end applicaties
+
+De front-end applicaties zijn opgebouwd met een React seed van [Corey House](https://github.com/coryhouse), namelijk [react-slingshot](https://github.com/coryhouse/react-slingshot). Corey heeft op zijn Github repository een [uitgebreide uitleg](https://github.com/coryhouse/react-slingshot/blob/master/README.md#get-started) staan over het werken met zijn slingshot seed. De gekozen bundler voor dit project is [Webpack](https://webpack.js.org/).
+
+#### Redux
+
+Het maken van een applicatie in React kan snel uit de hand lopen als je applicatie groter wordt. Om structuur in de applicatie
+aan te brengen is gekozen om Redux te gebruiken.
+
+Met Redux beheer je state op applicatieniveau. Redux bestaat
+uit een aantal onderdelen maar het belangrijkste dat je moet onthouden zijn de volgende drie:
+
+- **store**: opslagplaats van alle data als één groot object (POJO).
+- **reducers**: pure functies die de app-state bewerken op basis van binnengekregen data uit zgn. action creators.
+- **action creators**: functies die iets doen, bijvoorbeeld een API benaderen of iets uitrekenen. De uitkomst geven ze door aan de reducers. Dat doorgeven wordt ***'dispatchen'*** genoemd.
+
+![Redux](https://cdn-images-1.medium.com/max/1200/1*bvAMo9Ou8yI3-zzB3aoMnA.png)
+
+#### Folderindeling (package structuur)
+
+De folderindeling hanteert de naamgevingen van Redux, zodat iedereen die weet wat Redux is meteen snapt waar files moeten komen te staan.
+
+```
+.
+├── /build/                     # De folder voor gecompileerde output
+├── /node_modules/              # 3rd-party libraries en utilities
+├── /src/                       # The source code of the application
+│   ├── /actions/               # Action creators zoals beschreven in Redux
+│   ├── /components/            # React components die enkel UI logica bevatten
+│   ├── /constants/             # Constantes die over meerdere files gebruikt worden
+│   ├── /containers/            # React components die toegang hebben tot de Redux app state
+│   ├── /reducers/              # Redux reducers
+│   ├── /routes/                # Page/screen components met routing informatie
+│   ├── /store/                 # Bevat configuratie die nodig is om de Redux store op te bouwen
+│   ├── /styles/                # Bevat styling files die over meerdere componenten gebruikt wordt
+│   ├── /index.ejs              # Template voor de index.html file, wordt door webpack gebruikt
+│   ├── /index.jsx              # Startup script, koppelt React aan de DOM
+│   └── ...                     # Overige core files die door webpack gebruikt worden.
+├── /tools/                     # Build automation scripts en utilities die webpack gebruikt.
+├── package.json                # De lijst met 3rd party libraries en utilities
+```
+
+#### Tips
+Op Linux en Mac OS X zit verder nog een limiet op het aantal bestanden / mappen waar een gebruiker tegelijk naar mag "luisteren" voor veranderingen. Om dat op te lossen moet je het volgende commando uitvoeren:
+
+```
+echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
+```
+
+<sub>Voor technische info klik [hier](https://github.com/emcrisostomo/fswatch), voor sysctl uitleg [klik](https://wiki.archlinux.org/index.php/sysctl) hier.</sub>
+
+
+### Ontwikkeling Backend
+
+*DIT HOOFDSTUK WORDT IN WEEK 7 OF 8 VERDER AFGEMAAKT*
+
+### Ontwikkeling Gateway
+
+## Eisen 
+- Java 8 SDK [installatie](http://bfy.tw/FhgO)
+- Gradle 4.4 [installatie](http://bfy.tw/FhgK)
+- RXTX, zie kopje "Seriële communicatie"
+
+## Werking Gradle
+Gradle is een build tool, te vergelijken met Mavan, die alle dependencies beheerd van de applicatie. Hiermee worden third-party dependencies gedownload en kan het project zelf gecompileerd worden.
+
+De basis taken die uitgevoerd kunnen worden:
+- `gradle clean`: verwijderd de build directory
+- `gradle build`: bouwt het volledige project
+- `gradle test`: voert alle tests uit in het project
+- `gradle jar`: bouwt een jar die uitgevoerd kan wroden om de applicatie te starten.
+- `gradle clean build test jar`: om alle bovenstaande taken in één keer uit te voeren
+
+## Folder structiuur
+De applicatie bestaat uit een vrij standaard Java folder structure.
+```
+|── /build/
+|── /gradle/
+|── /out/
+|── /src/
+|	|── /main/
+|	|	|── /java/
+|	|	|	|── /nl/
+|	|	|	|	|── /han/
+|	|	|	|	|	|── /han/
+|	|	|	|	|	|	|── /Application.java # Start punt van de applicatie
+|	|	|	|	|	|	|── /mysensors/ # MySensors parsers en communicatie seriële poort
+|	|	|	|	|	|	|── /backend/ # connectie naar backend
+|	|	|	|	|	|	|── /gateway/ # controllers van Spark
+|	|	|	|── /gateway.properties # Settings zoals poort nummer
+|	|	|── /resources/
+|	|── /test/* # Bevat alle tests van de applicatie
+|── /readme.md # Eigenschappen applicatie beschreven
+|── /build.gradle # Build file, bevat dependencies etc.
+```
+
+## Seriële communicatie 
+Voor het gebruik van de gateway moet er een library geïnstalleerd zijn op de pc. Het gaat om de RXTX library. Deze zorgt voor de seriële communicatie. 
+
+De library is te vinden via de volgende links:
+- Linux: ~~[http://rxtx.qbang.org](http://rxtx.qbang.org/wiki/index.php/Download)~~ Het is alleen nodig om het volgende commando uit te voeren: `sudo apt-get install librxtx-java`
+- Windows 64 bit: [http://fizzed.com](http://fizzed.com/oss/rxtx-for-java)
+
+Zonder de instalatie van deze library zal er bij het bouwen van het project fouten optreden.
+
+## Uitvoeren op de Raspberry Pi 3
+Bij het uitvoeren van de jar op de Raspberry Pi 3 moet het volgende gebruikt worden:
+`java -Djava.library.path=/usr/lib/jni -jar <GATEWAY.jar>`
+Het gedeelte van ` -Djava.library.path=/usr/lib/jni ` moet voor de `-jar` staan
+
+## Afspraken MySensors protecol
+
+- `V_VAR1` wordt gebruikt om van de node naar de gateway zijn poot id te presenteren.
+- `V_VAR2` wordt gebruikt om een pas id van een node naar de gateway te sturen.
+- `V_VAR3` wordt gebruikt om vanaf de gateway naar een node een poot id te sturen.
+- `V_VAR4` is gereserveerd voor het versturen van audio files.
+- `V_VAR5` is gereserveerd voor het configureren van de Arduino, zoals het resetten van EEPROM of resetten van de Arduino zelf.
+- `V_TEMP` wordt gebruikt om de temperatuur data door te sturen.
+- `V_HUM` wordt gebruik om de humidity te versturen
+
+### Ontwikkeling Poot
+
+*DIT GAAT GEDAAN WORDEN IN WEEK 7 OF WEEK 8*
+
+## Bijlagen
 
 ### Repo commando's
-In dit hoofdstuk wordt uitgelegd wat de "repo commando's" inhouden.
+
+In deze bijlage wordt uitgelegd wat de "repo commando's" inhouden.
 Een "repo commando" is één van de scripts die in de package.json staan.
 
 Dat levert de volgende items op:
@@ -232,12 +549,16 @@ Dat levert de volgende items op:
 | postinstall                 | Dit script draait NA een npm install en zal de "build-docker" taak uitvoeren                           |                                           |
 
 
-## Ontwikkelhandleiding (hoe ontwikkel ik?)
+### Begrippenlijst
+
+| Begrip | Uitleg |
+|--------|--------|
+|        |        |
+|        |        |
+|        |        |
 
 
-# Bijlagen
-
-# Software lijst
+### Software lijst
 In deze lijst vindt je voor de meeste software links naar installatiehandleidingen.
 
 | Product | Windows | Mac OS X | Linux |
@@ -254,6 +575,3 @@ In deze lijst vindt je voor de meeste software links naar installatiehandleiding
     |         |         |          |       |
     |         |         |          |       |
 -->
-
-
-

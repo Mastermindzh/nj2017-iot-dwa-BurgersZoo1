@@ -10,40 +10,36 @@ In dit rapport wordt allereerst het concept beschreven, gevolgd door een beschri
 ## Inhoudsopgave
 <!-- toc -->
 
-#include "documentatie/opleverdocumentatie/concept/concept.md"
+#include "documentatie/opleverdocumentatie/concept.md"
 
-## Hypothese
+#include "documentatie/opleverdocumentatie/systeemoverview.md"
 
-## Systeemoverview (hoe werkt dit systeem globaal?)
 
-## Opzethandleiding (hoe start ik het systeem?)
+## Opzethandleiding
+Om het systeem in zijn geheel op te zetten zijn drie onderdelen nodig: Web-Backend + Webapps, Gateway en Poot. In onderstaande drie koppen wordt uitgelegd hoe deze drie onderdelen in te stellen. Wanneer alle drie de onderdelen opgezet zijn kan het systeem gebruikt worden.
 
-### Backend + Ranger app + Admin app
+#include "documentatie/opleverdocumentatie/backend/applicaties-starten.md"
 
-#include "documentatie/opleverdocumentatie/applicaties-starten/applicaties-starten.md"
-
-#include "documentatie/opleverdocumentatie/backend/deployment.md"
-
-#include "documentatie/opleverdocumentatie/backend/backend.md"
-
-#include "documentatie/opleverdocumentatie/admin/admin-app.md"
-
-#include "documentatie/opleverdocumentatie/ranger/ranger-app.md"
-
-### Poot
-#include "documentatie/opleverdocumentatie/arduino/arduino.md"
-
-### Gateway
 #include "documentatie/opleverdocumentatie/gateway/installatie-handleiding-gateway.md"
 
-### Repo commando's
-#include "documentatie/opleverdocumentatie/repo-commands/repo-commands.md"
+#include "documentatie/opleverdocumentatie/poot/opzethandleiding.md"
 
-## Ontwikkelhandleiding (hoe ontwikkel ik?)
+## Ontwikkelhandleiding
+Om verder aan het systeem te kunnen ontwikkelen is dit hoofdstuk in het leven geroepen. Hieronder wordt uitgelegd hoe de ontwikkelomgevingen in te stellen en wat er nodig is om de code te kunnen begrijpen.
 
-#include "documentatie/opleverdocumentatie/backend/loopback.md"
+#include "documentatie/opleverdocumentatie/front-end/ontwikkelhandleiding.md"
 
-# Bijlagen
+#include "documentatie/opleverdocumentatie/backend/ontwikkelhandleiding.md"
 
-#include "documentatie/opleverdocumentatie/softwarelijst/softwarelijst.md"
+#include "documentatie/opleverdocumentatie/gateway/ontwikkelhandleiding.md"
+
+#include "documentatie/opleverdocumentatie/poot/ontwikkelhandleiding.md"
+
+## Bijlagen
+
+#include "documentatie/opleverdocumentatie/repo-commands.md"
+
+#include "documentatie/opleverdocumentatie/begrippenlijst.md"
+
+#include "documentatie/opleverdocumentatie/softwarelijst.md"
 
