@@ -5,11 +5,11 @@ Geef een beschrijving van de test die je gedaan hebt met elk Proof of Concept. V
  de code ook toe in de map **code**.
 
 **Onderzoeksmethode (uit de cmd methods pack)**
-Naam en categorie
+Interview uit field.
 
 ## Hypothese
 Ik verwacht meer te gaan leren over de kwaliteit van de installatiehandleding voor de gateway. Deze moet helder zijn en gemakkelijk te installeren zijn, ook voor iemand zonder veel kennis van Linux/Raspberry Pi 3 [Raspbian](https://www.raspberrypi.org/downloads/raspbian/).
-** todo instert link handleiding **
+[installatie handleiding gateway](../../opleverings-documentatie/installatie-handleiding-gateway.md)
 
 ## Testopzet 
 Ik ga het testen door iemand van een andere groep de handleiding te laten volgen. Ik zet de Raspberry Pi 3 met SSH op, omdat dit een vereiste is van de handleiding en daarna help ik niet meer. Na afloop stel ik een aantal vragen:
@@ -23,8 +23,7 @@ Ik ga het testen door iemand van een andere groep de handleiding te laten volgen
  Ik hoop hieruit een conclusie te kunnen trekken of de handleiding duidelijk genoeg is. 
  
 ## Resultaat
-Antwoorden Sebastiaan
-======
+### Antwoorden Sebastiaan
 
 Heb je al kennis van Linux?
 > Niet veel
@@ -57,5 +56,6 @@ Een andere mogelijke oplossing is om -y toe te voegen aan het commando.
 
 
 ### Conclusie
-De handleiding is vrij duidelijk en goed uit te voeren. Bij Sebastiaan was er vrij snel doorheen en had een werkende gateway. Er zijn nog wel een aantal tips om de stappen makkelijker te maken, zoals het niet hoeven invoeren van y en dan enter als dit gevraagd wordt. Ook moet ik nog wat dingen verduidelijken, zoals wat de mongodb service is en doet, want dit is nu niet duidelijk voor bijvoorbeeld CMD'ers die dit project de volgende keer kunnen gaan oppakken.
+De handleiding is vrij duidelijk en goed uit te voeren. Bij Sebastiaan was er vrij snel doorheen en had een werkende gateway. Er zijn nog wel een aantal tips om de stappen makkelijker te maken, zoals het niet hoeven invoeren van y en dan enter als dit gevraagd wordt. Ook moet ik nog wat dingen verduidelijken, zoals wat de mongodb service is en doet, want dit is nu niet duidelijk voor bijvoorbeeld CMD'ers die dit project de volgende keer kunnen gaan oppakken. 
+
 
