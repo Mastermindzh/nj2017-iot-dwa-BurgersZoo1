@@ -41,6 +41,7 @@ In dit rapport wordt allereerst het concept beschreven, gevolgd door een beschri
 
 ## Ontwikkelhandleiding (hoe ontwikkel ik?)
 
+#include "documentatie/opleverdocumentatie/backend/loopback.md"
 
 # Bijlagen
 
