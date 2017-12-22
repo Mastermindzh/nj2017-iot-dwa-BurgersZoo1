@@ -2,10 +2,24 @@
 In dit hoofdstuk wordt beschreven hoe een fysieke poot kan worden gebouwd.
 
 #### 1. Onderdelen
+Voor het bouwen van de Poot zijn de volgende interne componenten nodig. Daarnaast zijn er ook nog materialen voor de behuizing nodig. Deze worden in het volgende hoofdstuk behandeld.
 
-TODO: WELKE ONDERDELEN ZIJN NODIG?
-TODO: EEPROM MOET LEEG ZIJN  (vraag aan Arne)
-Dit doet Sebastiaan
+* 2x Arduino Nano
+* Rode led
+* Oranje led
+* Groene led
+* Blauwe led
+* Long Range NRF24L01+
+* MicroSD kaart SPI lezer
+* MicroSD kaart (max 32 gb) (zie onderstaande hoofdstuk)
+* RFID-RC522 (Pas lezer)
+* Socket Adapter Plate voor NRF24L01+
+* Speaker met 3.5mm audio jack input
+* 3.5mm audio jack output for arduino
+* Meer dan genoeg Jumper wires
+* Breadboard
+* Pasjes (zie laatste hoofdstuk)
+
 
 #### 2. Behuizing
 De behuizing van de poot bestaat uit een houten voorplaat met op de achterkant een plastic bakje met daarin alle electronica. Hieronder een sfeerimpressie van de behuizing.
@@ -69,7 +83,7 @@ Sluit de twee arduino's aan volgens het onderstaande aansluitschema of gebruik d
 #### 4. Code uploaden
 De volgende stap is om de code te uploaden naar de Arduino's. 
 
-1. Download hier de gecompileerde hex bestanden. 
+1. Download [hier](https://github.com/HANICA-MinorMulti/nj2017-iot-dwa-BurgersZoo1/tree/master/deliverables/compiled-code) de gecompileerde hex bestanden. 
 2. Installeer [XLoader](http://www.hobbytronics.co.uk/arduino-xloader) of [Arduino Uno Uploader Tool](http://rlangoy.github.io/Arduino-Uno-Uploader-Tool/)
 3. Gebruik deze tool om de gedownloade hex files naar de juiste Arduino te uploaden.
 
@@ -119,4 +133,8 @@ De Auduino laat geen led branden als er hij niks aan het doen is. De volgende st
 | --- | --- |
 | Blauwe led knippert snel | De SD kaart lezer kon niet worden geinitialiseerd. |
 | Blauwe led brand continu | Er wordt een geluidje afgespeeld |
+
+#### 7. Pasjes
+De poot accepteert alleen nfc pasjes met een frequentie van 13.56 MHz. Elk pasje moet een uniek identificatienummer hebben. Verder moet de op de pas de tekst `Burgers' Zoo` staan. Pasjes die niet aan deze eisen voldoen worden niet geaccepteerd door de poot.
+
 

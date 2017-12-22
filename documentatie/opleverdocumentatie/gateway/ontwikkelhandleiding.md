@@ -1,11 +1,11 @@
 ### Ontwikkeling Gateway
 
-## Eisen 
+#### Eisen 
 - Java 8 SDK [installatie](http://bfy.tw/FhgO)
 - Gradle 4.4 [installatie](http://bfy.tw/FhgK)
 - RXTX, zie kopje "Seriële communicatie"
 
-## Werking Gradle
+#### Werking Gradle
 Gradle is een build tool, te vergelijken met Mavan, die alle dependencies beheerd van de applicatie. Hiermee worden third-party dependencies gedownload en kan het project zelf gecompileerd worden.
 
 De basis taken die uitgevoerd kunnen worden:
@@ -15,7 +15,7 @@ De basis taken die uitgevoerd kunnen worden:
 - `gradle jar`: bouwt een jar die uitgevoerd kan wroden om de applicatie te starten.
 - `gradle clean build test jar`: om alle bovenstaande taken in één keer uit te voeren
 
-## Folder structiuur
+#### Folder structiuur
 De applicatie bestaat uit een vrij standaard Java folder structure.
 ```
 |── /build/
@@ -47,12 +47,12 @@ De library is te vinden via de volgende links:
 
 Zonder de instalatie van deze library zal er bij het bouwen van het project fouten optreden.
 
-## Uitvoeren op de Raspberry Pi 3
+#### Uitvoeren op de Raspberry Pi 3
 Bij het uitvoeren van de jar op de Raspberry Pi 3 moet het volgende gebruikt worden:
 `java -Djava.library.path=/usr/lib/jni -jar <GATEWAY.jar>`
 Het gedeelte van ` -Djava.library.path=/usr/lib/jni ` moet voor de `-jar` staan
 
-## Afspraken MySensors protecol
+#### Afspraken MySensors protecol
 
 - `V_VAR1` wordt gebruikt om van de node naar de gateway zijn poot id te presenteren.
 - `V_VAR2` wordt gebruikt om een pas id van een node naar de gateway te sturen.
