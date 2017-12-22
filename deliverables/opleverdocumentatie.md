@@ -19,7 +19,7 @@ In dit rapport wordt allereerst het concept beschreven, gevolgd door een beschri
   * [Database](#database)
 - [Opzethandleiding](#opzethandleiding)
   * [Starten Backend + Web Apps](#starten-backend--web-apps)
-    + [randvoorwaarden](#randvoorwaarden)
+    + [Randvoorwaarden](#randvoorwaarden)
     + [Het starten van de web applicaties en de database](#het-starten-van-de-web-applicaties-en-de-database)
       - [Installeren van de dependencies](#installeren-van-de-dependencies)
       - [Development applicaties](#development-applicaties)
@@ -90,10 +90,15 @@ In de ranger app kan een ranger kijken wat hij allemaal gedaan heeft tijdens zij
 
 ## Systeemoverview
 
-De poot bestaat uit twee Arduino's. Er is één Arduino die volledig gaat over het afspelen van audio. In een later stadium zou deze Arduino ook verantwoordelijk worden voor het opslaan van nieuw ontvangen audiobestanden. De Audio Arduino wordt aangestuurd door de Master Arduino.
+De poot bestaat uit twee Arduino's. Er is één Arduino die volledig gaat over het afspelen van audio (genaamd Auduino). In een later stadium zou deze Auduino ook verantwoordelijk worden voor het opslaan van nieuwe ontvangen audiobestanden. De Auduino wordt aangestuurd door de Master Arduino.
 
-De Master Arduino (genaamd Maduino) is verantwoordelijk voor alle primaire functionaliteiten en het aansturen van de Audio Arduino (genaamd Auduino). Zo zal de master Arduino een NFC-scanner hebben om passen te detecteren. Ook zal deze Master Arduino de temperatuur en luchtvochtigheid meten. De Master Arduino staat via de NRF24 chip in verbinding met de gateway en zal zo de gateway op de hoogte houden over welke passen zijn langs geweest.
+De Master Arduino (genaamd Maduino) is verantwoordelijk voor alle primaire functionaliteiten en het aansturen van de Auduino. Zo zal de master Arduino een NFC-scanner hebben om passen te detecteren. Ook zal de Maduino de temperatuur en luchtvochtigheid meten. De Maduino staat via de NRF24 chip in verbinding met de Gateway en zal zo de Gateway op de hoogte houden over welke passen gesand zijn.
 
+De resultaten van een speurtocht van bezoekers kunnen ingezien worden in de Ranger app. Dit is een webapp die na het bezoek aan Burgers' Zoo gebruikt kan worden om terug te kijken op een boezoek aan het park. De verkregen informatie wordt hier nogmaals getoond.
+
+Beheerders van Burgers' Zoo kunnen via de Admin app de speurtocht bijhouden en aanpassen. Zo is het mogelijk op poten opnieuw te configureren of nieuwe geluiden of weetjes toe te voegen aan de speurtocht
+
+De Ranger app en de Admin app draaien samen met de Backend en de database in Docker containers. Dit alles draait op een server.
 ### Gateway
 De poten zullen communiceren met de twee backends van de twee groepen via een gateway. Deze gateway bestaat uit een Arduino en een Raspberry Pi. De Arduino zal draadloos communiceren via NRF24 chips met de poten en alle informatie doorsturen naar de Raspberry Pi. De Pi zal via HTTP/JSON communiceren met de backend's. De Pi kan op zijn beurt weer de Arduino binnen de gateway aansturen om zo informatie bij de poten te krijgen.
 
@@ -109,22 +114,23 @@ Het back-end betreft een REST api welke wordt aangesproken met de verschillende 
 De database laag zal enkel en alleen de database bevatten, op het moment van prototyping is dit één Mongo database. Dit kan echter uitgebreid worden met meerdere instances (voor redundancy, uitbreidbaarheid) en eventueel voorzien worden van een load balancer.
 
 
+
 ## Opzethandleiding
 Om het systeem in zijn geheel op te zetten zijn drie onderdelen nodig: Web-Backend + Webapps, Gateway en Poot. In onderstaande drie koppen wordt uitgelegd hoe deze drie onderdelen in te stellen. Wanneer alle drie de onderdelen opgezet zijn kan het systeem gebruikt worden.
 
 ### Starten Backend + Web Apps
 Dit hoofdstuk zal beschrijven hoe alle webapplicaties, de backend en de database opgestart moeten worden. Ook zal dit hoofdstuk beschrijven hoe de database gevuld kan worden met het seedscript zodat er wat testdata in de apps staat.
 
-#### randvoorwaarden
+#### Randvoorwaarden
 
 Om alle applicaties te draaien moeten er een aantal dingen geregeld worden op de pc/laptop.
 De tabel hieronder geeft aan welke stukken software benodigd zijn en zal, waar mogelijk, een link worden geven naar de officiele website.
 
-- [mongo](https://www.mongodb.com/)
-- [docker](https://www.docker.com/)
-- [docker-compose](https://docs.docker.com/compose/)
-- [node](https://nodejs.org/)
-- [npm](https://www.npmjs.com/)
+- [Mongo](https://www.mongodb.com/)
+- [Docker](https://www.docker.com/)
+- [Docker-compose](https://docs.docker.com/compose/)
+- [Node](https://nodejs.org/)
+- [Npm](https://www.npmjs.com/)
 
 Als alle bovenstaande software geinstalleerd is dan kunnen alle apps gestart worden, om de database te vullen is er echter nog een extra stukje software nodig. De software heet `mongorestore` en komt , ten tijde van schrijven, mee geinstalleerd met het mongo pakket (Op Windows met [mongotools](https://github.com/mongodb/mongo-tools)). Bekijk [deze website](https://docs.mongodb.com/manual/reference/program/mongorestore/) voor meer informatie.
 
@@ -690,8 +696,8 @@ Je zult hier zien dat er veel meer request methoden aangemaakt zijn per model da
 
 Voorbeeld:
 
-![Voorbeeld](../images/Loopback_voorbeeld.png)
-![Voorbeeld](../images/Loopback_voorbeeld2.png)
+![Voorbeeld](images/Loopback_voorbeeld.png)
+![Voorbeeld](images/Loopback_voorbeeld2.png)
 
 ###### Filters
 

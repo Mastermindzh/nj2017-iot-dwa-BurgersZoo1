@@ -207,8 +207,8 @@ Je zult hier zien dat er veel meer request methoden aangemaakt zijn per model da
 
 Voorbeeld:
 
-![Voorbeeld](../images/Loopback_voorbeeld.png)
-![Voorbeeld](../images/Loopback_voorbeeld2.png)
+![Voorbeeld](images/Loopback_voorbeeld.png)
+![Voorbeeld](images/Loopback_voorbeeld2.png)
 
 ###### Filters
 
