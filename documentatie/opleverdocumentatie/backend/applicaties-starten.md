@@ -20,6 +20,22 @@ Het volgende hoofdstuk zal uitleggen hoe de applicaties gestart kunnen worden in
 
 > ***NOTE!  de commando's zijn bedacht voor Linux en Mac OS X, hieronder wordt beschreven hoe het werkt voor alle drie de systemen al is het zeer aan te raden om een Linux Virtual machine op te zetten. (klik [hier](https://www.storagecraft.com/blog/the-dead-simple-guide-to-installing-a-linux-virtual-machine-on-windows/) voor uitleg)***
 
+##### Installeren van de dependencies
+Om de benodigde NPM software te installeren moet het volgende commando gedraaid worden:
+
+```js
+npm install
+```
+
+Dit zal tegelijkertijd de docker containers die nodig zijn voor het draaien van de software aanmaken.
+Om te controleren of het installeren goed is gegaan kan je in de opdrachtprompt zien hoe lang het geduurd heeft.
+
+Dit ziet er als volgt uit:
+
+```
+up to date in 2.16s
+```
+
 ##### Development applicaties
 
 Om de applicaties in development modus te starten (in Docker) moet het volgende commando worden uitgevoerd:

@@ -14,6 +14,7 @@ uit een aantal onderdelen maar het belangrijkste dat je moet onthouden zijn de v
 - **reducers**: pure functies die de app-state bewerken op basis van binnengekregen data uit zgn. action creators.
 - **action creators**: functies die iets doen, bijvoorbeeld een API benaderen of iets uitrekenen. De uitkomst geven ze door aan de reducers. Dat doorgeven wordt ***'dispatchen'*** genoemd.
 
+![Redux](https://cdn-images-1.medium.com/max/1200/1*bvAMo9Ou8yI3-zzB3aoMnA.png)
 
 #### Folderindeling (package structuur)
 
@@ -24,7 +25,7 @@ De folderindeling hanteert de naamgevingen van Redux, zodat iedereen die weet wa
 ├── /build/                     # De folder voor gecompileerde output
 ├── /node_modules/              # 3rd-party libraries en utilities
 ├── /src/                       # The source code of the application
-│   ├── /actions/               # Action creators zoals beschreven in Redx
+│   ├── /actions/               # Action creators zoals beschreven in Redux
 │   ├── /components/            # React components die enkel UI logica bevatten
 │   ├── /constants/             # Constantes die over meerdere files gebruikt worden
 │   ├── /containers/            # React components die toegang hebben tot de Redux app state
