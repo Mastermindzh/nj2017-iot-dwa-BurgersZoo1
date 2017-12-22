@@ -2,16 +2,16 @@
 ## Inleiding
 In november 2017 kreeg een groep ict-studenten van de Hogeschool Arnhem en Nijmegen de opdracht om een speurtochtsysteem voor Burgers’ Zoo als technisch concept uit te werken. Dit speurtochtsysteem is bedoeld voor kinderen die de dierentuin bezoeken. Het concept is dat kinderen “Ranger” kunnen worden als ze de speurtocht succesvol afronden. Het systeem moet antwoord geven op de vraag in hoeverre het technisch haalbaar is om in Burgers Zoo een speurtochtnetwerk te zetten. 
 
-Het systeem wordt in de week van 10 januari 2018 getest tijdens een field trial in Burgers' Zoo. Medewerkers en vrijwilligers van Burgers' Zoo gaan dan echt met het systeem aan de slag. In dit document staat beschreven wat de verwachtingen zijn van deze trial, hoe dit getest gaat worden en hoe de resultaten worden vastgelegd.
+Het systeem wordt in de week van 10 januari 2018 getest tijdens een field trial in Burgers' Zoo. Parkbezoekers gaan dan echt met het systeem aan de slag. In dit document staat beschreven wat de verwachtingen zijn van deze trial, hoe getest gaat worden en hoe de resultaten worden vastgelegd.
 
 <!-- toc -->
 
 ## Technische context
-Het speurtochtsysteem bestaat uit een MESH-netwerk van 6 devices die elk een onderdeel van de speurtocht vertegenwoordigt. Een ranger kan zo'n device, ook wel een 'poot', 'speurpunt' of 'scanpunt' genoemd, scannen met een verkregen rangerpas. Dit gebeurt d.m.v. NFC. Alle scanacties van een ranger worden online in de cloud opgeslagen. Deze cloud is ook onderdeel van het systeem.
+Het speurtochtsysteem bestaat uit een MESH-netwerk van 6 devices die elk een onderdeel van de speurtocht vertegenwoordigt. Een ranger kan zo'n device, ook wel een 'poot', 'speurpunt' of 'scanpunt' genoemd, scannen met een verkregen rangerpas. Deze pas maakt gebruik van NFC-technologie. Alle scanacties van een ranger worden online in de cloud opgeslagen. Deze cloud is ook onderdeel van het systeem.
 
 Educatoren van Burgers’ Zoo kunnen online de speurpunten beheren, dit houdt kortgezegd in dat ze voor de speurpunten een aantal gegevens (naam, verblijf, dierengeluid, etc.) in kunnen voeren en weetjes aan een speurpunt toe kunnen voegen. Zo kan de inhoud en vormgeving van de speurtocht aangepast worden.
 
-Wanneer een ranger het park verlaat, kan hij via de ranger webapplicatie de geschiedenis van al zijn parkbezoeken terug zien.
+Wanneer een ranger het park verlaten heeft, kan hij/zij achteraf via de ranger webapplicatie de geschiedenis van al zijn parkbezoeken terug zien.
 
 
 ## Begrippenlijst
@@ -27,12 +27,12 @@ Wanneer een ranger het park verlaat, kan hij via de ranger webapplicatie de gesc
 | Speurpunt             | Een volledig geconfigureerde poot welke in een speurtocht staat.                                                                                                |
 
 ## Doel
-Het doel van de test is tweeledig. Aan de ene kant is het doel van de test om de techniek te testen: werkt het? Aan de andere kant is het doel om te zien of de functionaliteiten die gebouwd zijn voor de educatoren aansluiten bij de verwachtingen van de educatoren. Beide doelen zijn in één hypothese geformuleerd.
+Het doel van de test is om de techniek van het systeem te testen: werkt het? We willen testen dat wat er in de webapplicatie geconfigureerd is, gereflecteerd wordt in de hardware en andersom: als er iets met de hardware gebeurd is dat terug te zien in de webapplicatie. De test wordt uitgevoerd in het Mangrove gebied van Burgers' Zoo.
 
 ### Hypothese
-Hiermee wordt antwoord gegeven op de vraag of de gekozen oplossingsrichting in de techniek ook in praktijk goed werkt. Uit de bevindingen vloeit een advies hoe in de toekomst verder ontwikkeld kan worden aan de techniek van het systeem.
+Hiermee wordt antwoord gegeven op de vraag of onze gekozen oplossingsrichting in de techniek ook in praktijk goed werkt. Uit de bevindingen vloeit een advies hoe in de toekomst verder ontwikkeld kan worden aan het systeem.
 
-> Wij geloven dat een meshnetwerk van zes poten in de Mangrove, gebruikmakend van NRF-communicatie zal resulteren in een stabiel speurtocht-ranger-systeem dat verbonden staat met de cloud. We weten dat we succesvol zijn als de educatoren van Burgers' Zoo een speurtocht kunnen configureren, en de door ranger gescande resultaten van diezelfde speurtocht terug kunnen zien, in een web applicatie die de data uit de verbonden cloud toont.
+> Wij geloven dat een meshnetwerk van zes poten in de Mangrove, gebruikmakend van NRF-communicatie zal resulteren in een stabiel speurtocht-ranger-systeem dat verbonden staat met de cloud. We weten dat we succesvol zijn als een speurtocht via de webapplicatie geconfigureerd wordt, en de door ranger gescande resultaten van diezelfde speurtocht terug kunnen zien, in een web applicatie die de data uit de verbonden cloud toont.
 
 ## Out of scope
 Het doel van deze test is niet om het concept van een speurtocht te testen. Dit is namelijk door een vorige projectgroep gedaan. Het testen of de speurtocht aanslaat bij kinderen valt buiten de scope van deze test. Verder is het ook niet het doel om de usability van de beheerder applicatie te testen. In hoeverre educatoren het design van de applicatie aanslaat en in hoeverre de educatoren zelf hun weg kunnen vinden door de applicatie valt buiten de scope van deze test.
@@ -64,30 +64,26 @@ De bedoeling is dat u een nieuw speurpunt toevoegt waar u een dierengeluid en ee
 
 De volgende regels worden als ondersteuning op een blaadje ernaast gehouden:
 
-- U mag zelf een locatienaam bedenken, de fysieke poot staat in de Mangrove bij de … (+ locatie van poot 6, bepaald op de eerste dag)
-- U moet het verblijf “Mangrove” toevoegen aan het speurpunt (daar staat de poot)
-- U mag zelf kiezen welk dierengeluid u aan het speurpunt toevoegt.
-- U mag zelf kiezen welke weetjes u toevoegt, u moet minimaal 1 weetje toevoegen en maximaal 3.
-- Om te testen of bovenstaande educatorentest geslaagd is zal een IOTer of DWAer zich voordoen als technische dienst en de zip downloaden om op de poot te zetten.
+- Bedenk een lokatienaam. V.b "Mangrove, ocean, safari etc.."
+- Voeg een verblijf toe aan het speurpunt (daar staat de poot). V.b "krabben, vlinders, zeekoeien etc."
+- Upload een weetje en voeg deze toe aan het speurpunt.
+- Sla het speurpunt op
+
+Iemand van de technische dienst maakt een .zip bestand van deze configuratie, zet het op een sd kaart en plaatst de sd kaart handmatig in de bijbehorende poot.
 
 ### Scenario 2: Techniek Test
 Het plan om de techniek te testen is als volgt:
 
 1) In de Mangrove worden zes poten geplaatst.
-2) Kinderen krijgen van de educatie medewerker een pasje met de opdracht om op zoek te gaan naar poten. 
-3) Wanneer de kinderen bij de uitgang komen worden de pasjes weer ingenomen. <!--Een beloning voor de kinderen kan worden verzorgd door de educatieve medewerkers, maar dit is niet aan de projectgroep. -->
+2) Een of twee DWA'er staan in Burgers' Zoo kleding bij de ingang van de Mangrove en delen passen uit aan voorbijkomende bezoekers. 
+3) Wanneer de bezoekers bij de uitgang van de Mangrove komen worden de pasjes weer ingenomen door de DWA'ers.
 
-Door Frank is voorgesteld om de Kids Club van Burgers’ Zoo hiervoor te gebruiken. Dit is een groep kinderen die vaak bij Burgers’ Zoo komen en vaker ingezet worden voor tests van nieuwe onderdelen van Burgers’ Zoo.
+#### Testgroep
+Hoofd van educatie Burgers' Zoo mevr. Constanze Mager heeft aangegeven dat er niet met groepen kinderen getest kan worden in verband met het Ocean event dat in Januari plaatsvindt. Ze adviseert om met elke bezoeker te testen, omdat we toch maar 30 passen tot onze beschikking hebben en dat kans klein is dat de doelgroep van 6-12 jaar aanwezig is op de testdag. Omdat wij de techniek testen en niet de content zijn wij daarmee akkoord gegaan.
 
-Rond de plekken waar de poten zijn verstopt staan leden van de projectgroep opgesteld om te observeren hoe de kinderen omgaan met de poten. Op deze manier kan worden onderzocht of de poten naar behoren werken.
+### Begeleiding
 
-Tegelijk zullen een aantal IoT leden van de projectgroep het systeem digitaal in de gaten houden. Zo zal continu worden geobserveerd of de onderdelen van het systeem verbonden blijven en correct blijven functioneren met écht gebruik.
-
-Op deze manier kan advies gegeven worden op de vraag of de huidige techniek stabiel genoeg is om in praktijk te gebruiken.
-
-### Scenario 3: Observatie kind
-
-De educatiemedewerkers van Burgers’ Zoo zijn verantwoordelijk voor de kinderen tijdens de speurtocht. Het is aan deze medewerkers om invulling te geven aan de begeleiding van de kinderen. De kinderen krijgen van de educatie medewerkers een pasje die ze kunnen gebruiken tijdens de speurtocht. De projectgroep zorgt dat deze tijdig terecht komen bij de medewerkers van Burgers’ Zoo. De educatie medewerkers zijn tijdens de dag verantwoordelijk voor het uitdelen en terug ontvangen van de pasjes.
+Tegelijk zullen een aantal IoT leden van de projectgroep het systeem digitaal monitoren. Zo zal continu worden geobserveerd of de onderdelen van het systeem verbonden blijven en correct blijven functioneren met écht gebruik.
 
 
 ## Verantwoordelijkheden
@@ -98,12 +94,8 @@ De verantwoordelijkheid van IoT is het opzetten, monitoren en analyseren van de 
 ### DWA
 De projectgroep is hierbij verantwoordelijk dat de applicatie op een testserver draait. Voor de test van de beheerders app zullen de medewerkers van educatie met de applicatie werken. Hierbij kijkt, minimaal één lid van DWA mee om ook technische ondersteuning te bieden. 
 
-### Eductieve medewerker
-
-### Technische dienst
- Burgers’ Zoo is zal hierbij een laptop met internetverbinding verzorgen.
-
-
+### Speurtocht begeleider
+Twee projectleden zullen in Burgers' Zoo kleding bij de ingang en uitgang van de Mangrove staan om ranger pasjes uit te delen en te innen.
 
 
 
@@ -136,14 +128,14 @@ De verantwoordelijkheden op de dag zelf ziet er als volgd uit:
 ## Risico’s en Uitwijkstrategie
 Mocht er geen stroomvoorziening vanuit Burgers’ Zoo kunnen regelen, kan er geen test uitgevoerd worden op lokatie. Dit zal dan uitgevoerd moeten worden op de HAN, waarbij er meer controle is over de stroomvoorziening. Hierbij zal de test ook afhangen van de vrijwilligers (studenten/docenten) die op de HAN rondlopen.
 
-Op het moment dat er geen verbinding is met de deployment server is moet deze lokaal, op een laptop moeten worden gehost.
+Op het moment dat er geen verbinding is met de deployment server moet deze lokaal, op een laptop moeten worden gehost.
 
 Wanneer er geen laptop beschikbaar is vanuit Burgers’ Zoo met een werkende internet verbinding, kan de test helaas niet op locatie doorgaan.
 
 Geen toegang tot het park of geen aanwezige kinderen of geen medewerkers beschikbaar zijn voor het begeleiden van kinderen kan de test op locatie ook niet doorgaan.
 
 Mocht er geen NRF verbinding op te zetten zijn kan de code op de poten aangepast worden zodat er wel gescand kan worden maar wordt deze informatie niet verstuurd naar de gateway en backend. Hierdoor kan er toch testen met de kinderen op locatie.
+
 ## Planning
-- Wanneer gaan we testen?
-- Hoe ziet de test op die dag eruit?
+De datum van de field-trial is 11 januari 2018.
 
