@@ -18,7 +18,8 @@ Sluit de twee arduino's aan volgens het onderstaande aansluitschema of gebruik d
 
 ![images/aansluitschema.png](images/aansluitschema.png)
 
-**Auduino** 
+**Auduino**  
+
 | Component  | Pin op Component | Pin op Arduino |
 |------------|------------------|----------------|
 | Blauwe LED | +                | D2             |
@@ -79,6 +80,8 @@ Nadat alle bovenstaande stappen doorlopen zijn kunnen de twee Arduino's op stroo
 # Maduino
 Als alles goed gaat dan gaan er 3 lampjes branden zodra de Maduino wordt opgestart. Wanneer het initialiseren compleet is gaan de drie lampjes uit. Verder zijn er een aantal abnormale lampcodes. Deze zijn hieronder uitgewerkt.
 
+| Gedrag | Betekenis |
+| --- | --- |
 | Alle lampjes blijven aan staan. | Bezig met opstart sequence. Zoalang de Arduino nog niet verbonden is met een gateway worden deze lampjes laten zien. Als dit lang zo blijft staan dan is er waarschijnlijk iets mis met de NRF24L01+ óf kan de gateway niet worden gevonden. | 
 | Geel lampje continu aan | Er kan niet worden verbonden met de auduino. Er is iets mis met het verzenden naar de Auduino met I2C. |
 | Geel lampje kort knipper | Er wordt verzonden naar de Auduino. Wanneer je een hele korte gele knipper ziet dan wordt er een signiaaltje verzonden naar de Auduino. |
@@ -87,7 +90,10 @@ Als alles goed gaat dan gaan er 3 lampjes branden zodra de Maduino wordt opgesta
 | Groen lampje 1 seconde aan | Er is een valide pas gescant. |
 
 # Auduino
-De Auduino laat geen led branden als er hij niks aan het doen is. De volgende statussen kunnen worden afgelezen van de blauwe status led:
+De Auduino laat geen led branden als er hij niks aan het doen is. De volgende statussen kunnen worden afgelezen van de blauwe status led:  
+
+| Gedrag | Betekenis |
+| --- | --- |
 | Blauwe led knippert snel | De SD kaart lezer kon niet worden geinitialiseerd. | 
 | Blauwe led brand continu | Er wordt een geluidje afgespeeld |
 
