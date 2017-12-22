@@ -1,4 +1,4 @@
-### B: Installatie Gateway
+### Installatie Gateway
 
 
 Om de gateway werkend te krijgen zijn er een aantal vereisten:
