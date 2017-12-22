@@ -2,8 +2,9 @@ In dit hoofdstuk wordt beschreven hoe een fysieke poot kan worden gebouwd.
 
 ## 1. Onderdelen
 
-TODO: WELKE ONDERDELEN ZIJN NODIG?
-TODO: EEPROM MOET LEEG ZIJN
+TODO: WELKE ONDERDELEN ZIJN NODIG?  
+TODO: EEPROM MOET LEEG ZIJN  (vraag aan Arne)
+Dit doet Sebastiaan 
 
 ## 2. Behuizing
 De behuizing van de poot bestaat uit een houten voorplaat met op de achterkant een plastic bakje met daarin alle electronica. Hieronder een sfeerimpressie van de behuizing.
@@ -66,13 +67,15 @@ Sluit de twee arduino's aan volgens het onderstaande aansluitschema of gebruik d
 
 ## 4. Code uploaden
 
-TODO: LINK NAAR BUILT HEX FILES + UITLEG OVER HOE JE DEZE UPLOAD
+TODO: LINK NAAR BUILT HEX FILES + UITLEG OVER HOE JE DEZE UPLOAD  
+Dit doet Sijmen
 
 ## 5. SD kaart
 
 TODO: HOE SD KAART FORMATTEREN?
 TODO: NAAMGEVING VAN BESTANDEN OP SD KAART
 TODO: UITLEG CONVERSIE AUDIO NAAR JUISTE FORMAAT
+Dit doet Thomas
 
 ## 6. Aanzetten
 Nadat alle bovenstaande stappen doorlopen zijn kunnen de twee Arduino's op stroom worden gezet. Vervolgens gaan de twee Arduino's initialiseren. Om te kunnen zien of onderdelen goed worden geinitialiseerd moet worden gekeken naar de statuslampjes. Per Arduino is hieronder te vinden wat de statuslampjes betekeken. 
