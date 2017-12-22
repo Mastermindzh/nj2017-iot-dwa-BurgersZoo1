@@ -9,10 +9,13 @@ class StatusLights {
     void loop();
     void turnLightsOff();
     void turnLightsOn();
-    void turnLightOn(char lightNr);
-    void turnLightOff(char lightNr);
-    void blinkLight(char lightNumber, char frequency);
+    void auduinoStartTalking();
+    void auduinoStopTalking();
+    void pas();
+    void wrongPas(unsigned int blinkLength);
   private:
-    Led** leds;
+    Led* red;
+    Led* yellow;
+    Led* green;
 };
 #endif

@@ -1,20 +1,33 @@
 #include "../head/Poot.h"
 
-Poot::Poot(){
+Poot::Poot(StatusLights* lights){
+  this->lights = lights;
+  this->lights->turnLightsOff();
   this->gatewayLink = new GatewayLink(this);
   this->rangerDetector = new RangerDetector(this);
   this->auduinoPortal = new AuduinoPortal();
 
   this->gatewayLink->sendStartup(this->getPootid());
+
 }
 void Poot::loop(){
   this->rangerDetector->loop();
+  this->lights->loop();
 }
 
 void Poot::pasScanned(String pasid){
   Serial.println("Pas gescand met id: " + pasid);
+  lights->auduinoStartTalking();
+  lights->pas();
   this->auduinoPortal->playAudio();
+  lights->auduinoStopTalking();
   this->gatewayLink->sendCard(pasid);
+}
+
+void Poot::wrongPasScanned(byte errorCode){
+  /// unauthenticated = 500ms blink
+  /// wrong content = 1000ms blink
+  lights->wrongPas(errorCode == 1 ? 500 : 1000);
 }
 
 byte Poot::getPootid(){
@@ -29,4 +42,18 @@ void Poot::setPootid(byte code){
 
 void Poot::receive(const MyMessage &message){
   this->gatewayLink->receive(message);
+}
+
+/**
+* software reset for Arduino
+*/
+void(* resetFunc) (void) = 0;
+
+void Poot::resetEEPROM(){
+  Serial.println(F("Reset EEPROM"));
+  for (int i = 0 ; i < EEPROM.length() ; i++) {
+      EEPROM.write(i, 0xFF);
+  }
+  Serial.println(F("Reset EEPROM done!"));
+  resetFunc();
 }

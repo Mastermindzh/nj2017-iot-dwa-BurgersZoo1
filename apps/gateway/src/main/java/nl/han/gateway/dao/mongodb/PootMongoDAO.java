@@ -6,6 +6,7 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import nl.han.gateway.dao.GsonParserUtil;
 import nl.han.gateway.dao.IPootDAO;
+import nl.han.gateway.exceptions.NotFoundException;
 import nl.han.gateway.models.Poot;
 import nl.han.gateway.util.GatewayProperties;
 import org.bson.Document;
@@ -66,8 +67,11 @@ public class PootMongoDAO implements IPootDAO {
     }
 
     @Override
-    public Poot findByPootId(Long pootid) {
+    public Poot findByPootId(Long pootid) throws NotFoundException {
         Document queryResult = this.collection.find(eq("pootid", pootid)).first();
+        if(queryResult == null || queryResult.isEmpty()){
+            throw new NotFoundException("Could not find poot");
+        }
         return this.gson.fromJson(queryResult.toJson(), Poot.class);
     }
 

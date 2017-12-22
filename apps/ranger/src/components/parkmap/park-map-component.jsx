@@ -18,7 +18,7 @@ const mapOptions = {
 class ParkMapComponent extends Component {
   static defaultProps = {
     center: { lat: 52.009622, lng: 5.900908 },
-    zoom: 17
+    zoom: 16
   };
 
   render() {

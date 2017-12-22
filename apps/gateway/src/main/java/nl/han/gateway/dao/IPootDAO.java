@@ -1,5 +1,6 @@
 package nl.han.gateway.dao;
 
+import nl.han.gateway.exceptions.NotFoundException;
 import nl.han.gateway.models.Poot;
 import org.bson.types.ObjectId;
 
@@ -33,5 +34,5 @@ public interface IPootDAO extends ICrudDAO<Poot> {
      * @param pootid
      * @return
      */
-    Poot findByPootId(Long pootid);
+    Poot findByPootId(Long pootid) throws NotFoundException;
 }
