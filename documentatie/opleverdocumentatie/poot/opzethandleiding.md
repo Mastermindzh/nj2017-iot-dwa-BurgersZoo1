@@ -76,11 +76,26 @@ De volgende stap is om de code te uploaden naar de Arduino's.
 Een alternatief is het handmatig compileren en uploaden van de code. Lees hiervoor de uitleg in het hoofdstuk ontwikkelhandleiding.
 
 #### 5. SD kaart
+De poot maakt gebruik van een MicroSD kaart waarop de weetjes en en dierengeluiden op staan. Deze MicroSD kaart kan maximaal 32GB zijn en moet geformateerd zijn in FAT32.
 
-TODO: HOE SD KAART FORMATTEREN?
-TODO: NAAMGEVING VAN BESTANDEN OP SD KAART
-TODO: UITLEG CONVERSIE AUDIO NAAR JUISTE FORMAAT
-Dit doet Thomas
+Op de MicroSD kaart moeten de audio bestanden volgens de volgende naamgeving:
+
+- Een diergeluid in de root: dier.wav
+- Weetjes genummerd, beginnend vanaf 0.  
+Dus 0.wav, 1.wav, 2.wav etc.
+
+De inhoud van de MicroSD kaart zal er als volgt uit zien:
+```
+/dier.wav
+/0.wav
+/1.wav
+/2.wav
+/3.wav
+/[0...+].wav
+```
+
+Wanneer een wav bestandje op de MicroSD gezet moet worden, zal deze geconverteerd worden naar de goede settings. 
+** todo: uitleggen hoe de wav bestanden geconverteerd moeten worden, dit komt in week 7 & 8. **
 
 #### 6. Aanzetten
 Nadat alle bovenstaande stappen doorlopen zijn kunnen de twee Arduino's op stroom worden gezet. Vervolgens gaan de twee Arduino's initialiseren. Om te kunnen zien of onderdelen goed worden geinitialiseerd moet worden gekeken naar de statuslampjes. Per Arduino is hieronder te vinden wat de statuslampjes betekeken.

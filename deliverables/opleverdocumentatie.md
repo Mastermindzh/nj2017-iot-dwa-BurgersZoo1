@@ -21,6 +21,7 @@ In dit rapport wordt allereerst het concept beschreven, gevolgd door een beschri
   * [Starten Backend + Web Apps](#starten-backend--web-apps)
     + [randvoorwaarden](#randvoorwaarden)
     + [Het starten van de web applicaties en de database](#het-starten-van-de-web-applicaties-en-de-database)
+      - [Installeren van de dependencies](#installeren-van-de-dependencies)
       - [Development applicaties](#development-applicaties)
       - [productie builds (minified)](#productie-builds-minified)
       - [De applicaties bezoeken](#de-applicaties-bezoeken)
@@ -111,6 +112,22 @@ Het volgende hoofdstuk zal uitleggen hoe de applicaties gestart kunnen worden in
 
 > ***NOTE!  de commando's zijn bedacht voor Linux en Mac OS X, hieronder wordt beschreven hoe het werkt voor alle drie de systemen al is het zeer aan te raden om een Linux Virtual machine op te zetten. (klik [hier](https://www.storagecraft.com/blog/the-dead-simple-guide-to-installing-a-linux-virtual-machine-on-windows/) voor uitleg)***
 
+##### Installeren van de dependencies
+Om de benodigde NPM software te installeren moet het volgende commando gedraaid worden:
+
+```js
+npm install
+```
+
+Dit zal tegelijkertijd de docker containers die nodig zijn voor het draaien van de software aanmaken.
+Om te controleren of het installeren goed is gegaan kan je in de opdrachtprompt zien hoe lang het geduurd heeft.
+
+Dit ziet er als volgt uit:
+
+```
+up to date in 2.16s
+```
+
 ##### Development applicaties
 
 Om de applicaties in development modus te starten (in Docker) moet het volgende commando worden uitgevoerd:
@@ -178,12 +195,11 @@ Om de applicaties te bezoeken, en ze te gebruiken, ga je naar de volgende web ad
 
 ### Installatie Gateway
 
-
 Om de gateway werkend te krijgen zijn er een aantal vereisten:
 
 - Raspberry Pi 3.
 - Arduino Nano, Mega of Uno met een aangesloten NRF24L01+.
-- Er is een werkende versie van `RASPBIAN STRETCH WITH DESKTOP` geïnstalleerd.
+- Er is een werkende versie van `RASPBIAN STRETCH WITH DESKTOP` geïnstalleerd. Mogenlijk werkt het ook met de minimale versie, echter is dit (nog) niet getest.
 - Er is toegang via SSH of direct op de Raspberry Pi 3 terminal toegang.
 
 #### MongoDB
@@ -194,7 +210,7 @@ Dit kan op de Raspberry Pi 3 gedaan worden met de volgende commando's in de term
 ``` bash
 $ sudo apt-get update
 $ sudo apt-get upgrade
-$ sudo apt-get install mongodb-server
+$ sudo apt-get install mongodb-server -y
 ```
 *Het upgrade process kan een tijdje duren.*
 
@@ -202,28 +218,31 @@ Als de MongoDB server succesvol geïnstalleerd is, kan deze service gestart word
 ``` bash
 $ sudo service mongodb start
 ```
+Deze service zal geen console uitput geven aangezien dit in de achtergrond draait.
 
 #### Java
 De gateway draait in een JVM en het is dus nodig om de juiste Java installatie te installeren.
 
 ``` bash
 sudo su
+# Het kan zijn dat je op dit moment een wachtwoord moet invullen, dit is om het root account te gebruiken
 echo "deb http://ppa.launchpad.net/webupd8team/java/ubuntu xenial main" | tee /etc/apt/sources.list.d/webupd8team-java.list
-apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys EEA14886
+apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys EEA14886 -y
 ```
 Mocht bij het uitvoeren van het bovenstaande een error naar voren komen over het ontbreken van `dirmngr` dan kan dat gefixed worden door dit te installeren:
 ``` bash
-sudo apt-get install dirmngr
+sudo apt-get install dirmngr -y
 ```
+Tijdens het installeren van Java 8 is het gebruikelijk dat er gebruikersvoorwaarden geaccepteerd moeten worden, deze moeten geaccepteerd worden.
 ``` bash
 sudo apt-get update
-sudo apt-get install oracle-java8-installer
+sudo apt-get install oracle-java8-installer -y
 ```
 
 #### RXTX
 
 ``` bash
-sudo apt-get install librxtx-java
+sudo apt-get install librxtx-java -y
 ```
 
 #### Aansluiting Arduino
@@ -317,11 +336,26 @@ TODO: LINK NAAR BUILT HEX FILES + UITLEG OVER HOE JE DEZE UPLOAD
 Dit doet Sijmen
 
 #### 5. SD kaart
+De poot maakt gebruik van een MicroSD kaart waarop de weetjes en en dierengeluiden op staan. Deze MicroSD kaart kan maximaal 32GB zijn en moet geformateerd zijn in FAT32.
 
-TODO: HOE SD KAART FORMATTEREN?
-TODO: NAAMGEVING VAN BESTANDEN OP SD KAART
-TODO: UITLEG CONVERSIE AUDIO NAAR JUISTE FORMAAT
-Dit doet Thomas
+Op de MicroSD kaart moeten de audio bestanden volgens de volgende naamgeving:
+
+- Een diergeluid in de root: dier.wav
+- Weetjes genummerd, beginnend vanaf 0.  
+Dus 0.wav, 1.wav, 2.wav etc.
+
+De inhoud van de MicroSD kaart zal er als volgt uit zien:
+```
+/dier.wav
+/0.wav
+/1.wav
+/2.wav
+/3.wav
+/[0...+].wav
+```
+
+Wanneer een wav bestandje op de MicroSD gezet moet worden, zal deze geconverteerd worden naar de goede settings. 
+** todo: uitleggen hoe de wav bestanden geconverteerd moeten worden, dit komt in week 7 & 8. **
 
 #### 6. Aanzetten
 Nadat alle bovenstaande stappen doorlopen zijn kunnen de twee Arduino's op stroom worden gezet. Vervolgens gaan de twee Arduino's initialiseren. Om te kunnen zien of onderdelen goed worden geinitialiseerd moet worden gekeken naar de statuslampjes. Per Arduino is hieronder te vinden wat de statuslampjes betekeken.
@@ -470,3 +504,6 @@ In deze lijst vindt je voor de meeste software links naar installatiehandleiding
     |         |         |          |       |
     |         |         |          |       |
 -->
+
+
+

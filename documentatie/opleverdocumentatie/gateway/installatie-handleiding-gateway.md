@@ -1,11 +1,10 @@
 ### Installatie Gateway
 
-
 Om de gateway werkend te krijgen zijn er een aantal vereisten:
 
 - Raspberry Pi 3.
 - Arduino Nano, Mega of Uno met een aangesloten NRF24L01+.
-- Er is een werkende versie van `RASPBIAN STRETCH WITH DESKTOP` geïnstalleerd.
+- Er is een werkende versie van `RASPBIAN STRETCH WITH DESKTOP` geïnstalleerd. Mogenlijk werkt het ook met de minimale versie, echter is dit (nog) niet getest. [Download](https://www.raspberrypi.org/downloads/raspbian/)
 - Er is toegang via SSH of direct op de Raspberry Pi 3 terminal toegang.
 
 #### MongoDB
@@ -16,7 +15,7 @@ Dit kan op de Raspberry Pi 3 gedaan worden met de volgende commando's in de term
 ``` bash
 $ sudo apt-get update
 $ sudo apt-get upgrade
-$ sudo apt-get install mongodb-server
+$ sudo apt-get install mongodb-server -y
 ```
 *Het upgrade process kan een tijdje duren.*
 
@@ -24,28 +23,31 @@ Als de MongoDB server succesvol geïnstalleerd is, kan deze service gestart word
 ``` bash
 $ sudo service mongodb start
 ```
+Deze service zal geen console uitput geven aangezien dit in de achtergrond draait.
 
 #### Java
 De gateway draait in een JVM en het is dus nodig om de juiste Java installatie te installeren.
 
 ``` bash
 sudo su
+# Het kan zijn dat je op dit moment een wachtwoord moet invullen, dit is om het root account te gebruiken
 echo "deb http://ppa.launchpad.net/webupd8team/java/ubuntu xenial main" | tee /etc/apt/sources.list.d/webupd8team-java.list
-apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys EEA14886
+apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys EEA14886 -y
 ```
 Mocht bij het uitvoeren van het bovenstaande een error naar voren komen over het ontbreken van `dirmngr` dan kan dat gefixed worden door dit te installeren:
 ``` bash
-sudo apt-get install dirmngr
+sudo apt-get install dirmngr -y
 ```
+Tijdens het installeren van Java 8 is het gebruikelijk dat er gebruikersvoorwaarden geaccepteerd moeten worden, deze moeten geaccepteerd worden.
 ``` bash
 sudo apt-get update
-sudo apt-get install oracle-java8-installer
+sudo apt-get install oracle-java8-installer -y
 ```
 
 #### RXTX
 
 ``` bash
-sudo apt-get install librxtx-java
+sudo apt-get install librxtx-java -y
 ```
 
 #### Aansluiting Arduino
