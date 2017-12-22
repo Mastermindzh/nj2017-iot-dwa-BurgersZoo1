@@ -62,7 +62,9 @@ apps/*/.config
 apps/*/.npm
 apps/*/.node-gyp
 
+#db data
 dbdata
+dbdata-prod
 
 # idea
 .idea
@@ -270,6 +272,8 @@ gateway.properties
 
 apps/server/audio/*
 !apps/server/audio/.gitinclude
+apps/server/temp/*
+!apps/server/temp/.gitinclude
 !apps/server/audio/beer.wav
 !apps/server/audio/default.wav
 !apps/server/audio/dolphin.wav

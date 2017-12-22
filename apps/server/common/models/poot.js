@@ -25,7 +25,7 @@ module.exports = function (Poot) {
 
   Poot.scan = function (pasid, pootid, cb) {
     var rangerid = 0;
-    var speurpuntid = 0;
+    var speurpuntId = 0;
 
     //zoek de ranger bij het pasid uit de request
     app.models.Pas.findOne({
@@ -46,8 +46,8 @@ module.exports = function (Poot) {
           if (result === undefined || result === null) {
             cb('empty result', null)
           } else {
-            speurpuntid = result.toJSON().id;
-            result = {rangerid: rangerid, speurpuntid: speurpuntid, datum: Date.now()};
+            speurpuntId = result.toJSON().id;
+            result = {rangerid: rangerid, speurpuntId: speurpuntId, datum: Math.floor(new Date() / 1000)};
             cb(null, result);
           }
         });
@@ -56,6 +56,7 @@ module.exports = function (Poot) {
   };
 
   Poot.afterRemote('scan', function (ctx, result, next) {
+
     app.models.RangerHeeftBezocht.create(result, function (err, obj) {
       if (err) next(err, null);
       next(null, 'successful');
