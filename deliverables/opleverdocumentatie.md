@@ -13,24 +13,24 @@ In dit rapport wordt allereerst het concept beschreven, gevolgd door een beschri
 
 - [Concept](#concept)
 - [Systeemoverview](#systeemoverview)
-- [Gateway](#gateway)
-- [Frontend apps](#frontend-apps)
-- [Backend](#backend)
-- [Database](#database)
+  * [Gateway](#gateway)
+  * [Frontend apps](#frontend-apps)
+  * [Backend](#backend)
+  * [Database](#database)
 - [Opzethandleiding](#opzethandleiding)
-  * [A: Starten Backend + Web Apps](#a-starten-backend--web-apps)
+  * [Starten Backend + Web Apps](#starten-backend--web-apps)
     + [randvoorwaarden](#randvoorwaarden)
     + [Het starten van de web applicaties en de database](#het-starten-van-de-web-applicaties-en-de-database)
       - [Development applicaties](#development-applicaties)
       - [productie builds (minified)](#productie-builds-minified)
       - [De applicaties bezoeken](#de-applicaties-bezoeken)
-  * [B: Installatie Gateway](#b-installatie-gateway)
+  * [Installatie Gateway](#installatie-gateway)
     + [MongoDB](#mongodb)
     + [Java](#java)
     + [RXTX](#rxtx)
     + [Aansluiting Arduino](#aansluiting-arduino)
     + [Start gateway](#start-gateway)
-  * [C: Poot](#c-poot)
+  * [Poot](#poot)
     + [1. Onderdelen](#1-onderdelen)
     + [2. Behuizing](#2-behuizing)
     + [3. Aansluiting](#3-aansluiting)
@@ -71,25 +71,25 @@ De poot bestaat uit twee Arduino's. Er is één Arduino die volledig gaat over h
 
 De Master Arduino (genaamd Maduino) is verantwoordelijk voor alle primaire functionaliteiten en het aansturen van de Audio Arduino (genaamd Auduino). Zo zal de master Arduino een NFC-scanner hebben om passen te detecteren. Ook zal deze Master Arduino de temperatuur en luchtvochtigheid meten. De Master Arduino staat via de NRF24 chip in verbinding met de gateway en zal zo de gateway op de hoogte houden over welke passen zijn langs geweest.
 
-## Gateway
+### Gateway
 De poten zullen communiceren met de twee backends van de twee groepen via een gateway. Deze gateway bestaat uit een Arduino en een Raspberry Pi. De Arduino zal draadloos communiceren via NRF24 chips met de poten en alle informatie doorsturen naar de Raspberry Pi. De Pi zal via HTTP/JSON communiceren met de backend's. De Pi kan op zijn beurt weer de Arduino binnen de gateway aansturen om zo informatie bij de poten te krijgen.
 
-## Frontend apps
+### Frontend apps
 De gebruikers zullen werken met een van de twee client-applicaties: de Ranger App voor de rangers en de Admin App voor de administratoren. Deze twee applicaties draaien in de browser en zullen via HTTP/JSON communiceren met de Backends.
 
 De front-end apps zijn modulair opgezet, deze apps draaien op hun eigen plekje en roepen het REST backend middels HTTP aan. Als zei data willen manipuleren zal dit dus ook via de back-end moeten verlopen. Alle front-end apps bij elkaar worden gezien als de "front-end laag", zelfs als deze op andere fysieke machines draaien. Het los koppelen van de applicaties bevordert de werkbaarheid en stabiliteit van de architectuur. Elke app kan afzonderlijk gedeployed / getest worden zonder de rest van de architectuur te beïnvloeden.
 
-## Backend
+### Backend
 Het back-end betreft een REST api welke wordt aangesproken met de verschillende front-ends. De REST api zelf spreekt de datalaag aan om zijn data op te slaan en op te halen. Deze laag kan wederom uitgebreid worden met meerdere instanties van de back-end en/of met een loadbalancer.
 
-## Database
+### Database
 De database laag zal enkel en alleen de database bevatten, op het moment van prototyping is dit één Mongo database. Dit kan echter uitgebreid worden met meerdere instances (voor redundancy, uitbreidbaarheid) en eventueel voorzien worden van een load balancer.
 
 
 ## Opzethandleiding
 Om het systeem in zijn geheel op te zetten zijn drie onderdelen nodig: Web-Backend + Webapps, Gateway en Poot. In onderstaande drie koppen wordt uitgelegd hoe deze drie onderdelen in te stellen. Wanneer alle drie de onderdelen opgezet zijn kan het systeem gebruikt worden. 
 
-### A: Starten Backend + Web Apps
+### Starten Backend + Web Apps
 Dit hoofdstuk zal beschrijven hoe alle webapplicaties, de backend en de database opgestart moeten worden. Ook zal dit hoofdstuk beschrijven hoe de database gevuld kan worden met het seedscript zodat er wat testdata in de apps staat.
 
 #### randvoorwaarden
@@ -176,7 +176,7 @@ Om de applicaties te bezoeken, en ze te gebruiken, ga je naar de volgende web ad
 
 
 
-### B: Installatie Gateway
+### Installatie Gateway
 
 
 Om de gateway werkend te krijgen zijn er een aantal vereisten:
@@ -243,7 +243,7 @@ java -Djava.library.path=/usr/lib/jni -jar gateway.jar #gateway.jar is te vervan
 Bij het tweede gedeelte, om Java te starten, is het belangrijk dat de volgende regel voor de -jar komt: `-Djava.library.path=/usr/lib/jni `. Anders wordt de RXTX library niet goed geladen.
 
 
-### C: Poot
+### Poot
 In dit hoofdstuk wordt beschreven hoe een fysieke poot kan worden gebouwd.
 
 #### 1. Onderdelen
