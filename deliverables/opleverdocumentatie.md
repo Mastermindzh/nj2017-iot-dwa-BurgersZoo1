@@ -12,6 +12,7 @@ In dit rapport wordt allereerst het concept beschreven, gevolgd door een beschri
 <!-- toc -->
 
 - [Concept](#concept)
+- [Systeemoverview](#systeemoverview)
 - [Gateway](#gateway)
 - [Frontend apps](#frontend-apps)
 - [Backend](#backend)
@@ -64,7 +65,7 @@ De speurtocht is bedoeld voor kinderen om een ranger te spelen. De kinderen krij
 In de ranger app kan een ranger kijken wat hij allemaal gedaan heeft tijdens zijn bezoek aan Burgers' Zoo. Hier is te vinden welke poten hij wanneer gescand heeft. Hier is te zien welk weetje en dierengeluid er bij hoort, zodat dit nogmaals geluisterd kan worden. De app geeft ook aan welke punten nog niet gescand zijn. Dit kan een aanleiding zijn om het park nog een keer te bezoeken, om zo alle punten van de speurtocht te vinden. Hier kunnen beloningen aan gekoppeld worden in de vorm van korting of een gift. Medewerkers van Burgers' Zoo kunnen de poten en de speurtocht beheren door hier andere dierengeluidjes of weetjes aan toe te voegen.
 
 
-#Systeemoverview
+## Systeemoverview
 
 De poot bestaat uit twee Arduino's. Er is één Arduino die volledig gaat over het afspelen van audio. In een later stadium zou deze Arduino ook verantwoordelijk worden voor het opslaan van nieuw ontvangen audiobestanden. De Audio Arduino wordt aangestuurd door de Master Arduino.
 
