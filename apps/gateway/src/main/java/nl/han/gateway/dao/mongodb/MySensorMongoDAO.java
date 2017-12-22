@@ -1,6 +1,10 @@
 package nl.han.gateway.dao.mongodb;
 
 import com.google.gson.Gson;
+import com.mongodb.AuthenticationMechanism;
+import com.mongodb.MongoClient;
+import com.mongodb.MongoCredential;
+import com.mongodb.ServerAddress;
 import com.mongodb.client.MongoCollection;
 import nl.han.gateway.dao.GsonParserUtil;
 import nl.han.gateway.dao.IMyMessagesDAO;
@@ -11,9 +15,7 @@ import org.bson.types.ObjectId;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
 

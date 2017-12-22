@@ -6,13 +6,13 @@ Dierentuin Koninklijk Burgers' Zoo is een dierentuin gelegen te Arnhem op een mo
 
 ## Links naar producten
 
-| Product             | Link |
-|---------------------|------|
-| Plan van aanpak     |[Plan van aanpak](deliverables/plan%20van%20aanpak.md)|
-| Functioneel ontwerp |[Functioneel ontwerp](deliverables/functioneel%20ontwerp.md)|
-| Technisch ontwerp |[Technisch ontwerp](deliverables/technisch%20ontwerp.md)|
-| Testplan |[Testplan](deliverables/testplan.md)|
-| Opleverdocument |nog niet beschikbaar|
-| Onderzoeken         |[documentatie/onderzoeken](documentatie/onderzoeken)|
-| Gateway Api                 |[Gateway apibeschrijving](documentatie/api)|
+| Product             | Link | Beschrijving|
+|---------------------|------|----|
+| Plan van aanpak     |[Plan van aanpak](deliverables/plan%20van%20aanpak.md)| uitleg over de context van de opdracht, de probleemstelling  en de werkwijze van alle betrokken disciplines |
+| Functioneel ontwerp |[Functioneel ontwerp](deliverables/functioneel%20ontwerp.md)| document dat use case beschrijvingen, requirements en mock-ups van de webapplicaties bevat. |
+| Technisch ontwerp |[Technisch ontwerp](deliverables/technisch%20ontwerp.md)| beschrijft het systeem op architectuur niveau, inclusief subsystemen, services, hardware mapping en gebruikte protocollen. Bevat onderbouwingen voor gemaakte keuzes. |
+| Testplan |[Testplan](deliverables/testplan.md)| projecthypothese, test doelgroep en testscenario's |
+| Opleverdocumentatie |[Opleverdocumentatie](deliverables/opleverdocumentatie.md)| De opleverdocumentatie dient als handleiding voor iemand die wil begrijpen *hoe* en vooral *wat* er gebouwt is door deze groep. |
+| Onderzoeken         |[documentatie/onderzoeken](documentatie/onderzoeken)| De onderzoeken welke de groep heeft uitgevoerd in het kader van de opleiding. |
+| Gateway Api                 |[Gateway apibeschrijving](documentatie/api)| De api beschrijving van de gateway |
 
