@@ -73,7 +73,6 @@ In dit rapport wordt allereerst het concept beschreven, gevolgd door een beschri
       - [Maduino](#maduino-1)
 - [Bijlagen](#bijlagen)
   * [Repo commando's](#repo-commandos)
-  * [Begrippenlijst](#begrippenlijst)
   * [Software lijst](#software-lijst)
 
 <!-- tocstop -->
@@ -883,15 +882,6 @@ Dat levert de volgende items op:
 | copy-endpoint-prod          |  Dit kopieërd alle development instellingen naar de apps                                                                                                     | ! werkt niet op Windows                   |
 | copy-endpoint-dev           |  Dit kopieërd alle development instellingen naar de apps                                                   | ! werkt niet op Windows                   |
 | postinstall                 | Dit script draait NA een npm install en zal de "build-docker" taak uitvoeren                           |                                           |
-
-
-### Begrippenlijst
-
-| Begrip | Uitleg |
-|--------|--------|
-|        |        |
-|        |        |
-|        |        |
 
 
 ### Software lijst
