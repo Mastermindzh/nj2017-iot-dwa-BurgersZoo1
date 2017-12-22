@@ -45,6 +45,7 @@ sudo apt-get install oracle-java8-installer -y
 ```
 
 #### RXTX
+De Java gateway applicatie praat via het Serial protocol met de arduino.  Hiervoor is de RXTX library nodig. Installeer deze library met het volgende commando:
 
 ``` bash
 sudo apt-get install librxtx-java -y
