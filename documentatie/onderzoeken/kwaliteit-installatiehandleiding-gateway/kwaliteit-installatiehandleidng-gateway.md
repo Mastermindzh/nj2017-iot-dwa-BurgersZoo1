@@ -1,15 +1,11 @@
 Onderzoek kwaliteit installatiehandleiding gateway
 ===============================
 
-Geef een beschrijving van de test die je gedaan hebt met elk Proof of Concept. Voeg 
- de code ook toe in de map **code**.
-
 **Onderzoeksmethode (uit de cmd methods pack)**
 Interview uit field.
 
 ## Hypothese
-Ik verwacht meer te gaan leren over de kwaliteit van de installatiehandleding voor de gateway. Deze moet helder zijn en gemakkelijk te installeren zijn, ook voor iemand zonder veel kennis van Linux/Raspberry Pi 3 [Raspbian](https://www.raspberrypi.org/downloads/raspbian/).
-[installatie handleiding gateway](../../opleverings-documentatie/installatie-handleiding-gateway.md)
+Ik verwacht meer te gaan leren over de kwaliteit van de [installatiehandleding voor de gateway]](../../opleverings-documentatie/installatie-handleiding-gateway.md). Deze moet helder zijn en gemakkelijk te installeren zijn, ook voor iemand zonder veel kennis van Linux/Raspberry Pi 3 [Raspbian](https://www.raspberrypi.org/downloads/raspbian/).
 
 ## Testopzet 
 Ik ga het testen door iemand van een andere groep de handleiding te laten volgen. Ik zet de Raspberry Pi 3 met SSH op, omdat dit een vereiste is van de handleiding en daarna help ik niet meer. Na afloop stel ik een aantal vragen:
