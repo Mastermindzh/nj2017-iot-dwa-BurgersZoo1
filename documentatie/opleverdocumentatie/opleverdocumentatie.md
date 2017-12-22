@@ -10,6 +10,10 @@ In dit rapport wordt allereerst het concept beschreven, gevolgd door een beschri
 ## Inhoudsopgave
 <!-- toc -->
 
+#include "documentatie/opleverdocumentatie/concept/concept.md"
+
+## Hypothese
+
 ## Systeemoverview (hoe werkt dit systeem globaal?)
 
 ## Opzethandleiding (hoe start ik het systeem?)
@@ -22,6 +26,7 @@ In dit rapport wordt allereerst het concept beschreven, gevolgd door een beschri
 
 #include "documentatie/opleverdocumentatie/front-end/front-end.md"
 
+### Gateway
 #include "documentatie/opleverdocumentatie/gateway/installatie-handleiding-gateway.md"
 
 ### Poot
