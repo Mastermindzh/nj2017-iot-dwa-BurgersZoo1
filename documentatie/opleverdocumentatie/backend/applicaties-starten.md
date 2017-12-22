@@ -1,15 +1,15 @@
 ### Starten Backend + Web Apps
 Dit hoofdstuk zal beschrijven hoe alle webapplicaties, de backend en de database opgestart moeten worden. Ook zal dit hoofdstuk beschrijven hoe de database gevuld kan worden met het seedscript zodat er wat testdata in de apps staat.
 
-#### randvoorwaarden
+#### Randvoorwaarden
 
 Om alle applicaties te draaien moeten er een aantal dingen geregeld worden op de pc/laptop.
 De tabel hieronder geeft aan welke stukken software benodigd zijn en zal, waar mogelijk, een link worden geven naar de officiele website.
 
-- [mongo](https://www.mongodb.com/)
-- [docker](https://www.docker.com/)
-- [docker-compose](https://docs.docker.com/compose/)
-- [node](https://nodejs.org/)
+- [Mongo](https://www.mongodb.com/)
+- [Docker](https://www.docker.com/)
+- [Docker-compose](https://docs.docker.com/compose/)
+- [Node](https://nodejs.org/)
 - [npm](https://www.npmjs.com/)
 
 Als alle bovenstaande software geinstalleerd is dan kunnen alle apps gestart worden, om de database te vullen is er echter nog een extra stukje software nodig. De software heet `mongorestore` en komt , ten tijde van schrijven, mee geinstalleerd met het mongo pakket (Op Windows met [mongotools](https://github.com/mongodb/mongo-tools)). Bekijk [deze website](https://docs.mongodb.com/manual/reference/program/mongorestore/) voor meer informatie.
