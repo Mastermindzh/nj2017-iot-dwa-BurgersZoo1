@@ -389,4 +389,3 @@ Geeft door middel van een fysiek lampje feedback aan mensen die de paal onderhou
 
 ##### LED
 Representeert een fysiek led lampje op een bepaalde fysieke pin op de Arduino. Kan worden aangezet of uitgezet.
-

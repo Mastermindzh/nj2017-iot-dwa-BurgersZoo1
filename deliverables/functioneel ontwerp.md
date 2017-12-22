@@ -199,4 +199,3 @@ De volgende twee schermen tonen de "geluiden beheren" en "weetjes beheren" pagin
 
 Als de administrator op het + knopje rechtsboven drukt krijgt hij/zij het volgende scherm(popup) te zien om een geluid / weetje toe te voegen.
 ![geluid toevoegen](./images/Geluid%20toevoegen.png)
-

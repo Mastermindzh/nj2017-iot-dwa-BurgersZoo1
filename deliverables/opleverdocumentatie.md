@@ -630,7 +630,7 @@ Om er achter te komen wat de relatie types exact doen, raadpleeg dan de [Loopbac
 
 ##### Modellen aanpassen
 
-Loopback houdt zijn modellen bij in JSON bestanden. Wanneer je een model aanmaakt bepaal je in feite ook waar het model neer wordt gezet: in de server/server map of in de server/common map. Daar, in het mapje models, vind je voor elk model een .json en een .js bestand. Deze bestanden samen maken het model dat Loopback gebruikt. Je kunt hier handmatig ook dingen wijzigen zonder de commandline tool te gebruiken.
+Loopback houdt zijn modellen bij in JSON bestanden. Wanneer je een model aanmaakt bepaal je in feite ook waar het model neer wordt gezet: in de server of in de common map. Daar, in het mapje models, vind je voor elk model een .json en een .js bestand. Deze bestanden samen maken het model dat Loopback gebruikt. Je kunt hier handmatig ook dingen wijzigen zonder de commandline tool te gebruiken.
 Hieronder vind je een voorbeld van het persoon model dat we net aangemaakt hebben.
 
 ```
@@ -671,7 +671,7 @@ Hieronder vind je een voorbeld van het persoon model dat we net aangemaakt hebbe
 
 ##### Eigen endpoints toevoegen
 
-
+Loopback biedt de mogelijkheid om eigen endpoints of logica toe te voegen. Dit kan op model niveau, door dit toe te voegen aan het javascript bestand van de model (models/persoon.js). Verder is er nog een map boot in de map server. Daar kunnen allerlei scripts geplaatst worden die gedraaid moeten worden wanneer de API opgezet wordt.
 
 ##### API explorer
 
@@ -689,15 +689,22 @@ Web server listening at: http://0.0.0.0:3000/
 Om de API explorer te gebruiken moet je dus ook gaan naar http://localhost:3000/explorer  .
 Je zult hier zien dat er veel meer request methoden aangemaakt zijn per model dan je zou verwachten. Deze werken echter allemaal.
 
+Voorbeeld:
+
+![Voorbeeld](../images/Loopback_voorbeeld.png)
+![Voorbeeld](../images/Loopback_voorbeeld2.png)
+
 ###### Filter
 
 ##### Swagger Generator
 
-Loopback kan zelfs zijn eigen API documenteren. Hiervoor is de Loopback Swagger Generator (OpenAPI spec) bedoeld.
-
+Loopback kan zelfs zijn eigen API documenteren. Hiervoor is de [Loopback API definition generator](https://loopback.io/doc/en/lb3/API-definition-generator.html) (OpenAPI spec) bedoeld.
+Dit valt op de volgende manier te gebruiken:
+```
+lb export-api-def
 ```
 
-```
+Gebruik de `-o` tag om een pad aan te geven waar je de definitie op wil slaan, anders wordt het alleen in de commandline getoond.
 
 
 ### Ontwikkeling Gateway
@@ -845,3 +852,5 @@ In deze lijst vindt je voor de meeste software links naar installatiehandleiding
     |         |         |          |       |
     |         |         |          |       |
 -->
+
+
