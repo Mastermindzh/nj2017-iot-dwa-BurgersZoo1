@@ -13,13 +13,15 @@ In dit rapport wordt allereerst het concept beschreven, gevolgd door een beschri
 
   * [Systeemoverview (hoe werkt dit systeem globaal?)](#systeemoverview-hoe-werkt-dit-systeem-globaal)
   * [Opzethandleiding (hoe start ik het systeem?)](#opzethandleiding-hoe-start-ik-het-systeem)
-    + [Backend + Ranger app + Admin app](#backend--ranger-app--admin-app)
 - [Het starten van de applicaties](#het-starten-van-de-applicaties)
   * [randvoorwaarden](#randvoorwaarden)
   * [Het starten van de web applicaties en de database](#het-starten-van-de-web-applicaties-en-de-database)
     + [Development applicaties](#development-applicaties)
     + [productie builds (minified)](#productie-builds-minified)
     + [De applicaties bezoeken](#de-applicaties-bezoeken)
+- [Front-end](#front-end)
+  * [Redux](#redux)
+  * [Folderindeling (package structuur)](#folderindeling-package-structuur)
 - [Installatie Gateway](#installatie-gateway)
   * [MongoDB](#mongodb)
   * [Java](#java)
@@ -27,9 +29,10 @@ In dit rapport wordt allereerst het concept beschreven, gevolgd door een beschri
   * [Aansluiting Arduino](#aansluiting-arduino)
   * [Start gateway](#start-gateway)
     + [Poot](#poot)
-    + [Repo commando's](#repo-commandos)
+  * [Repo commando's](#repo-commandos)
   * [Ontwikkelhandleiding (hoe ontwikkel ik?)](#ontwikkelhandleiding-hoe-ontwikkel-ik)
 - [Bijlagen](#bijlagen)
+- [Begrippenlijst](#begrippenlijst)
 - [Software lijst](#software-lijst)
 
 <!-- tocstop -->
@@ -37,8 +40,6 @@ In dit rapport wordt allereerst het concept beschreven, gevolgd door een beschri
 ## Systeemoverview (hoe werkt dit systeem globaal?)
 
 ## Opzethandleiding (hoe start ik het systeem?)
-
-### Backend + Ranger app + Admin app
 
 # Het starten van de applicaties
 Dit hoofdstuk zal beschrijven hoe alle webapplicaties, de backend en de database opgestart moeten worden. Ook zal dit hoofdstuk beschrijven hoe de database gevuld kan worden met het seedscript zodat er wat testdata in de apps staat.
@@ -131,7 +132,46 @@ Om de applicaties te bezoeken, en ze te gebruiken, ga je naar de volgende web ad
 
 
 
+# Front-end
 
+De front-end applicaties zijn opgebouwd met een React seed van [Corey House](https://github.com/coryhouse), namelijk [react-slingshot](https://github.com/coryhouse/react-slingshot). Corey heeft op zijn Github repository een [uitgebreide uitleg](https://github.com/coryhouse/react-slingshot/blob/master/README.md#get-started) staan over het werken met zijn slingshot seed. De gekozen bundler voor dit project is [Webpack](https://webpack.js.org/).
+
+## Redux
+
+Het maken van een applicatie in React kan snel uit de hand lopen als je applicatie groter wordt. Om structuur in de applicatie
+aan te brengen is gekozen om Redux te gebruiken.
+
+Met Redux beheer je state op applicatieniveau. Redux bestaat
+uit een aantal onderdelen maar het belangrijkste dat je moet onthouden zijn de volgende drie:
+
+- **store**: opslagplaats van alle data als één groot object (POJO).
+- **reducers**: pure functies die de app-state bewerken op basis van binnengekregen data uit zgn. action creators.
+- **action creators**: functies die iets doen, bijvoorbeeld een API benaderen of iets uitrekenen. De uitkomst geven ze door aan de reducers. Dat doorgeven wordt ***'dispatchen'*** genoemd.
+
+
+## Folderindeling (package structuur)
+
+De folderindeling hanteert de naamgevingen van Redux, zodat iedereen die weet wat Redux is meteen snapt waar files moeten komen te staan.
+
+```
+.
+├── /build/                     # De folder voor gecompileerde output
+├── /node_modules/              # 3rd-party libraries en utilities
+├── /src/                       # The source code of the application
+│   ├── /actions/               # Action creators zoals beschreven in Redx
+│   ├── /components/            # React components die enkel UI logica bevatten
+│   ├── /constants/             # Constantes die over meerdere files gebruikt worden
+│   ├── /containers/            # React components die toegang hebben tot de Redux app state
+│   ├── /reducers/              # Redux reducers
+│   ├── /routes/                # Page/screen components met routing informatie
+│   ├── /store/                 # Bevat configuratie die nodig is om de Redux store op te bouwen
+│   ├── /styles/                # Bevat styling files die over meerdere componenten gebruikt wordt
+│   ├── /index.ejs              # Template voor de index.html file, wordt door webpack gebruikt
+│   ├── /index.jsx              # Startup script, koppelt React aan de DOM
+│   └── ...                     # Overige core files die door webpack gebruikt worden.
+├── /tools/                     # Build automation scripts en utilities die webpack gebruikt.
+├── package.json                # De lijst met 3rd party libraries en utilities
+```
 
 
 
@@ -205,7 +245,7 @@ Bij het tweede gedeelte, om Java te starten, is het belangrijk dat de volgende r
 ### Poot
 
 
-### Repo commando's
+## Repo commando's
 In dit hoofdstuk wordt uitgelegd wat de "repo commando's" inhouden.
 Een "repo commando" is één van de scripts die in de package.json staan.
 
@@ -234,8 +274,25 @@ Dat levert de volgende items op:
 
 ## Ontwikkelhandleiding (hoe ontwikkel ik?)
 
+Op Linux en Mac OS X zit verder nog een limiet op het aantal bestanden / mappen waar een gebruiker tegelijk naar mag "luisteren" voor veranderingen. Om dat op te lossen moet je het volgende commando uitvoeren:
+
+```
+echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
+```
+
+<sub>Voor technische info klik [hier](https://github.com/emcrisostomo/fswatch), voor sysctl uitleg [klik](https://wiki.archlinux.org/index.php/sysctl) hier.</sub>
+
 
 # Bijlagen
+
+# Begrippenlijst
+
+| Begrip | Uitleg |
+|--------|--------|
+|        |        |
+|        |        |
+|        |        |
+
 
 # Software lijst
 In deze lijst vindt je voor de meeste software links naar installatiehandleidingen.

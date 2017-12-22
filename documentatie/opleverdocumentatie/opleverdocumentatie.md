@@ -14,30 +14,29 @@ In dit rapport wordt allereerst het concept beschreven, gevolgd door een beschri
 
 ## Opzethandleiding (hoe start ik het systeem?)
 
-### Backend + Ranger app + Admin app
-
 #include "documentatie/opleverdocumentatie/applicaties-starten/applicaties-starten.md"
 
 #include "documentatie/opleverdocumentatie/backend/deployment.md"
 
 #include "documentatie/opleverdocumentatie/backend/backend.md"
 
-#include "documentatie/opleverdocumentatie/admin/admin-app.md"
-
-#include "documentatie/opleverdocumentatie/ranger/ranger-app.md"
+#include "documentatie/opleverdocumentatie/front-end/front-end.md"
 
 #include "documentatie/opleverdocumentatie/gateway/installatie-handleiding-gateway.md"
 
 ### Poot
 #include "documentatie/opleverdocumentatie/arduino/arduino.md"
 
-### Repo commando's
+## Repo commando's
 #include "documentatie/opleverdocumentatie/repo-commands/repo-commands.md"
 
 ## Ontwikkelhandleiding (hoe ontwikkel ik?)
 
+#include "documentatie/opleverdocumentatie/ontwikkelhandleiding/front-end/front-end.md"
 
 # Bijlagen
+
+#include "documentatie/opleverdocumentatie/begrippenlijst.md"
 
 #include "documentatie/opleverdocumentatie/softwarelijst/softwarelijst.md"
 

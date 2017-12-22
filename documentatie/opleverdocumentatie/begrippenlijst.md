@@ -1,0 +1,7 @@
+# Begrippenlijst
+
+| Begrip | Uitleg |
+|--------|--------|
+|        |        |
+|        |        |
+|        |        |
