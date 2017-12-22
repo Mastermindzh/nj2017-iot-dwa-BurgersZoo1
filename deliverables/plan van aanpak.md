@@ -162,5 +162,3 @@ Voor de HAN worden per week de volgende resultaten op onze repository gezet:
 
 ## Planning
 (staat alleen in de .docx versie van het PvA)
-
-
