@@ -125,3 +125,4 @@ Mocht er geen NRF verbinding op te zetten zijn kan de code op de poten aangepast
 ## Planning
 - Wanneer gaan we testen?
 - Hoe ziet de test op die dag eruit?
+
