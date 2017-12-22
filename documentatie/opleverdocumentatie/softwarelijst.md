@@ -1,4 +1,4 @@
-# Software lijst
+### Software lijst
 In deze lijst vindt je voor de meeste software links naar installatiehandleidingen.
 
 | Product | Windows | Mac OS X | Linux |

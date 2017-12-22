@@ -1,6 +1,6 @@
 ### Repo commando's
 
-In dit hoofdstuk wordt uitgelegd wat de "repo commando's" inhouden.
+In deze bijlage wordt uitgelegd wat de "repo commando's" inhouden.
 Een "repo commando" is één van de scripts die in de package.json staan.
 
 Dat levert de volgende items op:

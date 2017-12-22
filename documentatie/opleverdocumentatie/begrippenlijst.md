@@ -1,4 +1,4 @@
-# Begrippenlijst
+### Begrippenlijst
 
 | Begrip | Uitleg |
 |--------|--------|

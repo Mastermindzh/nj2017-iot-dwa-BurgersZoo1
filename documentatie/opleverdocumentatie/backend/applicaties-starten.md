@@ -1,4 +1,4 @@
-### Het starten van de applicaties
+### A: Starten Backend + Web Apps
 Dit hoofdstuk zal beschrijven hoe alle webapplicaties, de backend en de database opgestart moeten worden. Ook zal dit hoofdstuk beschrijven hoe de database gevuld kan worden met het seedscript zodat er wat testdata in de apps staat.
 
 #### randvoorwaarden

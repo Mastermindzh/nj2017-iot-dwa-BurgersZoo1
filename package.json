@@ -15,7 +15,7 @@
     "compile-fo": "./node_modules/.bin/markdown-include ./documentatie/functioneel-ontwerp/markdown.json && ./node_modules/.bin/markdown-toc -i deliverables/functioneel\\ ontwerp.md",
     "compile-to": "./node_modules/.bin/markdown-include ./documentatie/technisch-ontwerp/markdown.json && ./node_modules/.bin/markdown-toc -i deliverables/technisch\\ ontwerp.md",
     "compile-testplan": "./node_modules/.bin/markdown-include ./documentatie/testplan/markdown.json && ./node_modules/.bin/markdown-toc -i deliverables/testplan.md",
-    "compile-opleverdocumentatie": "./node_modules/.bin/markdown-include ./documentatie/opleverdocumentatie/markdown.json && ./node_modules/.bin/markdown-toc -i deliverables/opleverdocumentatie.md",
+    "compile-opleverdocumentatie": "./node_modules/.bin/markdown-include \"./documentatie/opleverdocumentatie/markdown.json\" && \"./node_modules/.bin/markdown-toc\" -i deliverables/opleverdocumentatie.md",
     "generate-pdfs": "node generate-pdf.js 'plan van aanpak' && node generate-pdf.js 'functioneel ontwerp' && node generate-pdf.js 'technisch ontwerp' && node generate-pdf.js 'testplan' && node generate-pdf.js 'opleverdocumentatie'",
     "copy-endpoint-prod": "cp ./config/prod.json ./apps/admin/src/constants/external-variables/endpoints.json && cp ./config/prod.json ./apps/ranger/src/constants/external-variables/endpoints.json",
     "copy-endpoint-dev": "cp ./config/dev.json ./apps/admin/src/constants/external-variables/endpoints.json && cp ./config/dev.json ./apps/ranger/src/constants/external-variables/endpoints.json",

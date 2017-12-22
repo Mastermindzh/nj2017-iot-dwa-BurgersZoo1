@@ -11,38 +11,45 @@ In dit rapport wordt allereerst het concept beschreven, gevolgd door een beschri
 
 <!-- toc -->
 
-  * [Concept](#concept)
-  * [Systeemoverview (hoe werkt dit systeem globaal?)](#systeemoverview-hoe-werkt-dit-systeem-globaal)
-  * [Opzethandleiding (hoe start ik het systeem?)](#opzethandleiding-hoe-start-ik-het-systeem)
-    + [Repo commando's](#repo-commandos)
-    + [Het starten van de applicaties](#het-starten-van-de-applicaties)
-      - [randvoorwaarden](#randvoorwaarden)
-      - [Het starten van de web applicaties en de database](#het-starten-van-de-web-applicaties-en-de-database)
-        * [Development applicaties](#development-applicaties)
-        * [productie builds (minified)](#productie-builds-minified)
-        * [De applicaties bezoeken](#de-applicaties-bezoeken)
-    + [De front-end applicaties](#de-front-end-applicaties)
-      - [Redux](#redux)
-      - [Folderindeling (package structuur)](#folderindeling-package-structuur)
-    + [Installatie Gateway](#installatie-gateway)
-      - [MongoDB](#mongodb)
-      - [Java](#java)
-      - [RXTX](#rxtx)
-      - [Aansluiting Arduino](#aansluiting-arduino)
-      - [Start gateway](#start-gateway)
-    + [Poot](#poot)
-      - [1. Onderdelen](#1-onderdelen)
-      - [2. Behuizing](#2-behuizing)
-      - [3. Aansluiting](#3-aansluiting)
-      - [4. Code uploaden](#4-code-uploaden)
-      - [5. SD kaart](#5-sd-kaart)
-      - [6. Aanzetten](#6-aanzetten)
-        * [Maduino](#maduino)
-        * [Auduino](#auduino)
-  * [Ontwikkelhandleiding (hoe ontwikkel ik?)](#ontwikkelhandleiding-hoe-ontwikkel-ik)
+- [Concept](#concept)
+- [Gateway](#gateway)
+- [Frontend apps](#frontend-apps)
+- [Backend](#backend)
+- [Database](#database)
+- [Opzethandleiding](#opzethandleiding)
+  * [A: Starten Backend + Web Apps](#a-starten-backend--web-apps)
+    + [randvoorwaarden](#randvoorwaarden)
+    + [Het starten van de web applicaties en de database](#het-starten-van-de-web-applicaties-en-de-database)
+      - [Development applicaties](#development-applicaties)
+      - [productie builds (minified)](#productie-builds-minified)
+      - [De applicaties bezoeken](#de-applicaties-bezoeken)
+  * [B: Installatie Gateway](#b-installatie-gateway)
+    + [MongoDB](#mongodb)
+    + [Java](#java)
+    + [RXTX](#rxtx)
+    + [Aansluiting Arduino](#aansluiting-arduino)
+    + [Start gateway](#start-gateway)
+  * [C: Poot](#c-poot)
+    + [1. Onderdelen](#1-onderdelen)
+    + [2. Behuizing](#2-behuizing)
+    + [3. Aansluiting](#3-aansluiting)
+    + [4. Code uploaden](#4-code-uploaden)
+    + [5. SD kaart](#5-sd-kaart)
+    + [6. Aanzetten](#6-aanzetten)
+      - [Maduino](#maduino)
+      - [Auduino](#auduino)
+- [Ontwikkelhandleiding](#ontwikkelhandleiding)
+  * [Ontwikkeling front-end applicaties](#ontwikkeling-front-end-applicaties)
+    + [Redux](#redux)
+    + [Folderindeling (package structuur)](#folderindeling-package-structuur)
+    + [Tips](#tips)
+  * [Ontwikkeling Backend](#ontwikkeling-backend)
+  * [Ontwikkeling Gateway](#ontwikkeling-gateway)
+  * [Ontwikkeling Poot](#ontwikkeling-poot)
 - [Bijlagen](#bijlagen)
-- [Begrippenlijst](#begrippenlijst)
-- [Software lijst](#software-lijst)
+  * [Repo commando's](#repo-commandos)
+  * [Begrippenlijst](#begrippenlijst)
+  * [Software lijst](#software-lijst)
 
 <!-- tocstop -->
 
@@ -57,42 +64,31 @@ De speurtocht is bedoeld voor kinderen om een ranger te spelen. De kinderen krij
 In de ranger app kan een ranger kijken wat hij allemaal gedaan heeft tijdens zijn bezoek aan Burgers' Zoo. Hier is te vinden welke poten hij wanneer gescand heeft. Hier is te zien welk weetje en dierengeluid er bij hoort, zodat dit nogmaals geluisterd kan worden. De app geeft ook aan welke punten nog niet gescand zijn. Dit kan een aanleiding zijn om het park nog een keer te bezoeken, om zo alle punten van de speurtocht te vinden. Hier kunnen beloningen aan gekoppeld worden in de vorm van korting of een gift. Medewerkers van Burgers' Zoo kunnen de poten en de speurtocht beheren door hier andere dierengeluidjes of weetjes aan toe te voegen.
 
 
-## Systeemoverview (hoe werkt dit systeem globaal?)
+#Systeemoverview
 
-## Opzethandleiding (hoe start ik het systeem?)
+De poot bestaat uit twee Arduino's. Er is één Arduino die volledig gaat over het afspelen van audio. In een later stadium zou deze Arduino ook verantwoordelijk worden voor het opslaan van nieuw ontvangen audiobestanden. De Audio Arduino wordt aangestuurd door de Master Arduino.
 
-Opzet handleiding index text
+De Master Arduino (genaamd Maduino) is verantwoordelijk voor alle primaire functionaliteiten en het aansturen van de Audio Arduino (genaamd Auduino). Zo zal de master Arduino een NFC-scanner hebben om passen te detecteren. Ook zal deze Master Arduino de temperatuur en luchtvochtigheid meten. De Master Arduino staat via de NRF24 chip in verbinding met de gateway en zal zo de gateway op de hoogte houden over welke passen zijn langs geweest.
 
+## Gateway
+De poten zullen communiceren met de twee backends van de twee groepen via een gateway. Deze gateway bestaat uit een Arduino en een Raspberry Pi. De Arduino zal draadloos communiceren via NRF24 chips met de poten en alle informatie doorsturen naar de Raspberry Pi. De Pi zal via HTTP/JSON communiceren met de backend's. De Pi kan op zijn beurt weer de Arduino binnen de gateway aansturen om zo informatie bij de poten te krijgen.
 
-### Repo commando's
+## Frontend apps
+De gebruikers zullen werken met een van de twee client-applicaties: de Ranger App voor de rangers en de Admin App voor de administratoren. Deze twee applicaties draaien in de browser en zullen via HTTP/JSON communiceren met de Backends.
 
-In dit hoofdstuk wordt uitgelegd wat de "repo commando's" inhouden.
-Een "repo commando" is één van de scripts die in de package.json staan.
+De front-end apps zijn modulair opgezet, deze apps draaien op hun eigen plekje en roepen het REST backend middels HTTP aan. Als zei data willen manipuleren zal dit dus ook via de back-end moeten verlopen. Alle front-end apps bij elkaar worden gezien als de "front-end laag", zelfs als deze op andere fysieke machines draaien. Het los koppelen van de applicaties bevordert de werkbaarheid en stabiliteit van de architectuur. Elke app kan afzonderlijk gedeployed / getest worden zonder de rest van de architectuur te beïnvloeden.
 
-Dat levert de volgende items op:
+## Backend
+Het back-end betreft een REST api welke wordt aangesproken met de verschillende front-ends. De REST api zelf spreekt de datalaag aan om zijn data op te slaan en op te halen. Deze laag kan wederom uitgebreid worden met meerdere instanties van de back-end en/of met een loadbalancer.
 
-
-| Commando                    | resultaat                                                                                              | Notities                                  |
-|-----------------------------|--------------------------------------------------------------------------------------------------------|-------------------------------------------|
-| start                       | Start de apps in development modus                                                                     |                                           |
-| build                       | Start de apps in productie modus (en bouwt productie files)                                            |                                           |
-| build-docker                | Bouwt zowel de dev als de productie docker images.                                                     |                                           |
-| build-docker-dev            | Bouwt de dev docker image.                                                                             |                                           |
-| build-docker-prod           | Bouwt de productie docker image                                                                        |                                           |
-| compile-deliverables        | Bouwt alle documentatie                                                                                |                                           |
-| compile-images              | Verzamelt alle images in de deliverables/images map zodat ze gebruikt kunnen worden in de documentatie | ! werkt niet op Windows                   |
-| compile-pva                 | Bouwt het Plan van Aanpak                                                                              | Wordt gebouwt in de deliverables map      |
-| compile-fo                  | Bouwt het Functioneel ontwerp                                                                          | Wordt gebouwt in de deliverables map      |
-| compile-to                  | Bouwt het technisch ontwerp                                                                            | Wordt gebouwt in de deliverables map      |
-| compile-testplan            | Bouwt het testplan                                                                                     | Wordt gebouwt in de deliverables map      |
-| compile-opleverdocumentatie | Bouwt de opleverdocumentatie                                                                           | Wordt gebouwt in de deliverables map      |
-| generate-pdfs               | Zet alle gebouwde bestanden om naar een .pdf                                                           | Wordt gebouwt in de deliverables/pdfs map |
-| copy-endpoint-prod          |  Dit kopieërd alle development instellingen naar de apps                                                                                                     | ! werkt niet op Windows                   |
-| copy-endpoint-dev           |  Dit kopieërd alle development instellingen naar de apps                                                   | ! werkt niet op Windows                   |
-| postinstall                 | Dit script draait NA een npm install en zal de "build-docker" taak uitvoeren                           |                                           |
+## Database
+De database laag zal enkel en alleen de database bevatten, op het moment van prototyping is dit één Mongo database. Dit kan echter uitgebreid worden met meerdere instances (voor redundancy, uitbreidbaarheid) en eventueel voorzien worden van een load balancer.
 
 
-### Het starten van de applicaties
+## Opzethandleiding
+Om het systeem in zijn geheel op te zetten zijn drie onderdelen nodig: Web-Backend + Webapps, Gateway en Poot. In onderstaande drie koppen wordt uitgelegd hoe deze drie onderdelen in te stellen. Wanneer alle drie de onderdelen opgezet zijn kan het systeem gebruikt worden. 
+
+### A: Starten Backend + Web Apps
 Dit hoofdstuk zal beschrijven hoe alle webapplicaties, de backend en de database opgestart moeten worden. Ook zal dit hoofdstuk beschrijven hoe de database gevuld kan worden met het seedscript zodat er wat testdata in de apps staat.
 
 #### randvoorwaarden
@@ -179,54 +175,7 @@ Om de applicaties te bezoeken, en ze te gebruiken, ga je naar de volgende web ad
 
 
 
-
-
-
-
-### De front-end applicaties
-
-De front-end applicaties zijn opgebouwd met een React seed van [Corey House](https://github.com/coryhouse), namelijk [react-slingshot](https://github.com/coryhouse/react-slingshot). Corey heeft op zijn Github repository een [uitgebreide uitleg](https://github.com/coryhouse/react-slingshot/blob/master/README.md#get-started) staan over het werken met zijn slingshot seed. De gekozen bundler voor dit project is [Webpack](https://webpack.js.org/).
-
-#### Redux
-
-Het maken van een applicatie in React kan snel uit de hand lopen als je applicatie groter wordt. Om structuur in de applicatie
-aan te brengen is gekozen om Redux te gebruiken.
-
-Met Redux beheer je state op applicatieniveau. Redux bestaat
-uit een aantal onderdelen maar het belangrijkste dat je moet onthouden zijn de volgende drie:
-
-- **store**: opslagplaats van alle data als één groot object (POJO).
-- **reducers**: pure functies die de app-state bewerken op basis van binnengekregen data uit zgn. action creators.
-- **action creators**: functies die iets doen, bijvoorbeeld een API benaderen of iets uitrekenen. De uitkomst geven ze door aan de reducers. Dat doorgeven wordt ***'dispatchen'*** genoemd.
-
-
-#### Folderindeling (package structuur)
-
-De folderindeling hanteert de naamgevingen van Redux, zodat iedereen die weet wat Redux is meteen snapt waar files moeten komen te staan.
-
-```
-.
-├── /build/                     # De folder voor gecompileerde output
-├── /node_modules/              # 3rd-party libraries en utilities
-├── /src/                       # The source code of the application
-│   ├── /actions/               # Action creators zoals beschreven in Redx
-│   ├── /components/            # React components die enkel UI logica bevatten
-│   ├── /constants/             # Constantes die over meerdere files gebruikt worden
-│   ├── /containers/            # React components die toegang hebben tot de Redux app state
-│   ├── /reducers/              # Redux reducers
-│   ├── /routes/                # Page/screen components met routing informatie
-│   ├── /store/                 # Bevat configuratie die nodig is om de Redux store op te bouwen
-│   ├── /styles/                # Bevat styling files die over meerdere componenten gebruikt wordt
-│   ├── /index.ejs              # Template voor de index.html file, wordt door webpack gebruikt
-│   ├── /index.jsx              # Startup script, koppelt React aan de DOM
-│   └── ...                     # Overige core files die door webpack gebruikt worden.
-├── /tools/                     # Build automation scripts en utilities die webpack gebruikt.
-├── package.json                # De lijst met 3rd party libraries en utilities
-```
-
-
-
-### Installatie Gateway
+### B: Installatie Gateway
 
 
 Om de gateway werkend te krijgen zijn er een aantal vereisten:
@@ -293,7 +242,7 @@ java -Djava.library.path=/usr/lib/jni -jar gateway.jar #gateway.jar is te vervan
 Bij het tweede gedeelte, om Java te starten, is het belangrijk dat de volgende regel voor de -jar komt: `-Djava.library.path=/usr/lib/jni `. Anders wordt de RXTX library niet goed geladen.
 
 
-### Poot
+### C: Poot
 In dit hoofdstuk wordt beschreven hoe een fysieke poot kan worden gebouwd.
 
 #### 1. Onderdelen
@@ -398,8 +347,51 @@ De Auduino laat geen led branden als er hij niks aan het doen is. De volgende st
 
 
 
-## Ontwikkelhandleiding (hoe ontwikkel ik?)
+## Ontwikkelhandleiding
+Om verder aan het systeem te kunnen ontwikkelen is dit hoofdstuk in het leven geroepen. Hieronder wordt uitgelegd hoe de ontwikkelomgevingen in te stellen en wat er nodig is om de code te kunnen begrijpen. 
 
+### Ontwikkeling front-end applicaties
+
+De front-end applicaties zijn opgebouwd met een React seed van [Corey House](https://github.com/coryhouse), namelijk [react-slingshot](https://github.com/coryhouse/react-slingshot). Corey heeft op zijn Github repository een [uitgebreide uitleg](https://github.com/coryhouse/react-slingshot/blob/master/README.md#get-started) staan over het werken met zijn slingshot seed. De gekozen bundler voor dit project is [Webpack](https://webpack.js.org/).
+
+#### Redux
+
+Het maken van een applicatie in React kan snel uit de hand lopen als je applicatie groter wordt. Om structuur in de applicatie
+aan te brengen is gekozen om Redux te gebruiken.
+
+Met Redux beheer je state op applicatieniveau. Redux bestaat
+uit een aantal onderdelen maar het belangrijkste dat je moet onthouden zijn de volgende drie:
+
+- **store**: opslagplaats van alle data als één groot object (POJO).
+- **reducers**: pure functies die de app-state bewerken op basis van binnengekregen data uit zgn. action creators.
+- **action creators**: functies die iets doen, bijvoorbeeld een API benaderen of iets uitrekenen. De uitkomst geven ze door aan de reducers. Dat doorgeven wordt ***'dispatchen'*** genoemd.
+
+
+#### Folderindeling (package structuur)
+
+De folderindeling hanteert de naamgevingen van Redux, zodat iedereen die weet wat Redux is meteen snapt waar files moeten komen te staan.
+
+```
+.
+├── /build/                     # De folder voor gecompileerde output
+├── /node_modules/              # 3rd-party libraries en utilities
+├── /src/                       # The source code of the application
+│   ├── /actions/               # Action creators zoals beschreven in Redx
+│   ├── /components/            # React components die enkel UI logica bevatten
+│   ├── /constants/             # Constantes die over meerdere files gebruikt worden
+│   ├── /containers/            # React components die toegang hebben tot de Redux app state
+│   ├── /reducers/              # Redux reducers
+│   ├── /routes/                # Page/screen components met routing informatie
+│   ├── /store/                 # Bevat configuratie die nodig is om de Redux store op te bouwen
+│   ├── /styles/                # Bevat styling files die over meerdere componenten gebruikt wordt
+│   ├── /index.ejs              # Template voor de index.html file, wordt door webpack gebruikt
+│   ├── /index.jsx              # Startup script, koppelt React aan de DOM
+│   └── ...                     # Overige core files die door webpack gebruikt worden.
+├── /tools/                     # Build automation scripts en utilities die webpack gebruikt.
+├── package.json                # De lijst met 3rd party libraries en utilities
+```
+
+#### Tips
 Op Linux en Mac OS X zit verder nog een limiet op het aantal bestanden / mappen waar een gebruiker tegelijk naar mag "luisteren" voor veranderingen. Om dat op te lossen moet je het volgende commando uitvoeren:
 
 ```
@@ -409,9 +401,49 @@ echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo s
 <sub>Voor technische info klik [hier](https://github.com/emcrisostomo/fswatch), voor sysctl uitleg [klik](https://wiki.archlinux.org/index.php/sysctl) hier.</sub>
 
 
-# Bijlagen
+### Ontwikkeling Backend
 
-# Begrippenlijst
+*DIT HOOFDSTUK WORDT IN WEEK 7 OF 8 VERDER AFGEMAAKT*
+
+### Ontwikkeling Gateway
+
+*DIT HOOFDSTUK WORDT IN WEEK 7 OF 8 VERDER AFGEMAAKT*
+
+### Ontwikkeling Poot
+
+*DIT GAAT GEDAAN WORDEN IN WEEK 7 OF WEEK 8*
+
+## Bijlagen
+
+### Repo commando's
+
+In deze bijlage wordt uitgelegd wat de "repo commando's" inhouden.
+Een "repo commando" is één van de scripts die in de package.json staan.
+
+Dat levert de volgende items op:
+
+
+| Commando                    | resultaat                                                                                              | Notities                                  |
+|-----------------------------|--------------------------------------------------------------------------------------------------------|-------------------------------------------|
+| start                       | Start de apps in development modus                                                                     |                                           |
+| build                       | Start de apps in productie modus (en bouwt productie files)                                            |                                           |
+| build-docker                | Bouwt zowel de dev als de productie docker images.                                                     |                                           |
+| build-docker-dev            | Bouwt de dev docker image.                                                                             |                                           |
+| build-docker-prod           | Bouwt de productie docker image                                                                        |                                           |
+| compile-deliverables        | Bouwt alle documentatie                                                                                |                                           |
+| compile-images              | Verzamelt alle images in de deliverables/images map zodat ze gebruikt kunnen worden in de documentatie | ! werkt niet op Windows                   |
+| compile-pva                 | Bouwt het Plan van Aanpak                                                                              | Wordt gebouwt in de deliverables map      |
+| compile-fo                  | Bouwt het Functioneel ontwerp                                                                          | Wordt gebouwt in de deliverables map      |
+| compile-to                  | Bouwt het technisch ontwerp                                                                            | Wordt gebouwt in de deliverables map      |
+| compile-testplan            | Bouwt het testplan                                                                                     | Wordt gebouwt in de deliverables map      |
+| compile-opleverdocumentatie | Bouwt de opleverdocumentatie                                                                           | Wordt gebouwt in de deliverables map      |
+| generate-pdfs               | Zet alle gebouwde bestanden om naar een .pdf                                                           | Wordt gebouwt in de deliverables/pdfs map |
+| copy-endpoint-prod          |  Dit kopieërd alle development instellingen naar de apps                                                                                                     | ! werkt niet op Windows                   |
+| copy-endpoint-dev           |  Dit kopieërd alle development instellingen naar de apps                                                   | ! werkt niet op Windows                   |
+| postinstall                 | Dit script draait NA een npm install en zal de "build-docker" taak uitvoeren                           |                                           |
+
+
+### Begrippenlijst
 
 | Begrip | Uitleg |
 |--------|--------|
@@ -420,7 +452,7 @@ echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo s
 |        |        |
 
 
-# Software lijst
+### Software lijst
 In deze lijst vindt je voor de meeste software links naar installatiehandleidingen.
 
 | Product | Windows | Mac OS X | Linux |
@@ -437,6 +469,3 @@ In deze lijst vindt je voor de meeste software links naar installatiehandleiding
     |         |         |          |       |
     |         |         |          |       |
 -->
-
-
-

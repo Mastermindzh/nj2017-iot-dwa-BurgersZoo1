@@ -1,4 +1,4 @@
-### Poot
+### C: Poot
 In dit hoofdstuk wordt beschreven hoe een fysieke poot kan worden gebouwd.
 
 #### 1. Onderdelen
