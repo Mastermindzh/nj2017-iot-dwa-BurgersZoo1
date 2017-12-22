@@ -39,7 +39,5 @@ Om verder aan het systeem te kunnen ontwikkelen is dit hoofdstuk in het leven ge
 
 #include "documentatie/opleverdocumentatie/repo-commands.md"
 
-#include "documentatie/opleverdocumentatie/begrippenlijst.md"
-
 #include "documentatie/opleverdocumentatie/softwarelijst.md"
 

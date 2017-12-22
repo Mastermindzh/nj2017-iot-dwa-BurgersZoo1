@@ -57,7 +57,7 @@ In dit rapport wordt allereerst het concept beschreven, gevolgd door een beschri
       - [Modellen aanpassen](#modellen-aanpassen)
       - [Eigen endpoints toevoegen](#eigen-endpoints-toevoegen)
       - [API explorer](#api-explorer)
-        * [Filter](#filter)
+        * [Filters](#filters)
       - [Swagger Generator](#swagger-generator)
   * [Ontwikkeling Gateway](#ontwikkeling-gateway)
     + [Eisen](#eisen)
@@ -694,7 +694,66 @@ Voorbeeld:
 ![Voorbeeld](../images/Loopback_voorbeeld.png)
 ![Voorbeeld](../images/Loopback_voorbeeld2.png)
 
-###### Filter
+###### Filters
+
+Een van de meest gebruikte filters in Loopback is de [include filter](https://loopback.io/doc/en/lb3/Include-filter.html), deze wordt gebruikt om verschillende domeinmodellen te koppelen.
+
+Een include filter zorgt ervoor dat je documenten terugkrijgt met de eventuele subdocumenten daarin opgenomen.
+
+Neem bijv het model "Bestelling", dit heeft de volgende velden:
+
+- bestellingsnummer
+- artikelen
+- klantnaam
+
+<details><summary>Klik hier om het JSON model te zien</summary><p>
+
+---
+{
+"bestellingsnummer": 5,
+"artikelen": [],
+"klantnaam": "Loopback"
+}
+---
+
+</p></details>
+
+De klantnaam geeft daar niet veel informatie over de klant, de klant heeft namelijk de volgende velden:
+
+- klantnaam
+- leeftijd
+- email
+
+Om deze informatie **toch** te krijgen moeten we een include filter gebruiken.
+
+Het resultaat wordt dan:
+
+- bestellingsnummer
+- artikelen
+- klant
+  - klantnaam
+  - leeftijd
+  - email
+
+<details><summary>Klik hier om het JSON model te zien</summary><p>
+
+---
+{
+"bestellingsnummer": 5,
+"artikelen": [],
+"klant": {
+  "klantnaam": "Loopback",
+  "leeftijd": 25,
+  "email": "info@email.com",
+}
+}
+---
+
+</p></details>
+
+Naast de include filter zijn er nog veel meer filters, deze zijn echter in veel mindere maten gebruikt in dit project. Om te zien hoe de rest van de filters werken verwijzen we door naar [de documentatie](https://loopback.io/doc/en/lb3/Querying-data.html)
+
+
 
 ##### Swagger Generator
 
@@ -852,5 +911,6 @@ In deze lijst vindt je voor de meeste software links naar installatiehandleiding
     |         |         |          |       |
     |         |         |          |       |
 -->
+
 
 
