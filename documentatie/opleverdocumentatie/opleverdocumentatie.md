@@ -16,7 +16,7 @@ In dit rapport wordt allereerst het concept beschreven, gevolgd door een beschri
 
 
 ## Opzethandleiding
-Om het systeem in zijn geheel op te zetten zijn drie onderdelen nodig: Web-Backend + Webapps, Gateway en Poot. In onderstaande drie koppen wordt uitgelegd hoe deze drie onderdelen in te stellen. Wanneer alle drie de onderdelen opgezet zijn kan het systeem gebruikt worden. 
+Om het systeem in zijn geheel op te zetten zijn drie onderdelen nodig: Web-Backend + Webapps, Gateway en Poot. In onderstaande drie koppen wordt uitgelegd hoe deze drie onderdelen in te stellen. Wanneer alle drie de onderdelen opgezet zijn kan het systeem gebruikt worden.
 
 #include "documentatie/opleverdocumentatie/backend/applicaties-starten.md"
 
@@ -25,7 +25,7 @@ Om het systeem in zijn geheel op te zetten zijn drie onderdelen nodig: Web-Backe
 #include "documentatie/opleverdocumentatie/poot/opzethandleiding.md"
 
 ## Ontwikkelhandleiding
-Om verder aan het systeem te kunnen ontwikkelen is dit hoofdstuk in het leven geroepen. Hieronder wordt uitgelegd hoe de ontwikkelomgevingen in te stellen en wat er nodig is om de code te kunnen begrijpen. 
+Om verder aan het systeem te kunnen ontwikkelen is dit hoofdstuk in het leven geroepen. Hieronder wordt uitgelegd hoe de ontwikkelomgevingen in te stellen en wat er nodig is om de code te kunnen begrijpen.
 
 #include "documentatie/opleverdocumentatie/front-end/ontwikkelhandleiding.md"
 

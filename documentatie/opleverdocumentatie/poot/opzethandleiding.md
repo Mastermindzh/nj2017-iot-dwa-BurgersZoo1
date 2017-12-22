@@ -67,9 +67,13 @@ Sluit de twee arduino's aan volgens het onderstaande aansluitschema of gebruik d
 
 
 #### 4. Code uploaden
+De volgende stap is om de code te uploaden naar de Arduino's. 
 
-TODO: LINK NAAR BUILT HEX FILES + UITLEG OVER HOE JE DEZE UPLOAD
-Dit doet Sijmen
+1. Download hier de gecompileerde hex bestanden. 
+2. Installeer [XLoader](http://www.hobbytronics.co.uk/arduino-xloader) of [Arduino Uno Uploader Tool](http://rlangoy.github.io/Arduino-Uno-Uploader-Tool/)
+3. Gebruik deze tool om de gedownloade hex files naar de juiste Arduino te uploaden.
+
+Een alternatief is het handmatig compileren en uploaden van de code. Lees hiervoor de uitleg in het hoofdstuk ontwikkelhandleiding.
 
 #### 5. SD kaart
 De poot maakt gebruik van een MicroSD kaart waarop de weetjes en en dierengeluiden op staan. Deze MicroSD kaart kan maximaal 32GB zijn en moet geformateerd zijn in FAT32.
