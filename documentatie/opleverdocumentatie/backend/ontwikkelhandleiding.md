@@ -205,7 +205,64 @@ Web server listening at: http://0.0.0.0:3000/
 Om de API explorer te gebruiken moet je dus ook gaan naar http://localhost:3000/explorer  .
 Je zult hier zien dat er veel meer request methoden aangemaakt zijn per model dan je zou verwachten. Deze werken echter allemaal.
 
-###### Filter
+###### Filters
+
+Een van de meest gebruikte filters in Loopback is de [include filter](https://loopback.io/doc/en/lb3/Include-filter.html), deze wordt gebruikt om verschillende domeinmodellen te koppelen.
+
+Een include filter zorgt ervoor dat je documenten terugkrijgt met de eventuele subdocumenten daarin opgenomen.
+
+Neem bijv het model "Bestelling", dit heeft de volgende velden:
+
+- bestellingsnummer
+- artikelen
+- klantnaam
+
+<details><summary>Klik hier om het JSON model te zien</summary><p>
+
+---
+{
+"bestellingsnummer": 5,
+"artikelen": [],
+"klantnaam": "Loopback"
+}
+---
+
+</p></details>
+
+De klantnaam geeft daar niet veel informatie over de klant, de klant heeft namelijk de volgende velden:
+
+- klantnaam
+- leeftijd
+- email
+
+Om deze informatie **toch** te krijgen moeten we een include filter gebruiken.
+
+Het resultaat wordt dan:
+
+- bestellingsnummer
+- artikelen
+- klant
+  - klantnaam
+  - leeftijd
+  - email
+
+<details><summary>Klik hier om het JSON model te zien</summary><p>
+
+---
+{
+"bestellingsnummer": 5,
+"artikelen": [],
+"klant": {
+  "klantnaam": "Loopback",
+  "leeftijd": 25,
+  "email": "info@email.com",
+}
+}
+---
+
+</p></details>
+
+Naast de include filter zijn er nog veel meer filters, deze zijn echter in veel mindere maten gebruikt in dit project. Om te zien hoe de rest van de filters werken verwijzen we door naar [de documentatie](https://loopback.io/doc/en/lb3/Querying-data.html)
 
 ##### Swagger Generator
 
