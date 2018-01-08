@@ -54,12 +54,24 @@ Daarnaast zijn er nog enkele belangrijke termen:
 
 ### De journey map
 
-De journeymap heb ik besloten uit te tekenen als een soort cartoon, elk vlak stelt een touchpoint of een channel voor en de frames zijn genummerd. Onder de infographic staat in tekst uitgewerkt wat iedere frame moet voorstellen en dient als leidraad voor het geheel.
+De journeymap heb ik besloten uit te tekenen als een soort cartoon, elk vlak stelt een touchpoint met een channel voor en de frames zijn genummerd. Onder de infographic staat in tekst uitgewerkt wat iedere frame moet voorstellen en dient
+als leidraad voor het geheel.
+
+Al met al komen we dan op de volgende strip met illustraties:
+
+![journeymap frames](./images/journeymap_frames.jpg)
+
+En de gehele journeymap met alle stappen erbij:
+
+![journeymap](./images/journeymap.jpg)
 
 ## Conclusie
 
+Het maken van deze journeymap blijkt vrij handig. het geeft een duidelijke doorstroming van de verschillende acties die een bezoeker zal doorlopen en daarbij hun emotieniveau.
 
+Deze journeymap zal getoetst worden op 11 Januari.
 
+Wel blijkt uit dit onderzoek dat deze journeymap aan het begin van het project veel discussie had kunnen voorkomen, bij een volgend project zal deze dus uiterst goed van pas komen.
 
 ## Bronnen
 - [All about customer journey mapping](https://www.smashingmagazine.com/2015/01/all-about-customer-journey-mapping/)
