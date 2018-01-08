@@ -18,6 +18,7 @@ Voor het bouwen van de Poot zijn de volgende interne componenten nodig. Daarnaas
 * 3.5mm audio jack output for arduino
 * Meer dan genoeg Jumper wires
 * Breadboard
+* DHT11 temperatuur & luchtvochtigheid meter
 * Pasjes (zie laatste hoofdstuk)
 
 
