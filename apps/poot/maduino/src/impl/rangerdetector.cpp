@@ -15,8 +15,10 @@ void RangerDetector::loop(){
 
   if(!this->isCardAuthenticated())
     this->poot->wrongPasScanned(1);
+  /*
   else if(!this->isCardContentValid())
     this->poot->wrongPasScanned(2);
+    */
   else
     this->poot->pasScanned(pasid);
   stopReading();
@@ -33,13 +35,13 @@ bool RangerDetector::isCardAuthenticated(){
   );
   return this->validateAuthStatus(status);
 }
-
+/*
 bool RangerDetector::isCardContentValid(){
   unsigned char buffer[18];
   if(!this->readCardData(buffer))
     return false;
   return this->euqlasBurgersZoo(buffer);
-}
+}*/
 
 bool RangerDetector::readCardData(unsigned char* buffer){
   byte len = 18;
