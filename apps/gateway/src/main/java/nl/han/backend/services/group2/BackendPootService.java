@@ -87,7 +87,7 @@ public class BackendPootService extends BackendPootServiceBase {
         try (Response response = client.newCall(request).execute()) {
             logger.debug("Code: " + response.code() + ", body: " + response.body().string());
             if (response.code() == 201 || response.code() == 200) {
-                logger.info("Backend group 2 is OK");
+                logger.debug("Backend group 2 is OK");
             } else {
                 logger.warn("Heartbeat is not saved");
             }
