@@ -1,14 +1,15 @@
 {
   "name": "nj2017-iot-dwa-burgerszoo1",
   "version": "0.0.1",
-  "description": "## Inleiding Dierentuin Koninklijk Burgers' Zoo is een dierentuin gelegen te Arnhem op een mooie bossige, heuvelige locatie. Burgers' Zoo kampt met een probleem: (oudere) bezoekers laten zich negatief uit over de mobiliteit in het park. Dit is te wijten aan de heuvelige locatie. Voor dit probleem wordt door een groep van vijf ICT-studenten een technische oplossing bedacht. Deze README is een verkorte versie van een plan van aanpak (PvA), waarin verteld wordt hoe het probleem wordt aangepakt en welke producten opgeleverd gaan worden.",
+  "description": "Dierentuin Koninklijk Burgers' Zoo is een dierentuin gelegen te Arnhem op een mooie bossige, heuvelige locatie. Burgers' Zoo kampt met een probleem: (oudere) bezoekers laten zich negatief uit over de mobiliteit in het park. Dit is te wijten aan de heuvelige locatie. Voor dit probleem wordt door een groep van vijf ICT-studenten een technische oplossing bedacht.",
   "main": "index.js",
   "scripts": {
-    "start": "npm run copy-endpoint-dev && docker-compose down && docker-compose up",
-    "build": "npm run copy-endpoint-prod && docker-compose -f ./dockerfiles/prod/docker-compose.yml down && docker-compose -f ./dockerfiles/prod/docker-compose.yml up && bash seedscript.sh -h servers.rickvanlieshout.com:8019",
+    "start": "./node_modules/.bin/concurrently 'npm run copy-endpoint-dev && docker-compose down && docker-compose up' 'npm run docs'",
+    "build": "./node_modules/.bin/concurrently 'npm run copy-endpoint-prod && docker-compose -f ./dockerfiles/prod/docker-compose.yml down && docker-compose -f ./dockerfiles/prod/docker-compose.yml up && bash seedscript.sh -h servers.rickvanlieshout.com:8019' 'npm run docs'",
     "build-docker": "npm run build-docker-dev && npm run build-docker-prod",
     "build-docker-dev": "docker build -t burgerszoo/node -f dockerfiles/node/Dockerfile dockerfiles/node/",
     "build-docker-prod": "docker build -t burgerszoo/prod -f dockerfiles/prod/Dockerfile dockerfiles/prod/",
+    "docs": "node_modules/.bin/spectacle -s -p 8008 ./apps/server/open-api-spec.yaml",
     "compile-deliverables": "npm run compile-pva && npm run compile-fo && npm run compile-to && npm run compile-opleverdocumentatie && npm run compile-testplan && npm run compile-images && npm run generate-pdfs",
     "compile-images": "find ./documentatie \\( -name \"*.jpg*\" -o -name \"*.png*\" \\)  -exec cp {} deliverables/images/ \\;",
     "compile-pva": "cp ./documentatie/plan-van-aanpak/plan-van-aanpak.md ./deliverables/plan\\ van\\ aanpak.md && ./node_modules/.bin/markdown-toc -i deliverables/plan\\ van\\ aanpak.md",
@@ -34,11 +35,13 @@
   "dependencies": {
     "cheerio": "^1.0.0-rc.2",
     "child_process": "^1.0.2",
+    "concurrently": "^3.5.1",
     "duplexer": "^0.1.1",
     "markdown-include": "^0.4.3",
     "markdown-pdf": "^8.0.0",
     "markdown-toc": "^1.2.0",
     "request": "^2.83.0",
+    "spectacle-docs": "^0.9.13",
     "split": "^1.0.1",
     "sys": "0.0.1",
     "through": "^2.3.8"
