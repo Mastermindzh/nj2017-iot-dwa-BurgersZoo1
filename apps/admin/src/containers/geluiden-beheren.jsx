@@ -15,7 +15,6 @@ import TableComponent from './../components/table-component.jsx';
 import styles from './../styles/style';
 import PopupComponent from './../components/popup-component.jsx';
 import GeluidUploaden from './../components/geluid-uploaden.jsx';
-import * as ENDPOINTS from './../constants/endpoint-constants';
 import {FILEUPLOAD_ACTION_TYPES} from "../constants/actionTypes";
 import {fetchDierengeluiden, addDierengeluid} from './../actions/dierengeluidenActions';
 import {uploadSound, setUploadStateEmpty} from "./../actions/uploadGeluidActions";
@@ -48,7 +47,6 @@ class GeluidenBeheren extends Component {
     const {classes} = this.props;
 
     const headers = [
-      {text: "ID"},
       {text: "Beschrijving"},
       {text: "Geluid"},
     ];
@@ -65,7 +63,6 @@ class GeluidenBeheren extends Component {
       return {
         key: dierengeluid.id,
         children: [
-          {children: dierengeluid.id},
           {children: dierengeluid.beschrijving},
           {
             children:

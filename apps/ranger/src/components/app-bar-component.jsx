@@ -54,7 +54,7 @@ class AppBarComponent extends Component {
             <MenuIcon />
           </IconButton>
           <Typography type="title" color="inherit" noWrap>
-            Ranger App {`${user.id} (pas_id: ${user.pasid} )`}
+            Ranger App {`(pas_id: ${user.pasid})`}
           </Typography>
           <div style={{justifyContent: 'flex-end'}}>
             <IconButton
@@ -62,6 +62,7 @@ class AppBarComponent extends Component {
               aria-haspopup="true"
               onClick={this.handleMenu.bind(this)}
               color="contrast"
+              style={{"right": "7px", "position": "absolute", "marginTop": "-23px"}}
             >
               <AccountCircle />
             </IconButton>
