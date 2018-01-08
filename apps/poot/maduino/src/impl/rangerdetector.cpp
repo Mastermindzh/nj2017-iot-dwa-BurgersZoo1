@@ -15,10 +15,10 @@ void RangerDetector::loop(){
 
   if(!this->isCardAuthenticated())
     this->poot->wrongPasScanned(1);
-  /*
+  
   else if(!this->isCardContentValid())
     this->poot->wrongPasScanned(2);
-    */
+    
   else
     this->poot->pasScanned(pasid);
   stopReading();
@@ -35,13 +35,13 @@ bool RangerDetector::isCardAuthenticated(){
   );
   return this->validateAuthStatus(status);
 }
-/*
+
 bool RangerDetector::isCardContentValid(){
   unsigned char buffer[18];
   if(!this->readCardData(buffer))
     return false;
-  return this->euqlasBurgersZoo(buffer);
-}*/
+  //return this->euqlasBurgersZoo(buffer);
+}
 
 bool RangerDetector::readCardData(unsigned char* buffer){
   byte len = 18;
@@ -88,6 +88,7 @@ bool RangerDetector::validateReadStatus(MFRC522::StatusCode status) {
   return true;
 }
 
+/*
 bool RangerDetector::euqlasBurgersZoo(unsigned char* buffer){
   const char* burgerszoo = "Burgers' Zoo";
   for (unsigned int i = 0; i < strlen(burgerszoo); i++)
@@ -95,3 +96,4 @@ bool RangerDetector::euqlasBurgersZoo(unsigned char* buffer){
       return false;
   return true;
 }
+*/
