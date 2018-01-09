@@ -49,7 +49,6 @@ class WeetjesBeheren extends Component {
     const {classes} = this.props;
 
     const headers = [
-      {text: "ID"},
       {text: "Beschrijving"},
       {text: "Player"},
     ];
@@ -66,8 +65,6 @@ class WeetjesBeheren extends Component {
       return {
         key: weetje.id,
         children: [
-
-          {children: weetje.id},
           {children: weetje.beschrijving},
           {
             children:
