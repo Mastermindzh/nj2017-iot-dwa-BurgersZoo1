@@ -11,6 +11,10 @@
       "type": "number",
       "required": true
     },
+    "naam": {
+      "type": "string",
+      "required": true
+    },
     "bestandspad": {
       "type": "string",
       "required": true
@@ -21,13 +25,7 @@
     }
   },
   "validations": [],
-  "relations": {
-    "speurpunten": {
-      "type": "hasAndBelongsToMany",
-      "model": "speurpunt",
-      "foreignKey": ""
-    }
-  },
+  "relations": {},
   "acls": [],
   "methods": {}
 }

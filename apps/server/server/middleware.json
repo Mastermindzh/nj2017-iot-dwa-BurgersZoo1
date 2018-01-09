@@ -41,13 +41,12 @@
     }
   },
   "files": {
-    "loopback#static": [
-      {
-        "name": "audio",
-        "paths": ["/audio"],
-        "params": "$!../audio"
-      }
-    ]
+    "loopback#static": {
+      "paths": [
+        "/audio"
+      ],
+      "params": "$!../audio"
+    }
   },
   "final": {
     "loopback#urlNotFound": {}
