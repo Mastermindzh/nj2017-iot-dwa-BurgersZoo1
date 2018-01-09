@@ -45,7 +45,6 @@ class MyRangerContainer extends Component {
   render() {
     const {parkHistory} = this.props;
     const {selectedParkHistory} = this.state;
-    console.log(selectedParkHistory)
     return (
       <div>
         <Grid container spacing={24}>
