@@ -84,11 +84,7 @@ boot(app, __dirname, function (err) {
 
   app.get("/zip", function (req, res) {
     createZip();
-    console.log("zip done 2")
     res.download('audio/audio.zip');
-    //'audio/audio.zip'
-    //res.attachment('audio/audio.zip')
-    //res.sendStatus(200);
   });
 
   // start the server if `$ node server.js`
@@ -123,7 +119,7 @@ function createZip() {
   let archive = archiver('zip', {
     zlib: {level: 9}
   });
-//todo alleen .wav files meenemen
+
   archive.on('error', function(err) {
     console.log(error);
     throw err;
@@ -136,11 +132,6 @@ function createZip() {
     if(file.endsWith('.wav')) files.push(file);
   });
 
-
-  console.log("files added")
-
-
-
   files.forEach(file => {
     archive.file(basePath+'/'+file, {name: file});
   });
@@ -149,5 +140,18 @@ function createZip() {
   console.log("zip done")
 }
 
+function getAudioFilenames(speurpuntId){
+  let path = 'http://localhost:8001/api/speurpunten/';
+  let filter = '?filter=%7B%22include%22%3A%20%5B%22dierengeluid%22%2C%22verblijf%22%2C%20%22weetjes%22%5D%7D'
+  axios.get(path+speurpuntId+filter).then(result => {
+
+    //todo
+  }).catch(err => {
+    console.log(err);
+  });
+}
+
 //todo dier.wav -> dierengeluid
 // 0 tm n .wav
+
+//?filter=%7B%22include%22%3A%20%5B%22dierengeluid%22%2C%22verblijf%22%2C%20%22weetjes%22%5D%7D
