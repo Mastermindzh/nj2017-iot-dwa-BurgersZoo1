@@ -20,17 +20,34 @@ export function fetchSpeurpunten() {
 }
 
 export function addSpeurpunt(speurpunt) {
+
   return dispatch => {
     axios
       .post(ENDPOINTS.SPEURPUNT.POST, speurpunt)
       .then(result => {
         speurpunt.id = result.data.id;
-        getSingleSpeurpunt(speurpunt).then(result => {
-          dispatch({
-            type: SPEURPUNT_ACTION_TYPES.ADD_SPEURPUNT,
-            payload: result.data
+
+        if(speurpunt.weetjes.length > 0){
+
+          updateWeetjes(speurpunt).then(() => {
+
+            getSingleSpeurpunt(speurpunt).then(result => {
+              dispatch({
+                type: SPEURPUNT_ACTION_TYPES.ADD_SPEURPUNT,
+                payload: result.data
+              });
+            });
           });
-        });
+
+        }else{
+          getSingleSpeurpunt(speurpunt).then(result => {
+            dispatch({
+              type: SPEURPUNT_ACTION_TYPES.ADD_SPEURPUNT,
+              payload: result.data
+            });
+          });
+        }
+
       })
       .catch(err => {
         console.log(err);
@@ -42,19 +59,56 @@ export function updateSpeurpunt(speurpunt) {
   return dispatch => {
     axios
       .patch(ENDPOINTS.SPEURPUNT.PATCH, speurpunt.getPatchObject())
-      .then(() => {
-        // returns with IDs, we gotta grab the details
-        getSingleSpeurpunt(speurpunt).then(result => {
-          dispatch({
-            type: SPEURPUNT_ACTION_TYPES.UPDATE_SPEURPUNT,
-            payload: result.data
+      .then(result => {
+        console.log(result);
+        speurpunt.id = result.data.id;
+
+        if(speurpunt.weetjes.length > 0){
+
+          updateWeetjes(speurpunt).then(() => {
+
+            getSingleSpeurpunt(speurpunt).then(result => {
+              dispatch({
+                type: SPEURPUNT_ACTION_TYPES.UPDATE_SPEURPUNT,
+                payload: result.data
+              });
+            });
           });
-        });
+
+        }else{
+          getSingleSpeurpunt(speurpunt).then(result => {
+            dispatch({
+              type: SPEURPUNT_ACTION_TYPES.UPDATE_SPEURPUNT,
+              payload: result.data
+            });
+          });
+        }
+
       })
       .catch(err => {
         console.log(err);
       });
   };
+}
+
+export function updateWeetjes(speurpunt){
+  return new Promise((resolve, reject) => {
+
+    // delete connected but not source thingy.
+
+    // axios.delete(`${ENDPOINTS.SPEURPUNT.DELETE}/${speurpunt.id}/weetjes`).then( () =>{
+      let weetjesRequests = [];
+      // add the weetjes
+      speurpunt.weetjes.forEach(weetje => {
+        let requestObject = {speurpuntId: speurpunt.id, id: weetje};
+        weetjesRequests.push(axios.patch(`${ENDPOINTS.WEETJES.PATCH}`, requestObject));
+      });
+
+      Promise.all(weetjesRequests).then(() => {
+        resolve(true);
+      });
+    });
+  // });
 }
 
 export function getSingleSpeurpunt(speurpunt) {
