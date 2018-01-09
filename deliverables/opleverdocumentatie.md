@@ -21,6 +21,7 @@ In dit rapport wordt allereerst het concept beschreven, gevolgd door een beschri
   * [Starten Backend + Web Apps](#starten-backend--web-apps)
     + [Randvoorwaarden](#randvoorwaarden)
     + [Het starten van de web applicaties en de database](#het-starten-van-de-web-applicaties-en-de-database)
+      - [Mac OS X & Linux, file watchers verhogen.](#mac-os-x--linux-file-watchers-verhogen)
       - [Installeren van de dependencies](#installeren-van-de-dependencies)
       - [Development applicaties](#development-applicaties)
       - [productie builds (minified)](#productie-builds-minified)
@@ -59,6 +60,7 @@ In dit rapport wordt allereerst het concept beschreven, gevolgd door een beschri
       - [API explorer](#api-explorer)
         * [Filters](#filters)
       - [Swagger Generator](#swagger-generator)
+  * [Seedscript](#seedscript)
   * [Ontwikkeling Gateway](#ontwikkeling-gateway)
     + [Eisen](#eisen)
     + [Werking Gradle](#werking-gradle)
@@ -139,6 +141,14 @@ Als alle bovenstaande software geinstalleerd is dan kunnen alle apps gestart wor
 Het volgende hoofdstuk zal uitleggen hoe de applicaties gestart kunnen worden in zowel development modus als productie modus. Voor het testen is alleen de development modus meer als genoeg.
 
 > ***NOTE!  de commando's zijn bedacht voor Linux en Mac OS X, hieronder wordt beschreven hoe het werkt voor alle drie de systemen al is het zeer aan te raden om een Linux Virtual machine op te zetten. (klik [hier](https://www.storagecraft.com/blog/the-dead-simple-guide-to-installing-a-linux-virtual-machine-on-windows/) voor uitleg)***
+
+##### Mac OS X & Linux, file watchers verhogen.
+
+Op Linux en Mac OS X zit een limiet op het aantal bestanden / mappen waar een gebruiker tegelijk naar mag "luisteren" voor veranderingen. Om dat op te lossen moet je het volgende commando uitvoeren:
+
+```
+echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
+```
 
 ##### Installeren van de dependencies
 Om de benodigde NPM software te installeren moet het volgende commando gedraaid worden:
@@ -311,6 +321,7 @@ Voor het bouwen van de Poot zijn de volgende interne componenten nodig. Daarnaas
 * 3.5mm audio jack output for arduino
 * Meer dan genoeg Jumper wires
 * Breadboard
+* DHT11 temperatuur & luchtvochtigheid meter
 * Pasjes (zie laatste hoofdstuk)
 
 
@@ -770,6 +781,10 @@ lb export-api-def
 ```
 
 Gebruik de `-o` tag om een pad aan te geven waar je de definitie op wil slaan, anders wordt het alleen in de commandline getoond.
+
+### Seedscript
+
+Er is een seedscript beschikbaar om basis data aan te maken om te testen. Dit is te vinden in het bestandje *seedscript.sh*. Deze wordt automatisch uitgevoerd wanneer het `npm build` commando wordt aangeroepen. Dit bestandje haalt via de mongo restore functie een vooraf ingestelde database op en zet die in de lokale database.
 
 
 ### Ontwikkeling Gateway
