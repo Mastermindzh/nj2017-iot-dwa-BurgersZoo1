@@ -27,10 +27,10 @@ Wanneer een ranger het park verlaten heeft, kan hij/zij achteraf via de ranger w
 | Speurpunt             | Een volledig geconfigureerde poot welke in een speurtocht staat.                                                                                                |
 
 ## Doel
-Het doel van de test is om de techniek van het systeem te testen: werkt het? We willen testen dat wat er in de webapplicatie geconfigureerd is, gereflecteerd wordt in de hardware en andersom: als er iets met de hardware gebeurd is dat terug te zien in de webapplicatie. De test wordt uitgevoerd in het Mangrove gebied van Burgers' Zoo.
+Het doel van de test is om de techniek van het systeem te testen: werkt het? We willen testen dat wat er in de webapplicatie geconfigureerd is, gereflecteerd wordt in de hardware en andersom: als er iets met de hardware gebeurt, is dat terug te zien in de webapplicatie. De test wordt uitgevoerd in het Mangrove gebied van Burgers' Zoo.
 
 ### Hypothese
-Hiermee wordt antwoord gegeven op de vraag of onze gekozen oplossingsrichting in de techniek ook in praktijk goed werkt. Uit de bevindingen vloeit een advies hoe in de toekomst verder ontwikkeld kan worden aan het systeem.
+Met de hypothese wordt antwoord gegeven op de vraag of onze gekozen oplossingsrichting in praktijk goed werkt:
 
 > Wij geloven dat een meshnetwerk van zes poten in de Mangrove, gebruikmakend van NRF-communicatie zal resulteren in een stabiel speurtocht-ranger-systeem dat verbonden staat met de cloud. We weten dat we succesvol zijn als een speurtocht via de webapplicatie geconfigureerd wordt, en de door ranger gescande resultaten van diezelfde speurtocht terug kunnen zien, in een web applicatie die de data uit de verbonden cloud toont.
 
@@ -101,7 +101,7 @@ Twee projectleden zullen in Burgers' Zoo kleding bij de ingang en uitgang van de
 
 
 ### Dagschema
-De verantwoordelijkheden op de dag zelf ziet er als volgd uit:
+De verantwoordelijkheden op de dag zelf ziet er als volgt uit:
 
 |  	| Dag 1 	| Dag 2 	|
 |-----------------------------	|------------------------------------------------------------	|-----------------------------------------------------------------------------------------	|
@@ -128,7 +128,7 @@ De verantwoordelijkheden op de dag zelf ziet er als volgd uit:
 ## Risico’s en Uitwijkstrategie
 Mocht er geen stroomvoorziening vanuit Burgers’ Zoo kunnen regelen, kan er geen test uitgevoerd worden op lokatie. Dit zal dan uitgevoerd moeten worden op de HAN, waarbij er meer controle is over de stroomvoorziening. Hierbij zal de test ook afhangen van de vrijwilligers (studenten/docenten) die op de HAN rondlopen.
 
-Op het moment dat er geen verbinding is met de deployment server moet deze lokaal, op een laptop moeten worden gehost.
+Op het moment dat er geen verbinding is met de deployment server moet deze lokaal (op een laptop) worden gehost.
 
 Wanneer er geen laptop beschikbaar is vanuit Burgers’ Zoo met een werkende internet verbinding, kan de test helaas niet op locatie doorgaan.
 
@@ -136,6 +136,8 @@ Geen toegang tot het park of geen aanwezige kinderen of geen medewerkers beschik
 
 Mocht er geen NRF verbinding op te zetten zijn kan de code op de poten aangepast worden zodat er wel gescand kan worden maar wordt deze informatie niet verstuurd naar de gateway en backend. Hierdoor kan er toch testen met de kinderen op locatie.
 
-## Planning
+## Dagplanning
 De datum van de field-trial is 11 januari 2018.
+
+
 
