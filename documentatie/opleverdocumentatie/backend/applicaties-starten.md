@@ -20,6 +20,14 @@ Het volgende hoofdstuk zal uitleggen hoe de applicaties gestart kunnen worden in
 
 > ***NOTE!  de commando's zijn bedacht voor Linux en Mac OS X, hieronder wordt beschreven hoe het werkt voor alle drie de systemen al is het zeer aan te raden om een Linux Virtual machine op te zetten. (klik [hier](https://www.storagecraft.com/blog/the-dead-simple-guide-to-installing-a-linux-virtual-machine-on-windows/) voor uitleg)***
 
+##### Mac OS X & Linux, file watchers verhogen.
+
+Op Linux en Mac OS X zit een limiet op het aantal bestanden / mappen waar een gebruiker tegelijk naar mag "luisteren" voor veranderingen. Om dat op te lossen moet je het volgende commando uitvoeren:
+
+```
+echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
+```
+
 ##### Installeren van de dependencies
 Om de benodigde NPM software te installeren moet het volgende commando gedraaid worden:
 
