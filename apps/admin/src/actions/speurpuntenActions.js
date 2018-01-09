@@ -55,10 +55,9 @@ export function updateSpeurpunt(speurpunt) {
     axios
       .patch(ENDPOINTS.SPEURPUNT.PATCH, speurpunt.getPatchObject())
       .then(result => {
-        console.log(result);
         speurpunt.id = result.data.id;
 
-        if (speurpunt.weetjes.length > 0) {
+
           updateWeetjes(speurpunt).then(() => {
             getSingleSpeurpunt(speurpunt).then(result => {
               dispatch({
@@ -67,14 +66,6 @@ export function updateSpeurpunt(speurpunt) {
               });
             });
           });
-        } else {
-          getSingleSpeurpunt(speurpunt).then(result => {
-            dispatch({
-              type: SPEURPUNT_ACTION_TYPES.UPDATE_SPEURPUNT,
-              payload: result.data
-            });
-          });
-        }
       })
       .catch(err => {
         console.log(err);
