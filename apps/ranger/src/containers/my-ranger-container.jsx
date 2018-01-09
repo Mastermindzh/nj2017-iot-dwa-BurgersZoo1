@@ -45,6 +45,7 @@ class MyRangerContainer extends Component {
   render() {
     const {parkHistory} = this.props;
     const {selectedParkHistory} = this.state;
+    console.log(selectedParkHistory)
     return (
       <div>
         <Grid container spacing={24}>
@@ -83,11 +84,12 @@ const stripDatesFromParkHistory = parkHistory => {
 };
 
 const createHistoryPerDate = (parkHistory, date) => {
-  return parkHistory.filter(day => {
+  const filteredHistoryWithoutDuplicates = _.uniqBy(parkHistory.filter(day => {
     if (convertUnixTimestampToCalendarDate(day.datum)  === date) {
       return day;
     }
-  });
+  }),'speurpuntId');
+  return filteredHistoryWithoutDuplicates;
 };
 
 const convertUnixTimestampToCalendarDate = unixTimestamp => {
