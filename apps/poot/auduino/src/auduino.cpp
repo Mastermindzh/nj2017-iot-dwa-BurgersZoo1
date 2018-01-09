@@ -14,5 +14,6 @@ void setup () {
 }
 
 void loop() {
+  portal->loop();
   audio->loop();
 }

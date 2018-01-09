@@ -6,12 +6,16 @@ Poot::Poot(StatusLights* lights){
   this->gatewayLink = new GatewayLink(this);
   this->rangerDetector = new RangerDetector(this);
   this->auduinoPortal = new AuduinoPortal();
-
+  this->logger = new Logger(gatewayLink,this);
+  this->tempSensor = new TempSensor(TEMPERATURE_PIN);
+  this->humSensor = new HumidSensor(TEMPERATURE_PIN);
   this->gatewayLink->sendStartup(this->getPootid());
 
 }
+
 void Poot::loop(){
   this->rangerDetector->loop();
+  this->logger->loop();
   this->lights->loop();
 }
 
@@ -42,6 +46,14 @@ void Poot::setPootid(byte code){
 
 void Poot::receive(const MyMessage &message){
   this->gatewayLink->receive(message);
+}
+
+float Poot::getTemperature(){
+  return this->tempSensor->getTemperature();
+}
+
+float Poot::getHumidity(){
+  return this->humSensor->getHumidity();
 }
 
 /**

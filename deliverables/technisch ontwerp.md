@@ -18,7 +18,6 @@
     + [De back-end](#de-back-end)
     + [De front-ends](#de-front-ends)
     + [De ontwikkelomgeving](#de-ontwikkelomgeving)
-- [Datamodel](#datamodel)
 - [Data Opslag](#data-opslag)
 - [System flow](#system-flow)
   * [Nieuwe poot aanmelden](#nieuwe-poot-aanmelden)
@@ -28,6 +27,7 @@
 - [Poot](#poot-1)
       - [Onderdelen poot](#onderdelen-poot)
       - [Aansluitschema](#aansluitschema)
+      - [Initialisatiesequentie](#initialisatiesequentie)
 - [Webapps](#webapps)
   * [React](#react)
   * [Redux](#redux)
@@ -139,12 +139,6 @@ Om de front-ends snel met een goede basis op te zetten is [React slingshot](http
 Om met meerdere developers makkelijk te kunnen werken en om ervoor te zorgen dat een vervolggroep gemakkelijk alles kan laten starten moet er een ontwikkelomgeving komen. Er is hier gekozen voor [Docker](https://www.docker.com/), uit [onderzoek](https://github.com/HANICA-MinorMulti/nj2017-iot-dwa-BurgersZoo1/blob/master/documentatie/onderzoeken/docker/docker.md) bleek dat dit de beste optie was omdat het zo simpel werkt. Met Docker kunnen we ook garanderen dat het op iedere machine hetzelfde werkt en in de toekomst gemakkelijk schalen.
 
 
-# Datamodel
-
-![datamodel](images/datamodel.png)
-
-TODO
-
 # Data Opslag
 Om de data van het systeem op te slaan wordt er een Mongo database gebruikt. Deze database wordt gevuld door Loopback. Loopback werkt iets anders dan Mongo met data omdat het een model systeem gebruikt.
 
@@ -153,6 +147,8 @@ In Loopback genereer je models met eigenschappen. Deze eigenschappen staan gelij
 Een globale weergave van de data in de database is hieronder te zien. Dit bevat alleen de data van de twee webapplicaties, nog niet de data die de gateway nodig heeft.
 
 ![Datamodel](./images/datamodel.png)
+Een ranger kan met zijn pas mee doen aan de speurtocht. De locaties die een ranger bezocht heeft zijn te vinden in 'ranger heeft bezocht'.
+De plekken die een ranger bezoekt zijn Speurpunten. Die staan in een verblijf. Weetjes en een dierengeluid worden op het speurpunt geladen zodat deze afgespeeld kunnen worden voor de rangers. Uiteindelijk wordt een speurpunt op een fysieke poot geladen zodat hij klaar is voor gebruik.
 
 Vanuit de API specificatie die gemaakt is voor de gateway komt er nog een andere databehoefte naar boven. Beide dataschema's samen zijn verwerkt in de API, dat levert onderstaand dataschama op. Hierin zijn de relaties tussen de verschillende modellen te zien.
 
@@ -208,11 +204,21 @@ De passen die gescand worden hebben een NFC chip, waarbij het unike id van deze 
 - Capacitor
 - Voltage Regulator
 
-Er is gekozen voor twee verschillende Arduino Nano's omdat er anders problemen onstaan met het afspelen van audio en ontvangen/versturen van data via de NRF24L01+. Deze twee chips maken allebei gebruik van de SPI bus en kunnen dus niet tegelijkertijd worden aangesproken. Om dit op te lossen zijn de Arduino's in een master/slave opstelling. Er is dan één Arduino verantwoordelijk voor de aansturing, ontvangen/versturen van berichten en uitlezen van RFID lezer. De andere Arduino Nano is verantwoordelijk voor het uitlezen van de SD/Micro SD kaart en het ontvangen van commando's van de master.
+Er is gekozen voor twee verschillende Arduino Nano's omdat er anders problemen onstaan met het afspelen van audio en ontvangen/versturen van data via de NRF24L01+. Deze twee chips maken allebei gebruik van de SPI bus en kunnen dus niet tegelijkertijd worden aangesproken. Om dit op te lossen zijn de Arduino's in een master/slave opstelling. Er is dan één Arduino verantwoordelijk voor de aansturing, ontvangen/versturen van berichten en uitlezen van RFID lezer. Deze arduino heet de Maduino. De andere Arduino Nano (genaamde de Auduino) is verantwoordelijk voor het uitlezen van de SD/Micro SD kaart en het ontvangen van commando's van de master.
 
 #### Aansluitschema
 Deze communiceren met elkaar via I<sup>2</sup>C. Er is gekozen voor I<sup>2</sup> en niet voor bijvoorbeeld de seriële poort omdat we tijdens het prototypen nog gemakkelijk de Arduino's kunnen debuggen.
 ![Aansluit schema poot v1](images/aansluitschema-poot-v1.jpeg)
+
+#### Initialisatiesequentie
+Wanneer de maduino opstart worden de volgende acties gedaan:
+1. Pinnen RFID uitschakelen. 
+2. MySensors initialisatie inculsief NRF initialisatie. (Dit is de initialisatie voor de draadloze verbinding) Deze stap halt het initializatieproces totdat er verbinding is met de gateway.
+3. RFID initialisatie (Dit is de initialisatie van het pas-scan-detectie gedeelte)
+4. Connectie naar auduino initialiseren. (Dit is de verbinding naar de andere arduino die de audio afspeelt)
+
+Dit betekent dat er pas passen gescand kunnen worden wanneer de poot verbinding heeft met de gateway. Dit is niet gewenst sinds nu alle poten stoppen met werken wanneer de gateway offline gaat. Helaas is dit niet op te lossen omdat de MySensors initialisatie alleen werkt wanneer de pinnen naar de RFID sensor die óók op SPI zit helemaal uit staan. Wanneer éérst de RFID wordt ingeschakeld moet daarna de pinnen naar die RFID weer uitgezet worden, waardoor de initialisatie van de RFID ongedaan wordt. Het is niet gelukt een andere manier van initialisatie te vinen die dit probleem oplost. 
+
 
 
 # Webapps

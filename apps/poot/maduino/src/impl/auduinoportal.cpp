@@ -9,4 +9,5 @@ void AuduinoPortal::playAudio() {
   Wire.beginTransmission(AUDUINO_ID);
   Wire.write("playaudio");
   Wire.endTransmission();
+  Serial.println(F("done!"));
 }

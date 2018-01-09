@@ -21,7 +21,7 @@
 - Onderzoek lijntekeningen generatie van afbeelding (Sijmen)
 - Onderzoek Zippen met NodeJS (Rick)
 
-## Planning week 5:
+## Planning week 6:
 - Gateway
   - Versturen audio naar poot
   - Reset berichten versturen naar poot
@@ -38,5 +38,5 @@
 - Opleveringsdocumentatie
 
 
-### Doel week 5:
+### Doel week 6:
 Het gehele systeem werkend.

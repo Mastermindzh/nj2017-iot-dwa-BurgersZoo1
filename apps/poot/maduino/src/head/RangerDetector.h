@@ -21,7 +21,7 @@ class RangerDetector {
   private:
     Poot* poot;
     MFRC522* mfrc522;
-    bool euqlasBurgersZoo(unsigned char* buffer);
+    //bool euqlasBurgersZoo(unsigned char* buffer);
     bool validateAuthStatus(MFRC522::StatusCode status);
     bool validateReadStatus(MFRC522::StatusCode status);
     String readPasid();

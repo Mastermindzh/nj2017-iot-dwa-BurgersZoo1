@@ -82,12 +82,12 @@ public class BackendPootService extends BackendPootServiceBase {
 
     @Override
     public void sendTemperatureLoggingToBackend(MySetMessage message, Poot poot) {
-        logger.info("Temp logging is not enabled for group 1");
+        logger.debug("Temp logging is not enabled for group 1");
     }
 
     @Override
     public void sendHumidityLoggingToBackend(MySetMessage message, Poot poot) {
-        logger.info("Humidity  logging is not enabled for group 1");
+        logger.debug("Humidity  logging is not enabled for group 1");
     }
 
     @Override
