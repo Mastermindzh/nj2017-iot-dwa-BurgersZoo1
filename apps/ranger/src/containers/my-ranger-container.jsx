@@ -83,11 +83,12 @@ const stripDatesFromParkHistory = parkHistory => {
 };
 
 const createHistoryPerDate = (parkHistory, date) => {
-  return parkHistory.filter(day => {
+  const filteredHistoryWithoutDuplicates = _.uniqBy(parkHistory.filter(day => {
     if (convertUnixTimestampToCalendarDate(day.datum)  === date) {
       return day;
     }
-  });
+  }),'speurpuntId');
+  return filteredHistoryWithoutDuplicates;
 };
 
 const convertUnixTimestampToCalendarDate = unixTimestamp => {
