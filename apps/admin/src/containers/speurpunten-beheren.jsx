@@ -15,6 +15,7 @@ import TableComponent from "./../components/table-component.jsx";
 import styles from "./../styles/style.js";
 import SpeurpuntBeherenPopupComponent from "./../components/popups/speurpunt-beheren-popup.jsx";
 import { fetchDierengeluiden } from "./../actions/dierengeluidenActions";
+import { fetchWeetjes } from "./../actions/weetjesActions.js";
 
 import InputTextFieldComponent from "./../components/form-components/input-text-field-component.jsx";
 import {
@@ -48,6 +49,7 @@ class SpeurpuntenBeherenContainer extends Component {
     this.props.fetchPoten();
     this.props.fetchVerblijven();
     this.props.fetchDierengeluiden();
+    this.props.fetchWeetjes();
   }
 
   componentWillReceiveProps(nextProps) {
@@ -146,6 +148,7 @@ class SpeurpuntenBeherenContainer extends Component {
             onRequestClose={this.onRequestClose.bind(this)}
             poten={this.props.poten}
             verblijven={this.props.verblijven}
+            weetjes={this.props.weetjes}
             onSubmit={
               this.state.currentObject !== undefined
                 ? this.props.updateSpeurpunt
@@ -216,6 +219,8 @@ SpeurpuntenBeherenContainer.propTypes = {
   addSpeurpunt: PropTypes.func,
   updateSpeurpunt: PropTypes.func,
   fetchDierengeluiden: PropTypes.func,
+  fetchWeetjes: PropTypes.func,
+  weetjes: PropTypes.any,
   dierengeluiden: PropTypes.object,
 };
 
@@ -224,7 +229,9 @@ function mapStateToProps(state) {
     speurpunten: state.speurpuntReducer.speurpunten,
     poten: state.potenReducer.poten,
     verblijven: state.verblijvenReducer.verblijven,
-    dierengeluiden: state.dierengeluidenReducer.dierengeluiden
+    dierengeluiden: state.dierengeluidenReducer.dierengeluiden,
+    weetjes: state.weetjesReducer.weetjes
+
   };
 }
 
@@ -234,5 +241,6 @@ export default connect(mapStateToProps, {
   fetchPoten,
   fetchVerblijven,
   updateSpeurpunt,
-  fetchDierengeluiden
+  fetchDierengeluiden,
+  fetchWeetjes
 })(withStyles(styles, { withTheme: true })(SpeurpuntenBeherenContainer));

@@ -11,10 +11,9 @@ export const FILTER = {
 export const SPEURPUNT = {
   GET: `${SERVER}${SPEURPUNTEN}${FILTER.ALL}`,
   POST: `${SERVER}${SPEURPUNTEN}`,
+  DELETE: `${SERVER}${SPEURPUNTEN}`,
   PATCH: `${SERVER}${SPEURPUNTEN}`,
   GETONE: `${SERVER}${SPEURPUNTEN}`,
-
-
   FILTER: ``
 };
 export const DIERENGELUIDEN = {
@@ -23,7 +22,8 @@ export const DIERENGELUIDEN = {
 };
 export const WEETJES = {
   GET: `${SERVER}/weetjes`,
-  POST: `${SERVER}/weetjes`
+  POST: `${SERVER}/weetjes`,
+  PATCH: `${SERVER}/weetjes`,
 };
 export const UPLOAD = {
   POST: `${BASE_URL}/upload`
