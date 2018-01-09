@@ -44,9 +44,6 @@ void Poot::setPootid(byte code){
   EEPROM.put(EEPROM_POOTID_ADDRESS, code);
 }
 
-void Poot::receive(const MyMessage &message){
-  this->gatewayLink->receive(message);
-}
 
 float Poot::getTemperature(){
   return this->tempSensor->getTemperature();

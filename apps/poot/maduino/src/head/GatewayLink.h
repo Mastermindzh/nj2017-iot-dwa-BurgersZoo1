@@ -2,7 +2,6 @@
 #define GATEWAYLINK
 
 #include <Arduino.h>
-#include <core/MySensorsCore.h>
 #include "Poot.h"
 
 class Poot;
@@ -27,11 +26,6 @@ public:
   void sendStartup(byte pootid);
 
   /**
-  * Receive MySensors messages
-  */
-  void receive(const MyMessage &message);
-
-  /**
   * Send Mysensors message temperature
   */
   void sendTemperature(float temperature);
@@ -41,7 +35,6 @@ public:
   */
   void sendHumidity(float humidity);
 private:
-  MyMessage* msg;
   Poot *poot;
 };
 

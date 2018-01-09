@@ -48,11 +48,6 @@ public:
   void pasScanned(String pasid);
 
   /**
-  * Receive MySensors messages
-  */
-  void receive(const MyMessage &message);
-
-  /**
   * Get the current temperature
   */
   float getTemperature();
@@ -65,10 +60,10 @@ public:
    * Event for when a wrong pas is scanned. The error codes are as following:
    *  1  =  Card could not be authenticated
    *  2  =  Card does not contain the correct content
-   *  3  =  
+   *  3  =
    */
   void wrongPasScanned(byte errorCode);
-  
+
  /**
   * Reset the EEPROM
   */
