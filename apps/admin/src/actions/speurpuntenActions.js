@@ -20,17 +20,14 @@ export function fetchSpeurpunten() {
 }
 
 export function addSpeurpunt(speurpunt) {
-
   return dispatch => {
     axios
       .post(ENDPOINTS.SPEURPUNT.POST, speurpunt)
       .then(result => {
         speurpunt.id = result.data.id;
 
-        if(speurpunt.weetjes.length > 0){
-
+        if (speurpunt.weetjes.length > 0) {
           updateWeetjes(speurpunt).then(() => {
-
             getSingleSpeurpunt(speurpunt).then(result => {
               dispatch({
                 type: SPEURPUNT_ACTION_TYPES.ADD_SPEURPUNT,
@@ -38,8 +35,7 @@ export function addSpeurpunt(speurpunt) {
               });
             });
           });
-
-        }else{
+        } else {
           getSingleSpeurpunt(speurpunt).then(result => {
             dispatch({
               type: SPEURPUNT_ACTION_TYPES.ADD_SPEURPUNT,
@@ -47,7 +43,6 @@ export function addSpeurpunt(speurpunt) {
             });
           });
         }
-
       })
       .catch(err => {
         console.log(err);
@@ -63,10 +58,8 @@ export function updateSpeurpunt(speurpunt) {
         console.log(result);
         speurpunt.id = result.data.id;
 
-        if(speurpunt.weetjes.length > 0){
-
+        if (speurpunt.weetjes.length > 0) {
           updateWeetjes(speurpunt).then(() => {
-
             getSingleSpeurpunt(speurpunt).then(result => {
               dispatch({
                 type: SPEURPUNT_ACTION_TYPES.UPDATE_SPEURPUNT,
@@ -74,8 +67,7 @@ export function updateSpeurpunt(speurpunt) {
               });
             });
           });
-
-        }else{
+        } else {
           getSingleSpeurpunt(speurpunt).then(result => {
             dispatch({
               type: SPEURPUNT_ACTION_TYPES.UPDATE_SPEURPUNT,
@@ -83,7 +75,6 @@ export function updateSpeurpunt(speurpunt) {
             });
           });
         }
-
       })
       .catch(err => {
         console.log(err);
@@ -91,24 +82,63 @@ export function updateSpeurpunt(speurpunt) {
   };
 }
 
-export function updateWeetjes(speurpunt){
+export function updateWeetjes(speurpunt) {
   return new Promise((resolve, reject) => {
-
     // delete connected but not source thingy.
 
-    // axios.delete(`${ENDPOINTS.SPEURPUNT.DELETE}/${speurpunt.id}/weetjes`).then( () =>{
+    deleteWeetjes(speurpunt.id).then(() => {
       let weetjesRequests = [];
       // add the weetjes
       speurpunt.weetjes.forEach(weetje => {
-        let requestObject = {speurpuntId: speurpunt.id, id: weetje};
-        weetjesRequests.push(axios.patch(`${ENDPOINTS.WEETJES.PATCH}`, requestObject));
+        let requestObject = { speurpuntId: speurpunt.id, id: weetje };
+        weetjesRequests.push(
+          axios.patch(`${ENDPOINTS.WEETJES.PATCH}`, requestObject)
+        );
       });
 
-      Promise.all(weetjesRequests).then(() => {
-        resolve(true);
-      });
+      Promise.all(weetjesRequests)
+        .then(() => {
+          resolve(true);
+        })
+        .catch(err => {
+          console.log(err);
+        });
     });
-  // });
+  });
+}
+
+function deleteWeetjes(speurpuntId) {
+  return new Promise((resolve, reject) => {
+    axios
+      .get(
+        `${
+          ENDPOINTS.WEETJES.GET
+        }/?filter=%7B%22where%22%3A%20%7B%22speurpuntId%22%3A%20%22${speurpuntId}%22%7D%7D`
+      )
+      .then(result => {
+        let weetjesRequests = [];
+
+        result.data.forEach(weetje => {
+          let requestObject = { speurpuntId: "", id: weetje.id };
+
+          weetjesRequests.push(
+            axios.patch(`${ENDPOINTS.WEETJES.PATCH}`, requestObject)
+          );
+        });
+
+        if (weetjesRequests.length > 0) {
+          Promise.all(weetjesRequests)
+            .then(() => {
+              resolve(true);
+            })
+            .catch(err => {
+              console.log(err);
+            });
+        } else {
+          resolve(true);
+        }
+      });
+  });
 }
 
 export function getSingleSpeurpunt(speurpunt) {
