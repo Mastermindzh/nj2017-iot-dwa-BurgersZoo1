@@ -11,23 +11,24 @@ let mime = require("mime-types");
 let audiopath = "./audio";
 let tempPath = "./temp";
 let SoxCommand = require("sox-audio");
+let archiver = require('archiver')
 let crypto = require("crypto"), // used to generate unique filenames
   algorithm = "aes-256-ctr",
   password = "d6F3Efeq";
 let storage = multer.diskStorage({
-  destination: function(req, file, cb) {
+  destination: function (req, file, cb) {
     cb(null, tempPath);
   },
-  filename: function(req, file, cb) {
+  filename: function (req, file, cb) {
     cb(null, file.originalname);
   }
 });
 
-let upload = multer({ storage: storage });
+let upload = multer({storage: storage});
 
-app.start = function() {
+app.start = function () {
   // start the web server
-  return app.listen(function() {
+  return app.listen(function () {
     app.emit("started");
     let baseUrl = app.get("url").replace(/\/$/, "");
     console.log("Web server listening at: %s", baseUrl);
@@ -40,16 +41,16 @@ app.start = function() {
 
 // Bootstrap the application, configure models, datasources and middleware.
 // Sub-apps like REST API are mounted via boot scripts.
-boot(app, __dirname, function(err) {
+boot(app, __dirname, function (err) {
   if (err) {
     throw err;
   }
-  app.post("/upload", upload.any(), function(req, res, next) {
+  app.post("/upload", upload.any(), function (req, res, next) {
     let promises = [];
     req.files.forEach(file => {
       promises.push(
         new Promise((fulfill, reject) => {
-          crypto.pseudoRandomBytes(16, function(err, raw) {
+          crypto.pseudoRandomBytes(16, function (err, raw) {
             file.filename = raw.toString("hex") + Date.now();
             fulfill(file);
           });
@@ -71,7 +72,7 @@ boot(app, __dirname, function(err) {
     });
   });
 
-  app.use(function(req, res, next) {
+  app.use(function (req, res, next) {
     if (req.originalUrl.startsWith("/audio/")) {
       if (!fs.existsSync(path.join(__dirname, "../", req.originalUrl))) {
         res.redirect("/audio/default.wav");
@@ -79,6 +80,15 @@ boot(app, __dirname, function(err) {
     }
 
     next();
+  });
+
+  app.get("/zip", function (req, res) {
+    createZip();
+    console.log("zip done 2")
+    res.download('audio/audio.zip');
+    //'audio/audio.zip'
+    //res.attachment('audio/audio.zip')
+    //res.sendStatus(200);
   });
 
   // start the server if `$ node server.js`
@@ -98,11 +108,46 @@ function convertFile(input, output) {
       .outputSampleRate("16k")
       .outputChannels(1);
     command.run();
-    command.on("end", function() {
+    command.on("end", function () {
       fulfill(output.slice(1));
     });
-    command.on("error", function(error) {
+    command.on("error", function (error) {
       reject(error);
     });
   });
 }
+
+function createZip() {
+  let basePath = './audio';
+  let output = fs.createWriteStream('./audio/audio.zip');
+  let archive = archiver('zip', {
+    zlib: {level: 9}
+  });
+//todo alleen .wav files meenemen
+  archive.on('error', function(err) {
+    console.log(error);
+    throw err;
+  });
+
+  archive.pipe(output);
+
+  let files = [];
+  fs.readdirSync(audiopath).forEach(file => {
+    if(file.endsWith('.wav')) files.push(file);
+  });
+
+
+  console.log("files added")
+
+
+
+  files.forEach(file => {
+    archive.file(basePath+'/'+file, {name: file});
+  });
+
+  archive.finalize();
+  console.log("zip done")
+}
+
+//todo dier.wav -> dierengeluid
+// 0 tm n .wav
