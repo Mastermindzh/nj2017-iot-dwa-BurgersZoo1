@@ -94,7 +94,7 @@ class SpeurpuntBeherenPopupComponent extends Component {
 
   render() {
     const { classes, identifier, onSubmit } = this.props;
-
+    console.log(this.state.weetjes)
     return (
       <PopupComponent
         title={`Een speurpunt ${identifier}`}
@@ -107,25 +107,26 @@ class SpeurpuntBeherenPopupComponent extends Component {
               className={classes.formControl}
               style={{ width: "100%" }}
             >
-              <h3>De naam van het speurpunt:</h3>
+              <h3>De leefwereld van het speurpunt:</h3>
               <TextField
                 id="locatie-naam"
-                label="Locatie"
+                label="Leefwereld"
                 className={classes.textField}
                 value={this.state.name}
                 onChange={event => this.setState({ name: event.target.value })}
                 margin="normal"
+                placeholder="Bijv. Mangrove, Safari etc.."
               />
             </FormControl>
           </Grid>
           <Grid item xs={12}>
             <h3>Het verblijf van het speurpunt:</h3>
             <Dropdown
-              placeholder="Verblijf"
+              placeholder="Bijv. Wenkkrabben, Olifanten etc.."
               fluid
               selection
               search
-              options={this.state.verblijven}
+              options={_.orderBy(this.state.verblijven, 'text', 'asc')}
               onChange={this.handleVerblijfChange.bind(this)}
               value={this.state.verblijf}
             />
@@ -133,7 +134,7 @@ class SpeurpuntBeherenPopupComponent extends Component {
           <Grid item xs={12}>
             <h3>De poten van het speurpunt:</h3>
             <Dropdown
-              placeholder="Poten"
+              placeholder="Selecteer 1 of meerdere..."
               fluid
               multiple
               search
@@ -158,12 +159,12 @@ class SpeurpuntBeherenPopupComponent extends Component {
           <Grid item xs={12}>
             <h3>De weetjes van het speurpunt:</h3>
             <Dropdown
-              placeholder="weetjes"
+              placeholder="Selecteer wat wordt afgespeeld in het park..."
               fluid
               multiple
               search
               selection
-              options={this.state.weetjes}
+              options={_.orderBy(this.state.weetjes, 'text', 'asc')}
               onChange={this.handleWeetjesDropDownChange.bind(this)}
               value={this.state.weetje}
             />
