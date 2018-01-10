@@ -9,6 +9,11 @@ import _ from "lodash";
 import SnackbarComponent from "./../components/snackbar-component.jsx";
 import {Header} from "semantic-ui-react";
 import Button from "material-ui/Button";
+import axios from 'axios';
+import * as ENDPOINTS from "./../constants/endpoint-constants";
+import FileDownload from "js-file-download";
+//var FileDownload = require('js-file-download');
+// fileDownload(data, 'filename.csv');
 
 import TableComponent from "./../components/table-component.jsx";
 
@@ -105,8 +110,11 @@ class SpeurpuntenBeherenContainer extends Component {
         snackbarMessage: "Poot successvol geupdate"
       });
     }, speurpunt => {
-      //todo ga hier get request uitvoeren
-    });
+      axios.get(`${ENDPOINTS.BASE_URL}/zip/${speurpunt.id}`).then(response =>{
+        FileDownload(response.data, `${speurpunt.id}.zip`);
+      });
+    }
+  );
 
     return (
       <div>

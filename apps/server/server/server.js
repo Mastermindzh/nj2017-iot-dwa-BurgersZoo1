@@ -153,7 +153,10 @@ function createZip(files){
       //voeg weetjes toe met juiste naamgeving
       for(let i=0; i<files.weetjes.length; i++){
         var file = __dirname + '/..' + files.weetjes[i];
-        archive.append(fs.createReadStream(file), { name: i+'.wav' });
+
+        if(fs.existsSync(file)){
+          archive.append(fs.createReadStream(file), { name: i+'.wav' });
+        }
       }
       archive.finalize();
   })
