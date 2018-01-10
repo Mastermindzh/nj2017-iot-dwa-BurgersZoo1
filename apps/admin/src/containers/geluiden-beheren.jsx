@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {withStyles} from 'material-ui/styles';
-import IconButton from 'material-ui/IconButton';
+import Button from 'material-ui/Button';
 import Icon from 'material-ui/Icon';
 import Input, {InputLabel} from 'material-ui/Input';
 import {FormControl} from 'material-ui/Form';
@@ -87,9 +87,15 @@ class GeluidenBeheren extends Component {
                 <Input id="search-simple" value={this.state.search}
                        onChange={(event) => this.setState({search: event.target.value})}/>
               </FormControl>
-              <IconButton onClick={() => this.setState({addOpen: true})}>
-                <Icon>add_circle</Icon>
-              </IconButton>
+
+              <Button
+                className={classes.button}
+                raised
+                style={{"float":"right", backgroundColor: "#7ecb20", color: "white"}}
+                onClick={() => this.setState({addOpen: true})}
+              >
+                  <Icon style={{"paddingRight": "10px"}} className={classes.rightIcon}>add_circle</Icon> Weetje toevoegen
+              </Button>
             </div>
           </Grid>
           <Grid item xs={12}>
@@ -98,7 +104,7 @@ class GeluidenBeheren extends Component {
         </Grid>
 
         {this.props.uploads.uploadStatus === FILEUPLOAD_ACTION_TYPES.UPLOAD_STATUS_IDLE && this.state.addOpen &&
-        <PopupComponent title={"Geluid toevoegen"} open={this.state.addOpen}>
+        <PopupComponent title={"Geluid toevoegen"} open={this.state.addOpen} onRequestClose={this.onRequestClose.bind(this)}>
           <GeluidUploaden
             identifier="Geluid "
             uploadSound={this.props.uploadSound}
