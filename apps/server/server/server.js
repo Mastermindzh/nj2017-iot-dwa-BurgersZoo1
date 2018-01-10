@@ -85,17 +85,14 @@ boot(app, __dirname, function (err) {
   });
 
   app.get("/zip/:speurpuntid", function (req, res) {
-    //todo depricated
-    let speurpuntid = req.param('speurpuntid')
-
+    let speurpuntid = req.params.speurpuntid;
     app.models.Speurpunt.getAudio(speurpuntid, function (err, result) {
-      if (err) console.log(err);
-      //todo errorhandling
-
-      //createZip(result);
+      if (err) res.sendStatus(500);
+      if (result === undefined || result === null) {
+        res.sendStatus(500);
+      }
       res.download(createZip(result));
     })
-
   });
 
   // start the server if `$ node server.js`
@@ -125,7 +122,7 @@ function convertFile(input, output) {
 }
 
 function createZip(files) {
-  let zipname = './audio/sharon.zip';
+  let zipname = './audio/audio.zip';
   let output = fs.createWriteStream(zipname);
   let archive = archiver('zip', {
     zlib: {level: 9}
@@ -140,7 +137,6 @@ function createZip(files) {
 
   //voeg weetjes toe met juiste naamgeving
   for(let i=0; i<files.weetjes.length; i++){
-    console.log(files.weetjes[i]);
     archive.file('.'+files.weetjes[i], {name: i+'.wav'});
   }
 
@@ -148,7 +144,6 @@ function createZip(files) {
   archive.file('.'+files.dierengeluid, {name: 'dier.wav'});
 
   archive.finalize();
-  console.log("zip done");
 
   return zipname;
 }
