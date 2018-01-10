@@ -91,7 +91,16 @@ boot(app, __dirname, function (err) {
       if (result === undefined || result === null) {
         res.sendStatus(500);
       }
-      res.download(createZip(result));
+
+      createZip(result).then(result => {
+        let actualPath = path.join(__dirname,"../" + result);
+        res.sendFile(actualPath, function (err) {
+          if (err) {
+              console.log(err);
+          }
+        });
+
+      });
     })
   });
 
@@ -121,31 +130,34 @@ function convertFile(input, output) {
   });
 }
 
-function createZip(files) {
-  let zipname = './audio/audio.zip';
-  let output = fs.createWriteStream(zipname);
-  let archive = archiver('zip', {
-    zlib: {level: 9}
-  });
 
-  archive.on('error', function (err) {
-    console.log(error);
-    throw err;
-  });
+function createZip(files){
 
-  archive.pipe(output);
+  return new Promise((resolve,reject) => {
+    let zipname = './audio/audio.zip';
 
-  //voeg weetjes toe met juiste naamgeving
-  for(let i=0; i<files.weetjes.length; i++){
-    archive.file('.'+files.weetjes[i], {name: i+'.wav'});
-  }
+      var output = fs.createWriteStream(zipname);
+      var archive = archiver('zip', {
+        zlib: { level: 9 } // Sets the compression level.
+      });
 
-  //voeg dierengeluid toe met juiste naamgeving
-  archive.file('.'+files.dierengeluid, {name: 'dier.wav'});
+      // listen for all archive data to be written
+      // 'close' event is fired only when a file descriptor is involved
+      output.on('close', function() {
+        resolve(zipname);
+      });
 
-  archive.finalize();
+      // pipe archive data to the file
+      archive.pipe(output);
 
-  return zipname;
+      //voeg weetjes toe met juiste naamgeving
+      for(let i=0; i<files.weetjes.length; i++){
+        var file = __dirname + '/..' + files.weetjes[i];
+        archive.append(fs.createReadStream(file), { name: i+'.wav' });
+      }
+      archive.finalize();
+  })
+
 }
 
 
