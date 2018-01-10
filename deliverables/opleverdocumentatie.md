@@ -24,6 +24,9 @@ In dit rapport wordt allereerst het concept beschreven, gevolgd door een beschri
       - [Mac OS X & Linux, file watchers verhogen.](#mac-os-x--linux-file-watchers-verhogen)
       - [Installeren van de dependencies](#installeren-van-de-dependencies)
       - [Development applicaties](#development-applicaties)
+      - [De database vullen met voorbeelddata](#de-database-vullen-met-voorbeelddata)
+      - [De applicaties gebruiken](#de-applicaties-gebruiken)
+      - [Extra stappen voor Windows gebruikers.](#extra-stappen-voor-windows-gebruikers)
       - [productie builds (minified)](#productie-builds-minified)
       - [De applicaties bezoeken](#de-applicaties-bezoeken)
   * [Installatie Gateway](#installatie-gateway)
@@ -85,12 +88,14 @@ In het park van Burgers' Zoo wordt een speurtocht uitgezet om zo het mobiliteits
 Veel voorkomende bezoekers in Burgers' Zoo zijn kinderen met hun (groot)ouders. Kinderen zitten vol met energie en zijn enthousiast dus rennen door het park heen. Tegelijkertijd lopen de ouders hier achteraan en moeten ze de kinderen in de gaten houden. Door het heuvelachtige landschap waarop Burgers' Zoo gebouwd is kan dit heel vermoeiend zijn. Een speurtocht geeft de kinderen afleiding en zorgt er voor dat de kinderen bij een punt in de speurtocht stil blijven staan.
 In het park staan bij elk dierenverblijf borden met informatie over de dieren of planten die daar te vinden zijn. Dit zijn vaak lange stukken tekst die de kinderen zelf niet kunnen lezen. Dit zorgt er voor dat de ouders dit moeten voorlezen. Dit brengt dus extra last met zich mee voor de ouders. Dit wordt opgelost met de speurtocht doordat er weetjes afgespeeld worden in kindertaal.
 
-De speurtocht is bedoeld voor kinderen om een ranger te spelen. De kinderen krijgen bij binnenkomst een NFC pas, hun rangerpas, die ze kunnen gebruiken om mee te doen aan de speurtocht. Door het park heen staan speurpunten, in de vorm van een dierenpoot, verspreid. Wanneer een ranger zijn rangerpas scant bij een poot krijgt hij een dierenweetje te horen samen met een dierengeluid. Het doel is om alle dierenpoten te vinden en te scannen. Als de ranger de dierentuin verlaat krijgt hij een ranger certificaat. Op dit certificaat staat een unieke ranger code die hij kan gebruiken om thuis in te loggen op de ranger app.
+De kinderen spelen tijdens de speurtocht een ranger. Ze krijgen bij binnenkomst een NFC pas, hun rangerpas, die ze kunnen gebruiken om mee te doen aan de speurtocht. Door het park heen staan speurpunten, in de vorm van een dierenpoot, verspreid. Wanneer een ranger zijn rangerpas scant bij een poot krijgt hij een dierenweetje te horen samen met een dierengeluid. Het doel is om alle dierenpoten te vinden en te scannen. Als de ranger de dierentuin verlaat krijgt hij een ranger certificaat. Op dit certificaat staat een unieke ranger code die hij kan gebruiken om thuis in te loggen op de ranger app.
 
 In de ranger app kan een ranger kijken wat hij allemaal gedaan heeft tijdens zijn bezoek aan Burgers' Zoo. Hier is te vinden welke poten hij wanneer gescand heeft. Hier is te zien welk weetje en dierengeluid er bij hoort, zodat dit nogmaals geluisterd kan worden. De app geeft ook aan welke punten nog niet gescand zijn. Dit kan een aanleiding zijn om het park nog een keer te bezoeken, om zo alle punten van de speurtocht te vinden. Hier kunnen beloningen aan gekoppeld worden in de vorm van korting of een gift. Medewerkers van Burgers' Zoo kunnen de poten en de speurtocht beheren door hier andere dierengeluidjes of weetjes aan toe te voegen.
 
 
 ## Systeemoverview
+
+![system overview](images/overview.png)
 
 De poot bestaat uit twee Arduino's. Er is één Arduino die volledig gaat over het afspelen van audio (genaamd Auduino). In een later stadium zou deze Auduino ook verantwoordelijk worden voor het opslaan van nieuwe ontvangen audiobestanden. De Auduino wordt aangestuurd door de Master Arduino.
 
@@ -105,12 +110,14 @@ De Ranger app en de Admin app draaien samen met de Backend en de database in Doc
 De poten zullen communiceren met de twee backends van de twee groepen via een gateway. Deze gateway bestaat uit een Arduino en een Raspberry Pi. De Arduino zal draadloos communiceren via NRF24 chips met de poten en alle informatie doorsturen naar de Raspberry Pi. De Pi zal via HTTP/JSON communiceren met de backend's. De Pi kan op zijn beurt weer de Arduino binnen de gateway aansturen om zo informatie bij de poten te krijgen.
 
 ### Frontend apps
+![frontends](images/frontends.png)
+
 De gebruikers zullen werken met een van de twee client-applicaties: de Ranger App voor de rangers en de Admin App voor de administratoren. Deze twee applicaties draaien in de browser en zullen via HTTP/JSON communiceren met de Backends.
 
-De front-end apps zijn modulair opgezet, deze apps draaien op hun eigen plekje en roepen het REST backend middels HTTP aan. Als zei data willen manipuleren zal dit dus ook via de back-end moeten verlopen. Alle front-end apps bij elkaar worden gezien als de "front-end laag", zelfs als deze op andere fysieke machines draaien. Het los koppelen van de applicaties bevordert de werkbaarheid en stabiliteit van de architectuur. Elke app kan afzonderlijk gedeployed / getest worden zonder de rest van de architectuur te beïnvloeden.
+De front-end apps zijn modulair opgezet, deze apps draaien op hun eigen plekje en roepen het REST backend middels HTTP aan. Als zij data willen manipuleren zal dit dus ook via de back-end moeten verlopen. Alle front-end apps bij elkaar worden gezien als de "front-end laag", zelfs als deze op andere fysieke machines draaien. Het los koppelen van de applicaties bevordert de werkbaarheid en stabiliteit van de architectuur. Elke app kan afzonderlijk gedeployed / getest worden zonder de rest van de architectuur te beïnvloeden.
 
 ### Backend
-Het back-end betreft een REST api welke wordt aangesproken met de verschillende front-ends. De REST api zelf spreekt de datalaag aan om zijn data op te slaan en op te halen. Deze laag kan wederom uitgebreid worden met meerdere instanties van de back-end en/of met een loadbalancer.
+Het back-end betreft een REST api welke wordt aangesproken met de verschillende front-ends. De REST api zelf spreekt de database laag aan om zijn data op te slaan en op te halen. Deze laag kan wederom uitgebreid worden met meerdere instanties van de back-end en/of met een loadbalancer.
 
 ### Database
 De database laag zal enkel en alleen de database bevatten, op het moment van prototyping is dit één Mongo database. Dit kan echter uitgebreid worden met meerdere instances (voor redundancy, uitbreidbaarheid) en eventueel voorzien worden van een load balancer.
@@ -128,28 +135,30 @@ Dit hoofdstuk zal beschrijven hoe alle webapplicaties, de backend en de database
 Om alle applicaties te draaien moeten er een aantal dingen geregeld worden op de pc/laptop.
 De tabel hieronder geeft aan welke stukken software benodigd zijn en zal, waar mogelijk, een link worden geven naar de officiele website.
 
-- [Mongo](https://www.mongodb.com/)
-- [Docker](https://www.docker.com/)
-- [Docker-compose](https://docs.docker.com/compose/)
-- [Node](https://nodejs.org/)
-- [Npm](https://www.npmjs.com/)
+- [Mongo - v3.4.9](https://www.mongodb.com/)
+- [Docker - version 17.11.0-ce, build 1caf76ce6b](https://www.docker.com/)
+- [Docker-compose - version 1.17.1, build 6d101fb](https://docs.docker.com/compose/)
+- [Node - version 9.3.0](https://nodejs.org/)
+- [Npm - version 5.6.0](https://www.npmjs.com/)
 
-Als alle bovenstaande software geinstalleerd is dan kunnen alle apps gestart worden, om de database te vullen is er echter nog een extra stukje software nodig. De software heet `mongorestore` en komt , ten tijde van schrijven, mee geinstalleerd met het mongo pakket (Op Windows met [mongotools](https://github.com/mongodb/mongo-tools)). Bekijk [deze website](https://docs.mongodb.com/manual/reference/program/mongorestore/) voor meer informatie.
+Als alle bovenstaande software geinstalleerd is dan kunnen alle apps gestart worden, om de database te vullen is er echter nog een extra stukje software nodig. De software heet `mongorestore` en komt , ten tijde van schrijven, mee geinstalleerd met het mongo pakket (Op Windows met [mongotools](https://github.com/mongodb/mongo-tools)). Bekijk [deze website](https://docs.mongodb.com/manual/reference/program/mongorestore/) voor meer informatie. Ook zullen de mensen met Windows 10 home de [docker-toolbox](https://docs.docker.com/toolbox/toolbox_install_windows/) moeten installeren omdat zei geen hyper-v beschikbaar hebben.
 
 #### Het starten van de web applicaties en de database
 
 Het volgende hoofdstuk zal uitleggen hoe de applicaties gestart kunnen worden in zowel development modus als productie modus. Voor het testen is alleen de development modus meer als genoeg.
 
-> ***NOTE!  de commando's zijn bedacht voor Linux en Mac OS X, hieronder wordt beschreven hoe het werkt voor alle drie de systemen al is het zeer aan te raden om een Linux Virtual machine op te zetten. (klik [hier](https://www.storagecraft.com/blog/the-dead-simple-guide-to-installing-a-linux-virtual-machine-on-windows/) voor uitleg)***
+> ***NOTE!  de commando's zijn bedacht voor Linux en Mac OS X, hieronder wordt beschreven hoe het werkt voor alle drie de systemen al is het ten zeerste aan te raden om een Linux Virtual machine op te zetten. (klik [hier](https://www.storagecraft.com/blog/the-dead-simple-guide-to-installing-a-linux-virtual-machine-on-windows/) voor uitleg)***
 
 ##### Mac OS X & Linux, file watchers verhogen.
 
-Op Linux en Mac OS X zit een limiet op het aantal bestanden / mappen waar een gebruiker tegelijk naar mag "luisteren" voor veranderingen. Om dat op te lossen moet je het volgende commando uitvoeren:
+Op Linux en Mac OS X zit een limiet op het aantal bestanden / mappen waar een gebruiker tegelijk naar mag "luisteren" voor veranderingen. Webpack in development modus houdt namelijk bij welke bestanden je aanpast om snel te kunnen herladen. ([hot module reloading](https://webpack.js.org/concepts/hot-module-replacement/))
+Als Docker goed geinstalleerd is op Mac OS X hoeft er niets gedaan te worden, is dat niet zo (of wordt er Linux gebruikt) moet je het volgende commando uitvoeren:
 
 ```
 echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
 ```
 
+Voor technische info klik [hier](https://github.com/emcrisostomo/fswatch), voor sysctl uitleg [klik hier](https://wiki.archlinux.org/index.php/sysctl).
 ##### Installeren van de dependencies
 Om de benodigde NPM software te installeren moet het volgende commando gedraaid worden:
 
@@ -163,7 +172,7 @@ Om te controleren of het installeren goed is gegaan kan je in de opdrachtprompt 
 Dit ziet er als volgt uit:
 
 ```
-up to date in 2.16s
+xxx packages installed succesfully in x.xxs
 ```
 
 ##### Development applicaties
@@ -174,10 +183,55 @@ Om de applicaties in development modus te starten (in Docker) moet het volgende 
 npm start
 ```
 
-Dit zal, onder water, het volgende draaien:
+Als Windows wordt gebruikt moeten eerst de [extra stappen voor windows uitgevoerd worden](#extrawindowsstappen).
+
+Als deze zijn opgestart, iets dat de eerste keer lang kan duren, zie je ongeveer het volgende:
+
+![webpack done](images/webpack-built.png)
+
+##### De database vullen met voorbeelddata
+Om snel aan de slag te kunnen met het front-end wordt een script geboden dat de database vult met testdata. Om dit script uit te voeren moet het volgende commando getypt worden in een bash shell ([windows instructies](https://www.howtogeek.com/249966/how-to-install-and-use-the-linux-bash-shell-on-windows-10/)):
 
 ```cmd
-npm run copy-endpoint-dev && docker-compose down && docker-compose up
+bash seedscript.sh -h localhost:8009
+```
+
+##### De applicaties gebruiken
+
+![admin numbered](images/admin-numbered.png)
+
+De admin applicatie heeft een aantal schermen welke allemaal hetzelfde principe hanteren. Op de foto hierboven staat het "speurpunten beheren" scherm met een aantal nummers afgebeeld, hieronder volgt een lijst met een uitleg wat de nummers doen.
+
+1. Via het menu kunnen de verschillende pagina's bereikt worden
+2. Op de meeste pagina's zit op deze plek een zoekveld welke gebruikt kan worden om te zoeken in de lijst van resultaten.
+3. Op plek nummer 3 zit een knop om iets toe te voegen aan de lijst
+4. De lijst met resultaten, in de eerste kolom staat nog een potloodje waarmee die specifieke rij aangepast kan worden.
+
+Op de volgende foto is de ranger applicatie te zien, ook deze is genummerd en onder de foto staat de uitleg.
+
+Voor je de app in kunt moet je even inloggen met 1 van de passen:
+![ranger-selecteer-pas](images/ranger-selecteer-pas.png)
+
+Daarna zie je het volgende scherm (zonder nummers)
+![ranger numbered](images/ranger-numbered.png)
+
+1. Boven in de applicatie selecteer je de datum van het gewenste bezoek.
+2. Bij het selectiemenu in de rechterhoek kan je een verblijf selecteren om de kaart een update te geven met de juiste pootjes.
+3. De kaart met een aantal bezochte pootjes.
+
+Als laatste kan je de API nog exploreren op een van de volgende urls:
+
+- [http://localhost:8001/explorer](http://localhost:8001/explorer)
+- [http://localhost:8008](http://localhost:8008)
+
+<a name="extrawindowsstappen"></a>
+
+##### Extra stappen voor Windows gebruikers.
+
+`npm start` zal, onder water, het volgende draaien:
+
+```cmd
+./node_modules/.bin/concurrently 'npm run copy-endpoint-dev && docker-compose down && docker-compose up' 'npm run docs'
 ```
 
 Het commando "copy-endpoint-dev" gaat echter **fout** op een Windows systeem omdat Windows geen fatsoenlijke copy tool op de command line heeft. Als het toch op windows moet draaien moet je de kopieerstap even zelf uitvoeren. De stappen zijn dan als volgt:
@@ -189,7 +243,6 @@ Het commando "copy-endpoint-dev" gaat echter **fout** op een Windows systeem omd
 
 2. Draai het `docker-compose down` commando
 3. Draai het `docker-compose up` commando
-
 
 ##### productie builds (minified)
 
@@ -222,13 +275,15 @@ Het commando "copy-endpoint-dev" gaat echter **fout** op een Windows systeem omd
 
 Om de applicaties te bezoeken, en ze te gebruiken, ga je naar de volgende web adressen:
 
-| Applicatie                  | Adres in develop modus                        | Adres in productie modus                      |
-|-----------------------------|-----------------------------------------------|-----------------------------------------------|
-| Back-end api                | http://localhost:8001                         | http://localhost:8011                         |
-| Admin / educatie applicatie | http://localhost:8002                         | http://localhost:8012                         |
-| Ranger applicatie           | http://localhost:8003                         | http://localhost:8013                         |
-| De database                 | http://localhost:8009  mongo://localhost:8009 | http://localhost:8009  mongo://localhost:8009 |
+| Applicatie                  | Adres in develop modus                        | Adres in productie modus                      | Wat te verwachten                   |
+|-----------------------------|-----------------------------------------------|-----------------------------------------------|-------------------------------------|
+| Back-end api                | http://localhost:8001                         | http://localhost:8011                         | Toont een starttijd en een uptime.  |
+| Back-end api explorer       | http://localhost:8001/explorer                | http://localhost:8011/explorer                | ![explorer](images/explorer.png)        |
+| Admin / educatie applicatie | http://localhost:8002                         | http://localhost:8012                         | ![admin app](images/admin.png)      |
+| Ranger applicatie           | http://localhost:8003                         | http://localhost:8013                         | ![ranger app](images/ranger.png)    |
+| De database                 | http://localhost:8009  mongo://localhost:8009 | http://localhost:8009  mongo://localhost:8009 |                                     |
 
+Op dit moment draait alles van de web kant, benieuwd hoe je verder kunt? Klik [hier](#ontwikkelhandleiding) om naar de ontwikkelhandleiding te gaan.
 
 
 ### Installatie Gateway
@@ -499,6 +554,7 @@ echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo s
 <sub>Voor technische info klik [hier](https://github.com/emcrisostomo/fswatch), voor sysctl uitleg [klik](https://wiki.archlinux.org/index.php/sysctl) hier.</sub>
 
 
+<a name="ontwikkelhandleiding"></a>
 ### Loopback
 
 Loopback functioneert als het hart van de backend. Met een paar commando's is er gemakkelijk een krachtige API opgezet.
