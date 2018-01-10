@@ -45,6 +45,8 @@ class MyRangerContainer extends Component {
   render() {
     const {parkHistory} = this.props;
     const {selectedParkHistory} = this.state;
+    const weetjesPerAnimalResidence = parseWeetjesPerAnimalResidence(selectedParkHistory);
+
     return (
       <div>
         <Grid container spacing={24}>
@@ -55,7 +57,7 @@ class MyRangerContainer extends Component {
             />
           </Grid>
           <Grid item xs={12} sm={6}>
-            <FactWidgetComponent animalResidences={ _.uniqBy(selectedParkHistory.map(day => day.speurpunt.locatienaam), 'locatienaam' ) } />
+            <FactWidgetComponent animalResidences={weetjesPerAnimalResidence} />
           </Grid>
           <Grid item xs={12}>
             <ParkOverviewComponent speurpunten={selectedParkHistory.map(day => day.speurpunt)}/>
@@ -83,16 +85,36 @@ const stripDatesFromParkHistory = parkHistory => {
 };
 
 const createHistoryPerDate = (parkHistory, date) => {
-  return parkHistory.filter(day => {
+  const filteredHistoryWithoutDuplicates = _.uniqBy(parkHistory.filter(day => {
     if (convertUnixTimestampToCalendarDate(day.datum)  === date) {
       return day;
     }
-  });
+  }),'speurpuntId');
+  return filteredHistoryWithoutDuplicates;
 };
 
 const convertUnixTimestampToCalendarDate = unixTimestamp => {
   return moment.unix(unixTimestamp).format('L');
 }
+
+const parseWeetjesPerAnimalResidence = parkHistory => {
+  let audioList = []
+
+  if(parkHistory){
+    parkHistory.forEach(day => {
+      let locatieNaamIndex = _.findIndex(audioList, {locatienaam: day.speurpunt.locatienaam });
+      if(locatieNaamIndex === -1) {
+        audioList.push({locatienaam: day.speurpunt.locatienaam, weetjes: [...day.speurpunt.weetjes] });
+        locatieNaamIndex = -1; //reset due to JS forEach behaviour
+      }
+      else{
+        audioList[locatieNaamIndex].weetjes.push(...day.speurpunt.weetjes);
+      }
+    });
+  }
+
+  return audioList;
+};
 
 MyRangerContainer.propTypes = {
   fetchParkHistory: PropTypes.func.isRequired,

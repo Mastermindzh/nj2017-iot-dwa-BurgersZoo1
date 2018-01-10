@@ -87,10 +87,6 @@ boot(app, __dirname, function (err) {
   app.get("/zip/:speurpuntid", function (req, res) {
     let speurpuntid = req.params.speurpuntid;
     app.models.Speurpunt.getAudio(speurpuntid, function (err, result) {
-      if (err) res.sendStatus(500);
-      if (result === undefined || result === null) {
-        res.sendStatus(500);
-      }
 
       createZip(result).then(result => {
         let actualPath = path.join(__dirname,"../" + result);
@@ -135,6 +131,11 @@ function createZip(files){
 
   return new Promise((resolve,reject) => {
     let zipname = './audio/audio.zip';
+
+    // files shouldn't be null, fix after demo
+    if(files === null){
+      resolve(zipname);
+    }
 
       var output = fs.createWriteStream(zipname);
       var archive = archiver('zip', {

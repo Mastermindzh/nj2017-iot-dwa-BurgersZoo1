@@ -26,7 +26,8 @@ class SpeurpuntBeherenPopupComponent extends Component {
       poten: [],
       verblijven: [],
       dierengeluid: "",
-      dierengeluiden: []
+      dierengeluiden: [],
+      weetje: []
     };
 
     if(!_.isEmpty(props.data)){
@@ -34,6 +35,7 @@ class SpeurpuntBeherenPopupComponent extends Component {
       state.verblijf = props.data.verblijfId;
       state.poot = props.data.pootid;
       state.id = props.data.id;
+      state.weetje = props.data.weetjes.map(weetje => {return weetje.id;});
 
       if(!_.isEmpty(props.data.dierengeluid)){
         state.dierengeluid = props.data.dierengeluid.id;
@@ -53,6 +55,10 @@ class SpeurpuntBeherenPopupComponent extends Component {
       return { key: dierengeluid.id, text: dierengeluid.beschrijving, value: dierengeluid.id };
     });
 
+    state.weetjes = _.map(this.props.weetjes, weetje => {
+      return {key: weetje.id,text:weetje.naam, value: weetje.id};
+    });
+
     this.state = state;
 
     this.stateToSpeurpunt = this.stateToSpeurpunt.bind(this);
@@ -69,12 +75,17 @@ class SpeurpuntBeherenPopupComponent extends Component {
       this.state.name,
       this.state.verblijf,
       this.state.id,
-      this.state.dierengeluid
+      this.state.dierengeluid,
+      this.state.weetje
     );
   }
 
   handleDropDownChange(event, data) {
     this.setState({ poot: data.value });
+  }
+
+  handleWeetjesDropDownChange(event, data){
+     this.setState({weetje: data.value});
   }
 
   handleVerblijfChange(event, data) {
@@ -83,7 +94,7 @@ class SpeurpuntBeherenPopupComponent extends Component {
 
   render() {
     const { classes, identifier, onSubmit } = this.props;
-
+    console.log(this.state.weetjes)
     return (
       <PopupComponent
         title={`Een speurpunt ${identifier}`}
@@ -96,25 +107,26 @@ class SpeurpuntBeherenPopupComponent extends Component {
               className={classes.formControl}
               style={{ width: "100%" }}
             >
-              <h3>De naam van het speurpunt:</h3>
+              <h3>De leefwereld van het speurpunt:</h3>
               <TextField
                 id="locatie-naam"
-                label="Locatie"
+                label="Leefwereld"
                 className={classes.textField}
                 value={this.state.name}
                 onChange={event => this.setState({ name: event.target.value })}
                 margin="normal"
+                placeholder="Bijv. Mangrove, Safari etc.."
               />
             </FormControl>
           </Grid>
           <Grid item xs={12}>
             <h3>Het verblijf van het speurpunt:</h3>
             <Dropdown
-              placeholder="Verblijf"
+              placeholder="Bijv. Wenkkrabben, Olifanten etc.."
               fluid
               selection
               search
-              options={this.state.verblijven}
+              options={_.orderBy(this.state.verblijven, 'text', 'asc')}
               onChange={this.handleVerblijfChange.bind(this)}
               value={this.state.verblijf}
             />
@@ -122,7 +134,7 @@ class SpeurpuntBeherenPopupComponent extends Component {
           <Grid item xs={12}>
             <h3>De poten van het speurpunt:</h3>
             <Dropdown
-              placeholder="Poten"
+              placeholder="Selecteer 1 of meerdere..."
               fluid
               multiple
               search
@@ -145,8 +157,23 @@ class SpeurpuntBeherenPopupComponent extends Component {
             />
           </Grid>
           <Grid item xs={12}>
+            <h3>De weetjes van het speurpunt:</h3>
+            <Dropdown
+              placeholder="Selecteer wat wordt afgespeeld in het park..."
+              fluid
+              multiple
+              search
+              selection
+              options={_.orderBy(this.state.weetjes, 'text', 'asc')}
+              onChange={this.handleWeetjesDropDownChange.bind(this)}
+              value={this.state.weetje}
+            />
+          </Grid>
+
+          <Grid item xs={12}>
             <Button
               className={classes.button}
+              // onSubmit(this.stateToSpeurpunt())
               onClick={() => {onSubmit(this.stateToSpeurpunt());}}
               raised
               color="primary"
@@ -169,6 +196,7 @@ SpeurpuntBeherenPopupComponent.propTypes = {
   dierengeluiden: PropTypes.object,
   data: PropTypes.object,
   identifier: PropTypes.string,
+  weetjes: PropTypes.object,
   onSubmit: PropTypes.func
 };
 
