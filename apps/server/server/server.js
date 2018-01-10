@@ -11,7 +11,8 @@ let mime = require("mime-types");
 let audiopath = "./audio";
 let tempPath = "./temp";
 let SoxCommand = require("sox-audio");
-let archiver = require('archiver')
+let archiver = require('archiver');
+let axios = require('axios');
 let crypto = require("crypto"), // used to generate unique filenames
   algorithm = "aes-256-ctr",
   password = "d6F3Efeq";
@@ -23,6 +24,7 @@ let storage = multer.diskStorage({
     cb(null, file.originalname);
   }
 });
+
 
 let upload = multer({storage: storage});
 
@@ -82,9 +84,18 @@ boot(app, __dirname, function (err) {
     next();
   });
 
-  app.get("/zip", function (req, res) {
-    createZip();
-    res.download('audio/audio.zip');
+  app.get("/zip/:speurpuntid", function (req, res) {
+    //todo depricated
+    let speurpuntid = req.param('speurpuntid')
+
+    app.models.Speurpunt.getAudio(speurpuntid, function (err, result) {
+      if (err) console.log(err);
+      //todo errorhandling
+
+      //createZip(result);
+      res.download(createZip(result));
+    })
+
   });
 
   // start the server if `$ node server.js`
@@ -113,45 +124,33 @@ function convertFile(input, output) {
   });
 }
 
-function createZip() {
-  let basePath = './audio';
-  let output = fs.createWriteStream('./audio/audio.zip');
+function createZip(files) {
+  let zipname = './audio/sharon.zip';
+  let output = fs.createWriteStream(zipname);
   let archive = archiver('zip', {
     zlib: {level: 9}
   });
 
-  archive.on('error', function(err) {
+  archive.on('error', function (err) {
     console.log(error);
     throw err;
   });
 
   archive.pipe(output);
 
-  let files = [];
-  fs.readdirSync(audiopath).forEach(file => {
-    if(file.endsWith('.wav')) files.push(file);
-  });
+  //voeg weetjes toe met juiste naamgeving
+  for(let i=0; i<files.weetjes.length; i++){
+    console.log(files.weetjes[i]);
+    archive.file('.'+files.weetjes[i], {name: i+'.wav'});
+  }
 
-  files.forEach(file => {
-    archive.file(basePath+'/'+file, {name: file});
-  });
+  //voeg dierengeluid toe met juiste naamgeving
+  archive.file('.'+files.dierengeluid, {name: 'dier.wav'});
 
   archive.finalize();
-  console.log("zip done")
+  console.log("zip done");
+
+  return zipname;
 }
 
-function getAudioFilenames(speurpuntId){
-  let path = 'http://localhost:8001/api/speurpunten/';
-  let filter = '?filter=%7B%22include%22%3A%20%5B%22dierengeluid%22%2C%22verblijf%22%2C%20%22weetjes%22%5D%7D'
-  axios.get(path+speurpuntId+filter).then(result => {
 
-    //todo
-  }).catch(err => {
-    console.log(err);
-  });
-}
-
-//todo dier.wav -> dierengeluid
-// 0 tm n .wav
-
-//?filter=%7B%22include%22%3A%20%5B%22dierengeluid%22%2C%22verblijf%22%2C%20%22weetjes%22%5D%7D
