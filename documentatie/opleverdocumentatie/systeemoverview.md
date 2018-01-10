@@ -1,5 +1,7 @@
 ## Systeemoverview
 
+![system overview](images/overview.png)
+
 De poot bestaat uit twee Arduino's. Er is één Arduino die volledig gaat over het afspelen van audio (genaamd Auduino). In een later stadium zou deze Auduino ook verantwoordelijk worden voor het opslaan van nieuwe ontvangen audiobestanden. De Auduino wordt aangestuurd door de Master Arduino.
 
 De Master Arduino (genaamd Maduino) is verantwoordelijk voor alle primaire functionaliteiten en het aansturen van de Auduino. Zo zal de master Arduino een NFC-scanner hebben om passen te detecteren. Ook zal de Maduino de temperatuur en luchtvochtigheid meten. De Maduino staat via de NRF24 chip in verbinding met de Gateway en zal zo de Gateway op de hoogte houden over welke passen gesand zijn.
