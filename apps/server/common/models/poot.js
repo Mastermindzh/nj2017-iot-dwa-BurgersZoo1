@@ -2,27 +2,6 @@
 var app = require('../../server/server')
 module.exports = function (Poot) {
 
-  Poot.getconfig = function (pootid, cb) {
-    app.models.Speurpunt.findOne({
-      where: {pootid: pootid},
-      include: [{relation: 'weetje'}, {relation: 'dierengeluid'}]
-    }, function (err, result) {
-      if (err) cb(err, null);
-      if (result === undefined || result === null) {
-        cb('empty result', null)
-      } else {
-        var temp = result.toJSON();
-        var weetjes = temp.weetje.map(function (x) {
-          return x.bestandspad
-        });
-        var dierengeluid = temp.dierengeluid.bestandspad
-        var response = {weetjes: weetjes, dierengeluid: dierengeluid};
-        cb(null, response);
-      }
-    });
-  };
-
-
   Poot.scan = function (pasid, pootid, cb) {
     var rangerid = 0;
     var speurpuntId = 0;
@@ -64,11 +43,6 @@ module.exports = function (Poot) {
 
   });
 
-  Poot.updateProgress = function (transactieid, voortgang, cb) {
-    //todo implementeer dit.
-    cb(null, 'Progress update ontvangen.')
-  };
-
   Poot.getPootid = function (cb) {
     Poot.find({fields: {pootid: true, id: false}}, function (err, poten) {
       if (err) cb(err, null);
@@ -96,13 +70,6 @@ module.exports = function (Poot) {
     })
   });
 
-  Poot.remoteMethod('getconfig', {
-    description: 'Het opvragen van de configuratie van een specifieke poot.',
-    accepts: {arg: 'pootid', type: 'number', http: {source: 'path'}},
-    http: {path: '/:pootid/config', verb: 'get'},
-    returns: {errorStatus: '500', arg: 'pootid', type: 'Object', root: true}
-  });
-
 
   Poot.remoteMethod('scan', {
     description: 'Verwerken van de ranger die bij een bepaalde poot komt. Wanneer een ranger een poot scant wordt het kaartid via de gateway naar de backend gestuurd. Dit is het endpoint in de backend die dit ontvangt.',
@@ -115,16 +82,6 @@ module.exports = function (Poot) {
     returns: {arg: 'message', type: 'string', root: true}
   });
 
-  Poot.remoteMethod('updateProgress', {
-    description: 'Endpoint voor het updaten van de update voortang. Dit wordt door de gateway verzorgt en rekent uit hoever het versturen van de de configuratie naar de gateway is. Dit is alleen van toepassing op het moment dat er iets te updaten is. Niet alle update acties geven een transactie id terug.',
-    accepts: [{arg: 'transactieid', type: 'number', http: {source: 'path'}}, {
-      arg: 'voortgang',
-      type: 'number',
-      http: {source: 'body'}
-    }],
-    http: {errorStatus: '500', path: '/update/:transactieid', verb: 'put'},
-    returns: {arg: 'message', type: 'string', root: true}
-  });
 
   Poot.remoteMethod('getPootid', {
     description: 'Registreren van een nieuw poot. Response bevat het nieuw aangemaakte poot.',
