@@ -92,7 +92,7 @@ public class SerialCommunication implements SerialPortEventListener {
                 logger.debug(String.format("NRF Message: %s", inputLine));
                 try {
                     MyMessage message = this.parseService.parseToObject(inputLine);
-                    logger.info(String.format("Message: %s", message.toString()));
+                    logger.debug(String.format("Message: %s", message.toString()));
                     this.mySensorReceiveService.handleIncomingMessage(message);
                 } catch (NotFoundException e) {
                     logger.error("Message was: " + inputLine);
