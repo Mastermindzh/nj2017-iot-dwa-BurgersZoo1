@@ -74,7 +74,7 @@ export function updateSpeurpunt(speurpunt) {
 }
 
 export function updateWeetjes(speurpunt) {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     // delete connected but not source thingy.
 
     deleteWeetjes(speurpunt.id).then(() => {
@@ -99,7 +99,7 @@ export function updateWeetjes(speurpunt) {
 }
 
 function deleteWeetjes(speurpuntId) {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     axios
       .get(
         `${
