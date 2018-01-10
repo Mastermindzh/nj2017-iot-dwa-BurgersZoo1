@@ -22,13 +22,14 @@ Het volgende hoofdstuk zal uitleggen hoe de applicaties gestart kunnen worden in
 
 ##### Mac OS X & Linux, file watchers verhogen.
 
-Op Linux en Mac OS X zit een limiet op het aantal bestanden / mappen waar een gebruiker tegelijk naar mag "luisteren" voor veranderingen.
+Op Linux en Mac OS X zit een limiet op het aantal bestanden / mappen waar een gebruiker tegelijk naar mag "luisteren" voor veranderingen. Webpack in development modus houdt namelijk bij welke bestanden je aanpast om snel te kunnen herladen. ([hot module reloading](https://webpack.js.org/concepts/hot-module-replacement/))
 Als Docker goed geinstalleerd is op Mac OS X hoeft er niets gedaan te worden, is dat niet zo (of wordt er Linux gebruikt) moet je het volgende commando uitvoeren:
 
 ```
 echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
 ```
 
+Voor technische info klik [hier](https://github.com/emcrisostomo/fswatch), voor sysctl uitleg [klik hier](https://wiki.archlinux.org/index.php/sysctl).
 ##### Installeren van de dependencies
 Om de benodigde NPM software te installeren moet het volgende commando gedraaid worden:
 
@@ -70,11 +71,29 @@ bash seedscript.sh -h localhost:8009
 
 ![admin numbered](images/admin-numbered.png)
 
+De admin applicatie heeft een aantal schermen welke allemaal hetzelfde principe hanteren. Op de foto hierboven staat het "speurpunten beheren" scherm met een aantal nummers afgebeeld, hieronder volgt een lijst met een uitleg wat de nummers doen.
+
 1. Via het menu kunnen de verschillende pagina's bereikt worden
 2. Op de meeste pagina's zit op deze plek een zoekveld welke gebruikt kan worden om te zoeken in de lijst van resultaten.
 3. Op plek nummer 3 zit een knop om iets toe te voegen aan de lijst
 4. De lijst met resultaten, in de eerste kolom staat nog een potloodje waarmee die specifieke rij aangepast kan worden.
 
+Op de volgende foto is de ranger applicatie te zien, ook deze is genummerd en onder de foto staat de uitleg.
+
+Voor je de app in kunt moet je even inloggen met 1 van de passen:
+![ranger-selecteer-pas](images/ranger-selecteer-pas.png)
+
+Daarna zie je het volgende scherm (zonder nummers)
+![ranger numbered](images/ranger-numbered.png)
+
+1. Boven in de applicatie selecteer je de datum van het gewenste bezoek.
+2. Bij het selectiemenu in de rechterhoek kan je een verblijf selecteren om de kaart een update te geven met de juiste pootjes.
+3. De kaart met een aantal bezochte pootjes.
+
+Als laatste kan je de API nog exploreren op een van de volgende urls:
+
+- [http://localhost:8001/explorer](http://localhost:8001/explorer)
+- [http://localhost:8008](http://localhost:8008)
 
 <a name="extrawindowsstappen"></a>
 
@@ -83,7 +102,7 @@ bash seedscript.sh -h localhost:8009
 `npm start` zal, onder water, het volgende draaien:
 
 ```cmd
-npm run copy-endpoint-dev && docker-compose down && docker-compose up
+./node_modules/.bin/concurrently 'npm run copy-endpoint-dev && docker-compose down && docker-compose up' 'npm run docs'
 ```
 
 Het commando "copy-endpoint-dev" gaat echter **fout** op een Windows systeem omdat Windows geen fatsoenlijke copy tool op de command line heeft. Als het toch op windows moet draaien moet je de kopieerstap even zelf uitvoeren. De stappen zijn dan als volgt:
@@ -134,3 +153,5 @@ Om de applicaties te bezoeken, en ze te gebruiken, ga je naar de volgende web ad
 | Admin / educatie applicatie | http://localhost:8002                         | http://localhost:8012                         | ![admin app](images/admin.png)      |
 | Ranger applicatie           | http://localhost:8003                         | http://localhost:8013                         | ![ranger app](images/ranger.png)    |
 | De database                 | http://localhost:8009  mongo://localhost:8009 | http://localhost:8009  mongo://localhost:8009 |                                     |
+
+Op dit moment draait alles van de web kant, benieuwd hoe je verder kunt? Klik [hier](#ontwikkelhandleiding) om naar de ontwikkelhandleiding te gaan.
