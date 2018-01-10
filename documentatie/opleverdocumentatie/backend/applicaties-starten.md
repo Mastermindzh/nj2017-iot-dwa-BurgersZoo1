@@ -6,23 +6,24 @@ Dit hoofdstuk zal beschrijven hoe alle webapplicaties, de backend en de database
 Om alle applicaties te draaien moeten er een aantal dingen geregeld worden op de pc/laptop.
 De tabel hieronder geeft aan welke stukken software benodigd zijn en zal, waar mogelijk, een link worden geven naar de officiele website.
 
-- [Mongo](https://www.mongodb.com/)
-- [Docker](https://www.docker.com/)
-- [Docker-compose](https://docs.docker.com/compose/)
-- [Node](https://nodejs.org/)
-- [Npm](https://www.npmjs.com/)
+- [Mongo - v3.4.9](https://www.mongodb.com/)
+- [Docker - version 17.11.0-ce, build 1caf76ce6b](https://www.docker.com/)
+- [Docker-compose - version 1.17.1, build 6d101fb](https://docs.docker.com/compose/)
+- [Node - version 9.3.0](https://nodejs.org/)
+- [Npm - version 5.6.0](https://www.npmjs.com/)
 
-Als alle bovenstaande software geinstalleerd is dan kunnen alle apps gestart worden, om de database te vullen is er echter nog een extra stukje software nodig. De software heet `mongorestore` en komt , ten tijde van schrijven, mee geinstalleerd met het mongo pakket (Op Windows met [mongotools](https://github.com/mongodb/mongo-tools)). Bekijk [deze website](https://docs.mongodb.com/manual/reference/program/mongorestore/) voor meer informatie.
+Als alle bovenstaande software geinstalleerd is dan kunnen alle apps gestart worden, om de database te vullen is er echter nog een extra stukje software nodig. De software heet `mongorestore` en komt , ten tijde van schrijven, mee geinstalleerd met het mongo pakket (Op Windows met [mongotools](https://github.com/mongodb/mongo-tools)). Bekijk [deze website](https://docs.mongodb.com/manual/reference/program/mongorestore/) voor meer informatie. Ook zullen de mensen met Windows 10 home de [docker-toolbox](https://docs.docker.com/toolbox/toolbox_install_windows/) moeten installeren omdat zei geen hyper-v beschikbaar hebben.
 
 #### Het starten van de web applicaties en de database
 
 Het volgende hoofdstuk zal uitleggen hoe de applicaties gestart kunnen worden in zowel development modus als productie modus. Voor het testen is alleen de development modus meer als genoeg.
 
-> ***NOTE!  de commando's zijn bedacht voor Linux en Mac OS X, hieronder wordt beschreven hoe het werkt voor alle drie de systemen al is het zeer aan te raden om een Linux Virtual machine op te zetten. (klik [hier](https://www.storagecraft.com/blog/the-dead-simple-guide-to-installing-a-linux-virtual-machine-on-windows/) voor uitleg)***
+> ***NOTE!  de commando's zijn bedacht voor Linux en Mac OS X, hieronder wordt beschreven hoe het werkt voor alle drie de systemen al is het ten zeerste aan te raden om een Linux Virtual machine op te zetten. (klik [hier](https://www.storagecraft.com/blog/the-dead-simple-guide-to-installing-a-linux-virtual-machine-on-windows/) voor uitleg)***
 
 ##### Mac OS X & Linux, file watchers verhogen.
 
-Op Linux en Mac OS X zit een limiet op het aantal bestanden / mappen waar een gebruiker tegelijk naar mag "luisteren" voor veranderingen. Om dat op te lossen moet je het volgende commando uitvoeren:
+Op Linux en Mac OS X zit een limiet op het aantal bestanden / mappen waar een gebruiker tegelijk naar mag "luisteren" voor veranderingen.
+Als Docker goed geinstalleerd is op Mac OS X hoeft er niets gedaan te worden, is dat niet zo (of wordt er Linux gebruikt) moet je het volgende commando uitvoeren:
 
 ```
 echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
@@ -41,7 +42,7 @@ Om te controleren of het installeren goed is gegaan kan je in de opdrachtprompt 
 Dit ziet er als volgt uit:
 
 ```
-up to date in 2.16s
+xxx packages installed succesfully in x.xxs
 ```
 
 ##### Development applicaties
@@ -52,7 +53,34 @@ Om de applicaties in development modus te starten (in Docker) moet het volgende 
 npm start
 ```
 
-Dit zal, onder water, het volgende draaien:
+Als Windows wordt gebruikt moeten eerst de [extra stappen voor windows uitgevoerd worden](#extrawindowsstappen).
+
+Als deze zijn opgestart, iets dat de eerste keer lang kan duren, zie je ongeveer het volgende:
+
+![webpack done](images/webpack-built.png)
+
+##### De database vullen met voorbeelddata
+Om snel aan de slag te kunnen met het front-end wordt een script geboden dat de database vult met testdata. Om dit script uit te voeren moet het volgende commando getypt worden in een bash shell ([windows instructies](https://www.howtogeek.com/249966/how-to-install-and-use-the-linux-bash-shell-on-windows-10/)):
+
+```cmd
+bash seedscript.sh -h localhost:8009
+```
+
+##### De applicaties gebruiken
+
+![admin numbered](images/admin-numbered.png)
+
+1. Via het menu kunnen de verschillende pagina's bereikt worden
+2. Op de meeste pagina's zit op deze plek een zoekveld welke gebruikt kan worden om te zoeken in de lijst van resultaten.
+3. Op plek nummer 3 zit een knop om iets toe te voegen aan de lijst
+4. De lijst met resultaten, in de eerste kolom staat nog een potloodje waarmee die specifieke rij aangepast kan worden.
+
+
+<a name="extrawindowsstappen"></a>
+
+##### Extra stappen voor Windows gebruikers.
+
+`npm start` zal, onder water, het volgende draaien:
 
 ```cmd
 npm run copy-endpoint-dev && docker-compose down && docker-compose up
@@ -67,7 +95,6 @@ Het commando "copy-endpoint-dev" gaat echter **fout** op een Windows systeem omd
 
 2. Draai het `docker-compose down` commando
 3. Draai het `docker-compose up` commando
-
 
 ##### productie builds (minified)
 
@@ -100,10 +127,10 @@ Het commando "copy-endpoint-dev" gaat echter **fout** op een Windows systeem omd
 
 Om de applicaties te bezoeken, en ze te gebruiken, ga je naar de volgende web adressen:
 
-| Applicatie                  | Adres in develop modus                        | Adres in productie modus                      |
-|-----------------------------|-----------------------------------------------|-----------------------------------------------|
-| Back-end api                | http://localhost:8001                         | http://localhost:8011                         |
-| Admin / educatie applicatie | http://localhost:8002                         | http://localhost:8012                         |
-| Ranger applicatie           | http://localhost:8003                         | http://localhost:8013                         |
-| De database                 | http://localhost:8009  mongo://localhost:8009 | http://localhost:8009  mongo://localhost:8009 |
-
+| Applicatie                  | Adres in develop modus                        | Adres in productie modus                      | Wat te verwachten                   |
+|-----------------------------|-----------------------------------------------|-----------------------------------------------|-------------------------------------|
+| Back-end api                | http://localhost:8001                         | http://localhost:8011                         | Toont een starttijd en een uptime.  |
+| Back-end api explorer       | http://localhost:8001/explorer                | http://localhost:8011/explorer                | ![explorer](images/explorer.png)        |
+| Admin / educatie applicatie | http://localhost:8002                         | http://localhost:8012                         | ![admin app](images/admin.png)      |
+| Ranger applicatie           | http://localhost:8003                         | http://localhost:8013                         | ![ranger app](images/ranger.png)    |
+| De database                 | http://localhost:8009  mongo://localhost:8009 | http://localhost:8009  mongo://localhost:8009 |                                     |
