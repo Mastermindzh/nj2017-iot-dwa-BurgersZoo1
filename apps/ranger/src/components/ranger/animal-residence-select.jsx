@@ -36,7 +36,6 @@ class AnimalResidenceSelect extends Component {
 
   render() {
     const { classes } = this.props;
-
     return (
       <form className={classes.container} autoComplete="off">
         <FormControl className={classes.formControl}>
@@ -47,7 +46,7 @@ class AnimalResidenceSelect extends Component {
             input={<Input id="residence-simple" />}
           >
             {this.props.residences.map(residence => {
-              return <MenuItem key={residence} value={residence}>{residence}</MenuItem>;
+              return <MenuItem key={residence} value={residence}>{residence.locatienaam}</MenuItem>;
             })}
           </Select>
         </FormControl>
@@ -59,7 +58,7 @@ class AnimalResidenceSelect extends Component {
 AnimalResidenceSelect.propTypes = {
   classes: PropTypes.object.isRequired,
   onResidenceSelect: PropTypes.func.isRequired,
-  residences: PropTypes.arrayOf(PropTypes.string)
+  residences: PropTypes.arrayOf(PropTypes.object)
 };
 
 export default withStyles(styles)(AnimalResidenceSelect);
