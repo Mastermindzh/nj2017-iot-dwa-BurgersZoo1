@@ -38,7 +38,7 @@ De applicatie bestaat uit een vrij standaard Java folder structure.
 |── /build.gradle # Build file, bevat dependencies etc.
 ```
 
-## Seriële communicatie 
+### Seriële communicatie 
 Voor het gebruik van de gateway moet er een library geïnstalleerd zijn op de pc. Het gaat om de RXTX library. Deze zorgt voor de seriële communicatie. 
 
 De library is te vinden via de volgende links:
@@ -58,6 +58,6 @@ Het gedeelte van ` -Djava.library.path=/usr/lib/jni ` moet voor de `-jar` staan
 - `V_VAR2` wordt gebruikt om een pas id van een node naar de gateway te sturen.
 - `V_VAR3` wordt gebruikt om vanaf de gateway naar een node een poot id te sturen.
 - `V_VAR4` is gereserveerd voor het versturen van audio files.
-- `V_VAR5` is gereserveerd voor het configureren van de Arduino, zoals het resetten van EEPROM of resetten van de Arduino zelf.
+- `V_VAR5` is gereserveerd voor het configureren van de Gaduino, zoals het resetten van EEPROM of resetten van de Gaduino zelf.
 - `V_TEMP` wordt gebruikt om de temperatuur data door te sturen.
 - `V_HUM` wordt gebruik om de humidity te versturen

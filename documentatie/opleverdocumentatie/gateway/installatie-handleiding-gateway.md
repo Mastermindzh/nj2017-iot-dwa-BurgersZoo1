@@ -9,11 +9,11 @@ Om de gateway werkend te krijgen zijn er een aantal vereisten:
 - Een gecomplieerde jar van de [sources files](./apps/gateway/)
 
 
-#### Aansluiting Arduino
-![Aansluitschema Arduino Nano met een NRF24L01+](images/Arduino_Nano_NRF24_bb.png)  
-*Aansluitschema Arduino Nano met een NRF24L01+*
+#### Aansluiting Gaduino
+![Aansluitschema Gaduino Nano met een NRF24L01+](images/Arduino_Nano_NRF24_bb.png)  
+*Aansluitschema Arduino Nano met een NRF24L01+ om tot een Gaduino te komen*
 
-De Arduino moet vervolgens verbonden worden via een USB kabel met de Raspberry Pi 3.
+De Gaduino moet vervolgens verbonden worden via een USB kabel met de Raspberry Pi 3.
 
 #### MongoDB
 Omdat er het een en ander wordt opgeslagen op de Raspberry Pi 3 moet er een database geïnstalleerd worden, in dit geval MongoDB versie 2.4.14.
@@ -53,7 +53,7 @@ sudo apt-get install oracle-java8-installer -y
 ```
 
 #### RXTX
-De Java gateway applicatie praat via het Serial protocol met de arduino.  Hiervoor is de RXTX library nodig. Installeer deze library met het volgende commando:
+De Java gateway applicatie praat via het Serial protocol met de gaduino. Hiervoor is de RXTX library nodig. Installeer deze library met het volgende commando:
 
 ``` bash
 sudo apt-get install librxtx-java -y
