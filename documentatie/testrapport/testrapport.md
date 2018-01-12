@@ -2,17 +2,20 @@
 
 ## Inleiding
 In november 2017 kreeg een groep ict-studenten van de Hogeschool Arnhem en Nijmegen de opdracht om een speurtochtsysteem voor Burgers’ Zoo als technisch concept uit te werken. Dit speurtochtsysteem is bedoeld voor kinderen die de dierentuin bezoeken. Het concept is dat kinderen als échte ranger door het park gaan op zoek naar pootafdrukken. Wanneer een kind een pootafdruk heeft gevonden kan deze een rangerpasje tegen de pootafdruk aanhouden om een weetje over dat dier te horen. Op deze manier kunnen kinderen meer zelfstandig door het park gaan en staan ze meer stil bij de verschillende bezienswaardigheden van het park. 
+
 Dit rapport is de uitwerking van het [testplan](./documentatie/testplan/testplan.md). Er wordt antwoord geven op de vraag: Werkt het prototype dat dit project gebouwd is door de projectgroep in Burgers’ Zoo écht? Het volledige prototype is binnen de Mangrove uitgerold en echte bezoekers hebben met het systeem gewerkt. Daarnaast is getest met de opdrachtgever om te zien of de Admin applicatie te begrijpen is en naar behoren werkt.
+
 In dit document zal eerst het systeem en wat we willen testen worden samengevat. Dit wordt gedaan door de technische context, doel, hypothese en aanpak te beschrijven. Vervolgens worden de resultaten beschreven en tot slot wordt een conclusie gegeven gevolgd door aanbevelingen voor een volgend projectteam.
 
-![images/fruit.jpg](images/fruit.jpg)  
+![images/fruit.jpg](images/fruit.jpg)
+*Impressie van de Mangrove waar de tests zullen plaatsvinden*
 
 ## Technische context
 Het speurtochtsysteem bestaat uit een meshnetwerk van zes apparaten die elk een onderdeel van de speurtocht vertegenwoordigen. Een ranger kan zo'n apparaat, ook wel een 'poot', 'speurpunt' of 'scanpunt' genoemd, scannen met een verkregen rangerpas. Deze pas maakt gebruik van NFC technologie. Alle scan-acties van een ranger worden online in de cloud opgeslagen. Deze cloud is ook onderdeel van het systeem.
 Educatoren van Burgers’ Zoo kunnen online de speurpunten beheren, dit houdt kortgezegd in dat ze voor de speurpunten een aantal gegevens (naam, verblijf, dierengeluid, etc.) in kunnen voeren en weetjes aan een speurpunt toe kunnen voegen. Zo kan de inhoud en vormgeving van de speurtocht aangepast worden.
 Wanneer een ranger het park verlaten heeft, kan hij achteraf via de ranger webapplicatie de geschiedenis van al zijn parkbezoeken terug zien. Zo kan hij zien welke speurpunten hij allemaal wel en niet gevonden heeft in het park.
 
-[images/overview.png](images/overview.png)  
+![images/overview.png](images/overview.png)  
 *Schematisch architectuurschets.*
 
 ## Begrippenlijst
@@ -36,7 +39,8 @@ De gebouwde ranger applicatie is niet onderdeel van het doel van de test. Zoals 
 
 ## Aanpak
 Op de testdag hebben we bezoekers gevraagd om mee te doen aan onze speurtocht. Deze speurtocht bestond uit zes scanpunten die bezoekers moesten scannen. Deze zes scanpunten, samen met de gateway die de informatie doorstuurt naar de backend vormt een meshnetwerk waarmee de informatie wordt doorgestuurd. Zodra de bezoekers het rondje hebben gelopen hebben is aan ze gevraagd hoe het ging en of ze nog feedback hebben.
-De admin applicatie is door een medewerker van Burgers’ Zoo getest en de medewerker heeft hierop feedback gegeven. De volledige aanpak is te lezen in het [testplan](./documentatie/testplan/testplan.md). 
+
+De admin applicatie is door een medewerker van Burgers’ Zoo getest en de medewerker heeft hierop feedback gegeven. De volledige aanpak is te lezen in het [testplan](../documentatie/testplan/testplan.md). 
 
 ![images/punten.png](images/punten.png)  
 * De plekken in de mangrove waar de speurpunten geplaatst worden. *
@@ -45,16 +49,19 @@ De admin applicatie is door een medewerker van Burgers’ Zoo getest en de medew
 In dit hoofdstuk zijn de resultaten van de verschillende tests beschreven.
 
 ### Test admin app
-inleiding  **TODO**
-![Frank](images/frank_admin_test.jpg)  
+inleiding  **TODO**  
+
+![frank-test.jpg](images/frank-test.jpg)  
 
 ### Techniek Test
 De Techniek test is gedaan in de vorm van een speurtocht. Voor de bezoekers was het idee om mee te doen aan de speurtocht en later hun bevindingen aan een student bij de uitgang te vertellen. De IoT’ers hebben het systeem in de gaten gehouden door rond te lopen en het systeem digitaal te monitoren. Hieruit zijn aanbevelingen gekomen voor een volgende projectgroep.
+
 ![images/poten.png](images/poten.png)  
 *De locaties van alle poten.*
 
 #### Bevindingen bezoekers
 Bij de ingang van de Mangrove is verteld dat we de technische haalbaarheid van een speurtocht willen testen en is er uitleg gegeven over hoe de speurtocht werkt. Dus: scan je pasje bij het dier op het scanpunt en je krijgt een weetje te horen. 
+
 Bij het inleveren van de pasjes werd er gevraagd naar de ervaring van de bezoekers. Veel bezoekers reageerden enthousiast en zeiden dat ze het een leuk idee vonden, zo’n speurtocht.
 
 ![images/team-awesome.jpg](images/team-awesome.jpg)  
@@ -65,6 +72,7 @@ Echter waren er wel een paar aanmerkingen. De meest voorkomende tips en tops zij
 Tops:
 * De speurtocht leert de kinderen iets leuks over de dieren.
 * De weetjes die je iets lieten doen, zoals het zoeken naar een schildpad, waren het leukst.
+* De afbeeldingen op de scanpunten zijn mooi.
 * De speurtocht zorgt er voor dat de kinderen niet super snel door de mangrove heen rennen. Het laat ze even stil staan en kijken naar de dieren en planten om zich heen.
 
 Tips:
@@ -73,11 +81,13 @@ Tips:
 * De speurtocht heeft te weinig interactie.
 * De weetjes waren te makkelijk, zoiets als “een Zeekoe zwemt hier in het water” heeft geen toegevoegde waarde.
 * Niet alle speurpunten deden het (goed).
-* Veel bezoekers gaven aan dat de speakers te zacht waren en dat niet alle scanpunten het goed deden. Dit begrepen ze wel omdat het een Field Trial is. Ze konden zich inleven in de speurtocht alsof er goede speakers stonden en het scannen van de pas meteen werkte. 
+* Veel bezoekers gaven aan dat de speakers te zacht waren en dat niet alle scanpunten het goed deden. Dit begrepen ze wel omdat het een Field Trial is. Ze konden zich inleven in de speurtocht alsof er goede speakers stonden en het scannen van de pas meteen werkte.
+* De lampjes aan de voorkant van het scanpunt zijn niet goed te zien. Zorg dat ze meer uitsteken en dat ze verder uit elkaar staan.
+* De weetjes worden te snel uitgesproken.
 
 Er is echter weinig feedback gegeven die gerelateerd is aan onze hypothese. Geen enkele bezoeker heeft geklaagd over het feit dat het systeem niet werkte, er waren wat mankementen maar er was niemand die geen vertrouwen had in het systeem als geheel. Dit geeft dus aan dat bezoekers het systeem technisch haalbaar vinden.
 
-#### Bevindingen t.o.v. plaatsing scanpunten
+#### Bevindingen m.b.t. plaatsing scanpunten
 Het kiezen van een juiste plek voor de scanpunten bleek in praktijk lastiger te zijn dan vooraf gedacht. Al tijdens het opzetten van de eerste poten bleek dat bepaalde plekken in de dierentuin altijd bezet zijn met bezoekers. Wij hadden bedacht midden voor het raam voor de zeekoeien een scanpunt te plaatsen. Maar dit lukte steeds niet...
 
 ![./images/poot3-slechtbereikbaar.jpg](./images/poot3-slechtbereikbaar.jpg)  
@@ -102,6 +112,7 @@ Ten eerste bleek dat de RFID-scanners gevoelig zijn voor verstoring door andere 
 *De binnenkant van een poot*
 
 Verder werkte de nieuwe NFC passen die wij hebben gekocht werkte minder dan de NFC passen die door de HAN geleverd zijn met de scanners die wij tot onze beschikking hadden. Het uitlezen van deze nieuwe passen ging vaker fout, waardoor de uitgelezen data corrupt was. Hierdoor klopte het unieke ID niet altijd als de pas te snel van de RFID-lezer werd verwijderd. Ook toonde het scanpunt soms het groene lampje (wat een indicatie is voor een goed uitgelezen pas) maar kwam er een leeg bericht binnen bij de gateway. Deze kon dus het bericht niet omzetten van hexadecimaal getal naar een decimaal getal waardoor er af en toe een `java.lang.NumberFormatException: Zero length BigInteger` exceptie werd gegooid.
+
 Het was voor bepaalde gebruikers niet duidelijk waar de pas te houden. Aan de voorkant zat geen markering waar de pas precies tegenaan gehouden moest worden. Hierdoor was het voor veel bezoekers zoeken naar de plek om de pas tegenaan te houden. Dit leverde problemen op en al vrij snel kregen we te horen van bezoekers dat sommige scanpunten het niet deden. Toen zijn er stickers op aangebracht waardoor het duidelijker was waar er gescand moest worden. Een andere oplossing zou zijn geweest om grotere RFID-scanners te gebruiken.
 
 ![images/pashier.jpg](images/pashier.jpg)  
@@ -118,8 +129,10 @@ Het meshnetwerk heeft goed gefunctioneerd tijdens de test. De berichten kwamen b
 ## Conclusie
 Tijdens de Field Trial hebben we ook antwoord gekregen op onze hoofdhypothese: 
 > Wij geloven dat een meshnetwerk van zes poten in de Mangrove, gebruikmakend van NRF-communicatie zal resulteren in een stabiel speurtocht-ranger-systeem dat verbonden staat met de cloud. We weten dat we succesvol zijn als een speurtocht via de webapplicatie geconfigureerd wordt, en de door ranger gescande resultaten van diezelfde speurtocht terug kunnen zien, in een web applicatie die de data uit de verbonden cloud toont.
+
 De opdrachtgever heeft met behulp van de webapplicatie een nieuw speurpunt kunnen configureren en een Zip bestand kunnen downloaden. Dit Zip bestand had de inhoud die we verwachtten en de test kan dus als geslaagd gezien worden.
-Het meshnetwerk heeft goed gefunctioneerd tijdens de test. De berichten uit het netwerk kwamen stabiel binnen tijdens de test waarbij ongeveer 10 mensen tegelijkertijd deelnamen aan de speurtocht. Ook kwamen er weinig foutmeldingen naar voren waaruit we kunnen concluderen dat het systeem stabiel functioneert met meerdere gebruikers.
+
+Het meshnetwerk heeft goed gefunctioneerd tijdens de test. De berichten uit het netwerk kwamen stabiel binnen tijdens de test waarbij ongeveer 10 mensen tegelijkertijd deelnamen aan de speurtocht. Ook kwamen er weinig foutmeldingen naar voren waaruit we kunnen concluderen dat het systeem stabiel functioneert met meerdere gebruikers.
 
 ## Aanbevelingen
 Na aanleiding van de Field Trial is er feedback voor het vervolg van dit project. Deze feedback komt uit onze eigen bevindingen en van de bezoekers die meegedaan hebben aan de Field Trial.
@@ -136,6 +149,11 @@ Er is gepraat met de bezoekers over de Ranger app die ontwikkeld is. Hier waren 
 Bezoekers vonden de speurpunten soms lastig te vinden. Dit kwam omdat ze niet direct in het blikveld van de bezoekers stonden en een houten kleur hadden dat opging in de omgeving. Nu is het natuurlijk een speurtocht, dus zoeken naar een speurpunt is niet erg. Wel gaven bezoekers aan dat een opvallend kleurtje handig is, zodat het ook duidelijk is dat je een speurpunt gevonden hebt in plaats van decoratie. Felle kleuren spreken ook kinderen aan.
 
 Tijdens de test is er een kind van zo'n 4 jaar gespot die met twee handen een van de scanpuntte vastpakte en het punt als een stuur begon rond te draaien. Het scanpunt zelf kwam niet los, maar de speaker die niet stevig was bevestigd viel wel naar beneden. Wanneer er weer een test wordt gedaan waarbij kinderen zijn betrokken adviseren wij om alle onderdelen stevig vast te zetten. Ook denken we dat als de poot een andere vorm zou hebben het kind minder geneigd zou zijn de poot als stuur te willen draaien. 
+
+Als er door een volgende projectgroep opnieuw getest gaat worden in Burgers' Zoo hebben we nog wel een aantal praktische tips: 
+* Kijk of het mogelijk is om allemaal herkenbare kleding te hebben. Er kwam vaak de vraag 'Hoor jij bij die speurtocht?'. Door herkenbare shirtjes kan meer duidelijkheid worden gegeven over wie wél, en wie niet bij de speurtocht hoort. Als anderen de shirtjes regelen zorg dat de juiste maten worden geregeld.
+* Zorg voor betrouwbare communicatiemiddelen. Tijdens de test gebeurde het een aantal keer dat we elkaar nodig hadden, maar dat we elkaar niet konden bereiken. Met walkie talkies of met luide telefoons was het makkelijker geweest elkaar te bereiken.
+* Breng tiewraps, ducktape en een lijmpistool mee. Wij hebben uiteindelijk van alle bevestigingsmiddelen dubbel zo veel gebruikt als verwacht. Dus zorg dat je extra hebt!
 
 ### Aanbevelingen technische feedback
 De techniek achter NFC werkt goed, mensen zijn er bekend mee (OV-chipkaart wordt dagelijks gebruikt, steeds meer bankpassen bevatten een NFC chip). Het werkt ook redelijk vlot (het uitlezen duurt ongeveer halve seconden/seconde). Er zijn wel een aantal nadelen waarvoor een oplossing gezocht moet worden:
