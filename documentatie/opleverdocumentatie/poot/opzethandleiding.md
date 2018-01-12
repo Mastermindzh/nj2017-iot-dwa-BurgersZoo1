@@ -19,7 +19,7 @@ Voor het bouwen van de Poot zijn de volgende interne componenten nodig. Daarnaas
 * Meer dan genoeg Jumper wires
 * Breadboard
 * DHT11 temperatuur & luchtvochtigheid meter
-* Pasjes (zie laatste hoofdstuk)
+* NFC pasjes (zie laatste hoofdstuk)
 
 
 #### 2. Behuizing
@@ -124,8 +124,8 @@ Als alles goed gaat dan gaan er 3 lampjes branden zodra de Maduino wordt opgesta
 | Geel lampje continu aan | Er kan niet worden verbonden met de auduino. Er is iets mis met het verzenden naar de Auduino met I2C. |
 | Geel lampje kort knipper | Er wordt verzonden naar de Auduino. Wanneer je een hele korte gele knipper ziet dan wordt er een signiaaltje verzonden naar de Auduino. |
 | Rood lampje 0.5 seconde knipper | De gescande pas kon niet worden geauthenticeerd. |
-| Rood lampje 1 seconde knipper | De gescande heeft niet de inhoud `Burgers Zoo`. |
-| Groen lampje 1 seconde aan | Er is een valide pas gescant. |
+| Rood lampje 1 seconde knipper | De gescande heeft niet de inhoud `Burgers' Zoo`. |
+| Groen lampje 1 seconde aan | Er is een valide pas gescand. |
 
 ##### Auduino
 De Auduino laat geen led branden als er hij niks aan het doen is. De volgende statussen kunnen worden afgelezen van de blauwe status led:
