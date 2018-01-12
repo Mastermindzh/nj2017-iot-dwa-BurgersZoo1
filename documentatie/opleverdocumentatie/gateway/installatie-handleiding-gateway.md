@@ -10,7 +10,7 @@ Om de gateway werkend te krijgen zijn er een aantal vereisten:
 
 
 #### Aansluiting Arduino
-![Aansluitschema Arduino Nano met een NRF24L01+](images/Arduino_Nano_NRF24_bb.png)
+![Aansluitschema Arduino Nano met een NRF24L01+](images/Arduino_Nano_NRF24_bb.png)  
 *Aansluitschema Arduino Nano met een NRF24L01+*
 
 De Arduino moet vervolgens verbonden worden via een USB kabel met de Raspberry Pi 3.
