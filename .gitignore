@@ -291,3 +291,4 @@ apps/server/temp/*
 !apps/server/audio/Schildpad.wav
 !apps/server/audio/VlindersNectar.wav
 !apps/server/audio/Zeekoe.wav
+!apps/server/audio/audio.zip
