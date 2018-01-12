@@ -13,7 +13,7 @@ De basis taken die uitgevoerd kunnen worden:
 - `gradle clean`: verwijderd de build directory
 - `gradle build`: bouwt het volledige project
 - `gradle test`: voert alle tests uit in het project
-- `gradle shadowJar`: bouwt een jar die uitgevoerd kan wroden om de applicatie te starten.
+- `gradle shadowJar`: bouwt een jar die uitgevoerd kan worden om de applicatie te starten.
 - `gradle clean build test shadowJar`: om alle bovenstaande taken in één keer uit te voeren
 
 #### Folder structiuur
