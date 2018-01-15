@@ -10,7 +10,7 @@ In dit document zal eerst het systeem en wat we willen testen worden samengevat.
 ![images/fruit.jpg](images/fruit.jpg)
 *Impressie van de Mangrove waar de tests zullen plaatsvinden*
 
-
+## Inhoudsopgave
 <!-- toc -->
 
 ## Technische context
