@@ -67,49 +67,7 @@ Hieronder is een korte sfeerimpressie te zien van de speurtocht:
 ![images/poten.png](images/poten.png)  
 *De locaties van alle poten.*
 
-#### Bevindingen bezoekers
-Bij de ingang van de Mangrove is verteld dat we de technische haalbaarheid van een speurtocht willen testen en is er uitleg gegeven over hoe de speurtocht werkt. Dus: scan je pasje bij het dier op het scanpunt en je krijgt een weetje te horen. 
 
-Bij het inleveren van de pasjes werd er gevraagd naar de ervaring van de bezoekers. Veel bezoekers reageerden enthousiast en zeiden dat ze het een leuk idee vonden, zo’n speurtocht.
-
-![images/team-awesome.jpg](images/team-awesome.jpg)  
-*Impressie van de ingang/uitgang crew.*
-
-Echter waren er wel een paar aanmerkingen. De meest voorkomende tips en tops zijn hieronder weergegeven:  
-
-Tops:
-* De speurtocht leert de kinderen iets leuks over de dieren.
-* De weetjes die je iets lieten doen, zoals het zoeken naar een schildpad, waren het leukst.
-* De afbeeldingen op de scanpunten zijn mooi.
-* De speurtocht zorgt er voor dat de kinderen niet super snel door de mangrove heen rennen. Het laat ze even stil staan en kijken naar de dieren en planten om zich heen.
-
-Tips:
-* Het geluid van de speakers was te zacht.
-* De speurpunten waren moeilijk te vinden.
-* De speurtocht heeft te weinig interactie.
-* De weetjes waren te makkelijk, zoiets als “een Zeekoe zwemt hier in het water” heeft geen toegevoegde waarde.
-* Niet alle speurpunten deden het (goed).
-* Veel bezoekers gaven aan dat de speakers te zacht waren en dat niet alle scanpunten het goed deden. Dit begrepen ze wel omdat het een field trial is. Ze konden zich inleven in de speurtocht alsof er goede speakers stonden en het scannen van de pas meteen werkte.
-* De lampjes aan de voorkant van het scanpunt zijn niet goed te zien. Zorg dat ze meer uitsteken en dat ze verder uit elkaar staan.
-* De weetjes worden te snel uitgesproken.
-
-Er is echter weinig feedback gegeven die gerelateerd is aan onze hypothese. Geen enkele bezoeker heeft geklaagd over het feit dat het systeem niet werkte, er waren wat mankementen maar er was niemand die geen vertrouwen had in het systeem als geheel. Dit geeft dus aan dat bezoekers het systeem technisch haalbaar vinden.
-
-#### Bevindingen m.b.t. plaatsing scanpunten
-Het kiezen van een juiste plek voor de scanpunten bleek in praktijk lastiger te zijn dan vooraf gedacht. Al tijdens het opzetten van de eerste poten bleek dat bepaalde plekken in de dierentuin altijd bezet zijn met bezoekers. Wij hadden bedacht midden voor het raam voor de zeekoeien een scanpunt te plaatsen. Maar dit lukte steeds niet...
-
-![./images/poot3-slechtbereikbaar.jpg](./images/poot3-slechtbereikbaar.jpg)  
-*De rode pijl geeft de beoogde plek aan voor het scanpunt.*
-
-Dus hebben we het scanpunt rechts in de hoek geplaatst waar het minder druk was. Toch bleek dit niet optimaal omdat hier maar twee mensen omheen konden staan. Zo werd het daar snel te druk…
-
-![images/poot3-druk.jpg](./images/poot3-druk.jpg)  
-*De rode pijl geeft de plek van het scanpunt aan.*
-
-Verder bleek de hoogte lastig te zijn. De scanpunten waren tijdens de test op ooghoogte van kinderen gemonteerd, maar hierdoor moesten ouders van kleine kinderen steeds bukken om het geluidje te horen. Deze vergelijking is in onderstaande twee afbeeldingen goed te zien.
-
-![images/hoog-laag.jpg](images/hoog-laag.jpg)  
-*Voor kinderen is de hoogte perfect, maar ouders moeten bukken.*
 
 #### Technische bevindingen: NFC
 Tijdens de test kwamen een aantal problemen met de RFID-scanners en NFC passen naar voren. 
@@ -173,6 +131,50 @@ Het was niet goed duidelijk waar er gescand moest worden op de poot zelf. Het le
 NFC passen werken niet allemaal even goed. Sommige zijn slechter uit te lezen dan andere. Blijkbaar zijn er verschillende kwaliteit passen waarbij goedkopere passen niet goed herkend worden door bepaalde scanners. We adviseren een volgende groep onderzoek te doen naar de verschillen in passen en een weloverwogen keuze te maken in aankoop van passen.
 
 Het mesh netwerk werkte tijdens de test in de Mangrove prima. Het bereik en de snelheid van de binnenkomende berichten lag binnen onze verwachtingen en is een goede manier om sensor/pas data over te brengen wanneer er geen wifi netwerk beschikbaar is. 
+
+#### Bevindingen bezoekers
+Bij de ingang van de Mangrove is verteld dat we de technische haalbaarheid van een speurtocht willen testen en is er uitleg gegeven over hoe de speurtocht werkt. Dus: scan je pasje bij het dier op het scanpunt en je krijgt een weetje te horen. 
+
+Bij het inleveren van de pasjes werd er gevraagd naar de ervaring van de bezoekers. Veel bezoekers reageerden enthousiast en zeiden dat ze het een leuk idee vonden, zo’n speurtocht.
+
+![images/team-awesome.jpg](images/team-awesome.jpg)  
+*Impressie van de ingang/uitgang crew.*
+
+Echter waren er wel een paar aanmerkingen. De meest voorkomende tips en tops zijn hieronder weergegeven:  
+
+Tops:
+* De speurtocht leert de kinderen iets leuks over de dieren.
+* De weetjes die je iets lieten doen, zoals het zoeken naar een schildpad, waren het leukst.
+* De afbeeldingen op de scanpunten zijn mooi.
+* De speurtocht zorgt er voor dat de kinderen niet super snel door de mangrove heen rennen. Het laat ze even stil staan en kijken naar de dieren en planten om zich heen.
+
+Tips:
+* Het geluid van de speakers was te zacht.
+* De speurpunten waren moeilijk te vinden.
+* De speurtocht heeft te weinig interactie.
+* De weetjes waren te makkelijk, zoiets als “een Zeekoe zwemt hier in het water” heeft geen toegevoegde waarde.
+* Niet alle speurpunten deden het (goed).
+* Veel bezoekers gaven aan dat de speakers te zacht waren en dat niet alle scanpunten het goed deden. Dit begrepen ze wel omdat het een field trial is. Ze konden zich inleven in de speurtocht alsof er goede speakers stonden en het scannen van de pas meteen werkte.
+* De lampjes aan de voorkant van het scanpunt zijn niet goed te zien. Zorg dat ze meer uitsteken en dat ze verder uit elkaar staan.
+* De weetjes worden te snel uitgesproken.
+
+Er is echter weinig feedback gegeven die gerelateerd is aan onze hypothese. Geen enkele bezoeker heeft geklaagd over het feit dat het systeem niet werkte, er waren wat mankementen maar er was niemand die geen vertrouwen had in het systeem als geheel. Dit geeft dus aan dat bezoekers het systeem technisch haalbaar vinden.
+
+#### Bevindingen m.b.t. plaatsing scanpunten
+Het kiezen van een juiste plek voor de scanpunten bleek in praktijk lastiger te zijn dan vooraf gedacht. Al tijdens het opzetten van de eerste poten bleek dat bepaalde plekken in de dierentuin altijd bezet zijn met bezoekers. Wij hadden bedacht midden voor het raam voor de zeekoeien een scanpunt te plaatsen. Maar dit lukte steeds niet...
+
+![./images/poot3-slechtbereikbaar.jpg](./images/poot3-slechtbereikbaar.jpg)  
+*De rode pijl geeft de beoogde plek aan voor het scanpunt.*
+
+Dus hebben we het scanpunt rechts in de hoek geplaatst waar het minder druk was. Toch bleek dit niet optimaal omdat hier maar twee mensen omheen konden staan. Zo werd het daar snel te druk…
+
+![images/poot3-druk.jpg](./images/poot3-druk.jpg)  
+*De rode pijl geeft de plek van het scanpunt aan.*
+
+Verder bleek de hoogte lastig te zijn. De scanpunten waren tijdens de test op ooghoogte van kinderen gemonteerd, maar hierdoor moesten ouders van kleine kinderen steeds bukken om het geluidje te horen. Deze vergelijking is in onderstaande twee afbeeldingen goed te zien.
+
+![images/hoog-laag.jpg](images/hoog-laag.jpg)  
+*Voor kinderen is de hoogte perfect, maar ouders moeten bukken.*
 
 ## BIJLAGEN
 
