@@ -10,7 +10,7 @@ Dit rapport is de uitwerking van het [testplan](./documentatie/testplan/testplan
 Verder beschrijft het rapport een technische context van opdracht, een doel, een hypothese en een aanpak van de test. Afsluitend worden de resultaten van de test getoond met een korte conclusie.
 
 ![images/fruit.jpg](images/fruit.jpg)
-*Impressie van de Mangrove waar de tests zullen plaatsvinden*
+*Impressie van de Mangrove waar de tests plaats hebben gevonden*
 
 ## Inhoudsopgave
 <!-- toc -->
