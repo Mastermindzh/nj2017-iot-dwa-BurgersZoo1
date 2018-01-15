@@ -29,11 +29,12 @@ In dit rapport wordt allereerst het concept beschreven, gevolgd door een beschri
       - [Extra stappen voor Windows gebruikers.](#extra-stappen-voor-windows-gebruikers)
       - [productie builds (minified)](#productie-builds-minified)
       - [De applicaties bezoeken](#de-applicaties-bezoeken)
+  * [Hoe nu verder](#hoe-nu-verder)
   * [Installatie Gateway](#installatie-gateway)
+    + [Aansluiting Gaduino](#aansluiting-gaduino)
     + [MongoDB](#mongodb)
     + [Java](#java)
     + [RXTX](#rxtx)
-    + [Aansluiting Arduino](#aansluiting-arduino)
     + [Start gateway](#start-gateway)
   * [Poot](#poot)
     + [1. Onderdelen](#1-onderdelen)
@@ -68,9 +69,9 @@ In dit rapport wordt allereerst het concept beschreven, gevolgd door een beschri
     + [Eisen](#eisen)
     + [Werking Gradle](#werking-gradle)
     + [Folder structiuur](#folder-structiuur)
-- [Seriële communicatie](#seriele-communicatie)
+  * [Seriële communicatie](#seriele-communicatie)
     + [Uitvoeren op de Raspberry Pi 3](#uitvoeren-op-de-raspberry-pi-3)
-    + [Afspraken MySensors protecol](#afspraken-mysensors-protecol)
+    + [Afspraken MySensors protocol](#afspraken-mysensors-protocol)
   * [Ontwikkeling Poot](#ontwikkeling-poot)
     + [Ontwikkelomgeving](#ontwikkelomgeving)
     + [Libraries](#libraries)
@@ -88,7 +89,7 @@ In het park van Burgers' Zoo wordt een speurtocht uitgezet om zo het mobiliteits
 Veel voorkomende bezoekers in Burgers' Zoo zijn kinderen met hun (groot)ouders. Kinderen zitten vol met energie en zijn enthousiast dus rennen door het park heen. Tegelijkertijd lopen de ouders hier achteraan en moeten ze de kinderen in de gaten houden. Door het heuvelachtige landschap waarop Burgers' Zoo gebouwd is kan dit heel vermoeiend zijn. Een speurtocht geeft de kinderen afleiding en zorgt er voor dat de kinderen bij een punt in de speurtocht stil blijven staan.
 In het park staan bij elk dierenverblijf borden met informatie over de dieren of planten die daar te vinden zijn. Dit zijn vaak lange stukken tekst die de kinderen zelf niet kunnen lezen. Dit zorgt er voor dat de ouders dit moeten voorlezen. Dit brengt dus extra last met zich mee voor de ouders. Dit wordt opgelost met de speurtocht doordat er weetjes afgespeeld worden in kindertaal.
 
-De kinderen spelen tijdens de speurtocht een ranger. Ze krijgen bij binnenkomst een NFC pas, hun rangerpas, die ze kunnen gebruiken om mee te doen aan de speurtocht. Door het park heen staan speurpunten, in de vorm van een dierenpoot, verspreid. Wanneer een ranger zijn rangerpas scant bij een poot krijgt hij een dierenweetje te horen samen met een dierengeluid. Het doel is om alle dierenpoten te vinden en te scannen. Als de ranger de dierentuin verlaat krijgt hij een ranger certificaat. Op dit certificaat staat een unieke ranger code die hij kan gebruiken om thuis in te loggen op de ranger app.
+De kinderen spelen tijdens de speurtocht een ranger. Ze krijgen bij binnenkomst een NFC pas, hun rangerpas, die ze kunnen gebruiken om mee te doen aan de speurtocht. Door het park heen staan speurpunten verspreid, in de vorm van een dierenpoot. Wanneer een ranger zijn rangerpas scant bij een poot krijgt hij een dierenweetje te horen samen met een dierengeluid. Het doel is om alle dierenpoten te vinden en te scannen. Als de ranger de dierentuin verlaat krijgt hij een ranger certificaat. Op dit certificaat staat een unieke ranger code die hij kan gebruiken om thuis in te loggen op de ranger app.
 
 In de ranger app kan een ranger kijken wat hij allemaal gedaan heeft tijdens zijn bezoek aan Burgers' Zoo. Hier is te vinden welke poten hij wanneer gescand heeft. Hier is te zien welk weetje en dierengeluid er bij hoort, zodat dit nogmaals geluisterd kan worden. De app geeft ook aan welke punten nog niet gescand zijn. Dit kan een aanleiding zijn om het park nog een keer te bezoeken, om zo alle punten van de speurtocht te vinden. Hier kunnen beloningen aan gekoppeld worden in de vorm van korting of een gift. Medewerkers van Burgers' Zoo kunnen de poten en de speurtocht beheren door hier andere dierengeluidjes of weetjes aan toe te voegen.
 
@@ -99,7 +100,7 @@ In de ranger app kan een ranger kijken wat hij allemaal gedaan heeft tijdens zij
 
 De poot bestaat uit twee Arduino's. Er is één Arduino die volledig gaat over het afspelen van audio (genaamd Auduino). In een later stadium zou deze Auduino ook verantwoordelijk worden voor het opslaan van nieuwe ontvangen audiobestanden. De Auduino wordt aangestuurd door de Master Arduino.
 
-De Master Arduino (genaamd Maduino) is verantwoordelijk voor alle primaire functionaliteiten en het aansturen van de Auduino. Zo zal de master Arduino een NFC-scanner hebben om passen te detecteren. Ook zal de Maduino de temperatuur en luchtvochtigheid meten. De Maduino staat via de NRF24 chip in verbinding met de Gateway en zal zo de Gateway op de hoogte houden over welke passen gesand zijn.
+De Master Arduino (genaamd Maduino) is verantwoordelijk voor alle primaire functionaliteiten en het aansturen van de Auduino. Zo zal de Maduino een NFC-scanner hebben om passen te detecteren. Ook zal de Maduino de temperatuur en luchtvochtigheid meten. De Maduino staat via de NRF24 chip in verbinding met de Gateway en zal zo de Gateway op de hoogte houden over welke passen gescand zijn.
 
 De resultaten van een speurtocht van bezoekers kunnen ingezien worden in de Ranger app. Dit is een webapp die na het bezoek aan Burgers' Zoo gebruikt kan worden om terug te kijken op een boezoek aan het park. De verkregen informatie wordt hier nogmaals getoond.
 
@@ -107,7 +108,7 @@ Beheerders van Burgers' Zoo kunnen via de Admin app de speurtocht bijhouden en a
 
 De Ranger app en de Admin app draaien samen met de Backend en de database in Docker containers. Dit alles draait op een server.
 ### Gateway
-De poten zullen communiceren met de twee backends van de twee groepen via een gateway. Deze gateway bestaat uit een Arduino en een Raspberry Pi. De Arduino zal draadloos communiceren via NRF24 chips met de poten en alle informatie doorsturen naar de Raspberry Pi. De Pi zal via HTTP/JSON communiceren met de backend's. De Pi kan op zijn beurt weer de Arduino binnen de gateway aansturen om zo informatie bij de poten te krijgen.
+De poten zullen communiceren met de twee backends van de twee groepen via een gateway. Deze gateway bestaat uit een Arduino (genoemd de Gaduino) en een Raspberry Pi. De Gaduino zal draadloos communiceren via NRF24 chips met de Maduino in de poten en alle informatie doorsturen naar de Raspberry Pi. De Pi zal via HTTP/JSON communiceren met de backend's. De Pi kan op zijn beurt weer de Gaduino binnen de gateway aansturen om zo informatie bij de poten te krijgen.
 
 ### Frontend apps
 ![frontends](images/frontends.png)
@@ -141,7 +142,7 @@ De tabel hieronder geeft aan welke stukken software benodigd zijn en zal, waar m
 - [Node - version 9.3.0](https://nodejs.org/)
 - [Npm - version 5.6.0](https://www.npmjs.com/)
 
-Als alle bovenstaande software geinstalleerd is dan kunnen alle apps gestart worden, om de database te vullen is er echter nog een extra stukje software nodig. De software heet `mongorestore` en komt , ten tijde van schrijven, mee geinstalleerd met het mongo pakket (Op Windows met [mongotools](https://github.com/mongodb/mongo-tools)). Bekijk [deze website](https://docs.mongodb.com/manual/reference/program/mongorestore/) voor meer informatie. Ook zullen de mensen met Windows 10 home de [docker-toolbox](https://docs.docker.com/toolbox/toolbox_install_windows/) moeten installeren omdat zei geen hyper-v beschikbaar hebben.
+Als alle bovenstaande software geïnstalleerd is dan kunnen alle apps gestart worden, om de database te vullen is er echter nog een extra stukje software nodig. De software heet `mongorestore` en komt , ten tijde van schrijven, mee geinstalleerd met het mongo pakket (Op Windows met [mongotools](https://github.com/mongodb/mongo-tools)). Bekijk [deze website](https://docs.mongodb.com/manual/reference/program/mongorestore/) voor meer informatie. Ook zullen de mensen met Windows 10 home de [docker-toolbox](https://docs.docker.com/toolbox/toolbox_install_windows/) moeten installeren omdat zij geen hyper-v beschikbaar hebben.
 
 #### Het starten van de web applicaties en de database
 
@@ -283,6 +284,8 @@ Om de applicaties te bezoeken, en ze te gebruiken, ga je naar de volgende web ad
 | Ranger applicatie           | http://localhost:8003                         | http://localhost:8013                         | ![ranger app](images/ranger.png)    |
 | De database                 | http://localhost:8009  mongo://localhost:8009 | http://localhost:8009  mongo://localhost:8009 |                                     |
 
+### Hoe nu verder
+
 Op dit moment draait alles van de web kant, benieuwd hoe je verder kunt? Klik [hier](#ontwikkelhandleiding) om naar de ontwikkelhandleiding te gaan.
 
 
@@ -294,9 +297,17 @@ Om de gateway werkend te krijgen zijn er een aantal vereisten:
 - Arduino Nano, Mega of Uno met een aangesloten NRF24L01+.
 - Er is een werkende versie van `RASPBIAN STRETCH WITH DESKTOP` geïnstalleerd. Mogenlijk werkt het ook met de minimale versie, echter is dit (nog) niet getest. [Download](https://www.raspberrypi.org/downloads/raspbian/)
 - Er is toegang via SSH of direct op de Raspberry Pi 3 terminal toegang.
+- Een gecomplieerde jar van de [sources files](./apps/gateway/)
+
+
+#### Aansluiting Gaduino
+![Aansluitschema Gaduino Nano met een NRF24L01+](images/Arduino_Nano_NRF24_bb.png)  
+*Aansluitschema Arduino Nano met een NRF24L01+ om tot een Gaduino te komen*
+
+De Gaduino moet vervolgens verbonden worden via een USB kabel met de Raspberry Pi 3.
 
 #### MongoDB
-Omdat er het een en ander wordt opgeslagen op de Raspberry Pi 3 moet er een database geïnstalleerd worden, in dit geval MongoDB.
+Omdat er het een en ander wordt opgeslagen op de Raspberry Pi 3 moet er een database geïnstalleerd worden, in dit geval MongoDB versie 2.4.14.
 
 Dit kan op de Raspberry Pi 3 gedaan worden met de volgende commando's in de terminal:
 
@@ -333,24 +344,16 @@ sudo apt-get install oracle-java8-installer -y
 ```
 
 #### RXTX
-De Java gateway applicatie praat via het Serial protocol met de arduino.  Hiervoor is de RXTX library nodig. Installeer deze library met het volgende commando:
+De Java gateway applicatie praat via het Serial protocol met de gaduino. Hiervoor is de RXTX library nodig. Installeer deze library met het volgende commando:
 
 ``` bash
 sudo apt-get install librxtx-java -y
 ```
 
-#### Aansluiting Arduino
-![Aansluitschema Arduino Nano met een NRF24L01+](images/Arduino_Nano_NRF24_bb.png)
-*Aansluitschema Arduino Nano met een NRF24L01+*
-
-De Arduino moet vervolgens verbonden worden via een USB kabel met de Raspberry Pi 3.
-
 #### Start gateway
 Om de gateway te starten moet eerst de MongoDB aan staan. Dat kan met het eerste commando.
 Als deze draait kan daarna de gateway zelf gestart worden.
 ``` bash
-sudo service mongodb start #starts mongo service
-
 java -Djava.library.path=/usr/lib/jni -jar gateway.jar #gateway.jar is te vervangen met de jar naam van de gateway
 ```
 Bij het tweede gedeelte, om Java te starten, is het belangrijk dat de volgende regel voor de -jar komt: `-Djava.library.path=/usr/lib/jni `. Anders wordt de RXTX library niet goed geladen.
@@ -377,7 +380,7 @@ Voor het bouwen van de Poot zijn de volgende interne componenten nodig. Daarnaas
 * Meer dan genoeg Jumper wires
 * Breadboard
 * DHT11 temperatuur & luchtvochtigheid meter
-* Pasjes (zie laatste hoofdstuk)
+* NFC pasjes (zie laatste hoofdstuk)
 
 
 #### 2. Behuizing
@@ -395,7 +398,7 @@ Sluit de twee arduino's aan volgens het onderstaande aansluitschema of gebruik d
 
 **Auduino**
 
-| Component  | Pin op Component | Pin op Arduino |
+| Component  | Pin op Component | Pin op Auduino |
 |------------|------------------|----------------|
 | Blauwe LED | +                | D2             |
 | Blauwe LED | -                | GND            |
@@ -457,6 +460,8 @@ Op de MicroSD kaart moeten de audio bestanden volgens de volgende naamgeving:
 - Weetjes genummerd, beginnend vanaf 0.  
 Dus 0.wav, 1.wav, 2.wav etc.
 
+Zowel het dierengeluid als de weetjes zijn optioneel. Als een dierengeluid niet aanwezig is wordt alleen een weetje afgespeeld. Als geen weetje aanwezig is wordt alleen het dierengeluid afgespeeld. Als er meerdere weetjes aanwezig zijn worden de weetjes omstebeurt afgespeeld. Dus eerst `0.wav` en dan `1.wav` enzovoort.
+
 De inhoud van de MicroSD kaart zal er als volgt uit zien:
 ```
 /dier.wav
@@ -467,8 +472,15 @@ De inhoud van de MicroSD kaart zal er als volgt uit zien:
 /[0...+].wav
 ```
 
-Wanneer een wav bestandje op de MicroSD gezet moet worden, zal deze geconverteerd worden naar de goede settings. 
-** todo: uitleggen hoe de wav bestanden geconverteerd moeten worden, dit komt in week 7 & 8. **
+Wanneer een wav bestandje op de MicroSD gezet moet worden, zal deze geconverteerd worden naar de goede settings. Er zijn twee manieren:
+1. Ga naar [deze](https://audio.online-convert.com/convert-to-wav) site (https://audio.online-convert.com/convert-to-wav) en kies voor de volgende instellingen:
+	* `Change bit resolution: 8 Bit`
+	* `Change sampling rate: 11025 Hz`
+	* `Change audio channels: mono`
+	* `PCM format: PCM unsigned 8-bit`
+2. Op linux installeer [SoX](http://sox.sourceforge.net/) (versie onbekend) en gebruik het volgende command: `sox input.wav --norm=1 -e unsigned-integer -b 8 -r 31250 -c 1 -t raw output.wav`
+
+De geconverteerde weetjes zoals ze dit project tijdens de tests zijn gebruikt zijn te vinden in de submap [weetjes](https://github.com/HANICA-MinorMulti/nj2017-iot-dwa-BurgersZoo1/tree/master/documentatie/opleverdocumentatie/poot/weetjes).
 
 #### 6. Aanzetten
 Nadat alle bovenstaande stappen doorlopen zijn kunnen de twee Arduino's op stroom worden gezet. Vervolgens gaan de twee Arduino's initialiseren. Om te kunnen zien of onderdelen goed worden geinitialiseerd moet worden gekeken naar de statuslampjes. Per Arduino is hieronder te vinden wat de statuslampjes betekeken.
@@ -482,8 +494,8 @@ Als alles goed gaat dan gaan er 3 lampjes branden zodra de Maduino wordt opgesta
 | Geel lampje continu aan | Er kan niet worden verbonden met de auduino. Er is iets mis met het verzenden naar de Auduino met I2C. |
 | Geel lampje kort knipper | Er wordt verzonden naar de Auduino. Wanneer je een hele korte gele knipper ziet dan wordt er een signiaaltje verzonden naar de Auduino. |
 | Rood lampje 0.5 seconde knipper | De gescande pas kon niet worden geauthenticeerd. |
-| Rood lampje 1 seconde knipper | De gescande heeft niet de inhoud `Burgers Zoo`. |
-| Groen lampje 1 seconde aan | Er is een valide pas gescant. |
+| Rood lampje 1 seconde knipper | De gescande heeft niet de inhoud `Burgers' Zoo`. |
+| Groen lampje 1 seconde aan | Er is een valide pas gescand. |
 
 ##### Auduino
 De Auduino laat geen led branden als er hij niks aan het doen is. De volgende statussen kunnen worden afgelezen van de blauwe status led:
@@ -848,6 +860,7 @@ Er is een seedscript beschikbaar om basis data aan te maken om te testen. Dit is
 #### Eisen 
 - Java 8 SDK [installatie](http://bfy.tw/FhgO)
 - Gradle 4.4 [installatie](http://bfy.tw/FhgK)
+- MongoDB versie 2.4.14 [installatie](http://bfy.tw/G0i3)
 - RXTX, zie kopje "Seriële communicatie"
 
 #### Werking Gradle
@@ -857,8 +870,8 @@ De basis taken die uitgevoerd kunnen worden:
 - `gradle clean`: verwijderd de build directory
 - `gradle build`: bouwt het volledige project
 - `gradle test`: voert alle tests uit in het project
-- `gradle jar`: bouwt een jar die uitgevoerd kan wroden om de applicatie te starten.
-- `gradle clean build test jar`: om alle bovenstaande taken in één keer uit te voeren
+- `gradle shadowJar`: bouwt een jar die uitgevoerd kan worden om de applicatie te starten.
+- `gradle clean build test shadowJar`: om alle bovenstaande taken in één keer uit te voeren
 
 #### Folder structiuur
 De applicatie bestaat uit een vrij standaard Java folder structure.
@@ -871,11 +884,10 @@ De applicatie bestaat uit een vrij standaard Java folder structure.
 |	|	|── /java/
 |	|	|	|── /nl/
 |	|	|	|	|── /han/
-|	|	|	|	|	|── /han/
-|	|	|	|	|	|	|── /Application.java # Start punt van de applicatie
-|	|	|	|	|	|	|── /mysensors/ # MySensors parsers en communicatie seriële poort
-|	|	|	|	|	|	|── /backend/ # connectie naar backend
-|	|	|	|	|	|	|── /gateway/ # controllers van Spark
+|	|	|	|	|	|── /Application.java # Start punt van de applicatie
+|	|	|	|	|	|── /mysensors/ # MySensors parsers en communicatie seriële poort
+|	|	|	|	|	|── /backend/ # connectie naar backend
+|	|	|	|	|	|── /gateway/ # controllers van Spark
 |	|	|	|── /gateway.properties # Settings zoals poort nummer
 |	|	|── /resources/
 |	|── /test/* # Bevat alle tests van de applicatie
@@ -883,11 +895,11 @@ De applicatie bestaat uit een vrij standaard Java folder structure.
 |── /build.gradle # Build file, bevat dependencies etc.
 ```
 
-## Seriële communicatie 
+### Seriële communicatie 
 Voor het gebruik van de gateway moet er een library geïnstalleerd zijn op de pc. Het gaat om de RXTX library. Deze zorgt voor de seriële communicatie. 
 
 De library is te vinden via de volgende links:
-- Linux: ~~[http://rxtx.qbang.org](http://rxtx.qbang.org/wiki/index.php/Download)~~ Het is alleen nodig om het volgende commando uit te voeren: `sudo apt-get install librxtx-java`
+- Linux: voer het volgende commando uit in de terminal: `sudo apt-get install librxtx-java`
 - Windows 64 bit: [http://fizzed.com](http://fizzed.com/oss/rxtx-for-java)
 
 Zonder de instalatie van deze library zal er bij het bouwen van het project fouten optreden.
@@ -897,19 +909,20 @@ Bij het uitvoeren van de jar op de Raspberry Pi 3 moet het volgende gebruikt wor
 `java -Djava.library.path=/usr/lib/jni -jar <GATEWAY.jar>`
 Het gedeelte van ` -Djava.library.path=/usr/lib/jni ` moet voor de `-jar` staan
 
-#### Afspraken MySensors protecol
+#### Afspraken MySensors protocol
 
 - `V_VAR1` wordt gebruikt om van de node naar de gateway zijn poot id te presenteren.
 - `V_VAR2` wordt gebruikt om een pas id van een node naar de gateway te sturen.
 - `V_VAR3` wordt gebruikt om vanaf de gateway naar een node een poot id te sturen.
 - `V_VAR4` is gereserveerd voor het versturen van audio files.
-- `V_VAR5` is gereserveerd voor het configureren van de Arduino, zoals het resetten van EEPROM of resetten van de Arduino zelf.
+- `V_VAR5` is gereserveerd voor het configureren van de Gaduino, zoals het resetten van EEPROM of resetten van de Gaduino zelf.
 - `V_TEMP` wordt gebruikt om de temperatuur data door te sturen.
 - `V_HUM` wordt gebruik om de humidity te versturen
 
+
 ### Ontwikkeling Poot
 
-De code van de Poot is gebouwd met behulp van het Arduino platform en een aantal libraries. Een gedetailleerd ontwerp van de code is te vinden in het technisch ontwerp.
+De [code van de Poot](https://github.com/HANICA-MinorMulti/nj2017-iot-dwa-BurgersZoo1/tree/master/apps/poot) is gebouwd met behulp van het Arduino platform en een aantal libraries. Een gedetailleerd ontwerp van de code is te vinden in het technisch ontwerp.
 
 #### Ontwikkelomgeving
 Om te kunnen ontwikkelen aan de poot is [PlatformIO](http://platformio.org/) vereist. Installeer PlatformIO volgens de officiele [handleiding](http://platformio.org/platformio-ide). Vervolgens kan het project geopend worden in de ide. Dan kan de code gecompileerd en geupload worden. Er is gekozen voor Atom over de standaard arduino IDE omdat deze IDE automatisch libraries download én er een mogelijkheid is voor live-code feedback. Zie [dit](https://github.com/HANICA-MinorMulti/nj2017-iot-dwa-BurgersZoo1/tree/master/documentatie/onderzoeken/arduino-ide) onderzoekje voor details over deze keuze.
@@ -951,12 +964,12 @@ Dat levert de volgende items op:
 | build-docker-prod           | Bouwt de productie docker image                                                                        |                                           |
 | compile-deliverables        | Bouwt alle documentatie                                                                                |                                           |
 | compile-images              | Verzamelt alle images in de deliverables/images map zodat ze gebruikt kunnen worden in de documentatie | ! werkt niet op Windows                   |
-| compile-pva                 | Bouwt het Plan van Aanpak                                                                              | Wordt gebouwt in de deliverables map      |
-| compile-fo                  | Bouwt het Functioneel ontwerp                                                                          | Wordt gebouwt in de deliverables map      |
-| compile-to                  | Bouwt het technisch ontwerp                                                                            | Wordt gebouwt in de deliverables map      |
-| compile-testplan            | Bouwt het testplan                                                                                     | Wordt gebouwt in de deliverables map      |
-| compile-opleverdocumentatie | Bouwt de opleverdocumentatie                                                                           | Wordt gebouwt in de deliverables map      |
-| generate-pdfs               | Zet alle gebouwde bestanden om naar een .pdf                                                           | Wordt gebouwt in de deliverables/pdfs map |
+| compile-pva                 | Bouwt het Plan van Aanpak                                                                              | Wordt gebouwd in de deliverables map      |
+| compile-fo                  | Bouwt het Functioneel ontwerp                                                                          | Wordt gebouwd in de deliverables map      |
+| compile-to                  | Bouwt het technisch ontwerp                                                                            | Wordt gebouwd in de deliverables map      |
+| compile-testplan            | Bouwt het testplan                                                                                     | Wordt gebouwd in de deliverables map      |
+| compile-opleverdocumentatie | Bouwt de opleverdocumentatie                                                                           | Wordt gebouwd in de deliverables map      |
+| generate-pdfs               | Zet alle gebouwde bestanden om naar een .pdf                                                           | Wordt gebouwd in de deliverables/pdfs map |
 | copy-endpoint-prod          |  Dit kopieërd alle development instellingen naar de apps                                                                                                     | ! werkt niet op Windows                   |
 | copy-endpoint-dev           |  Dit kopieërd alle development instellingen naar de apps                                                   | ! werkt niet op Windows                   |
 | postinstall                 | Dit script draait NA een npm install en zal de "build-docker" taak uitvoeren                           |                                           |

@@ -1,6 +1,6 @@
 ### Ontwikkeling Poot
 
-De code van de Poot is gebouwd met behulp van het Arduino platform en een aantal libraries. Een gedetailleerd ontwerp van de code is te vinden in het technisch ontwerp.
+De [code van de Poot](https://github.com/HANICA-MinorMulti/nj2017-iot-dwa-BurgersZoo1/tree/master/apps/poot) is gebouwd met behulp van het Arduino platform en een aantal libraries. Een gedetailleerd ontwerp van de code is te vinden in het technisch ontwerp.
 
 #### Ontwikkelomgeving
 Om te kunnen ontwikkelen aan de poot is [PlatformIO](http://platformio.org/) vereist. Installeer PlatformIO volgens de officiele [handleiding](http://platformio.org/platformio-ide). Vervolgens kan het project geopend worden in de ide. Dan kan de code gecompileerd en geupload worden. Er is gekozen voor Atom over de standaard arduino IDE omdat deze IDE automatisch libraries download én er een mogelijkheid is voor live-code feedback. Zie [dit](https://github.com/HANICA-MinorMulti/nj2017-iot-dwa-BurgersZoo1/tree/master/documentatie/onderzoeken/arduino-ide) onderzoekje voor details over deze keuze.

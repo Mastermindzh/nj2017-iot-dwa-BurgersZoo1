@@ -19,7 +19,7 @@ Voor het bouwen van de Poot zijn de volgende interne componenten nodig. Daarnaas
 * Meer dan genoeg Jumper wires
 * Breadboard
 * DHT11 temperatuur & luchtvochtigheid meter
-* Pasjes (zie laatste hoofdstuk)
+* NFC pasjes (zie laatste hoofdstuk)
 
 
 #### 2. Behuizing
@@ -37,7 +37,7 @@ Sluit de twee arduino's aan volgens het onderstaande aansluitschema of gebruik d
 
 **Auduino**
 
-| Component  | Pin op Component | Pin op Arduino |
+| Component  | Pin op Component | Pin op Auduino |
 |------------|------------------|----------------|
 | Blauwe LED | +                | D2             |
 | Blauwe LED | -                | GND            |
@@ -99,6 +99,8 @@ Op de MicroSD kaart moeten de audio bestanden volgens de volgende naamgeving:
 - Weetjes genummerd, beginnend vanaf 0.  
 Dus 0.wav, 1.wav, 2.wav etc.
 
+Zowel het dierengeluid als de weetjes zijn optioneel. Als een dierengeluid niet aanwezig is wordt alleen een weetje afgespeeld. Als geen weetje aanwezig is wordt alleen het dierengeluid afgespeeld. Als er meerdere weetjes aanwezig zijn worden de weetjes omstebeurt afgespeeld. Dus eerst `0.wav` en dan `1.wav` enzovoort.
+
 De inhoud van de MicroSD kaart zal er als volgt uit zien:
 ```
 /dier.wav
@@ -109,8 +111,15 @@ De inhoud van de MicroSD kaart zal er als volgt uit zien:
 /[0...+].wav
 ```
 
-Wanneer een wav bestandje op de MicroSD gezet moet worden, zal deze geconverteerd worden naar de goede settings. 
-** todo: uitleggen hoe de wav bestanden geconverteerd moeten worden, dit komt in week 7 & 8. **
+Wanneer een wav bestandje op de MicroSD gezet moet worden, zal deze geconverteerd worden naar de goede settings. Er zijn twee manieren:
+1. Ga naar [deze](https://audio.online-convert.com/convert-to-wav) site (https://audio.online-convert.com/convert-to-wav) en kies voor de volgende instellingen:
+	* `Change bit resolution: 8 Bit`
+	* `Change sampling rate: 11025 Hz`
+	* `Change audio channels: mono`
+	* `PCM format: PCM unsigned 8-bit`
+2. Op linux installeer [SoX](http://sox.sourceforge.net/) (versie onbekend) en gebruik het volgende command: `sox input.wav --norm=1 -e unsigned-integer -b 8 -r 31250 -c 1 -t raw output.wav`
+
+De geconverteerde weetjes zoals ze dit project tijdens de tests zijn gebruikt zijn te vinden in de submap [weetjes](https://github.com/HANICA-MinorMulti/nj2017-iot-dwa-BurgersZoo1/tree/master/documentatie/opleverdocumentatie/poot/weetjes).
 
 #### 6. Aanzetten
 Nadat alle bovenstaande stappen doorlopen zijn kunnen de twee Arduino's op stroom worden gezet. Vervolgens gaan de twee Arduino's initialiseren. Om te kunnen zien of onderdelen goed worden geinitialiseerd moet worden gekeken naar de statuslampjes. Per Arduino is hieronder te vinden wat de statuslampjes betekeken.
@@ -124,8 +133,8 @@ Als alles goed gaat dan gaan er 3 lampjes branden zodra de Maduino wordt opgesta
 | Geel lampje continu aan | Er kan niet worden verbonden met de auduino. Er is iets mis met het verzenden naar de Auduino met I2C. |
 | Geel lampje kort knipper | Er wordt verzonden naar de Auduino. Wanneer je een hele korte gele knipper ziet dan wordt er een signiaaltje verzonden naar de Auduino. |
 | Rood lampje 0.5 seconde knipper | De gescande pas kon niet worden geauthenticeerd. |
-| Rood lampje 1 seconde knipper | De gescande heeft niet de inhoud `Burgers Zoo`. |
-| Groen lampje 1 seconde aan | Er is een valide pas gescant. |
+| Rood lampje 1 seconde knipper | De gescande heeft niet de inhoud `Burgers' Zoo`. |
+| Groen lampje 1 seconde aan | Er is een valide pas gescand. |
 
 ##### Auduino
 De Auduino laat geen led branden als er hij niks aan het doen is. De volgende statussen kunnen worden afgelezen van de blauwe status led:
