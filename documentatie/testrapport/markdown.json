@@ -1,0 +1,6 @@
+{
+  "build": "./deliverables/testrapport.md",
+  "files": [
+    "documentatie/testrapport/testrapport.md"
+  ]
+}

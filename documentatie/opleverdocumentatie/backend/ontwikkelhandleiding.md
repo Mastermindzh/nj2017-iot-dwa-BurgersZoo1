@@ -1,3 +1,4 @@
+<a name="ontwikkelhandleiding"></a>
 ### Loopback
 
 Loopback functioneert als het hart van de backend. Met een paar commando's is er gemakkelijk een krachtige API opgezet.
@@ -280,3 +281,7 @@ lb export-api-def
 ```
 
 Gebruik de `-o` tag om een pad aan te geven waar je de definitie op wil slaan, anders wordt het alleen in de commandline getoond.
+
+### Seedscript
+
+Er is een seedscript beschikbaar om basis data aan te maken om te testen. Dit is te vinden in het bestandje *seedscript.sh*. Deze wordt automatisch uitgevoerd wanneer het `npm build` commando wordt aangeroepen. Dit bestandje haalt via de mongo restore functie een vooraf ingestelde database op en zet die in de lokale database.
