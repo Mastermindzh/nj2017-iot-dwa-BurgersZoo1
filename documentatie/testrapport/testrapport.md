@@ -53,13 +53,20 @@ De admin applicatie is door een medewerker van Burgers’ Zoo getest en de medew
 ## Resultaten
 In dit hoofdstuk zijn de resultaten van de verschillende tests beschreven.
 
-### Test admin app
-inleiding  **TODO**  
-
-![frank-test.jpg](images/frank-test.jpg)  
-
 ### Techniek test
 De techniek test is gedaan in de vorm van een speurtocht. Voor de bezoekers was het idee om mee te doen aan de speurtocht en later hun bevindingen aan een student bij de uitgang te vertellen. De IoT’ers hebben het systeem in de gaten gehouden door rond te lopen en het systeem digitaal te monitoren. Hieruit zijn aanbevelingen gekomen voor een volgende projectgroep.
+
+### Scanstatistieken
+Met de filter ``` {"and": [{"speurpuntId": "<variabel speurpunt>"}, {"datum": {"gt":"1515668032"}}]} ``` op het ```rangerHeeftBezocht/count``` endpoint is de count per scanpunt opgehaald:
+
+| **Scanpunt** Thursday, January 11, 2018 11:57:01 AM GMT+01:00 | **Aantal keer gescand** |
+|---------------------------------------------------------------|-------------------------|
+| Plek 1: Zeekoeien                                             | 53                      |
+| Plek 2: Wenkkrabben                                           | 70                      |
+| Plek 3: Schildpad                                             | 35                      |
+| Plek 4: Tropisch droogbos                                     | 81                      |
+| Plek 5: Vlinders rottend fruit                                | 11                      |
+| Plek 6: Vlindereitjes                                         | 6                       |
 
 Hieronder is een korte sfeerimpressie te zien van de speurtocht:
 [Speurtocht video](https://www.youtube.com/watch?v=nrqekrv-Ccw)
@@ -83,6 +90,14 @@ Het was voor bepaalde gebruikers niet duidelijk waar de pas te houden. Aan de vo
 
 ![images/pashier.jpg](images/pashier.jpg)  
 *Een scanpunt gewapend met sticker die aangeeft waar de pas gehouden moet worden.*
+
+
+### Test admin app
+inleiding  **TODO**  
+
+![frank-test.jpg](images/frank-test.jpg)  
+
+
 
 ##### Technische bevindingen: Geluid
 Tijdens de test hebben we gebruik gemaakt van boxjes die verzorgd werden door Burgers’ Zoo. Het geluid dat uit deze boxjes kwam was erg zacht en dit is ook door meerdere bezoekers aangegeven. Er waren regelmatig ouders die moesten bukken om de het geluid te kunnen horen. 
