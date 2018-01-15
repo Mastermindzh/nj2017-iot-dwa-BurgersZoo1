@@ -23,7 +23,9 @@ module.exports = function (Speurpunt) {
             cb('empty result', null)
           } else {
             let dierengeluid = result.toJSON();
-            cb(null, {weetjes: weetjes, dierengeluid: dierengeluid.bestandspad});
+
+            let response = {weetjes: weetjes, dierengeluid: dierengeluid.bestandspad};
+            cb(null, response);
           }
         });
       }

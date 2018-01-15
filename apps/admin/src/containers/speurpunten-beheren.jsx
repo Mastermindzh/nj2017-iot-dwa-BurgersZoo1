@@ -110,9 +110,8 @@ class SpeurpuntenBeherenContainer extends Component {
         snackbarMessage: "Poot successvol geupdate"
       });
     }, speurpunt => {
-      axios.get(`${ENDPOINTS.BASE_URL}/zip/${speurpunt.id}`).then(response =>{
-        FileDownload(response.data, `${speurpunt.id}.zip`);
-      });
+
+      window.open(`${ENDPOINTS.BASE_URL}/zip/${speurpunt.id}`);
     }
   );
 
