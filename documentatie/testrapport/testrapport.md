@@ -48,7 +48,7 @@ Op de testdag hebben we bezoekers gevraagd om mee te doen aan onze speurtocht. D
 De admin applicatie is door een medewerker van Burgers’ Zoo getest en de medewerker heeft hierop feedback gegeven. De volledige aanpak is te lezen in het [testplan](../documentatie/testplan/testplan.md). 
 
 ![images/punten.png](images/punten.png)  
-*De plekken in de mangrove waar de speurpunten geplaatst worden. *
+*De plekken in de mangrove waar de speurpunten geplaatst worden.*
 
 ## Resultaten
 In dit hoofdstuk zijn de resultaten van de verschillende tests beschreven. 
