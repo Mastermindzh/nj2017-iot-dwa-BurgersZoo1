@@ -1,0 +1,50 @@
+
+> nj2017-iot-dwa-burgerszoo1@0.0.1 docs /home/sharon/Documents/School/DWA/nj2017-iot-dwa-BurgersZoo1
+> spectacle -p 8008 ./apps/server/open-api-spec.yaml
+
+[4mRunning "sass:foundation_scss" (sass) task[24m
+WARNING: Note, that $header-sizes has been replaced with $header-styles. $header-sizes still works, but it is going to be depreciated.
+Backtrace:
+	node_modules/spectacle-docs/app/vendor/foundation/scss/typography/_base.scss:77, in function `build_from_header-sizes`
+	node_modules/spectacle-docs/app/vendor/foundation/scss/typography/_base.scss:91
+
+
+[4mRunning "concat:foundation_css" (concat) task[24m
+File /home/sharon/Documents/School/DWA/nj2017-iot-dwa-BurgersZoo1/public/stylesheets/foundation.css created.
+
+[4mRunning "sass:scss" (sass) task[24m
+WARNING: Note, that $header-sizes has been replaced with $header-styles. $header-sizes still works, but it is going to be depreciated.
+Backtrace:
+	node_modules/spectacle-docs/app/vendor/foundation/scss/typography/_base.scss:77, in function `build_from_header-sizes`
+	node_modules/spectacle-docs/app/vendor/foundation/scss/typography/_base.scss:91
+
+
+[4mRunning "concat:css" (concat) task[24m
+File /home/sharon/Documents/School/DWA/nj2017-iot-dwa-BurgersZoo1/public/stylesheets/spectacle.css created.
+
+[4mRunning "cssmin:minify" (cssmin) task[24m
+[32m>> [39m2 files created. 146.33 kB → 113.2 kB
+
+[4mRunning "concat:js" (concat) task[24m
+File /home/sharon/Documents/School/DWA/nj2017-iot-dwa-BurgersZoo1/public/javascripts/spectacle.js created.
+
+[4mRunning "uglify:js" (uglify) task[24m
+[32m>> [39m1 file created.
+
+[4mRunning "clean:html" (clean) task[24m
+[32m>> [39m1 path cleaned.
+
+[4mRunning "compile-handlebars:compile" (compile-handlebars) task[24m
+
+[4mRunning "predentation" task[24m
+
+[4mRunning "prettify:index" (prettify) task[24m
+[32m>> [39mFile "/home/sharon/Documents/School/DWA/nj2017-iot-dwa-BurgersZoo1/public/index.html" prettified.
+All tasks complete
+
+> nj2017-iot-dwa-burgerszoo1@0.0.1 docs /home/sharon/Documents/School/DWA/nj2017-iot-dwa-BurgersZoo1
+> spectacle -s -p 8008 ./apps/server/open-api-spec.yaml
+
+[4mRunning "connect:server" (connect) task[24m
+Started connect web server on http://localhost:8008
+All tasks complete

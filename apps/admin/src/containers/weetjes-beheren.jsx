@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import TableComponent from './../components/table-component.jsx';
 import {connect} from 'react-redux';
 import {withStyles} from 'material-ui/styles';
-import IconButton from 'material-ui/IconButton';
+import Button from "material-ui/Button";
 import Icon from 'material-ui/Icon';
 import Input, {InputLabel} from 'material-ui/Input';
 import {FormControl} from 'material-ui/Form';
@@ -15,7 +15,6 @@ import {BASE_URL} from './../constants/endpoint-constants.js';
 
 import PopupComponent from './../components/popup-component.jsx';
 import GeluidUploaden from './../components/geluid-uploaden.jsx';
-import * as ENDPOINTS from './../constants/endpoint-constants';
 import {FILEUPLOAD_ACTION_TYPES} from "../constants/actionTypes";
 import styles from './../styles/style';
 import {fetchWeetjes, addWeetje} from './../actions/weetjesActions';
@@ -49,7 +48,6 @@ class WeetjesBeheren extends Component {
     const {classes} = this.props;
 
     const headers = [
-      {text: "ID"},
       {text: "Beschrijving"},
       {text: "Player"},
     ];
@@ -66,8 +64,6 @@ class WeetjesBeheren extends Component {
       return {
         key: weetje.id,
         children: [
-
-          {children: weetje.id},
           {children: weetje.beschrijving},
           {
             children:
@@ -93,9 +89,15 @@ class WeetjesBeheren extends Component {
                 <Input id="search-simple" value={this.state.search}
                        onChange={(event) => this.setState({search: event.target.value})}/>
               </FormControl>
-              <IconButton onClick={() => this.setState({addOpen: true})}>
-                <Icon>add_circle</Icon>
-              </IconButton>
+
+              <Button
+                className={classes.button}
+                raised
+                style={{"float":"right", backgroundColor: "#7ecb20", color: "white"}}
+                onClick={() => this.setState({addOpen: true})}
+              >
+                  <Icon style={{"paddingRight": "10px"}} className={classes.rightIcon}>add_circle</Icon> Weetje toevoegen
+              </Button>
             </div>
           </Grid>
           <Grid item xs={12}>

@@ -5,12 +5,19 @@ Logger::Logger(GatewayLink* gateway, Poot* poot){
   this -> poot = poot;
 };
 long tijd = millis();
+int flipper = 0;
 void Logger::loop(){
   if(millis()-tijd>1000){
+    if(flipper==0){
+      sendIntervalTemperatureMessage();
+      flipper=1;
+    }
+    else{
+      sendIntervalHumidityMessage();
+      flipper=0;
+    }
     tijd = millis();
-    sendIntervalTemperatureMessage();
-    delay(100);
-    sendIntervalHumidityMessage();
+
   }
 };
 

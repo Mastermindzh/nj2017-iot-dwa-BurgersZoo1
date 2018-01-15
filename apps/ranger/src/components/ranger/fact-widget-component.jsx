@@ -9,42 +9,32 @@ class FactWidgetComponent extends Component {
     super(props)
 
     this.state = {
-      animalResidences: [
-        'Safari',
-        'Rimba',
-        'Mangrove'
-      ],
-      selectedResidence: ''
+      selectedResidence: {}
     };
   }
 
+  componentWillReceiveProps(){
+    this.setState({
+      selectedResidence: {}
+    });
+  }
+
   renderAudioList() {
-    if (this.state.selectedResidence === 'Safari') {
+    if(this.state.selectedResidence.weetjes) {
+     
+      const listOfKeyValuePairs = this.state.selectedResidence.weetjes.map(weetje => {
+        return {
+          key: weetje.naam,
+          url: `${weetje.bestandspad}`
+        };
+      });
+  
       return (
         <AudioList
-          listOfKeyValuePairs={[
-            { key: 'Leeuw', url: 'http://www.wavsource.com/snds_2017-09-17_1751672946049674/animals/lion_growl.wav' },
-            { key: 'Olifant', url: 'http://www.wavsource.com/snds_2017-09-17_1751672946049674/animals/elephant.wav' }
-          ]}
+          listOfKeyValuePairs={listOfKeyValuePairs}
         />
       );
     }
-    else if (this.state.selectedResidence === 'Rimba') {
-      return (
-        <AudioList
-          listOfKeyValuePairs={[
-            { key: 'Aap', url: 'http://www.wavsource.com/snds_2017-09-17_1751672946049674/animals/monkey1.wav' }
-          ]}
-        />
-      );
-    }
-    return (
-      <AudioList
-        listOfKeyValuePairs={[
-          { key: 'Vogels', url: 'http://www.wavsource.com/snds_2017-09-17_1751672946049674/animals/bird.wav' }
-        ]}
-      />
-    );
   }
 
   onResidenceSelectHandler(residence) {
