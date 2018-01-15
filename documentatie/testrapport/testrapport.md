@@ -96,6 +96,7 @@ Het was voor bepaalde gebruikers niet duidelijk waar de pas te houden. Aan de vo
 inleiding  **TODO**  
 
 ![frank-test.jpg](images/frank-test.jpg)  
+*Burgers' Zoo medewerker Frank test de admin app*
 
 
 
@@ -190,7 +191,3 @@ Verder bleek de hoogte lastig te zijn. De scanpunten waren tijdens de test op oo
 
 ![images/hoog-laag.jpg](images/hoog-laag.jpg)  
 *Voor kinderen is de hoogte perfect, maar ouders moeten bukken.*
-
-## BIJLAGEN
-
-
