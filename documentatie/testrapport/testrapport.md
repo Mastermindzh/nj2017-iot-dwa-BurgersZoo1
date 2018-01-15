@@ -59,7 +59,7 @@ De techniek test is gedaan in de vorm van een speurtocht. Voor de bezoekers was 
 ### Sfeerimpressie
 
 Hieronder is een korte sfeerimpressie te zien van de speurtocht:
-[Speurtocht video](https://www.youtube.com/watch?v=nrqekrv-Ccw)
+[![Speurtocht video](https://img.youtube.com/vi/nrqekrv-Ccw/0.jpg)](https://www.youtube.com/watch?v=nrqekrv-Ccw)
 
 ![images/poten.png](images/poten.png)  
 *De locaties van alle poten.*
