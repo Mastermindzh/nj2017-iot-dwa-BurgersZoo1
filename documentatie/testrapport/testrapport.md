@@ -96,7 +96,7 @@ Het was voor bepaalde gebruikers niet duidelijk waar de pas te houden. Aan de vo
 inleiding  **TODO**  
 
 ![frank-test.jpg](images/frank-test.jpg)  
-*Burgers' Zoo medewerker Frank test de admin app*
+*Burgers' Zoo medewerker Frank Siemon test de admin app*
 
 
 
