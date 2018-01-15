@@ -95,6 +95,13 @@ Het was voor bepaalde gebruikers niet duidelijk waar de pas te houden. Aan de vo
 ![images/pashier.jpg](images/pashier.jpg)
 *Een scanpunt gewapend met sticker die aangeeft waar de pas gehouden moet worden.*
 
+#### Technische bevindingen: Geluid
+Tijdens de test hebben we gebruik gemaakt van boxjes die verzorgd werden door Burgers’ Zoo. Het geluid dat uit deze boxjes kwam was erg zacht en dit is ook door meerdere bezoekers aangegeven. Er waren regelmatig ouders die moesten bukken om de het geluid te kunnen horen.
+
+Ook kwam er wanneer de speaker niet gebruikt werd een constant brommend geluid uit. Dit kan als storend ervaren worden wanneer een bezoeker hier dicht bij staat, al wordt dit geluid vrij snel overstemd door de achtergrondgeluiden van o.a. overige bezoekers en dierentuin geluiden. Dit probleem deed zich niet voor wanneer de speakers werden aangesloten op een mobieltje, waardoor het lijkt op een probleem met de Audiono. De exacte oorzaak hiervan is niet gevonden.
+
+#### Technische bevindingen: Meshnetwerk & Gateway
+Het meshnetwerk heeft goed gefunctioneerd tijdens de test. De berichten kwamen binnen op de gateway tijdens het testen. Deze berichten werden goed afgehandeld en werden naar de backend doorgestuurd. In de ochtend voor de test kwamen wat foutmeldingen naar voren door het niet goed uitlezen van de unieke code (zie paar kopjes hierboven, NFC). Deze foutmeldingen kwamen niet naar voren tijdens de test met bezoekers, waardoor het uitlezen van de unieke code op de NFC pas dus wel goed werkte.
 
 ### Test admin app
 Opdrachtgever Frank Simon heeft de volgende pootconfiguratie in de webapplicatie ingevoerd:
@@ -115,15 +122,6 @@ Hoewel het configureren gelukt is, zijn er nog een aantal costructieve opmerking
 
 ![frank-test.jpg](images/frank-test.jpg)  
 *Frank tijdens de field-trial*
-
-
-##### Technische bevindingen: Geluid
-Tijdens de test hebben we gebruik gemaakt van boxjes die verzorgd werden door Burgers’ Zoo. Het geluid dat uit deze boxjes kwam was erg zacht en dit is ook door meerdere bezoekers aangegeven. Er waren regelmatig ouders die moesten bukken om de het geluid te kunnen horen.
-
-Ook kwam er wanneer de speaker niet gebruikt werd een constant brommend geluid uit. Dit kan als storend ervaren worden wanneer een bezoeker hier dicht bij staat, al wordt dit geluid vrij snel overstemd door de achtergrondgeluiden van o.a. overige bezoekers en dierentuin geluiden. Dit probleem deed zich niet voor wanneer de speakers werden aangesloten op een mobieltje, waardoor het lijkt op een probleem met de Audiono. De exacte oorzaak hiervan is niet gevonden.
-
-#### Technische bevindingen: Meshnetwerk & Gateway
-Het meshnetwerk heeft goed gefunctioneerd tijdens de test. De berichten kwamen binnen op de gateway tijdens het testen. Deze berichten werden goed afgehandeld en werden naar de backend doorgestuurd. In de ochtend voor de test kwamen wat foutmeldingen naar voren door het niet goed uitlezen van de unieke code (zie paar kopjes hierboven, NFC). Deze foutmeldingen kwamen niet naar voren tijdens de test met bezoekers, waardoor het uitlezen van de unieke code op de NFC pas dus wel goed werkte.
 
 ### Opmerkingen van bezoekers
 
