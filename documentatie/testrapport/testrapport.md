@@ -51,10 +51,10 @@ De admin applicatie is door een medewerker van Burgers’ Zoo getest en de medew
 * De plekken in de mangrove waar de speurpunten geplaatst worden. *
 
 ## Resultaten
-In dit hoofdstuk zijn de resultaten van de verschillende tests beschreven.
+In dit hoofdstuk zijn de resultaten van de verschillende tests beschreven. 
 
 ### Techniek test
-De techniek test is gedaan in de vorm van een speurtocht. Voor de bezoekers was het idee om mee te doen aan de speurtocht en later hun bevindingen aan een student bij de uitgang te vertellen. De IoT’ers hebben het systeem in de gaten gehouden door rond te lopen en het systeem digitaal te monitoren. Hieruit zijn aanbevelingen gekomen voor een volgende projectgroep.
+De techniek test is gedaan in de vorm van een speurtocht. Voor de bezoekers was het idee om mee te doen aan de speurtocht en later hun bevindingen aan een student bij de uitgang te vertellen. Deze bevindingen zijn in het hoofdstuk "aanbevelingen" verwerkt.
 
 ### Sfeerimpressie
 
