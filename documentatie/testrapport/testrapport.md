@@ -112,7 +112,7 @@ In de tweede stap van de test heeft hij de configuratie als een .zip-bestand ged
 
 ![speurpuntdownload](./images/download-speurpunt-zip.png)
 
-### Opmerkingen van Frank Simon
+#### Opmerkingen van Frank Simon
 Hoewel het configureren gelukt is, zijn er nog een aantal costructieve opmerkingen van Frank:
 
 - Burgers' Zoo medewerkers verwachten bij zoiets als 'Leefwereld' een dropdown menu met beschikbare content: "Safari, Mangrove, Ocean etc.."
