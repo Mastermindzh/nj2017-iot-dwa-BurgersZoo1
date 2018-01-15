@@ -138,7 +138,10 @@ Het meshnetwerk heeft goed gefunctioneerd tijdens de test. De berichten kwamen b
 Tijdens de field trial is onze hypothese bevestigd: 
 > Wij geloven dat een meshnetwerk van zes poten in de Mangrove, gebruikmakend van NRF-communicatie zal resulteren in een stabiel speurtocht-ranger-systeem dat verbonden staat met de cloud. We weten dat we succesvol zijn als een speurtocht via de webapplicatie geconfigureerd wordt, en de door ranger gescande resultaten van diezelfde speurtocht terug kunnen zien, in een web applicatie die de data uit de verbonden cloud toont.
 
-De opdrachtgever heeft met behulp van de webapplicatie een nieuw speurpunt kunnen configureren en een zip-bestand kunnen downloaden waarin de juiste pootconfiguratie stond. Tevens is het systeem de hele dag online gebleven zonder Rasperry Pi-, Arduino- of server crash met continu tien gelijktijdige gebruikers.
+De opdrachtgever heeft met behulp van de admin webapplicatie een nieuw speurpunt kunnen configureren en een zip-bestand kunnen downloaden waarin de juiste pootconfiguratie stond. Tevens is het systeem de hele dag online gebleven zonder Rasperry Pi-, Arduino- of server crash met continu tien gelijktijdige gebruikers.
+
+In de ranger webapplicatie kan je per pas zien welke speurpunten zijn bezocht, dus ook de laatste regel van de hypothese is bevestigd:
+![ranger](./images/ranger-history-cropped.png)
 
 
 ## Aanbevelingen
