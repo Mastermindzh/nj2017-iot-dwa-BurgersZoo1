@@ -94,10 +94,22 @@ Het was voor bepaalde gebruikers niet duidelijk waar de pas te houden. Aan de vo
 
 
 ### Test admin app
-inleiding  **TODO**  
+Opdrachtgever Frank Simon heeft de volgende pootconfiguratie in de webapplicatie ingevoerd:
+
+![speurpuntaanpassen](./images/speurpuntaanpassen.png)
+
+In de tweede stap van de test heeft hij de configuratie als een .zip-bestand gedownload
+
+![speurpuntdownload](./images/download-speurpunt-zip.png)
+
+### Opmerkingen van Frank Simon
+Hoewel het configureren gelukt is, zijn er nog een aantal opmerkingen van Frank:
+
+- Burgers' Zoo medewerkers verwachten bij zoiets als 'Leefwereld' een dropdown menu met beschikbare content.
+- 
 
 ![frank-test.jpg](images/frank-test.jpg)  
-*Burgers' Zoo medewerker Frank Siemon test de admin app*
+(Frank tijdens de field-trial)
 
 
 
