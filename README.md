@@ -16,6 +16,7 @@ Dierentuin Koninklijk Burgers' Zoo is een dierentuin gelegen te Arnhem op een mo
 | Functioneel ontwerp |[Functioneel ontwerp](deliverables/functioneel%20ontwerp.md)| document dat use case beschrijvingen, requirements en mock-ups van de webapplicaties bevat. |
 | Technisch ontwerp |[Technisch ontwerp](deliverables/technisch%20ontwerp.md)| beschrijft het systeem op architectuur niveau, inclusief subsystemen, services, hardware mapping en gebruikte protocollen. Bevat onderbouwingen voor gemaakte keuzes. |
 | Testplan |[Testplan](deliverables/testplan.md)| projecthypothese, test doelgroep en testscenario's |
+| Testrapport |[Testrapport](deliverables/testrapport.md)| Het resultaat van het testplan |
 | Onderzoeken         |[documentatie/onderzoeken](documentatie/onderzoeken)| De onderzoeken welke de groep heeft uitgevoerd in het kader van de opleiding. |
 | Gateway Api                 |[Gateway apibeschrijving](documentatie/api)| De api beschrijving van de gateway |
 
