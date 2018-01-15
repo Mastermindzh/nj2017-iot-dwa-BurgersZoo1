@@ -29,7 +29,7 @@ Wanneer een ranger het park verlaten heeft, kan hij achteraf via de ranger webap
 | De educatiemedewerker | Een medewerker van Burgers Zoo die de verantwoording draagt voor de kennisoverdracht naar de bezoekers en/of kinderen.                                            |
 | De technische dienst  | Medewerkers van de Burgers zoo welke gaan over technische zaken in het park. Dit kan gaan over het aanleggen van een stroompunt tot het vervangen van een lamp. |
 | Poot                  | Onder “Poot” wordt het apparaat verstaan dat gebruikt wordt om progressie te registreren. Dit is dus het voorwerp waar een bezoeker de pas scant.               |
-| Field drial           | CMD methode kaart FIELD                                                                                                                                         |
+| Field drial           | [CMD methode kaart](http://cmdmethods.nl/) FIELD                                                                                                                                         |
 | Speurpunt of scanpunt             | Een volledig geconfigureerde poot welke in een speurtocht staat.                                                                                                |
 ## Doel
 Het doel van de test is om de techniek van het systeem te testen: werkt het? We willen testen dat wat er in de webapplicatie geconfigureerd is, gereflecteerd wordt in de hardware en andersom: als er een pas gescand wordt bij het scanpunt, is dat terug te zien in de webapplicatie. De test wordt uitgevoerd in de Mangrove leefwereld van Burgers' Zoo.
@@ -96,10 +96,22 @@ Het was voor bepaalde gebruikers niet duidelijk waar de pas te houden. Aan de vo
 
 
 ### Test admin app
-inleiding  **TODO**
+Opdrachtgever Frank Simon heeft de volgende pootconfiguratie in de webapplicatie ingevoerd:
+
+![speurpuntaanpassen](./images/speurpuntaanpassen.png)
+
+In de tweede stap van de test heeft hij de configuratie als een .zip-bestand gedownload
+
+![speurpuntdownload](./images/download-speurpunt-zip.png)
+
+### Opmerkingen van Frank Simon
+Hoewel het configureren gelukt is, zijn er nog een aantal opmerkingen van Frank:
+
+- Burgers' Zoo medewerkers verwachten bij zoiets als 'Leefwereld' een dropdown menu met beschikbare content.
+-
 
 ![frank-test.jpg](images/frank-test.jpg)
-*Burgers' Zoo medewerker Frank Siemon test de admin app*
+(Frank tijdens de field-trial)
 
 
 
