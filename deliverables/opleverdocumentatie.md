@@ -29,6 +29,7 @@ In dit rapport wordt allereerst het concept beschreven, gevolgd door een beschri
       - [Extra stappen voor Windows gebruikers.](#extra-stappen-voor-windows-gebruikers)
       - [productie builds (minified)](#productie-builds-minified)
       - [De applicaties bezoeken](#de-applicaties-bezoeken)
+  * [Hoe nu verder](#hoe-nu-verder)
   * [Installatie Gateway](#installatie-gateway)
     + [MongoDB](#mongodb)
     + [Java](#java)
@@ -88,7 +89,7 @@ In het park van Burgers' Zoo wordt een speurtocht uitgezet om zo het mobiliteits
 Veel voorkomende bezoekers in Burgers' Zoo zijn kinderen met hun (groot)ouders. Kinderen zitten vol met energie en zijn enthousiast dus rennen door het park heen. Tegelijkertijd lopen de ouders hier achteraan en moeten ze de kinderen in de gaten houden. Door het heuvelachtige landschap waarop Burgers' Zoo gebouwd is kan dit heel vermoeiend zijn. Een speurtocht geeft de kinderen afleiding en zorgt er voor dat de kinderen bij een punt in de speurtocht stil blijven staan.
 In het park staan bij elk dierenverblijf borden met informatie over de dieren of planten die daar te vinden zijn. Dit zijn vaak lange stukken tekst die de kinderen zelf niet kunnen lezen. Dit zorgt er voor dat de ouders dit moeten voorlezen. Dit brengt dus extra last met zich mee voor de ouders. Dit wordt opgelost met de speurtocht doordat er weetjes afgespeeld worden in kindertaal.
 
-De kinderen spelen tijdens de speurtocht een ranger. Ze krijgen bij binnenkomst een NFC pas, hun rangerpas, die ze kunnen gebruiken om mee te doen aan de speurtocht. Door het park heen staan speurpunten, in de vorm van een dierenpoot, verspreid. Wanneer een ranger zijn rangerpas scant bij een poot krijgt hij een dierenweetje te horen samen met een dierengeluid. Het doel is om alle dierenpoten te vinden en te scannen. Als de ranger de dierentuin verlaat krijgt hij een ranger certificaat. Op dit certificaat staat een unieke ranger code die hij kan gebruiken om thuis in te loggen op de ranger app.
+De kinderen spelen tijdens de speurtocht een ranger. Ze krijgen bij binnenkomst een NFC pas, hun rangerpas, die ze kunnen gebruiken om mee te doen aan de speurtocht. Door het park heen staan speurpunten verspreid, in de vorm van een dierenpoot. Wanneer een ranger zijn rangerpas scant bij een poot krijgt hij een dierenweetje te horen samen met een dierengeluid. Het doel is om alle dierenpoten te vinden en te scannen. Als de ranger de dierentuin verlaat krijgt hij een ranger certificaat. Op dit certificaat staat een unieke ranger code die hij kan gebruiken om thuis in te loggen op de ranger app.
 
 In de ranger app kan een ranger kijken wat hij allemaal gedaan heeft tijdens zijn bezoek aan Burgers' Zoo. Hier is te vinden welke poten hij wanneer gescand heeft. Hier is te zien welk weetje en dierengeluid er bij hoort, zodat dit nogmaals geluisterd kan worden. De app geeft ook aan welke punten nog niet gescand zijn. Dit kan een aanleiding zijn om het park nog een keer te bezoeken, om zo alle punten van de speurtocht te vinden. Hier kunnen beloningen aan gekoppeld worden in de vorm van korting of een gift. Medewerkers van Burgers' Zoo kunnen de poten en de speurtocht beheren door hier andere dierengeluidjes of weetjes aan toe te voegen.
 
@@ -141,7 +142,7 @@ De tabel hieronder geeft aan welke stukken software benodigd zijn en zal, waar m
 - [Node - version 9.3.0](https://nodejs.org/)
 - [Npm - version 5.6.0](https://www.npmjs.com/)
 
-Als alle bovenstaande software geinstalleerd is dan kunnen alle apps gestart worden, om de database te vullen is er echter nog een extra stukje software nodig. De software heet `mongorestore` en komt , ten tijde van schrijven, mee geinstalleerd met het mongo pakket (Op Windows met [mongotools](https://github.com/mongodb/mongo-tools)). Bekijk [deze website](https://docs.mongodb.com/manual/reference/program/mongorestore/) voor meer informatie. Ook zullen de mensen met Windows 10 home de [docker-toolbox](https://docs.docker.com/toolbox/toolbox_install_windows/) moeten installeren omdat zei geen hyper-v beschikbaar hebben.
+Als alle bovenstaande software geïnstalleerd is dan kunnen alle apps gestart worden, om de database te vullen is er echter nog een extra stukje software nodig. De software heet `mongorestore` en komt , ten tijde van schrijven, mee geinstalleerd met het mongo pakket (Op Windows met [mongotools](https://github.com/mongodb/mongo-tools)). Bekijk [deze website](https://docs.mongodb.com/manual/reference/program/mongorestore/) voor meer informatie. Ook zullen de mensen met Windows 10 home de [docker-toolbox](https://docs.docker.com/toolbox/toolbox_install_windows/) moeten installeren omdat zij geen hyper-v beschikbaar hebben.
 
 #### Het starten van de web applicaties en de database
 
@@ -282,6 +283,8 @@ Om de applicaties te bezoeken, en ze te gebruiken, ga je naar de volgende web ad
 | Admin / educatie applicatie | http://localhost:8002                         | http://localhost:8012                         | ![admin app](images/admin.png)      |
 | Ranger applicatie           | http://localhost:8003                         | http://localhost:8013                         | ![ranger app](images/ranger.png)    |
 | De database                 | http://localhost:8009  mongo://localhost:8009 | http://localhost:8009  mongo://localhost:8009 |                                     |
+
+### Hoe nu verder
 
 Op dit moment draait alles van de web kant, benieuwd hoe je verder kunt? Klik [hier](#ontwikkelhandleiding) om naar de ontwikkelhandleiding te gaan.
 

@@ -10,6 +10,9 @@ In dit document zal eerst het systeem en wat we willen testen worden samengevat.
 ![images/fruit.jpg](images/fruit.jpg)
 *Impressie van de Mangrove waar de tests zullen plaatsvinden*
 
+
+<!-- toc -->
+
 ## Technische context
 Het speurtochtsysteem bestaat uit een meshnetwerk van zes apparaten die elk een onderdeel van de speurtocht vertegenwoordigen. Een ranger kan zo'n apparaat, ook wel een 'poot', 'speurpunt' of 'scanpunt' genoemd, scannen met een verkregen rangerpas. Deze pas maakt gebruik van NFC technologie. Alle scan-acties van een ranger worden online in de cloud opgeslagen. Deze cloud is ook onderdeel van het systeem.
 Educatoren van Burgers’ Zoo kunnen online de speurpunten beheren, dit houdt kortgezegd in dat ze voor de speurpunten een aantal gegevens (naam, verblijf, dierengeluid, etc.) in kunnen voeren en weetjes aan een speurpunt toe kunnen voegen. Zo kan de inhoud en vormgeving van de speurtocht aangepast worden.
