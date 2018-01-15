@@ -86,6 +86,7 @@ De techniek test is gedaan in de vorm van een speurtocht. Voor de bezoekers was 
 
 Hieronder is een korte sfeerimpressie te zien van de speurtocht:
 [![Speurtocht video](./images/yt.png)](https://www.youtube.com/watch?v=nrqekrv-Ccw)
+
 *Klik op bovenstaande knop om de video te starten*
 
 ![images/poten.png](images/poten.png)
