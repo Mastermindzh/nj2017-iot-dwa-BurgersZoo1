@@ -5,7 +5,7 @@ In november 2017 kreeg een groep ict-studenten van de Hogeschool Arnhem en Nijme
 
 Het probleem waar Burgers' Zoo mee kampt is de slechte mobiliteit in het heuvelachtige park. Oudere begeleiders kunnen hun kinderen niet bijbenen, dus het even stil staan bij een pootafdruk en het beluisteren van een weetje draagt volgens Burgers' Zoo bij aan het oplossen van dit probleem. Een leuk concept, maar hoe is dit technisch haalbaar? Er is geen WIFI in het park, dus hoe vormen deze pootafdrukken samen een netwerk en hoe worden scanacties en weetjes opgeslagen zodat ze later terug te vinden zijn in een webapplicatie? Dit zijn de belangrijke vraagstukken waarop dit project gefocust is. 
 
-Dit rapport is de uitwerking van het [testplan](./documentatie/testplan/testplan.md) dat opgesteld is vòòr de field-trial. Er wordt antwoord geven op de vraag: Werkt het prototype dat dit project gebouwd is door de projectgroep in Burgers’ Zoo écht? Het volledige prototype is binnen de Mangrove uitgerold en echte bezoekers hebben met het systeem gewerkt. Daarnaast is getest met de opdrachtgever om te zien of de Admin webapplicatie te begrijpen is en naar behoren werkt.
+Dit rapport is de uitwerking van het [testplan](./documentatie/testplan/testplan.md) dat opgesteld is vòòr de field trial. Er wordt antwoord geven op de vraag: Werkt het prototype dat dit project gebouwd is door de projectgroep in Burgers’ Zoo écht? Het volledige prototype is binnen de Mangrove uitgerold en echte bezoekers hebben met het systeem gewerkt. Daarnaast is getest met de opdrachtgever om te zien of de Admin webapplicatie te begrijpen is en naar behoren werkt.
 
 Verder beschrijft het rapport een technische context van opdracht, een doel, een hypothese en een aanpak van de test. Afsluitend worden de resultaten van de test getoond met een korte conclusie.
 
@@ -16,8 +16,8 @@ Verder beschrijft het rapport een technische context van opdracht, een doel, een
 <!-- toc -->
 
 ## Technische context
-Het speurtochtsysteem bestaat uit een meshnetwerk van zes apparaten die elk een onderdeel van de speurtocht vertegenwoordigen. Een ranger kan zo'n apparaat, ook wel een 'poot', 'speurpunt' of 'scanpunt' genoemd, scannen met een verkregen rangerpas. Deze pas maakt gebruik van NFC technologie. Alle scan-acties van een ranger worden online in de cloud opgeslagen. Deze cloud is ook onderdeel van het systeem.
-Educatoren van Burgers’ Zoo kunnen online de speurpunten beheren, dit houdt kortgezegd in dat ze voor de speurpunten een aantal gegevens (naam, verblijf, dierengeluid, etc.) in kunnen voeren en weetjes aan een speurpunt toe kunnen voegen. Zo kan de inhoud en vormgeving van de speurtocht aangepast worden.
+Het speurtochtsysteem bestaat uit een meshnetwerk van zes apparaten die elk een onderdeel van de speurtocht vertegenwoordigen. Een ranger kan zo'n apparaat, ook wel een 'poot', 'pootafdruk', 'speurpunt' of 'scanpunt' genoemd, scannen met een verkregen rangerpas. Deze pas maakt gebruik van NFC technologie. Alle scan-acties van een ranger worden online in de cloud opgeslagen. Deze cloud is ook onderdeel van het systeem.
+Educatoren van Burgers’ Zoo kunnen online de speurpunten beheren in een admin webapplicatie, dit houdt kortgezegd in dat ze voor de speurpunten een aantal gegevens (naam, verblijf, dierengeluid, etc.) in kunnen voeren en weetjes aan een speurpunt toe kunnen voegen. Zo kan de inhoud en vormgeving van de speurtocht aangepast worden.
 Wanneer een ranger het park verlaten heeft, kan hij achteraf via de ranger webapplicatie de geschiedenis van al zijn parkbezoeken terug zien. Zo kan hij zien welke speurpunten hij allemaal wel en niet gevonden heeft in het park.
 
 ![images/overview.png](images/overview.png)  
@@ -29,7 +29,7 @@ Wanneer een ranger het park verlaten heeft, kan hij achteraf via de ranger webap
 | De educatiemedewerker | Een medewerker van Burgers Zoo die de verantwoording draagt voor de kennisoverdracht naar de bezoekers en/of kinderen.                                            |
 | De technische dienst  | Medewerkers van de Burgers zoo welke gaan over technische zaken in het park. Dit kan gaan over het aanleggen van een stroompunt tot het vervangen van een lamp. |
 | Poot                  | Onder “Poot” wordt het apparaat verstaan dat gebruikt wordt om progressie te registreren. Dit is dus het voorwerp waar een bezoeker de pas scant.               |
-| Field Trial           | CMD methode kaart FIELD                                                                                                                                         |
+| field drial           | CMD methode kaart FIELD                                                                                                                                         |
 | Speurpunt             | Een volledig geconfigureerde poot welke in een speurtocht staat.                                                                                                |
 ## Doel
 Het doel van de test is om de techniek van het systeem te testen: werkt het? We willen testen dat wat er in de webapplicatie geconfigureerd is, gereflecteerd wordt in de hardware en andersom: als er een pas gescand wordt bij het scanpunt, is dat terug te zien in de webapplicatie. De test wordt uitgevoerd in de Mangrove leefwereld van Burgers' Zoo.
@@ -58,8 +58,8 @@ inleiding  **TODO**
 
 ![frank-test.jpg](images/frank-test.jpg)  
 
-### Techniek Test
-De Techniek test is gedaan in de vorm van een speurtocht. Voor de bezoekers was het idee om mee te doen aan de speurtocht en later hun bevindingen aan een student bij de uitgang te vertellen. De IoT’ers hebben het systeem in de gaten gehouden door rond te lopen en het systeem digitaal te monitoren. Hieruit zijn aanbevelingen gekomen voor een volgende projectgroep.
+### Techniek test
+De techniek test is gedaan in de vorm van een speurtocht. Voor de bezoekers was het idee om mee te doen aan de speurtocht en later hun bevindingen aan een student bij de uitgang te vertellen. De IoT’ers hebben het systeem in de gaten gehouden door rond te lopen en het systeem digitaal te monitoren. Hieruit zijn aanbevelingen gekomen voor een volgende projectgroep.
 
 Hieronder is een korte sfeerimpressie te zien van de speurtocht:
 [Speurtocht video](https://www.youtube.com/watch?v=nrqekrv-Ccw)
@@ -89,7 +89,7 @@ Tips:
 * De speurtocht heeft te weinig interactie.
 * De weetjes waren te makkelijk, zoiets als “een Zeekoe zwemt hier in het water” heeft geen toegevoegde waarde.
 * Niet alle speurpunten deden het (goed).
-* Veel bezoekers gaven aan dat de speakers te zacht waren en dat niet alle scanpunten het goed deden. Dit begrepen ze wel omdat het een Field Trial is. Ze konden zich inleven in de speurtocht alsof er goede speakers stonden en het scannen van de pas meteen werkte.
+* Veel bezoekers gaven aan dat de speakers te zacht waren en dat niet alle scanpunten het goed deden. Dit begrepen ze wel omdat het een field trial is. Ze konden zich inleven in de speurtocht alsof er goede speakers stonden en het scannen van de pas meteen werkte.
 * De lampjes aan de voorkant van het scanpunt zijn niet goed te zien. Zorg dat ze meer uitsteken en dat ze verder uit elkaar staan.
 * De weetjes worden te snel uitgesproken.
 
@@ -132,20 +132,19 @@ Tijdens de test hebben we gebruik gemaakt van boxjes die verzorgd werden door Bu
 Ook kwam er wanneer de speaker niet gebruikt werd een constant brommend geluid uit. Dit kan als storend ervaren worden wanneer een bezoeker hier dicht bij staat, al wordt dit geluid vrij snel overstemd door de achtergrondgeluiden van o.a. overige bezoekers en dierentuin geluiden. Dit probleem deed zich niet voor wanneer de speakers werden aangesloten op een mobieltje, waardoor het lijkt op een probleem met de Audiono. De exacte oorzaak hiervan is niet gevonden.
 
 #### Technische bevindingen: Meshnetwerk & Gateway
-Het meshnetwerk heeft goed gefunctioneerd tijdens de test. De berichten kwamen binnen  op de gateway tijdens het testen. Deze berichten werden goed afgehandeld en werden naar de backend doorgestuurd. In de ochtend voor de test kwamen wat foutmeldingen naar voren door het niet goed uitlezen van de unieke code (zie paar kopjes hierboven, NFC). Deze foutmeldingen kwamen niet naar voren tijdens de test met bezoekers, waardoor het uitlezen van de unieke code op de NFC pas dus wel goed werkte. 
+Het meshnetwerk heeft goed gefunctioneerd tijdens de test. De berichten kwamen binnen op de gateway tijdens het testen. Deze berichten werden goed afgehandeld en werden naar de backend doorgestuurd. In de ochtend voor de test kwamen wat foutmeldingen naar voren door het niet goed uitlezen van de unieke code (zie paar kopjes hierboven, NFC). Deze foutmeldingen kwamen niet naar voren tijdens de test met bezoekers, waardoor het uitlezen van de unieke code op de NFC pas dus wel goed werkte. 
 
 ## Conclusie
-Tijdens de Field Trial hebben we ook antwoord gekregen op onze hoofdhypothese: 
+Tijdens de field trial is onze hypothese bevestigd: 
 > Wij geloven dat een meshnetwerk van zes poten in de Mangrove, gebruikmakend van NRF-communicatie zal resulteren in een stabiel speurtocht-ranger-systeem dat verbonden staat met de cloud. We weten dat we succesvol zijn als een speurtocht via de webapplicatie geconfigureerd wordt, en de door ranger gescande resultaten van diezelfde speurtocht terug kunnen zien, in een web applicatie die de data uit de verbonden cloud toont.
 
-De opdrachtgever heeft met behulp van de webapplicatie een nieuw speurpunt kunnen configureren en een Zip bestand kunnen downloaden. Dit Zip bestand had de inhoud die we verwachtten en de test kan dus als geslaagd gezien worden.
+De opdrachtgever heeft met behulp van de webapplicatie een nieuw speurpunt kunnen configureren en een zip-bestand kunnen downloaden waarin de juiste pootconfiguratie stond. Tevens is het systeem de hele dag online gebleven zonder Rasperry Pi-, Arduino- of server crash met continu tien gelijktijdige gebruikers.
 
-Het meshnetwerk heeft goed gefunctioneerd tijdens de test. De berichten uit het netwerk kwamen stabiel binnen tijdens de test waarbij ongeveer 10 mensen tegelijkertijd deelnamen aan de speurtocht. Ook kwamen er weinig foutmeldingen naar voren waaruit we kunnen concluderen dat het systeem stabiel functioneert met meerdere gebruikers.
 
 ## Aanbevelingen
-Na aanleiding van de Field Trial is er feedback voor het vervolg van dit project. Deze feedback komt uit onze eigen bevindingen en van de bezoekers die meegedaan hebben aan de Field Trial.
+Na aanleiding van de field trial is er feedback voor het vervolg van dit project. Deze feedback komt uit onze eigen bevindingen en van de bezoekers die meegedaan hebben aan de field trial.
 
-### Aanbevelingen na aanleiding van feedback bezoekers
+### Aanbevelingen naar aanleiding van feedback bezoekers
 Met alle bezoekers die concrete feedback gaven is er een gesprekje gevoerd. Feedback die we als concreet beschouwden bestond dus uit meer dan  “de speurtocht is wel leuk”. Er waren een paar bezoekers die zelf veel met kinderen deden voor hun werk, hier kwam veel goede feedback uit. Dit kan samengevat worden in het volgende:
 
 Het idee van een speurtocht is leuk voor kinderen, maar om ze echt iets te leren en te zorgen dat het bij ze blijft moet je meer doen. Laat de kinderen nadenken over wat ze gehoord of gezien hebben. Weetjes laten horen zoals “Bij wenkkrabben hebben de mannetjes links of rechts één grote schaar! Zie je ook vrouwtjes, met twee kleine scharen?” zijn een stap in de goede richting, maar er is nog meer nodig. Denk bijvoorbeeld aan een quiz voor de kinderen. Dit kan op papier of via knoppen bij de speurpunten. Zo moeten ze echt goed luisteren in plaats van pasje scannen en snel weer door rennen. Ook is het beter om een plaatje van het dier er bij te geven wanneer je kinderen vraagt om een dier te zoeken.
