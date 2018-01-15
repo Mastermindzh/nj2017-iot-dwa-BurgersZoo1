@@ -56,6 +56,14 @@ In dit hoofdstuk zijn de resultaten van de verschillende tests beschreven.
 ### Techniek test
 De techniek test is gedaan in de vorm van een speurtocht. Voor de bezoekers was het idee om mee te doen aan de speurtocht en later hun bevindingen aan een student bij de uitgang te vertellen. De IoT’ers hebben het systeem in de gaten gehouden door rond te lopen en het systeem digitaal te monitoren. Hieruit zijn aanbevelingen gekomen voor een volgende projectgroep.
 
+### Sfeerimpressie
+
+Hieronder is een korte sfeerimpressie te zien van de speurtocht:
+[Speurtocht video](https://www.youtube.com/watch?v=nrqekrv-Ccw)
+
+![images/poten.png](images/poten.png)  
+*De locaties van alle poten.*
+
 ### Scanstatistieken
 Met de filter ``` {"and": [{"speurpuntId": "<variabel speurpunt>"}, {"datum": {"gt":"1515668032"}}]} ``` op het ```rangerHeeftBezocht/count``` endpoint is de count per scanpunt opgehaald:
 
@@ -67,14 +75,6 @@ Met de filter ``` {"and": [{"speurpuntId": "<variabel speurpunt>"}, {"datum": {"
 | Plek 4: Tropisch droogbos                                     | 81                      |
 | Plek 5: Vlinders rottend fruit                                | 11                      |
 | Plek 6: Vlindereitjes                                         | 6                       |
-
-Hieronder is een korte sfeerimpressie te zien van de speurtocht:
-[Speurtocht video](https://www.youtube.com/watch?v=nrqekrv-Ccw)
-
-![images/poten.png](images/poten.png)  
-*De locaties van alle poten.*
-
-
 
 #### Technische bevindingen: NFC
 Tijdens de test kwamen een aantal problemen met de RFID-scanners en NFC passen naar voren. 
