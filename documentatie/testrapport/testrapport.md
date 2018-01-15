@@ -56,6 +56,9 @@ inleiding  **TODO**
 ### Techniek Test
 De Techniek test is gedaan in de vorm van een speurtocht. Voor de bezoekers was het idee om mee te doen aan de speurtocht en later hun bevindingen aan een student bij de uitgang te vertellen. De IoT’ers hebben het systeem in de gaten gehouden door rond te lopen en het systeem digitaal te monitoren. Hieruit zijn aanbevelingen gekomen voor een volgende projectgroep.
 
+Hieronder is een korte sfeerimpressie te zien van de speurtocht:
+[Speurtocht video](https://www.youtube.com/watch?v=nrqekrv-Ccw)
+
 ![images/poten.png](images/poten.png)  
 *De locaties van alle poten.*
 
@@ -165,4 +168,5 @@ NFC passen werken niet allemaal even goed. Sommige zijn slechter uit te lezen da
 Het mesh netwerk werkte tijdens de test in de Mangrove prima. Het bereik en de snelheid van de binnenkomende berichten lag binnen onze verwachtingen en is een goede manier om sensor/pas data over te brengen wanneer er geen wifi netwerk beschikbaar is. 
 
 ## BIJLAGEN
-leuke filmpjes en foto’s...
+
+
