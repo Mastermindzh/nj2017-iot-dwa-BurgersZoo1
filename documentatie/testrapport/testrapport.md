@@ -1,11 +1,13 @@
 # Testrapport
 
 ## Inleiding
-In november 2017 kreeg een groep ict-studenten van de Hogeschool Arnhem en Nijmegen de opdracht om een speurtochtsysteem voor Burgers’ Zoo als technisch concept uit te werken. Dit speurtochtsysteem is bedoeld voor kinderen die de dierentuin bezoeken. Het concept is dat kinderen als échte ranger door het park gaan op zoek naar pootafdrukken. Wanneer een kind een pootafdruk heeft gevonden kan deze een rangerpasje tegen de pootafdruk aanhouden om een weetje over dat dier te horen. Op deze manier kunnen kinderen meer zelfstandig door het park gaan en staan ze meer stil bij de verschillende bezienswaardigheden van het park. 
+In november 2017 kreeg een groep ict-studenten van de Hogeschool Arnhem en Nijmegen de opdracht om een speurtochtsysteem voor Burgers’ Zoo als technisch concept uit te werken. Dit speurtochtsysteem is bedoeld voor kinderen die de dierentuin bezoeken. Het concept is dat kinderen als échte ranger door het park gaan op zoek naar pootafdrukken. Wanneer een kind een pootafdruk heeft gevonden kan deze een rangerpasje tegen de pootafdruk aanhouden om een weetje over dat dier te horen.
 
-Dit rapport is de uitwerking van het [testplan](./documentatie/testplan/testplan.md). Er wordt antwoord geven op de vraag: Werkt het prototype dat dit project gebouwd is door de projectgroep in Burgers’ Zoo écht? Het volledige prototype is binnen de Mangrove uitgerold en echte bezoekers hebben met het systeem gewerkt. Daarnaast is getest met de opdrachtgever om te zien of de Admin applicatie te begrijpen is en naar behoren werkt.
+Het probleem waar Burgers' Zoo mee kampt is de slechte mobiliteit in het heuvelachtige park. Oudere begeleiders kunnen hun kinderen niet bijbenen, dus het even stil staan bij een pootafdruk en het beluisteren van een weetje draagt volgens Burgers' Zoo bij aan het oplossen van dit probleem. Een leuk concept, maar hoe is dit technisch haalbaar? Er is geen WIFI in het park, dus hoe vormen deze pootafdrukken samen een netwerk en hoe worden scanacties en weetjes opgeslagen zodat ze later terug te vinden zijn in een webapplicatie? Dit zijn de belangrijke vraagstukken waarop dit project gefocust is. 
 
-In dit document zal eerst het systeem en wat we willen testen worden samengevat. Dit wordt gedaan door de technische context, doel, hypothese en aanpak te beschrijven. Vervolgens worden de resultaten beschreven en tot slot wordt een conclusie gegeven gevolgd door aanbevelingen voor een volgend projectteam.
+Dit rapport is de uitwerking van het [testplan](./documentatie/testplan/testplan.md) waarin deze vragen. Er wordt antwoord geven op de vraag: Werkt het prototype dat dit project gebouwd is door de projectgroep in Burgers’ Zoo écht? Het volledige prototype is binnen de Mangrove uitgerold en echte bezoekers hebben met het systeem gewerkt. Daarnaast is getest met de opdrachtgever om te zien of de Admin webapplicatie te begrijpen is en naar behoren werkt.
+
+Verder beschrijft het rapport een technische context van opdracht, een doel, een hypothese en een aanpak van de test. Afsluitend worden de resultaten van de test getoond met een korte conclusie.
 
 ![images/fruit.jpg](images/fruit.jpg)
 *Impressie van de Mangrove waar de tests zullen plaatsvinden*
