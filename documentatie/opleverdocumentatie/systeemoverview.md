@@ -4,7 +4,7 @@
 
 De poot bestaat uit twee Arduino's. Er is één Arduino die volledig gaat over het afspelen van audio (genaamd Auduino). In een later stadium zou deze Auduino ook verantwoordelijk worden voor het opslaan van nieuwe ontvangen audiobestanden. De Auduino wordt aangestuurd door de Master Arduino.
 
-De Master Arduino (genaamd Maduino) is verantwoordelijk voor alle primaire functionaliteiten en het aansturen van de Auduino. Zo zal de master Arduino een NFC-scanner hebben om passen te detecteren. Ook zal de Maduino de temperatuur en luchtvochtigheid meten. De Maduino staat via de NRF24 chip in verbinding met de Gateway en zal zo de Gateway op de hoogte houden over welke passen gesand zijn.
+De Master Arduino (genaamd Maduino) is verantwoordelijk voor alle primaire functionaliteiten en het aansturen van de Auduino. Zo zal de Maduino een NFC-scanner hebben om passen te detecteren. Ook zal de Maduino de temperatuur en luchtvochtigheid meten. De Maduino staat via de NRF24 chip in verbinding met de Gateway en zal zo de Gateway op de hoogte houden over welke passen gescand zijn.
 
 De resultaten van een speurtocht van bezoekers kunnen ingezien worden in de Ranger app. Dit is een webapp die na het bezoek aan Burgers' Zoo gebruikt kan worden om terug te kijken op een boezoek aan het park. De verkregen informatie wordt hier nogmaals getoond.
 
@@ -12,7 +12,7 @@ Beheerders van Burgers' Zoo kunnen via de Admin app de speurtocht bijhouden en a
 
 De Ranger app en de Admin app draaien samen met de Backend en de database in Docker containers. Dit alles draait op een server.
 ### Gateway
-De poten zullen communiceren met de twee backends van de twee groepen via een gateway. Deze gateway bestaat uit een Arduino en een Raspberry Pi. De Arduino zal draadloos communiceren via NRF24 chips met de poten en alle informatie doorsturen naar de Raspberry Pi. De Pi zal via HTTP/JSON communiceren met de backend's. De Pi kan op zijn beurt weer de Arduino binnen de gateway aansturen om zo informatie bij de poten te krijgen.
+De poten zullen communiceren met de twee backends van de twee groepen via een gateway. Deze gateway bestaat uit een Arduino (genoemd de Gaduino) en een Raspberry Pi. De Gaduino zal draadloos communiceren via NRF24 chips met de Maduino in de poten en alle informatie doorsturen naar de Raspberry Pi. De Pi zal via HTTP/JSON communiceren met de backend's. De Pi kan op zijn beurt weer de Gaduino binnen de gateway aansturen om zo informatie bij de poten te krijgen.
 
 ### Frontend apps
 ![frontends](images/frontends.png)
