@@ -85,7 +85,7 @@ Tijdens de test kwamen een aantal problemen met de RFID-scanners en NFC passen n
 
 Ten eerste bleek dat de RFID-scanners gevoelig zijn voor verstoring door andere componenten in de behuizing. Wanneer andere draadjes en componenten op een bepaalde manier te dicht bij de RFID-scanner zaten kon de RFID scanner bepaalde pasjes niet detecteren. Dit probleem trad op bij twee van de zes scanpunten.
 
-![./images/binnenkantpoot.jpeg](./images/binnenkantpoot.jpeg)
+![./images/binnenkantpoot.jpg](./images/binnenkantpoot.jpg)
 *De binnenkant van een poot*
 
 Verder werkte de nieuwe NFC passen die wij hebben gekocht werkte minder dan de NFC passen die door de HAN geleverd zijn met de scanners die wij tot onze beschikking hadden. Het uitlezen van deze nieuwe passen ging vaker fout, waardoor de uitgelezen data corrupt was. Hierdoor klopte het unieke ID niet altijd als de pas te snel van de RFID-lezer werd verwijderd. Ook toonde het scanpunt soms het groene lampje (wat een indicatie is voor een goed uitgelezen pas) maar kwam er een leeg bericht binnen bij de gateway. Deze kon dus het bericht niet omzetten van hexadecimaal getal naar een decimaal getal waardoor er af en toe een `java.lang.NumberFormatException: Zero length BigInteger` exceptie werd gegooid.
@@ -120,7 +120,7 @@ Hoewel het configureren gelukt is, zijn er nog een aantal costructieve opmerking
 - Ik verwacht duidelijkere feedback als iets succesvol toegevoegd en opgeslagen is. Dit was nu maar 2 seconden zichtbaar.
 - Voor nu, om de hypothese te bevestigen, ziet het er al wel cool uit!
 
-![frank-test.jpg](images/frank-test.jpg)  
+![frank-test.jpg](images/frank-test.jpg)
 *Frank tijdens de field-trial*
 
 ### Uptime van het systeem
