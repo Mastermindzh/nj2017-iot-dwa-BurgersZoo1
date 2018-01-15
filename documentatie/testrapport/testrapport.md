@@ -101,19 +101,20 @@ Opdrachtgever Frank Simon heeft de volgende pootconfiguratie in de webapplicatie
 
 ![speurpuntaanpassen](./images/speurpuntaanpassen.png)
 
-In de tweede stap van de test heeft hij de configuratie als een .zip-bestand gedownload
+In de tweede stap van de test heeft hij de configuratie als een .zip-bestand gedownload:
 
 ![speurpuntdownload](./images/download-speurpunt-zip.png)
 
 ### Opmerkingen van Frank Simon
-Hoewel het configureren gelukt is, zijn er nog een aantal opmerkingen van Frank:
+Hoewel het configureren gelukt is, zijn er nog een aantal costructieve opmerkingen van Frank:
 
-- Burgers' Zoo medewerkers verwachten bij zoiets als 'Leefwereld' een dropdown menu met beschikbare content.
--
+- Burgers' Zoo medewerkers verwachten bij zoiets als 'Leefwereld' een dropdown menu met beschikbare content: "Safari, Mangrove, Ocean etc.."
+- Het pop-up venster is te klein. Voor het beheren en toevoegen van speurpunten wordt een groter venster verwacht, zodat je geluidjes kan beluisteren voordat je ze toevoegt. Het geeft zo ook iets meer ruimte om eventueel tooltip informatie te laten zien.
+- Ik verwacht duidelijkere feedback als iets succesvol toegevoegd en opgeslagen is. Dit was nu maar 2 seconden zichtbaar.
+- Voor nu, om de hypothese te bevestigen, ziet het er al wel cool uit!
 
-![frank-test.jpg](images/frank-test.jpg)
-(Frank tijdens de field-trial)
-
+![frank-test.jpg](images/frank-test.jpg)  
+*Frank tijdens de field-trial*
 
 
 ##### Technische bevindingen: Geluid
