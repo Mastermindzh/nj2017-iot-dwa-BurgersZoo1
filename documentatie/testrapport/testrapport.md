@@ -123,6 +123,12 @@ Hoewel het configureren gelukt is, zijn er nog een aantal costructieve opmerking
 ![frank-test.jpg](images/frank-test.jpg)  
 *Frank tijdens de field-trial*
 
+### Uptime van het systeem
+
+De cloud infrastructuur die opgezet is heeft succesvol gedraaid tijdens de test. Op onderstaande foto is te zien dat deze omgeving, in zijn laatste versie, al een aantal dagen succesvol draait.
+
+![docker-uptime](./images/uptime-docker.png)
+
 ### Opmerkingen van bezoekers
 
 #### Bevindingen bezoekers
@@ -168,12 +174,6 @@ Verder bleek de hoogte lastig te zijn. De scanpunten waren tijdens de test op oo
 
 ![images/hoog-laag.jpg](images/hoog-laag.jpg)
 *Voor kinderen is de hoogte perfect, maar ouders moeten bukken.*
-
-#### Cloud infrastructuur
-
-De cloud infrastructuur die opgezet is heeft succesvol gedraaid tijdens de test. Op onderstaande foto is te zien dat deze omgeving, in zijn laatste versie, al een aantal dagen succesvol draait.
-
-![docker-uptime](./images/uptime-docker.png)
 
 ## Conclusie
 Tijdens de field trial is onze hypothese bevestigd:
