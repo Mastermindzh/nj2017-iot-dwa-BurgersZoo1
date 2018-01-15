@@ -48,7 +48,7 @@ Op de testdag hebben we bezoekers gevraagd om mee te doen aan onze speurtocht. D
 De admin applicatie is door een medewerker van Burgers’ Zoo getest en de medewerker heeft hierop feedback gegeven. De volledige aanpak is te lezen in het [testplan](../documentatie/testplan/testplan.md). 
 
 ![images/punten.png](images/punten.png)  
-* De plekken in de mangrove waar de speurpunten geplaatst worden. *
+*De plekken in de mangrove waar de speurpunten geplaatst worden. *
 
 ## Resultaten
 In dit hoofdstuk zijn de resultaten van de verschillende tests beschreven. 
@@ -61,8 +61,8 @@ De techniek test is gedaan in de vorm van een speurtocht. Voor de bezoekers was 
 Hieronder is een korte sfeerimpressie te zien van de speurtocht:
 [![Speurtocht video](https://img.youtube.com/vi/nrqekrv-Ccw/0.jpg)](https://www.youtube.com/watch?v=nrqekrv-Ccw)
 
-![images/poten.png](images/poten.png)  
-*De locaties van alle poten.*
+![images/poten.png](images/poten.png)    
+*De locaties van alle poten.* 
 
 ### Scanstatistieken
 Met de filter ``` {"and": [{"speurpuntId": "<variabel speurpunt>"}, {"datum": {"gt":"1515668032"}}]} ``` op het ```rangerHeeftBezocht/count``` endpoint is de count per scanpunt opgehaald:
